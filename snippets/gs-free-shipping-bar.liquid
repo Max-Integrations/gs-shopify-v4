@@ -1,0 +1,93 @@
+{% comment %}
+  ==================================================================
+  GS FREE SHIPPING BAR
+  ==================================================================
+  Progress toward the free-shipping threshold.
+
+  USAGE:
+    render 'gs-free-shipping-bar'
+    render 'gs-free-shipping-bar', threshold: 75
+    render 'gs-free-shipping-bar', threshold: 75, compact: true
+
+  PARAMS
+    threshold  dollars, default 75. Pass 0 to render nothing.
+    compact    true for the cart drawer - tighter spacing.
+
+  ------------------------------------------------------------------
+  NO JAVASCRIPT
+  ------------------------------------------------------------------
+  Progress is computed in Liquid and the width is a CSS custom property.
+  Shopify re-renders the cart on every quantity change, and Dawn's
+  cart.js replaces the drawer contents from a server render, so this
+  stays correct with no listeners and no recalculation on the client.
+
+  v3 shipped assets/cart-shipping-bar.js to do the same job.
+
+  ------------------------------------------------------------------
+  WHERE THIS IS USED
+  ------------------------------------------------------------------
+  - sections/gs-cart-addons.liquid (the /cart page)
+  - snippets/cart-drawer.liquid (the drawer, which is the primary cart
+    UI on this store - settings.cart_type is "drawer", so most customers
+    never visit /cart)
+
+  TO ADD IT TO THE DRAWER, put this line in snippets/cart-drawer.liquid
+  immediately after the opening tag of <div class="drawer__footer">:
+
+      {% raw %}{% render 'gs-free-shipping-bar', compact: true %}{% endraw %}
+
+  It is not inserted automatically because cart-drawer.liquid is 30 KB
+  of Dawn markup and rewriting it wholesale to add one line risks more
+  than it gains.
+
+  ------------------------------------------------------------------
+  THRESHOLD IS NOT A THEME SETTING YET
+  ------------------------------------------------------------------
+  It defaults to 75 and can be overridden per call site. Making it
+  merchant-editable means adding an entry to config/settings_schema.json
+  so `settings.gs_free_shipping_threshold` resolves - worth doing before
+  launch so marketing can change it without a deploy.
+  ==================================================================
+{% endcomment %}
+
+{%- liquid
+  assign dollars = threshold | default: 75
+  assign target = dollars | times: 100
+
+  assign remaining = target | minus: cart.total_price
+  assign qualified = false
+  if remaining <= 0
+    assign qualified = true
+  endif
+
+  assign progress = 0
+  if target > 0
+    assign progress = cart.total_price | times: 100 | divided_by: target
+    if progress > 100
+      assign progress = 100
+    endif
+  endif
+-%}
+
+{%- if target > 0 and cart.item_count > 0 -%}
+  {{ 'gs-cart-addons.css' | asset_url | stylesheet_tag }}
+
+  <div class="gs-cart-ship{% if compact %} gs-cart-ship--compact{% endif %}" style="--gs-ship-progress: {{ progress }}%;">
+    <p class="gs-cart-ship__message" role="status">
+      {%- if qualified -%}
+        You've unlocked free shipping.
+      {%- else -%}
+        Spend <strong>{{ remaining | money }}</strong> more for free shipping
+      {%- endif -%}
+    </p>
+    <div
+      class="gs-cart-ship__track{% if qualified %} is-complete{% endif %}"
+      role="progressbar"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="{{ progress }}"
+    >
+      <span class="gs-cart-ship__fill"></span>
+    </div>
+  </div>
+{%- endif -%}

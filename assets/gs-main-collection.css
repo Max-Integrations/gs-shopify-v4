@@ -1,0 +1,471 @@
+/*
+  ==================================================================
+  GS Main Collection
+  ==================================================================
+  The product grid is CSS GRID. v3 used flexbox with per-cell flex-basis
+  calculations, and promotion tiles spanning two columns did it with a
+  calc expression repeated twice per block, in a per-instance <style>
+  tag, with !important on both declarations. In grid that is
+  `grid-column: span 2`.
+
+  --desktopColumns / --mobileColumns are set on the section wrapper.
+
+  ------------------------------------------------------------------
+  FIXES 2026-08-14
+  ------------------------------------------------------------------
+  1. THE TOOLBAR HAD NO GRID AREA.
+     The wrapper declares grid-template-areas including a `toolbar` row,
+     but .gs-toolbar was never assigned to it. An unplaced grid item
+     auto-places into the first free cell, so Sort by and Filter by
+     stacked vertically in the LEFT COLUMN above the filters instead of
+     sitting in a row above the products.
+
+  2. THE WRAPPER WAS NOT INSIDE page-width.
+     The banner and header each carry .page-width, but the grid wrapper
+     did not - so the filter sidebar ran flush to the viewport edge. The
+     constraint is applied here rather than by adding another div.
+
+  ------------------------------------------------------------------
+  INCOMPLETE
+  ------------------------------------------------------------------
+  Two bugs to avoid if more of v3's collection.css is ever pulled across:
+    - Triplet tokens used directly as colours: `color: var(--textColor)`
+      where the token is `r,g,b`. Invalid; the declaration is dropped.
+    - ~8 tokens from an older snake_case generation that no longer exist
+      (--body_alternate_bg, --filter_clear_bg, --opacityColor and
+      friends). Those rules are dead.
+  ==================================================================
+*/
+
+.gs-collection {
+  padding-top: var(--padding-top-mobile, 40px);
+  padding-bottom: var(--padding-bottom-mobile, 40px);
+}
+
+/* The grid wrapper is not inside a .page-width element, so it carries
+   the same constraint itself. */
+.gs-collection__wrapper {
+  max-width: var(--page-width, 1600px);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* ---- Banner ---- */
+.gs-collection__banner {
+  position: relative;
+  background-color: var(--pageBannerBg, transparent);
+}
+
+.gs-collection__banner.overlay-text {
+  min-height: var(--media-height-mobile, 200px);
+  display: flex;
+  align-items: center;
+}
+
+.gs-collection__banner-image {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.gs-collection__banner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gs-collection__banner.overlay-text .gs-collection__banner-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--banner-overlay-bg, transparent);
+  opacity: var(--banner-overlay-opacity, 0);
+}
+
+.gs-collection__banner-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.gs-collection__heading {
+  color: var(--banner-overlay-text, rgb(var(--textColor)));
+  margin: 0;
+}
+
+.gs-collection__header {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.gs-collection__header .gs-collection__heading {
+  color: rgb(var(--headingColor, var(--textColor)));
+}
+
+.gs-collection__description {
+  color: rgb(var(--textColor));
+}
+
+.gs-collection__description--below {
+  margin-top: 3rem;
+}
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* ---- Sub-collection carousel ---- */
+.gs-subcollections {
+  padding: 2rem 0;
+}
+
+.gs-subcollections__scroller {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gs-subcollections__track {
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gs-subcollections__track::-webkit-scrollbar { display: none; }
+
+.gs-subcollections__item {
+  flex: 0 0 45%;
+  scroll-snap-align: start;
+  margin: 0;
+}
+
+.gs-subcollections__card {
+  display: block;
+  text-decoration: none;
+  color: rgb(var(--textColor));
+}
+
+.gs-subcollections__card .media {
+  position: relative;
+  padding-bottom: var(--imageRatio, 100%);
+  overflow: hidden;
+}
+
+.gs-subcollections__card .media img,
+.gs-subcollections__card .media svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gs-subcollections__title {
+  margin: 0.6rem 0 0.2rem;
+  font-family: var(--headingFont);
+  text-transform: uppercase;
+}
+
+.gs-subcollections__link {
+  font-size: var(--smallText);
+  text-decoration: underline;
+}
+
+.gs-subcollections__nav,
+.gs-collection__more .button {
+  cursor: pointer;
+}
+
+.gs-subcollections__nav {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--textColor));
+}
+
+.gs-subcollections__nav[hidden] { display: none; }
+.gs-subcollections__nav:disabled { opacity: 0.3; cursor: default; }
+
+/* ---- Applied filter pills ---- */
+.gs-collection__count {
+  padding: 1rem 0;
+  color: rgb(var(--textColor));
+}
+
+.gs-collection__applied {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.gs-collection__applied-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(var(--borderColor), 0.35);
+  color: rgb(var(--textColor));
+  font-size: var(--smallText);
+  text-decoration: none;
+}
+
+.gs-collection__applied-link:hover {
+  border-color: rgb(var(--textColor));
+}
+
+.gs-collection__applied-link--clear {
+  border-color: transparent;
+  text-decoration: underline;
+}
+
+/* ---- Product grid ---- */
+.gs-collection__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--mobileColumns, 2), minmax(0, 1fr));
+  gap: 15px;
+}
+
+.gs-collection__cell {
+  min-width: 0;
+  display: flex;
+}
+
+.gs-collection__cell > * {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Card colour overrides from the product-grid / title / price blocks. */
+.gs-collection__cell .product-card {
+  background-color: var(--cardBackgroundOverride, transparent);
+}
+
+.gs-collection__cell .product-title {
+  color: var(--cardTitleColor, rgb(var(--cardDetailsTextColor)));
+}
+
+.gs-collection__cell .product-price .price-item {
+  color: var(--cardPriceColor, rgb(var(--cardDetailsTextColor)));
+}
+
+/* ---- Promotion tiles ---- */
+.gs-promo {
+  position: relative;
+}
+
+.gs-promo--mw2 {
+  grid-column: span var(--mobileColumns, 2);
+}
+
+.gs-promo__card {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.gs-promo__media {
+  position: relative;
+}
+
+.gs-promo__media img,
+.gs-promo__media svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gs-promo__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--promo-overlay, transparent);
+}
+
+.gs-promo__content {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 1.5rem;
+}
+
+.gs-promo__heading {
+  margin: 0;
+  font-family: var(--promo-heading-font, var(--headingFont));
+  font-weight: var(--promo-heading-weight, 400);
+  font-size: var(--promo-heading-size-mobile, 22px);
+  color: var(--promo-heading-color, #ffffff);
+}
+
+.gs-promo__desc {
+  margin: 0.4em 0 0;
+  font-family: var(--promo-desc-font, var(--bodyFont));
+  font-weight: var(--promo-desc-weight, 400);
+  font-size: var(--promo-desc-size-mobile, 14px);
+  color: var(--promo-desc-color, #ffffff);
+}
+
+.gs-promo__desc p {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ---- Collection background image ---- */
+.gs-collection--bg-image .gs-collection__results {
+  position: relative;
+}
+
+.gs-collection--bg-image .gs-collection__results::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--collectionBgImage) center center / contain no-repeat fixed;
+  pointer-events: none;
+}
+
+.gs-collection--bg-image .gs-collection__grid,
+.gs-collection--bg-image .gs-collection__count,
+.gs-collection--bg-image .gs-collection__applied,
+.gs-collection--bg-image .gs-collection__more {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Empty state ---- */
+.gs-collection__empty {
+  padding: 4rem 1rem;
+  text-align: center;
+  color: rgb(var(--textColor));
+}
+
+.gs-collection__empty-icon {
+  color: rgba(var(--textColor), 0.4);
+  margin-bottom: 1rem;
+}
+
+.gs-collection__empty-heading {
+  margin: 0 0 1.5rem;
+}
+
+/* ---- Load more / infinite ---- */
+.gs-collection__more {
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.gs-collection__spinner {
+  width: 40px;
+  height: 40px;
+  margin: 1rem auto 0;
+  border: 4px solid rgba(var(--textColor), 0.15);
+  border-top-color: rgb(var(--textColor));
+  border-radius: 50%;
+  animation: gs-spin 0.9s linear infinite;
+}
+
+.gs-collection__spinner.hidden {
+  display: none;
+}
+
+@keyframes gs-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---- Sidebar ---- */
+.gs-collection__sidebar {
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .gs-collection {
+    padding-top: var(--padding-top, 0);
+    padding-bottom: var(--padding-bottom, 70px);
+  }
+
+  .gs-collection__banner.overlay-text {
+    min-height: var(--media-height, 200px);
+  }
+
+  .gs-subcollections__item {
+    flex-basis: 20%;
+  }
+
+  .gs-collection__grid {
+    grid-template-columns: repeat(var(--desktopColumns, 4), minmax(0, 1fr));
+    gap: 25px;
+  }
+
+  .gs-promo--mw2 {
+    grid-column: auto;
+  }
+
+  .gs-promo--w2 {
+    grid-column: span 2;
+  }
+
+  .gs-promo__heading {
+    font-size: var(--promo-heading-size, 32px);
+  }
+
+  .gs-promo__desc {
+    font-size: var(--promo-desc-size, 16px);
+  }
+
+  /* Sidebar layout. */
+  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) {
+    display: grid;
+    grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+    grid-template-areas:
+      'sub sub'
+      'header header'
+      'toolbar toolbar'
+      'sidebar results';
+    gap: 0 30px;
+    align-items: start;
+  }
+
+  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) > .gs-subcollections { grid-area: sub; }
+  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) > .gs-collection__header { grid-area: header; }
+
+  /*
+    Without this the toolbar auto-places into the first free cell, which
+    put Sort by and Filter by in the left column stacked above the
+    filters instead of in a row above the products.
+  */
+  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) > .gs-toolbar { grid-area: toolbar; }
+
+  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) > .gs-collection__sidebar { grid-area: sidebar; }
+  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) > .gs-collection__results { grid-area: results; }
+
+  /* The count sits with the toolbar row, so the results column starts
+     with products rather than repeating the count below the filters. */
+  .gs-collection__results .gs-collection__count {
+    padding-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-subcollections__track { scroll-behavior: auto; }
+  .gs-collection__spinner { animation-duration: 3s; }
+}

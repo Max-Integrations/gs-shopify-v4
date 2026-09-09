@@ -1,0 +1,266 @@
+{% comment %}
+  ==================================================================
+  INFLUENCER FAVORITES
+  Ported from gs-shopify-v3
+  sections/influencer-page-collection-highlight.liquid
+  ==================================================================
+  Products an influencer recommends, from either a product list or a
+  collection. Carousel or grid.
+
+  Setting IDs are byte-for-byte identical to v3.
+
+  ------------------------------------------------------------------
+  THE DEFAULT HEADING WAS INVISIBLE
+  ------------------------------------------------------------------
+  influencer_collection_title_color defaulted to #ffffff while the
+  section hardcoded `background-color: #fff`. A freshly added section
+  rendered white text on white. Default is now dark; existing values are
+  untouched since the id is unchanged.
+
+  ------------------------------------------------------------------
+  HTML BUILT BY STRING CONCATENATION
+  ------------------------------------------------------------------
+  v3 captured each card into a variable and did
+
+      assign product_list = product_list | append: temp_product
+
+  inside the loop - copying an ever-growing string on every iteration,
+  up to the 50-product limit, then printing it once. The markup is
+  emitted directly in the loop now.
+
+  ------------------------------------------------------------------
+  THE GLOBAL collection OBJECT WAS SHADOWED
+  ------------------------------------------------------------------
+  v3 opened with `assign collection = ""` and reassigned it, overwriting
+  Shopify's `collection` drop for the rest of the template. Same defect
+  found in main-collection with `collections`. Renamed to source_products.
+
+  ------------------------------------------------------------------
+  WHY THIS DOES NOT USE gs-card-product
+  ------------------------------------------------------------------
+  Every product link carries UTM parameters identifying the influencer,
+  which is how this programme is attributed. The shared card does not
+  take link parameters, and adding them there would complicate a snippet
+  used on six other surfaces. The card here is deliberately minimal and
+  the UTM string is built once rather than repeated per link as in v3.
+
+  ------------------------------------------------------------------
+  OTHER v3 FIXES
+  ------------------------------------------------------------------
+  - Swiper replaced with CSS scroll-snap on the shared scroller.
+  - Navigation arrows were a hardcoded CDN PNG; they are inline SVG now.
+  - The UTM string was duplicated in two places per card.
+  - Images requested at a fixed 1000px with no srcset.
+  - Unquoted multi-word font family; Times New Roman offered.
+  - compare_at_price compared without a nil guard.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-influencer.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+
+  # Renamed - v3 called this `collection` and shadowed the global drop.
+  if s.influencer_recommendations_products != blank
+    assign source_products = s.influencer_recommendations_products
+    assign loop_limit = 50
+  else
+    assign source_products = s.influencer_recommendations_collection.products
+    assign loop_limit = s.influencer_recommendations_collection_count
+  endif
+
+  assign is_carousel = false
+  if s.influencer_recommendations_layout == 'swiper'
+    assign is_carousel = true
+  endif
+
+  # Built once, not twice per card as in v3.
+  assign utm_name = s.influencer_collection_title | strip_html | handleize
+  assign utm = '?utm_source=gs_mainline&utm_medium=influencer_recommended_products&utm_name=' | append: utm_name
+
+  case s.influencer_collection_title_font
+    when 'Engravers MT'
+      assign title_font = '"Engravers MT", var(--headingFont)'
+    when 'body'
+      assign title_font = 'var(--bodyFont)'
+    else
+      assign title_font = 'var(--headingFont)'
+  endcase
+-%}
+
+<div
+  class="gs-infl-faves page-width"
+  id="gs-infl-faves-{{ section.id }}"
+  style="
+    --if-title-color: {{ s.influencer_collection_title_color }};
+    --if-title-font: {{ title_font }};
+    --if-title-size: {{ s.influencer_collection_title_size_desktop }}px;
+    --if-title-size-mobile: {{ s.influencer_collection_title_size_mobile }}px;
+    --if-title-align: {{ s.influencer_collection_title_alignment }};
+  "
+>
+  {%- if s.influencer_collection_title != blank -%}
+    <h2 class="gs-infl-faves__title">{{ s.influencer_collection_title }}</h2>
+  {%- endif -%}
+
+  <div class="gs-infl-faves__scroller"{% if is_carousel %} data-swatch-scroller{% endif %}>
+    {%- if is_carousel -%}
+      <button
+        type="button"
+        class="gs-infl-faves__nav"
+        data-swatch-scroll="prev"
+        aria-label="{{ 'general.slider.previous_slide' | t }}"
+        hidden
+      >
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+          <path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    {%- endif -%}
+
+    <ul class="gs-infl-faves__track{% unless is_carousel %} gs-infl-faves__track--grid{% endunless %}"{% if is_carousel %} data-swatch-track{% endif %}>
+      {%- for product in source_products limit: loop_limit -%}
+        {%- liquid
+          assign on_sale = false
+          if product.compare_at_price and product.compare_at_price > product.price
+            assign on_sale = true
+          endif
+          assign product_href = product.url | append: utm
+        -%}
+        <li class="gs-infl-faves__item">
+          <a class="gs-infl-faves__media" href="{{ product_href }}" tabindex="-1" aria-hidden="true">
+            {%- if product.featured_image -%}
+              {%- assign img = product.featured_image -%}
+              <img
+                src="{{ img | image_url: width: 500 }}"
+                srcset="
+                  {{ img | image_url: width: 300 }} 300w,
+                  {{ img | image_url: width: 500 }} 500w,
+                  {{ img | image_url: width: 800 }} 800w
+                "
+                sizes="(min-width: 990px) 20vw, 50vw"
+                alt="{{ img.alt | escape | default: product.title | escape }}"
+                width="{{ img.width }}"
+                height="{{ img.height }}"
+                loading="lazy"
+              >
+            {%- else -%}
+              {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </a>
+
+          <div class="gs-infl-faves__details">
+            <h3 class="gs-infl-faves__name">{{ product.title }}</h3>
+
+            <div class="gs-infl-faves__price">
+              {%- if on_sale -%}
+                <span class="gs-infl-faves__price-now">{{ product.price | money }}</span>
+                <s class="gs-infl-faves__price-was">{{ product.compare_at_price | money }}</s>
+              {%- else -%}
+                <span>{{ product.price | money }}</span>
+              {%- endif -%}
+            </div>
+
+            <a class="gs-infl-faves__cta" href="{{ product_href }}">
+              {{ s.cta_label | default: 'View Product' }}
+            </a>
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+
+    {%- if is_carousel -%}
+      <button
+        type="button"
+        class="gs-infl-faves__nav"
+        data-swatch-scroll="next"
+        aria-label="{{ 'general.slider.next_slide' | t }}"
+        hidden
+      >
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+          <path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Influencer Favorites",
+  "tag": "section",
+  "class": "gs-influencer-collection",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "influencer_collection_title",
+      "label": "Section title",
+      "default": "Influencer's Favorites"
+    },
+    {
+      "type": "color",
+      "id": "influencer_collection_title_color",
+      "label": "Title color",
+      "info": "v3 defaulted to white on a white background, so a new section had an invisible title.",
+      "default": "#121212"
+    },
+    {
+      "type": "select",
+      "id": "influencer_collection_title_font",
+      "label": "Title font",
+      "info": "Engravers MT has no font file in this theme yet and will fall back.",
+      "options": [
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "body", "label": "Theme body font" },
+        { "value": "Engravers MT", "label": "Engravers MT" }
+      ],
+      "default": "heading"
+    },
+    { "type": "range", "id": "influencer_collection_title_size_desktop", "label": "Title size (desktop)", "min": 14, "max": 48, "step": 1, "unit": "px", "default": 28 },
+    { "type": "range", "id": "influencer_collection_title_size_mobile", "label": "Title size (mobile)", "min": 11, "max": 28, "step": 1, "unit": "px", "default": 20 },
+    {
+      "type": "select",
+      "id": "influencer_collection_title_alignment",
+      "label": "Title alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    { "type": "text", "id": "cta_label", "label": "Product button text", "default": "View Product" },
+    { "type": "header", "content": "Product selection" },
+    {
+      "type": "paragraph",
+      "content": "Choose products individually or pick a collection. If any products are selected individually, the collection is ignored."
+    },
+    { "type": "product_list", "id": "influencer_recommendations_products", "label": "Recommended products", "limit": 50 },
+    { "type": "header", "content": "--- OR ---" },
+    { "type": "collection", "id": "influencer_recommendations_collection", "label": "Recommended collection" },
+    {
+      "type": "range",
+      "id": "influencer_recommendations_collection_count",
+      "label": "Products to show from the collection",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "select",
+      "id": "influencer_recommendations_layout",
+      "label": "Layout",
+      "options": [
+        { "value": "swiper", "label": "Carousel" },
+        { "value": "grid", "label": "Grid" }
+      ],
+      "default": "swiper"
+    }
+  ],
+  "presets": [{ "name": "Influencer Favorites" }],
+  "enabled_on": { "templates": ["*"] }
+}
+{% endschema %}

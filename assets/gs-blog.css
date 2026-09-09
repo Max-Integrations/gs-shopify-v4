@@ -1,0 +1,161 @@
+/*
+  GS Blog
+
+  Grid of posts with an optional featured first card that spans two
+  columns and lays out side by side on desktop.
+
+  No JavaScript. Tag filtering is links; pagination is Dawn's snippet.
+*/
+
+.gs-blog {
+  padding: 3rem 0 4rem;
+}
+
+.gs-blog__header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.gs-blog__title {
+  margin: 0;
+  font-family: var(--headingFont);
+  font-size: var(--h1);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgb(var(--headingColor, var(--textColor)));
+}
+
+.gs-blog__subtext {
+  margin: 0.6em auto 0;
+  max-width: 52ch;
+  font-size: var(--smallText);
+  opacity: 0.8;
+}
+
+/* ---- Tags ---- */
+.gs-blog__tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+
+.gs-blog__tag {
+  padding: 0.4em 1em;
+  border: 1px solid rgba(var(--borderColor), 0.35);
+  color: rgb(var(--textColor));
+  font-size: var(--xsmallText);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+
+.gs-blog__tag.is-active,
+.gs-blog__tag:hover {
+  background-color: rgb(var(--textColor));
+  border-color: rgb(var(--textColor));
+  color: rgb(var(--background));
+}
+
+.gs-blog__tag:focus-visible,
+.gs-blog__card-link:focus-visible {
+  outline: 2px solid rgb(var(--textColor));
+  outline-offset: 2px;
+}
+
+/* ---- Grid ---- */
+.gs-blog__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.gs-blog__card-link {
+  display: block;
+  text-decoration: none;
+  color: rgb(var(--textColor));
+}
+
+.gs-blog__card-media img,
+.gs-blog__card-media .placeholder-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.gs-blog__card-body {
+  padding-top: 0.9rem;
+}
+
+.gs-blog__card-meta {
+  margin: 0 0 0.3em;
+  font-size: var(--xsmallText);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+}
+
+.gs-blog__card-title {
+  margin: 0;
+  font-family: var(--headingFont);
+  font-size: var(--mediumText);
+  font-weight: 700;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.gs-blog__card-link:hover .gs-blog__card-title {
+  text-decoration: underline;
+}
+
+.gs-blog__card-excerpt {
+  margin: 0.6em 0 0;
+  font-size: var(--smallText);
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.gs-blog__card-cta {
+  display: inline-block;
+  margin-top: 0.8em;
+  font-size: var(--xsmallText);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(var(--line-color), 1);
+}
+
+.gs-blog__empty {
+  text-align: center;
+  padding: 3rem 0;
+  opacity: 0.7;
+}
+
+@media screen and (min-width: 750px) {
+  .gs-blog__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Featured post spans two columns and goes side by side. */
+  .gs-blog__card--featured {
+    grid-column: span 2;
+  }
+
+  .gs-blog__card--featured .gs-blog__card-link {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .gs-blog__card--featured .gs-blog__card-body {
+    padding-top: 0;
+  }
+
+  .gs-blog__card--featured .gs-blog__card-title {
+    font-size: var(--largeText);
+  }
+}

@@ -1,0 +1,476 @@
+{% comment %}
+  ==================================================================
+  GS MAIN PRODUCT
+  ==================================================================
+  REBUILT, NOT PORTED. v3's sections/main-product.liquid is 60.4 KB and
+  pulls in product-blocks.liquid (47.9 KB) plus a dozen more snippets.
+
+  ------------------------------------------------------------------
+  NO JAVASCRIPT LIBRARY, AND VARIANT SELECTION WORKS WITHOUT JS
+  ------------------------------------------------------------------
+  The variant picker is a set of real radio inputs, with a <noscript>
+  <select> fallback, so the page sells with scripts disabled. The script
+  at the bottom upgrades that to an in-place swap via the Section
+  Rendering API - no client-side price or availability templating, so
+  there is exactly one source of truth for that markup.
+
+  The gallery is CSS scroll-snap plus anchor links. No slider library.
+
+  ------------------------------------------------------------------
+  REVISION 2026-08-13 - ADD TO CART WAS BROKEN
+  ------------------------------------------------------------------
+  The buy form was written as:
+
+      {% raw %}{% form 'product', product, id: 'ProductForm-' | append: section.id, ... %}{% endraw %}
+
+  A FILTER CANNOT BE USED INLINE AS A TAG ARGUMENT. Liquid mis-parsed the
+  argument list and treated the section id as the FORM TYPE, producing:
+
+      Liquid error (sections/main-product line 226): Invalid form type
+      "template--19552773898291__main", must be one of ["product", ...]
+
+  The error text rendered in place of the entire buy form, so the product
+  page could not add to cart at all.
+
+  The id is now precomputed with assign. This is the same root cause as
+  two earlier defects in this port - a filter inside an if condition in
+  gs-card-product and gs-product-badge. Filters are not expressions in
+  Liquid: they only work in output tags and in assign. Anywhere else,
+  compute the value first.
+
+  ------------------------------------------------------------------
+  REVISION 2026-08-12 - SELF-REVIEW
+  ------------------------------------------------------------------
+  1. The full variant array was serialized into the page. Matching needs
+     four fields, not every field of every variant - the same mistake v3
+     made with data-product-details-json on product cards.
+  2. The gallery did not follow the variant. On an apparel store where
+     colour is the primary choice, that is the main thing a customer
+     expects to change.
+
+  ------------------------------------------------------------------
+  APP INTEGRATIONS
+  ------------------------------------------------------------------
+  Skio (subscriptions) and Inveterate (loyalty pricing) are @app blocks,
+  placed in the theme editor rather than hardcoded. ACTION: add them and
+  re-test add-to-cart - Skio replaces the buy button with its own
+  selling-plan UI.
+
+  ------------------------------------------------------------------
+  NOT INCLUDED - DECIDE BEFORE LAUNCH
+  ------------------------------------------------------------------
+  Size chart modal, store-locator panel, sticky add-to-cart bar, and
+  complementary products. Each is a deliberate block, not an oversight.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-main-product.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+  assign current = product.selected_or_first_available_variant
+
+  # Precomputed. A filter cannot be used inline as a tag argument -
+  # doing so broke the form tag entirely. See the header note.
+  assign product_form_id = 'ProductForm-' | append: section.id
+-%}
+
+<section class="gs-pdp page-width color-{{ s.color_scheme }}" data-pdp data-section-id="{{ section.id }}">
+  <div class="gs-pdp__grid">
+
+    {%- comment -%} ---------- Media ---------- {%- endcomment -%}
+    <div class="gs-pdp__media">
+      <div class="gs-pdp__gallery" id="GsGallery-{{ section.id }}">
+        {%- for media in product.media -%}
+          <div class="gs-pdp__slide" id="GsMedia-{{ section.id }}-{{ media.id }}" data-media-id="{{ media.id }}">
+            {%- if media.media_type == 'image' -%}
+              <img
+                src="{{ media | image_url: width: 1200 }}"
+                srcset="
+                  {{ media | image_url: width: 600 }} 600w,
+                  {{ media | image_url: width: 900 }} 900w,
+                  {{ media | image_url: width: 1200 }} 1200w,
+                  {{ media | image_url: width: 1800 }} 1800w
+                "
+                sizes="(min-width: 990px) 50vw, 100vw"
+                alt="{{ media.alt | escape | default: product.title | escape }}"
+                width="{{ media.width }}"
+                height="{{ media.height }}"
+                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                {% if forloop.first %}fetchpriority="high"{% endif %}
+              >
+            {%- else -%}
+              {{ media | media_tag: image_size: '1200x', autoplay: false, loop: false, controls: true }}
+            {%- endif -%}
+          </div>
+        {%- else -%}
+          <div class="gs-pdp__slide">
+            {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- if product.media.size > 1 -%}
+        {%- comment -%}
+          Anchor links, not buttons. Scrolling the gallery to a slide is
+          exactly what a fragment link does, so this needs no JS and is
+          keyboard-navigable for free.
+        {%- endcomment -%}
+        <ul class="gs-pdp__thumbs list-unstyled">
+          {%- for media in product.media -%}
+            <li>
+              <a
+                class="gs-pdp__thumb{% if forloop.first %} is-active{% endif %}"
+                href="#GsMedia-{{ section.id }}-{{ media.id }}"
+                data-media-id="{{ media.id }}"
+                aria-label="{{ 'products.product.media.load_image' | t: index: forloop.index }}"
+              >
+                <img
+                  src="{{ media.preview_image | image_url: width: 160 }}"
+                  alt=""
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                >
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ---------- Info ---------- {%- endcomment -%}
+    <div class="gs-pdp__info">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+
+          {%- when '@app' -%}
+            <div class="gs-pdp__app" {{ block.shopify_attributes }}>{% render block %}</div>
+
+          {%- when 'vendor' -%}
+            {%- if product.vendor != blank -%}
+              <p class="gs-pdp__vendor" {{ block.shopify_attributes }}>{{ product.vendor }}</p>
+            {%- endif -%}
+
+          {%- when 'title' -%}
+            <h1 class="gs-pdp__title" {{ block.shopify_attributes }}>{{ product.title }}</h1>
+
+          {%- when 'reviews' -%}
+            <div class="gs-pdp__reviews" {{ block.shopify_attributes }}>
+              {%- render 'gs-reviews', cardProduct: product, showCount: true -%}
+            </div>
+
+          {%- when 'price' -%}
+            <div class="gs-pdp__price" {{ block.shopify_attributes }}>
+              {%- render 'gs-price', cardProduct: product, cardVariant: current -%}
+            </div>
+
+          {%- when 'swatches' -%}
+            <div class="gs-pdp__swatches" {{ block.shopify_attributes }}>
+              {%- render 'gs-product-colors-option', cardProduct: product -%}
+            </div>
+
+          {%- when 'variant_picker' -%}
+            {%- unless product.has_only_default_variant -%}
+              <div class="gs-pdp__options" {{ block.shopify_attributes }}>
+                {%- for option in product.options_with_values -%}
+                  <fieldset class="gs-pdp__option">
+                    <legend class="gs-pdp__option-name">
+                      {{ option.name }}
+                      <span class="gs-pdp__option-value" data-selected-for="{{ option.position }}">
+                        {{- option.selected_value -}}
+                      </span>
+                    </legend>
+
+                    <div class="gs-pdp__option-values">
+                      {%- for value in option.values -%}
+                        {%- liquid
+                          assign input_id = 'Option-' | append: section.id | append: '-' | append: option.position | append: '-' | append: forloop.index
+                          assign is_available = true
+                          unless value.available
+                            assign is_available = false
+                          endunless
+                        -%}
+                        <input
+                          type="radio"
+                          class="gs-pdp__option-input"
+                          id="{{ input_id }}"
+                          name="{{ option.name | escape }}-{{ option.position }}"
+                          value="{{ value | escape }}"
+                          form="{{ product_form_id }}"
+                          {% if option.selected_value == value %}checked{% endif %}
+                          {% unless is_available %}data-unavailable="true"{% endunless %}
+                        >
+                        <label
+                          class="gs-pdp__option-label{% unless is_available %} is-unavailable{% endunless %}"
+                          for="{{ input_id }}"
+                        >
+                          {{- value -}}
+                        </label>
+                      {%- endfor -%}
+                    </div>
+                  </fieldset>
+                {%- endfor -%}
+
+                <noscript>
+                  <label class="visually-hidden" for="Variants-{{ section.id }}">
+                    {{ 'products.product.product_variants' | t }}
+                  </label>
+                  <select name="id" id="Variants-{{ section.id }}" form="{{ product_form_id }}">
+                    {%- for variant in product.variants -%}
+                      <option
+                        value="{{ variant.id }}"
+                        {% if variant == current %}selected{% endif %}
+                        {% unless variant.available %}disabled{% endunless %}
+                      >
+                        {{ variant.title }} - {{ variant.price | money }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                </noscript>
+              </div>
+            {%- endunless -%}
+
+          {%- when 'buy_buttons' -%}
+            <div class="gs-pdp__buy" {{ block.shopify_attributes }}>
+              {%- form 'product', product, id: product_form_id, class: 'gs-pdp__form', novalidate: 'novalidate' -%}
+                <input
+                  type="hidden"
+                  name="id"
+                  value="{{ current.id }}"
+                  data-variant-id
+                  {% unless current.available %}disabled{% endunless %}
+                >
+
+                {%- if block.settings.show_quantity -%}
+                  <div class="gs-pdp__quantity">
+                    <label class="gs-pdp__quantity-label" for="Quantity-{{ section.id }}">
+                      {{ 'products.product.quantity.label' | t }}
+                    </label>
+                    <input
+                      class="gs-pdp__quantity-input"
+                      type="number"
+                      id="Quantity-{{ section.id }}"
+                      name="quantity"
+                      value="1"
+                      min="1"
+                      step="1"
+                      inputmode="numeric"
+                    >
+                  </div>
+                {%- endif -%}
+
+                <button
+                  type="submit"
+                  name="add"
+                  class="gs-pdp__submit button"
+                  data-add-to-cart
+                  {% unless current.available %}disabled{% endunless %}
+                >
+                  <span data-add-to-cart-text>
+                    {%- if current.available -%}
+                      {{ 'products.product.add_to_cart' | t }}
+                    {%- else -%}
+                      {{ 'products.product.sold_out' | t }}
+                    {%- endif -%}
+                  </span>
+                </button>
+
+                {%- if block.settings.show_dynamic_checkout -%}
+                  {{ form | payment_button }}
+                {%- endif -%}
+              {%- endform -%}
+            </div>
+
+          {%- when 'description' -%}
+            {%- if product.description != blank -%}
+              <div class="gs-pdp__description rte" {{ block.shopify_attributes }}>
+                {{ product.description }}
+              </div>
+            {%- endif -%}
+
+          {%- when 'accordion' -%}
+            {%- if block.settings.heading != blank -%}
+              <details class="gs-pdp__accordion" {{ block.shopify_attributes }}>
+                <summary class="gs-pdp__accordion-title">
+                  {{ block.settings.heading }}
+                  <svg viewBox="0 0 12 8" width="12" height="8" aria-hidden="true" focusable="false">
+                    <path d="M11 1L6 6L1 1" stroke="currentColor" stroke-width="2" fill="none"/>
+                  </svg>
+                </summary>
+                <div class="gs-pdp__accordion-body rte">
+                  {{ block.settings.content }}
+                  {%- if block.settings.page != blank -%}
+                    {{ pages[block.settings.page].content }}
+                  {%- endif -%}
+                </div>
+              </details>
+            {%- endif -%}
+
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- comment -%}
+  Minimal variant map. Only what matching and media switching need -
+  four fields, not the whole variant object. See the header note.
+{%- endcomment -%}
+<script type="application/json" data-gs-variants="{{ section.id }}">
+[
+  {%- for variant in product.variants -%}
+    {
+      "id": {{ variant.id }},
+      "options": {{ variant.options | json }},
+      "available": {{ variant.available }},
+      "media": {% if variant.featured_media %}{{ variant.featured_media.id }}{% else %}null{% endif %}
+    }{%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+]
+</script>
+
+<script>
+  (function () {
+    var root = document.querySelector('[data-pdp][data-section-id="{{ section.id }}"]');
+    if (!root) return;
+
+    var sectionId = root.dataset.sectionId;
+
+    var dataEl = document.querySelector('[data-gs-variants="' + sectionId + '"]');
+    var variants = [];
+    try {
+      variants = JSON.parse(dataEl.textContent);
+    } catch (e) {
+      return; // No variant map, no enhancement. Radios still navigate.
+    }
+
+    function showMedia(mediaId) {
+      if (!mediaId) return;
+
+      var slide = root.querySelector('.gs-pdp__slide[data-media-id="' + mediaId + '"]');
+      if (slide) {
+        var gallery = slide.parentElement;
+        gallery.scrollTo({ left: slide.offsetLeft - gallery.offsetLeft, behavior: 'smooth' });
+      }
+
+      root.querySelectorAll('.gs-pdp__thumb').forEach(function (thumb) {
+        thumb.classList.toggle('is-active', thumb.dataset.mediaId === String(mediaId));
+      });
+    }
+
+    root.addEventListener('change', function (evt) {
+      if (!evt.target.classList || !evt.target.classList.contains('gs-pdp__option-input')) return;
+
+      var selected = Array.prototype.map.call(
+        root.querySelectorAll('.gs-pdp__option-input:checked'),
+        function (input) { return input.value; }
+      );
+
+      var match = null;
+      for (var i = 0; i < variants.length; i++) {
+        if (variants[i].options.join('~~') === selected.join('~~')) {
+          match = variants[i];
+          break;
+        }
+      }
+      if (!match) return;
+
+      // Move the gallery first - it is the change the customer is
+      // looking for, and it should not wait on a network round trip.
+      showMedia(match.media);
+
+      var url = new URL(window.location.href);
+      url.searchParams.set('variant', match.id);
+      window.history.replaceState({}, '', url.toString());
+
+      root.querySelectorAll('[data-selected-for]').forEach(function (el, idx) {
+        if (selected[idx]) el.textContent = selected[idx];
+      });
+
+      fetch(url.pathname + url.search + '&section_id=' + sectionId)
+        .then(function (res) {
+          if (!res.ok) throw new Error('Variant fetch failed');
+          return res.text();
+        })
+        .then(function (markup) {
+          var parsed = new DOMParser().parseFromString(markup, 'text/html');
+          ['.gs-pdp__price', '.gs-pdp__buy'].forEach(function (sel) {
+            var incoming = parsed.querySelector(sel);
+            var currentEl = root.querySelector(sel);
+            if (incoming && currentEl) currentEl.innerHTML = incoming.innerHTML;
+          });
+        })
+        .catch(function () {
+          // Navigate rather than leave a stale price on screen.
+          window.location.href = url.toString();
+        });
+    });
+
+    // Thumbnail active state. The scroll itself is the anchor link's job.
+    root.addEventListener('click', function (evt) {
+      var thumb = evt.target.closest ? evt.target.closest('.gs-pdp__thumb') : null;
+      if (!thumb) return;
+      root.querySelectorAll('.gs-pdp__thumb').forEach(function (t) {
+        t.classList.toggle('is-active', t === thumb);
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product",
+  "tag": "section",
+  "class": "gs-pdp-section",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    { "type": "vendor", "name": "Vendor", "limit": 1 },
+    { "type": "title", "name": "Title", "limit": 1 },
+    { "type": "reviews", "name": "Reviews", "limit": 1 },
+    { "type": "price", "name": "Price", "limit": 1 },
+    { "type": "swatches", "name": "Colourway swatches", "limit": 1 },
+    { "type": "variant_picker", "name": "Variant picker", "limit": 1 },
+    {
+      "type": "buy_buttons",
+      "name": "Buy buttons",
+      "limit": 1,
+      "settings": [
+        { "type": "checkbox", "id": "show_quantity", "label": "Show quantity selector", "default": true },
+        {
+          "type": "checkbox",
+          "id": "show_dynamic_checkout",
+          "label": "Show dynamic checkout buttons",
+          "info": "Skio replaces this with its own selling-plan UI when subscriptions are enabled.",
+          "default": true
+        }
+      ]
+    },
+    { "type": "description", "name": "Description", "limit": 1 },
+    {
+      "type": "accordion",
+      "name": "Accordion row",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Shipping & returns" },
+        { "type": "richtext", "id": "content", "label": "Content" },
+        { "type": "page", "id": "page", "label": "Or use a page" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "vendor" },
+      { "type": "title" },
+      { "type": "reviews" },
+      { "type": "price" },
+      { "type": "swatches" },
+      { "type": "variant_picker" },
+      { "type": "buy_buttons" },
+      { "type": "description" }
+    ]
+  }
+}
+{% endschema %}

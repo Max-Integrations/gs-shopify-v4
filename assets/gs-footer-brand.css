@@ -1,0 +1,90 @@
+/*
+  GS Footer Brand Band
+
+  Replaces six bare-element custom_css rules that lived in v3's
+  footer-group.json: div{background:#000}, p{color:#fff}, h3{color:#fff},
+  h3{font-family:"Engravers MT"; font-weight:50}, and two anchor rules.
+
+  The black-on-white inversion is now a colour scheme rather than a
+  `div { background-color: #000 }` rule buried in template JSON.
+*/
+
+.gs-footer-brand {
+  padding: var(--fb-pad-mobile, 25px) 0;
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+.gs-footer-brand__inner {
+  text-align: center;
+}
+
+.gs-footer-brand__heading {
+  margin: 0;
+  font-family: var(--headingFont);
+  font-size: var(--fb-heading-size-mobile, 28px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: rgb(var(--color-foreground));
+}
+
+.gs-footer-brand__subheading {
+  margin: 0.3em 0 0;
+  font-family: var(--headingFont);
+  font-size: var(--fb-sub-size-mobile, 14px);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgb(var(--color-foreground));
+}
+
+.gs-footer-brand__body {
+  max-width: 90ch;
+  margin: 1em auto 0;
+  color: rgb(var(--color-foreground));
+  font-size: var(--smallText);
+}
+
+.gs-footer-brand__body p {
+  margin: 0;
+  color: inherit;
+}
+
+/* v3's anchor rules were a black-bordered button that inverted on hover. */
+.gs-footer-brand__button {
+  display: inline-block;
+  margin-top: 1.2em;
+  padding: 0.6em 1.6em;
+  border: 1px solid rgb(var(--color-foreground));
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: var(--headingFont);
+  font-size: var(--smallText);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.gs-footer-brand__button:hover {
+  background-color: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+}
+
+@media screen and (min-width: 750px) {
+  .gs-footer-brand {
+    padding: var(--fb-pad, 40px) 0;
+  }
+
+  .gs-footer-brand__heading {
+    font-size: var(--fb-heading-size, 44px);
+  }
+
+  .gs-footer-brand__subheading {
+    font-size: var(--fb-sub-size, 20px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-footer-brand__button {
+    transition: none;
+  }
+}

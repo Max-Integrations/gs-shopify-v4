@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-cart-items",
+      "settings": {}
+    },
+    "gs_addons": {
+      "type": "gs-cart-addons",
+      "settings": {
+        "show_free_shipping": true,
+        "free_shipping_threshold": 75,
+        "free_shipping_prefix": "Spend",
+        "free_shipping_suffix": "more for free shipping",
+        "free_shipping_success": "You've unlocked free shipping.",
+        "gift_wrap_label": "Add gift wrap",
+        "gift_wrap_add_label": "Add",
+        "gift_wrap_remove_label": "Remove",
+        "show_roundup": false,
+        "roundup_label": "Round up for the Grunt Style Foundation",
+        "roundup_description": "Your change funds mental health, wellness and advocacy programs for Service Members, Veterans and First Responders.",
+        "roundup_add_label": "Donate",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "footer": {
+      "type": "main-cart-footer",
+      "settings": {}
+    }
+  },
+  "order": ["main", "gs_addons", "footer"]
+}

@@ -1,0 +1,259 @@
+/*
+  ==================================================================
+  GS Featured Collections
+  ==================================================================
+  Tabbed product carousels. v3 used Swiper with loop:true; this is CSS
+  scroll-snap driven by gs-swatch-scroller.js.
+
+  v3 emitted `#featured-collections-{id} * { text-transform: uppercase }`
+  - a universal selector hitting every descendant including product
+  titles and prices. Replaced with rules on specific elements.
+
+  ------------------------------------------------------------------
+  REVISION 2026-08-12 - MATCHED TO THE LIVE RENDER
+  ------------------------------------------------------------------
+  Arrows are circular outlined buttons overlapping the carousel edges
+  and vertically centred on the images, as on the live site. They were
+  inline chevrons sitting in the flex row, which pushed the track
+  inwards and looked nothing like production.
+
+  Absolute positioning also means the track now spans the full width
+  rather than being squeezed by two 32px siblings.
+  ==================================================================
+*/
+
+.gs-featured-collections {
+  padding-top: var(--fc-pad-top-mobile, 10px);
+  padding-bottom: var(--fc-pad-bottom-mobile, 10px);
+}
+
+.gs-fc--xs { max-width: 800px; margin-inline: auto; }
+.gs-fc--sm { max-width: 1100px; margin-inline: auto; }
+.gs-fc--md { max-width: 1300px; margin-inline: auto; }
+
+.featured-collections-header-title {
+  margin: var(--fc-heading-mt-mobile, 10px) 0 var(--fc-heading-mb-mobile, 10px);
+  font-family: var(--headingFont);
+  font-size: var(--fc-heading-size-mobile, 42px);
+  font-weight: 700;
+  text-align: var(--fc-heading-align, center);
+  text-transform: uppercase;
+  color: rgb(var(--headingColor, var(--textColor)));
+}
+
+/* ---- Tabs ---- */
+.featured-collections-navigation {
+  margin: var(--fc-nav-mt-mobile, 10px) 0 var(--fc-nav-mb-mobile, 10px);
+  display: flex;
+  gap: 28px;
+  justify-content: flex-start;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.featured-collections-navigation::-webkit-scrollbar {
+  display: none;
+}
+
+.featured-collections-navigation button {
+  font-family: var(--headingFont);
+  font-size: var(--fc-nav-size-mobile, 23px);
+  font-weight: 400;
+  text-transform: uppercase;
+  color: rgba(var(--textColor), 0.45);
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.featured-collections-navigation button.active {
+  color: rgb(var(--textColor));
+}
+
+.featured-collections-navigation button:focus-visible {
+  outline: 2px solid rgb(var(--textColor));
+  outline-offset: 2px;
+}
+
+/* ---- Panels ---- */
+.collection-tab.hidden {
+  display: none;
+}
+
+.gs-fc__scroller {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.gs-fc__track {
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 10px 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  width: 100%;
+}
+
+.gs-fc__track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Grid mode wraps instead of scrolling. */
+.gs-fc__track--grid {
+  flex-wrap: wrap;
+  overflow-x: visible;
+  scroll-snap-type: none;
+}
+
+.gs-fc__slide {
+  flex: 0 0 calc((100% - (25px * (var(--fc-per-view-mobile, 1) - 1))) / var(--fc-per-view-mobile, 1));
+  scroll-snap-align: start;
+  display: flex;
+  margin: 0;
+}
+
+/* Equal-height cards across an uneven row. */
+.gs-fc__slide .product-card-item,
+.gs-fc__slide .product-card,
+.gs-fc__slide .product-card-detail {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.gs-fc__slide .product-card-detail {
+  color: rgb(var(--cardDetailsTextColor));
+}
+
+.gs-fc__slide .product-quickview-button {
+  margin-top: auto;
+}
+
+.gs-fc__slide .product-quickview-button span {
+  font-family: var(--headingFont);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Circular outlined arrows, overlapping the track edges. */
+.gs-fc__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid rgba(var(--borderColor), 0.35);
+  border-radius: 50%;
+  background-color: rgb(var(--background));
+  color: rgb(var(--textColor));
+  cursor: pointer;
+}
+
+.gs-fc__btn[data-swatch-scroll='prev'] { left: -12px; }
+.gs-fc__btn[data-swatch-scroll='next'] { right: -12px; }
+
+.gs-fc__btn svg { width: 18px; height: 18px; }
+.gs-fc__btn[hidden] { display: none; }
+.gs-fc__btn:disabled { opacity: 0.3; cursor: default; }
+
+.gs-fc__btn:focus-visible {
+  outline: 2px solid rgb(var(--textColor));
+  outline-offset: 2px;
+}
+
+/* ---- Collection CTA ---- */
+.associated-collection-cta {
+  margin: var(--fc-cta-mt-mobile, 10px) 0 var(--fc-cta-mb-mobile, 10px);
+  text-align: center;
+}
+
+.associated-collection-cta a {
+  display: inline-block;
+  padding: 10px 25px;
+  font-family: var(--headingFont);
+  font-size: var(--fc-cta-size-mobile, 23px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: var(--fc-cta-bg, #ffffff);
+  border: 1px solid var(--fc-cta-border, #000000);
+  color: var(--fc-cta-text, #000000);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.associated-collection-cta a:hover {
+  background-color: var(--fc-cta-bg-hover, #000000);
+  border-color: var(--fc-cta-border-hover, #ffffff);
+  color: var(--fc-cta-text-hover, #ffffff);
+}
+
+/*
+  v3 hid .product-card-detail `unless` ALL FOUR of title/price/swatches/
+  quick_view were enabled, then hid each individually - redundant and
+  surprising. Here the wrapper hides only when all four are off, which is
+  the current homepage configuration.
+*/
+.gs-fc--no-detail .product-card-detail {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .gs-featured-collections {
+    padding-top: var(--fc-pad-top, 10px);
+    padding-bottom: var(--fc-pad-bottom, 10px);
+  }
+
+  .featured-collections-header-title {
+    margin: var(--fc-heading-mt, 10px) 0 var(--fc-heading-mb, 10px);
+    font-size: var(--fc-heading-size, 45px);
+  }
+
+  .featured-collections-navigation {
+    margin: var(--fc-nav-mt, 10px) 0 var(--fc-nav-mb, 10px);
+    justify-content: center;
+    overflow-x: visible;
+  }
+
+  .featured-collections-navigation button {
+    font-size: var(--fc-nav-size, 26px);
+  }
+
+  .gs-fc__btn[data-swatch-scroll='prev'] { left: -18px; }
+  .gs-fc__btn[data-swatch-scroll='next'] { right: -18px; }
+
+  .associated-collection-cta {
+    margin: var(--fc-cta-mt, 10px) 0 var(--fc-cta-mb, 10px);
+  }
+
+  .associated-collection-cta a {
+    font-size: var(--fc-cta-size, 26px);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .gs-fc__slide {
+    flex-basis: calc((100% - (25px * (var(--fc-per-view, 3) - 1))) / var(--fc-per-view, 3));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-fc__track { scroll-behavior: auto; }
+  .associated-collection-cta a { transition: none; }
+}

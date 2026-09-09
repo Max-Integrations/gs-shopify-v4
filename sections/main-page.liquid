@@ -1,0 +1,333 @@
+{% comment %}
+  ==================================================================
+  GS MAIN PAGE
+  Ported from gs-shopify-v3 sections/main-page.liquid
+  ==================================================================
+  Renders the page title banner and page body. Drives ~60 page.*.json
+  templates, so this one unblocks a lot.
+
+  ------------------------------------------------------------------
+  TRANSLATION KEYS REPLACED - APPLIES TO EVERY SECTION PORT
+  ------------------------------------------------------------------
+  v3's schema used translation keys throughout:
+      "name": "t:sections.main_page.name"
+      "label": "t:global.heading.heading_size.label"
+  Those resolve from v3 locales/en.default.schema.json (133 KB).
+
+  DAWN'S SCHEMA LOCALE FILE HAS DIFFERENT KEYS. Porting them verbatim
+  makes the theme editor display the literal string
+  "t:sections.main_page.name" instead of a label.
+
+  Two options per section:
+    (a) literal English strings - chosen here, simplest, and the store
+        is English-only
+    (b) port the matching entries into Dawn's en.default.schema.json
+
+  If option (b) is ever chosen, do it for ALL sections at once. A mix
+  of both is worse than either.
+
+  ------------------------------------------------------------------
+  COLOUR SCHEME IDS MUST BE REMAPPED IN TEMPLATES
+  ------------------------------------------------------------------
+  v3 named its schemes; Dawn numbers them:
+      primary     -> scheme-1
+      secondary   -> scheme-2
+      tertiary    -> scheme-3
+      quaternary  -> scheme-4
+      inverse     -> scheme-5   (NOTE: scheme-5 has been repurposed as
+                                 solid brand red for sale badges, so it
+                                 is NOT a faithful 'inverse'. Verify.)
+
+  templates/page.json currently carries "color_scheme": "primary",
+  which Dawn will not resolve. Every migrated template needs this
+  find/replace or sections fall back to default colours.
+
+  ------------------------------------------------------------------
+  BUGS FIXED IN TRANSIT
+  ------------------------------------------------------------------
+  1. CLASS NAME TYPO. v3 emitted class="rict-text-editor-content" -
+     'rict' not 'rich'. Any CSS written against
+     .rich-text-editor-content never applied to page bodies. Fixed.
+     WATCH FOR THIS when porting style.css: there may be rules written
+     against the TYPO to compensate.
+
+  2. INVALID DEFAULT. color_scheme defaulted to "primary", which does
+     not exist in Dawn. Now scheme-1.
+
+  3. layout_style. v3 wrapped content in {{ settings.layout_style }},
+     a v3 global set to "container-sm". No Dawn equivalent - replaced
+     with Dawn's own page-width class.
+
+  4. DEAD BRANCH. An empty {% raw %}{% else %}{% endraw %} arm on the banner-image test.
+
+  5. lazysizes DEPENDENCY. v3 rendered snippets/lazy-image. Replaced
+     with native srcset + loading, unblocking GS-008.
+
+  6. PER-SECTION <style> BLOCK moved to assets/gs-main-page.css. Only
+     the per-instance custom properties stay inline, which is what
+     custom properties are for.
+
+  7. DARK MODE BLOCK DROPPED. v3 emitted an html[color-mode="dark"]
+     override. Dawn has no dark mode and v3's enable_dl_mode_toggle is
+     false, so nothing is lost.
+
+  ------------------------------------------------------------------
+  DELIBERATELY PRESERVED
+  ------------------------------------------------------------------
+  The replace chain on page.content that swaps empty <p></p> and empty
+  heading tags for <br/>. It looks like cruft but it is load-bearing:
+  Shopify's rich text editor emits empty paragraphs for spacing and
+  the theme's CSS collapses them. Removing it would silently change
+  the vertical rhythm of every page body in the store.
+
+  All schema setting IDs are byte-for-byte identical to v3.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-main-page.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="gs-main-page color-{{ section.settings.color_scheme }}{% if section.settings.enable_gradient %} gradient{% endif %} section-padding"
+  style="
+    --media-height: {{ section.settings.desktop_height }};
+    --media-height-mobile: {{ section.settings.mobile_height }};
+    --padding-top: {{ section.settings.top_space_desktop }}px;
+    --padding-bottom: {{ section.settings.bottom_space_desktop }}px;
+    --padding-top-mobile: {{ section.settings.top_space_mobile }}px;
+    --padding-bottom-mobile: {{ section.settings.bottom_space_mobile }}px;
+    --banner-overlay-bg: {{ section.settings.background_color }};
+    --banner-overlay-opacity: {{ section.settings.background_opacity }};
+    --pageBannerBg: {{ section.settings.banner_background_color }};
+    {%- if section.settings.text_color != blank and section.settings.text_color != 'rgba(0,0,0,0)' -%}
+      --banner-overlay-text: {{ section.settings.text_color }};
+    {%- else -%}
+      --banner-overlay-text: rgba(var(--textColor), 1);
+    {%- endif -%}
+  "
+>
+  {%- if section.settings.banner_image != blank or page.title != blank -%}
+    <div class="page-banner overlay-text{% if section.settings.banner_image != blank %} banner-height{% endif %}">
+      {%- if section.settings.banner_image != blank -%}
+        {%- assign banner = section.settings.banner_image -%}
+        <div class="page-banner-image">
+          <img
+            src="{{ banner | image_url: width: 1500 }}"
+            srcset="
+              {{ banner | image_url: width: 750 }} 750w,
+              {{ banner | image_url: width: 1100 }} 1100w,
+              {{ banner | image_url: width: 1500 }} 1500w,
+              {{ banner | image_url: width: 2000 }} 2000w
+            "
+            sizes="100vw"
+            alt="{{ banner.alt | escape }}"
+            width="{{ banner.width }}"
+            height="{{ banner.height }}"
+            loading="eager"
+            fetchpriority="high"
+            style="object-position: {{ banner.presentation.focal_point | default: 'center' }};"
+          >
+        </div>
+      {%- endif -%}
+
+      <div class="page-banner-content-box">
+        <div class="page-width">
+          <div class="page-banner-content {{ section.settings.heading_alignment }}">
+            <{{ section.settings.seo_heading }} class="{{ section.settings.heading_size }} page-banner-title page-content-item">
+              {{ page.title }}
+            </{{ section.settings.seo_heading }}>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- if page.content != blank and section.settings.page_content -%}
+    <div class="page-banner-content-box page-narrow-width">
+      <div class="page-width">
+        <div class="page-banner-content">
+          <div class="page-description rte rich-text-editor-content page-content-item">
+            {{
+              page.content
+              | replace: '<p></p>', '<br/>'
+              | replace: '<h1></h1>', '<br/>'
+              | replace: '<h2></h2>', '<br/>'
+              | replace: '<h3></h3>', '<br/>'
+              | replace: '<h4></h4>', '<br/>'
+              | replace: '<h5></h5>', '<br/>'
+              | replace: '<h6></h6>', '<br/>'
+            }}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Page",
+  "tag": "section",
+  "class": "section main-page",
+  "settings": [
+    { "type": "header", "content": "General" },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner image",
+      "info": "Optional. Displays behind the page title."
+    },
+    {
+      "type": "select",
+      "id": "desktop_height",
+      "label": "Banner height (desktop)",
+      "default": "300px",
+      "options": [
+        { "value": "200px", "label": "Small" },
+        { "value": "300px", "label": "Medium" },
+        { "value": "550px", "label": "Large" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "label": "Banner height (mobile)",
+      "default": "200px",
+      "options": [
+        { "value": "100px", "label": "Small" },
+        { "value": "200px", "label": "Medium" },
+        { "value": "350px", "label": "Large" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "info": "Visual size only. Set the semantic tag separately below.",
+      "default": "h1",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "seo_heading",
+      "label": "Heading tag",
+      "info": "The HTML tag used, for SEO and accessibility.",
+      "default": "h1",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "default": "text-center",
+      "options": [
+        { "value": "text-left", "label": "Left" },
+        { "value": "text-center", "label": "Center" },
+        { "value": "text-right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "page_content",
+      "label": "Show page content",
+      "default": true
+    },
+    { "type": "header", "content": "Colors" },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gradient",
+      "label": "Use gradient background",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "banner_background_color",
+      "label": "Banner background",
+      "info": "Used when no banner image is set.",
+      "default": "#B3B3B3"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "info": "Leave empty to inherit from the color scheme."
+    },
+    { "type": "header", "content": "Image overlay" },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Overlay color",
+      "default": "#B3B3B3"
+    },
+    {
+      "type": "range",
+      "id": "background_opacity",
+      "label": "Overlay opacity",
+      "default": 0.6,
+      "min": 0,
+      "max": 1,
+      "step": 0.1
+    },
+    { "type": "header", "content": "Section padding" },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "Top padding (desktop)",
+      "unit": "px",
+      "default": 70,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "Bottom padding (desktop)",
+      "unit": "px",
+      "default": 70,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "Top padding (mobile)",
+      "unit": "px",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "Bottom padding (mobile)",
+      "unit": "px",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ]
+}
+{% endschema %}

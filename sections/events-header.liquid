@@ -1,0 +1,290 @@
+{% comment %}
+  ==================================================================
+  EVENTS HEADER
+  Ported from gs-shopify-v3 sections/events-header.liquid
+  ==================================================================
+  Two-column page header: heading, subcopy and a jump link on the left,
+  image on the right.
+
+  Existing setting IDs are byte-for-byte identical to v3.
+
+  ------------------------------------------------------------------
+  THE HEADING WAS HARDCODED
+  ------------------------------------------------------------------
+  v3's markup was literally:
+
+      <h1 class="events-h1">Grunt Style<span>Events</span></h1>
+
+  and the schema carried a header reading "H1 Text Is Hardcoded" - the
+  author knew. Both lines are settings now (heading_line_1 and
+  heading_line_2). New ids, since there was nothing to preserve.
+
+  ------------------------------------------------------------------
+  TWO MORE SETTINGS THAT DID NOTHING
+  ------------------------------------------------------------------
+  subcopy_font and events_header_cta_font are offered in the editor and
+  appear NOWHERE in v3's CSS - only header_font was ever applied. Both
+  are wired up now.
+
+  That is four inert settings found across the events suite, after
+  events_subheader_size_mobile. Worth assuming others exist elsewhere in
+  v3 rather than treating each as a one-off.
+
+  ------------------------------------------------------------------
+  THE JUMP LINK DID NOT WORK WITHOUT JAVASCRIPT
+  ------------------------------------------------------------------
+  The anchor pointed at #events, but nothing on the page has that id -
+  the events module is marked with data-module-target="events". Only the
+  script made it work, by querying that attribute.
+
+  The href is a setting now. The script still handles the smooth scroll
+  and falls back to the data attribute, so it works either way. To make
+  the plain anchor work too, give the events module an id="events".
+
+  ------------------------------------------------------------------
+  OTHER v3 FIXES
+  ------------------------------------------------------------------
+  - id="events-cta-btn" was a STATIC DOM id; two instances would collide.
+    Scoped to section.id.
+  - The script called addEventListener on the result of getElementById
+    with no null check - the same pattern found three times elsewhere in
+    this theme.
+  - <script defer> on an INLINE script does nothing; defer only applies
+    to external scripts.
+  - The image had no width/height and no srcset, so it shifted layout as
+    it loaded.
+  - !important on every declaration; unquoted multi-word font families;
+    Times New Roman offered as a brand font.
+  - An <h1> here plus the page title elsewhere risks two h1s on one page,
+    so the level is configurable.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-events.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+
+  case s.header_font
+    when 'Engravers MT'
+      assign head_font = '"Engravers MT", var(--headingFont)'
+    when 'body'
+      assign head_font = 'var(--bodyFont)'
+    else
+      assign head_font = 'var(--headingFont)'
+  endcase
+
+  case s.subcopy_font
+    when 'Engravers MT'
+      assign sub_font = '"Engravers MT", var(--headingFont)'
+    when 'heading'
+      assign sub_font = 'var(--headingFont)'
+    else
+      assign sub_font = 'var(--bodyFont)'
+  endcase
+
+  case s.events_header_cta_font
+    when 'Engravers MT'
+      assign cta_font = '"Engravers MT", var(--headingFont)'
+    when 'body'
+      assign cta_font = 'var(--bodyFont)'
+    else
+      assign cta_font = 'var(--headingFont)'
+  endcase
+-%}
+
+<div
+  class="gs-events-header page-width"
+  id="events-header-{{ section.id }}"
+  style="
+    --evhd-color: {{ s.header_text_color }};
+    --evhd-font: {{ head_font }};
+    --evhd-size: {{ s.header_text_size_desktop }}px;
+    --evhd-size-mobile: {{ s.header_text_size_mobile }}px;
+    --evhd-badge-bg: {{ s.header_events_bg_color }};
+    --evhd-sub-color: {{ s.subcopy_text_color }};
+    --evhd-sub-font: {{ sub_font }};
+    --evhd-sub-size: {{ s.subcopy_text_size_desktop }}px;
+    --evhd-sub-size-mobile: {{ s.subcopy_text_size_mobile }}px;
+    --evhd-cta-color: {{ s.events_header_cta_text_color }};
+    --evhd-cta-bg: {{ s.events_header_cta_bg_color }};
+    --evhd-cta-font: {{ cta_font }};
+    --evhd-cta-size: {{ s.events_header_cta_text_size_desktop }}px;
+    --evhd-cta-size-mobile: {{ s.events_header_cta_text_size_mobile }}px;
+  "
+>
+  <div class="gs-events-header__grid">
+    <div class="gs-events-header__text">
+      <{{ s.heading_tag | default: 'h1' }} class="gs-events-header__heading">
+        {{ s.heading_line_1 | default: 'Grunt Style' }}
+        {%- if s.heading_line_2 != blank -%}
+          <span class="gs-events-header__badge">{{ s.heading_line_2 }}</span>
+        {%- endif -%}
+      </{{ s.heading_tag | default: 'h1' }}>
+
+      {%- if s.subcopy != blank -%}
+        <div class="gs-events-header__subcopy">{{ s.subcopy }}</div>
+      {%- endif -%}
+
+      {%- if s.events_header_cta_text != blank -%}
+        <a
+          href="{{ s.cta_target | default: '#events' }}"
+          class="gs-events-header__cta"
+          data-events-jump
+        >
+          {{- s.events_header_cta_text -}}
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if s.events_header_img != blank -%}
+      {%- assign img = s.events_header_img -%}
+      <div class="gs-events-header__media">
+        <img
+          src="{{ img | image_url: width: 900 }}"
+          srcset="
+            {{ img | image_url: width: 500 }} 500w,
+            {{ img | image_url: width: 900 }} 900w,
+            {{ img | image_url: width: 1400 }} 1400w
+          "
+          sizes="(min-width: 990px) 50vw, 100vw"
+          alt="{{ img.alt | escape }}"
+          width="{{ img.width }}"
+          height="{{ img.height }}"
+          loading="eager"
+          fetchpriority="high"
+        >
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('events-header-{{ section.id }}');
+    if (!root) return;
+
+    var jump = root.querySelector('[data-events-jump]');
+    if (!jump) return;
+
+    jump.addEventListener('click', function (evt) {
+      // Prefer a real anchor target; fall back to the module marker,
+      // which is how v3 found it.
+      var href = jump.getAttribute('href') || '';
+      var target = null;
+
+      if (href.charAt(0) === '#' && href.length > 1) {
+        target = document.getElementById(href.slice(1));
+      }
+      if (!target) {
+        target = document.querySelector('[data-module-target="events"]');
+      }
+      if (!target) return; // Let the browser handle the href.
+
+      evt.preventDefault();
+      var top = target.getBoundingClientRect().top + window.scrollY - 50;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+      target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Events Header",
+  "tag": "section",
+  "class": "gs-events-header-section",
+  "settings": [
+    { "type": "header", "content": "Heading" },
+    {
+      "type": "text",
+      "id": "heading_line_1",
+      "label": "Heading line 1",
+      "info": "This was hardcoded in v3.",
+      "default": "Grunt Style"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_2",
+      "label": "Heading line 2 (highlighted)",
+      "default": "Events"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading level",
+      "info": "Use H2 if the page already has an H1.",
+      "default": "h1",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "header_font",
+      "label": "Heading font",
+      "info": "Engravers MT has no font file in this theme yet and will fall back.",
+      "options": [
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "body", "label": "Theme body font" },
+        { "value": "Engravers MT", "label": "Engravers MT" }
+      ],
+      "default": "Engravers MT"
+    },
+    { "type": "color", "id": "header_text_color", "label": "Heading color", "default": "#ffffff" },
+    { "type": "range", "id": "header_text_size_desktop", "label": "Heading size (desktop)", "min": 36, "max": 72, "step": 1, "unit": "px", "default": 48 },
+    { "type": "range", "id": "header_text_size_mobile", "label": "Heading size (mobile)", "min": 20, "max": 42, "step": 1, "unit": "px", "default": 32 },
+    { "type": "color", "id": "header_events_bg_color", "label": "Highlight background", "default": "#802629" },
+
+    { "type": "header", "content": "Subcopy" },
+    { "type": "richtext", "id": "subcopy", "label": "Subcopy", "default": "<p>Patriotism deserves to be celebrated</p>" },
+    {
+      "type": "select",
+      "id": "subcopy_font",
+      "label": "Subcopy font",
+      "info": "This setting existed in v3 but was never applied.",
+      "options": [
+        { "value": "body", "label": "Theme body font" },
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "Engravers MT", "label": "Engravers MT" }
+      ],
+      "default": "body"
+    },
+    { "type": "color", "id": "subcopy_text_color", "label": "Subcopy color", "default": "#ffffff" },
+    { "type": "range", "id": "subcopy_text_size_desktop", "label": "Subcopy size (desktop)", "min": 14, "max": 32, "step": 1, "unit": "px", "default": 18 },
+    { "type": "range", "id": "subcopy_text_size_mobile", "label": "Subcopy size (mobile)", "min": 11, "max": 28, "step": 1, "unit": "px", "default": 14 },
+
+    { "type": "header", "content": "Jump link" },
+    { "type": "text", "id": "events_header_cta_text", "label": "Link text", "default": "See Upcoming Events" },
+    {
+      "type": "text",
+      "id": "cta_target",
+      "label": "Link target",
+      "info": "An anchor such as #events. The script also falls back to the events module automatically.",
+      "default": "#events"
+    },
+    {
+      "type": "select",
+      "id": "events_header_cta_font",
+      "label": "Link font",
+      "info": "This setting existed in v3 but was never applied.",
+      "options": [
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "body", "label": "Theme body font" },
+        { "value": "Engravers MT", "label": "Engravers MT" }
+      ],
+      "default": "heading"
+    },
+    { "type": "color", "id": "events_header_cta_text_color", "label": "Link text color", "default": "#ffffff" },
+    { "type": "color", "id": "events_header_cta_bg_color", "label": "Link background", "default": "#802629" },
+    { "type": "range", "id": "events_header_cta_text_size_desktop", "label": "Link size (desktop)", "min": 18, "max": 38, "step": 1, "unit": "px", "default": 26 },
+    { "type": "range", "id": "events_header_cta_text_size_mobile", "label": "Link size (mobile)", "min": 11, "max": 28, "step": 1, "unit": "px", "default": 24 },
+
+    { "type": "header", "content": "Image" },
+    { "type": "image_picker", "id": "events_header_img", "label": "Header image" }
+  ],
+  "presets": [{ "name": "Events Header" }]
+}
+{% endschema %}

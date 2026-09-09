@@ -1,0 +1,249 @@
+{% comment %}
+  ==================================================================
+  GS MAIN SEARCH
+  ==================================================================
+  Search results, using the same product card and the same filter /
+  toolbar snippets as main-collection so the two surfaces cannot drift
+  apart.
+
+  Deliberately thin: this section is layout and state handling only. The
+  grid, filters, sort, pagination and AJAX behaviour are all shared with
+  the collection page, which is the point - v3 had a separate 23.9 KB
+  main-search with its own copies.
+
+  gs-collection-filter.js is loaded by gs-collection-toolbar, so AJAX
+  filtering works here for free.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-main-collection.css' | asset_url | stylesheet_tag }}
+{{ 'gs-main-search.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+  assign sort_by = search.sort_by | default: search.default_sort_by
+
+  assign sidebar_enabled = false
+  if search.performed and search.results_count > 0
+    if s.enable_filtering and search.filters.size > 0
+      assign sidebar_enabled = true
+    endif
+    if s.enable_sorting
+      assign sidebar_enabled = true
+    endif
+  endif
+-%}
+
+<div
+  class="gs-collection gs-search color-{{ s.color_scheme }}"
+  id="GsCollection-{{ section.id }}"
+  style="
+    --padding-top: {{ s.top_space_desktop }}px;
+    --padding-bottom: {{ s.bottom_space_desktop }}px;
+    --padding-top-mobile: {{ s.top_space_mobile }}px;
+    --padding-bottom-mobile: {{ s.bottom_space_mobile }}px;
+    --desktopColumns: {{ s.columns_desktop }};
+    --mobileColumns: {{ s.columns_mobile }};
+  "
+>
+  <div class="page-width gs-search__header">
+    <h1 class="gs-collection__heading {{ s.heading_size }}">
+      {%- if search.performed -%}
+        {{ 'templates.search.title' | t }}
+      {%- else -%}
+        {{ 'general.search.search' | t }}
+      {%- endif -%}
+    </h1>
+
+    {%- comment -%}
+      A real GET form. Predictive search enhances it; it is not required.
+    {%- endcomment -%}
+    <form action="{{ routes.search_url }}" method="get" role="search" class="gs-search__form">
+      <label class="visually-hidden" for="GsSearchInput-{{ section.id }}">
+        {{ 'general.search.search' | t }}
+      </label>
+      <input
+        id="GsSearchInput-{{ section.id }}"
+        class="gs-search__input"
+        type="search"
+        name="q"
+        value="{{ search.terms | escape }}"
+        placeholder="{{ 'general.search.search' | t }}"
+      >
+      <input type="hidden" name="options[prefix]" value="last">
+      <button type="submit" class="gs-search__submit">
+        {{ 'general.search.search' | t }}
+      </button>
+    </form>
+  </div>
+
+  {%- if search.performed -%}
+    <div class="gs-collection__wrapper{% unless sidebar_enabled %} gs-collection__wrapper--no-sidebar{% endunless %}">
+      {%- if sidebar_enabled -%}
+        {%- render 'gs-collection-toolbar', section: section, sort_by: sort_by -%}
+        <div class="gs-collection__sidebar">
+          {%- render 'gs-collection-filters', section: section, sort_by: sort_by -%}
+        </div>
+      {%- endif -%}
+
+      <div class="gs-collection__results" id="GsCollectionProducts-{{ section.id }}" data-collection-products>
+        <div class="gs-collection__count">
+          <span class="total_products">
+            {%- if search.results_count == 1 -%}
+              {{ 'templates.search.results_with_count.one' | t: count: search.results_count }}
+            {%- else -%}
+              {{ 'templates.search.results_with_count.other' | t: count: search.results_count }}
+            {%- endif -%}
+          </span>
+        </div>
+
+        {%- if search.results_count == 0 -%}
+          <div class="gs-collection__empty">
+            <svg class="gs-collection__empty-icon" viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
+              <circle cx="21" cy="21" r="14" fill="none" stroke="currentColor" stroke-width="3"/>
+              <path d="M31 31 L43 43" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <h2 class="gs-collection__empty-heading">
+              {{ 'templates.search.no_results' | t: terms: search.terms }}
+            </h2>
+          </div>
+        {%- else -%}
+          {%- paginate search.results by s.products_per_page -%}
+            <div class="gs-collection__grid">
+              {%- for item in search.results -%}
+                <div class="gs-collection__cell">
+                  {%- case item.object_type -%}
+                    {%- when 'product' -%}
+                      {%- render 'gs-card-product',
+                        cardProduct: item,
+                        cycleIndex: forloop.index,
+                        gridImageSize: s.grid_image_size,
+                        quickViewtrue: true,
+                        showSwatches: true
+                      -%}
+
+                    {%- else -%}
+                      {%- comment -%}
+                        Pages and articles. v3 rendered products only, so
+                        content results were silently dropped from a
+                        search that had counted them.
+                      {%- endcomment -%}
+                      <a class="gs-search__result" href="{{ item.url }}">
+                        {%- if item.image -%}
+                          <img
+                            src="{{ item.image | image_url: width: 500 }}"
+                            alt="{{ item.title | escape }}"
+                            width="500"
+                            height="500"
+                            loading="lazy"
+                          >
+                        {%- endif -%}
+                        <p class="gs-search__result-type">
+                          {%- if item.object_type == 'article' -%}
+                            {{ 'blogs.article.blog' | t }}
+                          {%- else -%}
+                            {{ 'templates.search.page' | t }}
+                          {%- endif -%}
+                        </p>
+                        <p class="gs-search__result-title">{{ item.title }}</p>
+                      </a>
+                  {%- endcase -%}
+                </div>
+              {%- endfor -%}
+            </div>
+
+            {%- if s.load_type == 'load_more' and paginate.next -%}
+              <div class="gs-collection__more" data-load-more>
+                <a class="button" href="{{ paginate.next.url }}" data-products-load>
+                  {{ 'sections.collection_template.load_more' | t }}
+                </a>
+                <div class="gs-collection__spinner hidden" role="status" aria-live="polite"></div>
+              </div>
+            {%- elsif s.load_type == 'infinite' and paginate.next -%}
+              <div class="gs-collection__more" data-scroll>
+                <a href="{{ paginate.next.url }}" aria-label="{{ 'general.accessibility.load_more' | t }}"></a>
+                <div class="gs-collection__spinner hidden" role="status" aria-live="polite"></div>
+              </div>
+            {%- elsif paginate.pages > 1 -%}
+              {%- render 'pagination', paginate: paginate -%}
+            {%- endif -%}
+          {%- endpaginate -%}
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Search results",
+  "tag": "section",
+  "class": "gs-search-section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h3",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" }
+      ]
+    },
+    { "type": "range", "id": "products_per_page", "label": "Results per page", "min": 8, "max": 28, "step": 1, "default": 24 },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columns (desktop)",
+      "default": "4",
+      "options": [
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns (mobile)",
+      "default": "2",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "grid_image_size",
+      "label": "Image shape",
+      "default": "square",
+      "options": [
+        { "value": "auto", "label": "Natural" },
+        { "value": "square", "label": "Square" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "landscape", "label": "Landscape" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "load_type",
+      "label": "Pagination type",
+      "default": "load_more",
+      "options": [
+        { "value": "page_number", "label": "Page numbers" },
+        { "value": "load_more", "label": "Load more button" },
+        { "value": "infinite", "label": "Infinite scroll" }
+      ]
+    },
+    { "type": "checkbox", "id": "enable_filtering", "label": "Enable filtering", "default": true },
+    { "type": "checkbox", "id": "open_filtering", "label": "Open filters by default", "default": true },
+    { "type": "checkbox", "id": "open_all_filtering", "label": "Expand all filter groups", "default": false },
+    { "type": "checkbox", "id": "enable_sorting", "label": "Enable sorting", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "top_space_desktop", "label": "Top padding (desktop)", "default": 40, "min": 0, "max": 150, "step": 5, "unit": "px" },
+    { "type": "range", "id": "bottom_space_desktop", "label": "Bottom padding (desktop)", "default": 70, "min": 0, "max": 150, "step": 5, "unit": "px" },
+    { "type": "range", "id": "top_space_mobile", "label": "Top padding (mobile)", "default": 25, "min": 0, "max": 100, "step": 5, "unit": "px" },
+    { "type": "range", "id": "bottom_space_mobile", "label": "Bottom padding (mobile)", "default": 40, "min": 0, "max": 100, "step": 5, "unit": "px" }
+  ]
+}
+{% endschema %}

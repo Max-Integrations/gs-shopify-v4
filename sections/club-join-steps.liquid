@@ -1,0 +1,511 @@
+{% comment %}
+  ==================================================================
+  CLUB GRUNT STYLE - JOIN STEPS
+  Rebuilt from gs-shopify-v3 sections/club-gs-join-steps_v2.liquid
+  ==================================================================
+  Four-step subscription funnel: fit, size, plan, review. Adds the
+  matching Club product to the cart on a Skio selling plan.
+
+  v1 (club-grunt-style--join-steps.liquid) is NOT ported - superseded,
+  untouched since Oct 2025. See DUP-016.
+
+  ------------------------------------------------------------------
+  KEYBOARD ACCESSIBILITY - THE WHOLE FUNNEL WAS UNUSABLE
+  ------------------------------------------------------------------
+  v3 hid the radio inputs with `display: none`. Such an input is removed
+  from the accessibility tree and cannot be focused, so every step of a
+  PAID SIGNUP FLOW was mouse-only. Inputs are now visually hidden but
+  focusable, with the focus ring on the visible label - the same pattern
+  as the PDP variant picker.
+
+  Progress dots were disabled buttons toggled by script with no aria
+  state. They now carry aria-current and are real navigation.
+
+  ------------------------------------------------------------------
+  HARDCODED COMMERCIAL VALUES ARE NOW SETTINGS
+  ------------------------------------------------------------------
+  v3 hardcoded, in markup and in JavaScript:
+    - Skio selling plan IDs 1963917363 / 1963884595, with the previous
+      Yotpo IDs left commented beside them
+    - prices $25.00, $255.00, $300.00 and "15% OFF"
+    - the product handle pattern club-{gender}-{plan}
+
+  A price change or a Skio plan reissue meant a code change, and a wrong
+  plan id fails SILENTLY - the item adds on the wrong billing terms.
+
+  ACTION: confirm both plan IDs against Skio before launch. They are the
+  single most breakable values in this file.
+
+  ------------------------------------------------------------------
+  DEPENDENCIES THAT DO NOT EXIST IN DAWN
+  ------------------------------------------------------------------
+  v3's add-to-cart called three globals from its 283 KB theme.js -
+  cartContentUpdate, drawerProductRecommendation, focusElementsRotation -
+  and requested a section named 'ajax-cart-drawer'. None exist here, so a
+  straight port would have failed at the moment of purchase.
+
+  This uses Dawn's cart-drawer custom element, falling back to a
+  navigation to the cart if the drawer is absent.
+
+  ------------------------------------------------------------------
+  FLICKITY REMOVED
+  ------------------------------------------------------------------
+  v3 drove the four steps with Flickity (81.7 KB) configured
+  draggable:false, prevNextButtons:false, pageDots:false - a carousel
+  library used purely to show one panel at a time. That is a wizard.
+  Plain show/hide, no library.
+
+  ------------------------------------------------------------------
+  OTHER v3 FIXES
+  ------------------------------------------------------------------
+  - TRAILING COMMA in the schema JSON. Seventh section found with this.
+  - The size grid was locked to 7 columns even when 3XL and 4XL were
+    hidden for the women's fit, leaving two empty cells.
+  - Icons were hardcoded Shopify CDN URLs; now editable.
+  - `.hidden` was declared as a global utility class from inside this
+    section.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-club-join.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+  assign sizes = s.sizes | default: 'S,M,L,XL,2XL,3XL,4XL' | split: ','
+  assign womens_excluded = s.womens_excluded_sizes | default: '3XL,4XL' | split: ','
+  assign step_labels = s.step_labels | default: 'Patriot,Size,Plan,Review' | split: ','
+-%}
+
+<div class="gs-club" id="GsClub-{{ section.id }}" data-gs-club>
+  <div class="page-width">
+
+    <ol class="gs-club__progress" data-club-progress>
+      {%- for label in step_labels -%}
+        <li class="gs-club__progress-item{% if forloop.first %} is-current{% endif %}" data-progress-step="{{ forloop.index }}">
+          <button
+            type="button"
+            class="gs-club__progress-btn"
+            data-club-goto="{{ forloop.index }}"
+            {% unless forloop.first %}disabled{% endunless %}
+            {% if forloop.first %}aria-current="step"{% endif %}
+          >
+            <span class="gs-club__progress-circle">{{ forloop.index }}</span>
+            <span class="gs-club__progress-text">{{ label | strip }}</span>
+          </button>
+        </li>
+      {%- endfor -%}
+    </ol>
+
+    <div class="gs-club__steps">
+
+      <fieldset class="gs-club__step is-active" data-club-step="1">
+        <legend class="gs-club__heading">{{ s.club_step_1_header }}</legend>
+        <div class="gs-club__options gs-club__options--gender">
+          {%- assign genders = 'mens,ladies' | split: ',' -%}
+          {%- for g in genders -%}
+            {%- liquid
+              if g == 'mens'
+                assign g_label = s.mens_label | default: 'Male'
+              else
+                assign g_label = s.womens_label | default: 'Female'
+              endif
+            -%}
+            <div class="gs-club__option gs-club__option--gender">
+              <input
+                type="radio"
+                class="gs-club__input"
+                name="club_gender"
+                id="GsClubGender-{{ section.id }}-{{ g }}"
+                value="{{ g }}"
+                data-club-field="gender"
+              >
+              <label class="gs-club__label" for="GsClubGender-{{ section.id }}-{{ g }}">
+                <span class="gs-club__eyebrow">{{ s.gender_eyebrow | default: 'Patriotic' }}</span>
+                <span class="gs-club__label-main">{{ g_label }}</span>
+              </label>
+            </div>
+          {%- endfor -%}
+        </div>
+      </fieldset>
+
+      <fieldset class="gs-club__step" data-club-step="2" hidden>
+        <legend class="gs-club__heading">{{ s.club_step_2_header }}</legend>
+        <div class="gs-club__options gs-club__options--size" data-club-sizes>
+          {%- for size in sizes -%}
+            {%- liquid
+              assign size_clean = size | strip
+              assign size_key = size_clean | downcase
+              assign womens_ok = true
+              for excluded in womens_excluded
+                assign excluded_clean = excluded | strip | downcase
+                if excluded_clean == size_key
+                  assign womens_ok = false
+                  break
+                endif
+              endfor
+            -%}
+            <div
+              class="gs-club__option gs-club__option--size"
+              {% unless womens_ok %}data-mens-only="true"{% endunless %}
+            >
+              <input
+                type="radio"
+                class="gs-club__input"
+                name="club_size"
+                id="GsClubSize-{{ section.id }}-{{ size_key }}"
+                value="{{ size_clean | escape }}"
+                data-club-field="size"
+              >
+              <label class="gs-club__label" for="GsClubSize-{{ section.id }}-{{ size_key }}">
+                <span class="gs-club__size">{{ size_clean }}</span>
+                {%- if s.size_icon != blank -%}
+                  <img src="{{ s.size_icon | image_url: width: 120 }}" alt="" width="60" height="60" loading="lazy">
+                {%- endif -%}
+              </label>
+            </div>
+          {%- endfor -%}
+        </div>
+      </fieldset>
+
+      <fieldset class="gs-club__step" data-club-step="3" hidden>
+        <legend class="gs-club__heading">{{ s.club_step_3_header }}</legend>
+
+        <div class="gs-club__options gs-club__options--plan">
+          <div class="gs-club__option gs-club__option--plan">
+            <input
+              type="radio"
+              class="gs-club__input"
+              name="club_plan"
+              id="GsClubPlan-{{ section.id }}-monthly"
+              value="monthly"
+              data-club-field="plan"
+              data-selling-plan="{{ s.monthly_selling_plan_id }}"
+            >
+            <label class="gs-club__label" for="GsClubPlan-{{ section.id }}-monthly">
+              {%- if s.monthly_icon != blank -%}
+                <img src="{{ s.monthly_icon | image_url: width: 150 }}" alt="" width="75" height="75" loading="lazy">
+              {%- endif -%}
+              <span class="gs-club__plan-type">{{ s.monthly_label | default: 'Monthly' }}</span>
+              <span class="gs-club__plan-cost">{{ s.monthly_price }}</span>
+              <span class="gs-club__plan-note">{{ s.monthly_note }}</span>
+            </label>
+          </div>
+
+          <div class="gs-club__option gs-club__option--plan">
+            <input
+              type="radio"
+              class="gs-club__input"
+              name="club_plan"
+              id="GsClubPlan-{{ section.id }}-annual"
+              value="annual"
+              data-club-field="plan"
+              data-selling-plan="{{ s.annual_selling_plan_id }}"
+            >
+            <label class="gs-club__label" for="GsClubPlan-{{ section.id }}-annual">
+              {%- if s.annual_icon != blank -%}
+                <img src="{{ s.annual_icon | image_url: width: 150 }}" alt="" width="75" height="75" loading="lazy">
+              {%- endif -%}
+              <span class="gs-club__plan-type">{{ s.annual_label | default: 'Annual' }}</span>
+              <span class="gs-club__plan-cost">{{ s.annual_price }}</span>
+              <span class="gs-club__plan-note">
+                <strong>{{ s.annual_saving }}</strong>
+                {%- if s.annual_was_price != blank -%}
+                  | <em class="gs-club__was">{{ s.annual_was_price }}</em>
+                {%- endif -%}
+              </span>
+            </label>
+          </div>
+        </div>
+
+        {%- if s.club_plan_select_disclaimer != blank -%}
+          <p class="gs-club__disclaimer">{{ s.club_plan_select_disclaimer }}</p>
+        {%- endif -%}
+      </fieldset>
+
+      <div class="gs-club__step" data-club-step="4" hidden>
+        <h2 class="gs-club__heading">{{ s.club_step_4_header }}</h2>
+
+        <dl class="gs-club__review" data-club-review>
+          <div class="gs-club__review-row">
+            <dt>{{ s.review_fit_label | default: 'Fit' }}</dt>
+            <dd data-review-gender>&mdash;</dd>
+          </div>
+          <div class="gs-club__review-row">
+            <dt>{{ s.review_size_label | default: 'Size' }}</dt>
+            <dd data-review-size>&mdash;</dd>
+          </div>
+          <div class="gs-club__review-row">
+            <dt>{{ s.review_plan_label | default: 'Plan' }}</dt>
+            <dd data-review-plan>&mdash;</dd>
+          </div>
+        </dl>
+
+        <div class="gs-club__actions">
+          <button type="button" class="gs-club__join" data-club-join>
+            {{ s.join_label | default: 'Join Now' }}
+          </button>
+          <button type="button" class="gs-club__restart" data-club-restart>
+            {{ s.restart_label | default: 'Start Over' }}
+          </button>
+          <p class="gs-club__error" role="alert" hidden data-club-error></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('GsClub-{{ section.id }}');
+    if (!root) return;
+
+    var handlePrefix = {{ s.product_handle_prefix | default: 'club' | json }};
+    var cartUrl = {{ routes.cart_url | json }};
+    var choice = { gender: '', size: '', plan: '', sellingPlan: '' };
+
+    function goTo(step) {
+      root.querySelectorAll('[data-club-step]').forEach(function (el) {
+        var isTarget = el.dataset.clubStep === String(step);
+        el.hidden = !isTarget;
+        el.classList.toggle('is-active', isTarget);
+      });
+
+      root.querySelectorAll('[data-progress-step]').forEach(function (li) {
+        var n = parseInt(li.dataset.progressStep, 10);
+        li.classList.toggle('is-current', n === step);
+        li.classList.toggle('is-done', n < step);
+
+        var btn = li.querySelector('[data-club-goto]');
+        if (n <= step) btn.disabled = false;
+        if (n === step) {
+          btn.setAttribute('aria-current', 'step');
+        } else {
+          btn.removeAttribute('aria-current');
+        }
+      });
+
+      // Move focus into the new step so keyboard users are not stranded
+      // at the bottom of the previous one.
+      var active = root.querySelector('[data-club-step="' + step + '"]');
+      var first = active ? active.querySelector('.gs-club__input, button') : null;
+      if (first) first.focus();
+    }
+
+    function labelFor(name, value) {
+      var input = root.querySelector('input[name="' + name + '"][value="' + value + '"]');
+      if (!input) return value;
+      var main = root.querySelector('label[for="' + input.id + '"] .gs-club__label-main');
+      var plan = root.querySelector('label[for="' + input.id + '"] .gs-club__plan-type');
+      var node = main || plan;
+      return node ? node.textContent.trim() : value;
+    }
+
+    function refreshReview() {
+      var g = root.querySelector('[data-review-gender]');
+      var sz = root.querySelector('[data-review-size]');
+      var pl = root.querySelector('[data-review-plan]');
+
+      if (g) g.textContent = choice.gender ? labelFor('club_gender', choice.gender) : '\u2014';
+      if (sz) sz.textContent = choice.size || '\u2014';
+      if (pl) pl.textContent = choice.plan ? labelFor('club_plan', choice.plan) : '\u2014';
+    }
+
+    function showError(message) {
+      var box = root.querySelector('[data-club-error]');
+      if (!box) return;
+      box.textContent = message;
+      box.hidden = false;
+    }
+
+    function hideError() {
+      var box = root.querySelector('[data-club-error]');
+      if (box) box.hidden = true;
+    }
+
+    root.addEventListener('change', function (evt) {
+      var input = evt.target;
+      if (!input.dataset || !input.dataset.clubField) return;
+
+      choice[input.dataset.clubField] = input.value;
+      if (input.dataset.sellingPlan) choice.sellingPlan = input.dataset.sellingPlan;
+
+      // The women's fit does not carry the largest sizes.
+      if (input.dataset.clubField === 'gender') {
+        root.querySelectorAll('[data-mens-only]').forEach(function (el) {
+          var hide = input.value !== 'mens';
+          el.hidden = hide;
+          var radio = el.querySelector('input');
+          if (hide && radio && radio.checked) {
+            radio.checked = false;
+            choice.size = '';
+          }
+        });
+      }
+
+      refreshReview();
+
+      var current = parseInt(input.closest('[data-club-step]').dataset.clubStep, 10);
+      goTo(current + 1);
+    });
+
+    root.addEventListener('click', function (evt) {
+      var goto = evt.target.closest('[data-club-goto]');
+      if (goto && !goto.disabled) {
+        goTo(parseInt(goto.dataset.clubGoto, 10));
+        return;
+      }
+
+      if (evt.target.closest('[data-club-restart]')) {
+        choice = { gender: '', size: '', plan: '', sellingPlan: '' };
+        root.querySelectorAll('.gs-club__input').forEach(function (i) { i.checked = false; });
+        root.querySelectorAll('[data-mens-only]').forEach(function (el) { el.hidden = false; });
+        root.querySelectorAll('[data-club-goto]').forEach(function (b, i) { b.disabled = i !== 0; });
+        refreshReview();
+        hideError();
+        goTo(1);
+        return;
+      }
+
+      if (evt.target.closest('[data-club-join]')) join();
+    });
+
+    function join() {
+      hideError();
+
+      if (!choice.gender || !choice.size || !choice.plan) {
+        showError('Please complete every step before joining.');
+        return;
+      }
+
+      var btn = root.querySelector('[data-club-join]');
+      if (btn) btn.disabled = true;
+
+      var handle = handlePrefix + '-' + choice.gender + '-' + choice.plan;
+
+      fetch('/products/' + handle + '.js')
+        .then(function (res) {
+          if (!res.ok) throw new Error('Club product not found: ' + handle);
+          return res.json();
+        })
+        .then(function (product) {
+          var wanted = choice.size.toLowerCase();
+          var match = null;
+
+          for (var i = 0; i < product.variants.length; i++) {
+            if (product.variants[i].title.toLowerCase() === wanted) {
+              match = product.variants[i];
+              break;
+            }
+          }
+          if (!match) throw new Error('No variant for size ' + choice.size);
+
+          // A missing selling plan would add the product at one-time
+          // pricing instead of as a subscription, so it is required.
+          if (!choice.sellingPlan) throw new Error('Selling plan not configured');
+
+          return fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({
+              id: match.id,
+              quantity: 1,
+              selling_plan: parseInt(choice.sellingPlan, 10)
+            })
+          });
+        })
+        .then(function (res) {
+          if (!res.ok) throw new Error('Could not add to cart');
+          return res.json();
+        })
+        .then(function () {
+          var drawer = document.querySelector('cart-drawer');
+          if (drawer && typeof drawer.open === 'function') {
+            drawer.open();
+          } else {
+            window.location.href = cartUrl;
+          }
+        })
+        .catch(function (err) {
+          console.error('[gs-club] ' + err.message);
+          showError('Something went wrong. Please try again.');
+        })
+        .then(function () {
+          if (btn) btn.disabled = false;
+        });
+    }
+
+    goTo(1);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Club Join Steps",
+  "tag": "section",
+  "class": "gs-club-section",
+  "settings": [
+    { "type": "header", "content": "Step headings" },
+    { "type": "text", "id": "club_step_1_header", "label": "Step 1", "default": "Join Club Grunt Style" },
+    { "type": "text", "id": "club_step_2_header", "label": "Step 2", "default": "What Size Fits You Best?" },
+    { "type": "text", "id": "club_step_3_header", "label": "Step 3", "default": "Select Your Plan" },
+    { "type": "text", "id": "club_step_4_header", "label": "Step 4", "default": "Review Your Plan" },
+    { "type": "text", "id": "step_labels", "label": "Progress labels", "info": "Comma separated.", "default": "Patriot,Size,Plan,Review" },
+
+    { "type": "header", "content": "Fit" },
+    { "type": "text", "id": "gender_eyebrow", "label": "Eyebrow text", "default": "Patriotic" },
+    { "type": "text", "id": "mens_label", "label": "Men's label", "default": "Male" },
+    { "type": "text", "id": "womens_label", "label": "Women's label", "default": "Female" },
+
+    { "type": "header", "content": "Sizes" },
+    { "type": "text", "id": "sizes", "label": "Sizes", "info": "Comma separated. Must match the Club product's variant titles.", "default": "S,M,L,XL,2XL,3XL,4XL" },
+    { "type": "text", "id": "womens_excluded_sizes", "label": "Sizes not offered in the women's fit", "default": "3XL,4XL" },
+    { "type": "image_picker", "id": "size_icon", "label": "Size icon" },
+
+    { "type": "header", "content": "Plans" },
+    {
+      "type": "text",
+      "id": "product_handle_prefix",
+      "label": "Product handle prefix",
+      "info": "Handles are built as prefix-fit-plan, e.g. club-mens-monthly.",
+      "default": "club"
+    },
+    { "type": "text", "id": "monthly_label", "label": "Monthly label", "default": "Monthly" },
+    { "type": "text", "id": "monthly_price", "label": "Monthly price", "default": "$25.00" },
+    { "type": "text", "id": "monthly_note", "label": "Monthly note", "default": "First Month: $25.00" },
+    {
+      "type": "text",
+      "id": "monthly_selling_plan_id",
+      "label": "Monthly Skio selling plan ID",
+      "info": "REQUIRED. A wrong id adds the subscription on the wrong billing terms, silently. Verify in Skio.",
+      "default": "1963917363"
+    },
+    { "type": "image_picker", "id": "monthly_icon", "label": "Monthly icon" },
+    { "type": "text", "id": "annual_label", "label": "Annual label", "default": "Annual" },
+    { "type": "text", "id": "annual_price", "label": "Annual price", "default": "$255.00" },
+    { "type": "text", "id": "annual_saving", "label": "Annual saving badge", "default": "15% OFF" },
+    { "type": "text", "id": "annual_was_price", "label": "Annual was-price", "default": "$300.00" },
+    {
+      "type": "text",
+      "id": "annual_selling_plan_id",
+      "label": "Annual Skio selling plan ID",
+      "info": "REQUIRED. Verify in Skio.",
+      "default": "1963884595"
+    },
+    { "type": "image_picker", "id": "annual_icon", "label": "Annual icon" },
+    {
+      "type": "textarea",
+      "id": "club_plan_select_disclaimer",
+      "label": "Plan disclaimer",
+      "default": "Notice: All monthly and prepaid subscriptions are set to automatically renew. You will be contacted via email prior to a renewal."
+    },
+
+    { "type": "header", "content": "Review step" },
+    { "type": "text", "id": "review_fit_label", "label": "Fit label", "default": "Fit" },
+    { "type": "text", "id": "review_size_label", "label": "Size label", "default": "Size" },
+    { "type": "text", "id": "review_plan_label", "label": "Plan label", "default": "Plan" },
+    { "type": "text", "id": "join_label", "label": "Join button", "default": "Join Now" },
+    { "type": "text", "id": "restart_label", "label": "Start over link", "default": "Start Over" }
+  ],
+  "presets": [{ "name": "Club Join Steps" }]
+}
+{% endschema %}

@@ -1,0 +1,149 @@
+{% comment %}
+  ==================================================================
+  GS PRICE
+  ==================================================================
+  NAMED gs-price, NOT price. Dawn ships its own snippets/price.liquid.
+
+  USAGE:
+    render 'gs-price', cardProduct: product
+    render 'gs-price', cardProduct: product, cardVariant: variant
+    render 'gs-price', cardProduct: product, hideComparePrice: true
+    render 'gs-price', cardProduct: product, savePercentoff: false
+
+  ------------------------------------------------------------------
+  REVISION 2026-08-13 (2) - THE PRICE WAS NEVER RENDERING
+  ------------------------------------------------------------------
+  This snippet opened with:
+
+      {% raw %}{% if settings.product_price and price %}{% endraw %}
+
+  `settings.product_price` is a gs-shopify-v3 THEME SETTING. It does not
+  exist in Dawn's config/settings_schema.json, so it evaluates to nil -
+  and the entire price block never rendered. On any page. The product
+  page showed a title, stars, swatches and sizes with NO PRICE.
+
+  This is a whole class of defect in this port, not one line. The card
+  stack references around a dozen v3 settings that Dawn has no schema
+  for - quickview, compare, new_label, sale_label, enable_color_swatches,
+  show_countdown, product_second_image, show_savings, product_vendor,
+  show_inventory. Every one is undefined, so every feature gated on one
+  was silently off.
+
+  THE RULE NOW: a missing setting means ENABLED, not disabled. Each is
+  tested with an explicit `== false` so an absent schema entry fails
+  open. When those settings are added to settings_schema.json they will
+  start controlling behaviour without any change here.
+
+  ------------------------------------------------------------------
+  REVISION 2026-08-13 (1)
+  ------------------------------------------------------------------
+  - FILTER APPLIED TO THE WRONG VALUE:
+        {{ raw }}{{ 'products...from_price_html' | t: price: price | money }}{{ endraw }}
+    Liquid applies filters left to right, so `money` ran on the OUTPUT of
+    `t`. Money values are precomputed with assign now.
+  - The snippet now carries gs-price.css. Those rules lived only in
+    gs-card-product.css, which loads when a CARD renders, so the price
+    was unstyled on the PDP.
+
+  ------------------------------------------------------------------
+  BUGS FIXED FROM v3
+  ------------------------------------------------------------------
+  - Hardcoded `default: 1899` fallback - a magic $18.99 in the price
+    renderer.
+  - `current_variant` referenced but never assigned; unit pricing
+    rendered empty markup on every card. Now an explicit cardVariant.
+  - A hidden preorder <span> emitted on every card.
+  - Leftover `kea-testing` class. The data-sl-* Shoplift attributes are
+    kept - those are live test hooks.
+  - `if savePercentoff != false` - unset it is nil, and nil != false is
+    TRUE in Liquid, so it silently defaulted on.
+  - Compare-at price and the savings badge shared one `unless`, so
+    hiding one hid the other.
+
+  ------------------------------------------------------------------
+  KNOWN LIMITATION - A DECISION, NOT A BUG
+  ------------------------------------------------------------------
+  Percent-off uses Liquid integer division, which truncates: 33.7%
+  displays as 33%, always rounding in the customer's disfavour.
+  Preserved as v3 had it. Confirm with Megan before changing.
+  ==================================================================
+{% endcomment %}
+
+{%- liquid
+  unless cardProduct
+    break
+  endunless
+
+  assign price = cardProduct.price_min
+  assign compare_at_price = cardProduct.compare_at_price_min
+
+  # Missing setting means enabled. See the header note.
+  assign show_price = true
+  if settings.product_price == false
+    assign show_price = false
+  endif
+
+  assign show_savings = true
+  if settings.show_savings == false
+    assign show_savings = false
+  endif
+  if savePercentoff == false
+    assign show_savings = false
+  endif
+
+  assign on_sale = false
+  if compare_at_price > price
+    assign on_sale = true
+  endif
+
+  # Precomputed. Passing `price: price | money` into a translation
+  # applies money to the translation's OUTPUT, not to price.
+  assign price_money = price | money
+  assign compare_money = compare_at_price | money
+  assign saving_money = compare_at_price | minus: price | money
+-%}
+
+{%- if show_price and price -%}
+  {{ 'gs-price.css' | asset_url | stylesheet_tag }}
+
+  <div class="product-price{% if on_sale %} product-price--on-sale{% endif %}">
+    {%- if cardProduct.price_varies -%}
+      <span class="price-item actual-price price-varies" data-sl-attribute-p="{{ cardProduct.id }}">
+        {{- 'products.product.price.from_price_html' | t: price: price_money -}}
+      </span>
+    {%- else -%}
+      <span class="price-item actual-price" data-sl-attribute-p="{{ cardProduct.id }}">
+        {{- price_money -}}
+      </span>
+    {%- endif -%}
+
+    {%- unless hideComparePrice -%}
+      {%- if on_sale -%}
+        <span class="price-item compare-price" data-sl-attribute-cap="{{ cardProduct.id }}">
+          {{- compare_money -}}
+        </span>
+      {%- endif -%}
+    {%- endunless -%}
+
+    {%- if cardVariant.unit_price_measurement -%}
+      <span class="product-unit-price" data-unit-price data-sl-attribute-p="{{ cardProduct.id }}">
+        {{- cardVariant.unit_price | money }} /
+        {%- if cardVariant.unit_price_measurement.reference_value != 1 -%}
+          {{ cardVariant.unit_price_measurement.reference_value }}
+        {%- endif -%}
+        {{ cardVariant.unit_price_measurement.reference_unit -}}
+      </span>
+    {%- endif -%}
+
+    {%- if show_savings and on_sale -%}
+      <span class="product-percent-off" data-sl-attribute-discount="{{ cardProduct.id }}">
+        {%- if settings.sale_label_type == 'amount-off' -%}
+          {{- saving_money }} {{ 'products.product.badges.off' | t -}}
+        {%- else -%}
+          {{- compare_at_price | minus: price | times: 100 | divided_by: compare_at_price -}}%
+          {{ 'products.product.badges.off' | t -}}
+        {%- endif -%}
+      </span>
+    {%- endif -%}
+  </div>
+{%- endif -%}

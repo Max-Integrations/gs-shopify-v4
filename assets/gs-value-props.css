@@ -1,0 +1,63 @@
+/*
+  GS Value Props
+
+  The black trust bar beneath the homepage hero.
+
+  v3 emitted these rules in an unscoped <style> block inside the section,
+  using generic class names (.main-value-title, .value-props-flex) that
+  could collide with anything. Namespaced and moved here.
+
+  The original set a fixed 140px gap with no flex-wrap, which overflowed
+  between 768px and roughly 1100px - a range its only media query did not
+  cover. The gap now scales and the row wraps.
+*/
+
+.gs-value-props {
+  background-color: var(--vp-bg, #000000);
+  padding: 30px;
+}
+
+.gs-value-props__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  /* Was a fixed 140px. Scales between 44px and 140px with viewport. */
+  gap: clamp(2.75rem, 9vw, 14rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gs-value-props__item {
+  margin: 0;
+  color: var(--vp-text, #ffffff);
+  font-family: var(--headingFont, 'Roboto Condensed', sans-serif);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 21px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .gs-value-props {
+    padding: 15px 30px;
+  }
+
+  .gs-value-props__item {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+/*
+  v3 used max-device-width / min-device-width here, which is deprecated
+  and measures the physical screen rather than the viewport.
+*/
+@media screen and (max-width: 374px) {
+  .gs-value-props__item {
+    font-size: 9px;
+  }
+}

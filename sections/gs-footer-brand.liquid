@@ -1,0 +1,131 @@
+{% comment %}
+  ==================================================================
+  GS FOOTER BRAND BAND
+  ==================================================================
+  The black "THIS WE'LL DEFEND / AMERICA'S PATRIOTIC T-SHIRT & APPAREL
+  BRAND" band that sits directly above the footer.
+
+  WHY THIS EXISTS RATHER THAN REUSING rich-text
+  v3 used its own rich-text section here. Dawn's rich-text declares
+      "disabled_on": { "groups": ["header", "footer"] }
+  so Shopify refuses to accept it inside a section group - the write is
+  rejected outright with "Section is not supported in section groups".
+  This is a minimal equivalent without that restriction.
+
+  ------------------------------------------------------------------
+  REPLACES SIX custom_css RULES
+  ------------------------------------------------------------------
+  v3's footer-group.json carried these on the rich-text section:
+
+      div { background-color: #000; }
+      p   { color: #fff; }
+      h3  { color: #fff; }
+      h3  { font-family: "Engravers MT"; font-weight: 50; }
+      a   { color: #000; text-decoration: none; border: 1px solid #000; }
+      a:hover { background-color: #000; color: #fff; }
+
+  Those are bare element selectors living in template JSON - invisible
+  to grep, and scoped only by Shopify wrapping them in the section id.
+  The black background and white text are now a colour scheme
+  (scheme-4), which is the supported way to express the same thing.
+
+  ENGRAVERS MT IS NOT AVAILABLE. v3 loaded it from assets/EngraversMT.TTF
+  via an @font-face rule somewhere in style.css, which is not ported. The
+  subheading currently renders in the theme heading font. Either port the
+  @font-face and the .TTF, or accept Roboto Condensed here.
+
+  Also note `font-weight: 50` in the original - not a valid CSS weight
+  (the range is 1-1000, and keywords aside, browsers clamp it to 100).
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-footer-brand.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="gs-footer-brand color-{{ section.settings.color_scheme }}"
+  style="
+    --fb-pad: {{ section.settings.padding_desktop }}px;
+    --fb-pad-mobile: {{ section.settings.padding_mobile }}px;
+    --fb-heading-size: {{ section.settings.heading_size_desktop }}px;
+    --fb-heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
+    --fb-sub-size: {{ section.settings.subheading_size_desktop }}px;
+    --fb-sub-size-mobile: {{ section.settings.subheading_size_mobile }}px;
+  "
+>
+  <div class="page-width gs-footer-brand__inner">
+    {%- if section.settings.heading != blank -%}
+      <{{ section.settings.seo_heading }} class="gs-footer-brand__heading">
+        {{ section.settings.heading }}
+      </{{ section.settings.seo_heading }}>
+    {%- endif -%}
+
+    {%- if section.settings.subheading != blank -%}
+      <p class="gs-footer-brand__subheading">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.body != blank -%}
+      <div class="gs-footer-brand__body rte">{{ section.settings.body }}</div>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+      <a class="gs-footer-brand__button" href="{{ section.settings.button_link }}">
+        {{- section.settings.button_label -}}
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Footer brand band",
+  "tag": "section",
+  "class": "gs-footer-brand-section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "THIS WE'LL DEFEND"
+    },
+    {
+      "type": "select",
+      "id": "seo_heading",
+      "label": "Heading tag",
+      "default": "h3",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "p", "label": "p" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "info": "v3 set this in Engravers MT, which is not available in this theme yet.",
+      "default": "AMERICA'S PATRIOTIC T-SHIRT & APPAREL BRAND"
+    },
+    { "type": "richtext", "id": "body", "label": "Body copy" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "header", "content": "Colors" },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "info": "scheme-4 reproduces v3's black background with white text.",
+      "default": "scheme-4"
+    },
+    { "type": "header", "content": "Type sizes" },
+    { "type": "range", "id": "heading_size_desktop", "label": "Heading (desktop)", "min": 20, "max": 80, "step": 2, "unit": "px", "default": 44 },
+    { "type": "range", "id": "heading_size_mobile", "label": "Heading (mobile)", "min": 16, "max": 56, "step": 2, "unit": "px", "default": 28 },
+    { "type": "range", "id": "subheading_size_desktop", "label": "Subheading (desktop)", "min": 12, "max": 40, "step": 1, "unit": "px", "default": 20 },
+    { "type": "range", "id": "subheading_size_mobile", "label": "Subheading (mobile)", "min": 10, "max": 28, "step": 1, "unit": "px", "default": 14 },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_desktop", "label": "Padding (desktop)", "min": 0, "max": 120, "step": 5, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding_mobile", "label": "Padding (mobile)", "min": 0, "max": 80, "step": 5, "unit": "px", "default": 25 }
+  ]
+}
+{% endschema %}

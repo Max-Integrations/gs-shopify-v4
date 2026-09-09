@@ -1,0 +1,138 @@
+{% comment %}
+  ==================================================================
+  GS 404
+  ==================================================================
+  Not-found page. Small on purpose: a heading, a line of copy, a route
+  back into the catalogue, and optionally a product carousel so the page
+  is a recovery point rather than a dead end.
+
+  The carousel reuses gs-card-product and the shared scroller, so it
+  costs no new JavaScript.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-404.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+  assign rescue = s.rescue_collection
+-%}
+
+<div class="gs-404 color-{{ s.color_scheme }}">
+  <div class="page-width gs-404__inner">
+    <p class="gs-404__code">404</p>
+
+    <h1 class="gs-404__heading">
+      {{ s.heading | default: 'This page went dark' }}
+    </h1>
+
+    {%- if s.subtext != blank -%}
+      <p class="gs-404__subtext">{{ s.subtext }}</p>
+    {%- endif -%}
+
+    <div class="gs-404__actions">
+      <a class="gs-404__button" href="{{ s.primary_link | default: routes.all_products_collection_url }}">
+        {{ s.primary_label | default: 'Shop all' }}
+      </a>
+      {%- if s.secondary_label != blank -%}
+        <a class="gs-404__link" href="{{ s.secondary_link | default: routes.root_url }}">
+          {{ s.secondary_label }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%}
+      Search here rather than only on /search - a 404 is usually a
+      mistyped or dead URL, and searching is the fastest recovery.
+    {%- endcomment -%}
+    <form action="{{ routes.search_url }}" method="get" role="search" class="gs-404__search">
+      <label class="visually-hidden" for="Gs404Search">{{ 'general.search.search' | t }}</label>
+      <input
+        id="Gs404Search"
+        class="gs-404__search-input"
+        type="search"
+        name="q"
+        placeholder="{{ 'general.search.search' | t }}"
+      >
+      <input type="hidden" name="options[prefix]" value="last">
+      <button type="submit" class="gs-404__search-submit">{{ 'general.search.search' | t }}</button>
+    </form>
+  </div>
+
+  {%- if rescue != blank and rescue.products.size > 0 -%}
+    <div class="page-width gs-404__rescue">
+      <h2 class="gs-404__rescue-heading">{{ s.rescue_heading | default: 'Popular right now' }}</h2>
+
+      <div class="gs-404__scroller" data-swatch-scroller>
+        <button
+          type="button"
+          class="gs-404__nav"
+          data-swatch-scroll="prev"
+          aria-label="{{ 'general.slider.previous_slide' | t }}"
+          hidden
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+            <path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <ul class="gs-404__track" data-swatch-track>
+          {%- for product in rescue.products limit: 8 -%}
+            <li class="gs-404__slide">
+              {%- render 'gs-card-product',
+                cardProduct: product,
+                cycleIndex: forloop.index,
+                gridImageSize: 'square',
+                quickViewtrue: true,
+                showSwatches: true
+              -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        <button
+          type="button"
+          class="gs-404__nav"
+          data-swatch-scroll="next"
+          aria-label="{{ 'general.slider.next_slide' | t }}"
+          hidden
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+            <path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "404",
+  "tag": "section",
+  "class": "gs-404-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "This page went dark" },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "The page you're looking for moved, changed, or never existed. Let's get you back on mission."
+    },
+    { "type": "text", "id": "primary_label", "label": "Primary button text", "default": "Shop all" },
+    { "type": "url", "id": "primary_link", "label": "Primary button link" },
+    { "type": "text", "id": "secondary_label", "label": "Secondary link text", "default": "Back to home" },
+    { "type": "url", "id": "secondary_link", "label": "Secondary link" },
+    { "type": "header", "content": "Recovery products" },
+    {
+      "type": "collection",
+      "id": "rescue_collection",
+      "label": "Collection to show",
+      "info": "Nothing renders if this is empty."
+    },
+    { "type": "text", "id": "rescue_heading", "label": "Heading", "default": "Popular right now" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-4" }
+  ]
+}
+{% endschema %}

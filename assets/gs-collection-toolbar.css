@@ -1,0 +1,146 @@
+/*
+  GS Collection Toolbar
+
+  Filter trigger + sort control above the product grid.
+
+  The sort control is a native <details>. v3 used a div trigger and a
+  panel hidden with an inline style attribute, which meant JavaScript had
+  to write to element.style to reveal it - a class could not win against
+  an inline style.
+*/
+
+.gs-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(var(--borderColor), 0.2);
+}
+
+.gs-toolbar__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--textColor));
+  font-family: var(--headingFont);
+  font-size: var(--smallText);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.gs-toolbar__trigger:focus-visible {
+  outline: 2px solid rgb(var(--textColor));
+  outline-offset: 2px;
+}
+
+/* Hide the default disclosure marker; the icon carries the meaning. */
+.gs-toolbar__sort > summary {
+  list-style: none;
+}
+
+.gs-toolbar__sort > summary::-webkit-details-marker {
+  display: none;
+}
+
+.gs-toolbar__sort {
+  position: relative;
+}
+
+.gs-toolbar__panel {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 5;
+  min-width: 240px;
+  padding: 1rem;
+  background-color: rgb(var(--background));
+  border: 1px solid rgba(var(--borderColor), 0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.gs-toolbar__panel-header {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.gs-toolbar__panel-title {
+  margin: 0;
+  font-family: var(--headingFont);
+  text-transform: uppercase;
+}
+
+.gs-toolbar__close {
+  border: 0;
+  background: transparent;
+  color: rgb(var(--textColor));
+  padding: 4px;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.gs-toolbar__close:focus-visible {
+  outline: 2px solid rgb(var(--textColor));
+  outline-offset: 2px;
+}
+
+.gs-toolbar__options {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gs-toolbar__option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+}
+
+.gs-toolbar__label {
+  color: rgb(var(--textColor));
+  cursor: pointer;
+  font-size: var(--smallText);
+}
+
+.gs-toolbar__option.is-selected .gs-toolbar__label {
+  font-weight: 700;
+}
+
+.gs-toolbar__radio:focus-visible + .gs-toolbar__label {
+  outline: 2px solid rgb(var(--textColor));
+  outline-offset: 2px;
+}
+
+/* On mobile the sort panel becomes a bottom sheet, so the header and its
+   close button are needed. */
+@media screen and (max-width: 749px) {
+  .gs-toolbar__panel {
+    position: fixed;
+    inset: auto 0 0 0;
+    min-width: 0;
+    max-height: 70vh;
+    overflow-y: auto;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .gs-toolbar__panel-header {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  /* Desktop shows the filter sidebar inline, so the trigger is only
+     needed on small screens. */
+  .gs-toolbar__filter {
+    display: none;
+  }
+}

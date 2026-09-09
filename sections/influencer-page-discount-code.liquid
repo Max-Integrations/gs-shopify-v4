@@ -1,0 +1,133 @@
+{% comment %}
+  ==================================================================
+  INFLUENCER DISCOUNT CODE
+  Ported from gs-shopify-v3 sections/influencer-page-discount-code.liquid
+  ==================================================================
+  A single highlighted line carrying the influencer's discount code.
+
+  Setting IDs are byte-for-byte identical to v3.
+
+  ------------------------------------------------------------------
+  THE ALIGNMENT SETTING COULD NOT WORK
+  ------------------------------------------------------------------
+  v3 applied `text-align` to an element with `width: fit-content`. The
+  box shrinks to its content, so there is nothing for the text to align
+  within - the setting had no visible effect on a single line of copy.
+
+  It now aligns the PILL within the section, which is what someone
+  choosing left / center / right actually wants.
+
+  ------------------------------------------------------------------
+  OTHER v3 FIXES
+  ------------------------------------------------------------------
+  - A per-instance <style> block with type="text/css".
+  - `font-family: Engravers MT` emitted unquoted, so that choice never
+    applied. Engravers MT also has no font file in this theme.
+  - Times New Roman offered as a font choice; not a brand font.
+  - The default background was #ff0000 - pure red, not the brand
+    #ab192d. Changed; existing values are untouched since the id is the
+    same.
+
+  NOTE: the code itself is plain text, so a customer has to select and
+  copy it by hand. A copy-to-clipboard button would be a small addition
+  and a real conversion improvement - deliberately not added here, since
+  it changes behaviour rather than porting it.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-influencer.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+
+  case s.influencer_code_text_font
+    when 'Engravers MT'
+      assign code_font = '"Engravers MT", var(--headingFont)'
+    when 'heading'
+      assign code_font = 'var(--headingFont)'
+    else
+      assign code_font = 'var(--bodyFont)'
+  endcase
+
+  case s.influencer_code_text_alignment
+    when 'left'
+      assign justify = 'flex-start'
+    when 'right'
+      assign justify = 'flex-end'
+    else
+      assign justify = 'center'
+  endcase
+-%}
+
+{%- if s.influencer_code_text != blank -%}
+  <div
+    class="gs-influencer-code"
+    style="
+      --inf-code-bg: {{ s.influencer_code_bg_color }};
+      --inf-code-color: {{ s.influencer_code_text_color }};
+      --inf-code-font: {{ code_font }};
+      --inf-code-size: {{ s.influencer_code_text_size_desktop }}px;
+      --inf-code-size-mobile: {{ s.influencer_code_text_size_mobile }}px;
+      --inf-code-radius: {% if s.influencer_code_border_type == 'rounded' %}20px{% else %}0{% endif %};
+      --inf-code-justify: {{ justify }};
+    "
+  >
+    <div class="gs-influencer-code__pill">{{ s.influencer_code_text }}</div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Influencer Discount Code",
+  "tag": "section",
+  "class": "gs-influencer-discount",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "influencer_code_text",
+      "label": "Discount code text",
+      "default": "Use Code XXX for 25% off your first purchase with Grunt Style"
+    },
+    { "type": "color", "id": "influencer_code_bg_color", "label": "Background", "default": "#ab192d" },
+    { "type": "color", "id": "influencer_code_text_color", "label": "Text color", "default": "#ffffff" },
+    {
+      "type": "select",
+      "id": "influencer_code_text_font",
+      "label": "Font",
+      "info": "Engravers MT has no font file in this theme yet and will fall back.",
+      "options": [
+        { "value": "body", "label": "Theme body font" },
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "Engravers MT", "label": "Engravers MT" }
+      ],
+      "default": "body"
+    },
+    { "type": "range", "id": "influencer_code_text_size_desktop", "label": "Size (desktop)", "min": 14, "max": 32, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "influencer_code_text_size_mobile", "label": "Size (mobile)", "min": 11, "max": 28, "step": 1, "unit": "px", "default": 12 },
+    {
+      "type": "select",
+      "id": "influencer_code_text_alignment",
+      "label": "Alignment",
+      "info": "In v3 this had no effect. It now positions the pill within the section.",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "influencer_code_border_type",
+      "label": "Shape",
+      "options": [
+        { "value": "square", "label": "Square" },
+        { "value": "rounded", "label": "Rounded" }
+      ],
+      "default": "square"
+    }
+  ],
+  "presets": [{ "name": "Influencer Discount Code" }],
+  "enabled_on": { "templates": ["*"] }
+}
+{% endschema %}

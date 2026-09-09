@@ -1,0 +1,14 @@
+/*
+  SUPERSEDED - SAFE TO DELETE.
+
+  These rules now live in assets/gs-events.css, which is the shared
+  stylesheet for all five events sections (header, subheader, module,
+  image-grid, full-width-image). Nothing loads this file.
+
+  It exists only because the theme file API available here cannot delete
+  files - themeFilesDelete is blocked as a destructive operation. Remove
+  it from the Shopify admin or with `shopify theme push` from a local
+  checkout.
+
+  Created and orphaned 2026-08-14.
+*/

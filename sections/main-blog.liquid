@@ -1,0 +1,138 @@
+{% comment %}
+  ==================================================================
+  GS MAIN BLOG
+  ==================================================================
+  Blog listing. Optional featured first post, then a grid.
+
+  No JavaScript. Tag filtering is plain links, pagination is Dawn's
+  pagination snippet - both work with scripts disabled and both are
+  crawlable, which matters more here than on any other page type since
+  blog posts exist to be found.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-blog.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+  assign per_page = s.posts_per_page | default: 12
+-%}
+
+<div class="gs-blog color-{{ s.color_scheme }}">
+  <div class="page-width">
+    <header class="gs-blog__header">
+      <h1 class="gs-blog__title">{{ blog.title | escape }}</h1>
+      {%- if s.subtext != blank -%}
+        <p class="gs-blog__subtext">{{ s.subtext }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- if s.show_tags and blog.all_tags.size > 0 -%}
+      {%- comment -%} Plain links, so tags are crawlable and work without JS. {%- endcomment -%}
+      <nav class="gs-blog__tags" aria-label="{{ blog.title | escape }} tags">
+        <a
+          class="gs-blog__tag{% if current_tags == blank %} is-active{% endif %}"
+          href="{{ blog.url }}"
+        >
+          All
+        </a>
+        {%- for tag in blog.all_tags -%}
+          <a
+            class="gs-blog__tag{% if current_tags contains tag %} is-active{% endif %}"
+            href="{{ blog.url }}/tagged/{{ tag | handleize }}"
+          >
+            {{ tag }}
+          </a>
+        {%- endfor -%}
+      </nav>
+    {%- endif -%}
+
+    {%- if blog.articles_count == 0 -%}
+      <p class="gs-blog__empty">No posts yet.</p>
+    {%- else -%}
+      {%- paginate blog.articles by per_page -%}
+        <div class="gs-blog__grid">
+          {%- for article in blog.articles -%}
+            {%- liquid
+              assign is_featured = false
+              if s.feature_first and forloop.first and paginate.current_page == 1 and current_tags == blank
+                assign is_featured = true
+              endif
+            -%}
+
+            <article class="gs-blog__card{% if is_featured %} gs-blog__card--featured{% endif %}">
+              <a class="gs-blog__card-link" href="{{ article.url }}">
+                <div class="gs-blog__card-media">
+                  {%- if article.image -%}
+                    <img
+                      src="{{ article.image | image_url: width: 900 }}"
+                      srcset="
+                        {{ article.image | image_url: width: 450 }} 450w,
+                        {{ article.image | image_url: width: 900 }} 900w,
+                        {{ article.image | image_url: width: 1400 }} 1400w
+                      "
+                      sizes="{% if is_featured %}(min-width: 750px) 66vw, 100vw{% else %}(min-width: 750px) 33vw, 100vw{% endif %}"
+                      alt="{{ article.image.alt | escape | default: article.title | escape }}"
+                      width="{{ article.image.width }}"
+                      height="{{ article.image.height }}"
+                      loading="{% if forloop.index <= 3 %}eager{% else %}lazy{% endif %}"
+                    >
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                </div>
+
+                <div class="gs-blog__card-body">
+                  {%- if s.show_date -%}
+                    <p class="gs-blog__card-meta">
+                      <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+                        {{ article.published_at | date: format: 'date' }}
+                      </time>
+                    </p>
+                  {%- endif -%}
+
+                  <h2 class="gs-blog__card-title">{{ article.title | escape }}</h2>
+
+                  {%- if s.show_excerpt -%}
+                    <p class="gs-blog__card-excerpt">
+                      {{ article.excerpt_or_content | strip_html | truncatewords: 26 }}
+                    </p>
+                  {%- endif -%}
+
+                  <span class="gs-blog__card-cta">Read more</span>
+                </div>
+              </a>
+            </article>
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          {%- render 'pagination', paginate: paginate -%}
+        {%- endif -%}
+      {%- endpaginate -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Blog",
+  "tag": "section",
+  "class": "gs-blog-section",
+  "settings": [
+    { "type": "text", "id": "subtext", "label": "Subtext" },
+    { "type": "range", "id": "posts_per_page", "label": "Posts per page", "min": 6, "max": 24, "step": 3, "default": 12 },
+    {
+      "type": "checkbox",
+      "id": "feature_first",
+      "label": "Feature the first post",
+      "info": "Only on page one, and only when no tag is applied.",
+      "default": true
+    },
+    { "type": "checkbox", "id": "show_tags", "label": "Show tag filter", "default": true },
+    { "type": "checkbox", "id": "show_date", "label": "Show date", "default": true },
+    { "type": "checkbox", "id": "show_excerpt", "label": "Show excerpt", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,165 @@
+/*
+  ==================================================================
+  GS Cart Add-ons
+  ==================================================================
+  Free shipping progress, gift wrap and the Foundation round-up.
+
+  The progress bar has no JavaScript - Shopify re-renders the cart on
+  every quantity change, so a Liquid-computed width is always correct.
+  v3 used a dedicated cart-shipping-bar.js for the same result.
+
+  These rules serve both the /cart page section and the cart drawer,
+  which share snippets/gs-free-shipping-bar.liquid. The drawer variant
+  adds .gs-cart-ship--compact for tighter spacing in a narrow panel.
+  ==================================================================
+*/
+
+.gs-cart-addons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 0;
+}
+
+/* ---- Free shipping ---- */
+.gs-cart-ship__message {
+  margin: 0 0 8px;
+  font-size: var(--smallText);
+  text-align: center;
+  color: rgb(var(--textColor));
+}
+
+.gs-cart-ship__message strong {
+  color: rgba(var(--line-color), 1);
+}
+
+.gs-cart-ship__track {
+  height: 6px;
+  border-radius: 3px;
+  background-color: rgba(var(--borderColor), 0.2);
+  overflow: hidden;
+}
+
+.gs-cart-ship__fill {
+  display: block;
+  height: 100%;
+  width: var(--gs-ship-progress, 0%);
+  border-radius: 3px;
+  background-color: rgba(var(--line-color), 1);
+  transition: width 0.3s ease;
+}
+
+.gs-cart-ship__track.is-complete .gs-cart-ship__fill {
+  background-color: rgb(var(--success));
+}
+
+/* Drawer variant - narrower panel, less vertical room. */
+.gs-cart-ship--compact {
+  padding: 0 0 12px;
+}
+
+.gs-cart-ship--compact .gs-cart-ship__message {
+  margin-bottom: 6px;
+  font-size: var(--xsmallText);
+}
+
+.gs-cart-ship--compact .gs-cart-ship__track {
+  height: 4px;
+}
+
+/* ---- Add-on rows ---- */
+.gs-cart-addon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid rgba(var(--borderColor), 0.25);
+}
+
+.gs-cart-addon__body {
+  min-width: 0;
+}
+
+.gs-cart-addon__title {
+  margin: 0;
+  font-family: var(--headingFont);
+  font-size: var(--smallText);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgb(var(--textColor));
+}
+
+.gs-cart-addon__price {
+  margin-left: 0.5em;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.gs-cart-addon__desc {
+  margin: 4px 0 0;
+  font-size: var(--xsmallText);
+  color: rgba(var(--textColor), 0.7);
+}
+
+.gs-cart-addon__form {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.gs-cart-addon__button {
+  padding: 0.55em 1.4em;
+  border: 1px solid rgb(var(--textColor));
+  background-color: transparent;
+  color: rgb(var(--textColor));
+  font-family: var(--headingFont);
+  font-size: var(--xsmallText);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.gs-cart-addon__button:hover {
+  background-color: rgb(var(--textColor));
+  color: rgb(var(--background));
+}
+
+.gs-cart-addon__button.is-added {
+  border-color: rgba(var(--borderColor), 0.4);
+  opacity: 0.75;
+}
+
+.gs-cart-addon__button[disabled] {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.gs-cart-addon__button:focus-visible {
+  outline: 2px solid rgb(var(--textColor));
+  outline-offset: 2px;
+}
+
+.gs-cart-addon--donation {
+  border-color: rgba(var(--line-color), 0.5);
+}
+
+/* Stack the row on narrow screens rather than squeezing the button. */
+@media screen and (max-width: 480px) {
+  .gs-cart-addon {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .gs-cart-addon__button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-cart-ship__fill {
+    transition: none;
+  }
+}

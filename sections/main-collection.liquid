@@ -1,0 +1,803 @@
+{% comment %}
+  ==================================================================
+  MAIN COLLECTION
+  Ported from gs-shopify-v3 sections/main-collection.liquid (50.6 KB)
+  ==================================================================
+  Drives 30 collection templates plus templates/collection.json.
+  Filtering and sorting render through gs-collection-toolbar and
+  gs-collection-filters, with behaviour in gs-collection-filter.js.
+
+  ------------------------------------------------------------------
+  BLOCK MODEL: v3's IS PRESERVED, DAWN'S IS NOT ADOPTED
+  ------------------------------------------------------------------
+  Dawn configures the product card through section settings. v3 does it
+  through BLOCKS - product-card-title, product-card-price,
+  product-card-reviews, product-card-swatches, product-card-quick-view -
+  where a block's presence is the toggle.
+
+  30 collection templates carry those blocks with settings bound to
+  them, so the block types are kept and the templates migrate
+  mechanically through migrate-template-json.py.
+
+  ONE CHANGE: v3 passed the whole block array into the card as
+  `cardBlocks` and let the card introspect it. This section derives
+  explicit booleans instead, which is why gs-card-product can also serve
+  featured-collections, countdown, search and 404.
+
+  ------------------------------------------------------------------
+  REVISION 2026-08-13 - RAW CSS WAS RENDERING AS PAGE CONTENT
+  ------------------------------------------------------------------
+  The promotion tile emitted, inside the grid cell div:
+
+      {{ raw }}{{ block.settings.heading_font_family | font_face: ... }}{{ endraw }}
+
+  `font_face` outputs a bare @font-face rule with NO <style> wrapper, so
+  on any collection page carrying a promotion block that CSS rendered as
+  literal text in the body. v3 had it inside a {% raw %}{% style %}{% endraw %} block; the
+  wrapper was lost when this section was restructured.
+
+  Both calls are now hoisted into one {% raw %}{% style %}{% endraw %} block before the grid -
+  valid CSS, and emitted once rather than once per promo tile.
+
+  ------------------------------------------------------------------
+  DEBUG CODE SHIPPED TO PRODUCTION IN v3
+  ------------------------------------------------------------------
+  1. A <script> calling console.log for EVERY ACTIVE FILTER VALUE, on
+     every filtered collection page.
+  2. console.log('testing mutation observer') in collection_bg_image.
+  3. A CSS class literally named `.test` for the background overlay.
+  4. The empty-state icon was the literal HTML comment "your empty svg
+     unchanged", so that state has never had an icon.
+
+  ------------------------------------------------------------------
+  GLOBAL OBJECT SHADOWED IN v3
+  ------------------------------------------------------------------
+  v3 assigned block.settings.collectionlist to a variable named
+  `collections`, overwriting Shopify's global collections drop for the
+  rest of the template, and its loop variable `collection` shadowed the
+  page's own collection. Renamed to sub_collection_list / sub_collection.
+
+  ------------------------------------------------------------------
+  OTHER v3 FIXES
+  ------------------------------------------------------------------
+  - `section.blocks` passed to two snippets as a POSITIONAL argument;
+    Liquid's render takes only named arguments.
+  - collection_bg_image sat inside the block loop AND re-looped every
+    block, so its script could be emitted once per block. Each copy
+    attached a MutationObserver to .product-card-wrapper with
+    subtree:true, which on firing created a SECOND observer on the Nosto
+    container. Now a CSS background - verify placement if Nosto is live.
+  - id="CollectionProductsParent" was static and would collide.
+  - The trailing style block looped ALL blocks emitting .promotion_{id}
+    rules, including for product-grid and select_collection.
+  - Promotion font defaults were Poppins and Avenir Next, neither a
+    brand font. Defaults changed; existing template values untouched.
+  - preload + stylesheet_tag on a render-blocking sheet.
+
+  All schema setting IDs are byte-for-byte identical to v3.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-main-collection.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+
+  assign banner_image = ''
+  if collection.image != blank
+    assign banner_image = collection.image
+  elsif s.banner_image != blank
+    assign banner_image = s.banner_image
+  endif
+
+  assign sort_by = collection.sort_by | default: collection.default_sort_by
+
+  assign sidebar_enabled = false
+  if collection.all_products_count > 0
+    if s.enable_filtering and collection.filters.size > 0
+      assign sidebar_enabled = true
+    endif
+    if s.enable_sorting
+      assign sidebar_enabled = true
+    endif
+  endif
+
+  # Card configuration derived from block presence.
+  assign grid_block = section.blocks | where: 'type', 'product-grid' | first
+  assign title_block = section.blocks | where: 'type', 'product-card-title' | first
+  assign price_block = section.blocks | where: 'type', 'product-card-price' | first
+  assign swatch_block = section.blocks | where: 'type', 'product-card-swatches' | first
+  assign qv_block = section.blocks | where: 'type', 'product-card-quick-view' | first
+  assign promotion_blocks = section.blocks | where: 'type', 'promotion'
+  assign sub_collection_block = section.blocks | where: 'type', 'select_collection' | first
+  assign bg_image_block = section.blocks | where: 'type', 'collection_bg_image' | first
+
+  assign columns_desktop = grid_block.settings.columns_desktop | default: 4
+  assign columns_mobile = grid_block.settings.columns_mobile | default: 2
+
+  assign show_swatches = false
+  if swatch_block != blank
+    assign show_swatches = true
+  endif
+  assign show_quickview = false
+  if qv_block != blank
+    assign show_quickview = true
+  endif
+
+  # Banner visibility
+  assign show_overlay_desc = false
+  assign show_overlay_heading = false
+  assign show_banner = false
+  if s.show_description and collection.description != blank and s.description_position == 'on_overlay'
+    assign show_overlay_desc = true
+    assign show_banner = true
+  endif
+  if s.overlay_text
+    assign show_overlay_heading = true
+    assign show_banner = true
+  endif
+  if s.collection_image and banner_image != ''
+    assign show_banner = true
+  endif
+-%}
+
+{%- comment -%}
+  Promotion fonts. font_face emits a bare @font-face rule, so it MUST be
+  inside a style block - see the header note. Hoisted here so it is
+  emitted once rather than once per promo tile.
+{%- endcomment -%}
+{%- if promotion_blocks.size > 0 -%}
+  {% style %}
+    {%- for promo in promotion_blocks -%}
+      {{ promo.settings.heading_font_family | font_face: font_display: 'swap' }}
+      {{ promo.settings.desc_font_family | font_face: font_display: 'swap' }}
+    {%- endfor -%}
+  {% endstyle %}
+{%- endif -%}
+
+<div
+  class="gs-collection color-{{ s.color_scheme }}{% if s.enable_gradient %} gradient{% endif %}{% if bg_image_block.settings.collection_bg_image != blank %} gs-collection--bg-image{% endif %}"
+  id="GsCollection-{{ section.id }}"
+  style="
+    --padding-top: {{ s.top_space_desktop }}px;
+    --padding-bottom: {{ s.bottom_space_desktop }}px;
+    --padding-top-mobile: {{ s.top_space_mobile }}px;
+    --padding-bottom-mobile: {{ s.bottom_space_mobile }}px;
+    --media-height: {{ s.banner_height_desktop }};
+    --media-height-mobile: {{ s.banner_height_mobile }};
+    --banner-overlay-bg: {{ s.background_opacity_color }};
+    --banner-overlay-opacity: {{ s.background_opacity }};
+    --pageBannerBg: {{ s.background_color }};
+    --desktopColumns: {{ columns_desktop }};
+    --mobileColumns: {{ columns_mobile }};
+    {%- if s.text_color != blank and s.text_color != 'rgba(0,0,0,0)' -%}
+      --banner-overlay-text: {{ s.text_color }};
+    {%- else -%}
+      --banner-overlay-text: rgba(var(--textColor), 1);
+    {%- endif -%}
+    {%- if grid_block.settings.product_card_bg_color != blank -%}
+      --cardBackgroundOverride: {{ grid_block.settings.product_card_bg_color }};
+    {%- endif -%}
+    {%- if title_block.settings.product_card_title_color != blank -%}
+      --cardTitleColor: {{ title_block.settings.product_card_title_color }};
+    {%- endif -%}
+    {%- if price_block.settings.product_card_price_color != blank -%}
+      --cardPriceColor: {{ price_block.settings.product_card_price_color }};
+    {%- endif -%}
+    {%- if bg_image_block.settings.collection_bg_image != blank -%}
+      --collectionBgImage: url('{{ bg_image_block.settings.collection_bg_image | image_url: width: 2000 }}');
+    {%- endif -%}
+  "
+>
+  {%- if show_banner -%}
+    <div class="gs-collection__banner{% if show_overlay_heading or show_overlay_desc %} overlay-text{% endif %}">
+      {%- if s.collection_image and banner_image != '' -%}
+        <div class="gs-collection__banner-image">
+          <img
+            src="{{ banner_image | image_url: width: 1500 }}"
+            srcset="{{ banner_image | image_url: width: 750 }} 750w, {{ banner_image | image_url: width: 1500 }} 1500w, {{ banner_image | image_url: width: 2000 }} 2000w"
+            sizes="100vw"
+            alt="{{ banner_image.alt | escape | default: collection.title | escape }}"
+            width="{{ banner_image.width }}"
+            height="{{ banner_image.height }}"
+            loading="eager"
+            fetchpriority="high"
+          >
+        </div>
+      {%- endif -%}
+
+      {%- if show_overlay_heading or show_overlay_desc -%}
+        <div class="gs-collection__banner-content page-width {{ s.overlay_content_position }}">
+          {%- if show_overlay_heading -%}
+            <{{ s.tag }} class="{{ s.heading_size }} gs-collection__heading">{{ collection.title }}</{{ s.tag }}>
+          {%- endif -%}
+          {%- if show_overlay_desc -%}
+            <div class="gs-collection__description rte">{{ collection.description }}</div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="gs-collection__wrapper{% unless sidebar_enabled %} gs-collection__wrapper--no-sidebar{% endunless %}">
+
+    {%- if sub_collection_block != blank and sub_collection_block.settings.collectionlist != blank -%}
+      {%- assign sub_collection_list = sub_collection_block.settings.collectionlist -%}
+      <div class="gs-subcollections" {{ sub_collection_block.shopify_attributes }}>
+        <div class="gs-subcollections__scroller" data-swatch-scroller>
+          <button type="button" class="gs-subcollections__nav" data-swatch-scroll="prev" aria-label="{{ 'general.slider.previous_slide' | t }}" hidden>
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="gs-subcollections__track" data-swatch-track>
+            {%- for sub_collection in sub_collection_list -%}
+              {%- liquid
+                assign sub_image = sub_collection.image
+                unless sub_image
+                  assign sub_image = sub_collection.products.first.featured_image
+                endunless
+              -%}
+              <li class="gs-subcollections__item">
+                <a class="gs-subcollections__card" href="{{ sub_collection.url }}">
+                  <div class="media" style="--imageRatio: 100%;">
+                    {%- if sub_image -%}
+                      <img
+                        src="{{ sub_image | image_url: width: 500 }}"
+                        srcset="{{ sub_image | image_url: width: 300 }} 300w, {{ sub_image | image_url: width: 500 }} 500w"
+                        sizes="(min-width: 750px) 20vw, 45vw"
+                        alt="{{ sub_image.alt | escape | default: sub_collection.title | escape }}"
+                        width="{{ sub_image.width }}"
+                        height="{{ sub_image.height }}"
+                        loading="lazy"
+                      >
+                    {%- else -%}
+                      {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- endif -%}
+                  </div>
+                  <p class="gs-subcollections__title">{{ sub_collection.title }}</p>
+                  <span class="gs-subcollections__link">{{ 'sections.collection_template.shop_now' | t }}</span>
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+          <button type="button" class="gs-subcollections__nav" data-swatch-scroll="next" aria-label="{{ 'general.slider.next_slide' | t }}" hidden>
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if s.show_header -%}
+      {%- liquid
+        assign show_above_desc = false
+        if s.show_description and collection.description != blank and s.description_position == 'above_products'
+          assign show_above_desc = true
+        endif
+      -%}
+      {%- if s.overlay_text == false or show_above_desc -%}
+        <div class="gs-collection__header page-width {{ s.overlay_content_position }}">
+          {%- if s.overlay_text == false -%}
+            <{{ s.tag }} class="{{ s.heading_size }} gs-collection__heading">{{ collection.title }}</{{ s.tag }}>
+          {%- endif -%}
+          {%- if show_above_desc -%}
+            <div class="gs-collection__description rte">{{ collection.description }}</div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if sidebar_enabled -%}
+      {%- render 'gs-collection-toolbar', section: section, sort_by: sort_by -%}
+      <div class="gs-collection__sidebar">
+        {%- render 'gs-collection-filters', section: section, sort_by: sort_by -%}
+      </div>
+    {%- endif -%}
+
+    <div class="gs-collection__results" id="GsCollectionProducts-{{ section.id }}" data-collection-products>
+      <div class="gs-collection__count">
+        <span class="total_products">
+          {%- if collection.products_count == 1 -%}
+            {{ 'sections.collection_template.product_count_simple.one' | t: count: collection.products_count }}
+          {%- else -%}
+            {{ 'sections.collection_template.product_count_simple.other' | t: count: collection.products_count }}
+          {%- endif -%}
+        </span>
+      </div>
+
+      {%- liquid
+        assign has_active = false
+        for filter in collection.filters
+          if filter.active_values.size > 0
+            assign has_active = true
+          endif
+          if filter.type == 'price_range'
+            if filter.min_value.value != null or filter.max_value.value != null
+              assign has_active = true
+            endif
+          endif
+        endfor
+      -%}
+
+      {%- if has_active -%}
+        <ul class="gs-collection__applied list-unstyled" data-products-applied-filter>
+          {%- for filter in collection.filters -%}
+            {%- for value in filter.active_values -%}
+              <li class="gs-collection__applied-item">
+                <a class="gs-collection__applied-link" href="{{ value.url_to_remove }}">
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M8.99998 0L9.99998 0.999969L0.999998 9.99969L0 8.99972L8.99998 0Z" fill="currentColor"/>
+                    <path d="M2.39302e-05 1.00028L1.00002 0.000307701L10 9.00003L9 10L2.39302e-05 1.00028Z" fill="currentColor"/>
+                  </svg>
+                  {{- value.label | escape -}}
+                </a>
+              </li>
+            {%- endfor -%}
+
+            {%- if filter.type == 'price_range' -%}
+              {%- if filter.min_value.value != null or filter.max_value.value != null -%}
+                <li class="gs-collection__applied-item">
+                  <a class="gs-collection__applied-link" href="{{ filter.url_to_remove }}">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false">
+                      <path d="M8.99998 0L9.99998 0.999969L0.999998 9.99969L0 8.99972L8.99998 0Z" fill="currentColor"/>
+                      <path d="M2.39302e-05 1.00028L1.00002 0.000307701L10 9.00003L9 10L2.39302e-05 1.00028Z" fill="currentColor"/>
+                    </svg>
+                    {%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}
+                    &ndash;
+                    {%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
+                  </a>
+                </li>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          <li class="gs-collection__applied-item">
+            <a class="gs-collection__applied-link gs-collection__applied-link--clear" href="{{ collection.url }}">
+              {{ 'sections.collection_template.clear_all' | t }}
+            </a>
+          </li>
+        </ul>
+      {%- endif -%}
+
+      {%- if collection.products_count == 0 -%}
+        <div class="gs-collection__empty">
+          <svg class="gs-collection__empty-icon" viewBox="0 0 48 48" width="48" height="48" aria-hidden="true" focusable="false">
+            <circle cx="21" cy="21" r="14" fill="none" stroke="currentColor" stroke-width="3"/>
+            <path d="M31 31 L43 43" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <h2 class="gs-collection__empty-heading">
+            {{ 'sections.collection_template.empty' | t }}
+          </h2>
+          {%- if has_active -%}
+            <a class="button" href="{{ collection.url }}">
+              {{ 'sections.collection_template.clear_all' | t }}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        {%- paginate collection.products by s.products_per_page -%}
+          <div class="gs-collection__grid">
+            {%- for product in collection.products -%}
+              {%- liquid
+                assign position = forloop.index
+                assign promo_here = blank
+                for promo in promotion_blocks
+                  if position == promo.settings.custom_content_position and paginate.current_page == promo.settings.custom_content_page
+                    assign promo_here = promo
+                    break
+                  endif
+                endfor
+              -%}
+
+              {%- if promo_here != blank -%}
+                <div
+                  class="gs-collection__cell gs-promo gs-promo--w{{ promo_here.settings.content_width_desktop }} gs-promo--mw{{ promo_here.settings.content_width_mobile }}"
+                  style="
+                    --promo-overlay: {{ promo_here.settings.background_color | color_modify: 'alpha', promo_here.settings.background_opacity }};
+                    --promo-heading-color: {{ promo_here.settings.heading_color }};
+                    --promo-heading-weight: {{ promo_here.settings.heading_font_weight }};
+                    --promo-heading-size: {{ promo_here.settings.heading_font_size_desktop }}px;
+                    --promo-heading-size-mobile: {{ promo_here.settings.heading_font_size_mobile }}px;
+                    --promo-heading-font: {{ promo_here.settings.heading_font_family.family }}, {{ promo_here.settings.heading_font_family.fallback_families }};
+                    --promo-desc-color: {{ promo_here.settings.desc_color }};
+                    --promo-desc-weight: {{ promo_here.settings.desc_font_weight }};
+                    --promo-desc-size: {{ promo_here.settings.desc_font_size_desktop }}px;
+                    --promo-desc-size-mobile: {{ promo_here.settings.desc_font_size_mobile }}px;
+                    --promo-desc-font: {{ promo_here.settings.desc_font_family.family }}, {{ promo_here.settings.desc_font_family.fallback_families }};
+                  "
+                  {{ promo_here.shopify_attributes }}
+                >
+                  {%- if promo_here.settings.link != blank -%}
+                    <a href="{{ promo_here.settings.link }}" class="gs-promo__card">
+                  {%- else -%}
+                    <div class="gs-promo__card">
+                  {%- endif -%}
+
+                  <div class="gs-promo__media">
+                    {%- if promo_here.settings.custom_image != blank -%}
+                      {%- assign pimg = promo_here.settings.custom_image -%}
+                      <img
+                        src="{{ pimg | image_url: width: 750 }}"
+                        srcset="{{ pimg | image_url: width: 500 }} 500w, {{ pimg | image_url: width: 750 }} 750w, {{ pimg | image_url: width: 1100 }} 1100w"
+                        sizes="(min-width: 990px) 25vw, 50vw"
+                        alt="{{ pimg.alt | escape }}"
+                        width="{{ pimg.width }}"
+                        height="{{ pimg.height }}"
+                        loading="lazy"
+                      >
+                    {%- else -%}
+                      {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- endif -%}
+                  </div>
+
+                  {%- if promo_here.settings.heading != blank or promo_here.settings.description != blank -%}
+                    <div class="gs-promo__content {{ promo_here.settings.heading_alignment }}">
+                      {%- if promo_here.settings.heading != blank -%}
+                        <h2 class="gs-promo__heading">{{ promo_here.settings.heading }}</h2>
+                      {%- endif -%}
+                      {%- if promo_here.settings.description != blank -%}
+                        <p class="gs-promo__desc rte">{{ promo_here.settings.description }}</p>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+
+                  {%- if promo_here.settings.link != blank -%}</a>{%- else -%}</div>{%- endif -%}
+                </div>
+              {%- endif -%}
+
+              <div class="gs-collection__cell">
+                {%- render 'gs-card-product',
+                  cardProduct: product,
+                  cycleIndex: forloop.index,
+                  gridImageSize: s.grid_image_size,
+                  showCount: true,
+                  compareTrue: true,
+                  quickViewtrue: show_quickview,
+                  showSwatches: show_swatches
+                -%}
+              </div>
+            {%- endfor -%}
+          </div>
+
+          {%- if s.load_type == 'infinite' and paginate.next -%}
+            <div class="gs-collection__more" data-scroll>
+              <a href="{{ paginate.next.url }}" aria-label="{{ 'general.accessibility.load_more' | t }}"></a>
+              <div class="gs-collection__spinner hidden" role="status" aria-live="polite"></div>
+            </div>
+          {%- elsif s.load_type == 'load_more' and paginate.next -%}
+            <div class="gs-collection__more" data-load-more>
+              <a class="button" href="{{ paginate.next.url }}" data-products-load>
+                {{ 'sections.collection_template.load_more' | t }}
+              </a>
+              <div class="gs-collection__spinner hidden" role="status" aria-live="polite"></div>
+            </div>
+          {%- elsif s.load_type == 'page_number' and paginate.pages > 1 -%}
+            {%- render 'pagination', paginate: paginate -%}
+          {%- endif -%}
+        {%- endpaginate -%}
+      {%- endif -%}
+
+      {%- if s.show_description and collection.description != blank and s.description_position == 'below_products' -%}
+        <div class="gs-collection__description gs-collection__description--below page-width rte">
+          {{ collection.description }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection",
+  "tag": "section",
+  "class": "collection-box",
+  "settings": [
+    { "type": "header", "content": "General" },
+    {
+      "type": "select",
+      "id": "overlay_content_position",
+      "label": "Overlay content position",
+      "default": "text-center",
+      "options": [
+        { "value": "text-left", "label": "Left" },
+        { "value": "text-center", "label": "Center" },
+        { "value": "text-right", "label": "Right" }
+      ]
+    },
+    { "type": "checkbox", "id": "overlay_text", "label": "Show title over the banner", "default": true },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h3",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "tag",
+      "label": "Heading tag",
+      "info": "The HTML tag used, for SEO and accessibility.",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" },
+        { "value": "div", "label": "div" },
+        { "value": "span", "label": "span" },
+        { "value": "p", "label": "p" }
+      ]
+    },
+    { "type": "checkbox", "id": "show_header", "label": "Show header above products", "default": true },
+    { "type": "checkbox", "id": "show_description", "label": "Show collection description", "default": false },
+    {
+      "type": "select",
+      "id": "description_position",
+      "label": "Description position",
+      "default": "on_overlay",
+      "options": [
+        { "value": "above_products", "label": "Above products" },
+        { "value": "below_products", "label": "Below products" },
+        { "value": "on_overlay", "label": "On the banner" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "collection_image",
+      "label": "Show banner image",
+      "info": "Uses the collection's own image, falling back to the image below.",
+      "default": false
+    },
+    { "type": "image_picker", "id": "banner_image", "label": "Fallback banner image" },
+    {
+      "type": "select",
+      "id": "banner_height_desktop",
+      "label": "Banner height (desktop)",
+      "default": "200px",
+      "options": [
+        { "value": "200px", "label": "Small" },
+        { "value": "300px", "label": "Medium" },
+        { "value": "550px", "label": "Large" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "banner_height_mobile",
+      "label": "Banner height (mobile)",
+      "default": "200px",
+      "options": [
+        { "value": "100px", "label": "Small" },
+        { "value": "200px", "label": "Medium" },
+        { "value": "350px", "label": "Large" }
+      ]
+    },
+    { "type": "header", "content": "Product grid" },
+    { "type": "range", "id": "products_per_page", "label": "Products per page", "min": 8, "max": 28, "step": 1, "default": 16 },
+    {
+      "type": "select",
+      "id": "grid_image_size",
+      "label": "Image shape",
+      "default": "square",
+      "options": [
+        { "value": "auto", "label": "Natural" },
+        { "value": "landscape", "label": "Landscape" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "square", "label": "Square" }
+      ]
+    },
+    { "type": "header", "content": "Pagination" },
+    {
+      "type": "select",
+      "id": "load_type",
+      "label": "Pagination type",
+      "default": "page_number",
+      "options": [
+        { "value": "page_number", "label": "Page numbers" },
+        { "value": "load_more", "label": "Load more button" },
+        { "value": "infinite", "label": "Infinite scroll" }
+      ]
+    },
+    { "type": "header", "content": "Filtering and sorting" },
+    { "type": "checkbox", "id": "enable_filtering", "label": "Enable filtering", "default": true },
+    { "type": "checkbox", "id": "open_filtering", "label": "Open filters by default", "default": true },
+    { "type": "checkbox", "id": "open_all_filtering", "label": "Expand all filter groups", "default": false },
+    { "type": "checkbox", "id": "enable_sorting", "label": "Enable sorting", "default": true },
+    { "type": "header", "content": "Colors" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "checkbox", "id": "enable_gradient", "label": "Use gradient background", "default": false },
+    { "type": "color", "id": "background_color", "label": "Banner background", "info": "Used when no banner image is set." },
+    { "type": "color", "id": "text_color", "label": "Banner text color" },
+    { "type": "header", "content": "Banner overlay" },
+    { "type": "color", "id": "background_opacity_color", "label": "Overlay color", "default": "#515253" },
+    { "type": "range", "id": "background_opacity", "label": "Overlay opacity", "default": 0, "min": 0, "max": 1, "step": 0.1 },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "top_space_desktop", "label": "Top padding (desktop)", "default": 0, "min": 0, "max": 150, "step": 5, "unit": "px" },
+    { "type": "range", "id": "bottom_space_desktop", "label": "Bottom padding (desktop)", "default": 70, "min": 0, "max": 150, "step": 5, "unit": "px" },
+    { "type": "range", "id": "top_space_mobile", "label": "Top padding (mobile)", "default": 40, "min": 0, "max": 100, "step": 5, "unit": "px" },
+    { "type": "range", "id": "bottom_space_mobile", "label": "Bottom padding (mobile)", "default": 40, "min": 0, "max": 100, "step": 5, "unit": "px" }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    {
+      "type": "product-grid",
+      "name": "Product Grid",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "columns_desktop",
+          "label": "Columns (desktop)",
+          "default": "4",
+          "options": [
+            { "value": "3", "label": "3" },
+            { "value": "4", "label": "4" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "columns_mobile",
+          "label": "Columns (mobile)",
+          "default": "2",
+          "options": [
+            { "value": "1", "label": "1" },
+            { "value": "2", "label": "2" }
+          ]
+        },
+        { "type": "color", "id": "product_card_bg_color", "label": "Product card background", "default": "#FFFFFF" }
+      ]
+    },
+    {
+      "type": "product-card-title",
+      "name": "Product Card Title",
+      "limit": 1,
+      "settings": [
+        { "type": "color", "id": "product_card_title_color", "label": "Color", "default": "#000000" }
+      ]
+    },
+    { "type": "product-card-reviews", "name": "Product Card Reviews", "limit": 1 },
+    {
+      "type": "product-card-price",
+      "name": "Product Card Price",
+      "limit": 1,
+      "settings": [
+        { "type": "color", "id": "product_card_price_color", "label": "Color", "default": "#000000" }
+      ]
+    },
+    { "type": "product-card-swatches", "name": "Product Card Swatches", "limit": 1 },
+    {
+      "type": "product-card-quick-view",
+      "name": "Product Card Quick View",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "product_card_quick_view_button_text", "label": "Button text", "default": "Quick Add" },
+        { "type": "color", "id": "product_card_title_color", "label": "Color", "default": "#000000" }
+      ]
+    },
+    {
+      "type": "select_collection",
+      "name": "Sub-collections",
+      "limit": 1,
+      "settings": [
+        { "type": "collection_list", "id": "collectionlist", "label": "Collections" }
+      ]
+    },
+    {
+      "type": "promotion",
+      "name": "Promotion",
+      "settings": [
+        { "type": "range", "id": "custom_content_position", "label": "Insert before product #", "default": 2, "min": 1, "max": 28, "step": 1 },
+        { "type": "range", "id": "custom_content_page", "label": "On page", "default": 1, "min": 1, "max": 8, "step": 1 },
+        {
+          "type": "select",
+          "id": "content_width_desktop",
+          "label": "Column width (desktop)",
+          "default": "1",
+          "options": [
+            { "value": "1", "label": "1 column" },
+            { "value": "2", "label": "2 columns" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "content_width_mobile",
+          "label": "Column width (mobile)",
+          "default": "1",
+          "options": [
+            { "value": "1", "label": "1 column" },
+            { "value": "2", "label": "Full width" }
+          ]
+        },
+        { "type": "image_picker", "id": "custom_image", "label": "Image" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "color", "id": "background_color", "label": "Overlay color", "default": "#B3B3B3" },
+        { "type": "range", "id": "background_opacity", "label": "Overlay opacity", "default": 0.6, "min": 0, "max": 1, "step": 0.1 },
+        { "type": "header", "content": "Heading" },
+        { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Heading here" },
+        {
+          "type": "select",
+          "id": "heading_alignment",
+          "label": "Alignment",
+          "default": "text-left",
+          "options": [
+            { "value": "text-left", "label": "Left" },
+            { "value": "text-center", "label": "Center" },
+            { "value": "text-right", "label": "Right" }
+          ]
+        },
+        { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#FFFFFF" },
+        {
+          "type": "font_picker",
+          "id": "heading_font_family",
+          "label": "Heading font",
+          "info": "v3 defaulted to Poppins, which is not a brand font.",
+          "default": "roboto_condensed_n7"
+        },
+        {
+          "type": "select",
+          "id": "heading_font_weight",
+          "label": "Heading weight",
+          "default": "400",
+          "options": [
+            { "value": "300", "label": "Light" },
+            { "value": "400", "label": "Regular" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "SemiBold" },
+            { "value": "700", "label": "Bold" }
+          ]
+        },
+        { "type": "range", "id": "heading_font_size_desktop", "label": "Heading size (desktop)", "unit": "px", "default": 32, "min": 16, "max": 72, "step": 1 },
+        { "type": "range", "id": "heading_font_size_mobile", "label": "Heading size (mobile)", "unit": "px", "default": 22, "min": 12, "max": 56, "step": 1 },
+        { "type": "header", "content": "Description" },
+        { "type": "inline_richtext", "id": "description", "label": "Description" },
+        {
+          "type": "font_picker",
+          "id": "desc_font_family",
+          "label": "Description font",
+          "info": "v3 defaulted to Avenir Next, which is not a brand font.",
+          "default": "roboto_condensed_n4"
+        },
+        { "type": "color", "id": "desc_color", "label": "Description color", "default": "#FFFFFF" },
+        {
+          "type": "select",
+          "id": "desc_font_weight",
+          "label": "Description weight",
+          "default": "400",
+          "options": [
+            { "value": "300", "label": "Light" },
+            { "value": "400", "label": "Regular" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "SemiBold" },
+            { "value": "700", "label": "Bold" }
+          ]
+        },
+        { "type": "range", "id": "desc_font_size_desktop", "label": "Description size (desktop)", "unit": "px", "default": 16, "min": 12, "max": 32, "step": 1 },
+        { "type": "range", "id": "desc_font_size_mobile", "label": "Description size (mobile)", "unit": "px", "default": 14, "min": 10, "max": 24, "step": 1 }
+      ]
+    },
+    {
+      "type": "collection_bg_image",
+      "name": "Collection BG Image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "collection_bg_image",
+          "label": "Background image",
+          "info": "v3 injected this with nested MutationObservers targeting the Nosto container. Now a CSS background - verify placement if Nosto is still in use."
+        }
+      ]
+    }
+  ],
+  "default": {
+    "settings": {},
+    "blocks": [{ "type": "@app" }, { "type": "product-grid" }]
+  }
+}
+{% endschema %}

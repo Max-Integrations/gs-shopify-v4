@@ -1,0 +1,394 @@
+{% comment %}
+  ==================================================================
+  GS CARD PRODUCT
+  Ported from gs-shopify-v3 snippets/product-card-grid.liquid (18.4 KB)
+  ==================================================================
+  NAMED gs-card-product, NOT card-product. Dawn ships its own
+  snippets/card-product.liquid that its native sections depend on.
+
+  USAGE: render 'gs-card-product', cardProduct: product
+
+  OPTIONAL PARAMS:
+    gridImageSize   'landscape' | 'square' | 'portrait' | nil (natural)
+    cycleIndex      integer, drives eager/fetchpriority for the first 4
+    hideContent     true to render image only
+    complementary   true when used in a cross-sell context
+    quickViewtrue   true to allow the quick-view affordance
+    compareTrue     true to allow the compare checkbox
+    showCount       true to allow the countdown timer
+    showSwatches    true to render colourway swatches
+    enableQuickAdd  true for the size-picker overlay
+
+  ------------------------------------------------------------------
+  REVISION 2026-08-14 - EVEN CARDS, AND A REAL QUICK VIEW
+  ------------------------------------------------------------------
+  1. THE RATING NOW OCCUPIES A FIXED SLOT.
+     gs-reviews renders nothing for a product with no reviews, so a card
+     with a rating was one line taller than one without and the buttons
+     below sat at different heights. The rating lives in a slot with a
+     reserved height, so every card's content is the same shape and the
+     buttons line up without needing `margin-top: auto` to force it.
+
+  2. THE QUICK VIEW BUTTON DOES SOMETHING NOW.
+     It said QUICK VIEW and was a plain link to the product page - the
+     modal was never ported from v3. It still IS a real link, so it works
+     with JavaScript off and is crawlable, but it now carries the product
+     handle and gs-quick-view.js intercepts the click to open a dialog.
+
+  ------------------------------------------------------------------
+  EARLIER: MOST OF THE CARD WAS SWITCHED OFF
+  ------------------------------------------------------------------
+  Nine features were gated on gs-shopify-v3 THEME SETTINGS with no entry
+  in Dawn's settings_schema.json - quickview, compare,
+  enable_color_swatches, show_countdown, product_second_image and more.
+  Every one evaluated to nil, so hover images, swatches, quick view,
+  compare and the countdown were silently off, and prices and badges did
+  not render anywhere on the site.
+
+  THE RULE: a missing setting means ENABLED. Each is tested with an
+  explicit `== false` so an absent schema entry fails open.
+
+  Two deliberate exceptions, both opt-IN:
+    - show_inventory: needs low_inventory thresholds to be meaningful
+    - enableQuickAdd: a caller decision, not a theme setting
+
+  ------------------------------------------------------------------
+  CRITICAL FIX FROM v3: FULL PRODUCT JSON ON EVERY CARD
+  ------------------------------------------------------------------
+  v3 emitted data-product-details-json with the complete product object
+  on every card. REMOVED. ACTION: grep theme.js for
+  `product-details-json` before relying on this.
+
+  ------------------------------------------------------------------
+  OTHER v3 FIXES
+  ------------------------------------------------------------------
+  - Two inline <style> blocks per card moved to gs-card-product.css.
+  - `cardProduct.tite` typo gave every card an aria-label with no name.
+  - Compare ids were seeded from nanoseconds, risking duplicate DOM ids
+    and defeating full-page caching.
+  - The second-image branch passed a media object, not .preview_image.
+  - Hardcoded $19.99 fallback price.
+  - Size abbreviation turned 'X-Large' into 'X-L'.
+  - A filter cannot appear inside an if condition.
+  - AOS and lazysizes removed.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-card-product.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign card_variant = cardProduct.selected_or_first_available_variant
+
+  # Missing setting means enabled. See the header note.
+  assign show_second_image = true
+  if settings.product_second_image == false
+    assign show_second_image = false
+  endif
+
+  assign show_quickview = true
+  if settings.quickview == false
+    assign show_quickview = false
+  endif
+
+  assign show_compare = true
+  if settings.compare == false
+    assign show_compare = false
+  endif
+
+  assign show_swatch_row = true
+  if settings.enable_color_swatches == false
+    assign show_swatch_row = false
+  endif
+
+  assign show_countdown = true
+  if settings.show_countdown == false
+    assign show_countdown = false
+  endif
+
+  assign show_vendor = false
+  if settings.product_vendor == true
+    assign show_vendor = true
+  endif
+
+  assign show_inventory = false
+  if settings.show_inventory == true
+    assign show_inventory = true
+  endif
+
+  assign quickview_style = settings.quickview_style | default: 'button'
+
+  case gridImageSize
+    when 'landscape'
+      assign image_ratio = 'var(--img-landscape)'
+    when 'square'
+      assign image_ratio = 'var(--img-square)'
+    when 'portrait'
+      assign image_ratio = 'var(--img-portrait)'
+    else
+      if cardProduct.featured_media.preview_image.aspect_ratio
+        assign image_ratio = 1 | divided_by: cardProduct.featured_media.preview_image.aspect_ratio | times: 100 | append: '%'
+      else
+        assign image_ratio = '100%'
+      endif
+  endcase
+
+  assign product_url = cardProduct.url | within: collection
+  if settings.hide_collection_from_url == true
+    assign product_url = cardProduct.url
+  endif
+
+  if show_inventory and complementary != true
+    assign total_stock = 0
+    assign stock_known = true
+
+    for variant in cardProduct.variants
+      if variant.inventory_management == blank or variant.inventory_policy == 'continue'
+        assign stock_known = false
+        break
+      endif
+      if variant.inventory_quantity > 0
+        assign total_stock = total_stock | plus: variant.inventory_quantity
+      endif
+    endfor
+
+    if cardProduct.available == false
+      assign stock_content = settings.card_out_of_stock_text | default: 'Out of stock'
+      assign stock_color = settings.product_no_stock_color | default: '#777777'
+    elsif stock_known == false
+      assign stock_content = settings.card_in_stock_text | default: 'Available now'
+      assign stock_color = settings.product_in_stock_color | default: '#002F6E'
+    elsif total_stock > 0 and total_stock <= settings.low_inventory
+      assign stock_content = settings.card_low_stock_text | default: 'Low stock'
+      assign stock_color = settings.product_low_stock_color | default: '#AB192D'
+    else
+      assign stock_content = settings.card_in_stock_text | default: 'Available now'
+      assign stock_color = settings.product_in_stock_color | default: '#002F6E'
+    endif
+  endif
+
+  assign show_meta_row = false
+  if cardProduct != blank and complementary != true
+    if show_inventory or show_vendor
+      assign show_meta_row = true
+    endif
+  endif
+
+  assign tag_hit = false
+  if settings.enable_collection_product_badge and settings.collection_product_badge_tag_match != blank
+    assign tag_match = settings.collection_product_badge_tag_match | downcase
+    for product_tag in cardProduct.tags
+      assign product_tag_down = product_tag | downcase
+      if product_tag_down == tag_match
+        assign tag_hit = true
+        break
+      endif
+    endfor
+  endif
+-%}
+
+<div class="product-card-item" data-product-grid>
+  <div class="product-card">
+
+    <div class="product-card-img{% if cardProduct.media.size > 1 %} on-hover-img{% endif %}">
+      <a
+        class="product-img"
+        {% if cardProduct == blank %}role="link" aria-disabled="true"{% else %}href="{{ product_url }}"{% endif %}
+        tabindex="-1"
+        title="{{ cardProduct.title | escape | default: shop.name }}"
+      >
+        <div class="media" style="--imageRatio: {{ image_ratio }};">
+          {%- if cardProduct.featured_media.preview_image -%}
+            {%- assign fm = cardProduct.featured_media.preview_image -%}
+            <img
+              class="product-image"
+              src="{{ fm | image_url: width: 500 }}"
+              srcset="
+                {{ fm | image_url: width: 300 }} 300w,
+                {{ fm | image_url: width: 500 }} 500w,
+                {{ fm | image_url: width: 750 }} 750w,
+                {{ fm | image_url: width: 1000 }} 1000w
+              "
+              sizes="(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw"
+              alt="{{ fm.alt | escape | default: cardProduct.title | escape }}"
+              width="{{ fm.width }}"
+              height="{{ fm.height }}"
+              loading="{% if cycleIndex and cycleIndex <= 4 %}eager{% else %}lazy{% endif %}"
+              {% if cycleIndex and cycleIndex <= 4 %}fetchpriority="high"{% endif %}
+              style="object-position: {{ fm.presentation.focal_point | default: 'center' }};"
+            >
+          {%- else -%}
+            {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+
+        {%- if show_second_image and cardProduct.media[1].preview_image -%}
+          {%- assign sm = cardProduct.media[1].preview_image -%}
+          <div class="product-second-img">
+            <img
+              class="product-img-hover"
+              src="{{ sm | image_url: width: 500 }}"
+              srcset="{{ sm | image_url: width: 500 }} 500w, {{ sm | image_url: width: 1000 }} 1000w"
+              sizes="(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw"
+              alt=""
+              width="{{ sm.width }}"
+              height="{{ sm.height }}"
+              loading="lazy"
+            >
+          </div>
+        {%- endif -%}
+
+        {%- if cardProduct.available and show_countdown and showCount and complementary != true -%}
+          {%- render 'gs-product-countdown', cardProduct: cardProduct -%}
+        {%- endif -%}
+      </a>
+
+      {%- if cardProduct != blank and complementary != true -%}
+        <div class="product-card-badges">
+          {%- render 'gs-product-badge', cardProduct: cardProduct -%}
+        </div>
+      {%- endif -%}
+
+      {%- if tag_hit -%}
+        <span class="product-holiday-badge" style="background-color: {{ settings.collection_product_badge_bg_color }};">
+          {{ settings.collection_product_badge_text }}
+        </span>
+      {%- endif -%}
+
+      {%- if show_quickview and quickview_style == 'icon' and cardProduct != blank and quickViewtrue -%}
+        <a
+          class="quick-view-icon product-quickview"
+          href="{{ product_url }}"
+          aria-label="{{ 'onboarding.quickview' | t }}: {{ cardProduct.title | escape }}"
+          data-quick-view="{{ cardProduct.handle }}"
+        >
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" focusable="false">
+            <path d="M20.7097 19.3324L17.7419 16.3739L17.8817 16.191C19.172 14.5234 19.8495 12.5331 19.8495 10.4352C19.8495 5.22808 15.6237 1 10.4301 1C5.23656 1 1 5.22808 1 10.4352C1 15.6423 5.22581 19.8704 10.4301 19.8704C12.5269 19.8704 14.5054 19.1926 16.172 17.9123L16.3548 17.7725L16.4194 17.837L19.3118 20.731C19.6882 21.1076 20.3441 21.1076 20.7097 20.731C20.8925 20.5481 21 20.3007 21 20.0317C21 19.7628 20.8925 19.5261 20.7097 19.3324ZM10.4194 17.9016C6.30108 17.9016 2.95699 14.5557 2.95699 10.4352C2.95699 6.31469 6.31183 2.9688 10.4301 2.9688C14.5484 2.9688 17.8925 6.31469 17.8925 10.4352C17.8925 14.5557 14.5484 17.9016 10.4301 17.9016H10.4194Z" fill="currentColor"/>
+          </svg>
+        </a>
+      {%- endif -%}
+
+      {%- if enableQuickAdd and cardProduct.variants.size > 1 -%}
+        <div class="quick-add-variants">
+          <p>{{ 'products.product.pick_a_size' | t }}</p>
+          <div class="qa-size-options">
+            {%- for variant in cardProduct.variants -%}
+              <div class="qa-size" data-variant-id="{{ variant.id }}" data-variant-available="{{ variant.available }}">
+                {{- variant.title -}}
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="product-card-detail">
+      {%- if show_meta_row -%}
+        <div class="product-card-info">
+          {%- if show_vendor -%}
+            <span class="vendor-name">{{ cardProduct.vendor }}</span>
+          {%- endif -%}
+          {%- if show_inventory -%}
+            <span class="stock-status" style="--stock-color: {{ stock_color }};">
+              <span class="stock-dot" aria-hidden="true"></span>{{ stock_content }}
+            </span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <a
+        {% if cardProduct == blank %}role="link" aria-disabled="true"{% else %}href="{{ product_url }}"{% endif %}
+        class="product-title"
+      >
+        {%- if cardProduct != blank -%}
+          {{- cardProduct.title | strip_html -}}
+        {%- else -%}
+          {{- 'onboarding.product_title' | t -}}
+        {%- endif -%}
+      </a>
+
+      {%- unless hideContent -%}
+        {%- comment -%}
+          Fixed-height slot. gs-reviews renders nothing when a product has
+          no reviews, which made rated and unrated cards different heights
+          and pushed their buttons out of line.
+        {%- endcomment -%}
+        <div class="product-card-rating">
+          {%- render 'gs-reviews', cardProduct: cardProduct -%}
+        </div>
+
+        {%- if cardProduct != blank -%}
+          {%- render 'gs-price', cardProduct: cardProduct, cardVariant: card_variant -%}
+        {%- else -%}
+          <div class="product-price">
+            <span class="price-item actual-price">&mdash;</span>
+          </div>
+        {%- endif -%}
+
+        {%- if complementary != true and show_swatch_row and showSwatches -%}
+          {%- render 'gs-product-colors-option', cardProduct: cardProduct -%}
+        {%- endif -%}
+
+        {%- if compareTrue and show_compare and cardProduct != blank -%}
+          <div class="compare-add-button" data-compare-item>
+            <div class="compare-checkbox">
+              <input
+                type="checkbox"
+                name="productCompare{{ cardProduct.id }}"
+                id="ProductCompare-{{ cardProduct.id }}"
+                class="js-compare-checkbox"
+                data-product-url="{{ cardProduct.url }}"
+                data-product-id="{{ cardProduct.id }}"
+                data-compare-checkbox
+              >
+              <label class="compare-checkmark compare-label" for="ProductCompare-{{ cardProduct.id }}">
+                {{ 'onboarding.compare' | t }}
+              </label>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if show_quickview and quickview_style == 'button' and cardProduct != blank and quickViewtrue -%}
+          <div class="product-quickview-button">
+            {%- if enableQuickAdd -%}
+              <div
+                class="product-quickview"
+                data-quick-view-availability="{{ cardProduct.available }}"
+                {% if cardProduct.variants.size == 1 %}
+                  data-variant-id="{{ cardProduct.variants[0].id }}"
+                {% endif %}
+              >
+                <span>
+                  {%- if cardProduct.available -%}
+                    {{- 'products.product.quick_add' | t -}}
+                  {%- else -%}
+                    {{- 'products.product.sold_out' | t -}}
+                  {%- endif -%}
+                </span>
+              </div>
+            {%- else -%}
+              {%- comment -%}
+                A real link, so this works with JavaScript off and is
+                crawlable. gs-quick-view.js intercepts the click.
+              {%- endcomment -%}
+              <a
+                href="{{ product_url }}"
+                data-quick-view-availability="{{ cardProduct.available }}"
+                class="product-quickview"
+                aria-label="{{ 'onboarding.quickview' | t }}: {{ cardProduct.title | escape }}"
+                data-quick-view="{{ cardProduct.handle }}"
+              >
+                <span>
+                  {%- if cardProduct.available -%}
+                    {{- 'onboarding.quickview' | t -}}
+                  {%- else -%}
+                    {{- 'products.product.sold_out' | t -}}
+                  {%- endif -%}
+                </span>
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endunless -%}
+    </div>
+  </div>
+</div>

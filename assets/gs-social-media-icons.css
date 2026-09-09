@@ -1,0 +1,76 @@
+/*
+  GS Social Media Icons
+
+  v3 hardcoded a different width/height on every icon - Facebook 6x12,
+  Instagram 30x30, YouTube 29x21 - so visual consistency depended on
+  external CSS overriding all of them. Here the svg has no intrinsic
+  size attributes and the viewBox does the scaling, driven by one
+  custom property.
+
+  Override per context:
+    .footer-social-block { --gs-social-icon-size: 18px; }
+*/
+
+.social-icons-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gs-social-gap, 0.8rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-icons-list li + li {
+  margin-top: 0;
+}
+
+.social-icons-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--gs-social-target, 36px);
+  height: var(--gs-social-target, 36px);
+  color: currentColor;
+  text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.social-icon {
+  width: var(--gs-social-icon-size, 16px);
+  height: var(--gs-social-icon-size, 16px);
+  display: block;
+}
+
+.circle-icons .social-icons-link {
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.circle-icons .social-icons-link:hover {
+  background-color: currentColor;
+}
+
+.circle-icons .social-icons-link:hover .social-icon {
+  color: rgb(var(--background, 255 255 255));
+}
+
+.social-icons-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* The footer inherits its link colours from the footer token set. */
+.footer-social-block .social-icons-link {
+  color: var(--footerTextcolor, #ffffff);
+}
+
+.footer-social-block .social-icons-link:hover {
+  color: var(--footerLinkHover, #ffffff);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-icons-link {
+    transition: none;
+  }
+}

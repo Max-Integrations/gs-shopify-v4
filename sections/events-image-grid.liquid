@@ -1,0 +1,103 @@
+{% comment %}
+  ==================================================================
+  EVENTS IMAGE GRID
+  Ported from gs-shopify-v3 sections/events-image-grid.liquid
+  ==================================================================
+  A grid of user-generated event photos. Greyscale by default, full
+  colour on hover.
+
+  Setting IDs are byte-for-byte identical to v3.
+
+  ------------------------------------------------------------------
+  A CLICK AFFORDANCE THAT WAS NOT CLICKABLE
+  ------------------------------------------------------------------
+  v3 put `cursor: pointer` on every image, and a `:focus` rule on the
+  <img> itself. Images are not focusable and these are not links, so the
+  pointer promised an interaction that did not exist and the focus rule
+  could never fire.
+
+  An optional link is a block setting now. Images without one keep a
+  normal cursor and reveal colour on hover only, which is honest about
+  what they do.
+
+  ------------------------------------------------------------------
+  OTHER v3 FIXES
+  ------------------------------------------------------------------
+  - Images were requested at a fixed 800px with no srcset, so a phone
+    downloaded an 800px asset for a half-width slot.
+  - No alt text at all on user-generated photos. Now uses the image's own
+    alt, falling back to the block title.
+  - Generic global class names (.event-image, .events-image-grid) from a
+    per-instance <style> block.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-events.css' | asset_url | stylesheet_tag }}
+
+{%- if section.blocks.size > 0 -%}
+  <div class="gs-events-ugc" id="events-image-grid-{{ section.id }}">
+    <div class="page-width">
+      <div class="gs-events-ugc__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.image != blank -%}
+            {%- assign img = block.settings.image -%}
+            <div class="gs-events-ugc__item" {{ block.shopify_attributes }}>
+              {%- if block.settings.link != blank -%}
+                <a class="gs-events-ugc__link" href="{{ block.settings.link }}">
+              {%- endif -%}
+              <img
+                class="gs-events-ugc__img"
+                src="{{ img | image_url: width: 600 }}"
+                srcset="
+                  {{ img | image_url: width: 300 }} 300w,
+                  {{ img | image_url: width: 600 }} 600w,
+                  {{ img | image_url: width: 900 }} 900w
+                "
+                sizes="(min-width: 990px) 25vw, 50vw"
+                alt="{{ img.alt | escape | default: block.settings.title | escape }}"
+                width="{{ img.width }}"
+                height="{{ img.height }}"
+                loading="lazy"
+              >
+              {%- if block.settings.link != blank -%}</a>{%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Events Image Grid",
+  "tag": "section",
+  "class": "gs-events-ugc-section",
+  "settings": [
+    { "type": "header", "content": "UGC image grid" }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 50,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Image name",
+          "info": "Used as alt text when the image has none, and makes the block easier to find in the editor."
+        },
+        { "type": "image_picker", "id": "image", "label": "UGC image" },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional. v3 styled these as clickable but never linked them."
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Events Image Grid" }]
+}
+{% endschema %}

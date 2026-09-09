@@ -1,0 +1,195 @@
+/*
+  GS Article
+
+  A measured reading column. The body is capped at ~68 characters, which
+  is the range where long-form reads comfortably - wider lines are the
+  most common reason a blog post feels like hard work.
+
+  No JavaScript.
+*/
+
+.gs-article {
+  padding-bottom: 4rem;
+}
+
+.gs-article__hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: cover;
+}
+
+.gs-article__body {
+  max-width: 68ch;
+  margin-inline: auto;
+  padding-top: 2.5rem;
+}
+
+.gs-article__header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.gs-article__back {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: var(--xsmallText);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  color: rgba(var(--textColor), 0.7);
+}
+
+.gs-article__back:hover {
+  color: rgb(var(--textColor));
+  text-decoration: underline;
+}
+
+.gs-article__title {
+  margin: 0;
+  font-family: var(--headingFont);
+  font-size: var(--h1);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: rgb(var(--headingColor, var(--textColor)));
+}
+
+.gs-article__meta {
+  margin: 0.8em 0 0;
+  font-size: var(--xsmallText);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(var(--textColor), 0.6);
+}
+
+.gs-article__content {
+  font-size: var(--text);
+  line-height: 1.7;
+  color: rgb(var(--textColor));
+}
+
+.gs-article__content h2,
+.gs-article__content h3 {
+  margin: 1.8em 0 0.5em;
+  font-family: var(--headingFont);
+  text-transform: uppercase;
+}
+
+.gs-article__content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.gs-article__content a {
+  color: rgba(var(--line-color), 1);
+}
+
+/* ---- Share ---- */
+.gs-article__share {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(var(--borderColor), 0.2);
+}
+
+.gs-article__share-label {
+  font-size: var(--xsmallText);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ---- Comments ---- */
+.gs-article__comments {
+  max-width: 68ch;
+  margin-inline: auto;
+  padding-top: 3rem;
+}
+
+.gs-article__comments-heading {
+  margin: 0 0 1.2rem;
+  font-family: var(--headingFont);
+  font-size: var(--largeText);
+  text-transform: uppercase;
+}
+
+.gs-article__comment {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(var(--borderColor), 0.15);
+}
+
+.gs-article__comment-body {
+  margin: 0;
+  font-size: var(--smallText);
+}
+
+.gs-article__comment-author {
+  margin: 0.4em 0 0;
+  font-size: var(--xsmallText);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.65;
+}
+
+.gs-article__form {
+  margin-top: 2rem;
+}
+
+.gs-article__form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.gs-article__form-row label {
+  font-size: var(--xsmallText);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.gs-article__form-row input,
+.gs-article__form-row textarea {
+  padding: 0.7em;
+  border: 1px solid rgba(var(--borderColor), 0.4);
+  background: transparent;
+  color: rgb(var(--textColor));
+  font-family: inherit;
+  font-size: var(--smallText);
+}
+
+.gs-article__form-row input:focus-visible,
+.gs-article__form-row textarea:focus-visible,
+.gs-article__form-submit:focus-visible {
+  outline: 2px solid rgb(var(--textColor));
+  outline-offset: 2px;
+}
+
+.gs-article__form-note {
+  font-size: var(--xsmallText);
+  opacity: 0.7;
+}
+
+.gs-article__form-error {
+  color: rgb(var(--error));
+}
+
+.gs-article__form-success {
+  color: rgb(var(--success));
+}
+
+.gs-article__form-submit {
+  padding: 0.8em 2em;
+  border: 0;
+  background-color: rgba(var(--line-color), 1);
+  color: #ffffff;
+  font-family: var(--headingFont);
+  font-size: var(--smallText);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}

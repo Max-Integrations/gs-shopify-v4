@@ -1,0 +1,240 @@
+/*
+  GS Product Highlight
+
+  Split panel: copy + CTAs on one side, image + optional chevrons on the
+  other.
+
+  v3 declared .custom-cta, .desktop-image, .mobile-image, .row-reverse
+  and .col-reverse GLOBALLY, once per instance. .custom-cta collided
+  directly with featured-collections.liquid, which uses the same class.
+  Everything here is namespaced under .gs-ph.
+*/
+
+.gs-ph__flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* ---- Text panel ---- */
+.gs-ph__text {
+  width: 100%;
+  padding: var(--ph-text-pad-mobile, 25px);
+  background-color: var(--ph-text-bg, #ffffff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ph-text-gap-mobile, 25px);
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Room for the absolutely positioned chevron row. */
+.gs-ph__text--has-arrows {
+  padding-bottom: calc(var(--ph-text-arrow-size-mobile, 48px) + 16px);
+}
+
+.gs-ph__heading {
+  color: var(--ph-heading-color, #000000);
+  font-size: var(--ph-heading-size-mobile, 24px);
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+
+.gs-ph__paragraph {
+  text-align: center;
+  font-size: var(--ph-para-size-mobile, 24px);
+  color: var(--ph-para-color, #000000);
+}
+
+/* v3 used `.product-highlight-paragraph *`. */
+.gs-ph__paragraph p,
+.gs-ph__paragraph li,
+.gs-ph__paragraph strong,
+.gs-ph__paragraph em,
+.gs-ph__paragraph a {
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ---- CTAs ---- */
+.gs-ph__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--ph-cta-gap-mobile, 25px);
+}
+
+.gs-ph__ctas--stacked {
+  flex-direction: column;
+  align-items: center;
+}
+
+.gs-ph__cta {
+  color: var(--ph-cta-color, #000000);
+  font-size: var(--ph-cta-size-mobile, 24px);
+  line-height: 1;
+  font-weight: 700;
+  padding: 10px 25px;
+  display: inline-block;
+  width: max-content;
+  text-decoration: none;
+  text-align: center;
+}
+
+/* v3 defined a cta background setting and never used it. */
+.gs-ph__cta--button {
+  border: var(--ph-cta-border-width, 2px) solid var(--ph-cta-border-color, #000000);
+  background-color: var(--ph-cta-bg, transparent);
+}
+
+/* ---- Image panel ---- */
+.gs-ph__image {
+  width: 100%;
+  position: relative;
+}
+
+.gs-ph__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+.gs-ph__overlay {
+  position: absolute;
+  inset: 0;
+  padding: var(--ph-img-pad-mobile, 25px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ph-heading-arrow-gap-mobile, 25px);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.gs-ph__image-heading {
+  width: 100%;
+  color: var(--ph-img-heading-color, #000000);
+  font-size: var(--ph-img-heading-size-mobile, 24px);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ---- Chevrons ---- */
+.gs-ph__arrows {
+  display: flex;
+}
+
+.gs-ph__arrows--horizontal {
+  width: 100%;
+  gap: var(--ph-text-arrow-gap-mobile, 25px);
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.gs-ph__arrows--horizontal svg {
+  width: var(--ph-text-arrow-size-mobile, 48px);
+  height: var(--ph-text-arrow-size-mobile, 48px);
+}
+
+/* Overlap so the chevrons read as a continuous run. */
+.gs-ph__arrows--horizontal svg:not(:first-of-type) {
+  margin-left: calc(var(--ph-text-arrow-size-mobile, 48px) * -0.64);
+}
+
+.gs-ph__arrows--vertical {
+  flex-direction: column;
+  justify-content: flex-end;
+  /*
+    v3 read product_highlight_image_arrows_spacing_desktop/_mobile here,
+    which do not exist - the height rule was invalid and dropped. Uses
+    the real image padding setting.
+  */
+  height: calc(100% - (var(--ph-img-pad-mobile, 25px) * 2));
+  gap: var(--ph-img-arrow-gap-mobile, 25px);
+}
+
+.gs-ph__arrows--vertical svg {
+  width: var(--ph-img-arrow-size-mobile, 48px);
+  height: var(--ph-img-arrow-size-mobile, 48px);
+}
+
+.gs-ph__arrows--vertical svg:not(:first-of-type) {
+  margin-top: calc(var(--ph-img-arrow-size-mobile, 48px) * -0.64);
+}
+
+/* ---- Reverse ---- */
+.gs-ph--col-reverse {
+  flex-direction: column-reverse;
+}
+
+@media screen and (min-width: 769px) {
+  .gs-ph__flex {
+    flex-wrap: nowrap;
+  }
+
+  .gs-ph--col-reverse {
+    flex-direction: row;
+  }
+
+  .gs-ph--row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  .gs-ph__text {
+    width: 45%;
+    padding: var(--ph-text-pad, 50px);
+    gap: var(--ph-text-gap, 50px);
+  }
+
+  .gs-ph__text--has-arrows {
+    padding-bottom: calc(var(--ph-text-arrow-size, 64px) + 16px);
+  }
+
+  .gs-ph__image {
+    width: 55%;
+  }
+
+  .gs-ph__heading { font-size: var(--ph-heading-size, 32px); }
+  .gs-ph__paragraph { font-size: var(--ph-para-size, 32px); }
+  .gs-ph__cta { font-size: var(--ph-cta-size, 32px); }
+  .gs-ph__ctas { gap: var(--ph-cta-gap, 50px); }
+
+  .gs-ph__overlay {
+    padding: var(--ph-img-pad, 50px);
+    flex-direction: column-reverse;
+    gap: var(--ph-heading-arrow-gap, 50px);
+  }
+
+  .gs-ph__image-heading { font-size: var(--ph-img-heading-size, 32px); }
+
+  .gs-ph__arrows--horizontal {
+    gap: var(--ph-text-arrow-gap, 50px);
+  }
+
+  .gs-ph__arrows--horizontal svg {
+    width: var(--ph-text-arrow-size, 64px);
+    height: var(--ph-text-arrow-size, 64px);
+  }
+
+  .gs-ph__arrows--horizontal svg:not(:first-of-type) {
+    margin-left: calc(var(--ph-text-arrow-size, 64px) / -2);
+  }
+
+  .gs-ph__arrows--vertical {
+    height: calc(100% - (var(--ph-img-pad, 50px) * 2));
+    gap: var(--ph-img-arrow-gap, 50px);
+  }
+
+  .gs-ph__arrows--vertical svg {
+    width: var(--ph-img-arrow-size, 64px);
+    height: var(--ph-img-arrow-size, 64px);
+  }
+
+  .gs-ph__arrows--vertical svg:not(:first-of-type) {
+    margin-top: calc(var(--ph-img-arrow-size, 64px) / -2);
+  }
+}

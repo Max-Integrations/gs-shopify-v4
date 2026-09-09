@@ -1,0 +1,87 @@
+/*
+  Text Scroller — ported from gs-shopify-v3 sections/text-scroller-v2.liquid
+  Extracted from the section's inline <style> block, which previously emitted
+  a full copy of these rules per section instance on the page.
+
+  Class names namespaced under .text-scroller to avoid the collisions the v3
+  originals had (bare .scroller-grid, .scroller-window, .names-list).
+  Colors driven by CSS custom properties set inline from section settings.
+*/
+
+.text-scroller {
+  padding: 2.5rem;
+  background-color: rgb(var(--color-background, 18 18 18));
+}
+
+.text-scroller__heading {
+  margin: 0 0 1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--ts-heading-color, #ffffff);
+  font-size: var(--ts-heading-size, 32px);
+  font-weight: var(--ts-heading-weight, 700);
+}
+
+.text-scroller__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--ts-columns, 1), minmax(0, 1fr));
+  gap: 1em;
+}
+
+.text-scroller__column {
+  color: var(--ts-block-color, #ffffff);
+  min-width: 0;
+}
+
+.text-scroller__column-title {
+  color: inherit;
+  text-align: center;
+  margin: 0;
+}
+
+.text-scroller__window {
+  color: inherit;
+  margin-top: 1em;
+  height: 300px;
+  overflow-y: auto;
+  font-size: var(--ts-block-size, 14px);
+  font-weight: var(--ts-block-weight, 400);
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+.text-scroller__window--auto::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.text-scroller__window--auto {
+  scrollbar-width: none;
+}
+
+.text-scroller__list {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.text-scroller__list ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.text-scroller__content {
+  padding: 1em;
+}
+
+@media screen and (max-width: 749px) {
+  .text-scroller__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-scroller__window--auto {
+    scroll-behavior: auto;
+  }
+}

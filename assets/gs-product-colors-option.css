@@ -1,0 +1,99 @@
+/*
+  GS Product Colours Option - swatch scroller
+
+  Replaces the Swiper instance v3 created per swatch row. Native overflow
+  scrolling with scroll-snap: works with touch, trackpad and keyboard
+  with no JS library. Arrow buttons are progressive enhancement and stay
+  hidden unless gs-swatch-scroller.js reveals them.
+*/
+
+.gs-swatch-scroller {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.gs-swatch-track {
+  display: flex;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gs-swatch-track::-webkit-scrollbar {
+  display: none;
+}
+
+.gs-swatch-track__item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.gs-swatch-track__item .option {
+  display: block;
+  width: var(--gs-swatch-size, 28px);
+  height: var(--gs-swatch-size, 28px);
+  border: 1px solid rgba(var(--borderColor, 0 0 0), 0.35);
+  border-radius: var(--gs-swatch-radius, 50%);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.gs-swatch-track__item .option img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gs-swatch-track__item .option[aria-current='true'] {
+  outline: 2px solid rgb(var(--textColor, 0 0 0));
+  outline-offset: 1px;
+}
+
+.gs-swatch-track__item .option:focus-visible {
+  outline: 2px solid rgb(var(--textColor, 0 0 0));
+  outline-offset: 2px;
+}
+
+.gs-swatch-track__item.out-of-stock .option {
+  opacity: 0.4;
+}
+
+.gs-swatch-scroller__btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--textColor, 0 0 0));
+  cursor: pointer;
+}
+
+.gs-swatch-scroller__btn[hidden] {
+  display: none;
+}
+
+.gs-swatch-scroller__btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-swatch-track {
+    scroll-behavior: auto;
+  }
+}

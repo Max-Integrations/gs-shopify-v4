@@ -1,0 +1,318 @@
+{% comment %}
+  ==================================================================
+  GS TOKEN BRIDGE
+  ==================================================================
+  Maps gs-shopify-v3 design tokens onto Dawn's native token system so
+  ported v3 sections render correctly without rewriting their CSS.
+
+  INSTALL: add this line to layout/theme.liquid immediately AFTER the
+  closing endstyle tag of Dawn's own style block:
+
+      render 'gs-token-bridge'
+
+  It must come after Dawn's style block because it reads the Dawn
+  variables defined there.
+
+  ------------------------------------------------------------------
+  REVISION 2026-08-11 (second pass)
+  ------------------------------------------------------------------
+  The first version used placeholder values for every token Dawn has no
+  equivalent for. Those are now REAL, read from v3 config/settings_data.json
+  on the live theme. Source values are cited inline.
+
+  Confirmed brand facts from settings_data.json:
+    Type      Roboto Condensed - headings n5 (500), body n4 (400)
+    Scale     heading 28px desktop / 22px mobile
+              body 16px desktop / 13px mobile
+    Red       #ab192d  (buttons, links, sale/new/preorder/custom badges, errors)
+    Header    #000000 bg, #ffffff text, #e7e7e7 hover, #5c5c5c cart count
+    Footer    #000000 bg, #ffffff text, #a6a6a6 links
+    Stock     in #002F6E (navy), low #ab192d, out #777777
+    Rating    #9a723f (bronze)
+    Success   #2c7e3f
+    RADII     ALL ZERO. Square corners everywhere. button_radius is false,
+              and product/image/input/card radii are 0 on desktop AND mobile.
+    Buttons   uppercase, no shadow (enable_button_shadow false)
+
+  ------------------------------------------------------------------
+  WHY A BRIDGE INSTEAD OF PORTING style-variables.liquid
+  ------------------------------------------------------------------
+  Dawn already defines a complete scheme system. Porting v3's file would
+  create a second, competing one. The bridge aliases v3 names to Dawn's
+  values so a ported section keeps working, while Dawn's own sections
+  stay on Dawn's names. One source of truth, two vocabularies.
+
+  ------------------------------------------------------------------
+  SCHEME CLASS MISMATCH - IMPORTANT
+  ------------------------------------------------------------------
+  Dawn emits  .color-{scheme.id}
+  v3 emitted  .scheme-{scheme.id}
+  Ported markup using class="scheme-x" would match nothing. The alias
+  block below makes .scheme-* work. The correct long-term fix is
+  updating ported markup to Dawn's .color-* convention.
+
+  ------------------------------------------------------------------
+  BUGS FIXED IN TRANSIT (do not reintroduce)
+  ------------------------------------------------------------------
+  1. --alternateButtonBorder was "25,,255,255" in BOTH v3 dark-mode
+     blocks. Double comma = invalid CSS = property silently dropped.
+  2. --line-color was 4 components in light mode (r,g,b,1) and 3 in
+     dark. Standardised to 3; use rgba(var(--line-color), alpha).
+  3. --overlayColor was an RGB triplet in light mode and the hex #000
+     in dark, so rgb(var(--overlayColor)) broke in dark mode.
+  4. v3 tested colour settings with "!= empty"; "blank" is correct.
+
+  ------------------------------------------------------------------
+  STILL OPEN
+  ------------------------------------------------------------------
+  These are hardcoded brand constants, not merchant-editable settings.
+  Before launch each needs a real entry in settings_schema.json so the
+  team can change them without a developer: the header token set, the
+  five badge colour pairs, and the stock-status colours.
+
+  DARK MODE is not carried over. v3 shipped a dark mode whose colours
+  were hardcoded rather than derived from schemes, so changing a colour
+  scheme in v3 has no effect in dark mode today. Dawn has no native dark
+  mode. Rebuilding it is a decision, not a port - and v3's setting
+  enable_dl_mode_toggle is currently false, so nothing is lost by
+  omitting it.
+  ==================================================================
+{% endcomment %}
+
+{% style %}
+  /* ---------------------------------------------------------------
+     1. SCHEME ALIASES
+     v3 token names re-declared against Dawn's per-scheme values.
+     --------------------------------------------------------------- */
+  {%- for scheme in settings.color_schemes -%}
+    {%- if forloop.first -%}:root,{%- endif %}
+    .color-{{ scheme.id }},
+    .scheme-{{ scheme.id }} {
+      /* Dawn ships RGB triplets and so did v3, so these pass through. */
+      --background: var(--color-background);
+      --gradientBackground: var(--gradient-background);
+      --alternateBackground: var(--color-background-contrast);
+      --textColor: var(--color-foreground);
+      --linkColor: var(--color-link);
+
+      /* Dawn has no separate heading colour. v3 did. */
+      --headingColor: var(--color-foreground);
+
+      --buttonBackground: var(--color-button);
+      --buttonColor: var(--color-button-text);
+      --buttonBorder: var(--color-button);
+
+      /* Dawn has no hover scheme colours. v3 primary hover was #8a1424,
+         a darker red. Inverted default here; override per scheme if the
+         visual diff shows it matters. */
+      --buttonBackgroundHover: var(--color-button-text);
+      --buttonColorHover: var(--color-button);
+      --buttonBorderHover: var(--color-button);
+
+      --alternateButtonBackground: var(--color-secondary-button);
+      --alternateButtonColor: var(--color-secondary-button-text);
+      /* FIXED: v3 had "25,,255,255" here - double comma, invalid. */
+      --alternateButtonBorder: var(--color-secondary-button-text);
+      --alternateButtonBackgroundHover: var(--color-secondary-button-text);
+      --alternateButtonColorHover: var(--color-secondary-button);
+      --alternateButtonBorderHover: var(--color-secondary-button-text);
+
+      --inputBackground: var(--color-background);
+      --inputColor: var(--color-foreground);
+      --inputBorder: var(--color-foreground);
+
+      --cardBackground: var(--color-background);
+      --productBorder: var(--color-foreground);
+      --borderColor: var(--color-foreground);
+      --shadowColor: var(--color-shadow);
+
+      --sliderArrowBackground: var(--color-foreground);
+      --sliderArrowColor: var(--color-background);
+
+      --highlightTextColor: rgb(var(--color-foreground));
+      --highlightGradientBackground: var(--gradient-background);
+      --highlightBackground: var(--color-background);
+      --cardDetailsTextColor: var(--color-foreground);
+      --productImagebackground: rgb(var(--color-background));
+    }
+  {%- endfor %}
+
+  /* ---------------------------------------------------------------
+     2. GLOBAL GS TOKENS
+     Values below are the real v3 settings, not placeholders.
+     --------------------------------------------------------------- */
+  :root {
+    /* Typography. v3: roboto_condensed_n5 headings / n4 body. Set the
+       same fonts in Dawn's theme settings and these track them. */
+    --bodyFont: var(--font-body-family);
+    --bodyFontWeight: var(--font-body-weight);
+    --bodyFontStyle: var(--font-body-style);
+    --headingFont: var(--font-heading-family);
+    --headingFontWeight: var(--font-heading-weight);
+    --headingFontStyle: var(--font-heading-style);
+    --buttonFont: var(--font-body-family);
+    --buttonFontWeight: var(--font-heading-weight);
+    --buttonFontStyle: var(--font-body-style);
+
+    /* v3 scale: body 13px mobile / 16px desktop,
+                 heading 22px mobile / 28px desktop. */
+    --bodyFontBase: 1.3rem;
+    --headingFontBase: 2.2rem;
+    --bodyFontLineHeight: 1.5;
+    --headingFontLineHeight: 1.2;
+
+    --xsmallText: calc(var(--bodyFontBase) - 0.4rem);
+    --smallText: calc(var(--bodyFontBase) - 0.2rem);
+    --text: var(--bodyFontBase);
+    --mediumText: calc(var(--bodyFontBase) + 0.2rem);
+    --largeText: calc(var(--bodyFontBase) + 0.4rem);
+    --xlargeText: calc(var(--bodyFontBase) + 0.6rem);
+
+    /* v3 mobile heading scale offsets. */
+    --h0: calc(var(--headingFontBase) + 1rem);
+    --h1: calc(var(--headingFontBase) + 0.8rem);
+    --h2: calc(var(--headingFontBase) + 0.2rem);
+    --h3: var(--headingFontBase);
+    --h4: calc(var(--headingFontBase) - 0.2rem);
+    --h5: calc(var(--headingFontBase) - 0.4rem);
+    --h6: calc(var(--headingFontBase) - 0.6rem);
+
+    /* RADII - all zero in v3. button_radius is false; product, image,
+       input and card radii are 0 on both breakpoints. Square corners
+       are a deliberate brand choice, not an oversight. */
+    --buttonRadius: 0;
+    --inputRadius: 0;
+    --imageRadius: 0;
+    --cardRadius: 0;
+    --productRadius: 0;
+    --gs-swatch-radius: 50%;
+
+    /* v3 button_text_transform: uppercase, enable_button_shadow: false */
+    --buttonText: uppercase;
+    --buttonShadow: transparent;
+    --secondaryButtonShadow: transparent;
+
+    --img-square: 100%;
+    --img-portrait: 130%;
+    --img-landscape: 75%;
+    --imageFit: cover;
+    --imageRatio: 0%;
+    --marqueeSpeed: 3s;
+    --sliderArrowWidth: 44px;
+
+    /* FIXED: standardised to a 3-component triplet. Use as
+       rgba(var(--line-color), 1). v3 primary highlight_color #ffca10;
+       quaternary used #ab192d. Brand red chosen as the global default. */
+    --line-color: 171,25,45;
+
+    /* FIXED: was a triplet in light mode and #000 in dark. */
+    --overlayColor: 0,0,0;
+    --overlayText: #ffffff;
+    --overlayBackground: 0,0,0;
+    --overlayOpacity: 0.4;
+    --bg-blur: 0px;
+
+    /* Status colours - v3 success_message / error_message. */
+    --success: 44,126,63;    /* #2c7e3f */
+    --error: 171,25,45;      /* #ab192d */
+
+    /* Badge colours - v3 saleBadgeBg / newBadgeBg / preorderBadgeBg /
+       customBadgeBg were ALL #ab192d. Sold-out has no v3 setting; grey
+       chosen. Foreground computed the way v3 did it: white on anything
+       darker than mid-brightness. */
+    --saleBadgeBackground: 171,25,45;
+    --saleBadgeColor: #ffffff;
+    --newBadgeBackground: 171,25,45;
+    --newBadgeColor: #ffffff;
+    --preorderBadgeBackground: 171,25,45;
+    --preorderBadgeColor: #ffffff;
+    --soldBadgeBackground: 92,92,92;
+    --soldBadgeColor: #ffffff;
+    --customBadgeBackground: 171,25,45;
+    --customBadgeColor: #ffffff;
+    --discount-background: #ab192d;
+    --discount-color: #ffffff;
+
+    /* v3 rating_color #9a723f - bronze, not the usual gold. */
+    --ratingStarColor: 154,114,63;
+
+    /* Stock status - v3 product_in_stock_color / product_low_stock_color.
+       In-stock is navy #002F6E, NOT green. */
+    --instock-text: #002F6E;
+    --outofstock-text: #777777;
+    --lowstock-text: #ab192d;
+
+    /* HEADER - v3 background_header #000000, header_text #ffffff,
+       header_text_hover #e7e7e7, header_icon #ffffff,
+       header_cart_count_bg #5c5c5c, search_input_color #000000.
+       No Dawn equivalent; these are literals until wired to settings. */
+    --headerBg: #000000;
+    --headerColor: #ffffff;
+    --headerHoverColor: #e7e7e7;
+    --headerIconColor: #ffffff;
+    --transparentHeaderColor: #ffffff;
+    --cartCountBg: #5c5c5c;
+    --cartCountColor: #ffffff;
+    --submenuBg: #000000;
+    --submenuColor: #ffffff;
+    --submenuHoverColor: #e7e7e7;
+    --submenutwoBg: #000000;
+    --submenutwoColor: #ffffff;
+    --submenutwoHoverColor: #e7e7e7;
+    --searchTextColor: #000000;
+    --searchBackgroundColor: #ffffff;
+    --backToTopBackground: #000000;
+    --backToTopColor: #ffffff;
+  }
+
+  /* v3 secondary_background_header #000000 / text #ffffff. */
+  .secondary-header,
+  #hamburger-menu,
+  #hamburger-menu-wrapper {
+    --headerBg: #000000;
+    --headerColor: #ffffff;
+    --headerHoverColor: #ffffff;
+  }
+
+  /* ---------------------------------------------------------------
+     3. CUSTOM SWATCH COLOURS
+     Ported from v3's settings.custom_colors parser, guarded against
+     malformed lines. Uses image_url; v3 used deprecated file_img_url.
+     --------------------------------------------------------------- */
+  {%- if settings.custom_colors != blank -%}
+    {%- assign customColors = settings.custom_colors | newline_to_br | split: '<br />' -%}
+    {%- for color in customColors -%}
+      {%- assign pair = color | strip | split: ':' -%}
+      {%- if pair.size >= 2 -%}
+        {%- assign swatchName = pair.first | strip -%}
+        {%- assign swatchValue = pair.last | strip -%}
+        {%- if swatchName != blank and swatchValue != blank -%}
+          [data-color="{{ swatchName }}"] {
+            {%- if swatchValue contains '#' -%}
+              background-color: {{ swatchValue }} !important;
+            {%- else -%}
+              background-image: url({{ swatchValue | image_url: width: 100 }}) !important;
+            {%- endif -%}
+          }
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  /* ---------------------------------------------------------------
+     4. DESKTOP SCALE
+     v3 body_scale_desktop 16 / heading_font_scale_desktop 28.
+     --------------------------------------------------------------- */
+  @media (min-width: 750px) {
+    :root {
+      --bodyFontBase: 1.6rem;
+      --headingFontBase: 2.8rem;
+      --h0: calc(var(--headingFontBase) + 3.2rem);
+      --h1: calc(var(--headingFontBase) + 1.9rem);
+      --h2: calc(var(--headingFontBase) + 0.4rem);
+      --h4: calc(var(--headingFontBase) - 0.4rem);
+      --h5: calc(var(--headingFontBase) - 0.6rem);
+      --h6: calc(var(--headingFontBase) - 0.8rem);
+    }
+  }
+{% endstyle %}

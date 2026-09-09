@@ -1,0 +1,91 @@
+/*
+  GS Main Page
+
+  Extracted from the per-section <style> block v3 emitted inline.
+  Per-instance values stay inline as custom properties, which is the
+  correct split: static rules in the stylesheet, dynamic values on the
+  element.
+
+  v3's dark-mode override (html[color-mode="dark"]) is not carried over.
+  Dawn has no dark mode and v3's enable_dl_mode_toggle is false.
+*/
+
+.gs-main-page {
+  padding-top: var(--padding-top-mobile, 40px);
+  padding-bottom: var(--padding-bottom-mobile, 40px);
+}
+
+.gs-main-page .page-banner {
+  position: relative;
+  background-color: var(--pageBannerBg, transparent);
+}
+
+.gs-main-page .page-banner.banner-height {
+  min-height: var(--media-height-mobile, 200px);
+  display: flex;
+  align-items: center;
+}
+
+.gs-main-page .page-banner-image {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.gs-main-page .page-banner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay sits between the image and the title. */
+.gs-main-page .banner-height .page-banner-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--banner-overlay-bg, transparent);
+  opacity: var(--banner-overlay-opacity, 0.6);
+}
+
+.gs-main-page .page-banner-content-box {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.gs-main-page .page-banner-title {
+  color: var(--banner-overlay-text, rgb(var(--textColor)));
+  margin: 0;
+}
+
+.gs-main-page .page-banner-content.text-left {
+  text-align: left;
+}
+
+.gs-main-page .page-banner-content.text-center {
+  text-align: center;
+}
+
+.gs-main-page .page-banner-content.text-right {
+  text-align: right;
+}
+
+.gs-main-page .page-narrow-width {
+  margin-top: 2rem;
+}
+
+.gs-main-page .page-description {
+  color: rgb(var(--textColor));
+}
+
+@media screen and (min-width: 750px) {
+  .gs-main-page {
+    padding-top: var(--padding-top, 70px);
+    padding-bottom: var(--padding-bottom, 70px);
+  }
+
+  .gs-main-page .page-banner.banner-height {
+    min-height: var(--media-height, 300px);
+  }
+}

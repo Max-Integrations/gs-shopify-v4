@@ -1,0 +1,289 @@
+/*
+  GS Media Grid
+
+  Tiles span arbitrary column/row counts via --column and --row set per
+  block. The wrapper is an 8-column grid on desktop, so a block's
+  `column` value maps directly onto grid-column: span N.
+
+  v3's per-block colours were written into --textColor and --headingColor,
+  shadowing global tokens AND self-referencing in the fallback branch
+  (invalid CSS). They are --mg-text and --mg-heading here.
+
+  ------------------------------------------------------------------
+  FIX 2026-08-12: TILES RENDERED FULL WIDTH AND STACKED ON DESKTOP
+  ------------------------------------------------------------------
+  The mobile two-column option was written unscoped:
+
+      .media-grid-wrapper.mobile-two-column {          <- 0,2,0
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (min-width: 768px) {
+        .media-grid-wrapper {                          <- 0,1,0
+          grid-template-columns: repeat(8, 1fr);
+        }
+      }
+
+  A media query does not add specificity. Two classes beat one, so the
+  two-column rule won at EVERY width - and a tile set to span 2 of 2
+  columns became full width. That is why the First Responders / Basics /
+  Men / Women grid rendered as four stacked full-width bands instead of
+  a row of four.
+
+  The mobile rule is now inside a max-width query so the two never
+  compete.
+*/
+
+.gs-media-grid {
+  padding-top: var(--padding-top-mobile, 40px);
+  padding-bottom: var(--padding-bottom-mobile, 40px);
+}
+
+.gs-mg--fullwidth {
+  width: 100%;
+}
+
+.section-title {
+  margin-bottom: 1.5rem;
+}
+
+.section-title.text-left { text-align: left; }
+.section-title.text-center { text-align: center; }
+.section-title.text-right { text-align: right; }
+
+.mg-heading {
+  font-size: var(--mgHeadingSizeMobile, 24px);
+  font-family: var(--headingFont);
+  color: rgb(var(--headingColor, var(--textColor)));
+  margin: 0;
+}
+
+/* ---- Highlight markers ---- */
+.line-marker {
+  position: relative;
+  display: inline-block;
+}
+
+.line-marker.highlight-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.1em;
+  height: 0.08em;
+  background: rgba(var(--line-color), 1);
+}
+
+.line-marker.highlight-background {
+  padding: 0 0.25em;
+}
+
+.line-marker.highlight-background-solid {
+  background: rgba(var(--line-color), 1);
+}
+
+.line-marker.highlight-background-gradient {
+  background: var(--gradientBackground);
+}
+
+/* ---- Grid ---- */
+.media-grid-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--columnGap, 5px);
+  grid-auto-rows: var(--mobileHeight, 200px);
+}
+
+.media-grid-item {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+.media-grid-wrapper.shadow-enabled .media-grid-item {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.media-grid-item__link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.media-grid-image {
+  position: absolute;
+  inset: 0;
+}
+
+.media-grid-image .media {
+  width: 100%;
+  height: 100%;
+}
+
+.media-grid-image img,
+.media-grid-image video,
+.media-grid-image .placeholder-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay, driven by the block's background_color + opacity. */
+.media-grid-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(var(--opacityColor, 0 0 0), var(--backgroundOpacity, 0.3));
+}
+
+.img-zoom .media-grid-image img {
+  transition: transform 0.4s ease;
+}
+
+.img-zoom:hover .media-grid-image img {
+  transform: scale(1.05);
+}
+
+/* ---- Content ---- */
+.media-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  width: 100%;
+  color: var(--mg-text, #ffffff);
+}
+
+.media-content.small { max-width: 60%; }
+.media-content.medium { max-width: 80%; }
+.media-content.large { max-width: 100%; }
+
+.media-content.text-left { text-align: left; align-items: flex-start; }
+.media-content.text-center { text-align: center; align-items: center; }
+.media-content.text-right { text-align: right; align-items: flex-end; }
+
+.media-content-heading {
+  color: var(--mg-heading, #ffffff);
+  margin: 0;
+}
+
+.media-content-description {
+  color: var(--mg-text, #ffffff);
+}
+
+.media-content-description h5 {
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Content position within the tile. */
+.media-grid-item { align-items: center; justify-content: flex-start; }
+
+.media-content.top-left,
+.media-content.top-center,
+.media-content.top-right { align-self: flex-start; }
+
+.media-content.center-left,
+.media-content.center,
+.media-content.center-right { align-self: center; }
+
+.media-content.bottom-left,
+.media-content.bottom-center,
+.media-content.bottom-right { align-self: flex-end; }
+
+/* ---- Button ---- */
+.media-content-button .button,
+.media-content-button .hyperlink {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.media-content-button .button {
+  padding: 0.6em 1.4em;
+  background-color: var(--mg-btn-bg, #ffffff);
+  color: var(--mg-btn-text, #000000);
+  border: 1px solid var(--mg-btn-border, #ffffff);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.media-grid-item:hover .media-content-button .button {
+  background-color: var(--mg-btn-bg-hover, #000000);
+  color: var(--mg-btn-text-hover, #ffffff);
+  border-color: var(--mg-btn-border-hover, #000000);
+}
+
+.media-content-button .hyperlink {
+  color: var(--mg-text, #ffffff);
+  text-decoration: underline;
+}
+
+/* ---- Reveal on hover ---- */
+.content-on-hover .media-content {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.content-on-hover .media-grid-item:hover .media-content,
+.content-on-hover .media-grid-item:focus-within .media-content {
+  opacity: 1;
+}
+
+/* ---- Mobile ---- */
+@media screen and (max-width: 767px) {
+  .gs-mg--visibility-large { display: none !important; }
+
+  /* Scoped to mobile only. Unscoped, this outranked the desktop grid. */
+  .media-grid-wrapper.mobile-two-column {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---- Desktop ---- */
+@media screen and (min-width: 768px) {
+  .gs-mg--visibility-small { display: none !important; }
+
+  .gs-media-grid {
+    padding-top: var(--padding-top, 70px);
+    padding-bottom: var(--padding-bottom, 70px);
+  }
+
+  .mg-heading {
+    font-size: var(--mgHeadingSizeDesktop, 32px);
+  }
+
+  .media-grid-wrapper,
+  .media-grid-wrapper.mobile-two-column {
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-rows: var(--desktopHeight, 400px);
+    gap: var(--columnGapDesktop, 5px);
+  }
+
+  .media-grid-item {
+    grid-column: span var(--column, 4);
+    grid-row: span var(--row, 1);
+    aspect-ratio: auto !important;
+  }
+
+  .media-content {
+    padding: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img-zoom .media-grid-image img,
+  .content-on-hover .media-content,
+  .media-content-button .button {
+    transition: none;
+  }
+
+  .img-zoom:hover .media-grid-image img {
+    transform: none;
+  }
+}

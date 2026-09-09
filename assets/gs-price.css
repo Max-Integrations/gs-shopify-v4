@@ -1,0 +1,59 @@
+/*
+  ==================================================================
+  GS Price
+  ==================================================================
+  Loaded by snippets/gs-price.liquid itself.
+
+  WHY THIS FILE EXISTS. These rules originally lived only in
+  gs-card-product.css, which loads when a product CARD renders. The PDP
+  renders gs-price directly, so the price had no styling there at all.
+  Same problem gs-reviews had.
+
+  A snippet that can be rendered from anywhere has to carry its own
+  styling. Shopify de-duplicates repeated stylesheet_tag output, so
+  loading it per render costs nothing.
+  ==================================================================
+*/
+
+.product-price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 1.3rem;
+}
+
+.product-price .price-item {
+  color: var(--cardPriceColor, rgb(var(--cardDetailsTextColor, var(--textColor))));
+}
+
+.product-price .compare-price {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+.product-percent-off {
+  color: rgba(var(--line-color), 1);
+  font-weight: 700;
+}
+
+.product-unit-price {
+  width: 100%;
+  font-size: var(--xsmallText);
+  opacity: 0.7;
+}
+
+/* Cards centre the price; the PDP shows it larger and left-aligned
+   under the title. */
+.product-card-detail .product-price {
+  justify-content: center;
+}
+
+.gs-pdp__price .product-price {
+  justify-content: flex-start;
+  font-size: var(--largeText);
+}
+
+.gs-pdp__price .product-unit-price {
+  font-size: var(--smallText);
+}

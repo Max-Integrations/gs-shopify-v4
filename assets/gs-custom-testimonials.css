@@ -1,0 +1,180 @@
+/*
+  GS Custom Testimonials
+
+  v3 emitted these rules in an unscoped <style> block using generic
+  class names - .custom-comment, .custom-name, .custom-jd - which leaked
+  globally. Namespaced under .gs-testimonials.
+
+  Colours come from the token bridge rather than reading colour scheme
+  properties directly. v3 read scheme.settings.heading / .border /
+  .rating_color, none of which exist in Dawn's scheme model.
+
+  The carousel is CSS scroll-snap. v3 used Swiper (154 KB).
+*/
+
+.gs-testimonials {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 43px;
+  position: relative;
+  text-align: var(--gt-align, center);
+}
+
+.gs-testimonials__heading {
+  color: rgb(var(--headingColor, var(--textColor)));
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 700;
+  margin: 0 0 44px;
+}
+
+.gs-testimonials__scroller {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gs-testimonials__track {
+  display: flex;
+  gap: 36px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  align-items: stretch;
+}
+
+.gs-testimonials__track::-webkit-scrollbar {
+  display: none;
+}
+
+.gs-testimonials__item {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  padding: var(--gt-pad-mobile, 25px);
+  border: var(--gt-border-width, 0px) solid rgb(var(--borderColor));
+  margin: 0;
+}
+
+/* Five literal stars. Decorative only - the markup carries aria-hidden. */
+.gs-testimonials__rating::before {
+  content: '\2605 \2605 \2605 \2605 \2605';
+  color: rgb(var(--ratingStarColor, 154 114 63));
+  font-size: 24px;
+}
+
+.gs-testimonials__item-heading {
+  color: rgb(var(--headingColor, var(--textColor)));
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 0.5em;
+}
+
+.gs-testimonials__comment {
+  color: rgb(var(--textColor));
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 400;
+  letter-spacing: 0;
+  margin: 0 0 var(--gt-pad-mobile, 25px);
+}
+
+/* margin-top:auto pins attribution to the bottom of an uneven card. */
+.gs-testimonials__name {
+  margin: auto 0 0;
+  color: rgb(var(--textColor));
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+/* v3 forced #000000 and Helvetica here, invisible on a dark scheme. */
+.gs-testimonials__jd {
+  margin: 7px 0 0;
+  color: rgb(var(--textColor));
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+
+.gs-testimonials__btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--textColor));
+  cursor: pointer;
+}
+
+.gs-testimonials__btn[hidden] {
+  display: none;
+}
+
+.gs-testimonials__btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+@media screen and (max-width: 768px) {
+  .gs-testimonials {
+    padding: 40px 0;
+  }
+
+  .gs-testimonials__heading {
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .gs-testimonials__comment {
+    font-size: 18.2px;
+  }
+
+  .gs-testimonials__name {
+    font-size: 17px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .gs-testimonials__item {
+    flex-basis: calc((100% - 36px) / 2);
+    padding: var(--gt-pad-desktop, 50px);
+  }
+
+  .gs-testimonials__comment {
+    margin-bottom: var(--gt-pad-desktop, 50px);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .gs-testimonials__track {
+    gap: 72px;
+  }
+
+  .gs-testimonials__item {
+    flex-basis: calc((100% - 144px) / 3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-testimonials__track {
+    scroll-behavior: auto;
+  }
+}

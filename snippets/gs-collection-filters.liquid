@@ -1,0 +1,401 @@
+{% comment %}
+  ==================================================================
+  GS COLLECTION FILTERS
+  Ported from gs-shopify-v3 snippets/collection-filters.liquid (32.6 KB)
+  ==================================================================
+  Owns the FiltersForm that gs-collection-toolbar's sort radios submit
+  to via form="FiltersForm". Used by main-collection AND main-search.
+
+  USAGE:
+    render 'gs-collection-filters', section: section, sort_by: sort_by
+
+  ------------------------------------------------------------------
+  REVISION 2026-08-13 - THREE FIXES, ALL FROM THE PORT NOT FROM v3
+  ------------------------------------------------------------------
+  1. COLOUR FILTERS RENDERED AS TEXT CHECKBOXES, NOT SWATCHES.
+     Swatch detection read `settings.custom_colors_options` - a v3 THEME
+     SETTING with no entry in Dawn's config/settings_schema.json. It was
+     nil, so is_color was always false.
+
+     Detection now works from data Shopify actually provides:
+       - filter.presentation is 'swatch' or 'image'
+       - or any value carries a swatch colour or image
+       - or the filter label looks like a colour filter
+     The v3 setting is still honoured if it is ever added.
+
+  2. "CLEAR ALL" LINKED NOWHERE ON THE SEARCH PAGE.
+     href was collection.url, and there is no collection on /search, so
+     the link resolved to an empty string. Now falls back to the search
+     URL carrying the current term.
+
+  3. THE NO-JS PATH LOST THE SEARCH TERM.
+     The hidden `q` input only rendered when collection.terms existed.
+     On /search that is nil, so submitting the form without JavaScript
+     dropped the query. gs-collection-filter.js already carried `q` for
+     the AJAX path; the plain submit did not.
+
+  ------------------------------------------------------------------
+  DUPLICATE DOM IDs ON EVERY COLLECTION PAGE (v3)
+  ------------------------------------------------------------------
+  v3's main-collection rendered BOTH the topbar and this snippet, each
+  containing a full sort control, both emitting id="sort__list" and
+  sortByOption-1..N. Duplicate ids break label[for] association -
+  clicking a sort label can focus the wrong radio. The sidebar copy is
+  deleted; gs-collection-toolbar owns sort.
+
+  ------------------------------------------------------------------
+  GLOBAL CSS FROM A PRICE-SLIDER TUTORIAL (v3)
+  ------------------------------------------------------------------
+      .wrapper { width: 400px; background: #fff; }
+      header h2 { font-size: 24px; font-weight: 600; }
+      header p  { margin-top: 5px; font-size: 16px; }
+      ::selection { color: #fff; background: #ab192d; }
+
+  `header h2` and `header p` are element selectors that hit the SITE
+  HEADER, from a snippet that only renders on collection pages. None
+  carried over; everything is namespaced under .gs-filters.
+
+  ------------------------------------------------------------------
+  PRICE FILTER: TWO REAL v3 BUGS
+  ------------------------------------------------------------------
+  1. `assign maxpricevalue = min_value` - the slider's max handle was
+     computed from the MINIMUM in the comma-decimal branch.
+  2. The MAX price input's value was guarded by the MIN value, so
+     filtering by maximum price only left the To field visually empty
+     even though the filter applied. That one affects USD.
+
+  ------------------------------------------------------------------
+  OTHER v3 FIXES
+  ------------------------------------------------------------------
+  - ids were built from human labels, producing id="FilterProduct type1"
+    - a space in an id is invalid and breaks label[for]. Handleized.
+  - ~12 KB of commented-out code, an entire duplicate topbar. Liquid
+    still tokenizes comment bodies, so it cost parse time per page.
+  - has_active for price_range used AND, so a min-only filter did not
+    count as active and its group would not auto-open.
+  - Three <a> elements with no href served as close buttons.
+  - snippets/swatchs-filter (misspelled) inlined; it was 1.1 KB.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-collection-filters.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  # Search and collection share this snippet.
+  assign is_search = false
+  if search.performed
+    assign is_search = true
+  endif
+
+  assign filter_set = collection.filters
+  if is_search
+    assign filter_set = search.filters
+  endif
+
+  assign clear_url = collection.url
+  if is_search
+    assign clear_url = routes.search_url | append: '?q=' | append: search.terms | url_encode
+  endif
+
+  # Kept in case the v3 setting is ever added to settings_schema.json.
+  assign color_option_labels = settings.custom_colors_options | downcase | default: 'color,colour,colorway,colourway'
+
+  # PATTERN_SWATCH: v3 hardcoded this CDN URL inline for any filter value
+  # labelled 'Pattern'. Kept so the swatch keeps working; it should become
+  # a real Shopify swatch on the option value.
+  assign pattern_swatch_url = 'https://cdn.shopify.com/s/files/1/0703/2002/9955/files/Web_Site_Color_Swatch_USAFlagANDRedWhiteBlue_1_-min_1.jpg?v=1768337863'
+
+  assign comma_decimal_currencies = 'ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,TRY,UYU,VES,VND' | split: ','
+  assign uses_comma_decimals = false
+  if comma_decimal_currencies contains cart.currency.iso_code
+    assign uses_comma_decimals = true
+  endif
+-%}
+
+<div class="gs-filters" id="GsCollectionFilters-{{ section.id }}" data-side-drawer>
+  <form id="FiltersForm" class="gs-filters__form" data-form-id>
+    <div class="gs-filters__head">
+      <p class="gs-filters__title">
+        <svg width="18" height="16" viewBox="0 0 12 11" fill="none" aria-hidden="true" focusable="false">
+          <path d="M0 9.77778L8.21516e-08 8.55556H2.53875V7.33333H4.23125V8.55556H11.8475V9.77778H4.23125V11H2.53875V9.77778H0ZM2.46314e-07 6.11111L3.28396e-07 4.88889H7.61625V3.66667H9.30876V4.88889H11.8475V6.11111H9.30876V7.33333H7.61625V6.11111H2.46314e-07ZM4.92629e-07 2.44444L5.7471e-07 1.22223H2.53875V0L4.23125 4.80826e-08V1.22223H11.8475V2.44444H4.23125V3.66667H2.53875V2.44444H4.92629e-07Z" fill="currentColor"/>
+        </svg>
+        {{ 'sections.collection_template.filter_by_label' | t }}
+      </p>
+
+      <button
+        type="button"
+        class="gs-filters__close"
+        aria-label="{{ 'accessibility.close' | t }}"
+        data-side-drawer-close
+      >
+        <svg width="12" height="12" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false">
+          <path d="M8.99998 0L9.99998 0.999969L0.999998 9.99969L0 8.99972L8.99998 0Z" fill="currentColor"/>
+          <path d="M2.39302e-05 1.00028L1.00002 0.000307701L10 9.00003L9 10L2.39302e-05 1.00028Z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="gs-filters__body">
+      {%- comment -%}
+        The search term must ride along or a no-JS submit loses it.
+      {%- endcomment -%}
+      {%- if is_search -%}
+        <input type="hidden" name="q" value="{{ search.terms | escape }}">
+        <input type="hidden" name="options[prefix]" value="last">
+      {%- elsif collection.terms -%}
+        <input type="hidden" name="q" value="{{ collection.terms | escape }}">
+        <input type="hidden" name="options[prefix]" value="last">
+      {%- endif -%}
+
+      {%- if collection.current_vendor or collection.current_type -%}
+        <input type="hidden" name="q" value="{{ collection.current_vendor }}{{ collection.current_type }}">
+      {%- endif -%}
+
+      {%- for filter in filter_set -%}
+        {%- liquid
+          assign filter_label = filter.label
+          assign filter_label_down = filter_label | downcase
+          assign filter_key = filter.param_name | default: filter_label | handleize
+
+          # Swatch detection from data Shopify provides, not from a v3
+          # theme setting that does not exist here.
+          assign is_color = false
+          if filter.presentation == 'swatch' or filter.presentation == 'image'
+            assign is_color = true
+          elsif color_option_labels contains filter_label_down
+            assign is_color = true
+          else
+            for probe in filter.values limit: 1
+              if probe.swatch.color or probe.swatch.image
+                assign is_color = true
+              endif
+            endfor
+          endif
+
+          assign has_active = false
+          if filter.type == 'price_range'
+            if filter.min_value.value != null or filter.max_value.value != null
+              assign has_active = true
+            endif
+          else
+            if filter.active_values.size > 0
+              assign has_active = true
+            endif
+          endif
+
+          assign should_open = false
+          if has_active
+            assign should_open = true
+          elsif section.settings.open_all_filtering
+            assign should_open = true
+          elsif section.settings.open_filtering and forloop.first
+            assign should_open = true
+          endif
+        -%}
+
+        <details
+          class="gs-filters__group"
+          data-filter-key="{{ filter_key }}"
+          {% if should_open %}open{% endif %}
+        >
+          <summary class="gs-filters__group-title" data-filter-label="{{ filter_label | escape }}">
+            {{- filter_label -}}
+            <svg class="gs-filters__chevron" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true" focusable="false">
+              <path d="M11 1L6 6L1 1" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </summary>
+
+          <div class="gs-filters__group-body">
+            {%- case filter.type -%}
+
+              {%- when 'boolean', 'list' -%}
+                <ul class="gs-filters__values list-unstyled{% if is_color %} gs-filters__values--swatch{% endif %}">
+                  {%- for filter_value in filter.values -%}
+                    {%- liquid
+                      assign value_id = 'Filter-' | append: section.id | append: '-' | append: filter_key | append: '-' | append: forloop.index
+
+                      assign is_disabled = false
+                      if filter_value.count == 0 and filter_value.active == false and is_color == false
+                        assign is_disabled = true
+                      endif
+
+                      assign swatch_style = ''
+                      if filter_value.label == 'Pattern'
+                        capture swatch_style
+                          echo 'background: url(' | append: pattern_swatch_url | append: ') no-repeat center center / cover;'
+                        endcapture
+                      elsif filter_value.swatch.color
+                        capture swatch_style
+                          echo 'background-color: ' | append: filter_value.swatch.color | append: ';'
+                        endcapture
+                      elsif filter_value.swatch.image
+                        assign swatch_image_url = filter_value.swatch.image | image_url: width: 100
+                        capture swatch_style
+                          echo 'background: url(' | append: swatch_image_url | append: ') no-repeat center center / cover;'
+                        endcapture
+                      endif
+                    -%}
+
+                    <li class="gs-filters__value{% if is_color %} gs-filters__value--swatch{% endif %}{% if is_disabled %} is-disabled{% endif %}">
+                      <input
+                        type="checkbox"
+                        class="gs-filters__checkbox"
+                        name="{{ filter_value.param_name }}"
+                        value="{{ filter_value.value }}"
+                        id="{{ value_id }}"
+                        {% if filter_value.active %}checked{% endif %}
+                        {% if is_disabled %}disabled{% endif %}
+                      >
+                      <label class="gs-filters__label" for="{{ value_id }}" title="{{ filter_value.label | escape }}">
+                        {%- if is_color -%}
+                          {%- comment -%}
+                            Inlined from snippets/swatchs-filter (misspelled
+                            in v3). The visible name lives in a
+                            visually-hidden span so the swatch keeps an
+                            accessible name.
+                          {%- endcomment -%}
+                          <span class="gs-filters__swatch" style="{{ swatch_style }}" data-color="{{ filter_value.label | escape | downcase }}"></span>
+                          <span class="visually-hidden">{{ filter_value.label | escape }} ({{ filter_value.count }})</span>
+                        {%- else -%}
+                          <span class="gs-filters__tick" aria-hidden="true"></span>
+                          <span class="gs-filters__value-name">{{ filter_value.label | escape }}</span>
+                          <span class="gs-filters__count">({{ filter_value.count }})</span>
+                        {%- endif -%}
+                      </label>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+
+              {%- when 'price_range' -%}
+                {%- liquid
+                  if uses_comma_decimals
+                    assign range_min_raw = filter.range_min | money_without_currency | replace: '.', '' | replace: ',', '.' | floor
+                    assign range_max_raw = filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' | floor
+                  else
+                    assign range_min_raw = filter.range_min | money_without_currency | replace: ',', '' | floor
+                    assign range_max_raw = filter.range_max | money_without_currency | replace: ',', '' | floor
+                  endif
+
+                  assign min_current = range_min_raw
+                  assign max_current = range_max_raw
+
+                  if filter.min_value.value
+                    if uses_comma_decimals
+                      assign min_current = filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' | floor
+                    else
+                      assign min_current = filter.min_value.value | money_without_currency | replace: ',', '' | floor
+                    endif
+                  endif
+
+                  if filter.max_value.value
+                    if uses_comma_decimals
+                      assign max_current = filter.max_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' | floor
+                    else
+                      assign max_current = filter.max_value.value | money_without_currency | replace: ',', '' | floor
+                    endif
+                  endif
+
+                  assign progress_left = 0
+                  assign progress_right = 0
+                  if range_max_raw > 0
+                    assign progress_left = min_current | times: 100.0 | divided_by: range_max_raw
+                    assign progress_right_used = max_current | times: 100.0 | divided_by: range_max_raw
+                    assign progress_right = 100 | minus: progress_right_used
+                  endif
+
+                  assign gte_id = 'Filter-' | append: section.id | append: '-' | append: filter_key | append: '-GTE'
+                  assign lte_id = 'Filter-' | append: section.id | append: '-' | append: filter_key | append: '-LTE'
+                -%}
+
+                <div class="gs-filters__price">
+                  <div class="gs-filters__slider">
+                    <div
+                      class="gs-filters__slider-progress"
+                      style="left: {{ progress_left | at_least: 0 }}%; right: {{ progress_right | at_least: 0 }}%;"
+                    ></div>
+                  </div>
+
+                  <div class="gs-filters__range no-js-hidden" data-target="price">
+                    <input
+                      type="range"
+                      class="gs-filters__range-input gs-filters__range-input--min"
+                      min="{{ range_min_raw }}"
+                      max="{{ range_max_raw }}"
+                      value="{{ min_current }}"
+                      step="1"
+                      aria-label="{{ 'sections.collection_template.from' | t }}"
+                    >
+                    <input
+                      type="range"
+                      class="gs-filters__range-input gs-filters__range-input--max"
+                      min="{{ range_min_raw }}"
+                      max="{{ range_max_raw }}"
+                      value="{{ max_current }}"
+                      step="1"
+                      aria-label="{{ 'sections.collection_template.to' | t }}"
+                    >
+                  </div>
+
+                  <div class="gs-filters__price-fields">
+                    <div class="gs-filters__field">
+                      <label class="gs-filters__field-name" for="{{ gte_id }}">
+                        {{ 'sections.collection_template.from' | t }}
+                      </label>
+                      <div class="gs-filters__field-wrap">
+                        <span class="gs-filters__currency">{{ cart.currency.symbol }}</span>
+                        <input
+                          class="gs-filters__field-input"
+                          name="{{ filter.min_value.param_name }}"
+                          id="{{ gte_id }}"
+                          type="number"
+                          inputmode="numeric"
+                          min="0"
+                          max="{{ range_max_raw }}"
+                          placeholder="{{ range_min_raw }}"
+                          {% if filter.min_value.value %}value="{{ min_current }}"{% endif %}
+                        >
+                      </div>
+                    </div>
+
+                    <div class="gs-filters__field">
+                      <label class="gs-filters__field-name" for="{{ lte_id }}">
+                        {{ 'sections.collection_template.to' | t }}
+                      </label>
+                      <div class="gs-filters__field-wrap">
+                        <span class="gs-filters__currency">{{ cart.currency.symbol }}</span>
+                        <input
+                          class="gs-filters__field-input"
+                          name="{{ filter.max_value.param_name }}"
+                          id="{{ lte_id }}"
+                          type="number"
+                          inputmode="numeric"
+                          min="0"
+                          max="{{ range_max_raw }}"
+                          placeholder="{{ range_max_raw }}"
+                          {%- comment -%}
+                            v3 guarded this with filter.min_value.value, so
+                            a max-only price filter left the field empty.
+                          {%- endcomment -%}
+                          {% if filter.max_value.value %}value="{{ max_current }}"{% endif %}
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            {%- endcase -%}
+          </div>
+        </details>
+      {%- endfor -%}
+    </div>
+
+    <div class="gs-filters__actions">
+      <button type="submit" class="button btn-block gs-filters__submit">
+        {{ 'sections.collection_template.show_results' | t }}
+      </button>
+      <a class="gs-filters__clear" href="{{ clear_url }}">
+        {{ 'sections.collection_template.clear_all' | t }}
+      </a>
+    </div>
+  </form>
+</div>

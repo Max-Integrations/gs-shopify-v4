@@ -1,0 +1,315 @@
+/*
+  GS Multicolumn with Content Hover
+
+  "ABOUT THE BRAND" cards. Hover (or the +/- button) reveals a
+  description over the card image.
+
+  v3 emitted this whole stylesheet inline per instance with every rule
+  prefixed by #shopify-section-{id}, and used a `:is(h1, h2, h3. h4, ...)`
+  selector containing a PERIOD instead of a comma - which silently
+  dropped h3 and h4 from the desktop rules.
+*/
+
+.gs-mch {
+  position: relative;
+  margin: var(--mch-section-margin-mobile, 25px) auto;
+}
+
+.gs-mch--xs { max-width: 800px; }
+.gs-mch--sm { max-width: 1100px; }
+.gs-mch--md { max-width: 1300px; }
+.gs-mch--lg { max-width: var(--page-width, 1600px); }
+
+/* ---- Section heading ---- */
+.gs-mch__heading {
+  text-align: var(--mch-heading-align, center);
+  margin: var(--mch-heading-margin-mobile, 25px) 0;
+}
+
+.gs-mch__heading h1,
+.gs-mch__heading h2,
+.gs-mch__heading h3,
+.gs-mch__heading h4,
+.gs-mch__heading h5,
+.gs-mch__heading h6,
+.gs-mch__heading p {
+  color: var(--mch-heading-color, #000000);
+  font-size: var(--mch-heading-size-mobile, 24px);
+  margin: 0;
+}
+
+/* ---- Track ---- */
+.gs-mch__scroller {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gs-mch__track {
+  display: flex;
+  gap: var(--mch-gap-mobile, 16px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gs-mch__track::-webkit-scrollbar { display: none; }
+
+.gs-mch__track--grid {
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-x: visible;
+  scroll-snap-type: none;
+}
+
+/*
+  v3's mobile rule subtracted the DESKTOP gap here.
+*/
+.gs-mch__card {
+  flex: 0 0 calc((100% - (var(--mch-gap-mobile, 16px) * (var(--mch-per-mobile, 1) - 1))) / var(--mch-per-mobile, 1));
+  scroll-snap-align: start;
+  text-align: var(--mch-card-align, center);
+  margin: 0;
+}
+
+/* ---- Media + reveal ---- */
+.gs-mch__media {
+  position: relative;
+}
+
+.gs-mch__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.gs-mch__toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border: 0;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  color: #000000;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.gs-mch__toggle svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.gs-mch__icon-minus { display: none; }
+
+.gs-mch__media.is-open .gs-mch__icon-plus { display: none; }
+.gs-mch__media.is-open .gs-mch__icon-minus { display: block; }
+
+.gs-mch__description {
+  position: absolute;
+  inset: 0;
+  padding: var(--mch-card-pad-mobile, 25px);
+  background-color: var(--mch-overlay, rgba(0, 0, 0, 0.5));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0s linear 0.25s;
+}
+
+.gs-mch__description,
+.gs-mch__description p,
+.gs-mch__description strong,
+.gs-mch__description em,
+.gs-mch__description a {
+  color: var(--mch-desc-color, #ffffff);
+  font-size: var(--mch-desc-size-mobile, 24px);
+}
+
+.gs-mch__media.is-open .gs-mch__description {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s, visibility 0s;
+}
+
+/* Pointer devices reveal on hover as well as via the button. */
+@media (hover: hover) and (pointer: fine) {
+  .gs-mch__media:hover .gs-mch__description,
+  .gs-mch__media:focus-within .gs-mch__description {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.25s, visibility 0s;
+  }
+}
+
+/* ---- Details ---- */
+.gs-mch__details {
+  display: flex;
+  flex-direction: column;
+  padding: var(--mch-card-pad-mobile, 25px);
+  gap: var(--mch-card-gap-mobile, 16px);
+  box-sizing: border-box;
+}
+
+/* Subheading renders above the heading. v3 achieved this with flex
+   `order`; the markup is now in visual order instead. */
+.gs-mch__subheading,
+.gs-mch__subheading p,
+.gs-mch__subheading h1,
+.gs-mch__subheading h2,
+.gs-mch__subheading h3,
+.gs-mch__subheading h4,
+.gs-mch__subheading h5,
+.gs-mch__subheading h6 {
+  color: var(--mch-card-sub-color, #a1a1a1);
+  font-size: var(--mch-card-sub-size-mobile, 24px);
+  margin: 0;
+}
+
+.gs-mch__card-heading,
+.gs-mch__card-heading p,
+.gs-mch__card-heading h1,
+.gs-mch__card-heading h2,
+.gs-mch__card-heading h3,
+.gs-mch__card-heading h4,
+.gs-mch__card-heading h5,
+.gs-mch__card-heading h6 {
+  color: var(--mch-card-heading-color, #000000);
+  font-size: var(--mch-card-heading-size-mobile, 24px);
+  margin: 0;
+}
+
+.gs-mch__cta {
+  width: fit-content;
+  align-self: center;
+  color: var(--mch-cta-color, #000000);
+  font-size: var(--mch-cta-size-mobile, 24px);
+  font-weight: var(--mch-cta-weight, 400);
+  padding: var(--mch-cta-pad-mobile, 0);
+  text-decoration: none;
+}
+
+.gs-mch__cta--button {
+  background-color: var(--mch-cta-bg, transparent);
+  border: var(--mch-cta-border-width, 2px) solid var(--mch-cta-border-color, #000000);
+}
+
+/* ---- Nav ---- */
+.gs-mch__nav {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--textColor));
+  cursor: pointer;
+}
+
+.gs-mch__nav[hidden] { display: none; }
+.gs-mch__nav:disabled { opacity: 0.3; cursor: default; }
+
+/* ---- Visibility ---- */
+@media screen and (max-width: 768px) {
+  .gs-mch--visibility-large { display: none !important; }
+}
+
+@media screen and (min-width: 769px) {
+  .gs-mch--visibility-small { display: none !important; }
+
+  .gs-mch {
+    margin: var(--mch-section-margin, 50px) auto;
+  }
+
+  .gs-mch__heading {
+    margin: var(--mch-heading-margin, 50px) 0;
+  }
+
+  /* v3 wrote `h3. h4` here - a period, not a comma - so h3 and h4 were
+     silently excluded from these desktop rules. */
+  .gs-mch__heading h1,
+  .gs-mch__heading h2,
+  .gs-mch__heading h3,
+  .gs-mch__heading h4,
+  .gs-mch__heading h5,
+  .gs-mch__heading h6,
+  .gs-mch__heading p {
+    font-size: var(--mch-heading-size, 32px);
+  }
+
+  .gs-mch__track {
+    gap: var(--mch-gap, 32px);
+  }
+
+  .gs-mch__card {
+    flex-basis: calc((100% - (var(--mch-gap, 32px) * (var(--mch-per-desktop, 3) - 1))) / var(--mch-per-desktop, 3));
+  }
+
+  .gs-mch__description,
+  .gs-mch__details {
+    padding: var(--mch-card-pad, 50px);
+  }
+
+  .gs-mch__details {
+    gap: var(--mch-card-gap, 24px);
+  }
+
+  .gs-mch__description,
+  .gs-mch__description p,
+  .gs-mch__description strong,
+  .gs-mch__description em,
+  .gs-mch__description a {
+    font-size: var(--mch-desc-size, 32px);
+  }
+
+  .gs-mch__subheading,
+  .gs-mch__subheading p,
+  .gs-mch__subheading h1,
+  .gs-mch__subheading h2,
+  .gs-mch__subheading h3,
+  .gs-mch__subheading h4,
+  .gs-mch__subheading h5,
+  .gs-mch__subheading h6 {
+    font-size: var(--mch-card-sub-size, 32px);
+  }
+
+  .gs-mch__card-heading,
+  .gs-mch__card-heading p,
+  .gs-mch__card-heading h1,
+  .gs-mch__card-heading h2,
+  .gs-mch__card-heading h3,
+  .gs-mch__card-heading h4,
+  .gs-mch__card-heading h5,
+  .gs-mch__card-heading h6 {
+    font-size: var(--mch-card-heading-size, 32px);
+  }
+
+  .gs-mch__cta {
+    font-size: var(--mch-cta-size, 32px);
+    padding: var(--mch-cta-pad, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-mch__track { scroll-behavior: auto; }
+  .gs-mch__description { transition: none; }
+}

@@ -1,0 +1,419 @@
+/*
+  ==================================================================
+  GS Collection Filters
+  ==================================================================
+  Everything is namespaced under .gs-filters.
+
+  v3's version opened with an unscoped <style> block carrying leftovers
+  from a price-slider tutorial:
+
+      .wrapper { width: 400px; background: #fff; ... }
+      header h2 { font-size: 24px; font-weight: 600; }
+      header p  { margin-top: 5px; font-size: 16px; }
+      ::selection { color: #fff; background: #ab192d; }
+      .field input { ... }
+
+  `header h2` and `header p` are element selectors that reach the SITE
+  HEADER. `.wrapper` and `.field input` are generic enough to hit almost
+  anything. None of it carried over.
+
+  ------------------------------------------------------------------
+  ADDED 2026-08-12: OFF-CANVAS DRAWER
+  ------------------------------------------------------------------
+  Below 1025px the sidebar is a drawer. The toolbar's Filter button adds
+  .is-open; Escape, the close button and the backdrop remove it.
+
+  The backdrop is a ::after on the panel rather than an extra element,
+  and the transition is transform + visibility only, so it composites on
+  the GPU and does not force layout.
+  ==================================================================
+*/
+
+.gs-filters__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.gs-filters__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(var(--borderColor), 0.2);
+}
+
+.gs-filters__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-family: var(--headingFont);
+  font-size: var(--smallText);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgb(var(--textColor));
+}
+
+.gs-filters__close {
+  display: none;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--textColor));
+  cursor: pointer;
+  line-height: 0;
+}
+
+.gs-filters__close:focus-visible,
+.gs-filters__submit:focus-visible {
+  outline: 2px solid rgb(var(--textColor));
+  outline-offset: 2px;
+}
+
+/* ---- Filter groups ---- */
+.gs-filters__group {
+  border-bottom: 1px solid rgba(var(--borderColor), 0.15);
+}
+
+.gs-filters__group-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.9rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--headingFont);
+  font-size: var(--smallText);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: rgb(var(--textColor));
+}
+
+.gs-filters__group-title::-webkit-details-marker {
+  display: none;
+}
+
+.gs-filters__group-title:focus-visible {
+  outline: 2px solid rgb(var(--textColor));
+  outline-offset: -2px;
+}
+
+.gs-filters__chevron {
+  flex: 0 0 auto;
+  transition: transform 0.2s ease;
+}
+
+.gs-filters__group[open] .gs-filters__chevron {
+  transform: rotate(180deg);
+}
+
+.gs-filters__group-body {
+  padding-bottom: 1rem;
+}
+
+/* ---- Values ---- */
+.gs-filters__values {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.gs-filters__values--swatch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-height: none;
+  overflow: visible;
+}
+
+.gs-filters__value {
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+/* The native checkbox is layered over its label so the whole row is
+   clickable, but it keeps its own focus ring rather than being hidden -
+   v3's .checkmark-input covered the row with appearance:none, which
+   removed the focus indicator entirely. */
+.gs-filters__checkbox {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+}
+
+.gs-filters__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 26px;
+  cursor: pointer;
+  color: rgb(var(--textColor));
+  font-size: var(--smallText);
+}
+
+.gs-filters__tick {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(var(--borderColor), 0.5);
+  background: transparent;
+}
+
+.gs-filters__checkbox:checked + .gs-filters__label .gs-filters__tick {
+  background-color: rgb(var(--textColor));
+  border-color: rgb(var(--textColor));
+}
+
+.gs-filters__checkbox:checked + .gs-filters__label .gs-filters__tick::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid rgb(var(--background));
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.gs-filters__checkbox:focus-visible + .gs-filters__label {
+  outline: 2px solid rgb(var(--textColor));
+  outline-offset: 2px;
+}
+
+.gs-filters__count {
+  color: rgba(var(--textColor), 0.6);
+  font-size: var(--xsmallText);
+}
+
+.gs-filters__value.is-disabled .gs-filters__label {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ---- Swatches ---- */
+.gs-filters__value--swatch {
+  padding: 0;
+}
+
+.gs-filters__value--swatch .gs-filters__label {
+  padding-left: 0;
+  gap: 0;
+}
+
+.gs-filters__swatch {
+  display: block;
+  width: var(--gs-swatch-size, 28px);
+  height: var(--gs-swatch-size, 28px);
+  border: 1px solid rgba(var(--borderColor), 0.35);
+  border-radius: var(--gs-swatch-radius, 50%);
+  background-size: cover;
+  background-position: center;
+}
+
+.gs-filters__checkbox:checked + .gs-filters__label .gs-filters__swatch {
+  outline: 2px solid rgb(var(--textColor));
+  outline-offset: 2px;
+}
+
+/* ---- Price ---- */
+.gs-filters__price {
+  padding-top: 0.5rem;
+}
+
+.gs-filters__slider {
+  position: relative;
+  height: 5px;
+  background: rgba(var(--borderColor), 0.25);
+  border-radius: 5px;
+}
+
+.gs-filters__slider-progress {
+  position: absolute;
+  height: 100%;
+  border-radius: 5px;
+  background: rgba(var(--line-color), 1);
+}
+
+.gs-filters__range {
+  position: relative;
+  height: 5px;
+}
+
+.gs-filters__range-input {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  margin: 0;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.gs-filters__range-input::-webkit-slider-thumb {
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  background: rgba(var(--line-color), 1);
+  pointer-events: auto;
+  -webkit-appearance: none;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+}
+
+.gs-filters__range-input::-moz-range-thumb {
+  height: 17px;
+  width: 17px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(var(--line-color), 1);
+  pointer-events: auto;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+}
+
+.gs-filters__price-fields {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.gs-filters__field {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.gs-filters__field-name {
+  display: block;
+  margin-bottom: 4px;
+  font-size: var(--xsmallText);
+  color: rgba(var(--textColor), 0.7);
+}
+
+.gs-filters__field-wrap {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(var(--borderColor), 0.5);
+}
+
+.gs-filters__currency {
+  padding-left: 8px;
+  color: rgb(var(--textColor));
+  font-size: var(--smallText);
+}
+
+/* v3 styled this with a bare `.field input` selector. */
+.gs-filters__field-input {
+  width: 100%;
+  min-width: 0;
+  height: 40px;
+  padding: 0 8px;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: rgb(var(--textColor));
+  font-size: var(--smallText);
+  text-align: center;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.gs-filters__field-input::-webkit-outer-spin-button,
+.gs-filters__field-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ---- Actions ---- */
+.gs-filters__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.2rem 0;
+}
+
+.gs-filters__clear {
+  color: rgb(var(--textColor));
+  font-size: var(--smallText);
+  text-decoration: underline;
+}
+
+/* ==================================================================
+   OFF-CANVAS DRAWER (below 1025px)
+   ================================================================== */
+@media screen and (max-width: 1024px) {
+  .gs-filters {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 20;
+    width: min(88vw, 380px);
+    padding: 1.2rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    background-color: rgb(var(--background));
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.25s ease, visibility 0s linear 0.25s;
+  }
+
+  .gs-filters.is-open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.25s ease, visibility 0s;
+  }
+
+  /* Backdrop as a pseudo-element - no extra DOM node. */
+  .gs-filters::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .gs-filters.is-open::after {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .gs-filters__close {
+    display: block;
+  }
+
+  /* Stop the page scrolling behind the open drawer. */
+  .gs-drawer-open,
+  .gs-drawer-open body {
+    overflow: hidden;
+  }
+
+  /* Submit is the primary action on mobile, so make it look like one. */
+  .gs-filters__submit {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-filters__chevron,
+  .gs-filters,
+  .gs-filters::after {
+    transition: none;
+  }
+}

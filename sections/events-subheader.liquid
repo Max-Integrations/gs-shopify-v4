@@ -1,0 +1,122 @@
+{% comment %}
+  ==================================================================
+  EVENTS SUBHEADER
+  Ported from gs-shopify-v3 sections/events-subheader.liquid
+  ==================================================================
+  A centred heading with an optional underline rule.
+
+  Setting IDs are byte-for-byte identical to v3.
+
+  ------------------------------------------------------------------
+  A SETTING THAT DID NOTHING
+  ------------------------------------------------------------------
+  events_subheader_size_mobile has existed in the editor all along and
+  was NEVER APPLIED - v3's section had no mobile media query at all, so
+  the desktop size rendered at every width. Anyone who set it saw no
+  change. It works now.
+
+  ------------------------------------------------------------------
+  OTHER v3 FIXES
+  ------------------------------------------------------------------
+  - Every declaration carried !important, making the heading immune to
+    the theme's type scale.
+  - `font-family: Engravers MT` was emitted unquoted. A multi-word family
+    name must be quoted or the declaration is dropped.
+  - Times New Roman was on offer as a font choice; it is not a brand
+    font. Replaced with the theme heading and body fonts.
+  - A per-instance <style> block with type="text/css", obsolete in HTML5.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-events.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+
+  case s.events_subheader_font
+    when 'Engravers MT'
+      assign sub_font = '"Engravers MT", var(--headingFont)'
+    when 'body'
+      assign sub_font = 'var(--bodyFont)'
+    else
+      assign sub_font = 'var(--headingFont)'
+  endcase
+-%}
+
+{%- if s.events_subheader != blank -%}
+  <div
+    class="gs-events-subheader"
+    id="events-subheader-{{ section.id }}"
+    style="
+      --evs-color: {{ s.events_subheader_color }};
+      --evs-font: {{ sub_font }};
+      --evs-size: {{ s.events_subheader_size_desktop }}px;
+      --evs-size-mobile: {{ s.events_subheader_size_mobile }}px;
+      {%- if s.events_subheader_border_bottom -%}
+        --evs-border: 5px solid {{ s.events_subheader_border_bottom_color }};
+        --evs-pad: 1rem;
+      {%- else -%}
+        --evs-border: none;
+        --evs-pad: 0;
+      {%- endif -%}
+    "
+  >
+    <div class="page-width">
+      <{{ s.events_subheader_header_type | default: 'h2' }} class="gs-events-subheader__text">
+        {{ s.events_subheader }}
+      </{{ s.events_subheader_header_type | default: 'h2' }}>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Events Subheader",
+  "tag": "section",
+  "class": "gs-events-subheader-section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "events_subheader_header_type",
+      "label": "Heading level",
+      "options": [
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ],
+      "default": "h2"
+    },
+    { "type": "inline_richtext", "id": "events_subheader", "label": "Subheader text" },
+    {
+      "type": "select",
+      "id": "events_subheader_font",
+      "label": "Font",
+      "info": "Engravers MT has no font file in this theme yet and will fall back.",
+      "options": [
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "body", "label": "Theme body font" },
+        { "value": "Engravers MT", "label": "Engravers MT" }
+      ],
+      "default": "heading"
+    },
+    { "type": "color", "id": "events_subheader_color", "label": "Text color", "default": "#ffffff" },
+    { "type": "range", "id": "events_subheader_size_desktop", "label": "Size (desktop)", "min": 28, "max": 62, "step": 1, "unit": "px", "default": 36 },
+    {
+      "type": "range",
+      "id": "events_subheader_size_mobile",
+      "label": "Size (mobile)",
+      "info": "This setting existed in v3 but was never applied.",
+      "min": 16,
+      "max": 38,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    { "type": "checkbox", "id": "events_subheader_border_bottom", "label": "Show underline", "default": true },
+    { "type": "color", "id": "events_subheader_border_bottom_color", "label": "Underline color", "default": "#ffffff" }
+  ],
+  "presets": [{ "name": "Events Subheader" }]
+}
+{% endschema %}

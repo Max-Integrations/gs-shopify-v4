@@ -1,0 +1,159 @@
+{% comment %}
+  ==================================================================
+  GS PRODUCT COLORS OPTION (colorway swatches)
+  Ported from gs-shopify-v3 snippets/product-colors-option.liquid
+  ==================================================================
+  USAGE:
+    render 'gs-product-colors-option', cardProduct: product
+
+  DATA MODEL (unchanged from v3):
+  Grunt Style models colorways as SEPARATE products linked by a product
+  list metafield. This snippet reads:
+    cardProduct.metafields.custom.product_swatches            (product list)
+    <product>.metafields.custom.collection_color_swatch_image
+    <product>.metafields.custom.collection_color_swatch_hex_code
+  The card's own swatch renders first, then each linked sibling.
+
+  ------------------------------------------------------------------
+  CRITICAL FIX: 28 MUTATION OBSERVERS PER PAGE
+  ------------------------------------------------------------------
+  v3 emitted its script block OUTSIDE the if-guard, so it rendered on
+  every call whether the product had swatches or not. Each copy ran
+  obs.observe(document.body, { childList: true, subtree: true }).
+
+  A 28-product collection page therefore attached TWENTY-EIGHT
+  MutationObservers to document.body, each watching the entire subtree.
+  Every DOM mutation anywhere fired all 28 callbacks, each iterating the
+  mutation list and running querySelector. With infinite scroll adding
+  cards, the observer count kept climbing for the life of the session.
+
+  This snippet now emits MARKUP ONLY. No script, no observer.
+  Behaviour lives in assets/gs-swatch-scroller.js, loaded ONCE per page.
+
+  ------------------------------------------------------------------
+  SWIPER DEPENDENCY REMOVED
+  ------------------------------------------------------------------
+  v3 instantiated a Swiper per swatch row. Swiper is 154 KB and slated
+  for removal (audit ref GS-007). The row is now a native overflow
+  scroller with CSS scroll-snap: touch, trackpad, and keyboard all work
+  with no library. Arrow buttons are progressive enhancement.
+
+  ------------------------------------------------------------------
+  OTHER FIXES
+  ------------------------------------------------------------------
+  1. ~120 LINES OF DEAD CODE. Roughly 7 KB of this 11 KB file was an
+     options_with_values implementation wrapped in a Liquid comment.
+     Liquid still tokenizes commented blocks, so it cost parse time on
+     every card render. Deleted; it remains in v3 if ever needed.
+
+  2. WRONG AVAILABILITY. Inside the loop over sibling products, v3 read
+     cardProduct.available rather than the sibling being rendered, so
+     every colorway reported the PARENT product's stock status. Fixed.
+
+  3. UNQUOTED ATTRIBUTE VALUE on data-quick-view-availability. Quoted.
+
+  4. TRIPLE BRACE TYPO in a product.url reference in the dead block.
+     Gone with the dead block.
+
+  5. NO ACCESSIBLE NAME on hex-code swatches. They were empty anchors
+     carrying only a background colour, so screen readers announced
+     nothing. Each now carries its colorway title, and the row is a
+     labelled list.
+
+  6. Dropped the dependency on snippets/carousal-arrows.liquid, which is
+     misspelled and therefore invisible to a grep for 'carousel'
+     (audit ref DUP-023).
+  ==================================================================
+{% endcomment %}
+
+{%- liquid
+  unless cardProduct
+    break
+  endunless
+
+  assign swatches = cardProduct.metafields.custom.product_swatches.value
+  assign own_image = cardProduct.metafields.custom.collection_color_swatch_image
+  assign own_hex = cardProduct.metafields.custom.collection_color_swatch_hex_code
+  assign has_own = false
+  if own_image or own_hex
+    assign has_own = true
+  endif
+-%}
+
+{%- if swatches.size > 0 or has_own -%}
+  {{ 'gs-product-colors-option.css' | asset_url | stylesheet_tag }}
+
+  <div class="product-selector-option select-color color-option">
+    <div class="gs-swatch-scroller" data-swatch-scroller>
+      <button
+        type="button"
+        class="gs-swatch-scroller__btn gs-swatch-scroller__btn--prev"
+        data-swatch-scroll="prev"
+        aria-label="{{ 'general.slider.previous_slide' | t | default: 'Previous' }}"
+        hidden
+      >
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+          <path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <ul
+        class="unstylish-list product-selector-option-list gs-swatch-track"
+        data-swatch-colors
+        data-swatch-track
+        aria-label="{{ 'products.product.color_options' | t | default: 'Colour options' }}"
+      >
+        {%- if has_own -%}
+          <li class="variant-option gs-swatch-track__item">
+            <a
+              href="{{ cardProduct.url }}"
+              class="option{% if own_hex and own_image == blank %} option--hex{% endif %}"
+              title="{{ cardProduct.title | escape }}"
+              aria-label="{{ cardProduct.title | escape }}"
+              aria-current="true"
+              data-quick-view-availability="{{ cardProduct.available }}"
+              data-quick-view
+              {%- if own_image == blank and own_hex %} style="background-color: {{ own_hex }};"{% endif -%}
+            >
+              {%- if own_image -%}{{ own_image | metafield_tag }}{%- endif -%}
+            </a>
+          </li>
+        {%- endif -%}
+
+        {%- for swatch_product in swatches -%}
+          {%- liquid
+            assign sib_image = swatch_product.metafields.custom.collection_color_swatch_image
+            assign sib_hex = swatch_product.metafields.custom.collection_color_swatch_hex_code
+          -%}
+          {%- if sib_image or sib_hex -%}
+            <li class="variant-option gs-swatch-track__item{% unless swatch_product.available %} out-of-stock{% endunless %}">
+              <a
+                href="{{ swatch_product.url }}"
+                class="option{% if sib_hex and sib_image == blank %} option--hex{% endif %}"
+                title="{{ swatch_product.title | escape }}"
+                aria-label="{{ swatch_product.title | escape }}"
+                data-quick-view-availability="{{ swatch_product.available }}"
+                data-quick-view
+                {%- if sib_image == blank and sib_hex %} style="background-color: {{ sib_hex }};"{% endif -%}
+              >
+                {%- if sib_image -%}{{ sib_image | metafield_tag }}{%- endif -%}
+              </a>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+
+      <button
+        type="button"
+        class="gs-swatch-scroller__btn gs-swatch-scroller__btn--next"
+        data-swatch-scroll="next"
+        aria-label="{{ 'general.slider.next_slide' | t | default: 'Next' }}"
+        hidden
+      >
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+          <path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+{%- endif -%}

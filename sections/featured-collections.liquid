@@ -1,0 +1,488 @@
+{% comment %}
+  ==================================================================
+  FEATURED COLLECTIONS
+  Ported from gs-shopify-v3 sections/featured-collections.liquid
+  ==================================================================
+  The tabbed "Shop Collections" carousels. Two instances on the
+  homepage. Also supports product recommendations for PDPs, and a
+  blog-post metafield mode used by templates/article.json.
+
+  RESOLVES DUP-003: v3 also had sections/collection-carousel.liquid,
+  27,754 bytes against this file's 27,744, pushed in the same commit
+  with a different MD5. Near-certainly a copy. NOT ported - diff the two
+  locally before deleting it.
+
+  ------------------------------------------------------------------
+  REVISION 2026-08-13 - TWO PORT DEFECTS
+  ------------------------------------------------------------------
+  1. AN EXPRESSION IN A RENDER ARGUMENT.
+         render 'gs-card-product', ..., hideContent: show_detail == false
+     Liquid does not evaluate expressions in tag arguments - only plain
+     values. Precomputed with assign now.
+
+     Fifth instance of this family in the port: filters inside an if
+     condition (twice), a filter inline as a tag argument, a filter as a
+     filter argument, and this. THE RULE: compute with assign, then pass
+     the variable.
+
+  2. TAB PRODUCTS LEAKED BETWEEN TABS.
+     tab_products was only assigned inside a branch. Liquid variables
+     persist across loop iterations, so a tab whose collection was empty
+     or missing silently rendered THE PREVIOUS TAB'S PRODUCTS - the same
+     items under a different heading, with no error. Now always assigned.
+
+     Also dropped the collections[tab_collection] fallback: a `collection`
+     setting returns a collection object, and indexing the global
+     collections array with an object does not resolve.
+
+  ------------------------------------------------------------------
+  v3 DEFECTS FIXED IN THE PORT
+  ------------------------------------------------------------------
+  - TWO TRAILING COMMAS in the schema JSON (cta_border_color and
+    cta_border_color_hover). Fourth section found with this.
+  - `sections.settings.enable_product_badges` - plural `sections`, so
+    that parameter never reached the card.
+  - `cycleIndex: placeholderIndex` where placeholderIndex is never
+    assigned in the file. Uses forloop.index, which also drives the
+    card's eager/fetchpriority decision.
+  - `text_alignment: section.settings.text_alignment` - no such setting.
+  - `#featured-collections-{id} * { text-transform: uppercase }` - a
+    universal selector hitting every descendant including titles and
+    prices.
+  - Swiper removed (loop:true misbehaves below slidesPerView) and with
+    it a MutationObserver that only disconnected on the first mutation.
+  - v3 hid .product-card-detail `unless` all four of title/price/
+    swatches/quick_view were on, THEN hid each individually.
+
+  ------------------------------------------------------------------
+  PAGE WEIGHT: ALL TABS RENDER
+  ------------------------------------------------------------------
+  Inactive tabs render into the DOM and hide with CSS. Six tabs at 15
+  products is 90 cards. Much cheaper now the full-product-JSON attribute
+  is gone, but still this section's biggest cost. Real lazy loading needs
+  a Section Rendering API fetch per tab - a worthwhile follow-up.
+
+  All schema setting IDs are byte-for-byte identical to v3.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-featured-collections.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign use_metafield = false
+  assign tab_items = section.blocks
+  if section.settings.collection_source == 'metafield'
+    assign use_metafield = true
+    assign tab_items = article.metafields.blogpost.promoted_collections.value
+  endif
+
+  assign hide_section = false
+  if section.settings.collection_type == 'tabs' and use_metafield and tab_items.size == 0
+    assign hide_section = true
+  endif
+
+  assign show_detail = false
+  if section.settings.enable_product_title or section.settings.enable_product_price or section.settings.enable_product_swatches or section.settings.enable_product_quick_view
+    assign show_detail = true
+  endif
+
+  # Precomputed - an expression cannot appear in a render argument.
+  assign hide_card_content = false
+  if show_detail == false
+    assign hide_card_content = true
+  endif
+-%}
+
+{%- unless hide_section -%}
+  <div
+    class="gs-featured-collections color-{{ section.settings.color_scheme }}{% unless show_detail %} gs-fc--no-detail{% endunless %}"
+    id="featured-collections-{{ section.id }}"
+    style="
+      --fc-pad-top: {{ section.settings.section_spacing_top_desktop }}px;
+      --fc-pad-bottom: {{ section.settings.section_spacing_bottom_desktop }}px;
+      --fc-pad-top-mobile: {{ section.settings.section_spacing_top_mobile }}px;
+      --fc-pad-bottom-mobile: {{ section.settings.section_spacing_bottom_mobile }}px;
+      --fc-heading-size: {{ section.settings.heading_size_desktop }}px;
+      --fc-heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
+      --fc-heading-align: {{ section.settings.heading_text_align }};
+      --fc-heading-mt: {{ section.settings.heading_spacing_top_desktop }}px;
+      --fc-heading-mb: {{ section.settings.heading_spacing_bottom_desktop }}px;
+      --fc-heading-mt-mobile: {{ section.settings.heading_spacing_top_mobile }}px;
+      --fc-heading-mb-mobile: {{ section.settings.heading_spacing_bottom_mobile }}px;
+      --fc-nav-size: {{ section.settings.navigation_title_size_desktop }}px;
+      --fc-nav-size-mobile: {{ section.settings.navigation_title_size_mobile }}px;
+      --fc-nav-mt: {{ section.settings.collection_navigation_spacing_top_desktop }}px;
+      --fc-nav-mb: {{ section.settings.collection_navigation_spacing_bottom_desktop }}px;
+      --fc-nav-mt-mobile: {{ section.settings.collection_navigation_spacing_top_mobile }}px;
+      --fc-nav-mb-mobile: {{ section.settings.collection_navigation_spacing_bottom_mobile }}px;
+      --fc-cta-size: {{ section.settings.cta_title_size_desktop }}px;
+      --fc-cta-size-mobile: {{ section.settings.cta_title_size_mobile }}px;
+      --fc-cta-mt: {{ section.settings.collection_cta_spacing_top_desktop }}px;
+      --fc-cta-mb: {{ section.settings.collection_cta_spacing_bottom_desktop }}px;
+      --fc-cta-mt-mobile: {{ section.settings.collection_cta_spacing_top_mobile }}px;
+      --fc-cta-mb-mobile: {{ section.settings.collection_cta_spacing_bottom_mobile }}px;
+      --fc-cta-text: {{ section.settings.cta_text_color }};
+      --fc-cta-text-hover: {{ section.settings.cta_text_color_hover }};
+      --fc-cta-bg: {{ section.settings.cta_background_color }};
+      --fc-cta-bg-hover: {{ section.settings.cta_background_color_hover }};
+      --fc-cta-border: {{ section.settings.cta_border_color }};
+      --fc-cta-border-hover: {{ section.settings.cta_border_color_hover }};
+      --fc-per-view: {{ section.settings.number_products_per_view_desktop }};
+      --fc-per-view-mobile: {{ section.settings.number_products_per_view_mobile }};
+    "
+  >
+    <div class="page-width gs-fc--{{ section.settings.container_width }}">
+      <div class="featured-products-header">
+        {%- if section.settings.section_heading != blank -%}
+          <h2 class="featured-collections-header-title">{{ section.settings.section_heading }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.collection_type == 'tabs' and tab_items.size > 1 -%}
+          <div class="featured-collections-navigation" role="tablist">
+            {%- for item in tab_items -%}
+              {%- liquid
+                if use_metafield
+                  assign tab_key = 'mf-' | append: forloop.index
+                  assign tab_title = item.title
+                else
+                  assign tab_key = item.id
+                  assign tab_title = item.settings.custom_title
+                endif
+              -%}
+              <button
+                type="button"
+                class="collection-cta{% if forloop.first %} active{% endif %}"
+                role="tab"
+                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                aria-controls="collection-{{ tab_key }}"
+                data-target="collection-{{ tab_key }}"
+              >
+                {{- tab_title -}}
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.collection_type == 'tabs' -%}
+        {%- for item in tab_items -%}
+          {%- liquid
+            # ALWAYS assign. Liquid variables persist across iterations,
+            # so a missing assignment shows the previous tab's products.
+            assign tab_products = empty
+
+            if use_metafield
+              assign tab_key = 'mf-' | append: forloop.index
+              assign tab_products = item.products
+            else
+              assign tab_key = item.id
+              assign tab_products = item.settings.collection.products
+            endif
+
+            assign is_first = forloop.first
+          -%}
+
+          <div
+            class="featured-products-wrapper collection-tab{% if is_first %} active{% else %} hidden{% endif %}"
+            id="collection-{{ tab_key }}"
+            role="tabpanel"
+            {% unless is_first %}hidden{% endunless %}
+          >
+            <div class="gs-fc__scroller" data-swatch-scroller>
+              <button
+                type="button"
+                class="gs-fc__btn"
+                data-swatch-scroll="prev"
+                aria-label="{{ 'general.slider.previous_slide' | t }}"
+                hidden
+              >
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                  <path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul class="gs-fc__track{% if section.settings.layout_style == 'grid' %} gs-fc__track--grid{% endif %}" data-swatch-track>
+                {%- for product in tab_products limit: section.settings.max_number_products_loaded -%}
+                  <li class="gs-fc__slide">
+                    {%- render 'gs-card-product',
+                      cardProduct: product,
+                      cycleIndex: forloop.index,
+                      gridImageSize: section.settings.grid_image_size,
+                      quickViewtrue: section.settings.enable_product_quick_view,
+                      showSwatches: section.settings.enable_product_swatches,
+                      hideContent: hide_card_content
+                    -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+
+              <button
+                type="button"
+                class="gs-fc__btn"
+                data-swatch-scroll="next"
+                aria-label="{{ 'general.slider.next_slide' | t }}"
+                hidden
+              >
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                  <path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+
+            {%- unless use_metafield -%}
+              {%- if item.settings.cta_label != blank -%}
+                <div class="associated-collection-cta">
+                  <a class="custom-cta" href="{{ item.settings.cta_link }}">{{ item.settings.cta_label }}</a>
+                </div>
+              {%- endif -%}
+            {%- endunless -%}
+          </div>
+        {%- endfor -%}
+
+      {%- else -%}
+        {%- comment -%}
+          Product recommendations. Only meaningful on a product template,
+          where `product` is defined.
+        {%- endcomment -%}
+        <div
+          class="featured-products-wrapper collection-tab active"
+          id="collection-product-recommendations"
+          data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.max_number_products_loaded }}&intent=related"
+          product-recommendations
+        >
+          {%- if recommendations.performed and recommendations.products_count > 0 -%}
+            <div class="gs-fc__scroller" data-swatch-scroller>
+              <button
+                type="button"
+                class="gs-fc__btn"
+                data-swatch-scroll="prev"
+                aria-label="{{ 'general.slider.previous_slide' | t }}"
+                hidden
+              >
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                  <path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul class="gs-fc__track" data-swatch-track>
+                {%- for product in recommendations.products limit: section.settings.max_number_products_loaded -%}
+                  <li class="gs-fc__slide">
+                    {%- render 'gs-card-product',
+                      cardProduct: product,
+                      cycleIndex: forloop.index,
+                      gridImageSize: section.settings.grid_image_size,
+                      showCount: true,
+                      quickViewtrue: true,
+                      compareTrue: true,
+                      showSwatches: true
+                    -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+
+              <button
+                type="button"
+                class="gs-fc__btn"
+                data-swatch-scroll="next"
+                aria-label="{{ 'general.slider.next_slide' | t }}"
+                hidden
+              >
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                  <path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById('featured-collections-{{ section.id }}');
+      if (!root) return;
+
+      var buttons = root.querySelectorAll('.featured-collections-navigation button');
+      if (!buttons.length) return;
+
+      var panels = root.querySelectorAll('.collection-tab');
+
+      root.addEventListener('click', function (evt) {
+        if (!evt.target || !evt.target.closest) return;
+        var btn = evt.target.closest('.featured-collections-navigation button');
+        if (!btn || !root.contains(btn)) return;
+
+        var targetId = btn.getAttribute('data-target');
+
+        buttons.forEach(function (b) {
+          var isActive = b === btn;
+          b.classList.toggle('active', isActive);
+          b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        panels.forEach(function (panel) {
+          var isTarget = panel.id === targetId;
+          panel.classList.toggle('hidden', !isTarget);
+          panel.classList.toggle('active', isTarget);
+          panel.hidden = !isTarget;
+        });
+
+        // A hidden element reports zero scrollWidth, so the newly
+        // revealed track needs its arrow state recalculated.
+        if (typeof window.gsSwatchScrollerRefresh === 'function') {
+          window.gsSwatchScrollerRefresh();
+        }
+      });
+    })();
+  </script>
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "Featured Collections",
+  "tag": "section",
+  "class": "section featured-collections-section",
+  "settings": [
+    { "type": "text", "id": "section_heading", "label": "Section heading", "default": "Featured Collections" },
+    { "type": "text_alignment", "id": "heading_text_align", "label": "Heading alignment", "default": "center" },
+    {
+      "type": "select",
+      "id": "collection_type",
+      "label": "Collection type",
+      "info": "Product recommendations only render on product templates.",
+      "options": [
+        { "value": "tabs", "label": "Collection tabs" },
+        { "value": "recommendations", "label": "Product recommendations" }
+      ],
+      "default": "tabs"
+    },
+    {
+      "type": "select",
+      "id": "collection_source",
+      "label": "Collection source",
+      "info": "Metafield mode builds one tab per collection in the blog post's Promoted Collections metafield, and hides the section when empty.",
+      "options": [
+        { "value": "manual", "label": "Selected collections (blocks)" },
+        { "value": "metafield", "label": "Blog post metafield" }
+      ],
+      "default": "manual"
+    },
+    {
+      "type": "select",
+      "id": "layout_style",
+      "label": "Layout style",
+      "options": [
+        { "value": "carousel", "label": "Carousel" },
+        { "value": "grid", "label": "Grid" }
+      ],
+      "default": "carousel"
+    },
+    {
+      "type": "select",
+      "id": "container_width",
+      "label": "Container width",
+      "options": [
+        { "value": "xs", "label": "XSmall" },
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" }
+      ],
+      "default": "lg"
+    },
+    {
+      "type": "select",
+      "id": "grid_image_size",
+      "label": "Image shape",
+      "default": "square",
+      "options": [
+        { "value": "auto", "label": "Natural" },
+        { "value": "landscape", "label": "Landscape" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "square", "label": "Square" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "max_number_products_loaded",
+      "label": "Maximum products per tab",
+      "info": "Every tab renders into the page. Higher values increase page weight.",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "default": 15
+    },
+    {
+      "type": "select",
+      "id": "number_products_per_view_desktop",
+      "label": "Products per view (desktop)",
+      "options": [
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" },
+        { "value": "5", "label": "5" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "number_products_per_view_mobile",
+      "label": "Products per view (mobile)",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "1"
+    },
+    { "type": "checkbox", "id": "enable_product_badges", "label": "Show product badges", "default": true },
+    { "type": "checkbox", "id": "enable_product_title", "label": "Show product title", "default": true },
+    { "type": "checkbox", "id": "enable_product_price", "label": "Show product price", "default": true },
+    { "type": "checkbox", "id": "enable_product_swatches", "label": "Show product swatches", "default": true },
+    { "type": "checkbox", "id": "enable_product_quick_view", "label": "Show quick view", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "header", "content": "Font sizes" },
+    { "type": "range", "id": "heading_size_desktop", "label": "Heading size (desktop)", "min": 12, "max": 100, "step": 1, "unit": "px", "default": 45 },
+    { "type": "range", "id": "heading_size_mobile", "label": "Heading size (mobile)", "min": 12, "max": 100, "step": 1, "unit": "px", "default": 42 },
+    { "type": "range", "id": "navigation_title_size_desktop", "label": "Tab size (desktop)", "min": 12, "max": 78, "step": 1, "unit": "px", "default": 26 },
+    { "type": "range", "id": "navigation_title_size_mobile", "label": "Tab size (mobile)", "min": 12, "max": 69, "step": 1, "unit": "px", "default": 23 },
+    { "type": "range", "id": "cta_title_size_desktop", "label": "CTA size (desktop)", "min": 12, "max": 78, "step": 1, "unit": "px", "default": 26 },
+    { "type": "range", "id": "cta_title_size_mobile", "label": "CTA size (mobile)", "min": 12, "max": 69, "step": 1, "unit": "px", "default": 23 },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "section_spacing_top_desktop", "label": "Section top (desktop)", "min": 0, "max": 150, "step": 5, "unit": "px", "default": 10 },
+    { "type": "range", "id": "section_spacing_top_mobile", "label": "Section top (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 10 },
+    { "type": "range", "id": "section_spacing_bottom_desktop", "label": "Section bottom (desktop)", "min": 0, "max": 150, "step": 5, "unit": "px", "default": 10 },
+    { "type": "range", "id": "section_spacing_bottom_mobile", "label": "Section bottom (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 10 },
+    { "type": "range", "id": "heading_spacing_top_desktop", "label": "Heading top (desktop)", "min": 0, "max": 150, "step": 5, "unit": "px", "default": 10 },
+    { "type": "range", "id": "heading_spacing_top_mobile", "label": "Heading top (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 10 },
+    { "type": "range", "id": "heading_spacing_bottom_desktop", "label": "Heading bottom (desktop)", "min": 0, "max": 150, "step": 5, "unit": "px", "default": 10 },
+    { "type": "range", "id": "heading_spacing_bottom_mobile", "label": "Heading bottom (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 10 },
+    { "type": "range", "id": "collection_navigation_spacing_top_desktop", "label": "Tabs top (desktop)", "min": 0, "max": 150, "step": 5, "unit": "px", "default": 10 },
+    { "type": "range", "id": "collection_navigation_spacing_top_mobile", "label": "Tabs top (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 10 },
+    { "type": "range", "id": "collection_navigation_spacing_bottom_desktop", "label": "Tabs bottom (desktop)", "min": 0, "max": 150, "step": 5, "unit": "px", "default": 10 },
+    { "type": "range", "id": "collection_navigation_spacing_bottom_mobile", "label": "Tabs bottom (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 10 },
+    { "type": "range", "id": "collection_cta_spacing_top_desktop", "label": "CTA top (desktop)", "min": 0, "max": 150, "step": 5, "unit": "px", "default": 10 },
+    { "type": "range", "id": "collection_cta_spacing_top_mobile", "label": "CTA top (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 10 },
+    { "type": "range", "id": "collection_cta_spacing_bottom_desktop", "label": "CTA bottom (desktop)", "min": 0, "max": 150, "step": 5, "unit": "px", "default": 10 },
+    { "type": "range", "id": "collection_cta_spacing_bottom_mobile", "label": "CTA bottom (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 10 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "cta_text_color", "label": "CTA text", "default": "#000000" },
+    { "type": "color", "id": "cta_text_color_hover", "label": "CTA text (hover)", "default": "#FFFFFF" },
+    { "type": "color", "id": "cta_background_color", "label": "CTA background", "default": "#FFFFFF" },
+    { "type": "color", "id": "cta_background_color_hover", "label": "CTA background (hover)", "default": "#000000" },
+    { "type": "color", "id": "cta_border_color", "label": "CTA border", "default": "#000000" },
+    { "type": "color", "id": "cta_border_color_hover", "label": "CTA border (hover)", "default": "#FFFFFF" }
+  ],
+  "blocks": [
+    {
+      "type": "collection_block",
+      "name": "Collection Tab",
+      "settings": [
+        { "type": "text", "id": "custom_title", "label": "Tab title", "default": "Collection Name" },
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "cta_label", "label": "CTA label" },
+        { "type": "url", "id": "cta_link", "label": "CTA link" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Featured Collections" }]
+}
+{% endschema %}

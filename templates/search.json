@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-search",
+      "settings": {
+        "heading_size": "h3",
+        "products_per_page": 24,
+        "columns_desktop": "4",
+        "columns_mobile": "2",
+        "grid_image_size": "square",
+        "load_type": "load_more",
+        "enable_filtering": true,
+        "open_filtering": true,
+        "open_all_filtering": false,
+        "enable_sorting": true,
+        "color_scheme": "scheme-1",
+        "top_space_desktop": 40,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 25,
+        "bottom_space_mobile": 40
+      }
+    }
+  },
+  "order": ["main"]
+}

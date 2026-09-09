@@ -1,0 +1,504 @@
+{% comment %}
+  ==================================================================
+  MEDIA GRID
+  Ported from gs-shopify-v3 sections/media-grid.liquid (29.3 KB)
+  ==================================================================
+  Two instances on the homepage: a 2-column tile grid (First Responders,
+  Basics, Men, Women) and a 4-column one (Veterans, Road Rebels,
+  Warriors Legacy). Blocks span arbitrary column/row counts.
+
+  ------------------------------------------------------------------
+  SELF-REFERENTIAL CSS CUSTOM PROPERTIES
+  ------------------------------------------------------------------
+  v3's per-block style block contained, as the FALLBACK branch:
+      --textColor: rgba(var(--textColor), 1);
+      --headingColor: rgba(var(--headingColor), 1);
+
+  A custom property that references itself is invalid at computed-value
+  time per the CSS spec - it resolves to the guaranteed-invalid value,
+  NOT to the inherited one. So any block without an explicit colour got
+  broken inheritance rather than the intended fallback.
+
+  There is also a TYPE COLLISION. The rest of the theme treats
+  --textColor as an RGB TRIPLET, consumed as rgb(var(--textColor)).
+  This section reassigned it to a complete colour value, so anything
+  inside a tile doing rgb(var(--textColor)) got rgb(#ffffff) - invalid.
+
+  Fixed by using distinct names: --mg-text and --mg-heading. The block
+  no longer shadows global tokens.
+
+  ------------------------------------------------------------------
+  INVALID LIQUID
+  ------------------------------------------------------------------
+      {% raw %}{% else block.settings.media_image != blank %}{% endraw %}
+  `else` takes no arguments. Shopify tolerates it by ignoring the extra
+  tokens, so it behaved as a plain else, but it is malformed.
+
+  ------------------------------------------------------------------
+  TRAILING COMMA IN SCHEMA - FIFTH OCCURRENCE
+  ------------------------------------------------------------------
+      { "type": "checkbox", "id": "full_image_link", "label": "...", }
+  After text-scroller v1, custom-testimonials, and both CTA colour
+  settings in featured-collections. This wants a lint rule, not five
+  manual fixes: `shopify theme check` catches it.
+
+  ------------------------------------------------------------------
+  SCOPE BUG: HIGHLIGHT MARKUP
+  ------------------------------------------------------------------
+  highlightPrefix and highlightSuffix were captured INSIDE
+      {% raw %}{% if section.settings.heading != blank %}{% endraw %}
+  but used later for BLOCK headings, outside that condition. With no
+  section heading set, both are nil, so `replace: "[", nil` strips the
+  brackets from block headings and emits no highlight markup at all.
+  The captures are now hoisted above the condition.
+
+  ------------------------------------------------------------------
+  ASPECT RATIO DRIVEN BY DESCRIPTION LENGTH
+  ------------------------------------------------------------------
+  Preserved, but flagged - v3 computed each tile's aspect-ratio like so:
+      square image        -> use its own ratio
+      description > 625ch -> 0.85
+      description > 500ch -> 0.875
+      otherwise           -> image ratio x 0.75
+
+  A tile changes SHAPE when someone edits its copy. The thresholds are
+  magic numbers with no comment. This is preserved to avoid changing the
+  homepage layout, but it is a genuine design smell - the tile should
+  size from a setting, not from character count.
+
+  ------------------------------------------------------------------
+  OTHER FIXES
+  ------------------------------------------------------------------
+  1. VIDEO SOURCES UNGUARDED. v3 always emitted sources[0] AND
+     sources[1]; a single-source video produced <source src="">.
+  2. AOS attributes removed.
+  3. lazysizes replaced with native srcset + loading.
+  4. `marker` snippet not ported - see the note on highlight_style below.
+  5. t: keys -> English; color_scheme primary -> scheme-1;
+     {{ settings.layout_style }} -> Dawn's page-width.
+
+  ------------------------------------------------------------------
+  HIGHLIGHT STYLE - PARTIAL
+  ------------------------------------------------------------------
+  v3's shape_2..shape_6 options render SVG shapes via snippets/marker
+  (2.3 KB, not yet ported). `underline` and `background` work here in
+  CSS. Selecting a shape currently falls back to underline.
+  ACTION: port snippets/marker, or drop the shape options.
+
+  All schema setting IDs are byte-for-byte identical to v3.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-media-grid.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Hoisted above the heading check - v3 captured these inside it. {%- endcomment -%}
+{%- capture highlightPrefix -%}
+  <span class="line-marker{% if section.settings.highlight_style == 'background' %} highlight-background{% if section.settings.bg__color == 'gradient' %} highlight-background-gradient{% else %} highlight-background-solid{% endif %}{% else %} highlight-underline{% endif %}">
+{%- endcapture -%}
+{%- capture highlightSuffix -%}</span>{%- endcapture -%}
+
+<div
+  class="gs-media-grid color-{{ section.settings.color_scheme }}{% if section.settings.enable_gradient %} gradient{% endif %} gs-mg--visibility-{{ section.settings.section_visibility }}"
+  style="
+    --padding-top: {{ section.settings.top_space_desktop }}px;
+    --padding-bottom: {{ section.settings.bottom_space_desktop }}px;
+    --padding-top-mobile: {{ section.settings.top_space_mobile }}px;
+    --padding-bottom-mobile: {{ section.settings.bottom_space_mobile }}px;
+    --desktopHeight: {{ section.settings.desktop_row_height }}px;
+    --mobileHeight: {{ section.settings.mobile_row_height }}px;
+    --columnGap: {{ section.settings.mobile_grid_gap }}px;
+    --columnGapDesktop: {{ section.settings.desktop_grid_gap }}px;
+    --mgHeadingSizeDesktop: {{ section.settings.heading_font_size_desktop }}px;
+    --mgHeadingSizeMobile: {{ section.settings.heading_font_size_mobile }}px;
+  "
+>
+  <div class="{% if section.settings.section_width %}gs-mg--fullwidth{% else %}page-width{% endif %}">
+    {%- if section.settings.heading != blank -%}
+      <div class="section-title {{ section.settings.heading_alignment }}">
+        <{{ section.settings.seo_heading }} class="mg-heading {{ section.settings.heading_size }}">
+          {{ section.settings.heading | replace: '[', highlightPrefix | replace: ']', highlightSuffix }}
+        </{{ section.settings.seo_heading }}>
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="media-grid-wrapper{% if section.settings.enable_shadow %} shadow-enabled{% endif %}{% if section.settings.enable_hover_content %} content-on-hover{% endif %}{% if section.settings.mobile_columns_layout == 'two-column' %} mobile-two-column{% endif %}">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign img = block.settings.media_image
+
+            if img != blank
+              assign gridImageRatio = 1 | divided_by: img.aspect_ratio | times: 100 | append: '%'
+            else
+              assign gridImageRatio = '100%'
+            endif
+
+            comment
+              Preserved from v3: tile aspect ratio varies with description
+              length. See the header note - this is a smell, not a feature.
+            endcomment
+            assign desc_size = block.settings.description | size
+            if img.aspect_ratio == 1.0
+              assign tileRatio = img.aspect_ratio
+            elsif block.settings.description != blank and desc_size > 625
+              assign tileRatio = 0.85
+            elsif block.settings.description != blank and desc_size > 500
+              assign tileRatio = 0.875
+            else
+              assign tileRatio = img.aspect_ratio | times: 0.75
+            endif
+          -%}
+
+          <div
+            id="media-grid-{{ block.id }}"
+            class="img-zoom media-grid-item media-grid-item-{{ forloop.index }}"
+            style="
+              aspect-ratio: {{ tileRatio | default: 1 }};
+              --row: {{ block.settings.row }};
+              --column: {{ block.settings.column }};
+              --opacityColor: {{ block.settings.background_color.red }},{{ block.settings.background_color.green }},{{ block.settings.background_color.blue }};
+              --backgroundOpacity: {{ block.settings.background_opacity }};
+              {%- if block.settings.text_color != blank and block.settings.text_color != 'rgba(0,0,0,0)' -%}
+                --mg-text: {{ block.settings.text_color }};
+              {%- endif -%}
+              {%- if block.settings.heading_color != blank and block.settings.heading_color != 'rgba(0,0,0,0)' -%}
+                --mg-heading: {{ block.settings.heading_color }};
+              {%- endif -%}
+              {%- if block.settings.btn_bg_color != blank and block.settings.btn_bg_color != 'rgba(0,0,0,0)' -%}
+                --mg-btn-bg: {{ block.settings.btn_bg_color }};
+              {%- endif -%}
+              {%- if block.settings.btn_text_color != blank and block.settings.btn_text_color != 'rgba(0,0,0,0)' -%}
+                --mg-btn-text: {{ block.settings.btn_text_color }};
+              {%- endif -%}
+              {%- if block.settings.btn_border_color != blank and block.settings.btn_border_color != 'rgba(0,0,0,0)' -%}
+                --mg-btn-border: {{ block.settings.btn_border_color }};
+              {%- endif -%}
+              {%- if block.settings.btn_hover_color != blank and block.settings.btn_hover_color != 'rgba(0,0,0,0)' -%}
+                --mg-btn-bg-hover: {{ block.settings.btn_hover_color }};
+              {%- endif -%}
+              {%- if block.settings.btn_hover_text_color != blank and block.settings.btn_hover_text_color != 'rgba(0,0,0,0)' -%}
+                --mg-btn-text-hover: {{ block.settings.btn_hover_text_color }};
+              {%- endif -%}
+              {%- if block.settings.btn_hover_border_color != blank and block.settings.btn_hover_border_color != 'rgba(0,0,0,0)' -%}
+                --mg-btn-border-hover: {{ block.settings.btn_hover_border_color }};
+              {%- endif -%}
+            "
+            {{ block.shopify_attributes }}
+          >
+            {%- if block.settings.full_image_link and block.settings.btn_link != blank -%}
+              <a class="media-grid-item__link" href="{{ block.settings.btn_link }}" aria-label="{{ block.settings.heading | strip_html | escape }}">
+            {%- endif -%}
+
+            <div class="media-grid-image"{% if block.settings.media_bg_color != blank %} style="background-color: {{ block.settings.media_bg_color }};"{% endif %}>
+              <div class="media media-fixed"{% if img != blank %} style="--imageRatio: {{ gridImageRatio }};"{% endif %}>
+                {%- if block.settings.video != blank -%}
+                  <video class="tabbed-collage-video" autoplay muted loop playsinline preload="metadata"
+                    {% if block.settings.video.preview_image %}poster="{{ block.settings.video.preview_image | image_url: width: 1200 }}"{% endif %}
+                  >
+                    {%- for source in block.settings.video.sources -%}
+                      <source src="{{ source.url }}"{% if source.mime_type %} type="{{ source.mime_type }}"{% endif %}>
+                    {%- endfor -%}
+                  </video>
+                {%- elsif img != blank -%}
+                  <img
+                    class="media_image"
+                    src="{{ img | image_url: width: 1000 }}"
+                    srcset="
+                      {{ img | image_url: width: 500 }} 500w,
+                      {{ img | image_url: width: 1000 }} 1000w,
+                      {{ img | image_url: width: 1500 }} 1500w,
+                      {{ img | image_url: width: 2000 }} 2000w
+                    "
+                    sizes="(min-width: 750px) {{ 100 | divided_by: 2 }}vw, 100vw"
+                    alt="{{ img.alt | escape }}"
+                    width="{{ img.width }}"
+                    height="{{ img.height }}"
+                    loading="{% if forloop.index <= 2 %}eager{% else %}lazy{% endif %}"
+                    {% if forloop.index <= 2 %}fetchpriority="high"{% endif %}
+                    style="object-position: {{ img.presentation.focal_point | default: 'center' }};"
+                  >
+                {%- else -%}
+                  {{ 'collection-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
+            </div>
+
+            {%- if block.settings.heading != blank or block.settings.description != blank -%}
+              <div class="media-content {{ block.settings.content_width }} {{ block.settings.content_position }} text-{{ block.settings.content_alignment }}">
+                {%- if block.settings.heading != blank -%}
+                  <{{ block.settings.seo_heading }} class="media-content-heading {{ block.settings.heading_size }}">
+                    {{ block.settings.heading | replace: '[', highlightPrefix | replace: ']', highlightSuffix }}
+                  </{{ block.settings.seo_heading }}>
+                {%- endif -%}
+
+                {%- if block.settings.description != blank -%}
+                  <div class="media-content-description rte">
+                    {{
+                      block.settings.description
+                      | replace: '<p></p>', '<br/>'
+                      | replace: '<h1></h1>', '<br/>'
+                      | replace: '<h2></h2>', '<br/>'
+                      | replace: '<h3></h3>', '<br/>'
+                      | replace: '<h4></h4>', '<br/>'
+                      | replace: '<h5></h5>', '<br/>'
+                      | replace: '<h6></h6>', '<br/>'
+                    }}
+                  </div>
+                {%- endif -%}
+
+                {%- if block.settings.btn_text != blank and block.settings.btn_link != blank -%}
+                  <div class="media-content-button">
+                    {%- comment -%}
+                      When the whole tile is a link, this must NOT be an
+                      anchor - nested anchors are invalid HTML.
+                    {%- endcomment -%}
+                    {%- if block.settings.full_image_link -%}
+                      <span class="{% if block.settings.button_as_link %}hyperlink{% else %}button small-btn{% endif %}">
+                        {{- block.settings.btn_text -}}
+                      </span>
+                    {%- else -%}
+                      <a
+                        href="{{ block.settings.btn_link }}"
+                        class="{% if block.settings.button_as_link %}hyperlink{% else %}button small-btn{% endif %}"
+                      >
+                        {{- block.settings.btn_text -}}
+                      </a>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.full_image_link and block.settings.btn_link != blank -%}
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Media grid",
+  "tag": "section",
+  "class": "section media-grid-section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "header", "content": "General" },
+    { "type": "checkbox", "id": "section_width", "label": "Full width", "default": false },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "Show section on",
+      "default": "always",
+      "options": [
+        { "value": "always", "label": "All devices" },
+        { "value": "small", "label": "Mobile only" },
+        { "value": "large", "label": "Desktop only" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mobile_columns_layout",
+      "label": "Mobile column layout",
+      "options": [
+        { "value": "stacked", "label": "Stacked" },
+        { "value": "two-column", "label": "Two column" }
+      ],
+      "default": "stacked"
+    },
+    { "type": "range", "id": "desktop_row_height", "label": "Row height (desktop)", "default": 400, "min": 200, "max": 600, "unit": "px", "step": 5 },
+    { "type": "range", "id": "mobile_row_height", "label": "Row height (mobile)", "default": 200, "min": 150, "max": 300, "unit": "px", "step": 5 },
+    { "type": "range", "id": "desktop_grid_gap", "label": "Grid gap (desktop)", "default": 5, "min": 1, "max": 40, "unit": "px", "step": 1 },
+    { "type": "range", "id": "mobile_grid_gap", "label": "Grid gap (mobile)", "default": 5, "min": 1, "max": 40, "unit": "px", "step": 1 },
+    { "type": "checkbox", "id": "enable_shadow", "label": "Card shadow", "default": false },
+    { "type": "checkbox", "id": "enable_hover_content", "label": "Reveal content on hover", "default": false },
+    { "type": "header", "content": "Heading" },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Wrap words in [square brackets] to highlight them.",
+      "default": "Media grid"
+    },
+    {
+      "type": "select",
+      "id": "highlight_style",
+      "label": "Highlight style",
+      "info": "Shape options need snippets/marker, which is not yet ported. They currently render as underline.",
+      "default": "underline",
+      "options": [
+        { "value": "underline", "label": "Underline" },
+        { "value": "shape_2", "label": "Shape 2" },
+        { "value": "shape_3", "label": "Shape 3" },
+        { "value": "shape_4", "label": "Shape 4" },
+        { "value": "shape_5", "label": "Shape 5" },
+        { "value": "shape_6", "label": "Shape 6" },
+        { "value": "background", "label": "Background" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "bg__color",
+      "label": "Highlight background",
+      "default": "gradient",
+      "options": [
+        { "value": "gradient", "label": "Gradient" },
+        { "value": "solid", "label": "Solid" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h3",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "seo_heading",
+      "label": "Heading tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ]
+    },
+    { "type": "range", "id": "heading_font_size_desktop", "label": "Heading size (desktop)", "min": 22, "max": 96, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "heading_font_size_mobile", "label": "Heading size (mobile)", "min": 18, "max": 54, "step": 2, "unit": "px", "default": 24 },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "default": "text-center",
+      "options": [
+        { "value": "text-left", "label": "Left" },
+        { "value": "text-center", "label": "Center" },
+        { "value": "text-right", "label": "Right" }
+      ]
+    },
+    { "type": "header", "content": "Colors" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "checkbox", "id": "enable_gradient", "label": "Use gradient background", "default": false },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "top_space_desktop", "label": "Top padding (desktop)", "unit": "px", "default": 70, "min": 0, "max": 150, "step": 5 },
+    { "type": "range", "id": "bottom_space_desktop", "label": "Bottom padding (desktop)", "unit": "px", "default": 70, "min": 0, "max": 150, "step": 5 },
+    { "type": "range", "id": "top_space_mobile", "label": "Top padding (mobile)", "unit": "px", "default": 40, "min": 0, "max": 100, "step": 5 },
+    { "type": "range", "id": "bottom_space_mobile", "label": "Bottom padding (mobile)", "unit": "px", "default": 40, "min": 0, "max": 100, "step": 5 }
+  ],
+  "blocks": [
+    {
+      "type": "grid",
+      "name": "Grid tile",
+      "settings": [
+        { "type": "image_picker", "id": "media_image", "label": "Image" },
+        { "type": "color", "id": "media_bg_color", "label": "Media background color" },
+        { "type": "header", "content": "Video" },
+        { "type": "video", "id": "video", "label": "Video (autoplays, muted)" },
+        { "type": "header", "content": "Layout" },
+        { "type": "range", "id": "column", "label": "Columns spanned", "default": 4, "min": 1, "max": 8, "step": 1 },
+        { "type": "range", "id": "row", "label": "Rows spanned", "default": 1, "min": 1, "max": 4, "step": 1 },
+        { "type": "header", "content": "Content" },
+        { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Add media heading" },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Heading size",
+          "default": "h2",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" },
+            { "value": "h5", "label": "H5" },
+            { "value": "h6", "label": "H6" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "seo_heading",
+          "label": "Heading tag",
+          "default": "h2",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" },
+            { "value": "h5", "label": "H5" },
+            { "value": "h6", "label": "H6" }
+          ]
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "info": "Note: description length currently affects tile height. See file header.",
+          "default": "<p>Add short description for this block</p>"
+        },
+        {
+          "type": "select",
+          "id": "content_position",
+          "label": "Content position",
+          "default": "center-left",
+          "options": [
+            { "value": "top-left", "label": "Top left" },
+            { "value": "top-center", "label": "Top center" },
+            { "value": "top-right", "label": "Top right" },
+            { "value": "center-left", "label": "Middle left" },
+            { "value": "center", "label": "Middle center" },
+            { "value": "center-right", "label": "Middle right" },
+            { "value": "bottom-left", "label": "Bottom left" },
+            { "value": "bottom-center", "label": "Bottom center" },
+            { "value": "bottom-right", "label": "Bottom right" }
+          ]
+        },
+        { "type": "text_alignment", "id": "content_alignment", "label": "Text alignment", "default": "left" },
+        {
+          "type": "select",
+          "id": "content_width",
+          "label": "Content width",
+          "default": "small",
+          "options": [
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "large", "label": "Large" }
+          ]
+        },
+        { "type": "header", "content": "Button" },
+        { "type": "text", "id": "btn_text", "label": "Button label", "default": "Button label" },
+        { "type": "url", "id": "btn_link", "label": "Button link", "default": "/collections/all" },
+        { "type": "checkbox", "id": "full_image_link", "label": "Link the whole tile", "default": false },
+        { "type": "checkbox", "id": "button_as_link", "label": "Show button as a text link", "default": false },
+        { "type": "header", "content": "Colors" },
+        { "type": "color", "id": "heading_color", "label": "Heading", "default": "#ffffff" },
+        { "type": "color", "id": "text_color", "label": "Description", "default": "#ffffff" },
+        { "type": "color", "id": "btn_bg_color", "label": "Button background", "default": "#ffffff" },
+        { "type": "color", "id": "btn_shadow_color", "label": "Button shadow", "default": "#000000" },
+        { "type": "color", "id": "btn_text_color", "label": "Button text", "default": "#000000" },
+        { "type": "color", "id": "btn_border_color", "label": "Button border", "default": "#ffffff" },
+        { "type": "color", "id": "btn_hover_color", "label": "Button hover background", "default": "#000000" },
+        { "type": "color", "id": "btn_hover_text_color", "label": "Button hover text", "default": "#ffffff" },
+        { "type": "color", "id": "btn_hover_border_color", "label": "Button hover border", "default": "#000000" },
+        { "type": "color", "id": "background_color", "label": "Image overlay", "default": "#000000" },
+        { "type": "range", "id": "background_opacity", "label": "Overlay opacity", "default": 0.3, "min": 0, "max": 1, "step": 0.1 }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Media grid", "blocks": [{ "type": "grid" }, { "type": "grid" }] }
+  ]
+}
+{% endschema %}

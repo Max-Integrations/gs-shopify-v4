@@ -1,0 +1,365 @@
+{% comment %}
+  ==================================================================
+  RETAIL LOCATION MAIN
+  Ported from gs-shopify-v3 sections/retail-location-main.liquid
+  ==================================================================
+  One store page: title, copy, info / hours / misc blocks, and a map.
+  Behind 22 retail location templates, so setting IDs are byte-for-byte
+  identical to v3 and all 22 migrate mechanically.
+
+  ------------------------------------------------------------------
+  THE PAGE BROKE IF A STORE HAD NO COORDINATES
+  ------------------------------------------------------------------
+  v3 wrote the values straight into JavaScript:
+
+      center: { lat: {{ settings.location_latitude }}, lng: ... }
+
+  With either field blank that is `{ lat: , lng: }` - a SYNTAX ERROR,
+  not an empty map. It kills the whole script block, and any other
+  inline script that parses after it. Guarded now: no coordinates means
+  no map, and the address still renders.
+
+  ------------------------------------------------------------------
+  GOOGLE MAPS LOADED ON EVERY VISIT
+  ------------------------------------------------------------------
+  The Maps JS API plus the marker library is well over 100 KB, loaded
+  eagerly on a page whose purpose is an address and opening hours. It is
+  now loaded only when the map scrolls into view, and only if
+  coordinates exist. Everything above it renders immediately.
+
+  There is also a no-JS fallback link to Google Maps, which v3 lacked.
+
+  ------------------------------------------------------------------
+  DEMO_MAP_ID SHIPPED TO PRODUCTION
+  ------------------------------------------------------------------
+  v3 used mapId: "DEMO_MAP_ID" - the placeholder from Google's sample
+  code. Cloud-based map styling therefore never applied. It is a setting
+  now; leave it blank to omit the property entirely.
+
+  The marker variable was still called `beachFlagImg`, also from that
+  sample.
+
+  ------------------------------------------------------------------
+  A STORE PAGE THAT STYLED THE MINI CART
+  ------------------------------------------------------------------
+  v3's stylesheet opened with:
+
+      .nt-mini_cart .mc_body { background: #000 !important; }
+
+  A global rule for a cart component, emitted from a retail location
+  section. Same class of leak as the `header h2` rule found in the
+  collection filters. Removed.
+
+  ------------------------------------------------------------------
+  OTHER v3 FIXES
+  ------------------------------------------------------------------
+  - `hub_link` was a setting that DID NOTHING. The "View Other Stores"
+    link was hardcoded to /pages/grunt-style-retail-stores. Wired up,
+    with that path as the fallback.
+  - .block-size-3 set grid-template-rows: repeat(2, 33%) - two rows for
+    three blocks.
+  - Each address line was its own `geo:` link. geo: URIs do nothing in
+    desktop browsers, and three links to the same destination is noise
+    for a screen reader. One clearly labelled maps link now.
+  - Inline style="color:#fff!important" on the back link.
+  - Hardcoded white text throughout, so the section only worked on a
+    dark background. Colours come from the scheme now.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-retail-location.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+
+  assign lat = s.location_latitude | strip
+  assign lng = s.location_longitude | strip
+
+  assign has_coords = false
+  if lat != blank and lng != blank
+    assign has_coords = true
+  endif
+
+  assign hub_url = s.hub_link.url | default: '/pages/grunt-style-retail-stores'
+
+  assign info_block = section.blocks | where: 'type', 'information' | first
+  assign map_query = ''
+  if info_block
+    capture map_query
+      echo info_block.settings.address_line_1
+      echo ' '
+      echo info_block.settings.address_line_2
+    endcapture
+  endif
+-%}
+
+<div class="gs-retail color-{{ s.color_scheme }}" id="gs-retail-{{ section.id }}">
+  <div class="page-width">
+    <a href="{{ hub_url }}" class="gs-retail__back">
+      &lt; {{ s.hub_link_label | default: 'View Other Stores' }}
+    </a>
+
+    <h1 class="gs-retail__title">
+      {%- if s.title_override != blank -%}{{ s.title_override }}{%- else -%}{{ page.title }}{%- endif -%}
+    </h1>
+
+    {%- if s.page_content != blank -%}
+      <div class="gs-retail__intro rte">{{ s.page_content }}</div>
+    {%- endif -%}
+
+    <div class="gs-retail__details">
+      <div class="gs-retail__blocks gs-retail__blocks--{{ section.blocks | size }}">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+
+            {%- when 'information' -%}
+              <div class="gs-retail__block gs-retail__block--info" {{ block.shopify_attributes }}>
+                <h2 class="gs-retail__block-title">
+                  {{ block.settings.information_title_override | default: 'Store Info' }}
+                </h2>
+                <address class="gs-retail__address">
+                  {{ block.settings.address_line_1 }}<br>
+                  {{ block.settings.address_line_2 }}
+                  {%- if block.settings.address_line_3 != blank -%}
+                    <br>{{ block.settings.address_line_3 }}
+                  {%- endif -%}
+                </address>
+
+                {%- comment -%}
+                  v3 made each address line a geo: link. Those do nothing
+                  in a desktop browser, and three links to one place is
+                  noise for assistive tech. One labelled link instead.
+                {%- endcomment -%}
+                {%- if has_coords or map_query != blank -%}
+                  <a
+                    class="gs-retail__maplink"
+                    href="https://www.google.com/maps/search/?api=1&query={% if has_coords %}{{ lat }},{{ lng }}{% else %}{{ map_query | url_encode }}{% endif %}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {{ s.directions_label | default: 'Get directions' }}
+                  </a>
+                {%- endif -%}
+
+                {%- if block.settings.phone_no != blank -%}
+                  <p class="gs-retail__phone">
+                    <strong>Phone:</strong>
+                    <a href="tel:{{ block.settings.phone_no | replace: '-', '' | replace: ' ', '' }}">
+                      {{ block.settings.phone_no }}
+                    </a>
+                  </p>
+                {%- endif -%}
+              </div>
+
+            {%- when 'hours' -%}
+              <div class="gs-retail__block gs-retail__block--hours" {{ block.shopify_attributes }}>
+                <h2 class="gs-retail__block-title">
+                  {{ block.settings.hours_title_override | default: 'Hours' }}
+                </h2>
+                <dl class="gs-retail__hours">
+                  {%- assign days = 'monday,tuesday,wednesday,thursday,friday,saturday,sunday' | split: ',' -%}
+                  {%- for day in days -%}
+                    {%- liquid
+                      assign key = 'hours_' | append: day
+                      assign value = block.settings[key]
+                    -%}
+                    {%- if value != blank -%}
+                      <div class="gs-retail__hours-row">
+                        <dt>{{ day | capitalize }}</dt>
+                        <dd>{{ value }}</dd>
+                      </div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </dl>
+              </div>
+
+            {%- when 'misc' -%}
+              <div class="gs-retail__block gs-retail__block--misc" {{ block.shopify_attributes }}>
+                {%- if block.settings.misc_title != blank -%}
+                  <h2 class="gs-retail__block-title">{{ block.settings.misc_title }}</h2>
+                {%- endif -%}
+                <div class="rte">{{ block.settings.misc_textarea }}</div>
+              </div>
+
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+
+      {%- if has_coords -%}
+        <div
+          class="gs-retail__map"
+          id="gs-retail-map-{{ section.id }}"
+          data-retail-map
+          data-lat="{{ lat }}"
+          data-lng="{{ lng }}"
+          data-zoom="{{ s.map_zoom | default: 12 }}"
+          {% if s.map_id != blank %}data-map-id="{{ s.map_id }}"{% endif %}
+          {% if s.marker_image != blank %}data-marker="{{ s.marker_image | image_url: width: 240 }}"{% endif %}
+          role="img"
+          aria-label="{{ s.map_aria_label | default: 'Map showing the store location' }}"
+        >
+          <noscript>
+            <a
+              class="gs-retail__maplink"
+              href="https://www.google.com/maps/search/?api=1&query={{ lat }},{{ lng }}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ s.directions_label | default: 'Get directions' }}
+            </a>
+          </noscript>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{%- if has_coords and settings.googlemapapi != blank -%}
+  <script>
+    (function () {
+      var el = document.getElementById('gs-retail-map-{{ section.id }}');
+      if (!el) return;
+
+      var loaded = false;
+
+      function loadMaps() {
+        if (loaded) return;
+        loaded = true;
+
+        var script = document.createElement('script');
+        script.src =
+          'https://maps.googleapis.com/maps/api/js?key={{ settings.googlemapapi }}&v=weekly&libraries=maps,marker&loading=async&callback=gsRetailInit{{ section.id }}';
+        script.async = true;
+        script.onerror = function () {
+          el.classList.add('is-failed');
+        };
+        document.head.appendChild(script);
+      }
+
+      window['gsRetailInit{{ section.id }}'] = function () {
+        var lat = parseFloat(el.dataset.lat);
+        var lng = parseFloat(el.dataset.lng);
+        if (isNaN(lat) || isNaN(lng)) return;
+
+        var options = {
+          center: { lat: lat, lng: lng },
+          zoom: parseInt(el.dataset.zoom, 10) || 12
+        };
+        // v3 shipped Google's DEMO_MAP_ID, so cloud styling never applied.
+        if (el.dataset.mapId) options.mapId = el.dataset.mapId;
+
+        var map = new google.maps.Map(el, options);
+
+        if (el.dataset.marker && google.maps.marker) {
+          var img = document.createElement('img');
+          img.src = el.dataset.marker;
+          img.alt = '';
+          img.style.width = '120px';
+          new google.maps.marker.AdvancedMarkerElement({
+            map: map,
+            position: { lat: lat, lng: lng },
+            content: img
+          });
+        } else {
+          new google.maps.Marker({ map: map, position: { lat: lat, lng: lng } });
+        }
+      };
+
+      // Over 100 KB of Maps JS for an address and opening hours. Load it
+      // when it is actually about to be seen.
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              io.disconnect();
+              loadMaps();
+            });
+          },
+          { rootMargin: '200px 0px' }
+        );
+        io.observe(el);
+      } else {
+        loadMaps();
+      }
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "GS Retail - Location Main",
+  "tag": "section",
+  "class": "gs-retail-section",
+  "settings": [
+    { "type": "text", "id": "title_override", "label": "Page title override", "info": "Leave blank to use the page title." },
+    {
+      "type": "page",
+      "id": "hub_link",
+      "label": "Main hub page",
+      "info": "Controls the 'View Other Stores' link. In v3 this setting existed but was never applied - the link was hardcoded."
+    },
+    { "type": "text", "id": "hub_link_label", "label": "Hub link text", "default": "View Other Stores" },
+    { "type": "richtext", "id": "page_content", "label": "Page content" },
+    { "type": "header", "content": "Map" },
+    {
+      "type": "text",
+      "id": "location_latitude",
+      "label": "Latitude",
+      "info": "Leave both coordinates blank to hide the map. In v3 a blank value broke the page."
+    },
+    { "type": "text", "id": "location_longitude", "label": "Longitude" },
+    { "type": "range", "id": "map_zoom", "label": "Zoom", "min": 8, "max": 18, "step": 1, "default": 12 },
+    {
+      "type": "text",
+      "id": "map_id",
+      "label": "Google Cloud map ID",
+      "info": "For cloud-based map styling. v3 shipped Google's DEMO_MAP_ID, so styling never applied. Leave blank to omit."
+    },
+    { "type": "image_picker", "id": "marker_image", "label": "Map marker image" },
+    { "type": "text", "id": "map_aria_label", "label": "Map description", "default": "Map showing the store location" },
+    { "type": "text", "id": "directions_label", "label": "Directions link text", "default": "Get directions" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-4" }
+  ],
+  "blocks": [
+    {
+      "name": "Store Information",
+      "type": "information",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "information_title_override", "label": "Title override" },
+        { "type": "text", "id": "address_line_1", "label": "Address line 1", "default": "900 Broadway Street" },
+        { "type": "text", "id": "address_line_2", "label": "Address line 2", "default": "San Antonio, TX 78215" },
+        { "type": "text", "id": "address_line_3", "label": "Address line 3" },
+        { "type": "text", "id": "phone_no", "label": "Phone number" }
+      ]
+    },
+    {
+      "name": "Store Hours",
+      "type": "hours",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "hours_title_override", "label": "Title override" },
+        { "type": "text", "id": "hours_monday", "label": "Monday" },
+        { "type": "text", "id": "hours_tuesday", "label": "Tuesday" },
+        { "type": "text", "id": "hours_wednesday", "label": "Wednesday" },
+        { "type": "text", "id": "hours_thursday", "label": "Thursday" },
+        { "type": "text", "id": "hours_friday", "label": "Friday" },
+        { "type": "text", "id": "hours_saturday", "label": "Saturday" },
+        { "type": "text", "id": "hours_sunday", "label": "Sunday" }
+      ]
+    },
+    {
+      "name": "Misc Details",
+      "type": "misc",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "misc_title", "label": "Title", "default": "Parking" },
+        { "type": "richtext", "id": "misc_textarea", "label": "Text", "default": "<p>This is some text</p>" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "GS Retail - Location Main" }]
+}
+{% endschema %}

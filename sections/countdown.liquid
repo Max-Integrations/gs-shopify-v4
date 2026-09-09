@@ -1,0 +1,511 @@
+{% comment %}
+  ==================================================================
+  COUNTDOWN
+  Ported from gs-shopify-v3 sections/countdown.liquid
+  ==================================================================
+  Homepage: "FROM ASHES, UNITY" - a timer plus a product carousel,
+  currently counting down to 2026-09-15.
+
+  ------------------------------------------------------------------
+  NULL CHECK THAT DEREFERENCES THE THING IT CHECKS
+  ------------------------------------------------------------------
+  v3 did:
+      const swiper = document.querySelector('.countdown-offer-products.swiper');
+      if (swiper.swiper) return;
+  If the element is absent, `swiper.swiper` throws a TypeError before
+  the guard can return - killing every listener registered after it.
+
+  This is the THIRD instance of this exact pattern found so far, after
+  layout/theme.liquid's anchor scroll and the v1 text-scroller. Worth
+  grepping the whole theme for querySelector followed by an unguarded
+  property access.
+
+  ------------------------------------------------------------------
+  MULTI-INSTANCE BUG
+  ------------------------------------------------------------------
+  Both the slider and its arrows were found with document.querySelector
+  (singular). templates/index.json contains TWO countdown sections - the
+  second is currently disabled. Enable it and it would not initialise,
+  and its arrows would drive the first one. Everything is now scoped to
+  the section id.
+
+  ------------------------------------------------------------------
+  data-launch-date FORMAT INCONSISTENCY - NEEDS A DECISION
+  ------------------------------------------------------------------
+  This section emits a UNIX TIMESTAMP:
+      data-launch-date="{{ setting | date: '%s' }}"
+  while snippets/product-countdown.liquid emits a RAW DATE STRING from
+  a metafield. Both use the same data-countdown-timer hook, so whatever
+  reads them in theme.js is parsing two different formats.
+
+  Unix seconds is kept here because it is unambiguous and timezone-safe.
+  ACTION: when porting the countdown JS out of theme.js, standardise
+  gs-product-countdown to emit the same format.
+
+  ------------------------------------------------------------------
+  HARDCODED YEAR IN THE DONATION LINE
+  ------------------------------------------------------------------
+  v3 rendered: "<amount> Raised To Date For 2026" with 2026 baked into
+  the markup, and $5 per unit hardcoded in the maths. Both are settings
+  now. The year defaults to the current year rather than a literal.
+
+  ------------------------------------------------------------------
+  OTHER FIXES
+  ------------------------------------------------------------------
+  1. UNTRANSLATABLE LABELS. "days" / "hrs" / "min" / "sec" were English
+     literals here, though snippets/product-countdown.liquid used locale
+     keys for the same labels. Now uses locale keys with fallbacks.
+
+  2. DEAD SETTING REFERENCES. The markup referenced
+     section.settings.highlight_text (for a CSS class) and
+     section.settings.text_alignment (passed to the product card).
+     NEITHER EXISTS in the schema. Both silently resolved to nil.
+
+  3. MISLEADING FILTER CHAIN. The units_sold accumulator read:
+         units_sold | plus: product.metafields... | default: 0
+     `default` applies to the RESULT of plus, not to the metafield, so
+     it never did what it looks like it does. It happens to work because
+     Liquid treats nil as 0 in `plus`. Rewritten to be explicit.
+
+  4. SWIPER REMOVED - CSS scroll-snap, reusing gs-swatch-scroller.js.
+  5. AOS attributes removed (v3's enable_animation is false anyway).
+  6. Dark mode block dropped; {{ settings.layout_style }} replaced with
+     Dawn's page-width; t: keys replaced with English; color_scheme
+     default primary -> scheme-1.
+
+  All schema setting IDs are byte-for-byte identical to v3, except the
+  two new donation settings.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-countdown.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign has_products = false
+  if section.settings.product_list.size > 0
+    assign has_products = true
+  endif
+
+  assign units_sold = 0
+  if section.settings.enable_donation_impact
+    for product in section.settings.product_list
+      assign product_units = product.metafields.custom.units_sold.value | default: 0
+      assign units_sold = units_sold | plus: product_units
+    endfor
+    assign per_unit = section.settings.donation_per_unit | default: 5
+    assign raised_cents = units_sold | times: per_unit | times: 100
+  endif
+-%}
+
+<div
+  class="gs-countdown color-{{ section.settings.color_scheme }}{% if section.settings.enable_gradient %} gradient{% endif %} gs-countdown--visibility-{{ section.settings.section_visibility }}"
+  style="
+    --padding-top: {{ section.settings.top_space_desktop }}px;
+    --padding-bottom: {{ section.settings.bottom_space_desktop }}px;
+    --padding-top-mobile: {{ section.settings.top_space_mobile }}px;
+    --padding-bottom-mobile: {{ section.settings.bottom_space_mobile }}px;
+    --image-fit: {{ section.settings.grid_image_fit }};
+    --offerProductWidth: {% if section.settings.enable_donation_impact %}50%{% else %}75%{% endif %};
+    {%- if section.settings.highlight_text_color != blank and section.settings.highlight_text_color != 'rgba(0,0,0,0)' -%}
+      --countdownHighlightTextColor: {{ section.settings.highlight_text_color }};
+    {%- else -%}
+      --countdownHighlightTextColor: rgba(var(--line-color), 1);
+    {%- endif -%}
+    {%- if section.settings.text_color != blank and section.settings.text_color != 'rgba(0,0,0,0)' -%}
+      --countdownTextColor: {{ section.settings.text_color }};
+    {%- else -%}
+      --countdownTextColor: rgba(var(--textColor), 1);
+    {%- endif -%}
+    {%- if section.settings.bg__color == 'gradient' and section.settings.gradient_color != blank -%}
+      --countdownProductBg: {{ section.settings.gradient_color }};
+    {%- elsif section.settings.bg__color == 'solid' and section.settings.solid_color != blank and section.settings.solid_color != 'rgba(0,0,0,0)' -%}
+      --countdownProductBg: {{ section.settings.solid_color }};
+    {%- else -%}
+      --countdownProductBg: rgba(var(--background), 1);
+    {%- endif -%}
+    {%- if section.settings.enable_donation_impact -%}
+      --donationImpactFontColor: {{ section.settings.donation_impact_font_color | default: '#ffffff' }};
+      --donationImpactTextAlign: {{ section.settings.donation_impact_text_align }};
+      --donationImpactFontSizeDesktop: {{ section.settings.donation_impact_font_size_desktop }}px;
+      --donationImpactFontSizeMobile: {{ section.settings.donation_impact_font_size_mobile }}px;
+    {%- endif -%}
+  "
+>
+  <div class="page-width">
+    <div class="countdown-wrapper{% if section.settings.countdown_bg_image != blank %} countdown-bg-image{% else %} countdown-bg-color{% endif %}">
+      {%- if section.settings.countdown_bg_image != blank -%}
+        {%- assign bg = section.settings.countdown_bg_image -%}
+        <img
+          class="countdown-bg"
+          src="{{ bg | image_url: width: 1500 }}"
+          srcset="{{ bg | image_url: width: 750 }} 750w, {{ bg | image_url: width: 1500 }} 1500w, {{ bg | image_url: width: 2000 }} 2000w"
+          sizes="100vw"
+          alt="{{ bg.alt | escape }}"
+          width="{{ bg.width }}"
+          height="{{ bg.height }}"
+          loading="lazy"
+        >
+      {%- endif -%}
+
+      <div class="countdown-offer-text text-{{ section.settings.layout }}">
+        {%- if section.settings.heading != blank -%}
+          <{{ section.settings.seo_heading }} class="{{ section.settings.heading_size }} offer-heading">
+            {{ section.settings.heading }}
+          </{{ section.settings.seo_heading }}>
+        {%- endif -%}
+
+        {%- if section.settings.sub_heading != blank -%}
+          <p class="{{ section.settings.textstyle }} off-text">{{ section.settings.sub_heading }}</p>
+        {%- endif -%}
+
+        <div class="countdown-timer-wrapper">
+          {%- if section.settings.content != blank -%}
+            <p class="rte">{{ section.settings.content }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.countdown_timer_end != blank -%}
+            <div
+              class="countdown-timer"
+              data-countdown-timer
+              data-launch-date="{{ section.settings.countdown_timer_end | date: '%s' }}"
+            >
+              <div class="count-days">
+                <span class="time days">00</span>
+                <span class="separator">{{ 'general.countdown.days' | t | default: 'days' }}</span>
+              </div>
+              <div class="count-hours">
+                <span class="time hours">00</span>
+                <span class="separator">{{ 'general.countdown.hours' | t | default: 'hrs' }}</span>
+              </div>
+              <div class="count-minutes">
+                <span class="time minutes">00</span>
+                <span class="separator">{{ 'general.countdown.minutes' | t | default: 'min' }}</span>
+              </div>
+              <div class="count-seconds">
+                <span class="time seconds">00</span>
+                <span class="separator">{{ 'general.countdown.seconds' | t | default: 'sec' }}</span>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="countdown-offer-products{% if section.settings.enable_innner_background %} background-enabled{% endif %}">
+        <div class="gs-countdown__scroller" data-swatch-scroller>
+          <button
+            type="button"
+            class="gs-countdown__btn"
+            data-swatch-scroll="prev"
+            aria-label="{{ 'general.slider.previous_slide' | t | default: 'Previous' }}"
+            hidden
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+              <path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <ul class="gs-countdown__track" data-swatch-track>
+            {%- if has_products -%}
+              {%- for product in section.settings.product_list -%}
+                <li class="gs-countdown__slide" data-id="{{ product.id }}">
+                  {%- render 'gs-card-product',
+                    cardProduct: product,
+                    cycleIndex: forloop.index,
+                    gridImageSize: section.settings.grid_image_size,
+                    showCount: true,
+                    quickViewtrue: true,
+                    compareTrue: true,
+                    showSwatches: true
+                  -%}
+                </li>
+              {%- endfor -%}
+            {%- else -%}
+              {%- for i in (1..4) -%}
+                <li class="gs-countdown__slide">
+                  {%- render 'gs-card-product',
+                    cycleIndex: forloop.index,
+                    gridImageSize: section.settings.grid_image_size
+                  -%}
+                </li>
+              {%- endfor -%}
+            {%- endif -%}
+          </ul>
+
+          <button
+            type="button"
+            class="gs-countdown__btn"
+            data-swatch-scroll="next"
+            aria-label="{{ 'general.slider.next_slide' | t | default: 'Next' }}"
+            hidden
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+              <path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {%- if section.settings.enable_donation_impact -%}
+        <div class="donation-impact-text">
+          <p>
+            <span>{{ raised_cents | money }}</span>
+            {{ section.settings.donation_impact_label | default: 'Raised To Date For' }}
+            {{ section.settings.donation_impact_year | default: 'now' | date: '%Y' }}
+          </p>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Countdown",
+  "tag": "section",
+  "class": "countdown-section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "header", "content": "General" },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "Show section on",
+      "default": "always",
+      "options": [
+        { "value": "always", "label": "All devices" },
+        { "value": "small", "label": "Mobile only" },
+        { "value": "large", "label": "Desktop only" }
+      ]
+    },
+    { "type": "header", "content": "Content" },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Countdown Heading Here"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "seo_heading",
+      "label": "Heading tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ]
+    },
+    { "type": "inline_richtext", "id": "sub_heading", "label": "Subheading" },
+    {
+      "type": "select",
+      "id": "textstyle",
+      "label": "Subheading size",
+      "default": "small-case",
+      "options": [
+        { "value": "small-case", "label": "Small" },
+        { "value": "medium-case", "label": "Medium" },
+        { "value": "large-case", "label": "Large" }
+      ]
+    },
+    { "type": "inline_richtext", "id": "content", "label": "Content" },
+    {
+      "type": "text",
+      "id": "countdown_timer_end",
+      "label": "Countdown timer end",
+      "info": "Format YYYY-MM-DD HH:MM, e.g. 2026-12-31 23:59"
+    },
+    {
+      "type": "text_alignment",
+      "id": "layout",
+      "label": "Content alignment",
+      "default": "left"
+    },
+    { "type": "header", "content": "Background" },
+    { "type": "image_picker", "id": "countdown_bg_image", "label": "Background image" },
+    {
+      "type": "select",
+      "id": "bg__color",
+      "label": "Product area background",
+      "default": "gradient",
+      "options": [
+        { "value": "gradient", "label": "Gradient" },
+        { "value": "solid", "label": "Solid" }
+      ]
+    },
+    {
+      "type": "color_background",
+      "id": "gradient_color",
+      "label": "Gradient",
+      "default": "linear-gradient(320deg, rgba(56, 78, 197, 0.56) 16%, rgba(203, 68, 194, 0.6) 52%, rgba(255, 201, 104, 0.95) 87%)"
+    },
+    { "type": "color", "id": "solid_color", "label": "Solid color", "default": "#ffffff" },
+    {
+      "type": "checkbox",
+      "id": "enable_innner_background",
+      "label": "Show background behind products",
+      "default": true
+    },
+    { "type": "header", "content": "Products" },
+    { "type": "product_list", "id": "product_list", "label": "Products", "limit": 16 },
+    {
+      "type": "select",
+      "id": "grid_image_size",
+      "label": "Image shape",
+      "default": "auto",
+      "options": [
+        { "value": "auto", "label": "Natural" },
+        { "value": "landscape", "label": "Landscape" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "square", "label": "Square" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "grid_image_fit",
+      "label": "Image fit",
+      "default": "cover",
+      "options": [
+        { "value": "cover", "label": "Cover" },
+        { "value": "contain", "label": "Contain" }
+      ]
+    },
+    { "type": "header", "content": "Donation impact" },
+    {
+      "type": "checkbox",
+      "id": "enable_donation_impact",
+      "label": "Show donation impact total",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "donation_per_unit",
+      "label": "Donation per unit sold",
+      "info": "Was hardcoded to $5 in v3.",
+      "min": 1,
+      "max": 50,
+      "step": 1,
+      "unit": "$",
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "donation_impact_label",
+      "label": "Donation impact label",
+      "default": "Raised To Date For"
+    },
+    {
+      "type": "text",
+      "id": "donation_impact_year",
+      "label": "Donation impact year",
+      "info": "Leave empty to use the current year. v3 hardcoded 2026."
+    },
+    { "type": "color", "id": "donation_impact_font_color", "label": "Donation text color" },
+    {
+      "type": "text_alignment",
+      "id": "donation_impact_text_align",
+      "label": "Donation text alignment",
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "donation_impact_font_size_desktop",
+      "label": "Donation font size (desktop)",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "donation_impact_font_size_mobile",
+      "label": "Donation font size (mobile)",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    { "type": "header", "content": "Custom colors" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#000000" },
+    {
+      "type": "color",
+      "id": "highlight_text_color",
+      "label": "Highlight text color",
+      "default": "#ffffff"
+    },
+    { "type": "header", "content": "Colors" },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gradient",
+      "label": "Use gradient background",
+      "default": false
+    },
+    { "type": "header", "content": "Section padding" },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "Top padding (desktop)",
+      "unit": "px",
+      "default": 10,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "Bottom padding (desktop)",
+      "unit": "px",
+      "default": 10,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "Top padding (mobile)",
+      "unit": "px",
+      "default": 10,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "Bottom padding (mobile)",
+      "unit": "px",
+      "default": 10,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ],
+  "presets": [{ "name": "Countdown" }]
+}
+{% endschema %}

@@ -1,0 +1,194 @@
+{% comment %}
+  ==================================================================
+  GS PRODUCT BADGE
+  ==================================================================
+  USAGE: render 'gs-product-badge', cardProduct: product
+
+  ------------------------------------------------------------------
+  DEFAULTS NOW MATCH WHAT v3 ACTUALLY HAS CONFIGURED
+  ------------------------------------------------------------------
+  Every badge is gated on a gs-shopify-v3 THEME SETTING with no entry in
+  Dawn's config/settings_schema.json, so all of them are nil here. The
+  rule adopted across this port is that a missing setting means ENABLED,
+  so an absent schema entry fails open rather than silently hiding a
+  feature.
+
+  For badges that rule was WRONG, and reading v3's settings_data.json
+  showed exactly how wrong. Production has:
+
+      new_label       true      -> fail open is correct
+      sale_label      FALSE     -> fail open showed a badge v3 hides
+      preorder_label  FALSE     -> fail open showed a badge v3 hides
+      soldout_label   false     -> already opt-in
+
+  So the Dawn theme was putting SALE and PRE-ORDER badges on products
+  that carry neither on the live site. Both are opt-IN now, matching
+  production. New stays fail-open, which matches too.
+
+  ------------------------------------------------------------------
+  SOLD OUT IS OPT-IN FOR A DIFFERENT REASON
+  ------------------------------------------------------------------
+  v3 rendered it with NO availability check at all, so defaulting it on
+  would badge every in-stock product.
+
+  ------------------------------------------------------------------
+  CUSTOM TAG BADGES - INDEX MISMATCH, DOCUMENTED NOT FIXED
+  ------------------------------------------------------------------
+  v3 names these `custom_tag` and `custom_tag_label` for the FIRST pair,
+  then custom_tag_1..9. This loop reads custom_tag_0..9, so the first
+  pair would never match. Left as is because none of these settings
+  exist in Dawn's schema yet - fix the loop when they are added.
+
+  For reference, v3 has these configured:
+    USA 250, Limited Edition, Club Exclusive, ClubEA (Club Early
+    Access), new, Ready To Ship (Ships Now), Best Seller, Mainline Sale
+    (Sale)
+
+  ------------------------------------------------------------------
+  EARLIER FIXES
+  ------------------------------------------------------------------
+  - FILTER INSIDE AN IF CONDITION: `if product_tag | downcase == tag`
+    raised "Expected end_of_string but found pipe" and broke EVERY
+    product card. Precomputed now.
+  - v3's sold-out badge had no availability check.
+  - v3's "new" badge iterated every collection AND every product inside
+    each, per card, and Liquid caps collection.products at 50 - so
+    products past the 50th silently never got it. Reads
+    cardProduct.collections instead.
+  - Sale badge compared compare_at_price_MAX against price_MIN, so one
+    discounted variant marked the whole product on sale.
+  - Carries its own stylesheet; these rules lived in gs-card-product.css,
+    which only loads when a CARD renders.
+  ==================================================================
+{% endcomment %}
+
+{%- liquid
+  unless cardProduct
+    break
+  endunless
+
+  # NEW fails open - v3 has this on.
+  assign allow_new = true
+  if settings.new_label == false
+    assign allow_new = false
+  endif
+
+  # SALE and PRE-ORDER are opt-IN - v3 has both OFF. See the header note.
+  assign allow_sale = false
+  if settings.sale_label == true
+    assign allow_sale = true
+  endif
+
+  assign allow_preorder = false
+  if settings.preorder_label == true
+    assign allow_preorder = true
+  endif
+
+  assign badge_count = 0
+  assign is_new = false
+  assign first_variant = cardProduct.selected_or_first_available_variant
+-%}
+
+{{ 'gs-product-badge.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} NEW {%- endcomment -%}
+{%- if allow_new and cardProduct.available -%}
+  {%- liquid
+    if settings.new_collection_label
+      for tagged_collection in settings.add_new_collection
+        for product_collection in cardProduct.collections
+          if product_collection.handle == tagged_collection.handle
+            assign is_new = true
+            break
+          endif
+        endfor
+        if is_new
+          break
+        endif
+      endfor
+    else
+      assign days = settings.days_ago_created | default: 40
+      assign now_days = 'now' | date: '%s' | divided_by: 86400
+      assign published_days = cardProduct.published_at | date: '%s' | divided_by: 86400
+      assign day_difference = now_days | minus: published_days
+      if day_difference <= days
+        assign is_new = true
+      endif
+    endif
+  -%}
+
+  {%- if is_new -%}
+    <span class="product-badge new">{{ 'products.product.badges.new' | t }}</span>
+  {%- endif -%}
+{%- endif -%}
+
+{%- comment -%} SALE {%- endcomment -%}
+{%- if allow_sale and cardProduct.compare_at_price_min > cardProduct.price_min -%}
+  {%- if settings.sale_label_with_percentage -%}
+    <span class="product-badge sale-percentage">
+      {{ 'products.product.badges.sale' | t }}
+      <span class="sale-percentage-off">
+        {{- cardProduct.compare_at_price_min
+          | minus: cardProduct.price_min
+          | times: 100
+          | divided_by: cardProduct.compare_at_price_min -}}%
+      </span>
+    </span>
+  {%- else -%}
+    <span class="product-badge sale">{{ 'products.product.badges.sale' | t }}</span>
+  {%- endif -%}
+{%- endif -%}
+
+{%- comment -%} PREORDER {%- endcomment -%}
+{%- if allow_preorder and first_variant -%}
+  {%- if first_variant.inventory_quantity <= 0 and first_variant.inventory_policy == 'continue' -%}
+    <span class="product-badge preorder-badge">{{ 'products.product.badges.preorder' | t }}</span>
+  {%- endif -%}
+{%- endif -%}
+
+{%- comment -%} CUSTOM tag badges - max 2. See the index note in the header. {%- endcomment -%}
+{%- for i in (0..9) -%}
+  {%- if badge_count >= 2 -%}
+    {%- break -%}
+  {%- endif -%}
+
+  {%- liquid
+    assign label_key = 'custom_tag_label_' | append: i
+    assign tag_key = 'custom_tag_' | append: i
+    assign label = settings[label_key]
+    assign matched = false
+  -%}
+
+  {%- if label != blank -%}
+    {%- liquid
+      assign custom_tags = settings[tag_key] | downcase | split: ','
+      for tag in custom_tags
+        assign clean_tag = tag | strip
+        for product_tag in cardProduct.tags
+          # Precomputed - a filter cannot appear inside an if condition.
+          assign product_tag_down = product_tag | downcase
+          if product_tag_down == clean_tag
+            assign matched = true
+            break
+          endif
+        endfor
+        if matched
+          break
+        endif
+      endfor
+    -%}
+
+    {%- if matched -%}
+      <span class="product-badge custom-badge">{{ label }}</span>
+      {%- assign badge_count = badge_count | plus: 1 -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%}
+  SOLD OUT stays opt-IN. v3 rendered it with no availability check, so
+  defaulting this on would badge every in-stock product.
+{%- endcomment -%}
+{%- if settings.soldout_label == true and cardProduct.available == false -%}
+  <span class="product-badge sold-badge">{{ 'products.product.badges.soldout' | t }}</span>
+{%- endif -%}

@@ -1,0 +1,54 @@
+/*
+  GS Product Badge
+
+  Loaded by snippets/gs-product-badge.liquid itself. These rules lived in
+  gs-card-product.css, which only loads when a product CARD renders -
+  the same coupling that left the price and star rating unstyled on the
+  product page.
+
+  Colours come from the token bridge, so they follow brand settings
+  rather than being hardcoded per badge type.
+*/
+
+.product-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  font-family: var(--headingFont);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: rgb(var(--saleBadgeBackground, 171 25 45));
+}
+
+.product-badge.new {
+  background-color: rgb(var(--newBadgeBackground, 171 25 45));
+  color: var(--newBadgeColor, #ffffff);
+}
+
+.product-badge.sale,
+.product-badge.sale-percentage {
+  background-color: rgb(var(--saleBadgeBackground, 171 25 45));
+  color: var(--saleBadgeColor, #ffffff);
+}
+
+.product-badge.preorder-badge {
+  background-color: rgb(var(--preorderBadgeBackground, 171 25 45));
+  color: var(--preorderBadgeColor, #ffffff);
+}
+
+.product-badge.sold-badge {
+  background-color: rgb(var(--soldBadgeBackground, 92 92 92));
+  color: var(--soldBadgeColor, #ffffff);
+}
+
+.product-badge.custom-badge {
+  background-color: rgb(var(--customBadgeBackground, 171 25 45));
+  color: var(--customBadgeColor, #ffffff);
+}
+
+.sale-percentage-off {
+  margin-left: 0.3em;
+}

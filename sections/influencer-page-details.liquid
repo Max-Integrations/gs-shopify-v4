@@ -1,0 +1,430 @@
+{% comment %}
+  ==================================================================
+  INFLUENCER DETAILS
+  Ported from gs-shopify-v3 sections/influencer-page-details.liquid
+  ==================================================================
+  Profile image beside name, location, bio and social links.
+
+  Setting IDs are byte-for-byte identical to v3.
+
+  ------------------------------------------------------------------
+  THE MOBILE NAME SIZE SETTING WAS NEVER USED
+  ------------------------------------------------------------------
+  The mobile rule for the influencer name read
+      font-size: {{ raw }}{{ influencer_details_text_size_mobile }}{{ endraw }}px
+  - the BIO's setting, not the name's. influencer_name_text_size_mobile
+  exists in the schema and appears nowhere in the CSS. Anyone adjusting
+  it saw nothing happen, and adjusting the bio size moved the name too.
+
+  That is the eighth setting found in v3 that does nothing.
+
+  ------------------------------------------------------------------
+  THE SOCIAL GRID WAS LOCKED TO FIVE COLUMNS
+  ------------------------------------------------------------------
+      grid-template-columns: repeat(5, 50px)
+
+  regardless of how many social blocks were added. Two links produced
+  three empty columns, and because the grid stayed five wide, the
+  alignment setting had nothing useful to align - left, centre and right
+  all looked wrong. Now auto-fit, so the row is as wide as its contents.
+
+  ------------------------------------------------------------------
+  ALT TEXT WAS THE IMAGE OBJECT
+  ------------------------------------------------------------------
+      alt="{{ raw }}{{ section.settings.influencer_image_mobile }}{{ endraw }}"
+
+  Missing `.alt`, so Liquid stringified the image object into the alt
+  attribute.
+
+  ------------------------------------------------------------------
+  OTHER v3 FIXES
+  ------------------------------------------------------------------
+  - The five icons were rendered from v3 snippets (icon-twitter and
+    friends) that do not exist in this theme. Inlined as SVG.
+  - Social links used `title` for their accessible name. title is
+    unreliable for assistive tech and invisible on touch; they use
+    aria-label now.
+  - target="_blank" with no rel="noopener noreferrer", five times.
+  - Text was hardcoded #fff throughout, so the section only worked on a
+    dark background. Colours come from settings now.
+  - The separator rule was hardcoded rgb(128,38,41).
+  - Times New Roman offered as a brand font. Note that v3's Roboto option
+    DID work here, because the value contains a comma and was emitted
+    raw - it was only the multi-word Engravers MT that silently failed.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-influencer.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+
+  case s.header_text_font
+    when 'Engravers MT'
+      assign head_font = '"Engravers MT", var(--headingFont)'
+    when 'body'
+      assign head_font = 'var(--bodyFont)'
+    else
+      assign head_font = 'var(--headingFont)'
+  endcase
+
+  case s.influencer_text_font
+    when 'Engravers MT'
+      assign name_font = '"Engravers MT", var(--headingFont)'
+    when 'body'
+      assign name_font = 'var(--bodyFont)'
+    else
+      assign name_font = 'var(--headingFont)'
+  endcase
+
+  case s.influencer_location_font
+    when 'Engravers MT'
+      assign loc_font = '"Engravers MT", var(--headingFont)'
+    when 'heading'
+      assign loc_font = 'var(--headingFont)'
+    else
+      assign loc_font = 'var(--bodyFont)'
+  endcase
+
+  case s.influencer_details_text_font
+    when 'Engravers MT'
+      assign bio_font = '"Engravers MT", var(--headingFont)'
+    when 'heading'
+      assign bio_font = 'var(--headingFont)'
+    else
+      assign bio_font = 'var(--bodyFont)'
+  endcase
+
+  case s.influencer_social_icons_alignment
+    when 'center'
+      assign social_justify = 'center'
+    when 'right'
+      assign social_justify = 'flex-end'
+    else
+      assign social_justify = 'flex-start'
+  endcase
+
+  assign desktop_img = s.influencer_image_desktop
+  assign mobile_img = s.influencer_image_mobile | default: desktop_img
+-%}
+
+<div
+  class="gs-infl-details page-width"
+  id="gs-infl-details-{{ section.id }}"
+  style="
+    --id-head-color: {{ s.header_text_color }};
+    --id-head-font: {{ head_font }};
+    --id-head-size: {{ s.header_text_size_desktop }}px;
+    --id-head-size-mobile: {{ s.header_text_size_mobile }}px;
+    --id-head-align: {{ s.header_text_alignment }};
+    --id-name-color: {{ s.influencer_name_color | default: '#ffffff' }};
+    --id-name-font: {{ name_font }};
+    --id-name-size: {{ s.influencer_name_text_size_desktop }}px;
+    --id-name-size-mobile: {{ s.influencer_name_text_size_mobile }}px;
+    --id-name-align: {{ s.influencer_name_text_alignment }};
+    --id-loc-font: {{ loc_font }};
+    --id-loc-size: {{ s.influencer_location_text_size_desktop }}px;
+    --id-loc-size-mobile: {{ s.influencer_location_text_size_mobile }}px;
+    --id-loc-align: {{ s.influencer_location_text_alignment }};
+    --id-bio-font: {{ bio_font }};
+    --id-bio-size: {{ s.influencer_details_text_size_desktop }}px;
+    --id-bio-size-mobile: {{ s.influencer_details_text_size_mobile }}px;
+    --id-bio-align: {{ s.influencer_details_text_alignment }};
+    --id-rule-color: {{ s.influencer_rule_color | default: '#802629' }};
+    --id-social-justify: {{ social_justify }};
+  "
+>
+  {%- if s.header_visibility and s.header_text != blank -%}
+    <h1 class="gs-infl-details__header">{{ s.header_text }}</h1>
+  {%- endif -%}
+
+  <div class="gs-infl-details__row">
+    {%- if s.profile_picture_visibility and desktop_img != blank -%}
+      <div class="gs-infl-details__media">
+        <picture>
+          <source
+            media="(max-width: 989px)"
+            srcset="{{ mobile_img | image_url: width: 600 }} 600w, {{ mobile_img | image_url: width: 1000 }} 1000w"
+            sizes="100vw"
+          >
+          <img
+            src="{{ desktop_img | image_url: width: 1000 }}"
+            srcset="{{ desktop_img | image_url: width: 600 }} 600w, {{ desktop_img | image_url: width: 1000 }} 1000w"
+            sizes="(min-width: 990px) 50vw, 100vw"
+            alt="{{ desktop_img.alt | escape | default: s.influencer_name | escape }}"
+            width="{{ desktop_img.width }}"
+            height="{{ desktop_img.height }}"
+            loading="lazy"
+          >
+        </picture>
+      </div>
+    {%- endif -%}
+
+    <div class="gs-infl-details__profile">
+      {%- if s.influencer_name_visibility and s.influencer_name != blank -%}
+        <h2 class="gs-infl-details__name">{{ s.influencer_name }}</h2>
+      {%- endif -%}
+
+      {%- if s.influencer_location_visibility and s.influencer_location != blank -%}
+        <span class="gs-infl-details__location">{{ s.influencer_location }}</span>
+      {%- endif -%}
+
+      {%- if s.influencer_details_line_separator -%}
+        <hr class="gs-infl-details__rule">
+      {%- endif -%}
+
+      {%- if s.influencer_details_visibility and s.influencer_details != blank -%}
+        <div class="gs-infl-details__bio">{{ s.influencer_details }}</div>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="gs-infl-details__social-wrap">
+          <ul class="gs-infl-details__social">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                case block.type
+                  when 'twitter'
+                    assign social_url = block.settings.twitter_handle
+                    assign social_name = 'X'
+                  when 'facebook'
+                    assign social_url = block.settings.facebook_handle
+                    assign social_name = 'Facebook'
+                  when 'instagram'
+                    assign social_url = block.settings.instagram_handle
+                    assign social_name = 'Instagram'
+                  when 'tiktok'
+                    assign social_url = block.settings.tiktok_handle
+                    assign social_name = 'TikTok'
+                  when 'youtube'
+                    assign social_url = block.settings.youtube_handle
+                    assign social_name = 'YouTube'
+                  else
+                    assign social_url = blank
+                endcase
+              -%}
+
+              {%- if social_url != blank -%}
+                <li {{ block.shopify_attributes }}>
+                  <a
+                    class="gs-infl-details__social-link"
+                    href="{{ social_url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{ s.influencer_name | escape }} on {{ social_name }}"
+                  >
+                    {%- case block.type -%}
+                      {%- when 'twitter' -%}
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                          <path fill="currentColor" d="M18.9 2.5h3.3l-7.2 8.3 8.5 11.2h-6.6l-5.2-6.8-6 6.8H2.4l7.7-8.8L2 2.5h6.8l4.7 6.2 5.4-6.2Zm-1.2 17.6h1.8L7.4 4.3H5.4l12.3 15.8Z"/>
+                        </svg>
+                      {%- when 'facebook' -%}
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                          <path fill="currentColor" d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7H7.9v-2.94h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.94h-2.33v7A10.02 10.02 0 0 0 22 12.06Z"/>
+                        </svg>
+                      {%- when 'instagram' -%}
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                          <path fill="currentColor" d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.92 3.89 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16Zm0 5.68a4.16 4.16 0 1 0 0 8.32 4.16 4.16 0 0 0 0-8.32Zm0 6.86a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4Zm4.33-8.05a.97.97 0 1 0 0 1.94.97.97 0 0 0 0-1.94Z"/>
+                        </svg>
+                      {%- when 'tiktok' -%}
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                          <path fill="currentColor" d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .77-5.06v-3.1a5.66 5.66 0 0 0-.77-.05A5.66 5.66 0 1 0 15.54 15V8.99a7.34 7.34 0 0 0 4.28 1.38V7.28a4.28 4.28 0 0 1-3.22-1.46Z"/>
+                        </svg>
+                      {%- when 'youtube' -%}
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                          <path fill="currentColor" d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 3.9 12 3.9 12 3.9s-7.5 0-9.4.5A3 3 0 0 0 .5 6.5C0 8.4 0 12 0 12s0 3.6.5 5.5a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.5.5-5.5s0-3.6-.5-5.5ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/>
+                        </svg>
+                    {%- endcase -%}
+                  </a>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Influencer Details",
+  "tag": "section",
+  "class": "gs-influencer-details",
+  "settings": [
+    { "type": "header", "content": "Page header" },
+    { "type": "checkbox", "id": "header_visibility", "label": "Show header", "info": "This is the H1 of the page.", "default": true },
+    { "type": "inline_richtext", "id": "header_text", "label": "Header", "default": "Brand Influencer" },
+    {
+      "type": "select",
+      "id": "header_text_font",
+      "label": "Header font",
+      "info": "Engravers MT has no font file in this theme yet and will fall back.",
+      "options": [
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "body", "label": "Theme body font" },
+        { "value": "Engravers MT", "label": "Engravers MT" }
+      ],
+      "default": "heading"
+    },
+    { "type": "color", "id": "header_text_color", "label": "Header color", "default": "#ffffff" },
+    { "type": "range", "id": "header_text_size_desktop", "label": "Header size (desktop)", "min": 24, "max": 64, "step": 1, "unit": "px", "default": 35 },
+    { "type": "range", "id": "header_text_size_mobile", "label": "Header size (mobile)", "min": 14, "max": 42, "step": 1, "unit": "px", "default": 24 },
+    {
+      "type": "select",
+      "id": "header_text_alignment",
+      "label": "Header alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    { "type": "header", "content": "Profile picture" },
+    { "type": "checkbox", "id": "profile_picture_visibility", "label": "Show profile picture", "default": true },
+    { "type": "image_picker", "id": "influencer_image_desktop", "label": "Profile picture (desktop)" },
+    { "type": "image_picker", "id": "influencer_image_mobile", "label": "Profile picture (mobile)", "info": "Falls back to the desktop image." },
+    { "type": "header", "content": "Name" },
+    { "type": "text", "id": "influencer_name", "label": "Name", "default": "Influencer Name" },
+    { "type": "checkbox", "id": "influencer_name_visibility", "label": "Show name", "default": true },
+    {
+      "type": "select",
+      "id": "influencer_text_font",
+      "label": "Name font",
+      "options": [
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "body", "label": "Theme body font" },
+        { "value": "Engravers MT", "label": "Engravers MT" }
+      ],
+      "default": "Engravers MT"
+    },
+    { "type": "color", "id": "influencer_name_color", "label": "Name color", "default": "#ffffff" },
+    { "type": "range", "id": "influencer_name_text_size_desktop", "label": "Name size (desktop)", "min": 24, "max": 64, "step": 1, "unit": "px", "default": 35 },
+    {
+      "type": "range",
+      "id": "influencer_name_text_size_mobile",
+      "label": "Name size (mobile)",
+      "info": "This setting existed in v3 but was never applied - the bio's mobile size was used instead.",
+      "min": 14,
+      "max": 42,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "influencer_name_text_alignment",
+      "label": "Name alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    { "type": "header", "content": "Location" },
+    { "type": "text", "id": "influencer_location", "label": "Location", "default": "City, State" },
+    { "type": "checkbox", "id": "influencer_location_visibility", "label": "Show location", "default": true },
+    {
+      "type": "select",
+      "id": "influencer_location_font",
+      "label": "Location font",
+      "options": [
+        { "value": "body", "label": "Theme body font" },
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "Engravers MT", "label": "Engravers MT" }
+      ],
+      "default": "body"
+    },
+    { "type": "range", "id": "influencer_location_text_size_desktop", "label": "Location size (desktop)", "min": 12, "max": 32, "step": 1, "unit": "px", "default": 14 },
+    { "type": "range", "id": "influencer_location_text_size_mobile", "label": "Location size (mobile)", "min": 11, "max": 24, "step": 1, "unit": "px", "default": 14 },
+    {
+      "type": "select",
+      "id": "influencer_location_text_alignment",
+      "label": "Location alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    { "type": "header", "content": "Bio" },
+    { "type": "checkbox", "id": "influencer_details_line_separator", "label": "Show separator rule", "default": true },
+    { "type": "color", "id": "influencer_rule_color", "label": "Separator color", "default": "#802629" },
+    { "type": "richtext", "id": "influencer_details", "label": "Bio", "default": "<p>Tell their story here.</p>" },
+    { "type": "checkbox", "id": "influencer_details_visibility", "label": "Show bio", "default": true },
+    {
+      "type": "select",
+      "id": "influencer_details_text_font",
+      "label": "Bio font",
+      "options": [
+        { "value": "body", "label": "Theme body font" },
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "Engravers MT", "label": "Engravers MT" }
+      ],
+      "default": "body"
+    },
+    { "type": "range", "id": "influencer_details_text_size_desktop", "label": "Bio size (desktop)", "min": 14, "max": 32, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "influencer_details_text_size_mobile", "label": "Bio size (mobile)", "min": 11, "max": 28, "step": 1, "unit": "px", "default": 14 },
+    {
+      "type": "select",
+      "id": "influencer_details_text_alignment",
+      "label": "Bio alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    { "type": "header", "content": "Social" },
+    {
+      "type": "select",
+      "id": "influencer_social_icons_alignment",
+      "label": "Social icon alignment",
+      "info": "In v3 the grid was locked to five columns, so this had little visible effect.",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "X / Twitter",
+      "type": "twitter",
+      "limit": 1,
+      "settings": [{ "type": "url", "id": "twitter_handle", "label": "Profile URL" }]
+    },
+    {
+      "name": "Facebook",
+      "type": "facebook",
+      "limit": 1,
+      "settings": [{ "type": "url", "id": "facebook_handle", "label": "Profile URL" }]
+    },
+    {
+      "name": "Instagram",
+      "type": "instagram",
+      "limit": 1,
+      "settings": [{ "type": "url", "id": "instagram_handle", "label": "Profile URL" }]
+    },
+    {
+      "name": "TikTok",
+      "type": "tiktok",
+      "limit": 1,
+      "settings": [{ "type": "url", "id": "tiktok_handle", "label": "Profile URL" }]
+    },
+    {
+      "name": "YouTube",
+      "type": "youtube",
+      "limit": 1,
+      "settings": [{ "type": "url", "id": "youtube_handle", "label": "Profile URL" }]
+    }
+  ],
+  "presets": [{ "name": "Influencer Details" }],
+  "enabled_on": { "templates": ["*"] }
+}
+{% endschema %}

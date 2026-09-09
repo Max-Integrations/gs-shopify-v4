@@ -1,0 +1,70 @@
+{% comment %}
+  ==================================================================
+  GS PRODUCT COUNTDOWN
+  Ported from gs-shopify-v3 snippets/product-countdown.liquid
+  ==================================================================
+  USAGE:
+    {% raw %}{% render 'gs-product-countdown', cardProduct: product %}{% endraw %}
+
+  Reads the product metafield theme.product_countdown. The numbers are
+  populated client-side by the countdown script.
+
+  ------------------------------------------------------------------
+  BUG FIXED: SINGULAR/PLURAL DERIVED FROM THE WRONG NUMBER
+  ------------------------------------------------------------------
+  v3 computed:
+
+      assign launch__date = launch_date | date: '%d' | plus: 0
+      ...
+      {% raw %}{% if launch__date < 02 %}{% endraw %} "day" {% raw %}{% else %}{% endraw %} "days"
+
+  `date: '%d'` is the DAY OF THE MONTH of the launch date — not the
+  number of days remaining. So the label read "day" for any product
+  launching on the 1st of a month, regardless of how far away it was,
+  and "days" otherwise, including when exactly one day remained.
+
+  The day count is filled in by JavaScript at runtime, so the label
+  cannot be decided correctly in Liquid at all. Both forms are now
+  emitted as data attributes for the countdown script to choose
+  between, and the plural renders as the default.
+
+  ACTION REQUIRED: the countdown JS lives in v3's theme.js (283 KB,
+  not yet ported). When porting it, have it read data-label-day and
+  data-label-days and swap the .separator text in .count-days.
+  ==================================================================
+{% endcomment %}
+
+{%- liquid
+  unless cardProduct
+    break
+  endunless
+  assign launch_date = cardProduct.metafields.theme.product_countdown.value
+-%}
+
+{%- if launch_date != blank -%}
+  <div
+    class="countdown-timer"
+    data-countdown-timer
+    data-launch-date="{{ launch_date }}"
+    data-label-day="{{ 'sections.featured_collection.collection_countdown_day' | t }}"
+    data-label-days="{{ 'sections.featured_collection.collection_countdown_days' | t }}"
+    style="display: none;"
+  >
+    <div class="count-days">
+      <span class="time days"></span>
+      <span class="separator">{{ 'sections.featured_collection.collection_countdown_days' | t }}</span>
+    </div>
+    <div class="count-hours">
+      <span class="time hours"></span>
+      <span class="separator">{{ 'general.countdown.hours' | t }}</span>
+    </div>
+    <div class="count-minutes">
+      <span class="time minutes"></span>
+      <span class="separator">{{ 'general.countdown.minutes' | t }}</span>
+    </div>
+    <div class="count-seconds">
+      <span class="time seconds"></span>
+      <span class="separator">{{ 'general.countdown.seconds' | t }}</span>
+    </div>
+  </div>
+{%- endif -%}

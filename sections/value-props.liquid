@@ -1,0 +1,132 @@
+{% comment %}
+  ==================================================================
+  VALUE PROPS
+  Ported from gs-shopify-v3 sections/value-props.liquid
+  ==================================================================
+  The black trust bar under the hero on the homepage:
+  "Over 11M Patriots Served / Veteran Operated / Officially Licensed"
+
+  ------------------------------------------------------------------
+  LAYOUT BUG: FIXED 140px GAP WITH NO WRAPPING
+  ------------------------------------------------------------------
+  v3 set:
+      .value-props-flex { display: flex; justify-content: center; gap: 140px; }
+  with no flex-wrap. Three uppercase phrases plus 280px of fixed gap
+  overflows horizontally on tablet and small-laptop widths - the
+  content is centred, so it clips at BOTH ends rather than one.
+
+  The mobile override only kicked in under 768px, leaving 768-1100px
+  unhandled. Now uses flex-wrap plus a clamped gap that scales with
+  the viewport, so it degrades instead of clipping.
+
+  ------------------------------------------------------------------
+  DEPRECATED MEDIA QUERY
+  ------------------------------------------------------------------
+  v3 used:
+      @media screen and (max-device-width: 374px) and (min-device-width: 320px)
+  device-width refers to the physical screen, not the viewport. It is
+  deprecated, does not respond to resizing or zoom, and behaves
+  unpredictably on modern devices. Replaced with a viewport max-width.
+
+  ------------------------------------------------------------------
+  HARDCODED VALUES MADE EDITABLE / TOKENISED
+  ------------------------------------------------------------------
+  1. TEXT COLOUR was hardcoded #FFFFFF while the background was a
+     merchant setting. Setting a light background produced invisible
+     text with no way to fix it in the editor. Now a real setting,
+     defaulting to white so current appearance is unchanged.
+
+  2. FONT FAMILY was hardcoded to 'Roboto Condensed' with no fallback
+     stack, bypassing the theme's font system entirely. Now uses
+     --headingFont from the token bridge, which resolves to whatever
+     the theme heading font is - currently Roboto Condensed.
+
+  ------------------------------------------------------------------
+  OTHER CHANGES
+  ------------------------------------------------------------------
+  3. GLOBAL CSS LEAK. The <style> block declared .main-value-title,
+     .value-props-flex and .value-props-container globally, once per
+     section instance. Moved to an asset and namespaced.
+
+  4. NO BLOCK LIMIT. A merchant could add unlimited values and break
+     the row silently. Capped at 5, which the layout handles.
+
+  5. SEMANTICS. Three sibling <p> tags became a list, which is what
+     this is. Screen readers now announce it as a group of 3 items.
+
+  ------------------------------------------------------------------
+  PRESERVED
+  ------------------------------------------------------------------
+  The block setting id is `customer_name` - clearly copy-pasted from a
+  testimonials section, since these are value propositions and not
+  customer names. The id is WRONG but it is what templates/index.json
+  is bound to, so it stays. Renaming it is a tracked migration.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-value-props.css' | asset_url | stylesheet_tag }}
+
+{%- if section.blocks.size > 0 -%}
+  <div
+    class="gs-value-props"
+    style="
+      --vp-bg: {{ section.settings.bg_color | default: '#000000' }};
+      --vp-text: {{ section.settings.text_color | default: '#ffffff' }};
+    "
+  >
+    <ul class="gs-value-props__list">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.customer_name != blank -%}
+          <li class="gs-value-props__item" {{ block.shopify_attributes }}>
+            {{- block.settings.customer_name -}}
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Value props",
+  "tag": "section",
+  "class": "section gs-value-props-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "info": "Was hardcoded to white in v3.",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Value title",
+          "info": "Setting id is customer_name for template compatibility.",
+          "default": "Veteran Operated"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Value props",
+      "blocks": [{ "type": "value" }, { "type": "value" }, { "type": "value" }]
+    }
+  ]
+}
+{% endschema %}

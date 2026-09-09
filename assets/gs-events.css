@@ -1,0 +1,374 @@
+/*
+  ==================================================================
+  GS Events
+  ==================================================================
+  Shared by all five events sections: header, subheader, module,
+  image-grid and full-width-image. One stylesheet rather than five, and
+  Shopify de-duplicates the repeated stylesheet_tag.
+
+  v3 emitted a <style> element per section AND, in events-module, one
+  more inside the block loop - a full style element per event, with 14
+  declarations marked !important. Per-instance values are CSS custom
+  properties here and nothing is !important, so the theme's own type
+  scale still applies wherever a block does not override it.
+  ==================================================================
+*/
+
+/* ================================================================
+   Events header
+   ================================================================ */
+.gs-events-header {
+  margin: 15px 0;
+}
+
+.gs-events-header__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.gs-events-header__text {
+  text-align: center;
+}
+
+.gs-events-header__heading {
+  margin: 0;
+  padding: 0;
+  color: var(--evhd-color, #ffffff);
+  font-family: var(--evhd-font, var(--headingFont));
+  font-size: var(--evhd-size-mobile, 32px);
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.gs-events-header__badge {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 10px 50px;
+  background-color: var(--evhd-badge-bg, #802629);
+  font-size: 1.25em;
+  text-align: center;
+}
+
+.gs-events-header__subcopy,
+.gs-events-header__subcopy p,
+.gs-events-header__subcopy strong,
+.gs-events-header__subcopy em {
+  margin: 10px 0 25px;
+  padding: 0 15px;
+  color: var(--evhd-sub-color, #ffffff);
+  font-family: var(--evhd-sub-font, var(--bodyFont));
+  font-size: var(--evhd-sub-size-mobile, 14px);
+  line-height: 1.3;
+  text-align: center;
+}
+
+.gs-events-header__cta {
+  display: block;
+  width: fit-content;
+  margin: 15px auto;
+  padding: 10px 20px;
+  background-color: var(--evhd-cta-bg, #802629);
+  color: var(--evhd-cta-color, #ffffff);
+  font-family: var(--evhd-cta-font, var(--headingFont));
+  font-size: var(--evhd-cta-size-mobile, 24px);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.gs-events-header__cta:focus-visible {
+  outline: 2px solid var(--evhd-color, #ffffff);
+  outline-offset: 3px;
+}
+
+.gs-events-header__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* The jump target takes focus so keyboard users land where the link
+   sent them, but should not draw a ring around a whole section. */
+[data-module-target='events']:focus {
+  outline: none;
+}
+
+/* ================================================================
+   Events subheader
+   ================================================================ */
+.gs-events-subheader {
+  margin: 25px 0 0;
+}
+
+.gs-events-subheader__text {
+  margin: 0;
+  padding-bottom: var(--evs-pad, 1rem);
+  border-bottom: var(--evs-border, none);
+  color: var(--evs-color, #ffffff);
+  font-family: var(--evs-font, var(--headingFont));
+  /* v3 had no mobile rule at all, so its mobile size setting was inert. */
+  font-size: var(--evs-size-mobile, 24px);
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* ================================================================
+   Events module
+   ================================================================ */
+.gs-events {
+  margin: 25px 0 75px;
+}
+
+.gs-events__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+.gs-events__card {
+  flex: 1 1 100%;
+}
+
+.gs-events__media {
+  line-height: 0;
+}
+
+.gs-events__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gs-events__body {
+  padding-top: 10px;
+}
+
+.gs-events__name {
+  margin: 0;
+  color: var(--ev-name-color, #ffffff);
+  font-family: var(--ev-name-font, var(--headingFont));
+  font-size: var(--ev-name-size-mobile, 22px);
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.gs-events__bar {
+  width: 100%;
+  height: 2px;
+  margin: 10px 0;
+  background-color: var(--ev-bar-color, #802629);
+}
+
+.gs-events__meta {
+  margin: 0;
+  padding: 3px 10px;
+  color: var(--ev-meta-color, #ffffff);
+  font-size: 1.4rem;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.gs-events__disclaimer {
+  margin: 0;
+  padding: 10px 10px 3px;
+  color: var(--ev-meta-color, #ffffff);
+  font-size: var(--xsmallText);
+  text-align: center;
+}
+
+.gs-events__cta {
+  display: block;
+  width: fit-content;
+  margin: 12px auto 0;
+  padding: 10px 18px;
+  background-color: var(--ev-cta-bg, #ffffff);
+  color: var(--ev-cta-color, #000000);
+  font-family: var(--ev-cta-font, var(--headingFont));
+  font-size: var(--ev-cta-size-mobile, 14px);
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.gs-events__cta:focus-visible {
+  outline: 2px solid var(--ev-cta-bg, #ffffff);
+  outline-offset: 3px;
+}
+
+/* ================================================================
+   Events full width hero
+   ================================================================ */
+.gs-events-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px 0;
+  padding: 75px 15px;
+  background-color: #000000;
+  background-image: var(--evh-bg-mobile, var(--evh-bg));
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.gs-events-hero__inner {
+  width: 100%;
+  max-width: 900px;
+}
+
+.gs-events-hero__heading {
+  margin: 0;
+  padding-bottom: 1rem;
+  color: var(--evh-head-color, #ffffff);
+  font-family: var(--evh-head-font, var(--headingFont));
+  font-size: var(--evh-head-size-mobile, 28px);
+  line-height: 1.1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.gs-events-hero__subcopy,
+.gs-events-hero__subcopy p,
+.gs-events-hero__subcopy strong,
+.gs-events-hero__subcopy em {
+  margin: 0;
+  color: var(--evh-sub-color, #ffffff);
+  font-family: var(--evh-sub-font, var(--bodyFont));
+  font-size: var(--evh-sub-size-mobile, 20px);
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* ================================================================
+   Events image grid (UGC)
+   ================================================================ */
+.gs-events-ugc {
+  margin: 25px 0;
+}
+
+.gs-events-ugc__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px 20px;
+}
+
+.gs-events-ugc__item {
+  width: calc(50% - 15px);
+}
+
+.gs-events-ugc__link {
+  display: block;
+  line-height: 0;
+}
+
+.gs-events-ugc__link:focus-visible {
+  outline: 2px solid rgb(var(--textColor));
+  outline-offset: 3px;
+}
+
+.gs-events-ugc__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (min-width: 990px) {
+  /* ---- Header ---- */
+  .gs-events-header__grid {
+    grid-template-columns: repeat(2, calc(50% - 50px));
+    column-gap: 100px;
+    row-gap: 0;
+  }
+
+  .gs-events-header__heading {
+    font-size: var(--evhd-size, 48px);
+  }
+
+  .gs-events-header__subcopy,
+  .gs-events-header__subcopy p,
+  .gs-events-header__subcopy strong,
+  .gs-events-header__subcopy em {
+    font-size: var(--evhd-sub-size, 18px);
+  }
+
+  .gs-events-header__cta {
+    font-size: var(--evhd-cta-size, 26px);
+  }
+
+  /* ---- Subheader ---- */
+  .gs-events-subheader__text {
+    font-size: var(--evs-size, 36px);
+  }
+
+  /* ---- Module ---- */
+  .gs-events__card--two-column {
+    flex: 0 1 calc(50% - 25px);
+  }
+
+  .gs-events__card--two-column .gs-events__img {
+    border: 1px solid #ffffff;
+  }
+
+  .gs-events__card--two-column .gs-events__bar {
+    height: 5px;
+  }
+
+  .gs-events__name {
+    font-size: var(--ev-name-size, 26px);
+  }
+
+  .gs-events__meta {
+    font-size: 1.8rem;
+  }
+
+  .gs-events__cta {
+    font-size: var(--ev-cta-size, 18px);
+  }
+
+  /* ---- Hero ---- */
+  .gs-events-hero {
+    background-image: var(--evh-bg);
+  }
+
+  .gs-events-hero__heading {
+    font-size: var(--evh-head-size, 42px);
+  }
+
+  .gs-events-hero__subcopy,
+  .gs-events-hero__subcopy p,
+  .gs-events-hero__subcopy strong,
+  .gs-events-hero__subcopy em {
+    font-size: var(--evh-sub-size, 30px);
+  }
+
+  /* ---- UGC grid ---- */
+  .gs-events-ugc__item {
+    width: calc(25% - 15px);
+  }
+
+  /* Greyscale reveal is desktop only - there is no hover on touch, so
+     v3 correctly showed full colour there. Kept, plus focus support. */
+  .gs-events-ugc__img {
+    filter: grayscale(100%);
+    transition: filter 0.25s linear;
+  }
+
+  .gs-events-ugc__item:hover .gs-events-ugc__img,
+  .gs-events-ugc__link:focus-visible .gs-events-ugc__img {
+    filter: grayscale(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-events-ugc__img {
+    transition: none;
+  }
+}

@@ -1,0 +1,82 @@
+/*
+  GS Main Search
+
+  Only the search-specific chrome. Grid, filters, cards and pagination
+  all reuse gs-main-collection.css and gs-card-product.css, so the two
+  surfaces cannot drift apart visually.
+*/
+
+.gs-search__header {
+  padding-bottom: 1.5rem;
+  text-align: center;
+}
+
+.gs-search__form {
+  display: flex;
+  gap: 8px;
+  max-width: 520px;
+  margin: 1rem auto 0;
+}
+
+.gs-search__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid rgba(var(--borderColor), 0.4);
+  background: transparent;
+  color: rgb(var(--textColor));
+  font-size: var(--smallText);
+}
+
+.gs-search__submit {
+  flex: 0 0 auto;
+  padding: 0 22px;
+  border: 0;
+  background-color: rgba(var(--line-color), 1);
+  color: #ffffff;
+  font-family: var(--headingFont);
+  font-size: var(--smallText);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.gs-search__submit:focus-visible,
+.gs-search__input:focus-visible {
+  outline: 2px solid rgb(var(--textColor));
+  outline-offset: 2px;
+}
+
+/* Page and article results. v3 rendered products only, so content
+   results were counted but never shown. */
+.gs-search__result {
+  display: block;
+  text-decoration: none;
+  color: rgb(var(--textColor));
+}
+
+.gs-search__result img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.gs-search__result-type {
+  margin: 0.8em 0 0.2em;
+  font-size: var(--xsmallText);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+}
+
+.gs-search__result-title {
+  margin: 0;
+  font-family: var(--headingFont);
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}

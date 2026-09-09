@@ -1,0 +1,254 @@
+{% comment %}
+  ==================================================================
+  GS COLLECTION TOOLBAR
+  Ported from gs-shopify-v3 snippets/collection-list-topbar.liquid
+  ==================================================================
+  Filter trigger and sort control above the product grid. Used by
+  main-collection AND main-search.
+
+  USAGE:
+    render 'gs-collection-toolbar', section: section, sort_by: sort_by
+
+  Sort radios use form="FiltersForm", defined in gs-collection-filters -
+  this snippet is not standalone. It also loads
+  assets/gs-collection-filter.js, which provides AJAX filtering, sorting,
+  load-more and the price slider. That script is progressive
+  enhancement; the form, radios and pagination links all work without it.
+
+  ------------------------------------------------------------------
+  REVISION 2026-08-13 - THE TOOLBAR WAS INERT ON /search
+  ------------------------------------------------------------------
+  This snippet read `collection.filters` and `collection.sort_options`.
+  There is no collection object on a search page, so:
+    - the Filter button never rendered (filters.size was nil)
+    - the sort list was empty
+
+  Introduced by reusing this snippet in main-search without re-reading
+  it. gs-collection-filters had the identical bug. Both now pick the
+  right source based on search.performed.
+
+  ------------------------------------------------------------------
+  ACCESSIBILITY: NEITHER CONTROL WAS KEYBOARD-OPERABLE IN v3
+  ------------------------------------------------------------------
+  v3's sort trigger was a plain <div class="detail-summary"> - not
+  focusable, not activatable by keyboard, no aria-expanded. The mobile
+  close was an <a> with NO href, also not focusable.
+
+  Rewritten with native <details>/<summary>: focus, Enter and Space
+  activation, and expanded state announced, with no JavaScript.
+
+  v3 also hid the sort panel with an inline style="display:none", so
+  revealing it REQUIRED JavaScript writing to element.style - a CSS
+  class could never have won against an inline style.
+
+  ------------------------------------------------------------------
+  THE MOBILE FILTER BUTTON DID NOTHING
+  ------------------------------------------------------------------
+  The button emitted data-side-drawer-open and gs-collection-filters
+  emitted data-side-drawer-close, but no handler existed for either -
+  the attribute names were carried over from v3 without porting v3's
+  drawer script. Handled below.
+
+  ------------------------------------------------------------------
+  OTHER v3 FIXES
+  ------------------------------------------------------------------
+  - INVALID HTML: <li value="best-selling"> - `value` is only valid on
+    <li> inside an <ol>, and only as an integer. Moved to data-value.
+  - DEAD CODE: `assign sortArray = collection.sort_options | where...`
+    was assigned and never read.
+
+  ------------------------------------------------------------------
+  PRESERVED DELIBERATELY
+  ------------------------------------------------------------------
+  Alphabetical sort options (title-ascending / title-descending) are
+  skipped, as in v3. Consistent and intentional-looking - merchandising
+  presumably does not want customers sorting apparel A-Z. Worth
+  confirming rather than assuming.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-collection-toolbar.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gs-collection-filter.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  # Search and collection share this snippet.
+  assign is_search = false
+  if search.performed
+    assign is_search = true
+  endif
+
+  assign filter_set = collection.filters
+  assign sort_options = collection.sort_options
+  if is_search
+    assign filter_set = search.filters
+    assign sort_options = search.sort_options
+  endif
+
+  assign has_filters = false
+  if section.settings.enable_filtering and filter_set.size > 0
+    assign has_filters = true
+  endif
+-%}
+
+<div class="gs-toolbar">
+  {%- if has_filters -%}
+    <div class="gs-toolbar__filter">
+      <button
+        type="button"
+        class="gs-toolbar__trigger"
+        aria-expanded="false"
+        aria-controls="GsCollectionFilters-{{ section.id }}"
+        data-side-drawer-open="GsCollectionFilters-{{ section.id }}"
+      >
+        <svg width="22" height="20" viewBox="0 0 16 10" fill="none" aria-hidden="true" focusable="false">
+          <path d="M0 9.77778L8.21516e-08 8.55556H2.53875V7.33333H4.23125V8.55556H11.8475V9.77778H4.23125V11H2.53875V9.77778H0ZM2.46314e-07 6.11111L3.28396e-07 4.88889H7.61625V3.66667H9.30876V4.88889H11.8475V6.11111H9.30876V7.33333H7.61625V6.11111H2.46314e-07ZM4.92629e-07 2.44444L5.7471e-07 1.22223H2.53875V0L4.23125 4.80826e-08V1.22223H11.8475V2.44444H4.23125V3.66667H2.53875V2.44444H4.92629e-07Z" fill="currentColor"/>
+        </svg>
+        {{ 'sections.collection_template.filter_title' | t }}
+      </button>
+    </div>
+  {%- endif -%}
+
+  {%- if section.settings.enable_sorting and sort_options.size > 0 -%}
+    <details class="gs-toolbar__sort" data-mobile-sort>
+      <summary class="gs-toolbar__trigger">
+        <svg width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true" focusable="false">
+          <path d="M0 0H16V2H0V0Z" fill="currentColor"/>
+          <path d="M0 4H12V6H0V4Z" fill="currentColor"/>
+          <path d="M0 8H8V10H0V8Z" fill="currentColor"/>
+        </svg>
+        <span>{{ 'sections.collection_template.sort_by_label' | t }}</span>
+      </summary>
+
+      <div class="gs-toolbar__panel">
+        <div class="gs-toolbar__panel-header">
+          <p class="gs-toolbar__panel-title">{{ 'sections.collection_template.sort_by_label' | t }}</p>
+          <button
+            type="button"
+            class="gs-toolbar__close"
+            aria-label="{{ 'accessibility.close' | t }}"
+            data-sort-close
+          >
+            <svg width="18" height="18" viewBox="0 0 22 22" fill="currentColor" aria-hidden="true" focusable="false">
+              <path d="M21.7987 20.826L11.9721 10.9958L21.7987 1.16552C22.0561 0.899047 22.0561 0.476499 21.7987 0.20994C21.5349 -0.0632507 21.0997 -0.0708067 20.8266 0.193065L11 10.0233L1.17343 0.193149C0.907055 -0.0642582 0.484664 -0.0642582 0.218204 0.193149C-0.0548867 0.457021 -0.0624398 0.892415 0.201335 1.16561L10.0279 10.9958L0.201335 20.826C0.0724268 20.9549 0 21.1298 0 21.3122C-0.000083 21.692 0.307751 21.9999 0.687425 22C0.869793 22.0002 1.04469 21.9276 1.17343 21.7984L11 11.9682L20.8266 21.7985C20.9553 21.9277 21.1303 22.0002 21.3127 22C21.4949 21.9999 21.6696 21.9275 21.7985 21.7987C22.0671 21.5301 22.0672 21.0946 21.7987 20.826Z"/>
+            </svg>
+          </button>
+        </div>
+
+        <ul class="gs-toolbar__options list-unstyled" id="sort__list">
+          {%- for option in sort_options -%}
+            {%- liquid
+              # Alphabetical sorting is hidden, as in v3.
+              if option.value == 'title-ascending' or option.value == 'title-descending'
+                continue
+              endif
+            -%}
+            <li
+              class="gs-toolbar__option{% if option.value == sort_by %} is-selected{% endif %}"
+              data-value="{{ option.value | escape }}"
+              data-sort
+            >
+              <input
+                class="gs-toolbar__radio"
+                type="radio"
+                name="sort_by"
+                id="SortBy-{{ section.id }}-{{ forloop.index }}"
+                value="{{ option.value | escape }}"
+                form="FiltersForm"
+                {% if option.value == sort_by %}checked{% endif %}
+              >
+              <label class="gs-toolbar__label" for="SortBy-{{ section.id }}-{{ forloop.index }}">
+                {{- option.name | escape -}}
+              </label>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        <noscript>
+          <button type="submit" class="button" form="FiltersForm">
+            {{ 'sections.collection_template.sort_by_label' | t }}
+          </button>
+        </noscript>
+      </div>
+    </details>
+  {%- endif -%}
+</div>
+
+<script>
+  (function () {
+    if (window.gsToolbarBound) return;
+    window.gsToolbarBound = true;
+
+    function closeDrawer(panel) {
+      if (!panel) return;
+      panel.classList.remove('is-open');
+      document.documentElement.classList.remove('gs-drawer-open');
+
+      var trigger = document.querySelector('[data-side-drawer-open="' + panel.id + '"]');
+      if (trigger) {
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.focus();
+      }
+    }
+
+    document.addEventListener('click', function (evt) {
+      if (!evt.target || !evt.target.closest) return;
+
+      var opener = evt.target.closest('[data-side-drawer-open]');
+      if (opener) {
+        var panelId = opener.getAttribute('data-side-drawer-open');
+        var panel = panelId ? document.getElementById(panelId) : null;
+        if (panel) {
+          panel.classList.add('is-open');
+          document.documentElement.classList.add('gs-drawer-open');
+          opener.setAttribute('aria-expanded', 'true');
+
+          var focusable = panel.querySelector('button, [href], input, select, summary');
+          if (focusable) focusable.focus();
+        }
+        return;
+      }
+
+      var closer = evt.target.closest('[data-side-drawer-close]');
+      if (closer) {
+        closeDrawer(closer.closest('[data-side-drawer]'));
+        return;
+      }
+
+      // Clicking the backdrop closes the drawer. The backdrop is a
+      // pseudo-element on the panel, so a click landing on the panel
+      // itself rather than its contents means the backdrop was hit.
+      var openPanel = document.querySelector('[data-side-drawer].is-open');
+      if (openPanel && evt.target === openPanel) {
+        closeDrawer(openPanel);
+        return;
+      }
+
+      var sortClose = evt.target.closest('[data-sort-close]');
+      if (sortClose) {
+        var details = sortClose.closest('details');
+        if (details) {
+          details.open = false;
+          var summary = details.querySelector('summary');
+          if (summary) summary.focus();
+        }
+        return;
+      }
+
+      document.querySelectorAll('details.gs-toolbar__sort[open]').forEach(function (d) {
+        if (!d.contains(evt.target)) d.open = false;
+      });
+    });
+
+    document.addEventListener('keydown', function (evt) {
+      if (evt.key !== 'Escape') return;
+
+      document.querySelectorAll('details.gs-toolbar__sort[open]').forEach(function (d) {
+        d.open = false;
+        var summary = d.querySelector('summary');
+        if (summary) summary.focus();
+      });
+
+      document.querySelectorAll('[data-side-drawer].is-open').forEach(closeDrawer);
+    });
+  })();
+</script>

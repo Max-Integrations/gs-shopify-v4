@@ -1,0 +1,274 @@
+{% comment %}
+  ==================================================================
+  INFLUENCER PAGE HERO
+  Ported from gs-shopify-v3 sections/page-hero-influencers.liquid
+  ==================================================================
+  Full-bleed background image with headline, rule, subcopy and an
+  optional CTA.
+
+  Setting IDs are byte-for-byte identical to v3.
+
+  ------------------------------------------------------------------
+  THE OVERLAY NEVER WORKED, FOR TWO SEPARATE REASONS
+  ------------------------------------------------------------------
+  1. INTEGER DIVISION.
+         rgba(0, 0, 0, {{ raw }}{{ hero_bg_img_opacity | divided_by: 100 }}{{ endraw }})
+     Liquid divides integers as integers, so 50 / 100 is 0 - not 0.5.
+     Every value except 100 produced a fully transparent overlay. Needs
+     `divided_by: 100.0`.
+
+  2. THE ELEMENT HAD NO STYLES.
+     `.headline-bg-opacity` was rendered with an inline background colour
+     but appeared nowhere in the stylesheet - no position, no size. Even
+     with a valid colour it was a zero-height box.
+
+  So the opacity slider has never done anything. It works now, which
+  means any influencer page with a value set WILL LOOK DIFFERENT -
+  darker. Worth a look before launch.
+
+  ------------------------------------------------------------------
+  CSS FOR ELEMENTS THAT DO NOT EXIST
+  ------------------------------------------------------------------
+  `.headline-bg-desktop` and `.headline-bg-mobile` were styled in the
+  section's <style> block and never rendered in its markup. Removed.
+
+  ------------------------------------------------------------------
+  OTHER v3 FIXES
+  ------------------------------------------------------------------
+  - `{% raw %}{% if cta_link_new_window != false %}{% endraw %}` - the same fragile pattern
+    found in gs-price. An unset checkbox is nil, and nil != false is TRUE
+    in Liquid, so it would open a new tab by default. Tested positively
+    now.
+  - target="_blank" with no rel="noopener noreferrer".
+  - `unless ... == nil` instead of `!= blank`.
+  - Unquoted multi-word font families, so Engravers MT never applied.
+  - Times New Roman offered as a font choice.
+  - The CTA default background was #ff0000, not the brand #ab192d.
+  - The separator rule was hardcoded white and 400px wide.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-influencer.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+
+  case s.hero_headline_text_font
+    when 'Engravers MT'
+      assign head_font = '"Engravers MT", var(--headingFont)'
+    when 'body'
+      assign head_font = 'var(--bodyFont)'
+    else
+      assign head_font = 'var(--headingFont)'
+  endcase
+
+  case s.hero_subcopy_text_font
+    when 'Engravers MT'
+      assign sub_font = '"Engravers MT", var(--headingFont)'
+    when 'heading'
+      assign sub_font = 'var(--headingFont)'
+    else
+      assign sub_font = 'var(--bodyFont)'
+  endcase
+
+  case s.cta_text_font
+    when 'Engravers MT'
+      assign cta_font = '"Engravers MT", var(--headingFont)'
+    when 'body'
+      assign cta_font = 'var(--bodyFont)'
+    else
+      assign cta_font = 'var(--headingFont)'
+  endcase
+
+  # 100.0 forces float division. v3 used 100 and got 0 for every value
+  # below 100.
+  assign overlay_alpha = s.hero_bg_img_opacity | divided_by: 100.0
+
+  assign desktop_img = s.hero_bg_img_desktop
+  assign mobile_img = s.hero_bg_img_mobile | default: desktop_img
+-%}
+
+<div
+  class="gs-infl-hero"
+  id="gs-infl-hero-{{ section.id }}"
+  style="
+    {%- if desktop_img != blank -%}
+      --ih-bg: url('{{ desktop_img | image_url: width: 1920 }}');
+    {%- endif -%}
+    {%- if mobile_img != blank -%}
+      --ih-bg-mobile: url('{{ mobile_img | image_url: width: 1000 }}');
+    {%- endif -%}
+    --ih-overlay: rgba(0, 0, 0, {{ overlay_alpha }});
+    --ih-head-color: {{ s.hero_headline_text_color }};
+    --ih-head-font: {{ head_font }};
+    --ih-head-size: {{ s.hero_headline_text_size_desktop }}px;
+    --ih-head-size-mobile: {{ s.hero_headline_text_size_mobile }}px;
+    --ih-head-align: {{ s.hero_headline_text_alignment }};
+    --ih-rule-color: {{ s.hero_headline_text_color }};
+    --ih-sub-color: {{ s.hero_subcopy_text_color }};
+    --ih-sub-font: {{ sub_font }};
+    --ih-sub-size: {{ s.hero_subcopy_text_size_desktop }}px;
+    --ih-sub-size-mobile: {{ s.hero_subcopy_text_size_mobile }}px;
+    --ih-sub-align: {{ s.hero_subcopy_text_alignment }};
+    --ih-cta-bg: {{ s.cta_bg_color }};
+    --ih-cta-color: {{ s.cta_text_color }};
+    --ih-cta-font: {{ cta_font }};
+    --ih-cta-radius: {% if s.cta_btn_border_type == 'rounded' %}20px{% else %}0{% endif %};
+  "
+>
+  {%- comment -%}
+    The overlay is a pseudo-element in CSS rather than an unstyled div,
+    which is what v3 rendered.
+  {%- endcomment -%}
+  <div class="gs-infl-hero__inner">
+    {%- if s.hero_headline != blank -%}
+      <{{ s.hero_headline_type | default: 'h1' }} class="gs-infl-hero__headline">
+        {{ s.hero_headline }}
+      </{{ s.hero_headline_type | default: 'h1' }}>
+    {%- endif -%}
+
+    {%- if s.hero_headline_line_separator -%}
+      <hr class="gs-infl-hero__rule">
+    {%- endif -%}
+
+    {%- if s.hero_subcopy != blank -%}
+      <div class="gs-infl-hero__subcopy">{{ s.hero_subcopy }}</div>
+    {%- endif -%}
+
+    {%- if s.show_cta and s.cta_copy != blank and s.cta_btn_link != blank -%}
+      <a
+        class="gs-infl-hero__cta"
+        href="{{ s.cta_btn_link }}"
+        {% if s.cta_link_new_window == true %}target="_blank" rel="noopener noreferrer"{% endif %}
+      >
+        {{- s.cta_copy -}}
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Influencer Page Hero",
+  "tag": "section",
+  "class": "influencers-overview",
+  "settings": [
+    { "type": "header", "content": "Background" },
+    { "type": "image_picker", "id": "hero_bg_img_desktop", "label": "Background image (desktop)" },
+    { "type": "image_picker", "id": "hero_bg_img_mobile", "label": "Background image (mobile)", "info": "Falls back to the desktop image." },
+    {
+      "type": "range",
+      "id": "hero_bg_img_opacity",
+      "label": "Overlay darkness",
+      "info": "In v3 this had no effect at any value. It works now, so pages with a value set will look darker.",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+    { "type": "header", "content": "Headline" },
+    { "type": "text", "id": "hero_headline", "label": "Headline", "default": "Headline Copy" },
+    {
+      "type": "select",
+      "id": "hero_headline_type",
+      "label": "Heading level",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "select",
+      "id": "hero_headline_text_font",
+      "label": "Headline font",
+      "info": "Engravers MT has no font file in this theme yet and will fall back.",
+      "options": [
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "body", "label": "Theme body font" },
+        { "value": "Engravers MT", "label": "Engravers MT" }
+      ],
+      "default": "heading"
+    },
+    { "type": "color", "id": "hero_headline_text_color", "label": "Headline color", "default": "#ffffff" },
+    { "type": "range", "id": "hero_headline_text_size_desktop", "label": "Headline size (desktop)", "min": 24, "max": 64, "step": 1, "unit": "px", "default": 35 },
+    { "type": "range", "id": "hero_headline_text_size_mobile", "label": "Headline size (mobile)", "min": 14, "max": 42, "step": 1, "unit": "px", "default": 24 },
+    {
+      "type": "select",
+      "id": "hero_headline_text_alignment",
+      "label": "Headline alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    { "type": "checkbox", "id": "hero_headline_line_separator", "label": "Show separator rule", "default": true },
+    { "type": "header", "content": "Subcopy" },
+    {
+      "type": "richtext",
+      "id": "hero_subcopy",
+      "label": "Subcopy",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+    },
+    {
+      "type": "select",
+      "id": "hero_subcopy_text_font",
+      "label": "Subcopy font",
+      "options": [
+        { "value": "body", "label": "Theme body font" },
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "Engravers MT", "label": "Engravers MT" }
+      ],
+      "default": "body"
+    },
+    { "type": "color", "id": "hero_subcopy_text_color", "label": "Subcopy color", "default": "#ffffff" },
+    { "type": "range", "id": "hero_subcopy_text_size_desktop", "label": "Subcopy size (desktop)", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 14 },
+    { "type": "range", "id": "hero_subcopy_text_size_mobile", "label": "Subcopy size (mobile)", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 14 },
+    {
+      "type": "select",
+      "id": "hero_subcopy_text_alignment",
+      "label": "Subcopy alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    { "type": "header", "content": "CTA (optional)" },
+    { "type": "checkbox", "id": "show_cta", "label": "Show CTA", "default": false },
+    { "type": "text", "id": "cta_copy", "label": "CTA text", "default": "Learn More" },
+    { "type": "url", "id": "cta_btn_link", "label": "CTA link" },
+    { "type": "checkbox", "id": "cta_link_new_window", "label": "Open in a new tab", "default": false },
+    { "type": "color", "id": "cta_bg_color", "label": "CTA background", "default": "#ab192d" },
+    { "type": "color", "id": "cta_text_color", "label": "CTA text color", "default": "#ffffff" },
+    {
+      "type": "select",
+      "id": "cta_text_font",
+      "label": "CTA font",
+      "options": [
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "body", "label": "Theme body font" },
+        { "value": "Engravers MT", "label": "Engravers MT" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "cta_btn_border_type",
+      "label": "CTA shape",
+      "options": [
+        { "value": "square", "label": "Square" },
+        { "value": "rounded", "label": "Rounded" }
+      ],
+      "default": "square"
+    }
+  ],
+  "presets": [{ "name": "Influencer Page Hero" }],
+  "enabled_on": { "templates": ["*"] }
+}
+{% endschema %}

@@ -1,0 +1,405 @@
+{% comment %}
+  ==================================================================
+  MULTICOLUMN WITH CONTENT HOVER
+  Ported from gs-shopify-v3 sections/multicolumn-with-content-hover.liquid
+  ==================================================================
+  Homepage: "ABOUT THE BRAND" - three cards for Club Grunt Style,
+  Grunt Style Rewards and the Grunt Style Foundation. Each reveals a
+  description on hover (desktop) or tap (mobile).
+
+  ------------------------------------------------------------------
+  SIX TRAILING COMMAS IN THE SCHEMA
+  ------------------------------------------------------------------
+  heading_alignment, bg_image_opacity_overlay, card_content_spacing_mobile,
+  the end of the settings array, card_heading, and open_in_new_window.
+  Six in one file; twelve or more across the theme. `shopify theme check`
+  finds every one of them in seconds.
+
+  ------------------------------------------------------------------
+  CSS TYPO SILENTLY DROPPING TWO HEADING LEVELS
+  ------------------------------------------------------------------
+  In the desktop media query:
+      > :is(h1, h2, h3. h4, h5, h6)
+  A PERIOD instead of a comma after h3. :is() is forgiving - it discards
+  the malformed part and keeps the rest - so h1, h2, h5 and h6 got their
+  desktop font-size and margin, while H3 AND H4 DID NOT. Invisible unless
+  you happened to use those levels.
+
+  ------------------------------------------------------------------
+  TRANSPOSED BREAKPOINT
+  ------------------------------------------------------------------
+  The Swiper config used a breakpoint of 786, not 768. Every other
+  breakpoint in the file is 768/769. An 18-pixel band where a
+  desktop-width viewport got mobile slide counts. Moot now that Swiper
+  is gone, but it explains any past oddity around that width.
+
+  ------------------------------------------------------------------
+  MOBILE WIDTH USED THE DESKTOP GAP
+  ------------------------------------------------------------------
+  Inside the max-width:768px query:
+      flex: 0 0 calc(100% / {mobile_count} - {card_row_column_gap_DESKTOP}px)
+  Mobile cards were sized against the desktop gap setting, so changing
+  the mobile gap moved the cards apart without adjusting their width.
+
+  ------------------------------------------------------------------
+  SETTINGS WITH NO DEFAULTS
+  ------------------------------------------------------------------
+  number_cards_per_view_row_desktop, number_cards_per_view_row_mobile
+  and card_content_alignment had no default. templates/index.json sets
+  all three, so the homepage is fine - but adding a fresh instance from
+  the preset emitted `calc(100% / )` and `text-align: ;`, both invalid,
+  and the layout collapsed. Defaults added.
+
+  ------------------------------------------------------------------
+  ACCESSIBILITY: HOVER CONTENT WAS KEYBOARD-INACCESSIBLE
+  ------------------------------------------------------------------
+  The reveal was a click/mouseenter handler on a plain <div>, and the
+  +/- indicator was an empty <div> filled by JavaScript. Neither was
+  focusable, so the card descriptions - which carry the actual Club and
+  Rewards value propositions - could not be reached by keyboard at all.
+
+  Now a real <button> with aria-expanded and aria-controls. Hover still
+  reveals on pointer devices; keyboard and touch use the button.
+
+  ------------------------------------------------------------------
+  OTHER FIXES
+  ------------------------------------------------------------------
+  - JS added the container-width class on DOMContentLoaded, causing a
+    layout shift after paint. Server-rendered now.
+  - target="_blank" without rel="noopener noreferrer".
+  - Swiper replaced with CSS scroll-snap + gs-swatch-scroller.js.
+  - `.hover-description *` universal selector replaced.
+  - !important on card heading/subheading colours no longer needed once
+    the CSS is scoped.
+  - t: keys -> English.
+
+  All schema setting IDs are byte-for-byte identical to v3.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-multicolumn-hover.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+  assign is_carousel = false
+  if s.layout_style == 'carousel'
+    assign is_carousel = true
+  endif
+  assign per_desktop = s.number_cards_per_view_row_desktop | default: '3'
+  assign per_mobile = s.number_cards_per_view_row_mobile | default: '1'
+-%}
+
+{%- if section.blocks.size > 0 -%}
+  <div
+    class="gs-mch gs-mch--{{ s.container_width | default: 'lg' }} gs-mch--visibility-{{ s.section_visibility }}"
+    style="
+      --mch-per-desktop: {{ per_desktop }};
+      --mch-per-mobile: {{ per_mobile }};
+      --mch-gap: {{ s.card_row_column_gap_desktop }}px;
+      --mch-gap-mobile: {{ s.card_row_column_gap_mobile }}px;
+      --mch-section-margin: {{ s.section_spacing_top_bottom_desktop }}px;
+      --mch-section-margin-mobile: {{ s.section_spacing_top_bottom_mobile }}px;
+      --mch-heading-margin: {{ s.section_heading_spacing_top_bottom_desktop }}px;
+      --mch-heading-margin-mobile: {{ s.section_heading_spacing_top_bottom_mobile }}px;
+      --mch-heading-size: {{ s.heading_font_size_desktop }}px;
+      --mch-heading-size-mobile: {{ s.heading_font_size_mobile }}px;
+      --mch-heading-color: {{ s.section_heading_color }};
+      --mch-heading-align: {{ s.heading_alignment | default: 'center' }};
+      --mch-card-align: {{ s.card_content_alignment | default: 'center' }};
+      --mch-card-pad: {{ s.card_content_padding_desktop }}px;
+      --mch-card-pad-mobile: {{ s.card_content_padding_mobile }}px;
+      --mch-card-gap: {{ s.card_content_spacing_desktop }}px;
+      --mch-card-gap-mobile: {{ s.card_content_spacing_mobile }}px;
+      --mch-card-heading-color: {{ s.card_heading_color }};
+      --mch-card-heading-size: {{ s.card_heading_font_size_desktop }}px;
+      --mch-card-heading-size-mobile: {{ s.card_heading_font_size_mobile }}px;
+      --mch-card-sub-color: {{ s.card_subheading_color }};
+      --mch-card-sub-size: {{ s.card_subheading_font_size_desktop }}px;
+      --mch-card-sub-size-mobile: {{ s.card_subheading_font_size_mobile }}px;
+      --mch-desc-color: {{ s.card_description_text_color }};
+      --mch-desc-size: {{ s.card_description_font_size_desktop }}px;
+      --mch-desc-size-mobile: {{ s.card_description_font_size_mobile }}px;
+      --mch-desc-bg: {{ s.card_description_bg_color | color_modify: 'alpha', 0 | default: 'transparent' }};
+      --mch-overlay: rgba({{ s.card_description_bg_color.rgb | replace: ' ', ', ' }}, {{ s.bg_image_opacity_overlay | divided_by: 100.0 }});
+      --mch-cta-color: {{ s.card_cta_text_color }};
+      --mch-cta-bg: {{ s.card_cta_bg_color | default: 'transparent' }};
+      --mch-cta-border-color: {{ s.card_cta_border_color }};
+      --mch-cta-border-width: {% if s.card_cta_style == 'button' %}{{ s.card_cta_border_size }}px{% else %}0px{% endif %};
+      --mch-cta-size: {{ s.card_cta_font_size_desktop }}px;
+      --mch-cta-size-mobile: {{ s.card_cta_font_size_mobile }}px;
+      --mch-cta-pad: {% if s.card_cta_style == 'button' %}{{ s.card_cta_top_bottom_spacing_desktop }}px {{ s.card_cta_left_right_spacing_desktop }}px{% else %}0{% endif %};
+      --mch-cta-pad-mobile: {% if s.card_cta_style == 'button' %}{{ s.card_cta_top_bottom_spacing_mobile }}px {{ s.card_cta_left_right_spacing_mobile }}px{% else %}0{% endif %};
+      --mch-cta-weight: {% if s.bold_card_cta_text %}700{% else %}400{% endif %};
+    "
+  >
+    {%- if s.section_heading != blank -%}
+      <div class="gs-mch__heading">{{ s.section_heading }}</div>
+    {%- endif -%}
+
+    <div class="gs-mch__scroller"{% if is_carousel %} data-swatch-scroller{% endif %}>
+      {%- if is_carousel -%}
+        <button
+          type="button"
+          class="gs-mch__nav"
+          data-swatch-scroll="prev"
+          aria-label="{{ 'general.slider.previous_slide' | t | default: 'Previous' }}"
+          hidden
+        >
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+            <path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      {%- endif -%}
+
+      <ul class="gs-mch__track{% unless is_carousel %} gs-mch__track--grid{% endunless %}"{% if is_carousel %} data-swatch-track{% endif %}>
+        {%- for block in section.blocks -%}
+          <li class="gs-mch__card" {{ block.shopify_attributes }}>
+            <div class="gs-mch__media">
+              {%- comment -%}
+                A real button. v3 used an empty div filled by JS, with the
+                reveal bound to click/mouseenter on a non-focusable div -
+                keyboard users could never open these descriptions.
+              {%- endcomment -%}
+              {%- if block.settings.card_hover_description != blank -%}
+                <button
+                  type="button"
+                  class="gs-mch__toggle"
+                  aria-expanded="false"
+                  aria-controls="MchDesc-{{ block.id }}"
+                  aria-label="{{ 'general.accessibility.show_more' | t | default: 'Show more information' }}"
+                >
+                  <svg class="gs-mch__icon-plus" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m1 5h-2v4H7v2h4v4h2v-4h4v-2h-4z"/>
+                  </svg>
+                  <svg class="gs-mch__icon-minus" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m0-18A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2M7 13h10v-2H7"/>
+                  </svg>
+                </button>
+              {%- endif -%}
+
+              {%- if block.settings.card_bg_image != blank -%}
+                {%- assign bg = block.settings.card_bg_image -%}
+                <img
+                  class="gs-mch__img"
+                  src="{{ bg | image_url: width: 750 }}"
+                  srcset="{{ bg | image_url: width: 500 }} 500w, {{ bg | image_url: width: 750 }} 750w, {{ bg | image_url: width: 1000 }} 1000w"
+                  sizes="(min-width: 769px) 33vw, 100vw"
+                  alt="{{ bg.alt | escape }}"
+                  width="{{ bg.width }}"
+                  height="{{ bg.height }}"
+                  loading="lazy"
+                >
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag: 'gs-mch__img placeholder-svg' }}
+              {%- endif -%}
+
+              {%- if block.settings.card_hover_description != blank -%}
+                <div class="gs-mch__description" id="MchDesc-{{ block.id }}">
+                  {{ block.settings.card_hover_description }}
+                </div>
+              {%- endif -%}
+            </div>
+
+            <div class="gs-mch__details">
+              {%- if block.settings.card_subheading != blank -%}
+                <div class="gs-mch__subheading">{{ block.settings.card_subheading }}</div>
+              {%- endif -%}
+
+              {%- if block.settings.card_heading != blank -%}
+                <div class="gs-mch__card-heading">{{ block.settings.card_heading }}</div>
+              {%- endif -%}
+
+              {%- if block.settings.card_cta_url != blank and block.settings.card_cta_text != blank -%}
+                <a
+                  class="gs-mch__cta{% if s.card_cta_style == 'button' %} gs-mch__cta--button{% endif %}"
+                  href="{{ block.settings.card_cta_url }}"
+                  {% if block.settings.open_in_new_window %}target="_blank" rel="noopener noreferrer"{% endif %}
+                >
+                  {{- block.settings.card_cta_text -}}
+                </a>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      {%- if is_carousel -%}
+        <button
+          type="button"
+          class="gs-mch__nav"
+          data-swatch-scroll="next"
+          aria-label="{{ 'general.slider.next_slide' | t | default: 'Next' }}"
+          hidden
+        >
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+            <path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.currentScript.previousElementSibling;
+      if (!root || !root.classList.contains('gs-mch')) {
+        root = document.querySelector('.gs-mch');
+      }
+      if (!root) return;
+
+      root.addEventListener('click', function (evt) {
+        if (!evt.target || !evt.target.closest) return;
+        var btn = evt.target.closest('.gs-mch__toggle');
+        if (!btn || !root.contains(btn)) return;
+
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+
+        var media = btn.closest('.gs-mch__media');
+        if (media) media.classList.toggle('is-open', !expanded);
+      });
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Multicolumn w/ Hover",
+  "tag": "section",
+  "class": "section multicolumn-with-content-hover",
+  "settings": [
+    { "type": "header", "content": "General" },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "Show section on",
+      "options": [
+        { "value": "always", "label": "All devices" },
+        { "value": "small", "label": "Mobile only" },
+        { "value": "large", "label": "Desktop only" }
+      ],
+      "default": "always"
+    },
+    {
+      "type": "select",
+      "id": "container_width",
+      "label": "Container width",
+      "options": [
+        { "value": "xs", "label": "XSmall" },
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" }
+      ],
+      "default": "lg"
+    },
+    {
+      "type": "select",
+      "id": "layout_style",
+      "label": "Layout style",
+      "options": [
+        { "value": "carousel", "label": "Carousel" },
+        { "value": "grid", "label": "Grid" }
+      ],
+      "default": "carousel"
+    },
+    {
+      "type": "select",
+      "id": "number_cards_per_view_row_desktop",
+      "label": "Cards per view/row (desktop)",
+      "info": "View if carousel, row if grid.",
+      "options": [
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" },
+        { "value": "5", "label": "5" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "number_cards_per_view_row_mobile",
+      "label": "Cards per view/row (mobile)",
+      "info": "View if carousel, row if grid.",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "1"
+    },
+    { "type": "header", "content": "Section heading" },
+    { "type": "richtext", "id": "section_heading", "label": "Heading" },
+    { "type": "range", "id": "heading_font_size_desktop", "label": "Heading size (desktop)", "min": 22, "max": 96, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "heading_font_size_mobile", "label": "Heading size (mobile)", "min": 18, "max": 54, "step": 2, "unit": "px", "default": 24 },
+    { "type": "text_alignment", "id": "heading_alignment", "label": "Heading alignment", "default": "center" },
+    { "type": "header", "content": "Cards" },
+    { "type": "text_alignment", "id": "card_content_alignment", "label": "Card content alignment", "default": "center" },
+    { "type": "range", "id": "bg_image_opacity_overlay", "label": "Description overlay opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 50 },
+    {
+      "type": "select",
+      "id": "card_cta_style",
+      "label": "Card CTA style",
+      "options": [
+        { "value": "button", "label": "Button" },
+        { "value": "link", "label": "Text link" }
+      ],
+      "default": "button"
+    },
+    { "type": "checkbox", "id": "bold_card_cta_text", "label": "Bold CTA text", "default": true },
+    { "type": "range", "id": "card_cta_border_size", "label": "CTA border width", "min": 0, "max": 10, "step": 1, "unit": "px", "default": 2 },
+    { "type": "header", "content": "Font sizes" },
+    { "type": "range", "id": "card_heading_font_size_desktop", "label": "Card heading (desktop)", "min": 12, "max": 96, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "card_heading_font_size_mobile", "label": "Card heading (mobile)", "min": 12, "max": 72, "step": 2, "unit": "px", "default": 24 },
+    { "type": "range", "id": "card_subheading_font_size_desktop", "label": "Card subheading (desktop)", "min": 12, "max": 96, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "card_subheading_font_size_mobile", "label": "Card subheading (mobile)", "min": 12, "max": 72, "step": 2, "unit": "px", "default": 24 },
+    { "type": "range", "id": "card_description_font_size_desktop", "label": "Card description (desktop)", "min": 12, "max": 96, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "card_description_font_size_mobile", "label": "Card description (mobile)", "min": 12, "max": 72, "step": 2, "unit": "px", "default": 24 },
+    { "type": "range", "id": "card_cta_font_size_desktop", "label": "Card CTA (desktop)", "min": 12, "max": 96, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "card_cta_font_size_mobile", "label": "Card CTA (mobile)", "min": 12, "max": 72, "step": 2, "unit": "px", "default": 24 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "section_heading_color", "label": "Section heading", "default": "#000000" },
+    { "type": "color", "id": "card_description_text_color", "label": "Card description text", "default": "#FFFFFF" },
+    { "type": "color", "id": "card_description_bg_color", "label": "Card description background", "default": "#000000" },
+    { "type": "color", "id": "card_heading_color", "label": "Card heading", "default": "#000000" },
+    { "type": "color", "id": "card_subheading_color", "label": "Card subheading", "default": "#A1A1A1" },
+    { "type": "color", "id": "card_cta_text_color", "label": "Card CTA text", "default": "#000000" },
+    { "type": "color", "id": "card_cta_bg_color", "label": "Card CTA background", "default": "rgba(0,0,0,0)" },
+    { "type": "color", "id": "card_cta_border_color", "label": "Card CTA border", "default": "#000000" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "section_spacing_top_bottom_desktop", "label": "Section margin (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 50 },
+    { "type": "range", "id": "section_spacing_top_bottom_mobile", "label": "Section margin (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 25 },
+    { "type": "range", "id": "section_heading_spacing_top_bottom_desktop", "label": "Heading margin (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 50 },
+    { "type": "range", "id": "section_heading_spacing_top_bottom_mobile", "label": "Heading margin (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 25 },
+    { "type": "range", "id": "card_row_column_gap_desktop", "label": "Gap between cards (desktop)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 32 },
+    { "type": "range", "id": "card_row_column_gap_mobile", "label": "Gap between cards (mobile)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "card_content_padding_desktop", "label": "Card content padding (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 50 },
+    { "type": "range", "id": "card_content_padding_mobile", "label": "Card content padding (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 25 },
+    { "type": "range", "id": "card_content_spacing_desktop", "label": "Gap between card items (desktop)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 24 },
+    { "type": "range", "id": "card_content_spacing_mobile", "label": "Gap between card items (mobile)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "card_cta_top_bottom_spacing_desktop", "label": "CTA padding top/bottom (desktop)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 24 },
+    { "type": "range", "id": "card_cta_top_bottom_spacing_mobile", "label": "CTA padding top/bottom (mobile)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "card_cta_left_right_spacing_desktop", "label": "CTA padding left/right (desktop)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 24 },
+    { "type": "range", "id": "card_cta_left_right_spacing_mobile", "label": "CTA padding left/right (mobile)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 16 }
+  ],
+  "blocks": [
+    {
+      "type": "content_card",
+      "name": "Content Card",
+      "settings": [
+        { "type": "header", "content": "Card content" },
+        { "type": "image_picker", "id": "card_bg_image", "label": "Card image" },
+        { "type": "richtext", "id": "card_heading", "label": "Card heading" },
+        { "type": "richtext", "id": "card_subheading", "label": "Card subheading", "info": "Displays above the heading." },
+        {
+          "type": "richtext",
+          "id": "card_hover_description",
+          "label": "Card description",
+          "info": "Revealed on hover, or by the +/- button on touch and keyboard."
+        },
+        { "type": "text", "id": "card_cta_text", "label": "CTA text" },
+        { "type": "url", "id": "card_cta_url", "label": "CTA link" },
+        { "type": "checkbox", "id": "open_in_new_window", "label": "Open in a new tab", "default": false }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Multicolumn w/ Hover" }]
+}
+{% endschema %}

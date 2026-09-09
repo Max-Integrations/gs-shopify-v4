@@ -1,0 +1,270 @@
+{% comment %}
+  ==================================================================
+  EVENTS MODULE
+  Ported from gs-shopify-v3 sections/events-module.liquid
+  ==================================================================
+  Grid of event cards: image, name, separator, location, date, time,
+  disclaimer and CTA. Each card is one or two columns wide.
+
+  All schema setting IDs are byte-for-byte identical to v3, so
+  templates/page.events.json migrates mechanically.
+
+  ------------------------------------------------------------------
+  A <style> BLOCK PER EVENT, WITH !important ON EVERYTHING
+  ------------------------------------------------------------------
+  v3 emitted a full <style> element INSIDE the block loop - one per
+  event - carrying 14 declarations marked !important. Five events meant
+  five style blocks, and the !important made every value unoverridable
+  by anything downstream, including the theme's own type scale.
+
+  Per-instance values are CSS custom properties on the card now, with
+  the rules in a stylesheet. No !important anywhere.
+
+  ------------------------------------------------------------------
+  UNQUOTED MULTI-WORD FONT FAMILY
+  ------------------------------------------------------------------
+  The font select emitted `font-family: Engravers MT` with no quotes.
+  A multi-word family name MUST be quoted or the declaration is invalid
+  and dropped. Same defect as the hero banner section.
+
+  NOTE: Engravers MT still has no font file in this theme, so it falls
+  back. Times New Roman was also on offer, which is not a brand font at
+  all - replaced with the theme heading and body fonts.
+
+  ------------------------------------------------------------------
+  IMAGES SERVED AT NATURAL SIZE
+  ------------------------------------------------------------------
+  v3 requested `image_url: width: module_img.width` - the image's own
+  width - so a 3000px upload was delivered at 3000px to a 700px slot,
+  with no srcset. Proper responsive sizing now.
+
+  ------------------------------------------------------------------
+  OTHER v3 FIXES
+  ------------------------------------------------------------------
+  - target="_blank" with no rel="noopener noreferrer", on both the image
+    link and the CTA.
+  - Location, date and time were hardcoded #fff, invisible on a light
+    background and not editable. Now a setting.
+  - A commented-out grid implementation and an empty {% raw %}{% comment %}{% endraw %} block.
+  - type="text/css" on style tags, obsolete since HTML5.
+  - The event name was a <p>. It is the card's heading, so it is a
+    heading element now with a configurable level.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-events.css' | asset_url | stylesheet_tag }}
+
+<div class="gs-events" id="event-module-{{ section.id }}" data-module-target="events">
+  <div class="page-width">
+    <div class="gs-events__grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign b = block.settings
+
+          case b.event_name_font
+            when 'Engravers MT'
+              assign name_font = '"Engravers MT", var(--headingFont)'
+            when 'body'
+              assign name_font = 'var(--bodyFont)'
+            else
+              assign name_font = 'var(--headingFont)'
+          endcase
+
+          case b.event_cta_font
+            when 'Engravers MT'
+              assign cta_font = '"Engravers MT", var(--headingFont)'
+            when 'body'
+              assign cta_font = 'var(--bodyFont)'
+            else
+              assign cta_font = 'var(--headingFont)'
+          endcase
+        -%}
+
+        <div
+          class="gs-events__card gs-events__card--{{ b.module_layout }}"
+          id="module-{{ block.id }}"
+          style="
+            --ev-name-color: {{ b.event_name_color }};
+            --ev-name-font: {{ name_font }};
+            --ev-name-size: {{ b.event_name_size_desktop }}px;
+            --ev-name-size-mobile: {{ b.event_name_size_mobile }}px;
+            --ev-meta-color: {{ b.event_meta_color | default: '#ffffff' }};
+            --ev-bar-color: {{ b.separator_bar_color }};
+            --ev-cta-font: {{ cta_font }};
+            --ev-cta-color: {{ b.event_cta_color }};
+            --ev-cta-bg: {{ b.event_cta_bg_color }};
+            --ev-cta-size: {{ b.event_cta_size_desktop }}px;
+            --ev-cta-size-mobile: {{ b.event_cta_size_mobile }}px;
+          "
+          {{ block.shopify_attributes }}
+        >
+          {%- if b.module_img != blank -%}
+            {%- liquid
+              assign img = b.module_img
+              if b.module_layout == 'one-column'
+                assign img_sizes = '(min-width: 990px) 1200px, 100vw'
+              else
+                assign img_sizes = '(min-width: 990px) 600px, 100vw'
+              endif
+            -%}
+            <div class="gs-events__media">
+              {%- if b.event_cta_link != blank -%}
+                <a
+                  href="{{ b.event_cta_link }}"
+                  {% if b.event_cta_new_window_status %}target="_blank" rel="noopener noreferrer"{% endif %}
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+              {%- endif -%}
+              <img
+                class="gs-events__img"
+                src="{{ img | image_url: width: 900 }}"
+                srcset="
+                  {{ img | image_url: width: 450 }} 450w,
+                  {{ img | image_url: width: 700 }} 700w,
+                  {{ img | image_url: width: 900 }} 900w,
+                  {{ img | image_url: width: 1400 }} 1400w
+                "
+                sizes="{{ img_sizes }}"
+                alt="{{ img.alt | escape | default: b.title | escape }}"
+                width="{{ img.width }}"
+                height="{{ img.height }}"
+                loading="lazy"
+              >
+              {%- if b.event_cta_link != blank -%}</a>{%- endif -%}
+            </div>
+          {%- endif -%}
+
+          <div class="gs-events__body">
+            {%- if b.title != blank -%}
+              <{{ b.heading_tag | default: 'h3' }} class="gs-events__name">{{ b.title }}</{{ b.heading_tag | default: 'h3' }}>
+            {%- endif -%}
+
+            {%- if b.separator_bar -%}
+              <div class="gs-events__bar" aria-hidden="true"></div>
+            {%- endif -%}
+
+            {%- if b.event_locations != blank -%}
+              <p class="gs-events__meta">{{ b.event_locations }}</p>
+            {%- endif -%}
+            {%- if b.event_dates != blank -%}
+              <p class="gs-events__meta">{{ b.event_dates }}</p>
+            {%- endif -%}
+            {%- if b.event_times != blank -%}
+              <p class="gs-events__meta">{{ b.event_times }}</p>
+            {%- endif -%}
+            {%- if b.event_disclaimer != blank -%}
+              <p class="gs-events__disclaimer">{{ b.event_disclaimer }}</p>
+            {%- endif -%}
+
+            {%- if b.event_cta != blank and b.event_cta_link != blank -%}
+              <a
+                class="gs-events__cta"
+                href="{{ b.event_cta_link }}"
+                {% if b.event_cta_new_window_status %}target="_blank" rel="noopener noreferrer"{% endif %}
+              >
+                {{- b.event_cta -}}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Events Module",
+  "tag": "section",
+  "class": "gs-events-section",
+  "settings": [
+    { "type": "header", "content": "Events Module Settings" }
+  ],
+  "blocks": [
+    {
+      "type": "module",
+      "name": "Event Module",
+      "settings": [
+        {
+          "type": "select",
+          "id": "module_layout",
+          "label": "Module layout",
+          "options": [
+            { "value": "one-column", "label": "One column" },
+            { "value": "two-column", "label": "Two column" }
+          ],
+          "default": "two-column"
+        },
+        {
+          "type": "image_picker",
+          "id": "module_img",
+          "label": "Module image",
+          "info": "700x450 for two-column. Use a larger image for one-column."
+        },
+        { "type": "text", "id": "title", "label": "Event name" },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Event name tag",
+          "info": "For SEO and accessibility. v3 used a paragraph.",
+          "default": "h3",
+          "options": [
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" },
+            { "value": "p", "label": "p" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "event_name_font",
+          "label": "Event name font",
+          "info": "Engravers MT has no font file in this theme yet and will fall back.",
+          "options": [
+            { "value": "heading", "label": "Theme heading font" },
+            { "value": "body", "label": "Theme body font" },
+            { "value": "Engravers MT", "label": "Engravers MT" }
+          ],
+          "default": "heading"
+        },
+        { "type": "color", "id": "event_name_color", "label": "Event name color", "default": "#ffffff" },
+        { "type": "range", "id": "event_name_size_desktop", "label": "Event name size (desktop)", "min": 18, "max": 32, "step": 1, "unit": "px", "default": 26 },
+        { "type": "range", "id": "event_name_size_mobile", "label": "Event name size (mobile)", "min": 12, "max": 26, "step": 1, "unit": "px", "default": 22 },
+        { "type": "checkbox", "id": "separator_bar", "label": "Show separator bar", "default": true },
+        { "type": "color", "id": "separator_bar_color", "label": "Separator bar color", "default": "#802629" },
+        { "type": "text", "id": "event_locations", "label": "Event location" },
+        { "type": "text", "id": "event_dates", "label": "Event dates" },
+        { "type": "text", "id": "event_times", "label": "Event times" },
+        {
+          "type": "color",
+          "id": "event_meta_color",
+          "label": "Location / date / time color",
+          "info": "v3 hardcoded these white, which is invisible on a light background.",
+          "default": "#ffffff"
+        },
+        { "type": "inline_richtext", "id": "event_disclaimer", "label": "Event disclaimer" },
+        { "type": "text", "id": "event_cta", "label": "CTA text" },
+        { "type": "url", "id": "event_cta_link", "label": "CTA link" },
+        { "type": "checkbox", "id": "event_cta_new_window_status", "label": "Open CTA in a new tab", "default": false },
+        {
+          "type": "select",
+          "id": "event_cta_font",
+          "label": "CTA font",
+          "options": [
+            { "value": "heading", "label": "Theme heading font" },
+            { "value": "body", "label": "Theme body font" },
+            { "value": "Engravers MT", "label": "Engravers MT" }
+          ],
+          "default": "heading"
+        },
+        { "type": "color", "id": "event_cta_color", "label": "CTA text color", "default": "#000000" },
+        { "type": "color", "id": "event_cta_bg_color", "label": "CTA background", "default": "#ffffff" },
+        { "type": "range", "id": "event_cta_size_desktop", "label": "CTA size (desktop)", "min": 12, "max": 26, "step": 1, "unit": "px", "default": 18 },
+        { "type": "range", "id": "event_cta_size_mobile", "label": "CTA size (mobile)", "min": 11, "max": 22, "step": 1, "unit": "px", "default": 14 }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Events Module" }]
+}
+{% endschema %}

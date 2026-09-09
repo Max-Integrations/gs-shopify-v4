@@ -1,0 +1,290 @@
+/*
+  ==================================================================
+  GS Countdown
+  ==================================================================
+  Timer plus product carousel. v3 used Swiper; this is CSS scroll-snap
+  driven by gs-swatch-scroller.js.
+
+  ------------------------------------------------------------------
+  RESTORES A custom_css RULE THAT DID NOT SURVIVE THE PORT
+  ------------------------------------------------------------------
+  v3's templates/index.json carried this on the countdown section:
+
+      h2 { padding: 0.5em 0.5em; align-content: center; padding: 2px;
+           letter-spacing: 3.5px; font-size: 20px;
+           background: #ab192d; color: #fff; }
+
+  That is what puts the RED PILL behind "FROM ASHES, UNITY" on the live
+  site. It lived only in template JSON, bound to a bare `h2` element
+  selector, so it was invisible to grep and did not come across.
+
+  Rebuilt here as a proper rule on .offer-heading. Note the duplicated
+  `padding` in the original - the second declaration (2px) wins, so the
+  0.5em is dead. 2px is reproduced.
+
+  The equivalent rule on the hoodies banner
+      h1 { padding: 14px; letter-spacing: 5.5px; background: #9a723f; }
+  still needs the same treatment in gs-full-width-image-text.css.
+
+  v3's dark-mode block and its generated per-instance visibility media
+  queries are not carried over.
+  ==================================================================
+*/
+
+.gs-countdown {
+  padding-top: var(--padding-top-mobile, 10px);
+  padding-bottom: var(--padding-bottom-mobile, 10px);
+  color: var(--countdownTextColor, rgb(var(--textColor)));
+}
+
+.countdown-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.countdown-offer-text,
+.countdown-offer-products,
+.donation-impact-text {
+  position: relative;
+  z-index: 1;
+}
+
+.countdown-offer-text.text-left { text-align: left; }
+.countdown-offer-text.text-center { text-align: center; }
+.countdown-offer-text.text-right { text-align: right; }
+
+/* Red pill. Restores the lost custom_css h2 rule. */
+.offer-heading {
+  display: inline-block;
+  margin: 0 0 0.8em;
+  padding: 2px 14px;
+  background-color: rgba(var(--line-color), 1);
+  color: #ffffff;
+  font-family: var(--headingFont);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  line-height: 1.6;
+}
+
+.off-text {
+  color: var(--countdownTextColor, rgb(var(--textColor)));
+  margin: 0 0 1em;
+}
+
+.off-text.small-case { font-size: var(--smallText); }
+.off-text.medium-case { font-size: var(--mediumText); }
+.off-text.large-case { font-size: var(--largeText); }
+
+/* Body copy and its inline link both render in the section text colour,
+   which is #ab192d on this instance. */
+.countdown-timer-wrapper p {
+  margin: 0 0 1.2em;
+  color: var(--countdownTextColor, rgb(var(--textColor)));
+  font-size: var(--smallText);
+  line-height: 1.5;
+}
+
+.countdown-timer-wrapper a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* ---- Timer ---- */
+.countdown-timer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem 2.4rem;
+  margin-top: 1rem;
+}
+
+.countdown-timer > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 3rem;
+}
+
+.countdown-timer .time {
+  font-family: var(--headingFont);
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  color: var(--countdownTextColor, rgb(var(--textColor)));
+}
+
+.countdown-timer .separator {
+  font-size: 1.1rem;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--countdownTextColor, rgb(var(--textColor)));
+}
+
+/* ---- Product carousel ---- */
+.countdown-offer-products.background-enabled {
+  background: var(--countdownProductBg, rgba(var(--background), 1));
+  padding: 1.5rem;
+}
+
+.gs-countdown__scroller {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.gs-countdown__track {
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  width: 100%;
+}
+
+.gs-countdown__track::-webkit-scrollbar {
+  display: none;
+}
+
+.gs-countdown__slide {
+  flex: 0 0 calc((100% - 15px) / 2);
+  scroll-snap-align: start;
+  margin: 0;
+}
+
+.gs-countdown__slide .product-card-img .media > img {
+  object-fit: var(--image-fit, cover);
+}
+
+/* Circular outlined arrows overlapping the carousel edges, matching v3. */
+.gs-countdown__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid rgba(var(--borderColor), 0.35);
+  border-radius: 50%;
+  background-color: rgb(var(--background));
+  color: rgb(var(--textColor));
+  cursor: pointer;
+}
+
+.gs-countdown__btn[data-swatch-scroll='prev'] { left: -8px; }
+.gs-countdown__btn[data-swatch-scroll='next'] { right: -8px; }
+
+.gs-countdown__btn svg { width: 18px; height: 18px; }
+.gs-countdown__btn[hidden] { display: none; }
+.gs-countdown__btn:disabled { opacity: 0.3; cursor: default; }
+
+.gs-countdown__btn:focus-visible {
+  outline: 2px solid rgb(var(--textColor));
+  outline-offset: 2px;
+}
+
+/* Quick add sits full width under the card in brand red. */
+.gs-countdown__slide .product-quickview-button .product-quickview {
+  display: block;
+  width: 100%;
+  padding: 0.7em 1em;
+  background-color: rgba(var(--line-color), 1);
+  color: #ffffff;
+  font-family: var(--headingFont);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.gs-countdown__slide .product-quickview-button .product-quickview span::before {
+  content: '+';
+  margin-right: 0.5em;
+}
+
+.gs-countdown__slide .product-title {
+  display: block;
+  margin: 0.8em 0 0.2em;
+  font-family: var(--headingFont);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgb(var(--textColor));
+}
+
+.gs-countdown__slide .product-price {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 0.8em;
+}
+
+/* ---- Donation impact ---- */
+.donation-impact-text {
+  color: var(--donationImpactFontColor, #ffffff);
+  text-align: var(--donationImpactTextAlign, center);
+  font-size: var(--donationImpactFontSizeMobile, 18px);
+}
+
+.donation-impact-text span {
+  font-weight: 700;
+}
+
+/* ---- Section visibility ---- */
+@media screen and (max-width: 767px) {
+  .gs-countdown--visibility-large { display: none !important; }
+}
+
+@media screen and (min-width: 768px) {
+  .gs-countdown--visibility-small { display: none !important; }
+
+  .gs-countdown {
+    padding-top: var(--padding-top, 10px);
+    padding-bottom: var(--padding-bottom, 10px);
+  }
+
+  .countdown-wrapper {
+    display: grid;
+    grid-template-columns: 1fr var(--offerProductWidth, 75%);
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .donation-impact-text {
+    grid-column: 1 / -1;
+    font-size: var(--donationImpactFontSizeDesktop, 24px);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .gs-countdown__slide {
+    flex-basis: calc((100% - 30px) / 3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-countdown__track { scroll-behavior: auto; }
+}

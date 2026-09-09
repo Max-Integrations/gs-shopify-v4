@@ -1,0 +1,166 @@
+{% comment %}
+  ==================================================================
+  EVENTS FULL WIDTH HERO
+  Ported from gs-shopify-v3 sections/events-full-width-image.liquid
+  ==================================================================
+  Full-bleed background image with a heading and subcopy.
+
+  Setting IDs are byte-for-byte identical to v3.
+
+  ------------------------------------------------------------------
+  THE MOBILE BACKGROUND IMAGE NEVER LOADED
+  ------------------------------------------------------------------
+  v3's mobile rule read:
+
+      background-image: url({{ raw }}{{ ...events_hero_img_mobile | image_url: 1000 }}{{ endraw }});
+
+  image_url takes NAMED parameters. `image_url: 1000` passes a
+  positional argument the filter does not accept, so the URL did not
+  resolve and the mobile hero fell back to the flat black background.
+  The desktop rule used `width: 1920` correctly, which is why this went
+  unnoticed.
+
+  ------------------------------------------------------------------
+  THE DEFAULT FONT NEVER APPLIED EITHER
+  ------------------------------------------------------------------
+  The heading font defaults to Engravers MT and was emitted unquoted:
+      font-family: Engravers MT
+  A multi-word family name must be quoted or the declaration is invalid
+  and dropped. So the heading has always rendered in the inherited font.
+
+  NOTE: Engravers MT still has no font file in this theme. Add the .TTF
+  and an @font-face rule, or accept the fallback.
+
+  ------------------------------------------------------------------
+  OTHER v3 FIXES
+  ------------------------------------------------------------------
+  - Every declaration carried !important, including on a `> *` child
+    selector, so the subcopy could not be styled by anything downstream.
+  - Times New Roman was offered as a font choice; not a brand font.
+  - The heading level was hardcoded <h2> with no setting, which risks
+    multiple h2s on a page that already has one.
+  - A per-instance <style> block with type="text/css".
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-events.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+
+  case s.events_full_width_img_font
+    when 'Engravers MT'
+      assign head_font = '"Engravers MT", var(--headingFont)'
+    when 'body'
+      assign head_font = 'var(--bodyFont)'
+    else
+      assign head_font = 'var(--headingFont)'
+  endcase
+
+  case s.events_full_width_img_subcopy_font
+    when 'Engravers MT'
+      assign sub_font = '"Engravers MT", var(--headingFont)'
+    when 'heading'
+      assign sub_font = 'var(--headingFont)'
+    else
+      assign sub_font = 'var(--bodyFont)'
+  endcase
+
+  assign desktop_img = s.events_hero_img_desktop
+  assign mobile_img = s.events_hero_img_mobile | default: desktop_img
+-%}
+
+<div
+  class="gs-events-hero"
+  id="events-full-width-img-{{ section.id }}"
+  style="
+    {%- if desktop_img != blank -%}
+      --evh-bg: url('{{ desktop_img | image_url: width: 1920 }}');
+    {%- endif -%}
+    {%- if mobile_img != blank -%}
+      --evh-bg-mobile: url('{{ mobile_img | image_url: width: 1000 }}');
+    {%- endif -%}
+    --evh-head-color: {{ s.events_full_width_img_text_color }};
+    --evh-head-font: {{ head_font }};
+    --evh-head-size: {{ s.events_full_width_img_text_size_desktop }}px;
+    --evh-head-size-mobile: {{ s.events_full_width_img_text_size_mobile }}px;
+    --evh-sub-color: {{ s.events_full_width_img_subcopy_color }};
+    --evh-sub-font: {{ sub_font }};
+    --evh-sub-size: {{ s.events_full_width_img_subcopy_size_desktop }}px;
+    --evh-sub-size-mobile: {{ s.events_full_width_img_subcopy_size_mobile }}px;
+  "
+>
+  <div class="gs-events-hero__inner">
+    {%- if s.events_full_width_img_header != blank -%}
+      <{{ s.heading_tag | default: 'h2' }} class="gs-events-hero__heading">
+        {{ s.events_full_width_img_header }}
+      </{{ s.heading_tag | default: 'h2' }}>
+    {%- endif -%}
+
+    {%- if s.events_full_width_img_subcopy != blank -%}
+      <div class="gs-events-hero__subcopy">{{ s.events_full_width_img_subcopy }}</div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Events Full Width Hero",
+  "tag": "section",
+  "class": "gs-events-hero-section",
+  "settings": [
+    { "type": "image_picker", "id": "events_hero_img_desktop", "label": "Background image (desktop)" },
+    {
+      "type": "image_picker",
+      "id": "events_hero_img_mobile",
+      "label": "Background image (mobile)",
+      "info": "Falls back to the desktop image. In v3 this never loaded at all."
+    },
+    { "type": "text", "id": "events_full_width_img_header", "label": "Heading", "default": "More Than A T-Shirt Company" },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading level",
+      "info": "v3 hardcoded H2.",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "p", "label": "p" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "events_full_width_img_font",
+      "label": "Heading font",
+      "info": "Engravers MT has no font file in this theme yet and will fall back.",
+      "options": [
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "body", "label": "Theme body font" },
+        { "value": "Engravers MT", "label": "Engravers MT" }
+      ],
+      "default": "Engravers MT"
+    },
+    { "type": "color", "id": "events_full_width_img_text_color", "label": "Heading color", "default": "#ffffff" },
+    { "type": "range", "id": "events_full_width_img_text_size_desktop", "label": "Heading size (desktop)", "min": 36, "max": 62, "step": 1, "unit": "px", "default": 42 },
+    { "type": "range", "id": "events_full_width_img_text_size_mobile", "label": "Heading size (mobile)", "min": 16, "max": 38, "step": 1, "unit": "px", "default": 28 },
+    { "type": "inline_richtext", "id": "events_full_width_img_subcopy", "label": "Subcopy" },
+    {
+      "type": "select",
+      "id": "events_full_width_img_subcopy_font",
+      "label": "Subcopy font",
+      "options": [
+        { "value": "body", "label": "Theme body font" },
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "Engravers MT", "label": "Engravers MT" }
+      ],
+      "default": "body"
+    },
+    { "type": "color", "id": "events_full_width_img_subcopy_color", "label": "Subcopy color", "default": "#ffffff" },
+    { "type": "range", "id": "events_full_width_img_subcopy_size_desktop", "label": "Subcopy size (desktop)", "min": 22, "max": 48, "step": 1, "unit": "px", "default": 30 },
+    { "type": "range", "id": "events_full_width_img_subcopy_size_mobile", "label": "Subcopy size (mobile)", "min": 11, "max": 38, "step": 1, "unit": "px", "default": 20 }
+  ],
+  "presets": [{ "name": "Events Full Width Hero" }]
+}
+{% endschema %}

@@ -1,0 +1,256 @@
+/*
+  ==================================================================
+  GS Quick View
+  ==================================================================
+  Native <dialog> opened from a product card. The dialog element is
+  created by gs-quick-view.js; the section fetched into it is
+  sections/gs-quick-view.liquid.
+
+  Using <dialog> rather than a hand-built modal means focus trapping,
+  Escape to close and an inert background come from the browser.
+  ==================================================================
+*/
+
+/* Stop the page scrolling behind the open dialog. */
+.gs-qv-open,
+.gs-qv-open body {
+  overflow: hidden;
+}
+
+.gs-qv-dialog {
+  width: min(920px, 92vw);
+  max-height: 88vh;
+  padding: 0;
+  border: 0;
+  background-color: rgb(var(--background, 255 255 255));
+  color: rgb(var(--textColor, 18 18 18));
+  overflow: visible;
+}
+
+.gs-qv-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.gs-qv-dialog__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--textColor, 18 18 18));
+  cursor: pointer;
+}
+
+.gs-qv-dialog__close:focus-visible {
+  outline: 2px solid rgb(var(--textColor, 18 18 18));
+  outline-offset: 2px;
+}
+
+.gs-qv-dialog__body {
+  max-height: 88vh;
+  overflow-y: auto;
+}
+
+.gs-qv-dialog__loading {
+  padding: 4rem 1rem;
+  text-align: center;
+  font-size: var(--smallText);
+  opacity: 0.7;
+}
+
+/* ---- Content ---- */
+.gs-qv {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.gs-qv__media img,
+.gs-qv__media svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gs-qv__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1.5rem;
+}
+
+.gs-qv__vendor {
+  margin: 0;
+  font-size: var(--xsmallText);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+}
+
+.gs-qv__title {
+  margin: 0;
+  font-family: var(--headingFont);
+  font-size: var(--largeText);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+.gs-qv__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gs-qv__title a:hover {
+  text-decoration: underline;
+}
+
+.gs-qv__price .product-price {
+  justify-content: flex-start;
+  font-size: var(--mediumText);
+}
+
+/* ---- Options ---- */
+.gs-qv__option {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.gs-qv__option + .gs-qv__option {
+  margin-top: 0.8rem;
+}
+
+.gs-qv__option-name {
+  padding: 0;
+  margin-bottom: 0.4rem;
+  font-size: var(--xsmallText);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.gs-qv__option-name span {
+  font-weight: 700;
+}
+
+.gs-qv__option-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Visually hidden but focusable. */
+.gs-qv__option-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.gs-qv__option-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  padding: 0.5em 0.9em;
+  border: 1px solid rgba(var(--borderColor, 0 0 0), 0.4);
+  font-size: var(--smallText);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.gs-qv__option-input:checked + .gs-qv__option-label {
+  border-color: rgb(var(--textColor, 18 18 18));
+  background-color: rgb(var(--textColor, 18 18 18));
+  color: rgb(var(--background, 255 255 255));
+}
+
+.gs-qv__option-input:focus-visible + .gs-qv__option-label {
+  outline: 2px solid rgb(var(--textColor, 18 18 18));
+  outline-offset: 2px;
+}
+
+.gs-qv__option-label.is-unavailable {
+  opacity: 0.4;
+  text-decoration: line-through;
+}
+
+/* ---- Buy ---- */
+.gs-qv__form {
+  margin: 0.4rem 0 0;
+}
+
+.gs-qv__submit {
+  width: 100%;
+  padding: 0.9em 1em;
+  border: 0;
+  background-color: rgba(var(--line-color), 1);
+  color: #ffffff;
+  font-family: var(--headingFont);
+  font-size: var(--smallText);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.gs-qv__submit[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.gs-qv__submit:focus-visible {
+  outline: 2px solid rgb(var(--textColor, 18 18 18));
+  outline-offset: 2px;
+}
+
+.gs-qv__error {
+  margin: 0;
+  color: rgb(var(--error, 200 40 40));
+  font-size: var(--smallText);
+}
+
+.gs-qv__error[hidden] {
+  display: none;
+}
+
+.gs-qv__full-link {
+  align-self: flex-start;
+  color: rgb(var(--textColor, 18 18 18));
+  font-size: var(--smallText);
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 750px) {
+  .gs-qv {
+    grid-template-columns: 45% 55%;
+  }
+
+  .gs-qv__info {
+    padding: 2.5rem 2rem 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gs-qv-dialog[open] {
+    animation: gs-qv-in 0.18s ease-out;
+  }
+
+  @keyframes gs-qv-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+}

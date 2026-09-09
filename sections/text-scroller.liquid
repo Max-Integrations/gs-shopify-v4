@@ -1,0 +1,290 @@
+{% comment %}
+  ------------------------------------------------------------------
+  TEXT SCROLLER
+  Ported from gs-shopify-v3 `sections/text-scroller-v2.liquid`.
+
+  PORT NOTES (Dawn migration reference implementation)
+  - v1 (`sections/text-scroller.liquid`) was NOT ported. It contained a
+    memory leak (listeners registered inside a 100ms setInterval), a null
+    dereference before its own guard, invalid schema JSON (trailing comma),
+    and unscoped DOM IDs. See DUP-001 in the audit.
+  - Every schema setting `id` below is preserved byte-for-byte from v2.
+    Changing an id silently drops that setting's value in every JSON
+    template that references this section. Do not rename ids.
+  - Section type renamed `text-scroller-v2` -> `text-scroller`. Any migrated
+    template JSON must update "type": "text-scroller-v2" accordingly.
+  - CSS moved to assets/section-text-scroller.css (Dawn convention). The v2
+    original emitted a full <style> block per section instance.
+  - KNOWN ISSUE (inherited, preserved deliberately): the block setting id
+    `data-source` contains a hyphen. Liquid can misparse hyphenated property
+    access. Renaming it to `data_source` is correct but is a breaking change
+    for existing template data — do it as a tracked migration, not silently.
+  ------------------------------------------------------------------
+{% endcomment %}
+
+{{ 'section-text-scroller.css' | asset_url | stylesheet_tag }}
+
+<div class="text-scroller" id="TextScroller-{{ section.id }}">
+  {%- if section.settings.text_scroller_heading != blank -%}
+    <h2
+      class="text-scroller__heading"
+      style="
+        --ts-heading-color: {{ section.settings.header_text_color }};
+        --ts-heading-size: {{ section.settings.header_font_size }}px;
+        --ts-heading-weight: {{ section.settings.header_font_weight }};
+      "
+    >
+      {{ section.settings.text_scroller_heading }}
+    </h2>
+  {%- endif -%}
+
+  <div class="text-scroller__grid" style="--ts-columns: {{ section.blocks.size | at_least: 1 }};">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign source = block.settings["data-source"]
+        assign is_sheet = false
+        if source == 'google-sheets'
+          assign is_sheet = true
+        endif
+      -%}
+      <div
+        class="text-scroller__column"
+        style="
+          --ts-block-color: {{ block.settings.block_text_color }};
+          --ts-block-size: {{ block.settings.block_font_size }}px;
+          --ts-block-weight: {{ block.settings.block_font_weight }};
+        "
+        {{ block.shopify_attributes }}
+      >
+        {%- if block.settings.title != blank -%}
+          <h3 class="text-scroller__column-title">{{ block.settings.title }}</h3>
+        {%- endif -%}
+
+        <div
+          class="text-scroller__window{% if block.settings.is_auto_scroll %} text-scroller__window--auto{% endif %}"
+          data-speed="{{ block.settings.scroll_speed | default: 100 }}"
+        >
+          {%- if is_sheet -%}
+            <div class="text-scroller__list" data-source={{ block.settings.data_source_url | json }}>
+              <ul></ul>
+            </div>
+          {%- else -%}
+            <div class="text-scroller__content">{{ block.settings.scroller_content }}</div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('TextScroller-{{ section.id }}');
+    if (!root) return;
+
+    root.querySelectorAll('.text-scroller__column').forEach(function (column) {
+      var listWrapper = column.querySelector('.text-scroller__list');
+
+      if (listWrapper) {
+        var ul = listWrapper.querySelector('ul');
+        var rawUrl = listWrapper.getAttribute('data-source');
+
+        if (ul && rawUrl && rawUrl.indexOf('/') !== -1) {
+          var fetchUrl = rawUrl.substring(0, rawUrl.lastIndexOf('/')) + '/gviz/tq?tqx=out:json';
+
+          fetch(fetchUrl)
+            .then(function (res) {
+              if (!res.ok) throw new Error('Sheet fetch failed: ' + res.status);
+              return res.text();
+            })
+            .then(function (textData) {
+              var start = textData.indexOf('{');
+              var end = textData.lastIndexOf('}');
+              if (start === -1 || end === -1) throw new Error('Unexpected gviz payload');
+
+              var json = JSON.parse(textData.slice(start, end + 1));
+              if (!json.table || !json.table.rows) return;
+
+              var colCount = json.table.cols.length;
+              var frag = document.createDocumentFragment();
+
+              json.table.rows.forEach(function (row) {
+                if (!row.c) return;
+                var text;
+
+                if (colCount === 1) {
+                  text = (row.c[0] && row.c[0].v) || '';
+                } else {
+                  var a = (row.c[0] && row.c[0].v) || '';
+                  var b = (row.c[1] && row.c[1].v) || '';
+                  text = b ? a + ' - ' + b : a;
+                }
+
+                if (String(text).trim() !== '') {
+                  var li = document.createElement('li');
+                  li.textContent = text;
+                  frag.appendChild(li);
+                }
+              });
+
+              ul.appendChild(frag);
+            })
+            .catch(function (err) {
+              console.error('[text-scroller] ' + err.message);
+            });
+        }
+      }
+
+      var auto = column.querySelector('.text-scroller__window--auto');
+      if (!auto) return;
+
+      var paused = false;
+      var speed = parseInt(auto.getAttribute('data-speed'), 10) || 100;
+
+      // Listeners registered ONCE, outside the interval. The v1 section
+      // registered these inside the interval callback, leaking a new pair
+      // every 100ms for the life of the page.
+      auto.addEventListener('mouseenter', function () { paused = true; });
+      auto.addEventListener('mouseleave', function () { paused = false; });
+
+      var timer = window.setInterval(function () {
+        if (paused) return;
+        auto.scrollTop += 1;
+        if (auto.scrollHeight - auto.offsetHeight <= auto.scrollTop) auto.scrollTop = 0;
+      }, speed);
+
+      // Clean up when the theme editor re-renders this section.
+      document.addEventListener('shopify:section:unload', function (evt) {
+        if (evt.detail.sectionId === '{{ section.id }}') window.clearInterval(timer);
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Text Scroller",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text_scroller_heading",
+      "label": "Section Heading",
+      "default": "Honoring Our Community"
+    },
+    {
+      "type": "color",
+      "id": "header_text_color",
+      "label": "Heading Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "header_font_size",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "header_font_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi-Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "700"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Scroller Column",
+      "type": "text_scroller",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Column Heading",
+          "default": "List Title"
+        },
+        {
+          "type": "color",
+          "id": "block_text_color",
+          "label": "Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "range",
+          "id": "block_font_size",
+          "min": 10,
+          "max": 36,
+          "step": 1,
+          "unit": "px",
+          "label": "Text Size",
+          "default": 14
+        },
+        {
+          "type": "select",
+          "id": "block_font_weight",
+          "label": "Font Weight",
+          "options": [
+            { "value": "300", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "600", "label": "Semi-Bold" },
+            { "value": "700", "label": "Bold" }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "select",
+          "id": "data-source",
+          "label": "Data Source",
+          "info": "Link a Google Sheet or manually paste content?",
+          "options": [
+            { "label": "Google Sheets", "value": "google-sheets" },
+            { "label": "Manually pasted content", "value": "manual" }
+          ],
+          "default": "manual"
+        },
+        {
+          "type": "url",
+          "id": "data_source_url",
+          "label": "Google Sheet URL",
+          "info": "Paste the full public Google Sheet link."
+        },
+        {
+          "type": "richtext",
+          "id": "scroller_content",
+          "label": "Manual Scroll Content",
+          "info": "Used when Data Source is set to manual."
+        },
+        {
+          "type": "checkbox",
+          "id": "is_auto_scroll",
+          "label": "Enable Auto-Scroll",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "scroll_speed",
+          "min": 10,
+          "max": 200,
+          "step": 10,
+          "unit": "ms",
+          "label": "Scroll Speed (Interval)",
+          "info": "Lower number = faster scrolling.",
+          "default": 100
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Text Scroller" }]
+}
+{% endschema %}

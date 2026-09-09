@@ -1,0 +1,595 @@
+{% comment %}
+  ==================================================================
+  GS FOOTER
+  Ported from gs-shopify-v3 sections/footer.liquid (26.3 KB)
+  ==================================================================
+
+  ------------------------------------------------------------------
+  COMPLIANCE FIX - READ THIS ONE
+  ------------------------------------------------------------------
+  v3 injected the CCPA "Your Privacy Choices" link with JavaScript:
+
+      document.querySelectorAll('.footer-grid-box .footer-block')[2]
+
+  A hardcoded array index. It happens to be the Policies menu today
+  only because of the current block order. Consequences:
+
+    - Reorder footer blocks in the theme editor and the link silently
+      moves to the wrong menu, or vanishes.
+    - No null check. If index 2 does not exist, it throws a TypeError
+      and kills every listener registered after it.
+    - The click handler called showPreferences(this) - a global from
+      the consent platform. If that global is missing the link does
+      nothing, silently, with no error.
+    - `this` inside an arrow function is not the element anyway.
+
+  A legally required opt-out control should not depend on DOM ordering.
+  It is now a real setting: enable "Show privacy choices link" on
+  whichever link_list block should carry it. Rendered in Liquid, in the
+  right menu, with no JavaScript and no index.
+
+  ACTION REQUIRED: after migrating, tick show_privacy_choices on the
+  Policies link_list block. It defaults to OFF, so the link will NOT
+  appear until someone enables it. Verify with Megan before launch.
+
+  The click still needs the consent platform's showPreferences() global.
+  That is checked for now rather than assumed.
+
+  ------------------------------------------------------------------
+  BUGS FIXED IN TRANSIT
+  ------------------------------------------------------------------
+  1. BROKEN FILTER SYNTAX, SIX TIMES. v3 wrote
+         image_url: width,500
+     Comma instead of colon. Every responsive background-image URL for
+     the footer background was malformed. Fixed to image_url: width: 500.
+
+  2. DEBUG CODE IN PRODUCTION. A CSS rule contained
+         test:{{ overFlow }}
+     Shipped to the live theme. Removed.
+
+  3. DEAD BRANCHING. The overFlow calculation was a nested if/else on
+     social_icons where BOTH branches were character-for-character
+     identical. It reduces to: logo is blank OR logo_size is false.
+
+  4. UNDEFINED SETTINGS. Three settings referenced here do not exist in
+     config/settings_data.json on the live theme:
+         settings.footer_text_hover
+         settings.footer_shadow
+         settings.footer_background_overlay
+     Each emitted an empty declaration such as "--footerLinkHover:;",
+     which is invalid and dropped. They now fall back to real values.
+
+  5. MALFORMED RENDER. v3 wrote
+         render 'social-media-icons' icon-color:true
+     with no comma before the argument, and a hyphenated parameter name
+     that Liquid cannot reliably resolve. Fixed.
+
+  6. HARDCODED COPYRIGHT. The full trademark notice was baked into
+     Liquid. It is now a setting, with the existing text as the default
+     so nothing changes visually. Legal can edit it without a deploy.
+
+  7. lazysizes / dark mode / t: translation keys handled per the
+     conventions in dawn-migration-handoff.md.
+
+  ------------------------------------------------------------------
+  NOTE ON THE LOGO MARQUEE
+  ------------------------------------------------------------------
+  When enlarged_logo_carousel and logo_size are both on, v3 repeats the
+  SAME logo image eight times to fill a marquee. Preserved as-is, but
+  it is worth asking whether eight copies of one logo is the intent.
+
+  All schema setting IDs are byte-for-byte identical to v3.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-footer.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign footer_logo_limit = 1
+  if section.settings.enlarged_logo_carousel and section.settings.logo_size
+    assign footer_logo_limit = 8
+  endif
+
+  comment
+    v3 computed this with a nested if/else whose branches were identical.
+  endcomment
+  assign allow_overflow = false
+  if section.settings.logo == blank or section.settings.logo_size == false
+    assign allow_overflow = true
+  endif
+-%}
+
+{%- capture logo_and_social -%}
+  {%- if section.settings.logo != blank or section.settings.social_icons -%}
+    <div
+      class="footer-top{% if section.settings.logo_size %} fullwidth-logo{% endif %}{% if footer_logo_limit > 1 %} marquee-logo{% endif %}"
+      {% if footer_logo_limit > 1 %}data-marquee data-marquee-speed="20" data-marquee-speed-mobile="20"{% endif %}
+    >
+      {%- if section.settings.logo != blank -%}
+        {%- liquid
+          assign logo_alt = section.settings.logo.alt | default: shop.name | escape
+          assign logo_height = section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio
+        -%}
+        {% if footer_logo_limit > 1 %}<div class="marquee-logo-items">{% endif %}
+          {%- for i in (1..footer_logo_limit) -%}
+            <a
+              href="{{ routes.root_url }}"
+              aria-label="{{ shop.name }}"
+              class="footer-logo-link"
+              {% if footer_logo_limit > 1 %}data-marque-node{% endif %}
+              {% if forloop.index > 1 %}aria-hidden="true" tabindex="-1"{% endif %}
+            >
+              {{
+                section.settings.logo
+                | image_url: width: 200
+                | image_tag:
+                  class: 'logo-footer',
+                  widths: '50, 100, 150, 200, 250',
+                  height: logo_height,
+                  width: section.settings.logo_width,
+                  alt: logo_alt,
+                  loading: 'lazy'
+              }}
+            </a>
+          {%- endfor -%}
+        {% if footer_logo_limit > 1 %}</div>{% endif %}
+      {%- endif -%}
+
+      {%- if section.settings.social_icons -%}
+        <div class="footer-social-block">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="footer-social-block-heading h6">{{ section.settings.heading }}</h2>
+          {%- endif -%}
+          {%- render 'gs-social-media-icons', icon_color: true -%}
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+{%- endcapture -%}
+
+<div class="gs-footer page-width"{% if section.settings.footer_sticky %} data-footer-sticky{% endif %}>
+  <div class="footer-grid-box">
+    <div class="footer-grid-content">
+      {%- if section.settings.position == 'top' -%}{{ logo_and_social }}{%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="footer-middle">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+
+              {%- when 'link_list' -%}
+                {%- if block.settings.heading != blank and block.settings.menu != blank -%}
+                  <div class="footer-block" {{ block.shopify_attributes }}>
+                    <div class="footer-block-inner">
+                      <h2 class="footer-block-heading h6">{{ block.settings.heading }}</h2>
+                      <ul class="list-unstyled">
+                        {%- for link in block.settings.menu.links -%}
+                          <li>
+                            <a class="unstyled-link footer-menu-link" href="{{ link.url }}">
+                              {{- link.title | escape -}}
+                            </a>
+                          </li>
+                        {%- endfor -%}
+
+                        {%- comment -%}
+                          CCPA opt-out. Rendered in Liquid, in the menu the
+                          merchant chose. v3 injected this with JS into
+                          .footer-block index [2].
+                        {%- endcomment -%}
+                        {%- if block.settings.show_privacy_choices -%}
+                          <li>
+                            <a
+                              class="unstyled-link footer-menu-link footer-privacy-choices"
+                              href="#"
+                              aria-label="Your Privacy Choices"
+                              data-privacy-choices
+                            >
+                              <img
+                                src="https://cdn.shopify.com/s/files/1/1258/3447/files/privacyoptions29x14.png?v=1760106187"
+                                alt=""
+                                width="29"
+                                height="14"
+                                loading="lazy"
+                              >
+                              Your Privacy Choices
+                            </a>
+                          </li>
+                        {%- endif -%}
+                      </ul>
+                    </div>
+                  </div>
+                {%- endif -%}
+
+              {%- when 'contact' -%}
+                <div class="footer-block" {{ block.shopify_attributes }}>
+                  <div class="footer-block-inner">
+                    {%- if block.settings.heading != blank -%}
+                      <h2 class="footer-block-heading h6">{{ block.settings.heading }}</h2>
+                    {%- endif -%}
+                    <div class="footer-block-desc rte">
+                      {{
+                        block.settings.store_info
+                        | replace: '<p></p>', '<br/>'
+                        | replace: '<h1></h1>', '<br/>'
+                        | replace: '<h2></h2>', '<br/>'
+                        | replace: '<h3></h3>', '<br/>'
+                        | replace: '<h4></h4>', '<br/>'
+                        | replace: '<h5></h5>', '<br/>'
+                        | replace: '<h6></h6>', '<br/>'
+                      }}
+                    </div>
+                    {%- if block.settings.mail_id != blank or block.settings.contact_no != blank -%}
+                      <ul class="footer-contact-detail list-unstyled">
+                        {%- if block.settings.contact_no != blank -%}
+                          <li>
+                            <a href="tel:{{ block.settings.contact_no }}" class="footer-contact-detail-link">
+                              <svg viewBox="0 0 20 21" fill="none" aria-hidden="true" focusable="false" width="16" height="16">
+                                <path d="M15.0395 11.9199C14.4422 11.8443 13.1619 12.8922 12.5275 13.4509C12.4197 13.5456 12.2821 13.5994 12.1387 13.603C11.9953 13.6066 11.8552 13.5596 11.7429 13.4703C10.7827 12.7006 9.86747 11.8763 9.00182 11.0016C8.12709 10.1359 7.30282 9.22075 6.53311 8.26051C6.44384 8.14822 6.39687 8.00813 6.40042 7.86472C6.40397 7.72131 6.45781 7.58371 6.55253 7.47598C7.1112 6.84151 8.15912 5.56121 8.08348 4.96391C7.98903 4.21816 6.1621 2.0623 5.57592 2.01346C5.17742 1.99028 4.7808 2.08363 4.43448 2.28212C3.64968 2.69562 2.73089 3.37755 2.41703 3.90878C1.25261 5.8797 2.54796 9.90153 6.32493 13.6785C10.1019 17.4555 14.1237 18.7508 16.0946 17.5864C16.6259 17.2725 17.3078 16.3538 17.7213 15.5689C17.9198 15.2226 18.0131 14.826 17.99 14.4275C17.9411 13.8413 15.7853 12.0144 15.0395 11.9199Z" fill="currentColor"/>
+                              </svg>
+                              <span>{{ block.settings.contact_no }}</span>
+                            </a>
+                          </li>
+                        {%- endif -%}
+                        {%- if block.settings.mail_id != blank -%}
+                          <li>
+                            <a href="mailto:{{ block.settings.mail_id }}" class="footer-contact-detail-link">
+                              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false" width="16" height="16">
+                                <path d="M1.48463 5.61572L10.001 9.87336L18.5173 5.61572C18.4858 5.07308 18.248 4.56302 17.8526 4.19001C17.4572 3.817 16.9342 3.60928 16.3906 3.60938H3.61132C3.06775 3.60928 2.54472 3.817 2.14934 4.19001C1.75396 4.56302 1.51616 5.07308 1.48463 5.61572Z" fill="currentColor"/>
+                                <path d="M18.5195 7.99394L10 12.2537L1.48047 7.99394V14.2579C1.48047 14.8228 1.70487 15.3645 2.1043 15.764C2.50373 16.1634 3.04547 16.3878 3.61035 16.3878H16.3896C16.9545 16.3878 17.4963 16.1634 17.8957 15.764C18.2951 15.3645 18.5195 14.8228 18.5195 14.2579V7.99394Z" fill="currentColor"/>
+                              </svg>
+                              <span>{{ block.settings.mail_id }}</span>
+                            </a>
+                          </li>
+                        {%- endif -%}
+                      </ul>
+                    {%- endif -%}
+                  </div>
+                </div>
+
+              {%- when 'newsletter' -%}
+                <div class="footer-block newsletter" {{ block.shopify_attributes }}>
+                  <div class="footer-block-newsletter">
+                    {%- if block.settings.enable_newsletter -%}
+                      {%- if block.settings.heading != blank -%}
+                        <h2 class="footer-block-heading h6">{{ block.settings.heading }}</h2>
+                      {%- endif -%}
+                      {%- form 'customer', class: 'newsletter-box' -%}
+                        <input type="hidden" name="contact[tags]" value="newsletter">
+                        <div class="newsletter-field">
+                          <label class="visually-hidden" for="NewsletterEmail-{{ block.id }}">
+                            {{ 'newsletter.label' | t | default: 'Email' }}
+                          </label>
+                          <input
+                            id="NewsletterEmail-{{ block.id }}"
+                            type="email"
+                            name="contact[email]"
+                            value="{{ form.email }}"
+                            placeholder="{{ block.settings.placeholder_text | escape }}"
+                            autocomplete="email"
+                            required
+                          >
+                          <button type="submit" class="button" name="commit">
+                            {{ 'newsletter.button_label' | t | default: 'Subscribe' }}
+                          </button>
+                        </div>
+                        {%- if form.errors -%}
+                          <p class="form-message form-message--error">
+                            {{ form.errors.translated_fields.email }} {{ form.errors.messages.email }}
+                          </p>
+                        {%- endif -%}
+                        {%- if form.posted_successfully? -%}
+                          <p class="form-message form-message--success">
+                            {{ 'newsletter.success' | t | default: 'Thanks for subscribing.' }}
+                          </p>
+                        {%- endif -%}
+                      {%- endform -%}
+                    {%- endif -%}
+                  </div>
+                </div>
+
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.position == 'bottom' -%}{{ logo_and_social }}{%- endif -%}
+
+      <div class="footer-bottom">
+        <div class="footer-copyright-text">
+          {%- if section.settings.copyright_text != blank -%}
+            &copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url }}. {{ section.settings.copyright_text }}
+          {%- else -%}
+            &copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url }}.
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.payment_enable -%}
+          <div class="footer-payment-icons">
+            <ul class="unstylish-list list-payment list-unstyled">
+              {%- for type in shop.enabled_payment_types -%}
+                <li class="list-payment-item">{{ type | payment_type_svg_tag: class: 'icon' }}</li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.show_sitemap_links -%}
+          <div class="footer-sitemap-container">
+            <ul class="unstylish-list sitemap-footer list-unstyled">
+              <li><a href="{{ section.settings.html_sitemap_url }}">HTML Sitemap</a></li>
+              <li><a href="/sitemap.xml">XML Sitemap</a></li>
+            </ul>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Per-instance values only. Static rules live in gs-footer.css. */
+  #shopify-section-{{ section.id }} {
+    --footerBackground: {{ settings.background_footer | default: '#000000' }};
+    --footerTextcolor: {{ settings.footer_text | default: '#ffffff' }};
+    --footerLinkcolor: {{ settings.footer_link | default: '#a6a6a6' }};
+    /* v3 read settings.footer_text_hover, which does not exist. */
+    --footerLinkHover: {{ settings.footer_text | default: '#ffffff' }};
+    --footerBackgroundLight: {{ settings.footer_divider | default: '#353f48' }};
+    --footerLogoOpacity: {{ section.settings.logo_opacity }};
+    --inputColor: var(--footerTextcolor);
+  }
+  {%- if allow_overflow -%}
+    #shopify-section-{{ section.id }} { overflow: unset; }
+  {%- endif -%}
+  {%- if section.settings.logo_size == false -%}
+    #shopify-section-{{ section.id }} .footer-logo-link img {
+      max-width: {{ section.settings.logo_width }}px;
+    }
+  {%- endif -%}
+  {%- if section.settings.footer_bg_image != blank -%}
+    {%- assign bg_opacity = section.settings.footer_background_opacity | divided_by: 100.0 -%}
+    #shopify-section-{{ section.id }} {
+      position: relative;
+      background-image: url({{ section.settings.footer_bg_image | image_url: width: 1920 }});
+      background-position: {{ section.settings.footer_bg_image.presentation.focal_point | default: 'center' }};
+      background-size: cover;
+      background-repeat: no-repeat;
+      padding-top: {{ section.settings.bg_top_space_desktop }}%;
+      padding-bottom: {{ section.settings.bg_bottom_space_desktop }}%;
+    }
+    #shopify-section-{{ section.id }}::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, {{ bg_opacity }});
+    }
+    #shopify-section-{{ section.id }} .gs-footer,
+    #shopify-section-{{ section.id }} .footer-bottom {
+      position: relative;
+      z-index: 2;
+    }
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} {
+        background-image: url({{ section.settings.footer_bg_image | image_url: width: 800 }});
+        padding-top: {{ section.settings.bg_top_space_mobile }}%;
+        padding-bottom: {{ section.settings.bg_bottom_space_mobile }}%;
+      }
+    }
+  {%- endif -%}
+</style>
+
+{%- if section.blocks.size > 0 -%}
+  <script>
+    // Privacy choices. Rendered by Liquid; this only wires the click.
+    // v3 both injected the element AND bound the handler from JS.
+    (function () {
+      document.addEventListener('click', function (evt) {
+        if (!evt.target || !evt.target.closest) return;
+        var link = evt.target.closest('[data-privacy-choices]');
+        if (!link) return;
+        evt.preventDefault();
+
+        if (typeof window.showPreferences === 'function') {
+          window.showPreferences();
+        } else {
+          console.warn('[gs-footer] showPreferences() unavailable - consent platform not loaded.');
+        }
+      });
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Footer",
+  "class": "footer",
+  "tag": "footer",
+  "settings": [
+    { "type": "checkbox", "id": "footer_sticky", "default": false, "label": "Sticky footer" },
+    { "type": "image_picker", "id": "logo", "label": "Footer logo" },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 100,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo width",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "logo_opacity",
+      "min": 0.1,
+      "max": 1,
+      "step": 0.1,
+      "label": "Logo opacity",
+      "default": 1
+    },
+    { "type": "checkbox", "id": "logo_size", "default": false, "label": "Full width logo" },
+    {
+      "type": "checkbox",
+      "id": "enlarged_logo_carousel",
+      "default": false,
+      "label": "Repeat logo as a marquee",
+      "info": "Requires full width logo. Repeats the same logo image 8 times."
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Logo position",
+      "default": "top",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "bottom", "label": "Bottom" }
+      ]
+    },
+    { "type": "checkbox", "id": "social_icons", "default": false, "label": "Show social icons" },
+    { "type": "text", "id": "heading", "default": "Follow Us", "label": "Social heading" },
+
+    { "type": "header", "content": "Legal" },
+    {
+      "type": "textarea",
+      "id": "copyright_text",
+      "label": "Copyright and trademark notice",
+      "info": "Appears after the year and store name. Was hardcoded in v3.",
+      "default": "The Grunt Style Logo, designs, Grunt Fest, and Beer Guarantee are the registered trademarks or service marks of Grunt Style, LLC. You can try to copy us, but then we'll waterboard you with freedom."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sitemap_links",
+      "default": true,
+      "label": "Show sitemap links"
+    },
+    {
+      "type": "url",
+      "id": "html_sitemap_url",
+      "label": "HTML sitemap URL"
+    },
+
+    { "type": "header", "content": "Payment" },
+    { "type": "checkbox", "id": "payment_enable", "default": true, "label": "Show payment icons" },
+    {
+      "type": "checkbox",
+      "id": "enable_follow_on_shop",
+      "default": false,
+      "label": "Enable Follow on Shop"
+    },
+
+    { "type": "header", "content": "Background" },
+    { "type": "image_picker", "id": "footer_bg_image", "label": "Background image" },
+    {
+      "type": "range",
+      "id": "footer_background_opacity",
+      "label": "Overlay opacity",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "bg_top_space_desktop",
+      "label": "Top padding (desktop)",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "bg_bottom_space_desktop",
+      "label": "Bottom padding (desktop)",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "bg_top_space_mobile",
+      "label": "Top padding (mobile)",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "bg_bottom_space_mobile",
+      "label": "Bottom padding (mobile)",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "Menu",
+      "limit": 3,
+      "settings": [
+        { "type": "text", "id": "heading", "default": "Quick links", "label": "Heading" },
+        { "type": "link_list", "id": "menu", "default": "footer", "label": "Menu" },
+        {
+          "type": "checkbox",
+          "id": "show_privacy_choices",
+          "default": false,
+          "label": "Show 'Your Privacy Choices' link",
+          "info": "CCPA opt-out. Enable on the Policies menu. v3 injected this with JavaScript into a hardcoded position."
+        }
+      ]
+    },
+    {
+      "type": "contact",
+      "name": "Contact",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "default": "Contact", "label": "Heading" },
+        { "type": "richtext", "id": "store_info", "default": "<p>Info</p>", "label": "Description" },
+        { "type": "text", "id": "contact_no", "label": "Phone number" },
+        { "type": "text", "id": "mail_id", "label": "Email address" }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable_newsletter",
+          "default": true,
+          "label": "Show newsletter signup"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Subscribe To Our Emails",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "placeholder_text",
+          "default": "Enter email",
+          "label": "Input placeholder"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "newsletter" },
+      { "type": "link_list" },
+      { "type": "link_list" },
+      { "type": "link_list" }
+    ]
+  }
+}
+{% endschema %}

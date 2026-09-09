@@ -1,0 +1,61 @@
+/*
+  ==================================================================
+  GS Reviews
+  ==================================================================
+  Star rating markup, loaded by snippets/gs-reviews.liquid itself.
+
+  WHY THIS FILE EXISTS. These rules originally lived only in
+  gs-card-product.css, which loads when a product CARD renders. The PDP
+  renders gs-reviews directly, with no card in sight - so the stars had
+  no styles at all and fell back to a vertical bulleted list.
+
+  A snippet that can be rendered from anywhere has to carry its own
+  styling. Shopify de-duplicates repeated stylesheet_tag output, so
+  loading it per render costs nothing.
+  ==================================================================
+*/
+
+.product-reviews-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.star-rating {
+  display: flex;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: rgb(var(--ratingStarColor, 154 114 63));
+}
+
+.star-rating li {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  list-style: none;
+}
+
+.star-rating svg {
+  display: block;
+}
+
+.reviewbox {
+  font-size: var(--xsmallText);
+  color: rgba(var(--textColor), 0.7);
+}
+
+/* Cards centre their rating; the PDP aligns it left under the title. */
+.product-card-detail .product-reviews-badge {
+  justify-content: center;
+}
+
+.gs-pdp__reviews .product-reviews-badge {
+  justify-content: flex-start;
+}
+
+.gs-pdp__reviews .star-rating svg {
+  width: 17px;
+  height: 21px;
+}

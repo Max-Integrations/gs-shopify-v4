@@ -1,0 +1,132 @@
+{% comment %}
+  ==================================================================
+  GS REVIEWS
+  Consolidates THREE v3 snippets into one (audit ref DUP-011):
+    snippets/reviews.liquid               (2.8 KB)
+    snippets/reviews-count.liquid         (3.0 KB)
+    snippets/reviews-without-count.liquid (2.9 KB)
+
+  All three contained the same star-rendering loop, differing only in
+  which variable they read and what text they appended.
+
+  USAGE:
+    render 'gs-reviews', cardProduct: product                  stars only
+    render 'gs-reviews', cardProduct: product, showCount: true stars + "12 reviews"
+    render 'gs-reviews', cardProduct: product, showRating: true stars + "4.8/5"
+    Optional: extraClass: 'd-block d-md-none'
+
+  ------------------------------------------------------------------
+  REVISION 2026-08-13 - CARRIES ITS OWN STYLESHEET
+  ------------------------------------------------------------------
+  The star styles lived only in gs-card-product.css, which loads when a
+  product CARD renders. The PDP renders this snippet directly, so on a
+  product page the stars had no styling and fell back to a VERTICAL
+  BULLETED LIST. A snippet renderable from anywhere must carry its own
+  CSS. Shopify de-duplicates repeated stylesheet_tag output.
+
+  ------------------------------------------------------------------
+  BUG FIXED FROM v3: RATINGS ROUNDED DOWN A FULL STAR
+  ------------------------------------------------------------------
+  All three v3 snippets used:
+      if decimal >= 0.3 and decimal <= 0.7 -> half star
+  Anything above 0.7 fell through to NOTHING, so a 4.8-rated product
+  rendered four filled stars and one empty - it displayed as 4 stars.
+
+  Corrected thresholds:
+      decimal <  0.25        no extra star
+      0.25 - 0.75            half star
+      decimal >= 0.75        full star
+
+  ACTION: this changes displayed ratings across the store. Products at
+  x.75-x.99 gain a visible star. Correct, but tell merchandising.
+
+  ------------------------------------------------------------------
+  BUG FIXED FROM v3: GLOBAL CSS LEAKING FROM INSIDE SVG
+  ------------------------------------------------------------------
+  The half-star SVG carried an inline <defs><style> defining `.d` and
+  `.e`. A <style> inside inline SVG is NOT scoped - it applies to the
+  whole document. The definitions also CONFLICTED: reviews-count.liquid
+  declared `.d { fill: none }`, the other two `.d { fill: #ddd }`, so
+  half-star appearance depended on which snippet rendered last.
+  All <style> blocks removed; fills are plain path attributes.
+
+  ------------------------------------------------------------------
+  OTHER FIXES
+  ------------------------------------------------------------------
+  - VARIABLE MISMATCH: two snippets read `product`, one read
+    `cardProduct`. Rendering the wrong one from a card context silently
+    produced nothing. Unified on `cardProduct`.
+  - PDP state leaked into a card snippet: reviews-without-count.liquid
+    referenced block.settings.sticky_form and section.settings.sticky_type.
+    Removed; use `extraClass` instead.
+  - Added role="img" + aria-label so the rating is announced as a value
+    rather than read out as five empty list items.
+  - A filter cannot appear inside an if/elsif condition, so the
+    half-star index is precomputed into `half_index`.
+==================================================================
+{% endcomment %}
+
+{%- liquid
+  unless cardProduct
+    break
+  endunless
+
+  assign rating_count = cardProduct.metafields.reviews.rating_count | plus: 0
+  assign rating_value = cardProduct.metafields.reviews.rating.value.rating
+-%}
+
+{%- if rating_count > 0 and rating_value -%}
+  {{ 'gs-reviews.css' | asset_url | stylesheet_tag }}
+
+  {%- liquid
+    assign full_stars = rating_value | floor
+    assign decimal = rating_value | modulo: 1
+    assign half_star = false
+
+    if decimal >= 0.75
+      assign full_stars = full_stars | plus: 1
+    elsif decimal >= 0.25
+      assign half_star = true
+    endif
+
+    assign half_index = full_stars | plus: 1
+
+    assign review_word = 'products.product.reviews' | t
+    if rating_count == 1
+      assign review_word = 'products.product.review' | t
+    endif
+  -%}
+
+  <div
+    class="product-reviews-badge rating-wrapper{% if extraClass %} {{ extraClass }}{% endif %}"
+    role="img"
+    aria-label="{{ rating_value }} {{ 'products.product.out_of_5_stars' | t }}, {{ rating_count }} {{ review_word }}"
+  >
+    <ul class="unstylish-list star-rating" aria-hidden="true">
+      {%- for i in (1..5) -%}
+        <li>
+          {%- if i <= full_stars -%}
+            <svg class="fill-review" viewBox="0 0 380 362" width="15" height="19" focusable="false">
+              <path fill-rule="evenodd" fill="currentColor" d="m204.7 10.5l37.5 116.1l122-0.3c15.4 0 21.2 19.1 7.7 28.9l-97.5 70.5l37.9 115.9c4.9 14.8-12.9 26.5-24.6 16.5l-97.6-71.2l-98.6 71.9c-13.4 9.7-28.2-3.4-22.6-20.4l36.9-112.7l-98.8-71.5c-12.6-9.1-5.2-28.9 10.1-27.9l120.9 0.3l37.5-116.1c4.5-14.2 24.7-14.1 29.2 0z"/>
+            </svg>
+          {%- elsif half_star and i == half_index -%}
+            <svg class="half-fill-review" viewBox="0 0 19.89 19.01" width="15" height="19" focusable="false">
+              <path fill="currentColor" d="M9.18,.56l-1.97,6.09-6.35-.02c-.8-.05-1.19,.99-.53,1.46l5.19,3.75-1.94,5.92c-.29,.89,.48,1.58,1.19,1.07l5.17-3.77V0c-.32,0-.65,.19-.76,.56Z"/>
+              <path fill="#dddddd" d="M19.08,6.63l-6.4,.02L10.71,.56C10.59,.19,10.27,0,9.94,0V15.07h0l5.12,3.73c.61,.52,1.55-.09,1.29-.87l-1.99-6.08,5.12-3.7c.71-.51,.4-1.52-.4-1.52Z"/>
+            </svg>
+          {%- else -%}
+            <svg class="unfill-review" viewBox="0 0 380 362" width="15" height="19" focusable="false">
+              <path fill-rule="evenodd" fill="#dddddd" d="m204.7 10.5l37.5 116.1l122-0.3c15.4 0 21.2 19.1 7.7 28.9l-97.5 70.5l37.9 115.9c4.9 14.8-12.9 26.5-24.6 16.5l-97.6-71.2l-98.6 71.9c-13.4 9.7-28.2-3.4-22.6-20.4l36.9-112.7l-98.8-71.5c-12.6-9.1-5.2-28.9 10.1-27.9l120.9 0.3l37.5-116.1c4.5-14.2 24.7-14.1 29.2 0z"/>
+            </svg>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+
+    {%- if showRating -%}
+      <span class="reviewbox text-xsmall">{{ rating_value }}/5</span>
+    {%- elsif showCount -%}
+      <span class="reviewbox text-xsmall">{{ rating_count }} {{ review_word }}</span>
+    {%- endif -%}
+  </div>
+{%- endif -%}

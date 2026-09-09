@@ -1,0 +1,163 @@
+{% comment %}
+  ==================================================================
+  GS MAIN ARTICLE
+  ==================================================================
+  A blog post. Deliberately narrow - a measured column, a hero, the
+  body, and share. No sidebar, no related-posts grid unless someone
+  asks for one.
+
+  ------------------------------------------------------------------
+  WHY THIS MATTERS BEYOND CONTENT
+  ------------------------------------------------------------------
+  gs-shopify-v3 drives merchandising off blog posts: featured-collections
+  has a metafield mode that builds its tabs from
+      article.metafields.blogpost.promoted_collections
+  and hides itself when that list is empty.
+
+  That mode was ported but had no template using it. templates/article.json
+  now places a featured-collections section below the body with
+  collection_source set to "metafield", so a post with promoted
+  collections sells from the bottom of the article and a post without
+  them renders nothing extra.
+
+  No JavaScript.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-article.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+-%}
+
+<article class="gs-article color-{{ s.color_scheme }}">
+  {%- if s.show_image and article.image -%}
+    <div class="gs-article__hero">
+      <img
+        src="{{ article.image | image_url: width: 1600 }}"
+        srcset="
+          {{ article.image | image_url: width: 750 }} 750w,
+          {{ article.image | image_url: width: 1100 }} 1100w,
+          {{ article.image | image_url: width: 1600 }} 1600w
+        "
+        sizes="100vw"
+        alt="{{ article.image.alt | escape | default: article.title | escape }}"
+        width="{{ article.image.width }}"
+        height="{{ article.image.height }}"
+        loading="eager"
+        fetchpriority="high"
+      >
+    </div>
+  {%- endif -%}
+
+  <div class="page-width gs-article__body">
+    <header class="gs-article__header">
+      {%- if s.show_breadcrumb -%}
+        <a class="gs-article__back" href="{{ blog.url }}">
+          {{ 'blogs.article.back_to_blog' | t }}
+        </a>
+      {%- endif -%}
+
+      <h1 class="gs-article__title">{{ article.title | escape }}</h1>
+
+      <p class="gs-article__meta">
+        {%- if s.show_date -%}
+          <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+            {{ article.published_at | date: format: 'date' }}
+          </time>
+        {%- endif -%}
+        {%- if s.show_author and article.author != blank -%}
+          {%- if s.show_date %} &middot; {% endif -%}
+          {{ article.author }}
+        {%- endif -%}
+      </p>
+    </header>
+
+    <div class="gs-article__content rte">
+      {{ article.content }}
+    </div>
+
+    {%- if s.show_share -%}
+      <div class="gs-article__share">
+        <span class="gs-article__share-label">{{ 'blogs.article.share' | t }}</span>
+        {%- render 'gs-social-media-icons', circle: false -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if blog.comments_enabled? -%}
+    <div class="page-width gs-article__comments">
+      {%- if article.comments_count > 0 -%}
+        <h2 class="gs-article__comments-heading">
+          {{ 'blogs.article.comments' | t: count: article.comments_count }}
+        </h2>
+        {%- for comment in article.comments -%}
+          <div class="gs-article__comment">
+            <p class="gs-article__comment-body">{{ comment.content }}</p>
+            <p class="gs-article__comment-author">{{ comment.author }}</p>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- form 'new_comment', article, class: 'gs-article__form' -%}
+        <h2 class="gs-article__comments-heading">{{ 'blogs.article.comment_form_title' | t }}</h2>
+
+        {%- if form.errors -%}
+          <p class="gs-article__form-error" role="alert">
+            {{ 'templates.contact.form.error_heading' | t }}
+            {{ form.errors.translated_fields.author }} {{ form.errors.messages.author }}
+          </p>
+        {%- endif -%}
+
+        {%- if form.posted_successfully? -%}
+          <p class="gs-article__form-success" role="status">
+            {%- if blog.moderated? -%}
+              {{ 'blogs.article.success_moderated' | t }}
+            {%- else -%}
+              {{ 'blogs.article.success' | t }}
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+
+        <div class="gs-article__form-row">
+          <label for="CommentAuthor">{{ 'blogs.article.name' | t }}</label>
+          <input type="text" id="CommentAuthor" name="comment[author]" value="{{ form.author }}" required>
+        </div>
+
+        <div class="gs-article__form-row">
+          <label for="CommentEmail">{{ 'blogs.article.email' | t }}</label>
+          <input type="email" id="CommentEmail" name="comment[email]" value="{{ form.email }}" required>
+        </div>
+
+        <div class="gs-article__form-row">
+          <label for="CommentBody">{{ 'blogs.article.message' | t }}</label>
+          <textarea id="CommentBody" name="comment[body]" rows="5" required>{{ form.body }}</textarea>
+        </div>
+
+        {%- if blog.moderated? -%}
+          <p class="gs-article__form-note">{{ 'blogs.article.moderated' | t }}</p>
+        {%- endif -%}
+
+        <button type="submit" class="gs-article__form-submit">
+          {{ 'blogs.article.post' | t }}
+        </button>
+      {%- endform -%}
+    </div>
+  {%- endif -%}
+</article>
+
+{% schema %}
+{
+  "name": "Article",
+  "tag": "section",
+  "class": "gs-article-section",
+  "settings": [
+    { "type": "checkbox", "id": "show_image", "label": "Show featured image", "default": true },
+    { "type": "checkbox", "id": "show_breadcrumb", "label": "Show back-to-blog link", "default": true },
+    { "type": "checkbox", "id": "show_date", "label": "Show date", "default": true },
+    { "type": "checkbox", "id": "show_author", "label": "Show author", "default": false },
+    { "type": "checkbox", "id": "show_share", "label": "Show share icons", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ]
+}
+{% endschema %}

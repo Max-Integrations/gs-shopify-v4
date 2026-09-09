@@ -1,0 +1,15 @@
+/*
+  SUPERSEDED - SAFE TO DELETE.
+
+  These rules were merged into assets/gs-header.css, which is the file
+  sections/header.liquid actually loads. Nothing loads this one.
+
+  Second time this mistake was made in this migration (see
+  gs-events-header.css). The rule: check what the section already loads
+  before creating a new stylesheet.
+
+  themeFilesDelete is blocked by the connector, so this cannot be removed
+  from here. Delete it from the Shopify admin or via `shopify theme push`.
+
+  Created and orphaned 2026-08-14.
+*/

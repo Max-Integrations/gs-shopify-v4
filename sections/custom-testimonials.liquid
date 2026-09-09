@@ -1,0 +1,264 @@
+{% comment %}
+  ==================================================================
+  CUSTOM TESTIMONIALS
+  Ported from gs-shopify-v3 sections/custom-testimonials.liquid
+  ==================================================================
+  "WHAT PATRIOTS ARE SAYING" - the review carousel near the bottom of
+  the homepage. Five testimonials in templates/index.json.
+
+  ------------------------------------------------------------------
+  INVALID SCHEMA JSON
+  ------------------------------------------------------------------
+  v3's schema had a trailing comma:
+      { "type": "text", "id": "customer_jd", "label": "From", }
+  Same defect as the v1 text-scroller. Fixed.
+
+  ------------------------------------------------------------------
+  COLOUR SCHEME PROPERTIES THAT DO NOT EXIST IN DAWN
+  ------------------------------------------------------------------
+  v3 read scheme settings directly inside CSS:
+      section.settings.color_scheme.settings.heading
+      section.settings.color_scheme.settings.border
+      section.settings.color_scheme.settings.rating_color
+      section.settings.color_scheme.settings.text
+
+  v3's schemes defined heading, border and rating_color. DAWN'S DO NOT -
+  Dawn exposes only background, text, button, button_label,
+  secondary_button_label and shadow. Three of those four would resolve
+  to empty and emit `color: ;`, which is invalid and silently dropped.
+
+  Now driven by the token bridge's CSS custom properties, which are
+  defined for every scheme:
+      heading      -> --headingColor
+      text         -> --textColor
+      border       -> --borderColor
+      rating_color -> --ratingStarColor
+
+  ------------------------------------------------------------------
+  MULTI-INSTANCE BUG
+  ------------------------------------------------------------------
+  The Swiper init used document.querySelector (singular) for the slider
+  AND for both arrow buttons. A second testimonials section anywhere on
+  the page would not initialise, and its arrows would drive the FIRST
+  section instead. There was also no null check before `new Swiper()`.
+
+  ------------------------------------------------------------------
+  SWIPER REMOVED
+  ------------------------------------------------------------------
+  Replaced with CSS scroll-snap, consistent with the swatch port.
+  Arrow behaviour reuses assets/gs-swatch-scroller.js, which is generic
+  despite its name - it drives anything marked with data-swatch-scroller
+  / data-swatch-track / data-swatch-scroll.
+
+  CLEANUP DEBT: that file should be renamed gs-scroller.js now that a
+  second component uses it. Deliberately not renamed here to avoid
+  breaking the script tag while it is still being wired up.
+
+  ------------------------------------------------------------------
+  OTHER FIXES
+  ------------------------------------------------------------------
+  1. DUPLICATE RULE. The mobile media query contained
+         .custom-testimonials-container { padding: 36px 0; }
+         .custom-testimonials-container { padding: 40px 0; }
+     back to back. The first was dead on arrival.
+
+  2. HARDCODED COLOUR AND FONT. .custom-jd forced color #000000 and
+     font-family 'Helvetica' regardless of scheme, so on a dark scheme
+     the attribution line was invisible. Now inherits.
+
+  3. MAGIC WIDTH. .custom-comment had max-width: 228px on mobile, which
+     truncates longer testimonials into a narrow column. Removed.
+
+  4. STAR RATING ACCESSIBILITY. Five stars are drawn with a CSS ::before
+     containing literal star characters. Some screen readers announce
+     generated content, so the element is now aria-hidden. Note these
+     stars are decorative and always show five - they are not tied to
+     any real rating data.
+
+  5. GLOBAL CSS. Class names like .custom-comment and .custom-name were
+     declared globally, once per instance. Namespaced and moved to an
+     asset. NOTE: templates/index.json carries a custom_css rule
+     targeting .custom-comment - that rule will no longer match. It set
+     font-size 20px / weight 400, which is already the default here.
+
+  6. != empty changed to != blank throughout.
+
+  All schema setting IDs are byte-for-byte identical to v3.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-custom-testimonials.css' | asset_url | stylesheet_tag }}
+
+{%- if section.blocks.size > 0 -%}
+  <div
+    class="gs-testimonials color-{{ section.settings.color_scheme }}"
+    style="
+      --gt-align: {{ section.settings.content_alignment | default: 'center' }};
+      --gt-pad-desktop: {{ section.settings.content_spacing_desktop }}px;
+      --gt-pad-mobile: {{ section.settings.content_spacing_mobile }}px;
+      {%- if section.settings.enable_content_border -%}
+        --gt-border-width: {{ section.settings.content_border_width }}px;
+      {%- else -%}
+        --gt-border-width: 0px;
+      {%- endif -%}
+    "
+  >
+    {%- if section.settings.section_heading != blank -%}
+      <h2 class="gs-testimonials__heading">{{ section.settings.section_heading }}</h2>
+    {%- endif -%}
+
+    <div class="gs-testimonials__scroller" data-swatch-scroller>
+      <button
+        type="button"
+        class="gs-testimonials__btn"
+        data-swatch-scroll="prev"
+        aria-label="{{ 'general.slider.previous_slide' | t | default: 'Previous' }}"
+        hidden
+      >
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+          <path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <ul class="gs-testimonials__track" data-swatch-track>
+        {%- for block in section.blocks -%}
+          <li class="gs-testimonials__item" {{ block.shopify_attributes }}>
+            {%- if section.settings.enable_star_rating -%}
+              <div class="gs-testimonials__rating" aria-hidden="true"></div>
+            {%- endif -%}
+
+            {%- if block.settings.testimonial_heading != blank -%}
+              <h3 class="gs-testimonials__item-heading">{{ block.settings.testimonial_heading }}</h3>
+            {%- endif -%}
+
+            {%- if block.settings.comment_text != blank -%}
+              <p class="gs-testimonials__comment">{{ block.settings.comment_text }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.customer_name != blank -%}
+              <p class="gs-testimonials__name">{{ block.settings.customer_name }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.customer_jd != blank -%}
+              <p class="gs-testimonials__jd">{{ block.settings.customer_jd }}</p>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      <button
+        type="button"
+        class="gs-testimonials__btn"
+        data-swatch-scroll="next"
+        aria-label="{{ 'general.slider.next_slide' | t | default: 'Next' }}"
+        hidden
+      >
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+          <path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Custom testimonials",
+  "tag": "section",
+  "class": "section gs-testimonials-section",
+  "settings": [
+    { "type": "header", "content": "General" },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Heading",
+      "default": "WHAT PATRIOTS ARE SAYING"
+    },
+    { "type": "header", "content": "Settings" },
+    {
+      "type": "checkbox",
+      "id": "enable_content_border",
+      "label": "Display border around content",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "content_border_width",
+      "label": "Border width",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_star_rating",
+      "label": "Display star rating",
+      "info": "Decorative. Always shows five stars; not tied to review data.",
+      "default": true
+    },
+    {
+      "type": "text_alignment",
+      "id": "content_alignment",
+      "label": "Content alignment",
+      "default": "center"
+    },
+    { "type": "header", "content": "Colors" },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    { "type": "header", "content": "Spacing" },
+    {
+      "type": "range",
+      "id": "content_spacing_desktop",
+      "label": "Content spacing (desktop)",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "content_spacing_mobile",
+      "label": "Content spacing (mobile)",
+      "min": 0,
+      "max": 75,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "text", "id": "testimonial_heading", "label": "Testimonial heading" },
+        {
+          "type": "textarea",
+          "id": "comment_text",
+          "label": "Testimonial text",
+          "default": "This is a wonderful product!"
+        },
+        { "type": "text", "id": "customer_name", "label": "Customer name", "default": "John Doe" },
+        { "type": "text", "id": "customer_jd", "label": "From" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom testimonials",
+      "blocks": [
+        { "type": "testimonial" },
+        { "type": "testimonial" },
+        { "type": "testimonial" }
+      ]
+    }
+  ]
+}
+{% endschema %}
