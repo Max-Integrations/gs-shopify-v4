@@ -1,0 +1,98 @@
+{% comment %}
+  ==================================================================
+  VIDEO BANNER
+  ==================================================================
+  A full-width background video (muted, looping, autoplaying) with
+  separate desktop and mobile files and a poster image for each, plus
+  an optional darkening overlay. No text: pair it with other sections.
+  Replaces the v3 full-width-image-with-text-v2's video mode used for
+  the Foundation page header.
+
+  Videos are Shopify-hosted (the `video` setting), so sources come with
+  their own MIME types and the poster falls back to the video's preview
+  image when no image is set. The mobile video only renders below 768px
+  and the desktop one above, so only one file loads.
+  ==================================================================
+{% endcomment %}
+
+{{ 'section--video-banner.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+  assign vd = s.video_desktop
+  assign vm = s.video_mobile | default: vd
+  assign pd = s.image_desktop | default: vd.preview_image
+  assign pm = s.image_mobile | default: vm.preview_image | default: pd
+  assign ratio_d = vd.aspect_ratio | default: pd.aspect_ratio | default: 3.6
+  assign ratio_m = vm.aspect_ratio | default: pm.aspect_ratio | default: 1.63
+  assign variants = 'desktop,mobile' | split: ','
+-%}
+
+<div
+  class="gs-vbanner{% if s.section_width %} gs-vbanner--full{% endif %}"
+  style="--gs-vbanner-ratio-d: {{ 1 | divided_by: ratio_d | times: 100 }}%; --gs-vbanner-ratio-m: {{ 1 | divided_by: ratio_m | times: 100 }}%; --gs-vbanner-overlay: {{ s.overlay_opacity | default: 0 | divided_by: 100.0 }};"
+>
+  <div class="{% unless s.section_width %}page-width{% endunless %}">
+    <div class="gs-vbanner__frame">
+      {%- for variant in variants -%}
+        {%- liquid
+          if variant == 'desktop'
+            assign video = vd
+            assign poster = pd
+          else
+            assign video = vm
+            assign poster = pm
+          endif
+        -%}
+        <div class="gs-vbanner__media gs-vbanner__media--{{ variant }}">
+          {%- if video != blank -%}
+            <video
+              class="gs-vbanner__video"
+              autoplay muted loop playsinline preload="metadata"
+              {% if poster != blank %}poster="{{ poster | image_url: width: 2000 }}"{% endif %}
+              aria-hidden="true"
+            >
+              {%- for source in video.sources -%}
+                {%- if source.format == 'mp4' or source.mime_type contains 'mp4' -%}
+                  <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                {%- endif -%}
+              {%- endfor -%}
+            </video>
+          {%- elsif poster != blank -%}
+            <img
+              src="{{ poster | image_url: width: 2000 }}"
+              srcset="{{ poster | image_url: width: 1000 }} 1000w, {{ poster | image_url: width: 2000 }} 2000w"
+              sizes="100vw"
+              width="{{ poster.width }}"
+              height="{{ poster.height }}"
+              alt="{{ poster.alt | escape }}"
+              {% if variant == 'mobile' %}loading="lazy"{% endif %}
+            >
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Video banner",
+  "tag": "section",
+  "class": "gs-vbanner-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    { "type": "video", "id": "video_desktop", "label": "Video (desktop)" },
+    { "type": "video", "id": "video_mobile", "label": "Video (mobile)", "info": "Empty uses the desktop video." },
+    { "type": "image_picker", "id": "image_desktop", "label": "Poster image (desktop)", "info": "Shown until the video plays, or instead of it when no video is set." },
+    { "type": "image_picker", "id": "image_mobile", "label": "Poster image (mobile)" },
+    { "type": "range", "id": "overlay_opacity", "label": "Overlay", "min": 0, "max": 90, "step": 10, "unit": "%", "default": 0 },
+    { "type": "checkbox", "id": "section_width", "label": "Full width", "default": true }
+  ],
+  "presets": [
+    { "name": "Video banner" }
+  ]
+}
+{% endschema %}

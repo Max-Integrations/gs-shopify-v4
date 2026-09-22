@@ -1,0 +1,651 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "hero": {
+      "type": "section--video-banner",
+      "settings": {
+        "video_desktop": "shopify://files/videos/GSF Desktop Header Video.mp4",
+        "video_mobile": "shopify://files/videos/GSF Mobile Header Video 980x600.mp4",
+        "image_desktop": "shopify://shop_images/GSF_Desktop_Header_STATIC_1440x400_1.jpg",
+        "image_mobile": "shopify://shop_images/GSF_Mobile_Header_STATIC_980x600_1.jpg",
+        "overlay_opacity": 0,
+        "section_width": true
+      }
+    },
+    "value_props": {
+      "type": "value-props",
+      "blocks": {
+        "value_NcyXkz": {
+          "type": "value",
+          "settings": {
+            "customer_name": "150k vets served"
+          }
+        },
+        "value_pdnfEi": {
+          "type": "value",
+          "settings": {
+            "customer_name": "320 tons food given"
+          }
+        },
+        "value_4NGzK8": {
+          "type": "value",
+          "settings": {
+            "customer_name": "$1.5M merch given"
+          }
+        }
+      },
+      "block_order": [
+        "value_NcyXkz",
+        "value_pdnfEi",
+        "value_4NGzK8"
+      ],
+      "settings": {
+        "bg_color": "#000000",
+        "text_color": "#ffffff"
+      }
+    },
+    "intro": {
+      "type": "rich-text",
+      "blocks": {
+        "text_pxhfpD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Grunt Style Foundation is a 501(c)(3) nonprofit dedicated to providing life-changing resources and experiences that help Service Members, Veterans, First Responders, and their families thrive. Focused on mental health, wellness and advocacy, the Foundation ensures those who have served—and continue to serve—receive the recognition, honor, and support they deserve.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_pxhfpD"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 32,
+        "padding_bottom": 16
+      }
+    },
+    "impact": {
+      "type": "multicolumn",
+      "blocks": {
+        "image_with_text_wET9xm": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/CPB_M_980x600__10.png",
+            "title": "ADVOCACY",
+            "text": "<p>Our <em>War Cry for Change: A Revolution to Reclaim Veteran Mental Health </em>initiative advocates for systemic reform in veteran mental healthcare by challenging the harmful over prescription of antidepressants, benzodiazepines, and antipsychotics while championing access to safer, alternative healing modalities.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "image_with_text_4dWj3m": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/CPB_M_980x600__11.png",
+            "title": "MENTAL HEALTH",
+            "text": "<p>Because the best support network for veterans is other veterans, we bring a community of warriors together through therapeutic events across the country through Irreverent Warriors. We also work with other veteran organizations who provide services such as job placement, training, housing, service dogs and more.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "image_with_text_kCegTn": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/CPB_M_980x600__9_2b4ca9b6-fda0-45a8-8b4b-a5158a9ddfce.png",
+            "title": "WELLNESS",
+            "text": "<p>Grunt Style Foundation integration retreats provide life-changing resources and experiences to Service Members, Veterans and First Responders allowing them to thrive in all aspects of life. </p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_wET9xm",
+        "image_with_text_4dWj3m",
+        "image_with_text_kCegTn"
+      ],
+      "settings": {
+        "title": "OUR IMPACT",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "image_position": "top",
+        "card_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "stats": {
+      "type": "multicolumn",
+      "blocks": {
+        "image_with_text_hFnBhM": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "",
+            "title": "7 out of 10 Veterans are prescribed Pschotropic medications at the VA",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "image_with_text_wkjFe9": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "",
+            "title": "150K Irreverent Warriors Veterans Served",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "image_with_text_cQG4PA": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "",
+            "title": "Each Integration Retreat helps 160 Veterans heal",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_hFnBhM",
+        "image_with_text_wkjFe9",
+        "image_with_text_cQG4PA"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "image_position": "top",
+        "card_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 8,
+        "padding_bottom": 24
+      },
+      "custom_css": [
+        ".multicolumn-card { background: #5c5d3a !important; }",
+        ".multicolumn-card__info h3 { color: #ffffff; font-size: calc(var(--font-heading-scale) * 1.8rem); }"
+      ]
+    },
+    "testimonials": {
+      "type": "custom-testimonials",
+      "blocks": {
+        "testimonial_bkk8cH": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_heading": "",
+            "comment_text": "\"The Silkies Hike saved my life. I showed up expecting a walk and left with a brotherhood that checks on me every single day. That's what GSF builds — community that doesn't quit.\"",
+            "customer_name": "- SARAH K.",
+            "customer_jd": "U.S. Marine Corps Veteran"
+          }
+        },
+        "testimonial_pz4GGa": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_heading": "",
+            "comment_text": "\"After three deployments and years of struggling, GSF connected me with equine therapy that changed everything. For the first time in a decade, I feel like myself again.\"",
+            "customer_name": "- MARCUS T.",
+            "customer_jd": "U.S. Army, 3x Deployed"
+          }
+        },
+        "testimonial_GXHJAE": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_heading": "",
+            "comment_text": "\"Excellent work. Don’t know how anyone could have watched any of the livestreams from your week in DC and not been moved to tears and action. Onward!\"",
+            "customer_name": "- Paige Figi",
+            "customer_jd": ""
+          }
+        },
+        "testimonial_g9jaQN": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_heading": "",
+            "comment_text": "\"As an MST Survivor, the healing modalities Grunt Style Foundation introduced me to removed the fear and anxiety, replacing it with an internal peace where the VA methods only masked my symptoms and never addressed the moral injury.\"",
+            "customer_name": "- Janae S.",
+            "customer_jd": ""
+          }
+        },
+        "testimonial_dzLJbK": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_heading": "",
+            "comment_text": "\"Every soul at the integration retreat was touched in a way that whispered: You are safe. You are family. You are loved exactly as you are.\"",
+            "customer_name": "- Emily J.",
+            "customer_jd": ""
+          }
+        },
+        "testimonial_pAyLAJ": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_heading": "",
+            "comment_text": "\"When it comes to healing veterans Grunt Style Integration is a force multiplier, it IS the Trojan Horse that wasn’t expected. Grunt Style Integration is bringing alternative healing, holistic healing, REAL healing to veterans as an alternative to being lost in the sauce of prescription pills and suicidal ideation.\"",
+            "customer_name": "- Caros Duran",
+            "customer_jd": "Plant Medicine Guide"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_bkk8cH",
+        "testimonial_pz4GGa",
+        "testimonial_GXHJAE",
+        "testimonial_g9jaQN",
+        "testimonial_dzLJbK",
+        "testimonial_pAyLAJ"
+      ],
+      "settings": {
+        "section_heading": "",
+        "enable_content_border": true,
+        "content_border_width": 2,
+        "enable_star_rating": false,
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "content_spacing_desktop": 50,
+        "content_spacing_mobile": 25
+      }
+    },
+    "irreverent": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "IRREVERENT WARRIORS",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><b>Our Mission:</b> End veteran suicide by bringing back the platoon-level camaraderie most of us lost when we hung up the uniform.</p>\n<p><b>Here’s How We Do It:</b></p>\n<ul>\n<li><p><b>Silkies Hikes:</b> 8–10 miles of laughs, ruck rash, and real connection.</p></li>\n<li><p><b>Silkies Retreats:</b> Weekend resets with cold plunges, bonfires, and zero bureaucracy.</p></li>\n<li><p><b>Camaraderie Counseling:</b> No red tape, no sterile waiting rooms—just vets healing the way we know best.</p></li>\n<li><p><b> Dark Humor Allowed: </b>Laughter, sweat, and shared misery are part of the therapy.</p></li>\n</ul>\n\n<p><b>Irreverent Warriors</b> is powered by the <b>Grunt Style Foundation (501c3)</b> — a nonprofit on a mission to restore purpose, connection, and pride among veterans.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "custom_css": [
+        ".page-width { border-top: 2px solid #000000; border-bottom: 2px solid #000000; }",
+        ".image-with-text__text ul { list-style: disc; margin: 0 0 1rem 2rem; padding: 0; }",
+        ".image-with-text__text ul li p { margin: 0; }",
+        ".image-with-text__text p { margin: 0 0 0.6rem; }"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "image": "shopify://shop_images/CPB_M_980x600__14_1.png",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "join": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Erz3MF": {
+          "type": "heading",
+          "settings": {
+            "heading": "JOIN THE EFFORT",
+            "heading_size": "h1"
+          }
+        },
+        "text_VkLhbC": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Grunt Style Foundation Giveback Tees<br/><br/></strong>When you purchase a <strong>Grunt Style Foundation</strong> shirt, <strong>all profits</strong> are donated to the <strong>Grunt Style Foundation</strong>, a 501(c)(3) nonprofit organization.</p>"
+          }
+        },
+        "text_jzU9xF": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Your purchase helps fund programs that support <strong>veterans, service members, and their families</strong> through mental health resources and community outreach initiatives.</p>"
+          }
+        },
+        "text_8cqRj6": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The <strong>Grunt Style Foundation</strong> is a separate legal entity from <strong>Grunt Style, LLC</strong>, and all donations are transferred directly to the Foundation to support its charitable mission.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Erz3MF",
+        "text_VkLhbC",
+        "text_jzU9xF",
+        "text_8cqRj6"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 24,
+        "padding_bottom": 12
+      }
+    },
+    "giveback": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_block_TJRCVV": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "",
+            "collection": "grunt-style-foundation",
+            "cta_label": "SHOP GIVEBACK TEES",
+            "cta_link": "shopify://collections/grunt-style-foundation"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_TJRCVV"
+      ],
+      "settings": {
+        "section_heading": "",
+        "heading_text_align": "center",
+        "collection_type": "tabs",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "sm",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 15,
+        "number_products_per_view_desktop": "4",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-1",
+        "heading_size_desktop": 45,
+        "heading_size_mobile": 42,
+        "navigation_title_size_desktop": 26,
+        "navigation_title_size_mobile": 23,
+        "cta_title_size_desktop": 18,
+        "cta_title_size_mobile": 16,
+        "section_spacing_top_desktop": 10,
+        "section_spacing_top_mobile": 10,
+        "section_spacing_bottom_desktop": 10,
+        "section_spacing_bottom_mobile": 10,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#000000",
+        "cta_background_color": "#ffffff",
+        "cta_background_color_hover": "#ffffff",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#000000"
+      }
+    },
+    "donate": {
+      "type": "image-banner",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "EVERY DONATION AIDS THE VETERAN COMMUNITY",
+            "heading_size": "h1"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "Grunt Style Foundation is a nonprofit, tax exempt charitable organization. Visit the website and donate directly.",
+            "text_style": "body"
+          }
+        },
+        "b": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "DONATE DIRECTLY",
+            "button_link_1": "https://www.gruntstylefoundation.org/donate",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t",
+        "b"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/HPC_D_Embed_1920x830_GS_Foundation_Background_Image_copy_5_6b50f276-e460-4bda-9ff9-4bf8d1b6979e.png",
+        "image_overlay_opacity": 60,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-4",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "action_heading": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_MNDi6g": {
+          "type": "heading",
+          "settings": {
+            "heading": "GRUNT STYLE FOUNDATION IN ACTION",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MNDi6g"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 8
+      }
+    },
+    "gallery": {
+      "type": "images-grid",
+      "blocks": {
+        "image_VXwNjw": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Moved_2000x2000_7.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_79T7Dm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Moved_2000x2000_8_-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_wFTNhH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Moved_2000x2000_11_-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_EkYJiB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Moved_2000x2000_12.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_gUcQAR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Moved_2000x2000_10.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_VXwNjw",
+        "image_79T7Dm",
+        "image_wFTNhH",
+        "image_EkYJiB",
+        "image_gUcQAR"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "show_carousel": true,
+        "card_grid": false,
+        "card_inner_space": false,
+        "item_per_row_desktop": 5,
+        "item_per_row_mobile": "2",
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "center",
+        "vertical_grid_image_size": "auto",
+        "heading": "",
+        "highlight_style": "underline",
+        "bg__color": "gradient",
+        "heading_size": "h3",
+        "seo_heading": "h2",
+        "heading_alignment": "text-left",
+        "card_bg": "",
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 10,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0,
+        "section_width": false
+      }
+    },
+    "learn_more": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_kzeLda": {
+          "type": "heading",
+          "settings": {
+            "heading": "VISIT GRUNT STYLE FOUNDATION FOR MORE INFORMATION",
+            "heading_size": "h1"
+          }
+        },
+        "button_B7R4kJ": {
+          "type": "button",
+          "settings": {
+            "button_label": "LEARN MORE",
+            "button_link": "https://www.gruntstylefoundation.org/about",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_kzeLda",
+        "button_B7R4kJ"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 32,
+        "padding_bottom": 48
+      },
+      "custom_css": [
+        ".button { --color-button: 92, 93, 58; --color-button-text: 255, 255, 255; }"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "hero",
+    "value_props",
+    "intro",
+    "impact",
+    "stats",
+    "testimonials",
+    "irreverent",
+    "join",
+    "giveback",
+    "donate",
+    "action_heading",
+    "gallery",
+    "learn_more"
+  ]
+}

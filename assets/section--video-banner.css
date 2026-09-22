@@ -1,0 +1,55 @@
+/*
+  ==================================================================
+  Video banner
+  ==================================================================
+  The frame keeps the video's own aspect ratio (desktop and mobile
+  files can differ); the media fills it. One of the two media blocks
+  is hidden per breakpoint so only one video loads.
+*/
+
+.gs-vbanner__frame {
+  position: relative;
+  width: 100%;
+  padding-bottom: var(--gs-vbanner-ratio-m, 61.2%);
+  background: #000000;
+  overflow: hidden;
+}
+
+.gs-vbanner__media {
+  position: absolute;
+  inset: 0;
+}
+
+.gs-vbanner__media--desktop {
+  display: none;
+}
+
+.gs-vbanner__media video,
+.gs-vbanner__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gs-vbanner__frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--gs-vbanner-overlay, 0));
+  pointer-events: none;
+}
+
+@media screen and (min-width: 768px) {
+  .gs-vbanner__frame {
+    padding-bottom: var(--gs-vbanner-ratio-d, 27.8%);
+  }
+
+  .gs-vbanner__media--mobile {
+    display: none;
+  }
+
+  .gs-vbanner__media--desktop {
+    display: block;
+  }
+}

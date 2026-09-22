@@ -4,8 +4,10 @@
   description field type; Dawn's is already rich text):
     - `image_position` (top / left): v3's icon-left layout, image beside
       the text.
-    - `card_color_scheme` + `card_custom_scheme`: paint the cards with a
-      different scheme than the section (v3 had white cards on black).
+    - `card_color_scheme`: paint the cards with their own scheme when it
+      differs from the section's (v3 had white cards on black). Same
+      scheme on both means no separate card colour, which is how Dawn's
+      multirow treats its row scheme.
     - block `icon`: a small inline SVG (globe, truck, person, pin,
       building, chat) used when the column has no image, as v3's
       icon_list did.
@@ -89,7 +91,7 @@
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
           >
-            <div class="multicolumn-card content-container{% if section.settings.card_custom_scheme %} multicolumn-card--scheme color-{{ section.settings.card_color_scheme }}{% endif %}">
+            <div class="multicolumn-card content-container{% if section.settings.card_color_scheme != section.settings.color_scheme %} multicolumn-card--scheme color-{{ section.settings.card_color_scheme }}{% endif %}">
               {%- if block.settings.image != blank -%}
                 {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                   {% assign spaced_image = true %}
@@ -385,14 +387,7 @@
       ],
       "default": "top"
     },
-    {
-      "type": "checkbox",
-      "id": "card_custom_scheme",
-      "label": "Use a separate color scheme for the cards",
-      "info": "GS addition. For example white cards on a black section.",
-      "default": false
-    },
-    { "type": "color_scheme", "id": "card_color_scheme", "label": "Card color scheme", "default": "scheme-1" },
+    { "type": "color_scheme", "id": "card_color_scheme", "label": "Card color scheme", "info": "GS addition. Set it to something other than the section's scheme for cards that stand out, e.g. white cards on a black section.", "default": "scheme-1" },
     {
       "type": "color_scheme",
       "id": "color_scheme",
