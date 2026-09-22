@@ -138,6 +138,12 @@ This was folded into `image-banner` and then **restored on request**. It is new 
 
 The section, its presets, its stylesheet and the careers hero's original template JSON are all back exactly as they were at `ec0265a`. The `video_desktop` / `video_mobile` additions to `image-banner` stay, since those serve the Foundation hero.
 
+**The home page's top banner was missing entirely.** `templates/index.json` listed three banner ids in `order` with no matching definitions, one of which shared a suffix with the disabled "BACK IN STOCK" promo (a key rename that never reached `order`). Pulling `templates/index.json` from the live theme (`138903748659`) showed four `full-width-image-with-text-v2` sections at the top of the live home page, three disabled and one live: `full_width_image_with_text_v2_fzTCbL`, the "Handpicked For Violence" campaign banner. It had no definition in this repo at all, so it had never rendered in v4.
+
+It is ported as a `section--full-width-image_text` instance at the top of the order. It carries no heading, subcopy, CTA or terms: a full-width clickable image with separate desktop (1440×424) and mobile (750×994) art, auto height, no overlay, zero section padding, linking to `/collections/handpicked-for-violence`.
+
+Still not ported, because they are disabled on live too: `full_width_image_with_text_v2_MqghR7` (Club August campaign), `_imDJCw` and `_bEmQXW`.
+
 ---
 
 ## Settings moved into blocks

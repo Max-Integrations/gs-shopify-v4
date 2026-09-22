@@ -1091,9 +1091,36 @@
         "padding_top": 8,
         "padding_bottom": 8
       }
+    },
+    "section_full_width_image_text_fzTCbL": {
+      "type": "section--full-width-image_text",
+      "blocks": {},
+      "block_order": [],
+      "name": "Handpicked For Violence banner",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#000000",
+        "background_image_desktop": "shopify://shop_images/HPC_D_-_Short_CTA_1440x424_FW26_Violence_Campaign.jpg",
+        "background_image_mobile": "shopify://shop_images/HPC_M_-_Tall_CTA_750x994_FW26_Violence_Campaign.jpg",
+        "image_height_auto": true,
+        "banner_link": "shopify://collections/handpicked-for-violence",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 0,
+        "button_gap": 12
+      }
     }
   },
   "order": [
+    "section_full_width_image_text_fzTCbL",
     "section_sale_promo_message_4Qz89H",
     "value_props_c3pXEG",
     "media_grid_4zxLjX",
