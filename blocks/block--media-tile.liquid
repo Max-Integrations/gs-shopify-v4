@@ -13,8 +13,8 @@
 
   CURRENT COLLECTION. When the tile's collection is the one being
   viewed (or its link is the current path) the tile carries
-  .is-current and aria-current; the section dims the others. Keep the
-  test identical to the one in sections/section--media-grid.liquid.
+  .is-current and aria-current; the section CSS dims its siblings with
+  :has(.is-current), so this is the only place the test lives.
 
   Positioning: the 9-way `content_position` maps to two custom
   properties (--content-justify / --content-align) that the section's

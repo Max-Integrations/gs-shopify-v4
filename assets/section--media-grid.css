@@ -336,11 +336,11 @@
 /* ---- Current collection ----
    When one tile is the collection being viewed, the rest step back.
    Hover/focus brings a dimmed tile forward on desktop. */
-.gs-mg--has-current .media-grid-item {
+.media-grid-wrapper:has(.is-current) .media-grid-item {
   transition: opacity 0.25s;
 }
 
-.gs-mg--has-current .media-grid-item:not(.is-current) {
+.media-grid-wrapper:has(.is-current) .media-grid-item:not(.is-current) {
   opacity: 0.2;
 }
 
@@ -456,8 +456,8 @@
     font-size: var(--gs-heading-size-d, var(--gs-heading-size-m));
   }
 
-  .gs-mg--has-current .media-grid-item:not(.is-current):hover,
-  .gs-mg--has-current .media-grid-item:not(.is-current):focus-within {
+  .media-grid-wrapper:has(.is-current) .media-grid-item:not(.is-current):hover,
+  .media-grid-wrapper:has(.is-current) .media-grid-item:not(.is-current):focus-within {
     opacity: 1;
   }
 }
@@ -468,7 +468,7 @@
   .media-grid-image::after,
   .media-hover,
   .gs-mg--badge .media-content .gs-block-heading,
-  .gs-mg--has-current .media-grid-item {
+  .media-grid-wrapper:has(.is-current) .media-grid-item {
     transition: none;
   }
 

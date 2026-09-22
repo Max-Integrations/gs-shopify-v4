@@ -33,7 +33,8 @@
   - images-grid (28 instances): layout carousel/grid, tile ratio from
     the image, content below the image, a collection picker per tile
     with the "current collection stays bright, the rest dim" behaviour
-    (.gs-mg--has-current / .is-current, from v3's collection-carousel).
+    (the tile carries .is-current; the CSS dims its siblings with
+    :has(), so the test lives in one place, blocks/block--media-tile).
   - stories-single-image (About history): carousel, fixed 600/300px
     tiles, 60% scrim lifted on hover, circle-badge year headings,
     description as the tile's hover text.
@@ -66,28 +67,10 @@
   assign ratio = s.tile_ratio | default: 'fixed'
   assign placement = s.content_placement | default: 'overlay'
 
-  # Does any tile point at the collection being viewed (or the current
-  # path)? If so the others dim. Keep this test identical to the one in
-  # blocks/block--media-tile.liquid.
-  assign has_current = false
-  for block in section.blocks
-    assign tile_collection = block.settings.collection
-    assign tile_url = block.settings.link
-    if tile_url == blank and tile_collection != blank
-      assign tile_url = tile_collection.url
-    endif
-    if tile_collection != blank and collection != blank and tile_collection.handle == collection.handle
-      assign has_current = true
-      break
-    elsif tile_url != blank and tile_url == request.path
-      assign has_current = true
-      break
-    endif
-  endfor
 -%}
 
 <div
-  class="gs-media-grid color-{{ s.color_scheme }} gradient gs-mg--visibility-{{ s.section_visibility | default: 'always' }} gs-mg--{{ layout }} gs-mg--ratio-{{ ratio }} gs-mg--{{ placement }} gs-mg--width-{{ s.tile_width | default: 'full' }}{% if s.heading_badge %} gs-mg--badge{% endif %}{% if has_current %} gs-mg--has-current{% endif %}"
+  class="gs-media-grid color-{{ s.color_scheme }} gradient gs-mg--visibility-{{ s.section_visibility | default: 'always' }} gs-mg--{{ layout }} gs-mg--ratio-{{ ratio }} gs-mg--{{ placement }} gs-mg--width-{{ s.tile_width | default: 'full' }}{% if s.heading_badge %} gs-mg--badge{% endif %}"
   style="
     --padding-top: {{ s.padding_top }}px;
     --padding-bottom: {{ s.padding_bottom }}px;
