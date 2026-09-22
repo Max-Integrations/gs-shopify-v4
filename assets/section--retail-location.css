@@ -1,0 +1,172 @@
+/*
+  ==================================================================
+  Retail location
+  ==================================================================
+  Back link, title, intro, then a 40/60 split at 990px+: info/hours/
+  notes panels on the left, the map embed on the right. Panels are
+  translucent bands of the scheme's foreground colour, so they read as
+  distinct rows on any scheme instead of v3's hardcoded greys.
+*/
+
+.gs-retail {
+  padding: 1.5rem 0 3rem;
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+.gs-retail__back {
+  display: inline-block;
+  margin: 1.5rem 0;
+  color: rgb(var(--color-foreground));
+  text-decoration: underline;
+}
+
+.gs-retail__back:focus-visible,
+.gs-retail__maplink:focus-visible,
+.gs-retail__phone a:focus-visible {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 2px;
+}
+
+.gs-retail__title {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-size: 34px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.gs-retail__intro {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+/* ---- Details ---- */
+.gs-retail__details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 30px;
+  padding: 40px 0;
+  border-top: 2px solid rgb(var(--color-foreground));
+  border-bottom: 2px solid rgb(var(--color-foreground));
+}
+
+.gs-retail__panels {
+  display: grid;
+  text-align: center;
+}
+
+.gs-retail__panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 10px;
+}
+
+.gs-retail__panel--info { background: rgba(var(--color-foreground), 0.16); }
+.gs-retail__panel--hours { background: rgba(var(--color-foreground), 0.1); }
+.gs-retail__panel--notes { background: rgba(var(--color-foreground), 0.06); }
+
+.gs-retail__panel-title {
+  margin: 0 0 0.6em;
+  font-family: var(--font-heading-family);
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.gs-retail__address {
+  margin: 0;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 24px;
+}
+
+.gs-retail__maplink {
+  display: inline-block;
+  margin-top: 0.6em;
+  color: inherit;
+  text-decoration: underline;
+}
+
+.gs-retail__phone {
+  margin: 0.8em 0 0;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.gs-retail__phone a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* ---- Hours ---- */
+.gs-retail__hours {
+  width: 100%;
+  max-width: 340px;
+  margin: 0;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.gs-retail__hours-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.gs-retail__hours-row--note {
+  justify-content: center;
+  margin-top: 0.6em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.gs-retail__hours dt {
+  font-weight: 700;
+}
+
+.gs-retail__hours dd {
+  margin: 0;
+}
+
+/* ---- Map ---- */
+.gs-retail__map {
+  position: relative;
+  min-height: 300px;
+  background: rgba(var(--color-foreground), 0.06);
+}
+
+.gs-retail__map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media screen and (min-width: 990px) {
+  .gs-retail__title {
+    font-size: 54px;
+  }
+
+  .gs-retail__details {
+    grid-template-columns: 40% 60%;
+    row-gap: 0;
+    padding: 50px 0;
+  }
+
+  .gs-retail__details--no-map {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .gs-retail__panels--1 { grid-template-rows: 1fr; }
+  .gs-retail__panels--2 { grid-template-rows: repeat(2, 1fr); }
+  .gs-retail__panels--3 { grid-template-rows: repeat(3, 1fr); }
+
+  .gs-retail__map {
+    min-height: 550px;
+  }
+}

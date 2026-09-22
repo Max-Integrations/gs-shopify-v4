@@ -1,0 +1,141 @@
+{% comment %}
+  ==================================================================
+  CONTACT CHANNELS
+  ==================================================================
+  The top of the Contact page: a heading, a subheading, and a row of
+  block--contact-channel cards (chat, email, phone, store). Replaces
+  v3's sections/contact-grunt-style.liquid, which was static markup
+  with no settings, a "Chat N/A" button, and a dangling "Retail
+  Locations" heading with nothing under it.
+
+  The chat card's button is hidden until the Gorgias app embed has
+  loaded (see the script at the bottom, which follows Gorgias' own
+  init pattern: GorgiasChat.init() if present, else the
+  gorgias-widget-loaded event). Its label follows isBusinessHours().
+  ==================================================================
+{% endcomment %}
+
+{{ 'section--contact-channels.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+-%}
+
+<div
+  class="gs-contact color-{{ s.color_scheme | default: 'scheme-4' }} gs-contact--{{ s.heading_alignment | default: 'center' }} gs-ct--visibility-{{ s.section_visibility | default: 'always' }}"
+  id="GsContact-{{ section.id }}"
+  style="--gs-contact-cols: {{ s.columns_desktop | default: 4 }}; --gs-contact-pad-top: {{ s.padding_top | default: 48 }}px; --gs-contact-pad-bottom: {{ s.padding_bottom | default: 48 }}px;"
+>
+  <div class="page-width">
+    {%- if s.heading != blank or s.subheading != blank -%}
+      <div class="gs-contact__head">
+        {%- if s.heading != blank -%}<h1 class="gs-contact__heading h1">{{ s.heading }}</h1>{%- endif -%}
+        {%- if s.subheading != blank -%}<p class="gs-contact__subheading">{{ s.subheading }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="gs-contact__grid">
+        {% content_for 'blocks' %}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    if (window.gsChatBound) return;
+    window.gsChatBound = true;
+
+    var buttons = document.querySelectorAll('[data-gs-chat]');
+    if (!buttons.length) return;
+
+    function ready(chat) {
+      var online = true;
+      try { if (typeof chat.isBusinessHours === 'function') online = !!chat.isBusinessHours(); } catch (e) {}
+      buttons.forEach(function (btn) {
+        btn.textContent = online ? btn.dataset.labelOnline : btn.dataset.labelOffline;
+        btn.hidden = false;
+        btn.addEventListener('click', function () {
+          try { chat.open(); } catch (e) { console.error('[gs-contact] ' + e.message); }
+        });
+      });
+    }
+
+    // Gorgias' documented pattern: init() when the object exists, else
+    // wait for the widget-loaded event. Give up quietly after 10s.
+    var done = false;
+    function resolve() {
+      if (done || !window.GorgiasChat) return;
+      done = true;
+      var chat = window.GorgiasChat;
+      if (typeof chat.init === 'function') {
+        Promise.resolve(chat.init()).then(function () { ready(chat); }, function () { ready(chat); });
+      } else {
+        ready(chat);
+      }
+    }
+    window.addEventListener('gorgias-widget-loaded', resolve);
+    resolve();
+    var tries = 0;
+    var timer = setInterval(function () {
+      tries += 1;
+      if (done || tries > 20) { clearInterval(timer); return; }
+      resolve();
+    }, 500);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Contact channels",
+  "tag": "section",
+  "class": "gs-contact-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    { "type": "block--contact-channel" }
+  ],
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Contact Us" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Customer Service" },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    { "type": "range", "id": "columns_desktop", "label": "Cards per row (desktop)", "min": 2, "max": 4, "step": 1, "default": 4 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-4" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48 },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "Show on",
+      "options": [
+        { "value": "always", "label": "All devices" },
+        { "value": "small", "label": "Mobile only" },
+        { "value": "large", "label": "Desktop only" }
+      ],
+      "default": "always"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact channels",
+      "blocks": [
+        { "type": "block--contact-channel", "settings": { "icon": "chat", "title": "Chat", "detail": "<p>Mon - Fri: 9am - 5pm CST</p>", "action": "chat" } },
+        { "type": "block--contact-channel", "settings": { "icon": "email", "title": "Email", "detail": "<p>CustomerService@GruntStyle.com</p>", "action": "link", "label": "Email us", "link": "mailto:customerservice@gruntstyle.com" } },
+        { "type": "block--contact-channel", "settings": { "icon": "phone", "title": "Call", "detail": "<p>Mon - Fri: 9am - 5pm CST</p>", "action": "link", "label": "877-554-7868", "link": "tel:8775547868" } },
+        { "type": "block--contact-channel", "settings": { "icon": "store", "title": "Visit a store", "detail": "<p>Shop the Grunt Style experience in person.</p>", "action": "link", "label": "Find a store", "link": "/pages/grunt-style-retail-stores" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

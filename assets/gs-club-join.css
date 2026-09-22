@@ -2,113 +2,57 @@
   ==================================================================
   GS Club Join Steps
   ==================================================================
-  Four-step subscription wizard on a black panel.
+  Four-step subscription wizard on a black panel. Visual values are
+  v3's (sections/club-gs-join-steps_v2.liquid, its inline <style>):
+  15px-radius cards with a #5b5b5b border that turns gold on hover,
+  gold #dac126 eyebrow, 52px labels, 100px progress circles joined by
+  5px grey bars, gold #dfb300 ribbons and JOIN NOW, red START OVER.
 
   Radio inputs are VISUALLY hidden but focusable. v3 used display:none,
   which removes an element from the accessibility tree entirely - the
   whole paid signup funnel was mouse-only. The focus ring lands on the
   visible label, same pattern as the PDP variant picker.
 
-  Steps are shown and hidden with the `hidden` attribute. v3 used
-  Flickity (81.7 KB) with dragging, arrows and dots all disabled, purely
-  to show one panel at a time.
+  Steps are shown and hidden with the `hidden` attribute plus a short
+  CSS slide-in. v3 used Flickity (81.7 KB) with dragging, arrows and
+  dots all disabled, purely to slide one panel at a time.
 
-  The size grid uses auto-fit rather than a fixed seven columns, so
-  hiding 3XL and 4XL for the women's fit closes the gap instead of
-  leaving two empty cells.
+  The size grid uses auto-fit columns of v3's width, so hiding 3XL and
+  4XL for the women's fit closes the gap instead of leaving two empty
+  cells (v3 left the cells).
   ==================================================================
 */
 
+/* Hash target for the page's Join buttons; clears the sticky header. */
+.gs-club__anchor {
+  scroll-margin-top: var(--gs-header-height, 80px);
+}
+
 .gs-club {
-  padding: 25px 0 40px;
+  padding: 25px;
   background-color: #000000;
   color: #ffffff;
+}
+
+/* v3 overrode .page-width to 100%: the funnel is full-bleed. */
+.gs-club .gs-club__inner {
+  max-width: none;
+  padding: 0;
 }
 
 .gs-club__heading {
   display: block;
   width: 100%;
-  padding: 0;
   margin: 25px 0 0;
-  font-family: var(--headingFont);
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  padding: 0;
+  font-family: var(--font-heading-family);
+  font-size: 2.4rem;
   font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
   text-align: center;
   text-transform: uppercase;
   color: #ffffff;
-}
-
-/* ---- Progress ---- */
-.gs-club__progress {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 8px 4px;
-  margin: 0 0 1rem;
-  padding: 0;
-  list-style: none;
-  counter-reset: none;
-}
-
-.gs-club__progress-item {
-  flex: 0 0 auto;
-  width: 84px;
-}
-
-.gs-club__progress-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: inherit;
-  cursor: pointer;
-}
-
-.gs-club__progress-btn:disabled {
-  cursor: default;
-  opacity: 0.45;
-}
-
-.gs-club__progress-btn:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 4px;
-}
-
-.gs-club__progress-circle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border: 2px solid #505050;
-  border-radius: 50%;
-  background-color: #060607;
-  color: #d2d2d2;
-  font-family: var(--headingFont);
-  font-size: 2.2rem;
-}
-
-.gs-club__progress-text {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 3px;
-}
-
-.gs-club__progress-item.is-current .gs-club__progress-circle,
-.gs-club__progress-item.is-done .gs-club__progress-circle {
-  border-color: rgba(var(--line-color), 1);
-  color: #ffffff;
-}
-
-.gs-club__progress-item.is-current .gs-club__progress-text {
-  border-bottom-color: #e2e2e2;
 }
 
 /* ---- Steps ---- */
@@ -116,18 +60,27 @@
   margin: 0;
   padding: 0;
   border: 0;
+  min-width: 0;
 }
 
 .gs-club__step[hidden] {
   display: none;
 }
 
+.gs-club__step.is-active {
+  animation: gs-club-slide-in 0.3s ease;
+}
+
+@keyframes gs-club-slide-in {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
 .gs-club__options {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-  margin: 2.5rem 0;
+  gap: 25px;
+  margin: 75px 0;
 }
 
 /* Visually hidden but focusable - NOT display:none. */
@@ -143,21 +96,27 @@
   border: 0;
 }
 
+/* Shared card look (all four steps and the review clones). */
 .gs-club__label {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 28px;
+  box-sizing: border-box;
+  padding: 35px;
   border: 2px solid #5b5b5b;
+  border-radius: 15px;
+  background: transparent;
+  color: #ffffff;
   cursor: pointer;
   text-align: center;
-  transition: border-color 0.2s ease;
+  text-transform: uppercase;
+  transition: border-color 0.25s ease;
 }
 
 .gs-club__label:hover,
 .gs-club__input:checked + .gs-club__label {
-  border-color: rgba(var(--line-color), 1);
+  border-color: #dac126;
 }
 
 .gs-club__input:focus-visible + .gs-club__label {
@@ -165,149 +124,184 @@
   outline-offset: 3px;
 }
 
-/* ---- Fit ---- */
+/* ---- Step 1: fit ---- */
 .gs-club__option--gender {
-  flex: 1 1 280px;
-  max-width: 420px;
+  width: 425px;
+  max-width: 100%;
+}
+
+.gs-club__label--gender {
+  font-family: var(--font-heading-family);
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 52px;
+  letter-spacing: 1px;
 }
 
 .gs-club__eyebrow {
-  color: rgba(var(--line-color), 1);
-  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
-  text-transform: uppercase;
+  margin-top: 5px;
+  color: #dac126;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 32px;
 }
 
-.gs-club__label-main {
-  font-family: var(--headingFont);
-  font-size: clamp(2.6rem, 5vw, 4.4rem);
-  font-weight: 700;
-  line-height: 1.05;
-  text-transform: uppercase;
-}
-
-/* ---- Size ---- */
+/* ---- Step 2: size ---- */
 .gs-club__options--size {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-  gap: 12px;
-  max-width: 900px;
-  margin-inline: auto;
+  grid-template-columns: repeat(auto-fit, calc((90vw - 72px) / 7));
+  column-gap: 10px;
+  row-gap: 10px;
+  justify-content: center;
 }
 
 .gs-club__option--size[hidden] {
   display: none;
 }
 
-.gs-club__option--size .gs-club__label {
-  padding: 16px 8px;
-  gap: 6px;
+.gs-club__label--size {
+  gap: 0;
 }
 
 .gs-club__size {
-  font-family: var(--headingFont);
-  font-size: 2.4rem;
+  display: block;
+  padding-bottom: 10px;
+  font-family: var(--font-heading-family);
+  font-size: 52px;
   font-weight: 900;
-  line-height: 1;
+  line-height: 124px;
 }
 
-/* ---- Plan ---- */
+.gs-club__size-icon {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* ---- Step 3: plan ---- */
+.gs-club__disclaimer {
+  margin: 15px 0 0;
+  color: #ffffff;
+  text-align: center;
+}
+
 .gs-club__option--plan {
-  flex: 0 1 250px;
   position: relative;
+  width: 250px;
+  max-width: 100%;
 }
 
-.gs-club__option--plan .gs-club__label {
-  padding-bottom: 40px;
-  gap: 4px;
+.gs-club__label--plan {
+  position: relative;
+  padding: 35px 35px 35px;
+}
+
+.gs-club__plan-icon {
+  display: block;
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 15px;
+  object-fit: contain;
 }
 
 .gs-club__plan-type {
-  font-size: 2rem;
-  text-transform: uppercase;
+  display: block;
+  font-size: 26px;
+  line-height: 1.2;
 }
 
 .gs-club__plan-cost {
-  font-family: var(--headingFont);
-  font-size: 3.6rem;
-  line-height: 1.1;
+  display: block;
+  font-family: var(--font-heading-family);
+  font-size: 50px;
+  line-height: 50px;
   white-space: nowrap;
 }
 
-.gs-club__plan-note {
+/* Gold ribbon hanging 20px below the card edge. */
+.gs-club__ribbon {
   position: absolute;
   left: 10%;
-  bottom: -14px;
+  bottom: -20px;
   width: 80%;
   padding: 5px 0;
-  background: rgba(var(--line-color), 1);
-  color: #ffffff;
-  font-size: 1.3rem;
+  background: #dfb300;
+  color: #000000;
+  font-size: 18px;
   font-weight: 600;
+  line-height: 1.3;
   text-align: center;
   text-transform: uppercase;
+}
+
+.gs-club__ribbon strong {
+  font-weight: 700;
 }
 
 .gs-club__was {
+  font-style: italic;
   text-decoration: line-through;
 }
 
-.gs-club__disclaimer {
-  max-width: 60ch;
-  margin: 2.5rem auto 0;
-  font-size: var(--xsmallText);
-  text-align: center;
-  opacity: 0.75;
+/* ---- Step 4: review ---- */
+.gs-club__options--review {
+  flex-direction: column;
+  align-items: center;
 }
 
-/* ---- Review ---- */
-.gs-club__review {
-  max-width: 420px;
-  margin: 2.5rem auto 0;
-  padding: 0;
-}
-
-.gs-club__review-row {
+.gs-club__review-cards {
   display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.8rem 0;
-  border-bottom: 1px solid #3a3a3a;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 25px;
+  width: 100%;
 }
 
-.gs-club__review dt {
-  font-size: var(--smallText);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  opacity: 0.7;
+.gs-club__review-card {
+  position: relative;
 }
 
-.gs-club__review dd {
-  margin: 0;
-  font-family: var(--headingFont);
-  font-size: var(--smallText);
-  font-weight: 700;
-  text-transform: uppercase;
+/* Clones keep their own card classes; only the interaction goes. */
+.gs-club__review-card .gs-club__label {
+  cursor: default;
+}
+
+.gs-club__review-card .gs-club__label--gender {
+  width: auto;
+  min-width: 250px;
+}
+
+.gs-club__review-card .gs-club__label--plan {
+  width: 250px;
 }
 
 .gs-club__actions {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  margin-top: 2rem;
+  width: 100%;
 }
 
 .gs-club__join {
-  padding: 14px 40px;
+  margin: 25px auto 0;
+  padding: 15px 25px;
   border: 0;
-  background-color: rgba(var(--line-color), 1);
-  color: #ffffff;
-  font-family: var(--headingFont);
-  font-size: 2.2rem;
+  border-radius: 0;
+  background: #dfb300;
+  color: #000000;
+  font-family: var(--font-heading-family);
+  font-size: 36px;
   font-weight: 700;
+  line-height: 1.1;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
   cursor: pointer;
+}
+
+.gs-club__join:hover {
+  background: #e8c21a;
 }
 
 .gs-club__join[disabled] {
@@ -316,9 +310,11 @@
 }
 
 .gs-club__restart {
+  margin: 15px 0;
+  padding: 0;
   border: 0;
   background: transparent;
-  color: #ffffff;
+  color: #e9322f;
   font-weight: 700;
   text-decoration: underline;
   text-transform: uppercase;
@@ -326,48 +322,187 @@
 }
 
 .gs-club__join:focus-visible,
-.gs-club__restart:focus-visible {
+.gs-club__restart:focus-visible,
+.gs-club__progress-btn:focus-visible {
   outline: 2px solid #ffffff;
   outline-offset: 3px;
 }
 
 .gs-club__error {
-  margin: 0;
+  margin: 10px 0 0;
   color: #ff8a8a;
-  font-size: var(--smallText);
   text-align: center;
 }
 
-.gs-club__error[hidden] {
-  display: none;
+/* ---- Progress bar (below the steps, as in v3) ---- */
+.gs-club__progress {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 10px;
+  padding: 0;
+  list-style: none;
 }
 
-@media screen and (min-width: 750px) {
+.gs-club__progress-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+}
+
+.gs-club__progress-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.gs-club__progress-btn:disabled {
+  cursor: default;
+}
+
+.gs-club__progress-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  margin: 0 0 20px;
+  padding: 15px;
+  border: 2px solid #505050;
+  border-radius: 50%;
+  background-color: #060607;
+  color: #d2d2d2;
+  font-family: var(--font-heading-family);
+  font-size: 42px;
+  line-height: 1;
+}
+
+.gs-club__spacer {
+  display: inline-block;
+  width: 125px;
+  height: 5px;
+  margin: 50px 0;
+  background: #505050;
+}
+
+.gs-club__progress-text {
+  margin: 0 0 20px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* Upcoming steps are dimmed; the current step is underlined and shows
+   its icon in place of the number. */
+.gs-club__progress-btn:disabled .gs-club__progress-text {
+  color: #8f8f8f;
+}
+
+.gs-club__progress-item.is-current .gs-club__progress-text {
+  border-bottom-color: #e2e2e2;
+}
+
+.gs-club__progress-item.is-current .gs-club__progress-circle {
+  background-color: transparent;
+  background-image: var(--step-icon);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: var(--step-icon-size, 50%);
+  color: transparent;
+}
+
+/* ---- Mobile ---- */
+@media screen and (max-width: 768px) {
   .gs-club {
-    padding: 40px 0 60px;
-  }
-
-  .gs-club__progress-item {
-    width: 110px;
-  }
-
-  .gs-club__progress-circle {
-    width: 72px;
-    height: 72px;
-    font-size: 3rem;
-  }
-
-  .gs-club__progress-text {
-    font-size: 1.5rem;
+    padding: 25px 15px;
   }
 
   .gs-club__options {
-    gap: 25px;
-    margin: 4rem 0;
+    flex-wrap: wrap;
+    row-gap: 25px;
+    margin: 35px 0;
+  }
+
+  .gs-club__option--gender {
+    width: 75%;
+  }
+
+  .gs-club__label--gender {
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  .gs-club__eyebrow {
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  .gs-club__options--size {
+    grid-template-columns: repeat(auto-fit, calc((90vw - 72px) / 4));
+    gap: 10px 15px;
+  }
+
+  .gs-club__label--size {
+    padding: 15px 10px;
+  }
+
+  .gs-club__size {
+    font-size: 20px;
+    line-height: normal;
+  }
+
+  .gs-club__options--plan {
+    row-gap: 50px;
+  }
+
+  .gs-club__plan-cost {
+    font-size: 36px;
+    line-height: 36px;
+  }
+
+  .gs-club__review-cards {
+    row-gap: 50px;
+  }
+
+  .gs-club__join {
+    font-size: 28px;
+  }
+
+  .gs-club__progress-item {
+    width: 70px;
+  }
+
+  .gs-club__progress-circle {
+    width: 60px;
+    height: 60px;
+    padding: 8px;
+    font-size: 28px;
+  }
+
+  .gs-club__spacer {
+    width: 40px;
+    margin: 28px 0;
+  }
+
+  .gs-club__progress-text {
+    font-size: 14px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .gs-club__step.is-active {
+    animation: none;
+  }
+
   .gs-club__label {
     transition: none;
   }

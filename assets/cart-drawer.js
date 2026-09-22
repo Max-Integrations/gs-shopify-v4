@@ -77,6 +77,12 @@ class CartDrawer extends HTMLElement {
   }
 
   renderContents(parsedState) {
+    // GS: snippets/cart-drawer.liquid puts `is-empty` on <cart-drawer>
+    // itself and component-cart-drawer.css keys the empty layout off
+    // it. Only #CartDrawer (inside) is re-rendered below, so the outer
+    // class must be cleared here or the first add from an empty cart
+    // shows the new items inside the empty-state layout.
+    this.classList.remove('is-empty');
     this.querySelector('.drawer__inner').classList.contains('is-empty') &&
       this.querySelector('.drawer__inner').classList.remove('is-empty');
     this.productId = parsedState.id;

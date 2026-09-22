@@ -1,0 +1,148 @@
+/*
+  ==================================================================
+  Contact form
+  ==================================================================
+  Two-column field rows on desktop, single column on mobile. Inputs
+  use the scheme's foreground for borders and text so the form works
+  on light and dark schemes.
+*/
+
+.gs-cform {
+  padding-top: var(--gs-cform-pad-top, 48px);
+  padding-bottom: var(--gs-cform-pad-bottom, 48px);
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+.gs-cform__inner {
+  max-width: 76rem;
+}
+
+.gs-cform__heading {
+  margin: 0 0 0.6rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.gs-cform__description {
+  margin: 0 0 2.4rem;
+  text-align: center;
+}
+
+.gs-cform__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.gs-cform__status {
+  margin: 0;
+  padding: 1.2rem 1.6rem;
+  border: 1px solid currentColor;
+}
+
+.gs-cform__status--success {
+  color: #1f7a3a;
+  background: rgba(31, 122, 58, 0.08);
+}
+
+.gs-cform__status--error {
+  color: #b3261e;
+  background: rgba(179, 38, 30, 0.08);
+}
+
+.gs-cform__status ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.6rem;
+}
+
+.gs-cform__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.6rem;
+}
+
+.gs-cform__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gs-cform__field label {
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.gs-cform__optional {
+  text-transform: none;
+  letter-spacing: 0;
+  opacity: 0.7;
+}
+
+.gs-cform__field input,
+.gs-cform__field textarea,
+.gs-cform__field select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid rgba(var(--color-foreground), 0.35);
+  border-radius: 0;
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  font: inherit;
+  font-size: 1.6rem;
+}
+
+.gs-cform__field textarea {
+  min-height: 14rem;
+  resize: vertical;
+}
+
+.gs-cform__select {
+  position: relative;
+}
+
+.gs-cform__select select {
+  appearance: none;
+  padding-right: 3.6rem;
+}
+
+.gs-cform__select::after {
+  content: '';
+  position: absolute;
+  right: 1.4rem;
+  top: 50%;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.gs-cform__field input:focus-visible,
+.gs-cform__field textarea:focus-visible,
+.gs-cform__field select:focus-visible {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 2px;
+}
+
+.gs-cform__field input[aria-invalid='true'] {
+  border-color: #b3261e;
+}
+
+.gs-cform__field-error {
+  color: #b3261e;
+}
+
+.gs-cform__actions {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 750px) {
+  .gs-cform__row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

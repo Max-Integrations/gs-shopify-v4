@@ -104,11 +104,13 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
+/* Flex like the tile itself, so .media-content positions the same way
+   whether or not it is wrapped in the whole-tile link. */
 .media-grid-item__link {
   position: absolute;
   inset: 0;
   z-index: 2;
-  display: block;
+  display: flex;
   text-decoration: none;
   color: inherit;
 }
@@ -156,7 +158,10 @@
   flex-direction: column;
   gap: 0.5rem;
   padding: 1.5rem;
-  width: 100%;
+  /* Shrink-wrap the text (capped by content_width) so the position
+     rules below have room to move the box horizontally. */
+  width: fit-content;
+  box-sizing: border-box;
   color: var(--mg-text, #ffffff);
 }
 
@@ -182,20 +187,31 @@
   font-weight: 400;
 }
 
-/* Content position within the tile. */
-.media-grid-item { align-items: center; justify-content: flex-start; }
-
+/* Content position within the tile. Auto margins place a flex item on
+   both axes and work whether the parent is the tile or the link wrapper. */
 .media-content.top-left,
 .media-content.top-center,
-.media-content.top-right { align-self: flex-start; }
+.media-content.top-right { margin-bottom: auto; }
 
 .media-content.center-left,
 .media-content.center,
-.media-content.center-right { align-self: center; }
+.media-content.center-right { margin-top: auto; margin-bottom: auto; }
 
 .media-content.bottom-left,
 .media-content.bottom-center,
-.media-content.bottom-right { align-self: flex-end; }
+.media-content.bottom-right { margin-top: auto; }
+
+.media-content.top-left,
+.media-content.center-left,
+.media-content.bottom-left { margin-right: auto; }
+
+.media-content.top-center,
+.media-content.center,
+.media-content.bottom-center { margin-left: auto; margin-right: auto; }
+
+.media-content.top-right,
+.media-content.center-right,
+.media-content.bottom-right { margin-left: auto; }
 
 /* ---- Button ---- */
 .media-content-button .button,

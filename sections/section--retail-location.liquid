@@ -1,0 +1,204 @@
+{% comment %}
+  ==================================================================
+  RETAIL LOCATION
+  Replaces sections/retail-location-main--deprecated.liquid (itself a
+  port of gs-shopify-v3 sections/retail-location-main.liquid)
+  ==================================================================
+  One store page: back link to the hub, the store title, an optional
+  intro, then two columns - address / phone / hours (and optional
+  notes) on the left, a map on the right. The "In-Store Exclusives"
+  image grid that follows on every store page is a separate images-grid
+  section in the template.
+
+  ------------------------------------------------------------------
+  FIELDS, NOT BLOCKS
+  ------------------------------------------------------------------
+  v3 modelled the three panels as blocks (information / hours / misc)
+  carrying 13 settings, seven of them one-per-weekday. Every store
+  filled the same two blocks the same way. The panels are now plain
+  fields: `address` and `hours` are multi-line textareas (one line per
+  address line / per hours entry), so "Closed Christmas Day" is just
+  another hours line. A panel renders only when its field is filled.
+
+  ------------------------------------------------------------------
+  THE MAP IS A KEYLESS GOOGLE EMBED
+  ------------------------------------------------------------------
+  v3 loaded the Maps JavaScript API with an API key from a theme
+  setting, hardcoded Google's DEMO_MAP_ID, and interpolated the
+  coordinates straight into a JS object literal (one blank field was a
+  syntax error that killed the map). The v4 port kept the script but
+  gated it on `settings.googlemapapi`, which v4 never defined, so the
+  map could never render at all.
+
+  This uses google.com/maps?output=embed in an <iframe>: no key, no
+  script, no billing, no referrer allowlist to fall out of date, and a
+  "Get directions" link beside it. The trade-off is Google's standard
+  pin instead of the custom marker image. Coordinates are checked in
+  Liquid before use; without valid ones the map is skipped and the
+  directions link searches by address instead.
+
+  ------------------------------------------------------------------
+  LIVE DATA QUIRKS (fixed while porting the 21 templates)
+  ------------------------------------------------------------------
+  Fort Hood, Norfolk and El Paso listed Sunday as opening at "pm"
+  ("10:00pm - 5:00pm"); transcribed as am.
+  ==================================================================
+{% endcomment %}
+
+{{ 'section--retail-location.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+
+  assign title = s.title_override | default: page.title
+
+  assign hub_url = '/pages/grunt-style-retail-stores'
+  if s.hub_link != blank
+    assign hub_url = pages[s.hub_link].url | default: hub_url
+  endif
+
+  assign address_lines = s.address | strip | newline_to_br | split: '<br />'
+  assign hours_lines = s.hours | strip | newline_to_br | split: '<br />'
+  assign address_query = s.address | strip | newline_to_br | replace: '<br />', ', ' | strip_html
+
+  assign phone_digits = s.phone | remove: '-' | remove: ' ' | remove: '(' | remove: ')' | remove: '.'
+
+  assign lat = s.latitude | strip
+  assign lng = s.longitude | strip
+  assign lat_num = lat | plus: 0
+  assign lng_num = lng | plus: 0
+  assign has_coords = false
+  if lat != blank and lng != blank and lat_num != 0 and lng_num != 0
+    assign has_coords = true
+  endif
+
+  assign panel_count = 0
+  if s.address != blank or s.phone != blank
+    assign panel_count = panel_count | plus: 1
+  endif
+  if s.hours != blank
+    assign panel_count = panel_count | plus: 1
+  endif
+  if s.notes != blank
+    assign panel_count = panel_count | plus: 1
+  endif
+-%}
+
+<div class="gs-retail color-{{ s.color_scheme | default: 'scheme-4' }}" id="gs-retail-{{ section.id }}">
+  <div class="page-width">
+    <a href="{{ hub_url }}" class="gs-retail__back">&lsaquo; {{ s.hub_link_label | default: 'View Other Stores' }}</a>
+
+    <h1 class="gs-retail__title">{{ title }}</h1>
+
+    {%- if s.intro != blank -%}
+      <div class="gs-retail__intro rte">{{ s.intro }}</div>
+    {%- endif -%}
+
+    <div class="gs-retail__details{% unless has_coords %} gs-retail__details--no-map{% endunless %}">
+      {%- if panel_count > 0 -%}
+        <div class="gs-retail__panels gs-retail__panels--{{ panel_count }}">
+
+          {%- if s.address != blank or s.phone != blank -%}
+            <div class="gs-retail__panel gs-retail__panel--info">
+              <h2 class="gs-retail__panel-title">Store Info</h2>
+              {%- if s.address != blank -%}
+                <address class="gs-retail__address">
+                  {%- for line in address_lines -%}
+                    {%- assign clean = line | strip_html | strip -%}
+                    {%- if clean != blank -%}{{ clean }}{% unless forloop.last %}<br>{% endunless %}{%- endif -%}
+                  {%- endfor -%}
+                </address>
+              {%- endif -%}
+              {%- if has_coords or address_query != blank -%}
+                <a
+                  class="gs-retail__maplink"
+                  href="{% if has_coords %}https://www.google.com/maps/dir/?api=1&destination={{ lat }},{{ lng }}{% else %}https://www.google.com/maps/search/?api=1&query={{ address_query | url_encode }}{% endif %}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Get directions</a>
+              {%- endif -%}
+              {%- if s.phone != blank -%}
+                <p class="gs-retail__phone"><strong>Phone:</strong> <a href="tel:{{ phone_digits }}">{{ s.phone }}</a></p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- if s.hours != blank -%}
+            <div class="gs-retail__panel gs-retail__panel--hours">
+              <h2 class="gs-retail__panel-title">Store Hours</h2>
+              <dl class="gs-retail__hours">
+                {%- for line in hours_lines -%}
+                  {%- assign clean = line | strip_html | strip -%}
+                  {%- if clean == blank -%}{%- continue -%}{%- endif -%}
+                  {%- assign parts = clean | split: ': ' -%}
+                  {%- if parts.size > 1 -%}
+                    {%- assign label = parts[0] -%}
+                    {%- assign value = clean | remove_first: label | remove_first: ': ' -%}
+                    <div class="gs-retail__hours-row">
+                      <dt>{{ label }}</dt>
+                      <dd>{{ value }}</dd>
+                    </div>
+                  {%- else -%}
+                    <div class="gs-retail__hours-row gs-retail__hours-row--note">
+                      <dd>{{ clean }}</dd>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </dl>
+            </div>
+          {%- endif -%}
+
+          {%- if s.notes != blank -%}
+            <div class="gs-retail__panel gs-retail__panel--notes">
+              <div class="rte">{{ s.notes }}</div>
+            </div>
+          {%- endif -%}
+
+        </div>
+      {%- endif -%}
+
+      {%- if has_coords -%}
+        <div class="gs-retail__map">
+          <iframe
+            src="https://www.google.com/maps?q={{ lat }},{{ lng }}&z={{ s.map_zoom | default: 14 }}&output=embed"
+            title="Map showing {{ title | strip_html | escape }}"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Retail location",
+  "tag": "section",
+  "class": "gs-retail-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    { "type": "text", "id": "title_override", "label": "Title", "info": "Empty uses the page title." },
+    { "type": "richtext", "id": "intro", "label": "Intro" },
+    { "type": "page", "id": "hub_link", "label": "Stores hub page", "info": "Empty links to /pages/grunt-style-retail-stores." },
+    { "type": "text", "id": "hub_link_label", "label": "Back link text", "default": "View Other Stores" },
+    { "type": "header", "content": "Store info" },
+    { "type": "textarea", "id": "address", "label": "Address", "info": "One line per address line." },
+    { "type": "text", "id": "phone", "label": "Phone" },
+    { "type": "textarea", "id": "hours", "label": "Hours", "info": "One entry per line, e.g. \"Monday: 10:00am - 8:00pm\". A line without a colon-space shows as a note, e.g. \"Closed Christmas Day\"." },
+    { "type": "richtext", "id": "notes", "label": "Notes", "info": "Optional third panel, e.g. parking." },
+    { "type": "header", "content": "Map" },
+    { "type": "text", "id": "latitude", "label": "Latitude" },
+    { "type": "text", "id": "longitude", "label": "Longitude" },
+    { "type": "range", "id": "map_zoom", "label": "Zoom", "min": 8, "max": 18, "step": 1, "default": 14 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-4" }
+  ],
+  "presets": [
+    { "name": "Retail location" }
+  ]
+}
+{% endschema %}

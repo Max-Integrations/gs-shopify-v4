@@ -1,0 +1,132 @@
+{
+  "sections": {
+    "main": {
+      "type": "section--retail-location",
+      "settings": {
+        "title_override": "Opry Mills Retail Store",
+        "intro": "<p>Opry Mills is a super-regional shopping mall in Nashville, Tennessee, United States.Opry Mills features more than 200 stores, paired with unique family dining and entertainment options. Its impressive roster of stores, many of which can only be found at Opry Mills in the Nashville area. Guests will also enjoy dining and entertainment. In true Music City fashion, live performances are regularly provided on Opry Mills' Entertainment Stage.</p>",
+        "hub_link": "grunt-style-retail-stores",
+        "hub_link_label": "View Other Stores",
+        "address": "108 Opry Mills Dr Suite 310\nNashville, TN 37214",
+        "phone": "615-234-2026",
+        "hours": "Monday: 10:00am - 8:00pm\nTuesday: 10:00am - 8:00pm\nWednesday: 10:00am - 8:00pm\nThursday: 10:00am - 8:00pm\nFriday: 10:00am - 8:00pm\nSaturday: 10:00am - 8:00pm\nSunday: 11:00am - 7:00pm",
+        "notes": "",
+        "latitude": "36.2053734519652",
+        "longitude": "-86.69214358856603",
+        "map_zoom": 14,
+        "color_scheme": "scheme-4"
+      }
+    },
+    "images_grid_TjxEbG": {
+      "type": "images-grid",
+      "blocks": {
+        "image_c9wKMq": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/GS5932_-_Men_s_Blue_Brass_Country_Tee_-_Black_WEB_READY-2023_frt_bk-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_BzjBFT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS4774_STANDARD_WEB_READY-front_2_-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_q4R3bi": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/GS4692_STANDARD_WEB_READY-2021-front_1_-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_WDh6qk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS7084_WEB-READY_FRONT.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_QapzGG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS6693_WEB_READY_FRONT.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_LCFtBK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS7763_WEB-READY_STACKED.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_c9wKMq",
+        "image_BzjBFT",
+        "image_q4R3bi",
+        "image_WDh6qk",
+        "image_QapzGG",
+        "image_LCFtBK"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "show_carousel": true,
+        "card_grid": false,
+        "card_inner_space": false,
+        "item_per_row_desktop": 5,
+        "item_per_row_mobile": "1",
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "center",
+        "vertical_grid_image_size": "auto",
+        "heading": "In-Store Exclusives",
+        "highlight_style": "underline",
+        "bg__color": "solid",
+        "heading_size": "h3",
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "card_bg": "",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 50,
+        "bottom_space_desktop": 50,
+        "top_space_mobile": 10,
+        "bottom_space_mobile": 10,
+        "section_width": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "images_grid_TjxEbG"
+  ]
+}

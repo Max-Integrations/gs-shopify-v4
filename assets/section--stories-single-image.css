@@ -1,0 +1,262 @@
+/*
+  ==================================================================
+  Stories (single image)
+  ==================================================================
+  Horizontal strip of tall photo tiles: four per view on desktop, one
+  on mobile, scroll-snap with one-tile arrow steps. Tile look comes
+  from v3's custom-theme-styles.css: 60% black scrim, circular title
+  badge, description revealed on hover/focus.
+*/
+
+.gs-stories {
+  padding-top: var(--st-pad-top-mobile, 40px);
+  padding-bottom: var(--st-pad-bottom-mobile, 40px);
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  overflow: hidden;
+}
+
+.gs-stories .section-title {
+  margin-bottom: 30px;
+}
+
+.gs-stories .section-heading {
+  margin: 0;
+}
+
+.gs-stories .section-desc {
+  margin: 10px 0 0;
+}
+
+.gs-stories .text-left { text-align: left; }
+.gs-stories .text-center { text-align: center; }
+.gs-stories .text-right { text-align: right; }
+
+.gs-stories .line-marker {
+  position: relative;
+  display: inline-block;
+}
+
+.gs-stories .line-marker.highlight-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.1em;
+  height: 0.12em;
+  background: currentColor;
+}
+
+/* ---- Scroller + track ---- */
+.gs-st__scroller {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gs-st__track {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gs-st__track::-webkit-scrollbar { display: none; }
+
+.stories-grid-block {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 0;
+  height: var(--st-height-mobile, 300px);
+  margin: 0;
+  padding: 0;
+  scroll-snap-align: start;
+  outline: none;
+}
+
+.stories-grid-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.stories-grid-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: rgb(var(--color-background));
+}
+
+.stories-grid-image .media {
+  position: absolute;
+  inset: 0;
+}
+
+.stories-grid-image img,
+.stories-grid-image .placeholder-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 1s ease;
+}
+
+.stories-grid-item:hover img,
+.stories-grid-block:focus-within img {
+  transform: scale(1.1);
+}
+
+/* 60% scrim, lifted on hover */
+.stories-grid-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+  transition: background 0.3s ease;
+}
+
+.stories-grid-item:hover .stories-grid-image::before,
+.stories-grid-block:focus-within .stories-grid-image::before {
+  background: rgba(0, 0, 0, 0);
+}
+
+/* ---- Content ---- */
+.stories-grid-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 25px 5%;
+  overflow-y: auto;
+  color: var(--st-text-color, #ffffff);
+  text-align: center;
+}
+
+.stories-grid-content-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 130px;
+  height: 130px;
+  margin: 200px auto 0;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--st-heading-color, #ffffff);
+  font-size: 32px;
+  font-weight: 700;
+  transition: all 1s ease;
+}
+
+.stories-grid-item:hover .stories-grid-content-heading,
+.stories-grid-block:focus-within .stories-grid-content-heading {
+  margin: 50px auto;
+  background: #5f5e3b;
+  box-shadow: 0 0 0 10px #000000;
+}
+
+.stories-grid-content-description {
+  padding-top: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease 0.2s, visibility 0.3s ease 0.2s;
+}
+
+.stories-grid-content-description p {
+  margin: 0;
+  color: var(--st-text-color, #ffffff);
+}
+
+.stories-grid-item:hover .stories-grid-content-description,
+.stories-grid-block:focus-within .stories-grid-content-description {
+  opacity: 1;
+  visibility: visible;
+}
+
+.stories-grid-content-button {
+  padding-top: 15px;
+}
+
+/* ---- Nav ---- */
+.gs-st__nav {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(var(--sliderArrowBackground, var(--color-foreground)));
+  color: rgb(var(--sliderArrowColor, var(--color-background)));
+  box-shadow: 0 0 6px #0000001f;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.gs-st__nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.gs-st__nav:focus-visible,
+.stories-grid-block:focus-visible {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 2px;
+}
+
+/* ---- Breakpoints ---- */
+@media screen and (min-width: 768px) {
+  .gs-stories {
+    padding-top: var(--st-pad-top, 70px);
+    padding-bottom: var(--st-pad-bottom, 70px);
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .stories-grid-block {
+    flex-basis: 24%;
+    width: 24%;
+    height: var(--st-height, 600px);
+    padding: 0 0.5%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .gs-st--visibility-large { display: none !important; }
+}
+
+@media screen and (min-width: 768px) {
+  .gs-st--visibility-small { display: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stories-grid-image img,
+  .stories-grid-image::before,
+  .stories-grid-content-heading,
+  .stories-grid-content-description,
+  .gs-st__nav {
+    transition: none;
+  }
+}

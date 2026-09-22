@@ -22,12 +22,13 @@
   ------------------------------------------------------------------
   REVISION 2026-08-14 - EVEN CARDS, AND A REAL QUICK VIEW
   ------------------------------------------------------------------
-  1. THE RATING NOW OCCUPIES A FIXED SLOT.
-     gs-reviews renders nothing for a product with no reviews, so a card
-     with a rating was one line taller than one without and the buttons
-     below sat at different heights. The rating lives in a slot with a
-     reserved height, so every card's content is the same shape and the
-     buttons line up without needing `margin-top: auto` to force it.
+  1. ONE RESERVED CONTENT REGION, BUTTON PINNED BELOW IT.
+     gs-reviews and the swatch snippet render nothing when a product has
+     no reviews / no colourways, so cards were different heights and the
+     buttons below sat out of line. Title, rating, price and swatches now
+     sit in .product-card-content, which has a reserved min-height
+     (--gs-card-content-height in gs-card-product.css); the button is
+     pinned to the card's bottom edge with `margin-top: auto`.
 
   2. THE QUICK VIEW BUTTON DOES SOMETHING NOW.
      It said QUICK VIEW and was a plain link to the product page - the
@@ -282,6 +283,12 @@
     </div>
 
     <div class="product-card-detail">
+      {%- comment -%}
+        Reserved region between the image and the button. Its min-height
+        (--gs-card-content-height in gs-card-product.css) is what keeps
+        card heights equal; the button is pinned below it.
+      {%- endcomment -%}
+      <div class="product-card-content">
       {%- if show_meta_row -%}
         <div class="product-card-info">
           {%- if show_vendor -%}
@@ -325,7 +332,9 @@
         {%- endif -%}
 
         {%- if complementary != true and show_swatch_row and showSwatches -%}
-          {%- render 'gs-product-colors-option', cardProduct: cardProduct -%}
+          <div class="product-card-swatches">
+            {%- render 'gs-product-colors-option', cardProduct: cardProduct -%}
+          </div>
         {%- endif -%}
 
         {%- if compareTrue and show_compare and cardProduct != blank -%}
@@ -347,6 +356,10 @@
           </div>
         {%- endif -%}
 
+      {%- endunless -%}
+      </div>
+
+      {%- unless hideContent -%}
         {%- if show_quickview and quickview_style == 'button' and cardProduct != blank and quickViewtrue -%}
           <div class="product-quickview-button">
             {%- if enableQuickAdd -%}

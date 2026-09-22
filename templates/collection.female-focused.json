@@ -6,9 +6,10 @@
         "tile_1": {
           "type": "image",
           "settings": {
-            "heading": "Headwear",
+            "heading": "Hoodies & Long Sleeves",
             "title_font_desktop": 0,
             "title_font_mobile": 0,
+            "collection": "womens-hoodies-and-sweatshirts",
             "btn_text": "",
             "btn_link": "",
             "button_as_link": false,
@@ -18,79 +19,109 @@
         "tile_2": {
           "type": "image",
           "settings": {
-            "heading": "Basics",
+            "image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8546_Women_sPregamingHelpsV-Neck-Black.jpg",
+            "heading": "Tees & Tanks",
             "title_font_desktop": 0,
             "title_font_mobile": 0,
+            "collection": "womens-graphic-tees-and-tanks",
             "btn_text": "",
             "btn_link": "",
             "button_as_link": false,
-            "button_size": "small",
-            "collection": "mens-basics"
+            "button_size": "small"
           }
         },
         "tile_3": {
           "type": "image",
           "settings": {
-            "heading": "Tees & Tanks",
+            "heading": "Outerwear",
             "title_font_desktop": 0,
             "title_font_mobile": 0,
+            "collection": "womens-outerwear",
             "btn_text": "",
             "btn_link": "",
             "button_as_link": false,
-            "button_size": "small",
-            "collection": "mens-graphic-tees-and-tanks"
+            "button_size": "small"
           }
         },
         "tile_4": {
           "type": "image",
           "settings": {
-            "heading": "Hoodies & Long Sleeve",
+            "heading": "Bottoms",
             "title_font_desktop": 0,
             "title_font_mobile": 0,
+            "collection": "womens-bottoms",
             "btn_text": "",
             "btn_link": "",
             "button_as_link": false,
-            "button_size": "small",
-            "collection": "mens-hoodies-and-sweatshirts"
+            "button_size": "small"
           }
         },
         "tile_5": {
           "type": "image",
           "settings": {
-            "heading": "Bottoms",
+            "heading": "Basics",
             "title_font_desktop": 0,
             "title_font_mobile": 0,
+            "collection": "womens-basics",
             "btn_text": "",
             "btn_link": "",
             "button_as_link": false,
-            "button_size": "small",
-            "collection": "mens-bottoms"
+            "button_size": "small"
           }
         },
         "tile_6": {
           "type": "image",
           "settings": {
-            "heading": "Button Downs & Polos",
+            "heading": "Slouchy T-Shirts",
             "title_font_desktop": 0,
             "title_font_mobile": 0,
+            "collection": "slouchy-tees",
             "btn_text": "",
             "btn_link": "",
             "button_as_link": false,
-            "button_size": "small",
-            "collection": "button-downs-polos"
+            "button_size": "small"
           }
         },
         "tile_7": {
           "type": "image",
           "settings": {
-            "heading": "Outerwear",
+            "image": "shopify://shop_images/BlankPoster_2000x2000_V9_GS6803_AgilityLowImpactSportsBra-GrenadeParadise.jpg",
+            "heading": "More Tops",
             "title_font_desktop": 0,
             "title_font_mobile": 0,
+            "collection": "womens-more-tops",
             "btn_text": "",
             "btn_link": "",
             "button_as_link": false,
-            "button_size": "small",
-            "collection": "mens-outerwear"
+            "button_size": "small"
+          }
+        },
+        "tile_8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS7071_I_dSmokeThatMeshHat__1.jpg",
+            "heading": "Headwear",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "collection": "headwear",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "small"
+          }
+        },
+        "tile_9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Her-Accessories-BlankPoster_2000X2000_GS5363-Beautiful_DangerousSticker.jpg",
+            "heading": "Accessories",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "collection": "accessories",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "small"
           }
         }
       },
@@ -101,7 +132,9 @@
         "tile_4",
         "tile_5",
         "tile_6",
-        "tile_7"
+        "tile_7",
+        "tile_8",
+        "tile_9"
       ],
       "settings": {
         "section_visibility": "always",

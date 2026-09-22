@@ -1,0 +1,109 @@
+{% comment %}
+  ==================================================================
+  BLOCK: HEADING (generic theme block)
+  ==================================================================
+  One heading line, nested inside any section or block that accepts
+  it. `size` is a Dawn heading class, `tag` is the HTML element so SEO
+  and look can differ. Colour and font sizes are optional overrides
+  written as custom properties on the element; when blank the parent's
+  --mg-heading (or inherited colour) applies.
+
+  Shopify bundles {% stylesheet %} into compiled_assets/styles.css,
+  which loads BEFORE Dawn's base.css, so the rules here cannot beat
+  Dawn's .h1-.h6 classes on their own. Sections that host this block
+  restate the rules under their own selector (see
+  assets/section--media-grid.css) so overrides win.
+  ==================================================================
+{% endcomment %}
+
+{%- liquid
+  assign s = block.settings
+  assign tag = s.tag | default: 'h2'
+  assign custom_size = false
+  if s.font_size_desktop > 0 or s.font_size_mobile > 0
+    assign custom_size = true
+  endif
+-%}
+
+{%- if s.text != blank or request.design_mode -%}
+  <{{ tag }}
+    class="gs-block-heading {{ s.size | default: 'h2' }}{% if s.alignment != 'inherit' and s.alignment != blank %} gs-block-heading--{{ s.alignment }}{% endif %}{% if custom_size %} gs-block-heading--custom-size{% endif %}"
+    style="
+      {%- if s.color != blank and s.color != 'rgba(0,0,0,0)' %}--gs-heading-color: {{ s.color }};{% endif -%}
+      {%- if s.font_size_desktop > 0 %}--gs-heading-size-d: {{ s.font_size_desktop }}px;{% endif -%}
+      {%- if s.font_size_mobile > 0 %}--gs-heading-size-m: {{ s.font_size_mobile }}px;{% endif -%}
+    "
+    {{ block.shopify_attributes }}
+  >
+    {{- s.text | default: '&nbsp;' -}}
+  </{{ tag }}>
+{%- endif -%}
+
+{% stylesheet %}
+  .gs-block-heading {
+    margin: 0;
+    color: var(--gs-heading-color, var(--mg-heading, inherit));
+  }
+  .gs-block-heading--left { text-align: left; }
+  .gs-block-heading--center { text-align: center; }
+  .gs-block-heading--right { text-align: right; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Heading",
+  "settings": [
+    { "type": "inline_richtext", "id": "text", "label": "Text", "default": "Heading" },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "Size",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "tag",
+      "label": "HTML tag",
+      "info": "For SEO only.",
+      "options": [
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" },
+        { "value": "h3", "label": "h3" },
+        { "value": "h4", "label": "h4" },
+        { "value": "h5", "label": "h5" },
+        { "value": "h6", "label": "h6" },
+        { "value": "p", "label": "p (not a heading)" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "inherit", "label": "Inherit" },
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "inherit"
+    },
+    { "type": "header", "content": "Overrides", "info": "Empty or 0 inherits from the section." },
+    { "type": "color", "id": "color", "label": "Color" },
+    { "type": "range", "id": "font_size_desktop", "label": "Font size (desktop)", "min": 0, "max": 96, "step": 2, "unit": "px", "default": 0 },
+    { "type": "range", "id": "font_size_mobile", "label": "Font size (mobile)", "min": 0, "max": 72, "step": 2, "unit": "px", "default": 0 }
+  ],
+  "presets": [
+    { "name": "Heading" }
+  ]
+}
+{% endschema %}

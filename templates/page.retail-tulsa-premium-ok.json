@@ -1,0 +1,82 @@
+{
+  "sections": {
+    "main": {
+      "type": "section--retail-location",
+      "settings": {
+        "title_override": "Tulsa Premium Outlets Retail Store",
+        "intro": "",
+        "hub_link": "grunt-style-retail-stores",
+        "hub_link_label": "View Other Stores",
+        "address": "801 East Outlet Dr. Suite #3108\nJenks, OK 74037",
+        "phone": "918-528-8884",
+        "hours": "Monday: 10:00am - 8:00pm\nTuesday: 10:00am - 8:00pm\nWednesday: 10:00am - 8:00pm\nThursday: 10:00am - 8:00pm\nFriday: 10:00am - 8:00pm\nSaturday: 10:00am - 8:00pm\nSunday: 11:00am - 6:00pm",
+        "notes": "",
+        "latitude": "36.01342205686228",
+        "longitude": "-95.96181287683565",
+        "map_zoom": 14,
+        "color_scheme": "scheme-4"
+      }
+    },
+    "images_grid_TjxEbG": {
+      "type": "images-grid",
+      "blocks": {
+        "image_ppt7rR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS7768_WEB-READY_STACKED.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_c9wKMq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS6997_Big_Drilling_Energy_T-Shirt_-_Cardinal_WEB_READY-2023-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_ppt7rR",
+        "image_c9wKMq"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "show_carousel": true,
+        "card_grid": false,
+        "card_inner_space": false,
+        "item_per_row_desktop": 5,
+        "item_per_row_mobile": "1",
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "center",
+        "vertical_grid_image_size": "auto",
+        "heading": "In-Store Exclusives",
+        "highlight_style": "underline",
+        "bg__color": "solid",
+        "heading_size": "h3",
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "card_bg": "",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 50,
+        "bottom_space_desktop": 50,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40,
+        "section_width": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "images_grid_TjxEbG"
+  ]
+}

@@ -1,1 +1,918 @@
-{"sections":{"main":{"type":"main-page","settings":{"desktop_height":"200px","mobile_height":"100px","heading_size":"h1","seo_heading":"h1","heading_alignment":"text-center","page_content":true,"color_scheme":"scheme-4","banner_background_color":"#000000","top_space_desktop":0,"bottom_space_desktop":0,"top_space_mobile":0,"bottom_space_mobile":0}},"join":{"type":"club-join-steps","settings":{"club_step_1_header":"Join Club Grunt Style","club_step_2_header":"What Size Fits You Best?","club_step_3_header":"Select Your Plan","club_step_4_header":"Review Your Plan","step_labels":"Patriot,Size,Plan,Review","gender_eyebrow":"Patriotic","mens_label":"Male","womens_label":"Female","sizes":"Small,Medium,Large,XL,2XL,3XL,4XL","womens_excluded_sizes":"3XL,4XL","product_handle_prefix":"club","monthly_label":"Monthly","monthly_price":"$25.00","monthly_note":"First Month: $25.00","monthly_selling_plan_id":"1963917363","annual_label":"Annual","annual_price":"$255.00","annual_saving":"15% OFF","annual_was_price":"$300.00","annual_selling_plan_id":"1963884595","club_plan_select_disclaimer":"Notice: All monthly and prepaid subscriptions are set to automatically renew. You will be contacted via email prior to a renewal.","review_fit_label":"Fit","review_size_label":"Size","review_plan_label":"Plan","join_label":"Join Now","restart_label":"Start Over"}},"benefits":{"type":"multicolumn-with-content-hover","blocks":{"benefit_shirt":{"type":"content_card","settings":{"card_heading":"<p><strong>A NEW SHIRT EVERY MONTH<\/strong><\/p>","card_subheading":"<p>EXCLUSIVE DESIGNS<\/p>","card_hover_description":"<p>Members-only designs you cannot buy anywhere else, shipped straight to your door every month.<\/p>","card_cta_text":"","open_in_new_window":false}},"benefit_shipping":{"type":"content_card","settings":{"card_heading":"<p><strong>FREE SHIPPING<\/strong><\/p>","card_subheading":"<p>ON EVERY ORDER<\/p>","card_hover_description":"<p>Free shipping on every order you place while your membership is active. No minimum.<\/p>","card_cta_text":"","open_in_new_window":false}},"benefit_flex":{"type":"content_card","settings":{"card_heading":"<p><strong>PAUSE, SKIP OR CANCEL<\/strong><\/p>","card_subheading":"<p>NO COMMITMENT<\/p>","card_hover_description":"<p>Manage your membership on your terms. Pause a month, skip a drop, or cancel any time.<\/p>","card_cta_text":"","open_in_new_window":false}}},"block_order":["benefit_shirt","benefit_shipping","benefit_flex"],"settings":{"section_visibility":"always","container_width":"lg","layout_style":"grid","number_cards_per_view_row_desktop":"3","number_cards_per_view_row_mobile":"1","section_heading":"<h2><strong>WHAT YOU GET<\/strong><\/h2>","heading_font_size_desktop":32,"heading_font_size_mobile":24,"heading_alignment":"center","card_content_alignment":"center","bg_image_opacity_overlay":75,"card_cta_style":"button","bold_card_cta_text":true,"card_cta_border_size":2,"card_heading_font_size_desktop":18,"card_heading_font_size_mobile":20,"card_subheading_font_size_desktop":14,"card_subheading_font_size_mobile":14,"card_description_font_size_desktop":16,"card_description_font_size_mobile":14,"card_cta_font_size_desktop":14,"card_cta_font_size_mobile":12,"section_heading_color":"#000000","card_description_text_color":"#ffffff","card_description_bg_color":"#000000","card_heading_color":"#000000","card_subheading_color":"#5c5c5c","card_cta_text_color":"#000000","card_cta_bg_color":"rgba(0,0,0,0)","card_cta_border_color":"#000000","section_spacing_top_bottom_desktop":40,"section_spacing_top_bottom_mobile":25,"section_heading_spacing_top_bottom_desktop":20,"section_heading_spacing_top_bottom_mobile":10,"card_row_column_gap_desktop":10,"card_row_column_gap_mobile":16,"card_content_padding_desktop":10,"card_content_padding_mobile":10,"card_content_spacing_desktop":0,"card_content_spacing_mobile":0,"card_cta_top_bottom_spacing_desktop":2,"card_cta_top_bottom_spacing_mobile":6,"card_cta_left_right_spacing_desktop":18,"card_cta_left_right_spacing_mobile":18}}},"order":["main","join","benefits"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-4",
+        "banner_background_color": "#000000",
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0
+      },
+      "disabled": true
+    },
+    "rich_text_RBF9Ew": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_KJiMjq": {
+          "type": "heading",
+          "settings": {
+            "heading": "<em>Patriotic T-Shirt Subscription</em>",
+            "heading_size": "h2"
+          }
+        },
+        "text_yq3QCm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Join <strong>America’s #1 T-Shirt Club</strong> — where loyalty pays off.<br/></p><p><strong>Your Monthly Membership Includes:</strong></p><ul><li>One Exclusive Shirt & Sticker Delivered Monthly</li><li>Free Shipping</li><li>10% Off All Orders</li><li>Access to <a href=\"https://www.facebook.com/groups/clubgruntstyle\" target=\"_blank\" title=\"https://www.facebook.com/groups/clubgruntstyle\">Members-Only Community</a></li><li>Access to <a href=\"/collections/club-grunt-style\" target=\"_blank\" title=\"/collections/club-grunt-style\">Club-Only Products</a> & Content</li><li>Early Access to Sales & New Drops</li><li>Cancel, Skip, or Pause Anytime</li></ul><p><strong>Plus, You’re Auto-Enrolled in Rewards:</strong></p><ul><li>5% Store Credit Back on Every Purchase</li><li>Birthday Perks</li><li>One-Time Bonus: 10% Off a Silver or Gold Rewards Membership.</li></ul>"
+          }
+        },
+        "button_pjGdb4": {
+          "type": "button",
+          "settings": {
+            "button_label": "JOIN CLUB GRUNT STYLE",
+            "button_link": "/pages/club-grunt-style#club-grunt-join-now",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_KJiMjq",
+        "text_yq3QCm",
+        "button_pjGdb4"
+      ],
+      "custom_css": [
+        ".rich-text__blocks { max-width: 750px; }"
+      ],
+      "settings": {
+        "section_visibility": "small",
+        "desktop_content_position": "right",
+        "content_alignment": "left",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "images_grid_EnffGY": {
+      "type": "images-grid",
+      "blocks": {
+        "image_gqj887": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Animated_Join-Page-Key-Image_600x600_V1_Acquisition_Version2.gif",
+            "heading": "",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_NzbjVQ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Join_Page_Key_Image_600x600_Club_Monthly_Tee-_OCTOBER.jpg",
+            "heading": "",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_gqj887",
+        "image_NzbjVQ"
+      ],
+      "settings": {
+        "section_visibility": "small",
+        "show_carousel": false,
+        "card_grid": false,
+        "card_inner_space": false,
+        "item_per_row_desktop": 5,
+        "item_per_row_mobile": "1",
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "left",
+        "vertical_grid_image_size": "auto",
+        "heading": "",
+        "highlight_style": "underline",
+        "bg__color": "gradient",
+        "heading_size": "h3",
+        "heading_font_desktop": 0,
+        "heading_font_mobile": 0,
+        "seo_heading": "h2",
+        "heading_alignment": "text-left",
+        "card_bg": "",
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 60,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 20
+      }
+    },
+    "image_with_text_carousel_LEPPVj": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "<em>Patriotic T-Shirt Subscription</em>",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Join <strong>America’s #1 T-Shirt Club</strong> — where loyalty pays off.<br/></p><p><strong>Your Monthly Membership Includes:</strong></p><ul><li>One Exclusive Shirt & Sticker Delivered Monthly</li><li>Free Shipping</li><li>10% Off All Orders</li><li>Access to <a href=\"https://www.facebook.com/groups/clubgruntstyle\" target=\"_blank\" title=\"https://www.facebook.com/groups/clubgruntstyle\">Members-Only Community</a></li><li>Access to <a href=\"/collections/club-grunt-style\" target=\"_blank\" title=\"/collections/club-grunt-style\">Club-Only Products</a> & Content</li><li>Early Access to Sales & New Drops</li><li>Cancel, Skip, or Pause Anytime</li></ul><p><strong>Plus, You’re Auto-Enrolled in Rewards:</strong></p><ul><li>5% Store Credit Back on Every Purchase</li><li>Birthday Perks</li><li>One-Time Bonus: 10% Off a Silver or Gold Rewards Membership.</li></ul>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Join Club Grunt Style",
+            "button_link": "/pages/club-grunt-style#club-grunt-join-now",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "custom_css": [
+        ".image-with-text__media img { object-fit: contain; }",
+        ".image-with-text__text p { margin: 1px 0; }"
+      ],
+      "settings": {
+        "section_visibility": "large",
+        "image": "shopify://shop_images/Join_Page_Key_Image_600x600_Club_Monthly_Tee-_OCTOBER.jpg",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "zoom-in",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "multi_column_x3UMT8": {
+      "type": "multicolumn",
+      "blocks": {
+        "icon_with_text_CtahD3": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Custom_Asset_2000x1499_Club_Dec_1_2024_Logo_Change_-_Evergreen_Assets-min.png",
+            "title": "<strong>JOIN THE CLUB</strong>",
+            "text": "<p>Join before the end of the month to get next month's shirt.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_RtFzBt": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/gs-club-how-it-works-exclusive-shirt-white-silhouette-min.png",
+            "title": "<strong>GET YOUR GEAR</strong>",
+            "text": "<p>New exclusive tee ships monthly. Skip, pause, or cancel anytime.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_QWFRnX": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/gs-club-how-it-works-killer-benefits-white-stars-min.png",
+            "title": "<strong>STACK YOUR PERKS</strong>",
+            "text": "<p>Enjoy free shipping, Club-only drops, and member-only deals.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_VDMnEP": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Icon_2000x2000_Loyalty-min_896e35f1-6884-457b-883c-1abf283eba94.png",
+            "title": "<strong>INSTANT REWARDS</strong>",
+            "text": "<p>Get 5% back in store credit on every order.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_with_text_CtahD3",
+        "icon_with_text_RtFzBt",
+        "icon_with_text_QWFRnX",
+        "icon_with_text_VDMnEP"
+      ],
+      "custom_css": [
+        ".multicolumn-card__info h3 { color: #dac126; font-size: 20px; margin-bottom: 1rem; }",
+        ".multicolumn-card__image-wrapper img { object-fit: contain; }"
+      ],
+      "settings": {
+        "title": "<em><strong>HOW IT WORKS</strong></em>",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-4",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 32,
+        "padding_bottom": 16
+      }
+    },
+    "rich_text_fQFGNk": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_UVeGhr": {
+          "type": "heading",
+          "settings": {
+            "heading": "<em><strong>EXCLUSIVE CLUB DESIGNS</strong></em>",
+            "heading_size": "h2"
+          }
+        },
+        "text_xnwf86": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Experience exclusive member-only designs with Club Grunt Style Graphic Tees—crafted from a premium 60% cotton, 40% polyester blend for superior comfort and durability. Enjoy a tagless, ribbed finish for a sharp look, all designed in the USA. Easy-care and machine washable, these shirts deliver all-day wear you won’t find anywhere else.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_UVeGhr",
+        "text_xnwf86"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 12,
+        "padding_bottom": 0
+      }
+    },
+    "images_grid_tDVVmL": {
+      "type": "images-grid",
+      "blocks": {
+        "image_TcKqcP": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS1026_WEB-READY_STACKED-MENS.png",
+            "heading": "OCTOBER 2026",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": true,
+            "button_size": "large"
+          }
+        },
+        "image_EeXciN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0926_WEB-READY_FRONT-MEN.png",
+            "heading": "SEPTEMBER 2026",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_7XQ3BR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0826_WEB-READY_MEN_STACKED.png",
+            "heading": "AUGUST 2026",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_GxazFA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0726_WEB-READY_MEN_STACKED.png",
+            "heading": "JULY 2026",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_c6xbjV": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0626_WEB-READY_FRONT-MENS.png",
+            "heading": "JUNE 2026",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_mCayDa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0526_WEB-READY_FRONT-MENS.jpg",
+            "heading": "MAY 2026",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/club-grunt-style-may-2026-mens",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_pnjEDi": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0426_WEB-READY_STACKED-MENS.jpg",
+            "heading": "APRIL 2026",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/club-grunt-style-april-2026-mens",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_cEVFhQ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0326_WEB-READY_FRONT-MENS.jpg",
+            "heading": "MARCH 2026",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/2026-march-club-mens-bite-me",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_4LXB4g": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0226_WEB-READY_FRONT-MENS.jpg",
+            "heading": "FEBRUARY 2026",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/club-grunt-style-february-2026-mens",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_8b73Xj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0126_WEB-READY_STACKED-MENS.png",
+            "heading": "JANUARY 2026",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/club-grunt-style-january-2026-mens",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_DeFrmn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS1225_WEB-READY_FRONT_MENS.jpg",
+            "heading": "DECEMBER 2025",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/2025-december-club-mens-filthy-animal",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_UKHyVz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS1125_WEB-READY_STACKED_MENS_4ff0ad7b-648d-4d9d-9b41-5524b9d9a5b0.jpg",
+            "heading": "NOVEMBER 2025",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/2025-november-club-mens-no-mercy",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_pgJcxc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS1025_WEB-READY_STACKED.jpg",
+            "heading": "OCTOBER 2025",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/2025-october-club-mens-gourd-of-war",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_jkQYBf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0925_WEB-READY_FRONT.png",
+            "heading": "SEPTEMBER 2025",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/club-grunt-style-september-2025-mens",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_HDfQxW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0825-WEB-READY-STACK.png",
+            "heading": "AUGUST 2025",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/2025-august-club-mens",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_LbYEyC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0725_WEB-READY_STACKED.png",
+            "heading": "JULY 2025",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/2025-july-club-mens-the-reapers-price",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_nPaCWq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0625_WEB_READY_FRONT_1.png",
+            "heading": "JUNE 2025",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/club-grunt-style-june-2025-mens",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_nNFTkc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0525_WEB-READY_STACK_2.png",
+            "heading": "May 2025",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/2025-may-club-mens-honor-and-glory-tribute",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_gNYnbn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0425_WEB-READY_FRONT_1.png",
+            "heading": "April 2025",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/club-grunt-style-april-2025-mens",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_LGjfWc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0325_FRONT_MENS.png",
+            "heading": "March 2025",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/club-grunt-style-march-2025-mens",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_AGeRkb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0225_-_February_2025_Club_Shirt_WEB_READY-2023_M_FRT_BK_1_-min.jpg",
+            "heading": "February 2025",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/2025-february-club-mens-dont-tread-rattler",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_KwF9tH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS0125-WEBREADY-MENS-STACK.png",
+            "heading": "January 2025",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/2025-january-club-mens-patriot-eagle",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_6nBbEt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS1224_WEB_READY_FRONT.png",
+            "heading": "December 2024",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/club-grunt-style-december-2024-mens",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_DDFyKW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS1124-NovemberClubGSShirt_WEB_READY-2023FRTBKM_021a7402-45a3-41cc-a47f-5c0735a571d0.png",
+            "heading": "November 2024",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/club-grunt-style-november-2024-mens",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_UqRbk4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CGS1024-WEBREADY-STACK.png",
+            "heading": "October 2024",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://products/club-grunt-style-october-2024-mens",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_TcKqcP",
+        "image_EeXciN",
+        "image_7XQ3BR",
+        "image_GxazFA",
+        "image_c6xbjV",
+        "image_mCayDa",
+        "image_pnjEDi",
+        "image_cEVFhQ",
+        "image_4LXB4g",
+        "image_8b73Xj",
+        "image_DeFrmn",
+        "image_UKHyVz",
+        "image_pgJcxc",
+        "image_jkQYBf",
+        "image_HDfQxW",
+        "image_LbYEyC",
+        "image_nPaCWq",
+        "image_nNFTkc",
+        "image_gNYnbn",
+        "image_LGjfWc",
+        "image_AGeRkb",
+        "image_KwF9tH",
+        "image_6nBbEt",
+        "image_DDFyKW",
+        "image_UqRbk4"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "show_carousel": true,
+        "card_grid": false,
+        "card_inner_space": false,
+        "item_per_row_desktop": 5,
+        "item_per_row_mobile": "1",
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "center",
+        "vertical_grid_image_size": "auto",
+        "heading": "",
+        "highlight_style": "underline",
+        "bg__color": "gradient",
+        "heading_size": "h3",
+        "heading_font_desktop": 0,
+        "heading_font_mobile": 0,
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "card_bg": "#e5e5e5",
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 10,
+        "top_space_mobile": 10,
+        "bottom_space_mobile": 5
+      }
+    },
+    "join": {
+      "type": "club-join-steps",
+      "settings": {
+        "anchor_id": "club-grunt-join-now",
+        "club_step_1_header": "Join Club Grunt Style",
+        "club_step_2_header": "What Size Fits You Best?",
+        "club_step_3_header": "Select Your Plan",
+        "club_step_4_header": "Review Your Plan",
+        "step_labels": "Patriot,Size,Plan,Review",
+        "gender_eyebrow": "Patriotic",
+        "mens_label": "Male",
+        "womens_label": "Female",
+        "sizes": "S:Small,M:Medium,L:Large,XL:XL,2XL:2XL,3XL:3XL,4XL:4XL",
+        "womens_excluded_sizes": "3XL,4XL",
+        "product_handle_prefix": "club",
+        "monthly_label": "Monthly",
+        "monthly_price": "$25.00",
+        "monthly_note": "First Month: <strong>$25.00</strong>",
+        "monthly_selling_plan_id": "1963917363",
+        "annual_label": "Annual",
+        "annual_price": "$255.00",
+        "annual_saving": "15% OFF",
+        "annual_was_price": "$300.00",
+        "annual_selling_plan_id": "1963884595",
+        "club_plan_select_disclaimer": "Notice: All monthly and prepaid subscriptions are set to automatically renew. You will be contacted via email prior to a renewal. Annual Subscriptions are non-refundable.",
+        "join_label": "Join Now",
+        "restart_label": "Start Over"
+      }
+    },
+    "testimonials_Qa99ij": {
+      "type": "section--testimonials",
+      "blocks": {
+        "quote_FwgtRt": {
+          "type": "quote",
+          "settings": {
+            "author_title": "James D.",
+            "author": "",
+            "country_name": "",
+            "show_rating": true,
+            "rating": 5,
+            "message": "Got my first members only tee.. freaking love it! It’s a no brainer signing up as a member because is cheaper on tees!!! And it’s all about helping our vets who deserve so much more!"
+          }
+        },
+        "quote_hr43YF": {
+          "type": "quote",
+          "settings": {
+            "author_title": "Terri P.",
+            "author": "",
+            "country_name": "",
+            "show_rating": true,
+            "rating": 5,
+            "message": "Best shirts on the market! Club grunt style is the best!!\""
+          }
+        },
+        "quote_djcbDV": {
+          "type": "quote",
+          "settings": {
+            "author_title": "Craig C.",
+            "author": "",
+            "country_name": "",
+            "show_rating": true,
+            "rating": 5,
+            "message": "The monthly t shirt is a nice surprise. The shipping is faster. The comfort of the material and weight is outstanding. Thanks Grunt Style."
+          }
+        }
+      },
+      "block_order": [
+        "quote_FwgtRt",
+        "quote_hr43YF",
+        "quote_djcbDV"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "testimonial_style": "image-with-text-carousal",
+        "enable_card_border": false,
+        "enable_card_shadow": false,
+        "enlargen_slide": true,
+        "auto_rotate": false,
+        "slider_thumbnail": "only-arrow",
+        "change_slides_speed": 5,
+        "enlargen_message_font_size": "h3",
+        "image_position": "left",
+        "heading": "<em><strong>PATRIOTS LOVE GRUNT STYLE</strong></em>",
+        "highlight_style": "underline",
+        "bg__color": "gradient",
+        "heading_size": "h4",
+        "seo_heading": "h4",
+        "description": "",
+        "heading_alignment": "text-center",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 20,
+        "bottom_space_desktop": 25,
+        "top_space_mobile": 10,
+        "bottom_space_mobile": 15
+      }
+    },
+    "single_cta_button_rNH9Wc": {
+      "type": "section--single-cta-button",
+      "settings": {
+        "single_cta_module_color": "#000000",
+        "single_cta_bg_color": "#ffca10",
+        "single_cta_text": "Join The Members-Only Community",
+        "single_cta_text_color": "#000000",
+        "single_cta_text_font": "Roboto, sans-serif",
+        "single_cta_text_size_desktop": 16,
+        "single_cta_text_size_mobile": 14,
+        "single_cta_text_alignment": "center",
+        "single_cta_border_type": "square",
+        "single_cta_url": "https://www.facebook.com/groups/clubgruntstyle",
+        "single_cta_link_window": true,
+        "single_cta_btn_width": "fit-content",
+        "section_visibility": "always"
+      }
+    },
+    "images_grid_hdYKhF": {
+      "type": "images-grid",
+      "blocks": {
+        "image_76hmbm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MEMBER_STORE_Gold_Club_Icon_f5229a6d-a707-47c9-89c3-658698b71777.png",
+            "heading": "",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "shopify://collections/club-grunt-style",
+            "button_as_link": false,
+            "button_size": "small"
+          }
+        },
+        "image_dXEUmj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/COMMUNITY_Gold_Club_Icons.png",
+            "heading": "",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "https://www.facebook.com/groups/clubgruntstyle",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_hPzXTH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/FIRST_DIBS_Gold_Club_Icon_95e4a268-75a7-46ce-9ddf-c06b06ec27eb.png",
+            "heading": "",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_QUzfeN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/EASY_CANCEL_Gold_Club_Icons.png",
+            "heading": "",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_hV3hfj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/FREE_SHIPPING_Gold_Club_Icon_c7f29b7a-6732-4231-9956-32ceae60936e.png",
+            "heading": "",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_yqdUap": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/EXTRA_SAVINGS_Gold_Club_Icon_99ef8ec3-fe86-4fc8-9a08-f998d9309fa8.png",
+            "heading": "",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_76hmbm",
+        "image_dXEUmj",
+        "image_hPzXTH",
+        "image_QUzfeN",
+        "image_hV3hfj",
+        "image_yqdUap"
+      ],
+      "custom_css": [
+        "h3 { color: #ffca10; }"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "show_carousel": true,
+        "card_grid": false,
+        "card_inner_space": false,
+        "item_per_row_desktop": 5,
+        "item_per_row_mobile": "1",
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "center",
+        "vertical_grid_image_size": "square",
+        "heading": "<em><strong>CLUB MEMBER PERKS</strong></em>",
+        "highlight_style": "underline",
+        "bg__color": "solid",
+        "heading_size": "h3",
+        "heading_font_desktop": 0,
+        "heading_font_mobile": 0,
+        "seo_heading": "h3",
+        "heading_alignment": "text-center",
+        "card_bg": "#000000",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 20,
+        "bottom_space_desktop": 10,
+        "top_space_mobile": 10,
+        "bottom_space_mobile": 10
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_RBF9Ew",
+    "images_grid_EnffGY",
+    "image_with_text_carousel_LEPPVj",
+    "multi_column_x3UMT8",
+    "rich_text_fQFGNk",
+    "images_grid_tDVVmL",
+    "join",
+    "testimonials_Qa99ij",
+    "single_cta_button_rNH9Wc",
+    "images_grid_hdYKhF"
+  ]
+}

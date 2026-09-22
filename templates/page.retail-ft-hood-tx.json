@@ -1,0 +1,93 @@
+{
+  "sections": {
+    "main": {
+      "type": "section--retail-location",
+      "settings": {
+        "title_override": "Ft. Cavazos- AAFES - Retail Store",
+        "intro": "<p>Fort Cavazos is the Army's premier installation to train and deploy heavy forces. A 214,968-acre installation, Fort Hood is the only post in the United States capable of stationing and training two armored divisions.  Our store is located inside of the AAFES Main Exchange. </p><p><strong>You must have base access to visit this store.</strong></p>",
+        "hub_link": "grunt-style-retail-stores",
+        "hub_link_label": "View Other Stores",
+        "address": "Bldg. 4250, Clear Creek Blvd\nFort Hood, TX 76544",
+        "phone": "254-613-2651",
+        "hours": "Monday: 9:00am - 7:00pm\nTuesday: 9:00am - 7:00pm\nWednesday: 9:00am - 7:00pm\nThursday: 9:00am - 7:00pm\nFriday: 9:00am - 7:00pm\nSaturday: 9:00am - 7:00pm\nSunday: 10:00am - 5:00pm",
+        "notes": "",
+        "latitude": "31.131001650810884",
+        "longitude": "-97.79753007116481",
+        "map_zoom": 14,
+        "color_scheme": "scheme-4"
+      }
+    },
+    "images_grid_TjxEbG": {
+      "type": "images-grid",
+      "blocks": {
+        "image_c9wKMq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS5927_-_Men_s_Texas_Reaper_Tee_-_Black_WEB_READY-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_BzjBFT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS4684---Mess-with-the-Bull_WEB_READY-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_q4R3bn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS4685_-_Texas_2A_-_Black_STANDARD_WEB_READY-front_3_-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_c9wKMq",
+        "image_BzjBFT",
+        "image_q4R3bn"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "show_carousel": true,
+        "card_grid": false,
+        "card_inner_space": false,
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "center",
+        "vertical_grid_image_size": "auto",
+        "heading": "In-Store Exclusives",
+        "highlight_style": "underline",
+        "bg__color": "solid",
+        "heading_size": "h3",
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "card_bg": "",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 50,
+        "bottom_space_desktop": 50,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40,
+        "item_per_row_desktop": 5,
+        "section_width": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "images_grid_TjxEbG"
+  ]
+}

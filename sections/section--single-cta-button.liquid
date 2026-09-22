@@ -1,0 +1,154 @@
+{% comment %}
+  ==================================================================
+  SINGLE CTA BUTTON
+  Ported from gs-shopify-v3 sections/single-cta-button.liquid
+  ==================================================================
+  One full-width band with a single centred (or left/right) button.
+  On the Club page it is the yellow "Join The Members-Only Community"
+  link to the Facebook group, on a black band.
+
+  All twelve v3 setting ids (single_cta_*) are unchanged, so v3
+  template JSON for this section ports as-is.
+
+  ------------------------------------------------------------------
+  CHANGES FROM v3
+  ------------------------------------------------------------------
+  - v3 emitted an UNSCOPED <style> block: `.single-cta-container` rules
+    with the section's own colours, so two instances on one page would
+    fight. Values are now custom properties on the wrapper and the
+    static rules live in section--single-cta-button.css.
+  - `rel="noopener"` added to the new-window link.
+  - `section_visibility` (mobile only / desktop only) added to match
+    the other GS sections. New setting, defaults to always.
+  - The font-family select is emitted verbatim as v3 did. v4 loads
+    Roboto Condensed, not Roboto, so "Roboto, sans-serif" falls back to
+    the system sans on most machines - same as it does on v3.
+  ==================================================================
+{% endcomment %}
+
+{{ 'section--single-cta-button.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+  assign radius = '0'
+  if s.single_cta_border_type == 'rounded'
+    assign radius = '20px'
+  endif
+  case s.single_cta_btn_width
+    when 'full-width'
+      assign width = '100%'
+    when 'three-quarter-width'
+      assign width = '75%'
+    when 'half-width'
+      assign width = '50%'
+    when 'one-quarter-width'
+      assign width = '25%'
+    else
+      assign width = 'fit-content'
+  endcase
+-%}
+
+<div
+  class="single-cta-container gs-cta--visibility-{{ s.section_visibility | default: 'always' }}"
+  style="
+    --cta-module-bg: {{ s.single_cta_module_color | default: '#ffffff' }};
+    --cta-bg: {{ s.single_cta_bg_color | default: '#ff0000' }};
+    --cta-color: {{ s.single_cta_text_color | default: '#ffffff' }};
+    --cta-font: {{ s.single_cta_text_font | default: 'Roboto, sans-serif' }};
+    --cta-size-desktop: {{ s.single_cta_text_size_desktop | default: 16 }}px;
+    --cta-size-mobile: {{ s.single_cta_text_size_mobile | default: 14 }}px;
+    --cta-align: {{ s.single_cta_text_alignment | default: 'left' }};
+    --cta-radius: {{ radius }};
+    --cta-width: {{ width }};
+  "
+>
+  {%- if s.single_cta_text != blank -%}
+    <a
+      class="single-cta-btn"
+      href="{{ s.single_cta_url | default: '#' }}"
+      {% if s.single_cta_link_window %}target="_blank" rel="noopener"{% endif %}
+    >
+      {{- s.single_cta_text -}}
+    </a>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Single CTA Button",
+  "tag": "section",
+  "class": "gs-single-cta",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "Show on",
+      "options": [
+        { "value": "always", "label": "All devices" },
+        { "value": "small", "label": "Mobile only" },
+        { "value": "large", "label": "Desktop only" }
+      ],
+      "default": "always"
+    },
+    { "type": "color", "id": "single_cta_module_color", "label": "Module background", "default": "#ffffff" },
+    { "type": "color", "id": "single_cta_bg_color", "label": "Button background", "default": "#ff0000" },
+    { "type": "inline_richtext", "id": "single_cta_text", "label": "Button text" },
+    { "type": "color", "id": "single_cta_text_color", "label": "Button text color", "default": "#ffffff" },
+    {
+      "type": "select",
+      "id": "single_cta_text_font",
+      "label": "Font family",
+      "options": [
+        { "value": "Roboto, sans-serif", "label": "Roboto, Sans-Serif" },
+        { "value": "Engravers MT", "label": "Engravers MT" },
+        { "value": "Times New Roman", "label": "Times New Roman" }
+      ],
+      "default": "Roboto, sans-serif"
+    },
+    { "type": "range", "id": "single_cta_text_size_desktop", "label": "Text size (desktop)", "min": 16, "max": 48, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "single_cta_text_size_mobile", "label": "Text size (mobile)", "min": 11, "max": 32, "step": 1, "unit": "px", "default": 14 },
+    {
+      "type": "select",
+      "id": "single_cta_text_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "single_cta_border_type",
+      "label": "Button shape",
+      "options": [
+        { "value": "square", "label": "Square" },
+        { "value": "rounded", "label": "Rounded" }
+      ],
+      "default": "square"
+    },
+    { "type": "url", "id": "single_cta_url", "label": "Link" },
+    { "type": "checkbox", "id": "single_cta_link_window", "label": "Open link in a new window", "default": false },
+    {
+      "type": "select",
+      "id": "single_cta_btn_width",
+      "label": "Button width",
+      "options": [
+        { "value": "fit-content", "label": "Fit content" },
+        { "value": "full-width", "label": "Full width" },
+        { "value": "half-width", "label": "Half width" },
+        { "value": "three-quarter-width", "label": "3/4 width" },
+        { "value": "one-quarter-width", "label": "1/4 width" }
+      ],
+      "default": "fit-content"
+    }
+  ],
+  "presets": [
+    { "name": "Single CTA Button" }
+  ]
+}
+{% endschema %}

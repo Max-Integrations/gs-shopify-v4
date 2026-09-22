@@ -1,0 +1,116 @@
+{
+  "sections": {
+    "main": {
+      "type": "section--retail-location",
+      "settings": {
+        "title_override": "GRUNT STYLE BROADWAY RETAIL STORE",
+        "intro": "<p>Located at our corporate headquarters, in downtown San Antonio. Known as Military City USA, San Antonio is the home of the Alamo. Strong Active Military, Veteran and Patriotic communities keep us connected to our customer base.</p>",
+        "hub_link": "grunt-style-retail-stores",
+        "hub_link_label": "View Other Stores",
+        "address": "900 Broadway Street\nSan Antonio, TX 78215",
+        "phone": "726-224-0814",
+        "hours": "Monday: 9:00am - 5:00pm\nTuesday: 9:00am - 5:00pm\nWednesday: 9:00am - 5:00pm\nThursday: 9:00am - 5:00pm\nFriday: 9:00am - 5:00pm\nSaturday: 10:00am - 5:00pm\nSunday: 12:00pm - 5:00pm",
+        "notes": "",
+        "latitude": "29.43355761871724",
+        "longitude": "-98.48118962916892",
+        "map_zoom": 14,
+        "color_scheme": "scheme-4"
+      }
+    },
+    "images_grid_TjxEbG": {
+      "type": "images-grid",
+      "blocks": {
+        "image_cfbJqT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS6688_Web_Ready_Front.png",
+            "heading": "",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_c9wKMq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS5927_-_Men_s_Texas_Reaper_Tee_-_Black_WEB_READY-min.png",
+            "heading": "",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_BzjBFT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS4684---Mess-with-the-Bull_WEB_READY-min_4b997750-9801-41d6-a5e2-44d0a959de5a.png",
+            "heading": "",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_hgK8rc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS7756_WEB-READY_STACKED.png",
+            "heading": "",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_cfbJqT",
+        "image_c9wKMq",
+        "image_BzjBFT",
+        "image_hgK8rc"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "show_carousel": true,
+        "card_grid": false,
+        "card_inner_space": false,
+        "item_per_row_desktop": 5,
+        "item_per_row_mobile": "1",
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "center",
+        "vertical_grid_image_size": "auto",
+        "heading": "In-Store Exclusives",
+        "highlight_style": "underline",
+        "bg__color": "solid",
+        "heading_size": "h3",
+        "heading_font_desktop": 0,
+        "heading_font_mobile": 0,
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "card_bg": "",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 50,
+        "bottom_space_desktop": 50,
+        "top_space_mobile": 10,
+        "bottom_space_mobile": 10,
+        "section_width": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "images_grid_TjxEbG"
+  ]
+}

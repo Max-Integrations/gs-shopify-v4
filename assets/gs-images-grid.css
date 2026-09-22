@@ -1,0 +1,315 @@
+/*
+  GS Images Grid
+
+  Ported from gs-shopify-v3 assets/images-grid.css. Per-instance values
+  (tiles per row, padding, card colour, heading sizes) arrive as custom
+  properties on .gs-images-grid; see sections/images-grid.liquid.
+
+  The carousel is a native overflow scroller with scroll-snap. The arrow
+  buttons are revealed and driven by assets/gs-swatch-scroller.js.
+*/
+
+.gs-images-grid {
+  --ig-gap: 20px;
+  padding-top: var(--ig-padding-top-mobile, 40px);
+  padding-bottom: var(--ig-padding-bottom-mobile, 40px);
+  /* The .color-* class only sets variables; paint them so scheme-4 gives
+     the black strip from the old collection pages. */
+  background-color: rgb(var(--background));
+  color: rgb(var(--textColor));
+}
+
+.gs-ig--fullwidth {
+  width: 100%;
+}
+
+/* ---- Heading ---- */
+.gs-images-grid .section-title {
+  margin-bottom: 1.5rem;
+}
+
+.gs-images-grid .section-title.text-left { text-align: left; }
+.gs-images-grid .section-title.text-center { text-align: center; }
+.gs-images-grid .section-title.text-right { text-align: right; }
+
+.gs-images-grid .ig-heading {
+  font-family: var(--headingFont);
+  color: rgb(var(--headingColor, var(--textColor)));
+  margin: 0;
+}
+
+/* Heading font-size overrides bind only when the setting is non-zero,
+   so the h1-h6 size class still applies otherwise. */
+.gs-images-grid[style*='--ig-heading-m'] .ig-heading {
+  font-size: var(--ig-heading-m, var(--ig-heading-d));
+}
+
+/* ---- Highlight markers (same as media-grid) ---- */
+.gs-images-grid .line-marker {
+  position: relative;
+  display: inline-block;
+}
+
+.gs-images-grid .line-marker.highlight-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.1em;
+  height: 0.08em;
+  background: rgba(var(--line-color), 1);
+}
+
+.gs-images-grid .line-marker.highlight-background {
+  padding: 0 0.25em;
+}
+
+.gs-images-grid .line-marker.highlight-background-solid {
+  background: rgba(var(--line-color), 1);
+}
+
+.gs-images-grid .line-marker.highlight-background-gradient {
+  background: var(--gradientBackground);
+}
+
+/* ---- Scroller + track ---- */
+.gs-ig__scroller {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gs-ig__track {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ig-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gs-ig__track::-webkit-scrollbar { display: none; }
+
+.gs-ig__track--grid {
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-x: visible;
+  scroll-snap-type: none;
+}
+
+.gs-ig__item {
+  flex: 0 0 calc(((100% - (var(--ig-gap) * (var(--ig-per-mobile, 1) - 1))) / var(--ig-per-mobile, 1)) * var(--ig-scale, 1));
+  min-width: 0;
+  margin: 0;
+  scroll-snap-align: start;
+}
+
+/* ---- Nav ---- */
+.gs-ig__nav {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--textColor));
+  cursor: pointer;
+}
+
+.gs-ig__nav[hidden] { display: none; }
+.gs-ig__nav:disabled { opacity: 0.3; cursor: default; }
+
+/* Full width: arrows float over the tiles at the edges instead of
+   taking up room beside the track. */
+.gs-ig--fullwidth .gs-ig__scroller {
+  gap: 0;
+}
+
+.gs-ig--fullwidth .gs-ig__nav {
+  position: absolute;
+  top: 40%;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+}
+
+.gs-ig--fullwidth .gs-ig__nav[data-swatch-scroll='prev'] { left: 12px; }
+.gs-ig--fullwidth .gs-ig__nav[data-swatch-scroll='next'] { right: 12px; }
+
+/* ---- Current-collection highlight ----
+   When one tile is the collection being viewed, the rest step back.
+   Hover/focus brings a dimmed tile forward on desktop. */
+.gs-ig--has-current .gs-ig__item {
+  transition: opacity 0.25s;
+}
+
+.gs-ig--has-current .gs-ig__item:not(.is-current) {
+  opacity: 0.2;
+}
+
+/* ---- Tile ---- */
+.gs-ig__inner {
+  display: block;
+  height: 100%;
+}
+
+.gs-ig__inner--link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* "Card background" setting */
+.gs-ig--card .gs-ig__inner {
+  background: var(--ig-card-bg, rgb(var(--cardBackground, 255 255 255)));
+  box-shadow: 0 1px 5px #00000017;
+  border-radius: var(--cardRadius, 0);
+}
+
+/* "Tile border" settings (any tile, card or not) */
+.gs-ig__inner {
+  box-sizing: border-box;
+  border: var(--ig-border-width, 0) solid var(--ig-border-color, #000000);
+}
+
+/* "Space between card and image" setting */
+.gs-ig--card.gs-ig--inner-space .gs-ig__media-wrap {
+  padding: var(--ig-inner-space, 8px);
+}
+
+.gs-ig__media {
+  position: relative;
+  padding-bottom: var(--imageRatio, 100%);
+  overflow: hidden;
+  border-radius: var(--cardRadius, 0);
+  background: var(--ig-media-bg, rgb(var(--background)));
+}
+
+.gs-ig__media > img,
+.gs-ig__media > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gs-ig__inner--link .gs-ig__media > img {
+  transition: transform 0.4s ease;
+}
+
+.gs-ig__inner--link:hover .gs-ig__media > img {
+  transform: scale(1.04);
+}
+
+/* ---- Content ---- */
+.gs-ig__content {
+  padding: 10px 20px 20px;
+}
+
+.gs-ig__content--left { text-align: left; }
+.gs-ig__content--center { text-align: center; }
+.gs-ig__content--right { text-align: right; }
+
+.gs-ig__title {
+  margin: 0;
+  color: rgb(var(--textColor));
+}
+
+/* Title font-size overrides bind only when the inline var is present so
+   the .h6 size class still applies when the setting is left at 0. */
+.gs-ig__title[style*='--ig-title-d'] {
+  font-size: var(--ig-title-d);
+}
+
+.gs-ig__title[style*='--ig-title-m'] {
+  font-size: var(--ig-title-m);
+}
+
+.gs-ig__button {
+  padding-top: 10px;
+}
+
+.gs-ig__button .hyperlink {
+  color: rgb(var(--textColor));
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.gs-ig__button .button.small-btn { padding: 8px 16px; font-size: 1.2rem; }
+.gs-ig__button .button.medium-btn { padding: 10px 20px; }
+.gs-ig__button .button.regular-btn { padding: 12px 24px; }
+.gs-ig__button .button.large-btn { padding: 14px 28px; }
+
+/* ---- Horizontal card style (image beside content) ---- */
+.gs-ig--horizontal .gs-ig__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-start;
+}
+
+/* Vertical cards: the tile itself is 50 / 75 / 100% of its slot, so the
+   row of small tiles sits centred with space around it. */
+.gs-ig--vertical.gs-ig--image-small { --ig-scale: 0.5; }
+.gs-ig--vertical.gs-ig--image-medium { --ig-scale: 0.75; }
+.gs-ig--vertical.gs-ig--image-large { --ig-scale: 1; }
+
+.gs-ig--horizontal.gs-ig--image-small .gs-ig__inner { grid-template-columns: 0.5fr 1fr; }
+.gs-ig--horizontal.gs-ig--image-medium .gs-ig__inner { grid-template-columns: 0.7fr 1fr; }
+.gs-ig--horizontal.gs-ig--image-large .gs-ig__inner { grid-template-columns: 1fr 1fr; }
+
+.gs-ig--horizontal .gs-ig__content {
+  padding: 15px;
+}
+
+/* ---- Visibility ---- */
+@media screen and (max-width: 767px) {
+  .gs-ig--visibility-large { display: none !important; }
+}
+
+@media screen and (min-width: 768px) {
+  .gs-ig--visibility-small { display: none !important; }
+
+  .gs-images-grid {
+    padding-top: var(--ig-padding-top, 0);
+    padding-bottom: var(--ig-padding-bottom, 60px);
+  }
+
+  .gs-images-grid[style*='--ig-heading-d'] .ig-heading {
+    font-size: var(--ig-heading-d);
+  }
+
+  .gs-ig__item {
+    flex-basis: calc(((100% - (var(--ig-gap) * (var(--ig-per-desktop, 5) - 1))) / var(--ig-per-desktop, 5)) * var(--ig-scale, 1));
+  }
+
+  .gs-ig__title[style*='--ig-title-d'] {
+    font-size: var(--ig-title-d);
+  }
+
+  .gs-ig--has-current .gs-ig__item:not(.is-current):hover,
+  .gs-ig--has-current .gs-ig__item:not(.is-current):focus-within {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-ig__track { scroll-behavior: auto; }
+  .gs-ig--has-current .gs-ig__item { transition: none; }
+  .gs-ig__inner--link .gs-ig__media > img { transition: none; }
+  .gs-ig__inner--link:hover .gs-ig__media > img { transform: none; }
+}

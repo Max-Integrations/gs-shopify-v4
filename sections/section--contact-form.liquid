@@ -1,0 +1,139 @@
+{% comment %}
+  ==================================================================
+  CONTACT FORM
+  ==================================================================
+  Shopify's native contact form (submissions go to the store's
+  customer email) with two fields Dawn's stock form lacks: an optional
+  order number and a topic select, so replies can be routed without a
+  follow-up question. Field keys are plain (`contact[name]`,
+  `contact[order_number]`, `contact[topic]`, `contact[body]`), unlike
+  Dawn's, which interpolate translated labels into the key and make
+  the notification email hard to read.
+
+  Topics are one setting: one option per line. Spam protection is
+  Shopify's own; no honeypot field.
+  ==================================================================
+{% endcomment %}
+
+{{ 'section--contact-form.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+  assign topics = s.topics | strip | newline_to_br | split: '<br />'
+  assign form_id = 'GsContactForm-' | append: section.id
+-%}
+
+<div
+  class="gs-cform color-{{ s.color_scheme | default: 'scheme-1' }}"
+  style="--gs-cform-pad-top: {{ s.padding_top | default: 48 }}px; --gs-cform-pad-bottom: {{ s.padding_bottom | default: 48 }}px;"
+>
+  <div class="page-width gs-cform__inner">
+    {%- if s.heading != blank -%}
+      <h2 class="gs-cform__heading h2">{{ s.heading }}</h2>
+    {%- endif -%}
+    {%- if s.description != blank -%}
+      <div class="gs-cform__description rte">{{ s.description }}</div>
+    {%- endif -%}
+
+    {%- form 'contact', id: form_id, class: 'gs-cform__form' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="gs-cform__status gs-cform__status--success" role="status" tabindex="-1" autofocus>
+          {{ s.success_message | default: "Thanks for reaching out. We'll get back to you soon." }}
+        </p>
+      {%- elsif form.errors -%}
+        <div class="gs-cform__status gs-cform__status--error" role="alert" tabindex="-1" autofocus>
+          {{ form.errors | default_errors }}
+        </div>
+      {%- endif -%}
+
+      <div class="gs-cform__row">
+        <div class="gs-cform__field">
+          <label for="{{ form_id }}-name">Name</label>
+          <input type="text" id="{{ form_id }}-name" name="contact[name]" autocomplete="name" required value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+        </div>
+        <div class="gs-cform__field">
+          <label for="{{ form_id }}-email">Email</label>
+          <input
+            type="email"
+            id="{{ form_id }}-email"
+            name="contact[email]"
+            autocomplete="email"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            required
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            {% if form.errors contains 'email' %}aria-invalid="true" aria-describedby="{{ form_id }}-email-error"{% endif %}
+          >
+          {%- if form.errors contains 'email' -%}
+            <small class="gs-cform__field-error" id="{{ form_id }}-email-error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</small>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="gs-cform__row">
+        {%- if s.show_order_number -%}
+          <div class="gs-cform__field">
+            <label for="{{ form_id }}-order">Order number <span class="gs-cform__optional">(optional)</span></label>
+            <input type="text" id="{{ form_id }}-order" name="contact[order_number]" inputmode="numeric" autocomplete="off" placeholder="#1234567" value="{{ form.order_number }}">
+          </div>
+        {%- endif -%}
+        {%- if topics.size > 0 -%}
+          <div class="gs-cform__field">
+            <label for="{{ form_id }}-topic">Topic</label>
+            <div class="gs-cform__select">
+              <select id="{{ form_id }}-topic" name="contact[topic]" required>
+                <option value="" disabled{% unless form.topic %} selected{% endunless %}>Choose a topic</option>
+                {%- for topic in topics -%}
+                  {%- assign clean = topic | strip_html | strip -%}
+                  {%- if clean == blank -%}{%- continue -%}{%- endif -%}
+                  <option value="{{ clean | escape }}"{% if form.topic == clean %} selected{% endif %}>{{ clean }}</option>
+                {%- endfor -%}
+              </select>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="gs-cform__field gs-cform__field--full">
+        <label for="{{ form_id }}-body">Message</label>
+        <textarea id="{{ form_id }}-body" name="contact[body]" rows="6" required>{{ form.body }}</textarea>
+      </div>
+
+      <div class="gs-cform__actions">
+        <button type="submit" class="button">{{ s.submit_label | default: 'Send message' }}</button>
+      </div>
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact form",
+  "tag": "section",
+  "class": "gs-cform-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Send us a message" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>We reply within one business day, Monday to Friday, 9am to 5pm CST.</p>" },
+    {
+      "type": "textarea",
+      "id": "topics",
+      "label": "Topics",
+      "info": "One per line.",
+      "default": "Order status\nReturns & exchanges\nProduct question\nClub Grunt Style\nWholesale\nCustom orders\nOther"
+    },
+    { "type": "checkbox", "id": "show_order_number", "label": "Ask for an order number", "default": true },
+    { "type": "text", "id": "submit_label", "label": "Button label", "default": "Send message" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "Thanks for reaching out. We'll get back to you soon." },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48 }
+  ],
+  "presets": [
+    { "name": "Contact form" }
+  ]
+}
+{% endschema %}

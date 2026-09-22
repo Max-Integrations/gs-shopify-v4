@@ -1,0 +1,59 @@
+/*
+  ==================================================================
+  Single CTA Button
+  ==================================================================
+  One band, one button. Colours, sizes, alignment, radius and width
+  come in as custom properties from the section so several instances
+  can coexist (v3 painted them into a shared, unscoped rule set).
+*/
+
+.single-cta-container {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  overflow: hidden;
+  background-color: var(--cta-module-bg, #ffffff);
+}
+
+.single-cta-container .single-cta-btn {
+  display: block;
+  width: var(--cta-width, fit-content);
+  margin: 0 auto;
+  padding: 10px 25px;
+  border-radius: var(--cta-radius, 0);
+  background-color: var(--cta-bg, #ff0000);
+  color: var(--cta-color, #ffffff);
+  font-family: var(--cta-font, inherit);
+  font-size: var(--cta-size-desktop, 16px);
+  line-height: var(--cta-size-desktop, 16px);
+  letter-spacing: 1px;
+  text-align: var(--cta-align, left);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.single-cta-container .single-cta-btn:hover,
+.single-cta-container .single-cta-btn:focus-visible {
+  filter: brightness(0.92);
+}
+
+.single-cta-container .single-cta-btn:focus-visible {
+  outline: 2px solid var(--cta-color, #ffffff);
+  outline-offset: 2px;
+}
+
+/* v3 stepped the mobile size at 989px, not the 767 the visibility uses. */
+@media screen and (max-width: 989px) {
+  .single-cta-container .single-cta-btn {
+    font-size: var(--cta-size-mobile, 14px);
+    line-height: var(--cta-size-mobile, 14px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .gs-cta--visibility-large { display: none !important; }
+}
+
+@media screen and (min-width: 768px) {
+  .gs-cta--visibility-small { display: none !important; }
+}

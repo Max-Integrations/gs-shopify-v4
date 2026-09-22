@@ -1,0 +1,117 @@
+{
+  "sections": {
+    "main": {
+      "type": "section--retail-location",
+      "settings": {
+        "title_override": "Allen Premium Outlets Retail Store",
+        "intro": "<p>Allen Premium Outlets® is North Dallas’ premier shopping destination, conveniently located just north of Dallas, on US 75, exit 37 Stacy Rd.  We have a strong customer base in the DFW area, and look forward to welcoming our fans into this exciting new retail store. </p><p>We will carry a compelling assortment of Men's, Women's and Kids apparel, headwear and gear, including our Texas Exclusives that are only carried in our Retail stores.</p>",
+        "hub_link": "grunt-style-retail-stores",
+        "hub_link_label": "View Other Stores",
+        "address": "820 W Stacy Rd Suite 330\nAllen, TX 75013",
+        "phone": "972-678-0049",
+        "hours": "Monday: 10:00am - 8:00pm\nTuesday: 10:00am - 8:00pm\nWednesday: 10:00am - 8:00p\nThursday: 10:00am - 8:00pm\nFriday: 10:00am - 8:00pm\nSaturday: 10:00am - 8:00pm\nSunday: 10:00am - 6:00pm",
+        "notes": "",
+        "latitude": "33.131265579430874",
+        "longitude": "-96.66089865978851",
+        "map_zoom": 14,
+        "color_scheme": "scheme-4"
+      }
+    },
+    "images_grid_TjxEbG": {
+      "type": "images-grid",
+      "blocks": {
+        "image_c9wKMq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS4685_-_Texas_2A_-_Black_STANDARD_WEB_READY-front_1_-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_BzjBFT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS4686---Not-Texas_WEB_READY_1_-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_q4R3bn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/temp_retail_exclusive_3.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_GdarJ9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS4683_STANDARD_WEB_READY-2021-front_1_-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_GdarK9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS4745_-_Women_s_Great_Flag_of_Texas_STANDARD_WEB_READY-front_1_-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_c9wKMq",
+        "image_BzjBFT",
+        "image_q4R3bn",
+        "image_GdarJ9",
+        "image_GdarK9"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "show_carousel": true,
+        "card_grid": false,
+        "card_inner_space": false,
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "center",
+        "vertical_grid_image_size": "auto",
+        "heading": "In-Store Exclusives",
+        "highlight_style": "underline",
+        "bg__color": "solid",
+        "heading_size": "h3",
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "card_bg": "",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 50,
+        "bottom_space_desktop": 50,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40,
+        "item_per_row_desktop": 5,
+        "section_width": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "images_grid_TjxEbG"
+  ]
+}
