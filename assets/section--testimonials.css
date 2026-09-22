@@ -1,0 +1,318 @@
+/*
+  ==================================================================
+  Testimonials
+  ==================================================================
+  Quote cards in a native scroll-snap strip. In "enlarge" mode
+  (.gs-tm--enlarge) the card nearest the centre is .is-selected and
+  shown at full size; the others sit at 80% scale, 50% opacity. The
+  section's inline script maintains .is-selected and the arrow states.
+*/
+
+.gs-testimonials {
+  padding-top: var(--tm-pad-top-mobile, 40px);
+  padding-bottom: var(--tm-pad-bottom-mobile, 40px);
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  overflow: hidden;
+}
+
+.gs-testimonials .section-title {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.gs-testimonials .section-heading {
+  margin: 0;
+}
+
+.gs-testimonials .testimonial-desc {
+  margin: 10px 0 0;
+}
+
+.gs-testimonials .text-left { text-align: left; }
+.gs-testimonials .text-center { text-align: center; }
+.gs-testimonials .text-right { text-align: right; }
+
+/* [bracketed] heading highlight */
+.gs-testimonials .line-marker {
+  position: relative;
+  display: inline-block;
+}
+
+.gs-testimonials .line-marker.highlight-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.1em;
+  height: 0.12em;
+  background: currentColor;
+}
+
+.gs-testimonials .line-marker.highlight-background {
+  padding: 0 0.2em;
+  color: var(--highlightTextColor, inherit);
+}
+
+.gs-testimonials .line-marker.highlight-background-solid {
+  background: rgb(var(--highlightBackground, var(--color-background)));
+}
+
+.gs-testimonials .line-marker.highlight-background-gradient {
+  background: var(--highlightGradientBackground, var(--gradient-background));
+}
+
+/* ---- Scroller + track ---- */
+.gs-tm__scroller {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gs-tm__track {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  margin: 0;
+  padding: 10px 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gs-tm__track::-webkit-scrollbar { display: none; }
+
+.testimonial-item {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0 10px;
+  scroll-snap-align: center;
+}
+
+.testimonial-item-inner {
+  height: 100%;
+  padding: 30px;
+  border-radius: var(--cardRadius, 0);
+  background: rgb(var(--color-background));
+  box-shadow: 0 1px 8px #00000021;
+}
+
+.testimonial-item-inner.card-border-enabled {
+  border: 1px solid rgba(var(--color-foreground), 0.2);
+}
+
+.testimonial-item-inner:not(.card-shadow-enabled):not(.card-border-enabled) {
+  box-shadow: none;
+}
+
+.testimonial-star-rating {
+  display: flex;
+  align-items: center;
+  column-gap: 3px;
+  margin: 0 0 20px;
+  color: rgb(var(--ratingStarColor, 154 114 63));
+}
+
+.testimonial-title {
+  margin: 0;
+}
+
+.testimonial-text {
+  margin: 0;
+  padding-top: 10px;
+}
+
+.testimonial-details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.testimonial-details.image-position-top {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.testimonial-image {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.testimonial-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.testimonial-details.image-position-top .testimonial-details-credentials {
+  padding-top: 8px;
+}
+
+.author-name,
+.country-name {
+  margin: 0;
+}
+
+.country-name {
+  padding-top: 3px;
+  font-size: var(--smallText, 1.2rem);
+}
+
+/* ---- Enlarge mode ---- */
+.gs-tm--enlarge .testimonial-item-inner {
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: center;
+  transform: scale(0.8);
+  opacity: 0.5;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.gs-tm--enlarge .testimonial-item.is-selected .testimonial-item-inner {
+  transform: scale(1);
+  opacity: 1;
+  transition-delay: 0.1s;
+}
+
+.gs-tm--enlarge .testimonial-star-rating,
+.gs-tm--enlarge .testimonial-details {
+  justify-content: center;
+  text-align: center;
+}
+
+.gs-tm--enlarge .author-name {
+  letter-spacing: 6px;
+  opacity: 0.5;
+}
+
+/* ---- Nav ---- */
+.gs-tm__nav {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(var(--sliderArrowBackground, var(--color-foreground)));
+  color: rgb(var(--sliderArrowColor, var(--color-background)));
+  box-shadow: 0 0 6px #0000001f;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.gs-tm__nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.gs-tm__nav:focus-visible {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 2px;
+}
+
+.gs-tm__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 15px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gs-tm__dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 1px solid rgb(var(--color-foreground));
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.gs-tm__dot[aria-current='true'] {
+  background: rgb(var(--color-foreground));
+}
+
+/* ---- Breakpoints (v3's) ---- */
+@media screen and (min-width: 768px) {
+  .gs-testimonials {
+    padding-top: var(--tm-pad-top, 70px);
+    padding-bottom: var(--tm-pad-bottom, 70px);
+  }
+
+  .testimonial-item {
+    flex-basis: 50%;
+    width: 50%;
+  }
+
+  /* Half-width cards need a quarter of slack each side to centre the
+     first and last ones. */
+  .gs-tm--enlarge .gs-tm__track {
+    padding-left: 25%;
+    padding-right: 25%;
+  }
+
+  .gs-tm--enlarge .testimonial-item-inner {
+    max-width: 80%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .gs-testimonials:not(.gs-tm--enlarge) .testimonial-item {
+    flex-basis: 33.333%;
+    width: 33.333%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .gs-testimonials:not(.gs-tm--enlarge) .testimonial-item {
+    flex-basis: 25%;
+    width: 25%;
+  }
+
+  .gs-tm--enlarge .author-name {
+    letter-spacing: 8px;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .gs-tm--enlarge .testimonial-item-inner {
+    max-width: 75%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .gs-tm--visibility-large { display: none !important; }
+}
+
+@media screen and (min-width: 768px) {
+  .gs-tm--visibility-small { display: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-tm--enlarge .testimonial-item-inner,
+  .gs-tm__nav {
+    transition: none;
+  }
+}

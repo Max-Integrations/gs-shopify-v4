@@ -1,0 +1,72 @@
+{% comment %}
+  ==================================================================
+  BLOCK: TEXT (generic theme block)
+  ==================================================================
+  Rich text. Colour is an optional override; when blank the parent's
+  --mg-text (or inherited colour) applies. Hosting sections restate
+  these rules under their own selector because compiled block CSS
+  loads before base.css.
+  ==================================================================
+{% endcomment %}
+
+{%- liquid
+  assign s = block.settings
+-%}
+
+{%- if s.text != blank or request.design_mode -%}
+  <div
+    class="gs-block-text rte gs-block-text--{{ s.size | default: 'body' }}{% if s.alignment != 'inherit' and s.alignment != blank %} gs-block-text--{{ s.alignment }}{% endif %}"
+    {% if s.color != blank and s.color != 'rgba(0,0,0,0)' %}style="--gs-text-color: {{ s.color }};"{% endif %}
+    {{ block.shopify_attributes }}
+  >
+    {{ s.text }}
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .gs-block-text { color: var(--gs-text-color, var(--mg-text, inherit)); }
+  .gs-block-text > :first-child { margin-top: 0; }
+  .gs-block-text > :last-child { margin-bottom: 0; }
+  .gs-block-text--small { font-size: 0.875em; }
+  .gs-block-text--large { font-size: 1.125em; }
+  .gs-block-text--left { text-align: left; }
+  .gs-block-text--center { text-align: center; }
+  .gs-block-text--right { text-align: right; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Text",
+  "settings": [
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Add a short description.</p>" },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "body", "label": "Body" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "body"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "inherit", "label": "Inherit" },
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "inherit"
+    },
+    { "type": "color", "id": "color", "label": "Color", "info": "Empty inherits from the section." }
+  ],
+  "presets": [
+    { "name": "Text" }
+  ]
+}
+{% endschema %}

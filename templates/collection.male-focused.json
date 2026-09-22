@@ -6,9 +6,10 @@
         "tile_1": {
           "type": "image",
           "settings": {
-            "heading": "Headwear",
+            "heading": "Basics",
             "title_font_desktop": 0,
             "title_font_mobile": 0,
+            "collection": "mens-basics",
             "btn_text": "",
             "btn_link": "",
             "button_as_link": false,
@@ -18,79 +19,93 @@
         "tile_2": {
           "type": "image",
           "settings": {
-            "heading": "Basics",
+            "image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8453_250YearsWideOpenT-Shirt-Black.jpg",
+            "heading": "Tees & Tanks",
             "title_font_desktop": 0,
             "title_font_mobile": 0,
+            "collection": "mens-graphic-tees-and-tanks",
             "btn_text": "",
             "btn_link": "",
             "button_as_link": false,
-            "button_size": "small",
-            "collection": "mens-basics"
+            "button_size": "small"
           }
         },
         "tile_3": {
           "type": "image",
           "settings": {
-            "heading": "Tees & Tanks",
+            "heading": "Hoodies & Long Sleeve",
             "title_font_desktop": 0,
             "title_font_mobile": 0,
+            "collection": "mens-hoodies-and-sweatshirts",
             "btn_text": "",
             "btn_link": "",
             "button_as_link": false,
-            "button_size": "small",
-            "collection": "mens-graphic-tees-and-tanks"
+            "button_size": "small"
           }
         },
         "tile_4": {
           "type": "image",
           "settings": {
-            "heading": "Hoodies & Long Sleeve",
+            "heading": "Bottoms",
             "title_font_desktop": 0,
             "title_font_mobile": 0,
+            "collection": "mens-bottoms",
             "btn_text": "",
             "btn_link": "",
             "button_as_link": false,
-            "button_size": "small",
-            "collection": "mens-hoodies-and-sweatshirts"
+            "button_size": "small"
           }
         },
         "tile_5": {
           "type": "image",
           "settings": {
-            "heading": "Bottoms",
+            "heading": "Button Downs & Polos",
             "title_font_desktop": 0,
             "title_font_mobile": 0,
+            "collection": "button-downs-polos",
             "btn_text": "",
             "btn_link": "",
             "button_as_link": false,
-            "button_size": "small",
-            "collection": "mens-bottoms"
+            "button_size": "small"
           }
         },
         "tile_6": {
           "type": "image",
           "settings": {
-            "heading": "Button Downs & Polos",
+            "heading": "Outerwear",
             "title_font_desktop": 0,
             "title_font_mobile": 0,
+            "collection": "mens-outerwear",
             "btn_text": "",
             "btn_link": "",
             "button_as_link": false,
-            "button_size": "small",
-            "collection": "button-downs-polos"
+            "button_size": "small"
           }
         },
         "tile_7": {
           "type": "image",
           "settings": {
-            "heading": "Outerwear",
+            "heading": "Accessories",
             "title_font_desktop": 0,
             "title_font_mobile": 0,
+            "collection": "accessories",
             "btn_text": "",
             "btn_link": "",
             "button_as_link": false,
-            "button_size": "small",
-            "collection": "mens-outerwear"
+            "button_size": "small"
+          }
+        },
+        "tile_8": {
+          "type": "image",
+          "settings": {
+            "heading": "Headwear",
+            "title_font_desktop": 0,
+            "title_font_mobile": 0,
+            "collection": "headwear",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "small"
           }
         }
       },
@@ -101,7 +116,8 @@
         "tile_4",
         "tile_5",
         "tile_6",
-        "tile_7"
+        "tile_7",
+        "tile_8"
       ],
       "settings": {
         "section_visibility": "always",

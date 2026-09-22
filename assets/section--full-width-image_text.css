@@ -1,0 +1,181 @@
+.fwit-promo {
+  --padding-top: var(--section-padding-top-desktop);
+  --padding-bottom: var(--section-padding-bottom-desktop);
+  --padding-x: var(--section-padding-x-desktop);
+  position: relative;
+  width: 100%;
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom);
+  overflow: hidden;
+  background: var(--section-background);
+}
+
+/* Section Visibility */
+@media (min-width: 769px) {
+  .fwit-promo.visibility-small {
+    display: none !important;
+  }
+}
+@media (max-width: 768px) {
+  .fwit-promo.visibility-large {
+    display: none !important;
+  }
+}
+
+.fwit-promo .promo-bg-picture {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.fwit-promo .promo-bg-picture img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fwit-promo.image-auto-height {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.fwit-promo.image-auto-height .promo-bg-picture {
+  position: static;
+  display: block;
+}
+
+.fwit-promo.image-auto-height .promo-bg-picture img {
+  height: auto;
+  object-fit: initial;
+}
+
+.fwit-promo.image-auto-height .promo-content {
+  position: absolute;
+  top: var(--padding-top);
+  bottom: var(--padding-bottom);
+  left: 0;
+  right: 0;
+}
+
+/* Layout Container */
+.fwit-promo .promo-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--padding-x);
+  align-items: var(--content-align, center);
+  /* DX Fix: Natively handles the gap between messages and buttons across all layouts */
+  gap: var(--item-gap-desktop);
+}
+
+/* Desktop Alignment Logic */
+.fwit-promo.layout-left .promo-content {
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+}
+.fwit-promo.layout-right .promo-content {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  text-align: right;
+}
+.fwit-promo.layout-center .promo-content {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.fwit-promo .promo-messages {
+  display: flex;
+  flex-direction: column;
+  gap: var(--item-gap-desktop);
+  align-items: var(--messages-align);
+}
+
+.fwit-promo .promo-message {
+  color: var(--color);
+  background-color: var(--background-color);
+  font-size: var(--font-size-desktop);
+  letter-spacing: var(--letter-spacing);
+  padding: var(--padding-y-desktop) var(--padding-x-desktop);
+}
+
+.fwit-promo a.promo-stretched-link {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+}
+
+.fwit-promo .promo-actions {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--button-gap);
+}
+
+.fwit-promo .promo-btn {
+  position: relative;
+  z-index: 6;
+  display: inline-flex;
+  color: var(--color);
+  background-color: var(--background-color);
+  border: var(--border-width) solid var(--border-color);
+  font-size: var(--font-size-desktop);
+  letter-spacing: var(--letter-spacing);
+  padding: var(--padding-y-desktop) var(--padding-x-desktop);
+  text-decoration: none;
+  transition:
+    opacity 0.2s,
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.fwit-promo .promo-btn:hover {
+  opacity: var(--hover-opacity, 0.8);
+  color: var(--color-hover, var(--color));
+  background-color: var(--background-color-hover, var(--background-color));
+  border-color: var(--border-color-hover, var(--border-color));
+}
+
+/* Mobile Flex Override */
+@media (max-width: 768px) {
+  .fwit-promo {
+    --padding-top: var(--section-padding-top-mobile);
+    --padding-bottom: var(--section-padding-bottom-mobile);
+    --padding-x: var(--section-padding-x-mobile);
+  }
+
+  .fwit-promo .promo-content {
+    flex-direction: column !important;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: var(--item-gap-mobile);
+  }
+
+  .fwit-promo .promo-messages {
+    gap: var(--item-gap-mobile);
+    align-items: center;
+  }
+
+  .fwit-promo .promo-message {
+    padding: var(--padding-y-mobile) var(--padding-x-mobile);
+    font-size: var(--font-size-mobile);
+  }
+
+  .fwit-promo .promo-btn {
+    padding: var(--padding-y-mobile) var(--padding-x-mobile);
+    font-size: var(--font-size-mobile);
+  }
+}

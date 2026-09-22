@@ -1,3 +1,14 @@
+{% comment %}
+  GS addition: `stack_on_scroll` (off by default). When on, the rows pin
+  with position: sticky and each following row slides up over the one
+  before it, while the covered row eases down to 97.5% and an incoming
+  row's image settles from a slight zoom. This reproduces v3's
+  image-with-text-carousel "grid" mode (assets/image-with-text-carousel.css
+  lines 218-262 and the ImageWithTextCarousel element in theme.js) that
+  the About page relies on. Offsets for 2 and 3 rows are v3's; 4+ rows
+  use v3's default 100/150/200px ladder. Desktop only (750px+), and the
+  scale part is skipped under prefers-reduced-motion.
+{% endcomment %}
 {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
@@ -42,7 +53,7 @@
   endunless
 -%}
 
-<div class="multirow section-{{ section.id }}-padding gradient color-{{ section.settings.section_color_scheme }}">
+<div id="Multirow-{{ section.id }}" class="multirow section-{{ section.id }}-padding gradient color-{{ section.settings.section_color_scheme }}{% if section.settings.stack_on_scroll %} multirow--stack multirow--stack-{{ section.blocks.size }}{% endif %}">
   <div class="multirow__inner page-width">
     {%- for block in section.blocks -%}
       <div
@@ -107,6 +118,87 @@
   </div>
 </div>
 
+{%- if section.settings.stack_on_scroll -%}
+  {%- style -%}
+    @media screen and (min-width: 750px) {
+      #Multirow-{{ section.id }} .image-with-text {
+        position: sticky;
+        top: 100px;
+        margin-bottom: 150px;
+        background: rgb(var(--color-background));
+        transform-origin: center top;
+        will-change: transform;
+      }
+      #Multirow-{{ section.id }} .image-with-text:nth-child(2) { top: 150px; margin-bottom: 100px; }
+      #Multirow-{{ section.id }} .image-with-text:nth-child(3) { top: 200px; margin-bottom: 50px; }
+      #Multirow-{{ section.id }} .image-with-text:last-child { top: 0; margin-bottom: 0; }
+      #Multirow-{{ section.id }}.multirow--stack-2 .image-with-text:nth-child(1) { top: 10vh; margin-bottom: 40px; }
+      #Multirow-{{ section.id }}.multirow--stack-3 .image-with-text:nth-child(1) { top: 10vh; margin-bottom: 65px; }
+      #Multirow-{{ section.id }}.multirow--stack-3 .image-with-text:nth-child(2) { top: 14vh; margin-bottom: 32px; }
+      #Multirow-{{ section.id }} .image-with-text__media {
+        overflow: hidden;
+      }
+      #Multirow-{{ section.id }} .image-with-text__media img {
+        transform-origin: center;
+        will-change: transform;
+      }
+    }
+  {%- endstyle -%}
+
+  <script>
+    (function () {
+      var root = document.getElementById('Multirow-{{ section.id }}');
+      if (!root || root.gsStackBound) return;
+      root.gsStackBound = true;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var rows = Array.prototype.slice.call(root.querySelectorAll('.image-with-text'));
+      var desktop = window.matchMedia('(min-width: 750px)');
+      var raf = null;
+
+      // v3's numbers: an incoming row's image starts up to 8.3% zoomed
+      // and settles to 1; a covered row shrinks to 97.5% at most.
+      function paint() {
+        raf = null;
+        var vh = window.innerHeight;
+        var wrapTop = root.getBoundingClientRect().top + window.scrollY;
+        var offset = 0;
+        rows.forEach(function (row, i) {
+          var grid = row.querySelector('.image-with-text__grid');
+          var img = row.querySelector('.image-with-text__media img');
+          var h = row.offsetHeight || 1;
+          if (!desktop.matches) {
+            if (grid) grid.style.transform = '';
+            if (img) img.style.transform = '';
+            offset += h;
+            return;
+          }
+          var rect = row.getBoundingClientRect();
+          var onScreen = rect.top < vh && rect.bottom > 0;
+          if (onScreen) {
+            // Incoming: distance until the row's bottom reaches the fold.
+            var incoming = Math.max(0, Math.min(1, (rect.bottom - vh) / h));
+            if (img) img.style.transform = 'scale(' + (1 + incoming / 12) + ')';
+            // Covered: how far the page has scrolled past the row's natural top.
+            var passed = window.scrollY - (wrapTop + offset);
+            var covered = i < rows.length - 1 ? Math.max(0, Math.min(1, passed / h)) : 0;
+            if (grid) grid.style.transform = 'scale(' + (1 - covered / 40) + ')';
+          }
+          offset += h + parseFloat(getComputedStyle(row).marginBottom || 0);
+        });
+      }
+
+      function onScroll() {
+        if (raf) return;
+        raf = window.requestAnimationFrame(paint);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      paint();
+    })();
+  </script>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "t:sections.multirow.name",
@@ -115,6 +207,13 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "stack_on_scroll",
+      "label": "Stack rows on scroll",
+      "info": "GS addition: rows pin and slide over each other as the page scrolls (desktop only).",
+      "default": false
+    },
     {
       "type": "header",
       "content": "t:sections.multirow.settings.header.content"

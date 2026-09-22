@@ -1,0 +1,233 @@
+/*
+  ==================================================================
+  Media grid (theme-block version)
+  ==================================================================
+  Grid, tile frame, overlay, content placement, hover reveal, and the
+  section-scoped restatement of the child blocks' styles.
+
+  The child blocks' own {% stylesheet %} rules are bundled by Shopify
+  into compiled_assets/styles.css, which loads BEFORE Dawn's base.css;
+  at equal specificity Dawn's .h1-.h6 win. This file loads after
+  base.css and scopes the same rules under .gs-media-grid so the
+  per-block overrides (colour, font size) and <strong> in headings take
+  effect.
+
+  Content placement uses grid: the tile (and its optional link wrapper)
+  is a one-cell grid, the image is absolutely positioned behind, and
+  .media-content is placed with justify-self / align-self from the
+  tile's --content-justify / --content-align custom properties.
+  ==================================================================
+*/
+
+.gs-media-grid {
+  padding-top: var(--padding-top-mobile, 40px);
+  padding-bottom: var(--padding-bottom-mobile, 40px);
+}
+
+.gs-mg--fullwidth {
+  width: 100%;
+}
+
+.gs-media-grid .section-title {
+  margin-bottom: 1.5rem;
+}
+
+.gs-media-grid .section-title.text-left { text-align: left; }
+.gs-media-grid .section-title.text-center { text-align: center; }
+.gs-media-grid .section-title.text-right { text-align: right; }
+
+.gs-media-grid .mg-heading {
+  margin: 0;
+}
+
+/* ---- Grid ---- */
+.media-grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(var(--cols-mobile, 1), minmax(0, 1fr));
+  grid-auto-rows: var(--mobileHeight, 200px);
+  grid-auto-flow: dense;
+  gap: var(--columnGap, 5px);
+}
+
+.media-grid-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  overflow: hidden;
+  grid-column: span min(var(--col-span, 1), var(--cols-mobile, 1));
+  grid-row: span var(--row-span, 1);
+}
+
+.media-grid-wrapper.shadow-enabled .media-grid-item {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* The whole-tile link is the same one-cell grid as the tile. */
+.media-grid-item__link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  grid-area: 1 / 1;
+  min-width: 0;
+  min-height: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.media-grid-item__link:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: -3px;
+}
+
+/* ---- Media ---- */
+.media-grid-image {
+  position: absolute;
+  inset: 0;
+}
+
+.media-grid-image .media {
+  width: 100%;
+  height: 100%;
+}
+
+.media-grid-image img,
+.media-grid-image video,
+.media-grid-image .placeholder-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.media-grid-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(var(--opacityColor, 0 0 0), var(--backgroundOpacity, 0.3));
+}
+
+.img-zoom .media-grid-image img {
+  transition: transform 0.4s ease;
+}
+
+.img-zoom:hover .media-grid-image img {
+  transform: scale(1.05);
+}
+
+/* ---- Content ---- */
+.media-content {
+  position: relative;
+  z-index: 1;
+  grid-area: 1 / 1;
+  justify-self: var(--content-justify, center);
+  align-self: var(--content-align, center);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  color: var(--mg-text, #ffffff);
+}
+
+.media-content.text-left { text-align: left; align-items: flex-start; }
+.media-content.text-center { text-align: center; align-items: center; }
+.media-content.text-right { text-align: right; align-items: flex-end; }
+
+/* ---- Child blocks, restated so they win over Dawn ---- */
+.gs-media-grid .gs-block-heading {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-weight: 400;
+  color: var(--gs-heading-color, var(--mg-heading, #ffffff));
+}
+
+.gs-media-grid .gs-block-heading strong,
+.gs-media-grid .gs-block-heading b {
+  font-weight: 700;
+}
+
+.gs-media-grid .gs-block-heading--left { text-align: left; }
+.gs-media-grid .gs-block-heading--center { text-align: center; }
+.gs-media-grid .gs-block-heading--right { text-align: right; }
+
+.gs-media-grid .gs-block-heading--custom-size {
+  font-size: var(--gs-heading-size-m, var(--gs-heading-size-d));
+}
+
+.gs-media-grid .gs-block-text {
+  color: var(--gs-text-color, var(--mg-text, #ffffff));
+}
+
+.gs-media-grid .gs-block-text p {
+  color: inherit;
+}
+
+.gs-media-grid .gs-block-button--button {
+  background-color: var(--gs-btn-bg, var(--mg-btn-bg, #ffffff));
+  color: var(--gs-btn-text, var(--mg-btn-text, #000000));
+  border-color: var(--gs-btn-bg, var(--mg-btn-bg, #ffffff));
+}
+
+.gs-media-grid .gs-block-button--button:hover,
+.gs-media-grid .gs-block-button--button:focus-visible,
+.gs-media-grid .media-grid-item:hover .gs-block-button--button {
+  background-color: var(--gs-btn-bg-hover, var(--mg-btn-bg-hover, #000000));
+  color: var(--gs-btn-text-hover, var(--mg-btn-text-hover, #ffffff));
+  border-color: var(--gs-btn-bg-hover, var(--mg-btn-bg-hover, #000000));
+}
+
+/* ---- Reveal on hover ---- */
+.content-on-hover .media-content {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.content-on-hover .media-grid-item:hover .media-content,
+.content-on-hover .media-grid-item:focus-within .media-content {
+  opacity: 1;
+}
+
+/* ---- Breakpoints ---- */
+@media screen and (max-width: 767px) {
+  .gs-mg--visibility-large { display: none !important; }
+}
+
+@media screen and (min-width: 768px) {
+  .gs-mg--visibility-small { display: none !important; }
+
+  .gs-media-grid {
+    padding-top: var(--padding-top, 70px);
+    padding-bottom: var(--padding-bottom, 70px);
+  }
+
+  .media-grid-wrapper {
+    grid-template-columns: repeat(var(--cols-desktop, 4), minmax(0, 1fr));
+    grid-auto-rows: var(--desktopHeight, 400px);
+    gap: var(--columnGapDesktop, 5px);
+  }
+
+  .media-grid-item {
+    grid-column: span min(var(--col-span, 1), var(--cols-desktop, 4));
+  }
+
+  .media-content {
+    padding: 2rem;
+  }
+
+  .gs-media-grid .gs-block-heading--custom-size {
+    font-size: var(--gs-heading-size-d, var(--gs-heading-size-m));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img-zoom .media-grid-image img,
+  .content-on-hover .media-content {
+    transition: none;
+  }
+
+  .img-zoom:hover .media-grid-image img {
+    transform: none;
+  }
+}

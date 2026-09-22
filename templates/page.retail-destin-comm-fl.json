@@ -1,0 +1,94 @@
+{
+  "sections": {
+    "main": {
+      "type": "section--retail-location",
+      "settings": {
+        "title_override": "Destin Commons Retail Store",
+        "intro": "",
+        "hub_link": "grunt-style-retail-stores",
+        "hub_link_label": "View Other Stores",
+        "address": "4267 Legendary Drive Space J107\nDestin, FL 32541",
+        "phone": "850-260-0211",
+        "hours": "Monday: 10:00am - 9:00pm\nTuesday: 10:00am - 9:00pm\nWednesday: 10:00am - 9:00pm\nThursday: 10:00am - 9:00pm\nFriday: 10:00am - 9:00pm\nSaturday: 10:00am - 9:00pm\nSunday: 11:00am - 7:00pm",
+        "notes": "",
+        "latitude": "30.390753929702512",
+        "longitude": "-86.4248636",
+        "map_zoom": 14,
+        "color_scheme": "scheme-4"
+      }
+    },
+    "images_grid_TjxEbG": {
+      "type": "images-grid",
+      "blocks": {
+        "image_c9wKMq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS5929_-_Men_s_The_Juice_Tee_-_Royal_WEB_READY-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_9mRn9b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS7765_WEB-READY_STACKED.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_zekwPY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS7081_WEB-READY_FRONT.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_c9wKMq",
+        "image_9mRn9b",
+        "image_zekwPY"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "show_carousel": true,
+        "card_grid": false,
+        "card_inner_space": false,
+        "item_per_row_desktop": 5,
+        "item_per_row_mobile": "1",
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "center",
+        "vertical_grid_image_size": "auto",
+        "heading": "In-Store Exclusives",
+        "highlight_style": "underline",
+        "bg__color": "solid",
+        "heading_size": "h3",
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "card_bg": "",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 50,
+        "bottom_space_desktop": 50,
+        "top_space_mobile": 10,
+        "bottom_space_mobile": 10,
+        "section_width": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "images_grid_TjxEbG"
+  ]
+}

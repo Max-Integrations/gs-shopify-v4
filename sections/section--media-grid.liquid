@@ -1,0 +1,184 @@
+{% comment %}
+  ==================================================================
+  MEDIA GRID (theme-block version)
+  Replaces sections/media-grid--deprecated.liquid
+  ==================================================================
+  A heading over a grid of image/video tiles. Tiles are
+  block--media-tile THEME BLOCKS whose content is their own child
+  blocks (block--heading, block--text, block--button, app blocks), so a
+  tile carries any number of lines.
+
+  ------------------------------------------------------------------
+  SETTINGS MODEL
+  ------------------------------------------------------------------
+  Section: columns (desktop 1-4, mobile 1-4), row heights, gap,
+  shadow, hover reveal, an optional heading, the tile colours (heading,
+  text, button, button hover) that apply to every tile, colour scheme
+  and padding. Tiles: media, link, span, position, alignment, overlay.
+  Child blocks: content plus optional per-block overrides.
+
+  The old section had 23 section + 27 per-tile settings; this has 22
+  section + 9 per-tile, and tiles are no longer a fixed heading +
+  description + button.
+
+  ------------------------------------------------------------------
+  WHY THE CHILD BLOCK STYLES ARE RESTATED IN section--media-grid.css
+  ------------------------------------------------------------------
+  Shopify bundles every {% stylesheet %} into compiled_assets/styles.css
+  and loads it BEFORE Dawn's base.css, so a block's own rules lose to
+  Dawn's .h1-.h6 classes at equal specificity. The section stylesheet
+  loads after base.css and scopes the same rules under .gs-media-grid,
+  which is what makes the heading colour/size overrides and <strong>
+  inside headings actually take effect. Headings inside tiles are
+  weight 400 so bold from the rich text editor is visible (the theme's
+  heading weight is 700, which made <strong> a no-op).
+  ==================================================================
+{% endcomment %}
+
+{{ 'section--media-grid.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+-%}
+
+<div
+  class="gs-media-grid color-{{ s.color_scheme }}{% if s.enable_gradient %} gradient{% endif %} gs-mg--visibility-{{ s.section_visibility | default: 'always' }}"
+  style="
+    --padding-top: {{ s.top_space_desktop }}px;
+    --padding-bottom: {{ s.bottom_space_desktop }}px;
+    --padding-top-mobile: {{ s.top_space_mobile }}px;
+    --padding-bottom-mobile: {{ s.bottom_space_mobile }}px;
+    --cols-desktop: {{ s.columns_desktop | default: 4 }};
+    --cols-mobile: {{ s.columns_mobile | default: 1 }};
+    --desktopHeight: {{ s.desktop_row_height }}px;
+    --mobileHeight: {{ s.mobile_row_height }}px;
+    --columnGap: {{ s.mobile_grid_gap }}px;
+    --columnGapDesktop: {{ s.desktop_grid_gap }}px;
+    --mg-heading: {{ s.heading_color | default: '#ffffff' }};
+    --mg-text: {{ s.text_color | default: '#ffffff' }};
+    --mg-btn-bg: {{ s.btn_bg_color | default: '#ffffff' }};
+    --mg-btn-text: {{ s.btn_text_color | default: '#000000' }};
+    --mg-btn-bg-hover: {{ s.btn_hover_color | default: '#000000' }};
+    --mg-btn-text-hover: {{ s.btn_hover_text_color | default: '#ffffff' }};
+  "
+>
+  <div class="{% if s.section_width %}gs-mg--fullwidth{% else %}page-width{% endif %}">
+    {%- if s.heading != blank -%}
+      <div class="section-title {{ s.heading_alignment | default: 'text-center' }}">
+        <{{ s.seo_heading | default: 'h2' }} class="mg-heading {{ s.heading_size | default: 'h3' }}">{{ s.heading }}</{{ s.seo_heading | default: 'h2' }}>
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="media-grid-wrapper{% if s.enable_shadow %} shadow-enabled{% endif %}{% if s.enable_hover_content %} content-on-hover{% endif %}">
+        {% content_for 'blocks' %}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Media grid",
+  "tag": "section",
+  "class": "gs-media-grid-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    { "type": "block--media-tile" }
+  ],
+  "settings": [
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "columns_desktop", "label": "Columns (desktop)", "min": 1, "max": 4, "step": 1, "default": 4 },
+    { "type": "range", "id": "columns_mobile", "label": "Columns (mobile)", "min": 1, "max": 4, "step": 1, "default": 1 },
+    { "type": "range", "id": "desktop_row_height", "label": "Row height (desktop)", "min": 200, "max": 600, "step": 5, "unit": "px", "default": 400 },
+    { "type": "range", "id": "mobile_row_height", "label": "Row height (mobile)", "min": 150, "max": 300, "step": 5, "unit": "px", "default": 200 },
+    { "type": "range", "id": "desktop_grid_gap", "label": "Gap (desktop)", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 5 },
+    { "type": "range", "id": "mobile_grid_gap", "label": "Gap (mobile)", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 5 },
+    { "type": "checkbox", "id": "section_width", "label": "Full width", "default": false },
+    { "type": "checkbox", "id": "enable_shadow", "label": "Tile shadow", "default": false },
+    { "type": "checkbox", "id": "enable_hover_content", "label": "Reveal content on hover", "default": false },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "Show on",
+      "options": [
+        { "value": "always", "label": "All devices" },
+        { "value": "small", "label": "Mobile only" },
+        { "value": "large", "label": "Desktop only" }
+      ],
+      "default": "always"
+    },
+
+    { "type": "header", "content": "Heading" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Size",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "select",
+      "id": "seo_heading",
+      "label": "HTML tag",
+      "options": [
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" },
+        { "value": "h3", "label": "h3" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "text-left", "label": "Left" },
+        { "value": "text-center", "label": "Center" },
+        { "value": "text-right", "label": "Right" }
+      ],
+      "default": "text-center"
+    },
+
+    { "type": "header", "content": "Tile colors", "info": "Apply to every tile. A child block can override its own." },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#ffffff" },
+    { "type": "color", "id": "btn_bg_color", "label": "Button", "default": "#ffffff" },
+    { "type": "color", "id": "btn_text_color", "label": "Button text", "default": "#000000" },
+    { "type": "color", "id": "btn_hover_color", "label": "Button hover", "default": "#000000" },
+    { "type": "color", "id": "btn_hover_text_color", "label": "Button hover text", "default": "#ffffff" },
+
+    { "type": "header", "content": "Section" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "checkbox", "id": "enable_gradient", "label": "Use gradient background", "default": false },
+    { "type": "range", "id": "top_space_desktop", "label": "Top padding (desktop)", "unit": "px", "default": 70, "min": 0, "max": 150, "step": 5 },
+    { "type": "range", "id": "bottom_space_desktop", "label": "Bottom padding (desktop)", "unit": "px", "default": 70, "min": 0, "max": 150, "step": 5 },
+    { "type": "range", "id": "top_space_mobile", "label": "Top padding (mobile)", "unit": "px", "default": 40, "min": 0, "max": 100, "step": 5 },
+    { "type": "range", "id": "bottom_space_mobile", "label": "Bottom padding (mobile)", "unit": "px", "default": 40, "min": 0, "max": 100, "step": 5 }
+  ],
+  "presets": [
+    {
+      "name": "Media grid",
+      "settings": { "columns_desktop": 2 },
+      "blocks": [
+        {
+          "type": "block--media-tile",
+          "blocks": [ { "type": "block--heading", "settings": { "text": "<strong>First tile</strong>" } } ]
+        },
+        {
+          "type": "block--media-tile",
+          "blocks": [ { "type": "block--heading", "settings": { "text": "<strong>Second tile</strong>" } } ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,5 +1,14 @@
 {% comment %}
   ==================================================================
+  DEPRECATED - use sections/section--media-grid.liquid
+  ==================================================================
+  Renamed from media-grid.liquid on 2026-09-21. Kept only so any
+  template still referencing it keeps rendering; presets removed so it
+  no longer appears in the "Add section" picker. The replacement models
+  each tile as a block--media-tile theme block with child heading /
+  text / button blocks instead of one 27-setting block.
+
+  ==================================================================
   MEDIA GRID
   Ported from gs-shopify-v3 sections/media-grid.liquid (29.3 KB)
   ==================================================================
@@ -281,7 +290,7 @@
 
 {% schema %}
 {
-  "name": "Media grid",
+  "name": "Media grid (deprecated)",
   "tag": "section",
   "class": "section media-grid-section",
   "disabled_on": { "groups": ["header", "footer"] },
@@ -496,9 +505,5 @@
         { "type": "range", "id": "background_opacity", "label": "Overlay opacity", "default": 0.3, "min": 0, "max": 1, "step": 0.1 }
       ]
     }
-  ],
-  "presets": [
-    { "name": "Media grid", "blocks": [{ "type": "grid" }, { "type": "grid" }] }
-  ]
-}
+  ]}
 {% endschema %}

@@ -1,0 +1,517 @@
+{% comment %}
+  ==================================================================
+  IMAGES GRID
+  Ported from gs-shopify-v3 sections/images-grid.liquid (19.5 KB)
+  ==================================================================
+  A heading over a row of image tiles, each with a title and a link.
+  On v3 collection pages this is the "SHOP BY PRODUCT TYPE" strip above
+  the product grid: carousel on, 5 per row, portrait images, and each
+  tile linking to a sub-collection. Also used on landing pages.
+
+  ------------------------------------------------------------------
+  CAROUSEL: FLICKITY REPLACED
+  ------------------------------------------------------------------
+  v3 instantiated Flickity per instance via data-slideshow. The track
+  is now a native overflow scroller with CSS scroll-snap, and the arrow
+  buttons are driven by assets/gs-swatch-scroller.js - the same scroller
+  the swatch rows, multicolumn-with-content-hover and countdown use.
+  That script is loaded once from layout/theme.liquid.
+
+  With "Show grid as carousel" off, the track wraps into rows instead.
+
+  ------------------------------------------------------------------
+  OTHER CHANGES FROM v3
+  ------------------------------------------------------------------
+  1. Per-instance <style> block replaced by custom properties on the
+     wrapper; static rules live in assets/gs-images-grid.css.
+  2. lazy-image replaced with a native img + srcset + loading="lazy".
+  3. AOS attributes removed.
+  4. Tile titles were <h6 class="h6">. A tile title is not a document
+     heading, so it is a <p> styled the same. The section heading keeps
+     its configurable tag.
+  5. `marker` snippet not ported (same as media-grid): highlight shapes
+     2-6 render as underline. `underline` and `background` work.
+  6. {{ settings.layout_style }} -> Dawn's page-width.
+  7. Trailing commas removed from the schema; t: keys -> English.
+
+  ------------------------------------------------------------------
+  CURRENT-COLLECTION HIGHLIGHT (from v3's collection-carousel)
+  ------------------------------------------------------------------
+  On v3 collection pages the "SHOP BY PRODUCT TYPE" strip was actually
+  sections/collection-carousel.liquid: each tile picks a COLLECTION, and
+  when one of them is the collection being viewed, that tile stays at
+  full opacity and every other tile dims to 20%. Men's and women's pages
+  get different tile sets by living on different collection templates.
+
+  That behaviour lives here now rather than porting the 795-line
+  collection-carousel. Each block has an optional `collection` picker:
+  it supplies the link, title and image unless overridden, and marks the
+  tile current when it matches the page's collection (or, for a plain
+  link tile, when the link equals request.path). The wrapper carries
+  .gs-ig--has-current when any tile matches; the CSS dims the rest.
+
+  All v3 schema setting IDs are unchanged, so v3 template JSON for this
+  section ports as-is. `collection` and `section_width` are additions.
+
+  TILE FRAME SETTINGS (2026-09-21): the 8px card padding and the image
+  box's scheme-coloured background were hardcoded, which on a black card
+  read as "a black border around a white box". `card_inner_space_size`,
+  `media_bg`, `card_border_width` and `card_border_color` make all of it
+  editable. Defaults reproduce the previous look.
+
+  `grid_image_size` ("Image width") now also applies to VERTICAL cards:
+  small / medium / large = the tile is 50 / 75 / 100% of its slot and the
+  row is centred. v3 only used it for horizontal cards, so every ported vertical
+  instance was set to "large" when this changed (2026-09-21) to keep its
+  look; the About page's logo row uses "small".
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-images-grid.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+  assign is_carousel = false
+  if s.show_carousel
+    assign is_carousel = true
+  endif
+
+  assign per_desktop = s.item_per_row_desktop | default: 5
+  assign per_mobile = s.item_per_row_mobile | default: '1'
+
+  case s.vertical_grid_image_size
+    when 'landscape'
+      assign fixed_ratio = '70%'
+    when 'square'
+      assign fixed_ratio = '100%'
+    when 'portrait'
+      assign fixed_ratio = '130%'
+    else
+      assign fixed_ratio = blank
+  endcase
+-%}
+
+{%- liquid
+  # Does any tile match the page being viewed? Decides whether the
+  # others dim. Keep this test identical to the per-tile one below.
+  assign has_current = false
+  for block in section.blocks
+    assign check_collection = block.settings.collection
+    assign check_url = block.settings.btn_link
+    if check_url == blank and check_collection != blank
+      assign check_url = check_collection.url
+    endif
+    if check_collection != blank and collection != blank and check_collection.handle == collection.handle
+      assign has_current = true
+      break
+    elsif check_url != blank and check_url == request.path
+      assign has_current = true
+      break
+    endif
+  endfor
+
+  # [bracketed] words in the heading become highlight spans.
+  assign highlight_class = 'line-marker highlight-underline'
+  if s.highlight_style == 'background'
+    assign highlight_class = 'line-marker highlight-background highlight-background-solid'
+    if s.bg__color == 'gradient'
+      assign highlight_class = 'line-marker highlight-background highlight-background-gradient'
+    endif
+  endif
+  assign highlight_prefix = '<span class="' | append: highlight_class | append: '">'
+  assign highlight_suffix = '</span>'
+-%}
+
+<div
+  class="gs-images-grid color-{{ s.color_scheme }}{% if s.enable_gradient %} gradient{% endif %} gs-ig--visibility-{{ s.section_visibility }} gs-ig--{{ s.card_style | default: 'vertical' }}{% if s.card_grid %} gs-ig--card{% endif %}{% if s.card_inner_space %} gs-ig--inner-space{% endif %} gs-ig--image-{{ s.grid_image_size | default: 'large' }}{% if has_current %} gs-ig--has-current{% endif %}"
+  style="
+    --ig-padding-top: {{ s.top_space_desktop }}px;
+    --ig-padding-bottom: {{ s.bottom_space_desktop }}px;
+    --ig-padding-top-mobile: {{ s.top_space_mobile }}px;
+    --ig-padding-bottom-mobile: {{ s.bottom_space_mobile }}px;
+    --ig-per-desktop: {{ per_desktop }};
+    --ig-per-mobile: {{ per_mobile }};
+    {%- unless s.card_bg == 'rgba(0,0,0,0)' or s.card_bg == blank %}
+    --ig-card-bg: {{ s.card_bg }};
+    {%- endunless %}
+    {%- unless s.media_bg == 'rgba(0,0,0,0)' or s.media_bg == blank %}
+    --ig-media-bg: {{ s.media_bg }};
+    {%- endunless %}
+    --ig-inner-space: {{ s.card_inner_space_size | default: 8 }}px;
+    --ig-border-width: {{ s.card_border_width | default: 0 }}px;
+    {%- unless s.card_border_color == 'rgba(0,0,0,0)' or s.card_border_color == blank %}
+    --ig-border-color: {{ s.card_border_color }};
+    {%- endunless %}
+    {%- if s.heading_font_desktop > 0 %}
+    --ig-heading-d: {{ s.heading_font_desktop }}px;
+    {%- endif %}
+    {%- if s.heading_font_mobile > 0 %}
+    --ig-heading-m: {{ s.heading_font_mobile }}px;
+    {%- endif %}
+  "
+>
+  <div class="{% if s.section_width %}gs-ig--fullwidth{% else %}page-width{% endif %}">
+    {%- if s.heading != blank -%}
+      <div class="section-title {{ s.heading_alignment }}">
+        <{{ s.seo_heading }} class="ig-heading {{ s.heading_size }}">
+          {{ s.heading | replace: '[', highlight_prefix | replace: ']', highlight_suffix }}
+        </{{ s.seo_heading }}>
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="gs-ig__scroller"{% if is_carousel %} data-swatch-scroller{% endif %}>
+        {%- if is_carousel -%}
+          <button
+            type="button"
+            class="gs-ig__nav"
+            data-swatch-scroll="prev"
+            aria-label="{{ 'general.slider.previous_slide' | t | default: 'Previous' }}"
+            hidden
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+              <path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        {%- endif -%}
+
+        <ul class="gs-ig__track{% unless is_carousel %} gs-ig__track--grid{% endunless %}"{% if is_carousel %} data-swatch-track{% endif %}>
+          {%- for block in section.blocks -%}
+            {%- liquid
+              # Picker supplies link, title and image unless overridden.
+              assign tile_collection = block.settings.collection
+              assign tile_url = block.settings.btn_link
+              if tile_url == blank and tile_collection != blank
+                assign tile_url = tile_collection.url
+              endif
+              assign tile_title = block.settings.heading
+              if tile_title == blank and tile_collection != blank
+                assign tile_title = tile_collection.title
+              endif
+              assign img = block.settings.image
+              if img == blank and tile_collection != blank
+                assign img = tile_collection.image | default: tile_collection.featured_image
+              endif
+
+              # Same test as the pre-pass above.
+              assign is_current = false
+              if tile_collection != blank and collection != blank and tile_collection.handle == collection.handle
+                assign is_current = true
+              elsif tile_url != blank and tile_url == request.path
+                assign is_current = true
+              endif
+
+              assign ratio = fixed_ratio
+              if ratio == blank
+                if img != blank
+                  assign ratio = 1 | divided_by: img.aspect_ratio | times: 100 | append: '%'
+                else
+                  assign ratio = '100%'
+                endif
+              endif
+
+              comment
+                v3: a vertical tile with a link but no button text is one
+                big link. Otherwise the button/hyperlink inside is the link.
+              endcomment
+              assign whole_tile_link = false
+              if tile_url != blank and block.settings.btn_text == blank and s.card_style != 'horizontal'
+                assign whole_tile_link = true
+              endif
+
+              assign has_content = false
+              if tile_title != blank or block.settings.btn_text != blank
+                assign has_content = true
+              endif
+            -%}
+
+            <li class="gs-ig__item{% if is_current %} is-current{% endif %}" {{ block.shopify_attributes }}>
+              {%- if whole_tile_link -%}
+                <a class="gs-ig__inner gs-ig__inner--link" href="{{ tile_url }}"{% if is_current %} aria-current="page"{% endif %}>
+              {%- else -%}
+                <div class="gs-ig__inner">
+              {%- endif -%}
+
+                <div class="gs-ig__media-wrap">
+                  <div class="gs-ig__media" style="--imageRatio: {{ ratio }};">
+                    {%- if img != blank -%}
+                      <img
+                        src="{{ img | image_url: width: 600 }}"
+                        srcset="
+                          {{ img | image_url: width: 300 }} 300w,
+                          {{ img | image_url: width: 600 }} 600w,
+                          {{ img | image_url: width: 900 }} 900w
+                        "
+                        sizes="(min-width: 768px) calc(100vw / {{ per_desktop }}), calc(100vw / {{ per_mobile }})"
+                        alt="{{ img.alt | default: tile_title | escape }}"
+                        width="{{ img.width }}"
+                        height="{{ img.height }}"
+                        loading="lazy"
+                      >
+                    {%- else -%}
+                      {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- endif -%}
+                  </div>
+                </div>
+
+                {%- if has_content -%}
+                  <div class="gs-ig__content gs-ig__content--{{ s.content_position | default: 'left' }}">
+                    {%- if tile_title != blank -%}
+                      <p
+                        class="gs-ig__title h6"
+                        {%- if block.settings.title_font_desktop > 0 or block.settings.title_font_mobile > 0 %}
+                          style="{% if block.settings.title_font_desktop > 0 %}--ig-title-d: {{ block.settings.title_font_desktop }}px;{% endif %}{% if block.settings.title_font_mobile > 0 %}--ig-title-m: {{ block.settings.title_font_mobile }}px;{% endif %}"
+                        {%- endif %}
+                      >
+                        {{- tile_title -}}
+                      </p>
+                    {%- endif -%}
+
+                    {%- if block.settings.btn_text != blank and tile_url != blank -%}
+                      <div class="gs-ig__button">
+                        <a
+                          href="{{ tile_url }}"
+                          {%- if is_current %} aria-current="page"{% endif %}
+                          class="{% if block.settings.button_as_link or s.card_style == 'horizontal' %}hyperlink{% else %}button {{ block.settings.button_size | default: 'large' }}-btn{% endif %}"
+                        >
+                          {{- block.settings.btn_text -}}
+                        </a>
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+
+              {%- if whole_tile_link -%}
+                </a>
+              {%- else -%}
+                </div>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        {%- if is_carousel -%}
+          <button
+            type="button"
+            class="gs-ig__nav"
+            data-swatch-scroll="next"
+            aria-label="{{ 'general.slider.next_slide' | t | default: 'Next' }}"
+            hidden
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+              <path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Images grid",
+  "tag": "section",
+  "class": "section images-grid-section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "header", "content": "General" },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "Show section on",
+      "default": "always",
+      "options": [
+        { "value": "always", "label": "All devices" },
+        { "value": "small", "label": "Mobile only" },
+        { "value": "large", "label": "Desktop only" }
+      ]
+    },
+    { "type": "checkbox", "id": "section_width", "label": "Full width", "default": false },
+    { "type": "checkbox", "id": "show_carousel", "label": "Show grid as carousel", "default": false },
+    { "type": "checkbox", "id": "card_grid", "label": "Card background", "default": false },
+    { "type": "checkbox", "id": "card_inner_space", "label": "Space between card and image", "default": false },
+    { "type": "range", "id": "item_per_row_desktop", "label": "Images per row (desktop)", "min": 2, "max": 6, "step": 1, "default": 5 },
+    {
+      "type": "select",
+      "id": "item_per_row_mobile",
+      "label": "Images per row (mobile)",
+      "default": "1",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ]
+    },
+    {
+      "type": "radio",
+      "id": "card_style",
+      "label": "Card style",
+      "default": "vertical",
+      "options": [
+        { "value": "vertical", "label": "Image above content" },
+        { "value": "horizontal", "label": "Image beside content" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "grid_image_size",
+      "label": "Image width",
+      "info": "Horizontal cards: width of the image column. Vertical cards: tile width as a share of its slot (small 50%, medium 75%, large 100%), row centred.",
+      "default": "large",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ]
+    },
+    { "type": "text_alignment", "id": "content_position", "label": "Content alignment (vertical cards)", "default": "left" },
+    {
+      "type": "select",
+      "id": "vertical_grid_image_size",
+      "label": "Image ratio (vertical cards)",
+      "default": "auto",
+      "options": [
+        { "value": "auto", "label": "Natural" },
+        { "value": "landscape", "label": "Landscape" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "square", "label": "Square" }
+      ]
+    },
+    { "type": "header", "content": "Heading" },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Wrap words in [square brackets] to highlight them.",
+      "default": "Images grid"
+    },
+    {
+      "type": "select",
+      "id": "highlight_style",
+      "label": "Highlight style",
+      "info": "Shape options need snippets/marker, which is not yet ported. They currently render as underline.",
+      "default": "underline",
+      "options": [
+        { "value": "underline", "label": "Underline" },
+        { "value": "shape_2", "label": "Shape 2" },
+        { "value": "shape_3", "label": "Shape 3" },
+        { "value": "shape_4", "label": "Shape 4" },
+        { "value": "shape_5", "label": "Shape 5" },
+        { "value": "shape_6", "label": "Shape 6" },
+        { "value": "background", "label": "Background" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "bg__color",
+      "label": "Highlight background",
+      "default": "gradient",
+      "options": [
+        { "value": "gradient", "label": "Gradient" },
+        { "value": "solid", "label": "Solid" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h3",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ]
+    },
+    { "type": "range", "id": "heading_font_desktop", "label": "Heading font size (desktop)", "info": "0 uses the heading size above.", "min": 0, "max": 96, "step": 2, "unit": "px", "default": 0 },
+    { "type": "range", "id": "heading_font_mobile", "label": "Heading font size (mobile)", "info": "0 uses the heading size above.", "min": 0, "max": 72, "step": 2, "unit": "px", "default": 0 },
+    {
+      "type": "select",
+      "id": "seo_heading",
+      "label": "Heading tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "default": "text-left",
+      "options": [
+        { "value": "text-left", "label": "Left" },
+        { "value": "text-center", "label": "Center" },
+        { "value": "text-right", "label": "Right" }
+      ]
+    },
+    { "type": "header", "content": "Tile" },
+    { "type": "color", "id": "card_bg", "label": "Card background color", "info": "Needs \"Card background\" on. With \"Space between card and image\" on, this colour shows as a frame around the image." },
+    { "type": "range", "id": "card_inner_space_size", "label": "Space between card and image", "min": 0, "max": 30, "step": 1, "unit": "px", "default": 8 },
+    { "type": "color", "id": "media_bg", "label": "Image background color", "info": "Behind the image itself. Leave empty to use the color scheme background." },
+    { "type": "range", "id": "card_border_width", "label": "Tile border width", "min": 0, "max": 10, "step": 1, "unit": "px", "default": 0 },
+    { "type": "color", "id": "card_border_color", "label": "Tile border color", "default": "#000000" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "checkbox", "id": "enable_gradient", "label": "Use gradient background", "default": false },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "top_space_desktop", "label": "Top padding (desktop)", "unit": "px", "default": 0, "min": 0, "max": 150, "step": 5 },
+    { "type": "range", "id": "bottom_space_desktop", "label": "Bottom padding (desktop)", "unit": "px", "default": 60, "min": 0, "max": 150, "step": 5 },
+    { "type": "range", "id": "top_space_mobile", "label": "Top padding (mobile)", "unit": "px", "default": 40, "min": 0, "max": 100, "step": 5 },
+    { "type": "range", "id": "bottom_space_mobile", "label": "Bottom padding (mobile)", "unit": "px", "default": 40, "min": 0, "max": 100, "step": 5 }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "heading", "label": "Title" },
+        { "type": "range", "id": "title_font_desktop", "label": "Title font size (desktop)", "info": "0 uses the default size.", "min": 0, "max": 48, "step": 1, "unit": "px", "default": 0 },
+        { "type": "range", "id": "title_font_mobile", "label": "Title font size (mobile)", "info": "0 uses the default size.", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 0 },
+        { "type": "header", "content": "Link" },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "Links the tile to this collection and uses its image and title unless overridden. The tile is highlighted, and the others dimmed, when viewing this collection."
+        },
+        { "type": "text", "id": "btn_text", "label": "Button text", "info": "Leave empty to make the whole tile the link." },
+        { "type": "url", "id": "btn_link", "label": "Link", "info": "Overrides the collection link." },
+        { "type": "checkbox", "id": "button_as_link", "label": "Show button as a text link", "default": false },
+        {
+          "type": "select",
+          "id": "button_size",
+          "label": "Button size",
+          "default": "large",
+          "options": [
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "large", "label": "Large" },
+            { "value": "regular", "label": "Regular" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Images grid",
+      "blocks": [
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}

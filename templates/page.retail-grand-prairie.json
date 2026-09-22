@@ -1,0 +1,93 @@
+{
+  "sections": {
+    "main": {
+      "type": "section--retail-location",
+      "settings": {
+        "title_override": "Grand Prairie Premium Outlets",
+        "intro": "",
+        "hub_link": "grunt-style-retail-stores",
+        "hub_link_label": "View Other Stores",
+        "address": "2950 I-20, Suite #121\nGrand Prairie, TX 75052",
+        "phone": "469-361-2100",
+        "hours": "Monday: 11:00am - 8:00pm\nTuesday: 11:00am - 8:00pm\nWednesday: 11:00am - 8:00pm\nThursday: 11:00am - 8:00pm\nFriday: 10:00am - 9:00pm\nSaturday: 10:00am - 9:00pm\nSunday: 12:00pm - 6:00pm",
+        "notes": "",
+        "latitude": "32.6759081",
+        "longitude": "-97.0345647",
+        "map_zoom": 14,
+        "color_scheme": "scheme-4"
+      }
+    },
+    "images_grid_TjxEbG": {
+      "type": "images-grid",
+      "blocks": {
+        "image_c9wKMq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS4684---Mess-with-the-Bull_WEB_READY.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_BzjBFT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS4685_-_Texas_2A_-_Black_STANDARD_WEB_READY-front.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_q4R3bn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS4686---Not-Texas_WEB_READY.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_c9wKMq",
+        "image_BzjBFT",
+        "image_q4R3bn"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "show_carousel": true,
+        "card_grid": false,
+        "card_inner_space": false,
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "center",
+        "vertical_grid_image_size": "auto",
+        "heading": "In-Store Exclusives",
+        "highlight_style": "underline",
+        "bg__color": "solid",
+        "heading_size": "h3",
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "card_bg": "",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 50,
+        "bottom_space_desktop": 50,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40,
+        "item_per_row_desktop": 5,
+        "section_width": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "images_grid_TjxEbG"
+  ]
+}

@@ -1,0 +1,452 @@
+{% comment %}
+  ==================================================================
+  TESTIMONIALS
+  Ported from gs-shopify-v3 sections/testimonials.liquid +
+  snippets/testimonial-style1.liquid, testimonial-content.liquid,
+  carousal-arrows.liquid and assets/testimonials.css
+  ==================================================================
+  A heading over a row of quote cards with star ratings, author, and
+  optional photo/name/country. Two v3 modes, one behaviour that matters:
+
+  "Enlarge current slide" (enlargen_slide) - the mode the Club page
+  uses - shows ONE centred quote at full size with the neighbours
+  peeking either side at 80% scale and 50% opacity, and the arrows step
+  one quote at a time. Without it the cards sit side by side
+  (1 / 2 / 3 / 4 per row up the breakpoints) and scroll as a strip.
+
+  All v3 section and block setting ids are unchanged, so v3 template
+  JSON for this section ports as-is.
+
+  ------------------------------------------------------------------
+  CHANGES FROM v3
+  ------------------------------------------------------------------
+  - FLICKITY REMOVED. The track is a native overflow scroller with
+    scroll-snap; the arrows scroll by exactly one card and the "current"
+    card is whichever is nearest the track's centre. gs-swatch-scroller
+    is NOT reused here: its 0.8 x viewport step would land between two
+    50%-wide cards and snap two at a time.
+  - No wrap-around. Arrows disable at each end, like images-grid.
+  - Snippets inlined (sections stay self-contained): the star and arrow
+    SVGs, the [bracketed] heading highlight, native <img> for the author
+    photo instead of lazy-image.
+  - `testimonial_style: collage-carousal` (v3's testimonial-style2, a
+    masonry collage) is NOT ported. The option stays in the schema so
+    old JSON validates; it renders as the carousel style.
+  - `auto_rotate` advances one card every `change_slides_speed` seconds
+    and pauses while hovered or focused. Reduced-motion users get no
+    scale/opacity transition.
+  - The v3 global `settings.enable_animation` (AOS fade-ups) is not a
+    v4 setting and the store had it off. Dropped.
+  ==================================================================
+{% endcomment %}
+
+{{ 'section--testimonials.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+  assign enlarge = s.enlargen_slide
+  assign show_arrows = true
+  if s.slider_thumbnail == 'dots'
+    assign show_arrows = false
+  endif
+  assign autoplay_ms = 0
+  if s.auto_rotate
+    assign autoplay_ms = s.change_slides_speed | default: 5 | times: 1000
+  endif
+
+  # [bracketed] words in the heading become highlight spans.
+  assign highlight_class = 'line-marker highlight-underline'
+  if s.highlight_style == 'background'
+    assign highlight_class = 'line-marker highlight-background highlight-background-solid'
+    if s.bg__color == 'gradient'
+      assign highlight_class = 'line-marker highlight-background highlight-background-gradient'
+    endif
+  endif
+  assign highlight_prefix = '<span class="' | append: highlight_class | append: '">'
+  assign highlight_suffix = '</span>'
+-%}
+
+<div
+  class="gs-testimonials color-{{ s.color_scheme | default: 'scheme-1' }}{% if s.enable_gradient %} gradient{% endif %} gs-tm--visibility-{{ s.section_visibility | default: 'always' }}{% if enlarge %} gs-tm--enlarge{% endif %}{% if s.image_position == 'top' %} gs-tm--image-top{% endif %}"
+  id="GsTestimonials-{{ section.id }}"
+  data-gs-testimonials
+  data-autoplay="{{ autoplay_ms }}"
+  style="
+    --tm-pad-top: {{ s.top_space_desktop | default: 70 }}px;
+    --tm-pad-bottom: {{ s.bottom_space_desktop | default: 70 }}px;
+    --tm-pad-top-mobile: {{ s.top_space_mobile | default: 40 }}px;
+    --tm-pad-bottom-mobile: {{ s.bottom_space_mobile | default: 40 }}px;
+  "
+>
+  <div class="page-width">
+    {%- if s.heading != blank -%}
+      <div class="section-title {{ s.heading_alignment | default: 'text-center' }}">
+        <{{ s.seo_heading | default: 'h2' }} class="{{ s.heading_size | default: 'h1' }} section-heading">
+          {{ s.heading | replace: '[', highlight_prefix | replace: ']', highlight_suffix }}
+        </{{ s.seo_heading | default: 'h2' }}>
+        {%- if s.description != blank -%}
+          <p class="testimonial-desc">{{ s.description }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="gs-tm__scroller">
+        {%- if show_arrows -%}
+          <button
+            type="button"
+            class="gs-tm__nav gs-tm__nav--prev"
+            data-gs-tm="prev"
+            aria-label="{{ 'general.slider.previous_slide' | t | default: 'Previous' }}"
+            disabled
+          >
+            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false">
+              <path d="M12 6H1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5.5 1.5L1 6L5.5 10.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        {%- endif -%}
+
+        <ul class="gs-tm__track testimonial-item-wrapper" data-gs-tm-track>
+          {%- for block in section.blocks -%}
+            {%- assign b = block.settings -%}
+            <li
+              id="testimonial-{{ block.id }}"
+              class="testimonial-item{% if forloop.first %} is-selected{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="testimonial-item-inner{% unless enlarge %}{% if s.enable_card_border %} card-border-enabled{% endif %}{% if s.enable_card_shadow %} card-shadow-enabled{% endif %}{% endunless %}">
+                {%- if b.show_rating and b.rating > 0 -%}
+                  <div class="testimonial-star-rating" role="img" aria-label="{{ b.rating }} out of 5 stars">
+                    {%- for i in (1..b.rating) -%}
+                      <svg class="icon-star" width="16" height="15" viewBox="0 0 16 15" fill="none" aria-hidden="true" focusable="false">
+                        <path d="M7.50495 0.509591C7.68396 -0.0444845 8.46787 -0.0444602 8.64685 0.509626L10.049 4.85044C10.129 5.09815 10.3596 5.26601 10.6199 5.26601H15.1626C15.7429 5.26601 15.9852 6.0078 15.5167 6.35034L11.8349 9.0427C11.626 9.19551 11.5386 9.46513 11.6182 9.71148L13.0231 14.0602C13.2019 14.6136 12.5676 15.0722 12.098 14.729L8.43011 12.0474C8.21919 11.8932 7.93273 11.8932 7.72183 12.0474L4.05474 14.729C3.58528 15.0723 2.95093 14.6139 3.12959 14.0604L4.53389 9.71005C4.6134 9.46374 4.52599 9.1942 4.31706 9.04142L0.635157 6.34899C0.166743 6.00645 0.409029 5.26467 0.989323 5.26467H5.53202C5.79232 5.26467 6.02294 5.09682 6.10296 4.84912L7.50495 0.509591Z" fill="currentColor"/>
+                      </svg>
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+
+                {%- if b.author_title != blank -%}
+                  <h6 class="testimonial-title">{{ b.author_title }}</h6>
+                {%- endif -%}
+
+                {%- if b.message != blank -%}
+                  <p class="testimonial-text{% if enlarge %} heading-font {{ s.enlargen_message_font_size | default: 'h2' }}{% endif %}">{{ b.message }}</p>
+                {%- endif -%}
+
+                {%- if b.image != blank or b.author != blank or b.country_name != blank -%}
+                  <div class="testimonial-details image-position-{{ s.image_position | default: 'left' }}">
+                    {%- if b.image != blank -%}
+                      <div class="testimonial-image">
+                        <img
+                          src="{{ b.image | image_url: width: 210 }}"
+                          srcset="{{ b.image | image_url: width: 105 }} 105w, {{ b.image | image_url: width: 210 }} 210w"
+                          sizes="50px"
+                          width="{{ b.image.width }}"
+                          height="{{ b.image.height }}"
+                          loading="lazy"
+                          alt="{{ b.image.alt | default: b.author | escape }}"
+                        >
+                      </div>
+                    {%- endif -%}
+                    {%- if b.author != blank or b.country_name != blank -%}
+                      <div class="testimonial-details-credentials">
+                        {%- if b.author != blank -%}<p class="author-name">{{ b.author }}</p>{%- endif -%}
+                        {%- if b.country_name != blank -%}<p class="country-name">{{ b.country_name }}</p>{%- endif -%}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        {%- if show_arrows -%}
+          <button
+            type="button"
+            class="gs-tm__nav gs-tm__nav--next"
+            data-gs-tm="next"
+            aria-label="{{ 'general.slider.next_slide' | t | default: 'Next' }}"
+          >
+            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false">
+              <path d="M1.5 6H12.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 1.5L12.5 6L8 10.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        {%- endif -%}
+      </div>
+
+      {%- unless show_arrows -%}
+        <ol class="gs-tm__dots" data-gs-tm-dots>
+          {%- for block in section.blocks -%}
+            <li>
+              <button
+                type="button"
+                class="gs-tm__dot"
+                data-gs-tm-dot="{{ forloop.index0 }}"
+                aria-label="{{ 'general.slider.name' | t | default: 'Slide' }} {{ forloop.index }}"
+                {% if forloop.first %}aria-current="true"{% endif %}
+              ></button>
+            </li>
+          {%- endfor -%}
+        </ol>
+      {%- endunless -%}
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('GsTestimonials-{{ section.id }}');
+    if (!root || root.gsBound) return;
+    root.gsBound = true;
+
+    var track = root.querySelector('[data-gs-tm-track]');
+    if (!track) return;
+    var items = Array.prototype.slice.call(track.children);
+    var prev = root.querySelector('[data-gs-tm="prev"]');
+    var next = root.querySelector('[data-gs-tm="next"]');
+    var dots = Array.prototype.slice.call(root.querySelectorAll('[data-gs-tm-dot]'));
+    var autoplay = parseInt(root.getAttribute('data-autoplay'), 10) || 0;
+    var timer = null;
+    var raf = null;
+
+    // The current card is the one whose centre is nearest the track's.
+    function current() {
+      var centre = track.scrollLeft + track.clientWidth / 2;
+      var best = 0;
+      var bestDist = Infinity;
+      for (var i = 0; i < items.length; i++) {
+        var c = items[i].offsetLeft + items[i].offsetWidth / 2;
+        var d = Math.abs(c - centre);
+        if (d < bestDist) { bestDist = d; best = i; }
+      }
+      return best;
+    }
+
+    function update() {
+      var i = current();
+      for (var j = 0; j < items.length; j++) {
+        items[j].classList.toggle('is-selected', j === i);
+      }
+      if (prev) prev.disabled = i === 0;
+      if (next) next.disabled = i === items.length - 1;
+      for (var k = 0; k < dots.length; k++) {
+        if (k === i) dots[k].setAttribute('aria-current', 'true');
+        else dots[k].removeAttribute('aria-current');
+      }
+    }
+
+    function goTo(i) {
+      i = Math.max(0, Math.min(items.length - 1, i));
+      var it = items[i];
+      var left = it.offsetLeft + it.offsetWidth / 2 - track.clientWidth / 2;
+      track.scrollTo({ left: left, behavior: 'smooth' });
+    }
+
+    if (prev) prev.addEventListener('click', function () { goTo(current() - 1); });
+    if (next) next.addEventListener('click', function () { goTo(current() + 1); });
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        goTo(parseInt(dot.getAttribute('data-gs-tm-dot'), 10));
+      });
+    });
+
+    track.addEventListener('scroll', function () {
+      if (raf) return;
+      raf = window.requestAnimationFrame(function () { raf = null; update(); });
+    }, { passive: true });
+    window.addEventListener('resize', update);
+
+    if (autoplay > 0 && items.length > 1) {
+      function start() {
+        stop();
+        timer = window.setInterval(function () {
+          goTo((current() + 1) % items.length);
+        }, autoplay);
+      }
+      function stop() { if (timer) { window.clearInterval(timer); timer = null; } }
+      root.addEventListener('mouseenter', stop);
+      root.addEventListener('mouseleave', start);
+      root.addEventListener('focusin', stop);
+      root.addEventListener('focusout', start);
+      start();
+    }
+
+    update();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "gs-testimonials-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "Show on",
+      "options": [
+        { "value": "always", "label": "All devices" },
+        { "value": "small", "label": "Mobile only" },
+        { "value": "large", "label": "Desktop only" }
+      ],
+      "default": "always"
+    },
+    {
+      "type": "select",
+      "id": "testimonial_style",
+      "label": "Style",
+      "info": "The collage style is not ported from v3; it renders as the carousel.",
+      "options": [
+        { "value": "image-with-text-carousal", "label": "Carousel" },
+        { "value": "collage-carousal", "label": "Collage (renders as carousel)" }
+      ],
+      "default": "image-with-text-carousal"
+    },
+    { "type": "checkbox", "id": "enable_card_border", "label": "Card border", "default": false },
+    { "type": "checkbox", "id": "enable_card_shadow", "label": "Card shadow", "default": false },
+    { "type": "checkbox", "id": "enlargen_slide", "label": "Enlarge the current quote", "info": "One centred quote at full size, the neighbours dimmed either side.", "default": false },
+    { "type": "checkbox", "id": "auto_rotate", "label": "Auto-rotate", "default": false },
+    {
+      "type": "select",
+      "id": "slider_thumbnail",
+      "label": "Navigation",
+      "options": [
+        { "value": "dots", "label": "Dots" },
+        { "value": "only-arrow", "label": "Arrows" }
+      ],
+      "default": "only-arrow"
+    },
+    { "type": "range", "id": "change_slides_speed", "label": "Seconds per quote (auto-rotate)", "min": 3, "max": 9, "step": 1, "unit": "s", "default": 5 },
+    {
+      "type": "select",
+      "id": "enlargen_message_font_size",
+      "label": "Quote size (enlarged mode)",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Author photo position",
+      "options": [
+        { "value": "left", "label": "Left of the name" },
+        { "value": "top", "label": "Above the name" }
+      ],
+      "default": "left"
+    },
+    { "type": "header", "content": "Heading" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Wrap words in [brackets] to highlight them.", "default": "Testimonials" },
+    {
+      "type": "select",
+      "id": "highlight_style",
+      "label": "Highlight style",
+      "options": [
+        { "value": "underline", "label": "Underline" },
+        { "value": "shape_2", "label": "Underline (shape 2)" },
+        { "value": "shape_3", "label": "Underline (shape 3)" },
+        { "value": "shape_4", "label": "Underline (shape 4)" },
+        { "value": "shape_5", "label": "Underline (shape 5)" },
+        { "value": "shape_6", "label": "Underline (shape 6)" },
+        { "value": "background", "label": "Background" }
+      ],
+      "default": "underline"
+    },
+    {
+      "type": "select",
+      "id": "bg__color",
+      "label": "Highlight background",
+      "options": [
+        { "value": "gradient", "label": "Gradient" },
+        { "value": "solid", "label": "Solid" }
+      ],
+      "default": "gradient"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "select",
+      "id": "seo_heading",
+      "label": "Heading tag",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ],
+      "default": "h2"
+    },
+    { "type": "inline_richtext", "id": "description", "label": "Description" },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        { "value": "text-left", "label": "Left" },
+        { "value": "text-center", "label": "Center" },
+        { "value": "text-right", "label": "Right" }
+      ],
+      "default": "text-center"
+    },
+    { "type": "header", "content": "Colors and spacing" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "checkbox", "id": "enable_gradient", "label": "Use gradient background", "default": false },
+    { "type": "range", "id": "top_space_desktop", "label": "Top padding (desktop)", "unit": "px", "default": 70, "min": 0, "max": 150, "step": 5 },
+    { "type": "range", "id": "bottom_space_desktop", "label": "Bottom padding (desktop)", "unit": "px", "default": 70, "min": 0, "max": 150, "step": 5 },
+    { "type": "range", "id": "top_space_mobile", "label": "Top padding (mobile)", "unit": "px", "default": 40, "min": 0, "max": 100, "step": 5 },
+    { "type": "range", "id": "bottom_space_mobile", "label": "Bottom padding (mobile)", "unit": "px", "default": 40, "min": 0, "max": 100, "step": 5 }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Quote",
+      "settings": [
+        { "type": "inline_richtext", "id": "author_title", "label": "Title", "info": "Shown above the quote. The Club page uses it for the customer's name." },
+        { "type": "image_picker", "id": "image", "label": "Author photo" },
+        { "type": "inline_richtext", "id": "author", "label": "Author name" },
+        { "type": "inline_richtext", "id": "country_name", "label": "Location" },
+        { "type": "checkbox", "id": "show_rating", "label": "Show star rating", "default": true },
+        { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "inline_richtext", "id": "message", "label": "Quote", "default": "Share what a customer said about you." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "quote" },
+        { "type": "quote" },
+        { "type": "quote" }
+      ]
+    }
+  ]
+}
+{% endschema %}

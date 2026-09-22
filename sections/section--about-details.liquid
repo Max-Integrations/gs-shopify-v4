@@ -1,0 +1,167 @@
+{% comment %}
+  ==================================================================
+  ABOUT DETAILS
+  Ported from gs-shopify-v3 sections/about-grunt-style-section-5.liquid
+  ==================================================================
+  Three grey cards side by side on the About page: Retail (with a
+  wrapped list of store-page links), an icon card (GovX / perks), and
+  Rewards. Each card has an optional black CTA button.
+
+  All v3 setting ids (content_box_1..3_*, show_locations_boolean) and
+  the `text` block (title, gs_retail_link) are unchanged, so the live
+  template JSON ports as-is.
+
+  ------------------------------------------------------------------
+  CHANGES FROM v3
+  ------------------------------------------------------------------
+  - v3 printed the `page` picker value straight into href, which is a
+    bare handle ("opry-mills-retail-store"). That only worked because
+    the browser resolved it relative to /pages/. Links now go through
+    pages[handle].url; a block whose page no longer exists is skipped.
+  - v3's <style> was unscoped (.page-width, h3, .detail were global
+    selectors). Everything is under .gs-about-details now, in
+    section--about-details.css.
+  - `section_visibility` added to match the other GS sections.
+  - The CTA link only renders when it has both text and a URL.
+  ==================================================================
+{% endcomment %}
+
+{{ 'section--about-details.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+-%}
+
+<div class="gs-about-details gs-ad--visibility-{{ s.section_visibility | default: 'always' }}">
+  <div class="page-width gs-about-details__row">
+
+    <div class="detail" id="about-grunt-style-retail">
+      <div>
+        {%- if s.content_box_1_headline != blank -%}
+          <h3>{{ s.content_box_1_headline }}</h3>
+        {%- endif -%}
+        <div class="rte">{{ s.content_box_1_description }}</div>
+      </div>
+      <div class="locations">
+        {%- if s.show_locations_boolean and section.blocks.size > 0 -%}
+          <h4>VISIT OUR LOCATIONS</h4>
+          <ul>
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign target = pages[block.settings.gs_retail_link]
+                if block.settings.title == blank or target == blank
+                  continue
+                endif
+              -%}
+              <li {{ block.shopify_attributes }}>
+                <a href="{{ target.url }}" class="location-link">{{ block.settings.title }}</a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+        {%- if s.content_box_1_cta_text != blank and s.content_box_1_cta_link != blank -%}
+          <a href="{{ s.content_box_1_cta_link }}" class="detail-cta">{{ s.content_box_1_cta_text }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="detail" id="about-grunt-style-beer-guarantee">
+      {%- if s.content_box_2_img != blank -%}
+        <img
+          src="{{ s.content_box_2_img | image_url: width: 400 }}"
+          srcset="{{ s.content_box_2_img | image_url: width: 200 }} 200w, {{ s.content_box_2_img | image_url: width: 400 }} 400w"
+          sizes="200px"
+          width="200"
+          height="200"
+          loading="lazy"
+          alt="{{ s.content_box_2_img.alt | escape }}"
+        >
+      {%- endif -%}
+      <div class="rte">{{ s.content_box_2_description }}</div>
+      {%- if s.content_box_2_cta_text != blank and s.content_box_2_cta_link != blank -%}
+        <a href="{{ s.content_box_2_cta_link }}" class="detail-cta">{{ s.content_box_2_cta_text }}</a>
+      {%- endif -%}
+    </div>
+
+    <div class="detail" id="about-grunt-style-customs">
+      <div>
+        {%- if s.content_box_3_headline != blank -%}
+          <h3>{{ s.content_box_3_headline }}</h3>
+        {%- endif -%}
+        <div class="rte">{{ s.content_box_3_description }}</div>
+      </div>
+      {%- if s.content_box_3_cta_text != blank and s.content_box_3_cta_link != blank -%}
+        <a href="{{ s.content_box_3_cta_link }}" class="detail-cta">{{ s.content_box_3_cta_text }}</a>
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About details",
+  "tag": "section",
+  "class": "gs-about-details-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "Show on",
+      "options": [
+        { "value": "always", "label": "All devices" },
+        { "value": "small", "label": "Mobile only" },
+        { "value": "large", "label": "Desktop only" }
+      ],
+      "default": "always"
+    },
+    { "type": "header", "content": "Card 1 (Retail)" },
+    { "type": "text", "id": "content_box_1_headline", "label": "Headline", "default": "Retail" },
+    {
+      "type": "richtext",
+      "id": "content_box_1_description",
+      "label": "Description",
+      "default": "<p>We are THE destinations that represents the power of the Grunt Style Brand; bringing to life the Mission, Vision, Values with authentic and genuine experiences.</p>"
+    },
+    { "type": "checkbox", "id": "show_locations_boolean", "label": "Show the locations list", "default": true },
+    { "type": "text", "id": "content_box_1_cta_text", "label": "CTA text (optional)" },
+    { "type": "url", "id": "content_box_1_cta_link", "label": "CTA link (optional)" },
+    { "type": "header", "content": "Card 2 (icon)" },
+    { "type": "image_picker", "id": "content_box_2_img", "label": "Image or logo" },
+    {
+      "type": "richtext",
+      "id": "content_box_2_description",
+      "label": "Description",
+      "default": "<p>Did you know? Everything from Grunt Style is guaranteed for life!</p>"
+    },
+    { "type": "text", "id": "content_box_2_cta_text", "label": "CTA text (optional)" },
+    { "type": "url", "id": "content_box_2_cta_link", "label": "CTA link (optional)" },
+    { "type": "header", "content": "Card 3" },
+    { "type": "text", "id": "content_box_3_headline", "label": "Headline", "default": "Customs" },
+    {
+      "type": "richtext",
+      "id": "content_box_3_description",
+      "label": "Description",
+      "default": "<p>Grunt Style's vision is to deliver the highest quality, most patriotic apparel.</p>"
+    },
+    { "type": "text", "id": "content_box_3_cta_text", "label": "CTA text" },
+    { "type": "url", "id": "content_box_3_cta_link", "label": "CTA link" }
+  ],
+  "blocks": [
+    {
+      "name": "Retail location",
+      "type": "text",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Location name" },
+        { "type": "page", "id": "gs_retail_link", "label": "Location page" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "About details" }
+  ]
+}
+{% endschema %}

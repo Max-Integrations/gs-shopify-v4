@@ -1,0 +1,161 @@
+{% comment %}
+  ==================================================================
+  BLOCK: MEDIA TILE (theme block for section--media-grid)
+  ==================================================================
+  One tile: image or looping video, how many grid columns and rows it
+  spans, a colour overlay, where its content sits, and an optional
+  link that makes the whole tile clickable. The content is CHILD
+  BLOCKS (block--heading, block--text, block--button, app blocks)
+  rendered with {% content_for 'blocks' %}.
+
+  Positioning: the 9-way `content_position` maps to two custom
+  properties (--content-justify / --content-align) that the section's
+  CSS applies with grid placement, so every position works in every
+  combination.
+
+  When the tile has a link, child buttons render as <span>s (nested
+  anchors are invalid HTML); a button that needs its own destination
+  belongs in a tile without a link. The link's accessible name is the
+  first child heading, else the image alt.
+  ==================================================================
+{% endcomment %}
+
+{%- liquid
+  assign s = block.settings
+  assign img = s.media_image
+  assign overlay = s.background_color | default: '#000000'
+
+  assign pos = s.content_position | default: 'center'
+  assign justify = 'center'
+  if pos contains '-left'
+    assign justify = 'start'
+  elsif pos contains '-right'
+    assign justify = 'end'
+  endif
+  assign align = 'center'
+  if pos contains 'top'
+    assign align = 'start'
+  elsif pos contains 'bottom'
+    assign align = 'end'
+  endif
+
+  assign link_label = img.alt
+  for child in block.blocks
+    if child.type == 'block--heading' and child.settings.text != blank
+      assign link_label = child.settings.text | strip_html
+      break
+    endif
+  endfor
+-%}
+
+<div
+  id="media-grid-{{ block.id }}"
+  class="img-zoom media-grid-item gs-block-hover-target"
+  style="
+    --row-span: {% if s.span_two_rows %}2{% else %}1{% endif %};
+    --col-span: {% if s.span_two_columns %}2{% else %}1{% endif %};
+    --opacityColor: {{ overlay.red }},{{ overlay.green }},{{ overlay.blue }};
+    --backgroundOpacity: {{ s.background_opacity | default: 0.3 }};
+    --content-justify: {{ justify }};
+    --content-align: {{ align }};
+  "
+  {{ block.shopify_attributes }}
+>
+  {%- if s.link != blank -%}
+    <a class="media-grid-item__link" href="{{ s.link }}"{% if link_label != blank %} aria-label="{{ link_label | escape }}"{% endif %}>
+  {%- endif -%}
+
+  <div class="media-grid-image">
+    <div class="media media-fixed">
+      {%- if s.video != blank -%}
+        <video class="tabbed-collage-video" autoplay muted loop playsinline preload="metadata"
+          {% if s.video.preview_image %}poster="{{ s.video.preview_image | image_url: width: 1200 }}"{% endif %}
+        >
+          {%- for source in s.video.sources -%}
+            <source src="{{ source.url }}"{% if source.mime_type %} type="{{ source.mime_type }}"{% endif %}>
+          {%- endfor -%}
+        </video>
+      {%- elsif img != blank -%}
+        <img
+          class="media_image"
+          src="{{ img | image_url: width: 1000 }}"
+          srcset="
+            {{ img | image_url: width: 500 }} 500w,
+            {{ img | image_url: width: 1000 }} 1000w,
+            {{ img | image_url: width: 1500 }} 1500w,
+            {{ img | image_url: width: 2000 }} 2000w
+          "
+          sizes="(min-width: 750px) 50vw, 100vw"
+          alt="{{ img.alt | escape }}"
+          width="{{ img.width }}"
+          height="{{ img.height }}"
+          loading="lazy"
+          style="object-position: {{ img.presentation.focal_point | default: 'center' }};"
+        >
+      {%- else -%}
+        {{ 'collection-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- if block.blocks.size > 0 -%}
+    <div class="media-content text-{{ s.content_alignment | default: 'left' }}">
+      {% content_for 'blocks' %}
+    </div>
+  {%- endif -%}
+
+  {%- if s.link != blank -%}
+    </a>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Media tile",
+  "tag": null,
+  "blocks": [
+    { "type": "block--heading" },
+    { "type": "block--text" },
+    { "type": "block--button" },
+    { "type": "@app" }
+  ],
+  "settings": [
+    { "type": "image_picker", "id": "media_image", "label": "Image" },
+    { "type": "video", "id": "video", "label": "Video", "info": "Autoplays muted and looped, replacing the image." },
+    { "type": "url", "id": "link", "label": "Link", "info": "Makes the whole tile clickable." },
+    { "type": "header", "content": "Size" },
+    { "type": "checkbox", "id": "span_two_columns", "label": "Span two columns", "default": false },
+    { "type": "checkbox", "id": "span_two_rows", "label": "Span two rows", "default": false },
+    { "type": "header", "content": "Content" },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Position",
+      "options": [
+        { "value": "top-left", "label": "Top left" },
+        { "value": "top-center", "label": "Top center" },
+        { "value": "top-right", "label": "Top right" },
+        { "value": "center-left", "label": "Center left" },
+        { "value": "center", "label": "Center" },
+        { "value": "center-right", "label": "Center right" },
+        { "value": "bottom-left", "label": "Bottom left" },
+        { "value": "bottom-center", "label": "Bottom center" },
+        { "value": "bottom-right", "label": "Bottom right" }
+      ],
+      "default": "center"
+    },
+    { "type": "text_alignment", "id": "content_alignment", "label": "Text alignment", "default": "center" },
+    { "type": "header", "content": "Overlay" },
+    { "type": "color", "id": "background_color", "label": "Color", "default": "#000000" },
+    { "type": "range", "id": "background_opacity", "label": "Opacity", "min": 0, "max": 1, "step": 0.1, "default": 0.3 }
+  ],
+  "presets": [
+    {
+      "name": "Media tile",
+      "blocks": [
+        { "type": "block--heading", "settings": { "text": "<strong>Tile heading</strong>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

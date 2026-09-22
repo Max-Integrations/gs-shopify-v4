@@ -1,0 +1,130 @@
+{
+  "sections": {
+    "main": {
+      "type": "section--retail-location",
+      "settings": {
+        "title_override": "GRUNT STYLE FT. SAM HOUSTON RETAIL STORE",
+        "intro": "<p>Ft. Sam Houston is in the center of the City of San Antonio, also known as Military City, where we connect with our core customers and the military. Our store is located in the AAFES Exchange (Army & Air Force Exchange Services). Ft. Sam Houston is known as the \"Home of Army Medicine\" and \"Combat Medic\". Grunt Style Exclusives available only at this location.  You must have base access to visit this location.</p>",
+        "hub_link": "grunt-style-retail-stores",
+        "hub_link_label": "View Other Stores",
+        "address": "2500 Funston Rd Building B-2542\nSuite A0001\nSan Antonio, TX 78234",
+        "phone": "726-224-0648",
+        "hours": "Monday: 9:00am - 7:00pm\nTuesday: 9:00am - 7:00pm\nWednesday: 9:00am - 7:00pm\nThursday: 9:00am - 7:00pm\nFriday: 9:00am - 7:00pm\nSaturday: 9:00am - 6:00pm\nSunday: 10:00am - 5:00pm",
+        "notes": "",
+        "latitude": "29.450839258292447",
+        "longitude": "-98.44644285800389",
+        "map_zoom": 14,
+        "color_scheme": "scheme-4"
+      }
+    },
+    "images_grid_TjxEbG": {
+      "type": "images-grid",
+      "blocks": {
+        "image_BzjBFT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GSAR0028_-_Army_-_Combat_Medic_WEB_READY_BOTH-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_q4R3bn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS3912_Hey_Doc_WEB_READY-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_6cgDWj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS7756_WEB-READY_STACKED.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_LLYHN9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS4684---Mess-with-the-Bull_WEB_READY-min_f407fcb7-d08e-4589-8165-a73e8e3bfe6f.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_xDzgKE": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS6688_Web_Ready_Front_0a0e2421-19a9-4499-9fef-588350f0f3de.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_9Ba67V": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS5927_-_Men_s_Texas_Reaper_Tee_-_Black_WEB_READY.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_BzjBFT",
+        "image_q4R3bn",
+        "image_6cgDWj",
+        "image_LLYHN9",
+        "image_xDzgKE",
+        "image_9Ba67V"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "show_carousel": true,
+        "card_grid": false,
+        "card_inner_space": false,
+        "item_per_row_desktop": 5,
+        "item_per_row_mobile": "1",
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "center",
+        "vertical_grid_image_size": "auto",
+        "heading": "In-Store Exclusives",
+        "highlight_style": "underline",
+        "bg__color": "solid",
+        "heading_size": "h3",
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "card_bg": "",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 50,
+        "bottom_space_desktop": 50,
+        "top_space_mobile": 10,
+        "bottom_space_mobile": 10,
+        "section_width": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "images_grid_TjxEbG"
+  ]
+}

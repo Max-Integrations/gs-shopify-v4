@@ -1,0 +1,82 @@
+{
+  "sections": {
+    "main": {
+      "type": "section--retail-location",
+      "settings": {
+        "title_override": "GRUNT STYLE NEBRASKA CROSSING RETAIL STORE",
+        "intro": "<p>Nebraska Crossing is a premier outdoor shopping destination in Gretna, Nebraska, off I-80 between Omaha and Lincoln. Featuring over 80 retail brands and restaurants. Located 20 miles from Offutt AFB, the home of Strategic Command. The center is supported by a strong Veteran and Patriotic community. Nebraska Crossing Outlets is the nation's most innovative technology-driven outlet shopping experience, focused on offering an elevated customer journey to deliver the best value and quality. Grunt Style Exclusives available only at this location.</p>",
+        "hub_link": "grunt-style-retail-stores",
+        "hub_link_label": "View Other Stores",
+        "address": "21311 Nebraska Crossing Drive, Suite #B123\nGretna, NE 68028",
+        "phone": "402-999-0821",
+        "hours": "Monday: 10:00am - 8:00pm\nTuesday: 10:00am - 8:00pm\nWednesday: 10:00am - 8:00pm\nThursday: 10:00am - 8:00pm\nFriday: 10:00am - 8:00pm\nSaturday: 10:00am - 8:00pm\nSunday: 11:00am - 6:00pm",
+        "notes": "",
+        "latitude": "41.09926388914093",
+        "longitude": "-96.24957633426573",
+        "map_zoom": 14,
+        "color_scheme": "scheme-4"
+      }
+    },
+    "images_grid_TjxEbG": {
+      "type": "images-grid",
+      "blocks": {
+        "image_c9wKMq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS5930_-_Men_s_Stalk_Out_Nebraska_Tee_-_White_STANDARD_WEB_READY_-_FRONT.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_9QbbUT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS7758_WEB-READY_STACKED.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_c9wKMq",
+        "image_9QbbUT"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "show_carousel": true,
+        "card_grid": false,
+        "card_inner_space": false,
+        "item_per_row_desktop": 5,
+        "item_per_row_mobile": "1",
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "center",
+        "vertical_grid_image_size": "auto",
+        "heading": "In-Store Exclusives",
+        "highlight_style": "underline",
+        "bg__color": "solid",
+        "heading_size": "h3",
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "card_bg": "",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 50,
+        "bottom_space_desktop": 50,
+        "top_space_mobile": 10,
+        "bottom_space_mobile": 10,
+        "section_width": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "images_grid_TjxEbG"
+  ]
+}

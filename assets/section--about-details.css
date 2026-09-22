@@ -1,0 +1,135 @@
+/*
+  ==================================================================
+  About details
+  ==================================================================
+  Three grey cards in a row (stacked under 750px). Values are v3's
+  inline styles from about-grunt-style-section-5.liquid, scoped.
+*/
+
+.gs-about-details .gs-about-details__row {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.gs-about-details .detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 25px;
+  width: 30%;
+  padding: 1.5rem;
+  border: 1px solid #dadada;
+  background-color: #ebebeb;
+  color: #000000;
+  text-align: center;
+}
+
+.gs-about-details h3 {
+  margin: 0 0 1rem;
+  color: #000000;
+  font-size: 26px;
+  text-transform: uppercase;
+}
+
+.gs-about-details h4 {
+  margin: 0 0 1rem;
+  color: #000000;
+  font-weight: 500;
+}
+
+.gs-about-details .detail img {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 1.5rem;
+  object-fit: contain;
+}
+
+.gs-about-details .detail p {
+  margin: 0 0 1rem;
+  color: #000000;
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.gs-about-details .locations {
+  display: block;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.gs-about-details .locations ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.gs-about-details .locations ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.gs-about-details .locations ul li::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin: 0 10px;
+  border-radius: 50%;
+  background-color: #000000;
+}
+
+.gs-about-details .locations a.location-link {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.gs-about-details .locations a.location-link:hover {
+  font-weight: 700;
+}
+
+.gs-about-details a.detail-cta {
+  display: block;
+  width: fit-content;
+  margin: 1.5rem auto 0;
+  padding: 15px 50px;
+  background: #000000;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.gs-about-details a.detail-cta:hover {
+  background: #222222;
+}
+
+.gs-about-details a:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 749px) {
+  .gs-about-details .gs-about-details__row {
+    flex-wrap: wrap;
+  }
+
+  .gs-about-details .detail {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .gs-ad--visibility-large { display: none !important; }
+}
+
+@media screen and (min-width: 768px) {
+  .gs-ad--visibility-small { display: none !important; }
+}

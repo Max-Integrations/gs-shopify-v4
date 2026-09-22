@@ -1,0 +1,144 @@
+{
+  "sections": {
+    "main": {
+      "type": "section--retail-location",
+      "settings": {
+        "title_override": "GRUNT STYLE SEVIERVILLE RETAIL STORE",
+        "intro": "<p>Tanger Outlet Center nestled in the Smoky Mountains, 30 miles to Knoxville, 14 miles to Gatlinburg, 5 miles to Pigeon Forge and Dollywood.  Home to a strong Veteran, 1st Responder and Patriotic community.   One of the best Outlet Centers in the Country, with 105 stores, Tanger Sevierville draws people from the Central.</p>",
+        "hub_link": "grunt-style-retail-stores",
+        "hub_link_label": "View Other Stores",
+        "address": "1645 Parkway, Suite 1420\nSevierville, TN 37862",
+        "phone": "865-446-2046",
+        "hours": "Monday: 10:00am - 9:00pm\nTuesday: 10:00am - 9:00pm\nWednesday: 10:00am - 9:00pm\nThursday: 10:00am - 9:00pm\nFriday: 10:00am - 9:00pm\nSaturday: 10:00am - 9:00pm\nSunday: 10:00am - 7:00pm",
+        "notes": "",
+        "latitude": "35.83292273997845",
+        "longitude": "-83.56788490206772",
+        "map_zoom": 14,
+        "color_scheme": "scheme-4"
+      }
+    },
+    "images_grid_TjxEbG": {
+      "type": "images-grid",
+      "blocks": {
+        "image_q4R3bn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS4774_STANDARD_WEB_READY-front-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_q4R3bo": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/GS5279---This-We_ll-Defend---Tennessee_STANDARD_WEB_READY-2022_FRONT_BACK.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_DRBfK3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS6693_WEB_READY_FRONT.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_e36ytb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS7759_WEB-READY_STACKED.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_6C4YDB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS7084_WEB-READY_FRONT.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_q4R3bx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS5431_-_True-Colors-Smoky-Mountains_WEBREADY_Front_d2aa2804-6fed-4cac-9d47-5310df101e0e.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_79q8E4": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/GS7136_WEB-READY_FRONT.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_q4R3bn",
+        "image_q4R3bo",
+        "image_DRBfK3",
+        "image_e36ytb",
+        "image_6C4YDB",
+        "image_q4R3bx",
+        "image_79q8E4"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "show_carousel": true,
+        "card_grid": false,
+        "card_inner_space": false,
+        "item_per_row_desktop": 5,
+        "item_per_row_mobile": "1",
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "center",
+        "vertical_grid_image_size": "auto",
+        "heading": "In-Store Exclusives",
+        "highlight_style": "underline",
+        "bg__color": "solid",
+        "heading_size": "h3",
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "card_bg": "",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 50,
+        "bottom_space_desktop": 50,
+        "top_space_mobile": 10,
+        "bottom_space_mobile": 10,
+        "section_width": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "images_grid_TjxEbG"
+  ]
+}

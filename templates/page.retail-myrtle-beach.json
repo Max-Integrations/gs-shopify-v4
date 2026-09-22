@@ -1,0 +1,95 @@
+{
+  "sections": {
+    "main": {
+      "type": "section--retail-location",
+      "settings": {
+        "title_override": "GRUNT STYLE MYRTLE BEACH STORE",
+        "intro": "<p>Welcome to Myrtle Beach, SC a cool beachfront hangout, and the perfect location for a Grunt Style Retail to shop for a t-shirt near you!</p>",
+        "hub_link": "grunt-style-retail-stores",
+        "hub_link_label": "View Other Stores",
+        "address": "Tanger Outlets Myrtle Beach Hwy 501\n4630 Factory Stores Blvd, Suite #A155\nMyrtle Beach, SC 29579",
+        "phone": "843-712-7474",
+        "hours": "Monday: 10:00am - 9:00pm\nTuesday: 10:00am - 9:00pm\nWednesday: 10:00am - 9:00pm\nThursday: 10:00am - 9:00pm\nFriday: 10:00am - 9:00pm\nSaturday: 10:00am - 9:00pm\nSunday: 10:00am - 7:00pm",
+        "notes": "",
+        "latitude": "33.75108148371223",
+        "longitude": "-78.95767185975104",
+        "map_zoom": 14,
+        "color_scheme": "scheme-4"
+      }
+    },
+    "images_grid_TjxEbG": {
+      "type": "images-grid",
+      "blocks": {
+        "image_c9wKMq": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/GS6996_Our_Roots_Run_Deep_T-Shirt_-_Midnight_Navy_WEB_READY-2023-min.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_LnqPxH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS7769_WEB-READY_STACKED.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_EkiNf6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS7086_WEB-READY_FRONT.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_c9wKMq",
+        "image_LnqPxH",
+        "image_EkiNf6"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "show_carousel": true,
+        "card_grid": false,
+        "card_inner_space": false,
+        "item_per_row_desktop": 5,
+        "item_per_row_mobile": "1",
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "center",
+        "vertical_grid_image_size": "auto",
+        "heading": "In-Store Exclusives",
+        "highlight_style": "underline",
+        "bg__color": "solid",
+        "heading_size": "h3",
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "card_bg": "",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 50,
+        "bottom_space_desktop": 50,
+        "top_space_mobile": 10,
+        "bottom_space_mobile": 10,
+        "section_width": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "images_grid_TjxEbG"
+  ]
+}

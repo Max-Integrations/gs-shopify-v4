@@ -21,22 +21,27 @@
   price and a vertical bulleted list of stars.
 
   ------------------------------------------------------------------
-  EVEN CARDS, WITHOUT A FLOATING BUTTON
+  EVEN CARDS: ONE RESERVED REGION, BUTTON PINNED BELOW IT
   ------------------------------------------------------------------
-  Two attempts got this wrong before landing on the cause.
+  Earlier versions kept buttons aligned by giving every conditional
+  element (rating, swatches, title lines) its own reserved slot so all
+  cards were the same shape. That worked but needed a new slot for every
+  new conditional element.
 
-  `margin-top: auto` on the button aligned buttons across a row, but
-  detached them from their cards - a red bar floating below a band of
-  white. Removing it attached the button but left rows uneven, because a
-  card with a star rating is a line taller than one without.
+  Now a single region between the image and the button is reserved:
+  .product-card-content has a min-height of --gs-card-content-height.
+  Title, rating, price and swatches stack into it and
+  take only what they need; a card without swatches simply leaves slack
+  at the bottom of the region. The button uses `margin-top: auto` so it
+  is always pinned to the card's bottom edge, --gs-card-inset from it.
 
-  Neither was the real problem: the CARDS were different shapes. The
-  rating now occupies a reserved slot and the title reserves two lines,
-  so cards are structurally identical and the buttons line up on their
-  own - no auto margin, no gap.
+  Because the region is a min-height sized for the tallest combination,
+  card height never depends on which elements are present. The title's
+  2-line clamp is the guard that keeps a long name inside the region.
 
-  --gs-card-title-lines controls how many lines the title reserves. Two
-  suits Grunt Style's naming; a store with longer names may want three.
+  --gs-card-content-height is the one number to tune by eye.
+  --gs-card-title-lines controls the title clamp (two suits Grunt Style
+  naming; a store with longer names may want three - and a taller region).
   ==================================================================
 */
 
@@ -51,6 +56,18 @@
   flex-direction: column;
   height: 100%;
   background-color: var(--cardBackgroundOverride, transparent);
+  transition: box-shadow 0.2s ease;
+}
+
+.product-card-item .product-card:hover,
+.product-card-item .product-card:focus-within {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-card-item .product-card {
+    transition: none;
+  }
 }
 
 /* ---- Image ---- */
@@ -199,14 +216,36 @@
   text-decoration: line-through;
 }
 
-/* ---- Detail ---- */
+/* ---- Detail ----
+   Everything below the image is inset from the card's sides and bottom
+   by the same amount, so the hover shadow has breathing room. The image
+   stays full-bleed.
+
+   .product-card-content is the reserved region between the image and
+   the button. Title, rating, price and swatches stack into it and take
+   only what they need; --gs-card-content-height is its minimum, sized
+   for the tallest combination, so card height never depends on which
+   elements are present. min-height (not height) so a stretched grid
+   cell can still make the card taller - the button's auto margin
+   absorbs that. */
 .product-card-detail {
+  --gs-card-inset: 20px;
+  --gs-card-content-height: 130px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  align-items: center;
+  padding: 12px var(--gs-card-inset) var(--gs-card-inset);
+  text-align: center;
+}
+
+.product-card-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  padding: 12px 0 0;
-  text-align: center;
+  width: 100%;
+  min-height: var(--gs-card-content-height);
 }
 
 .product-card-info {
@@ -239,16 +278,14 @@
 }
 
 /*
-  The title reserves a fixed number of lines so a one-line name and a
-  two-line name produce the same card height. Long names are clamped
-  rather than pushing everything below them out of line.
+  Long names are clamped so they can't grow past the reserved content
+  region and push the button out of line.
 */
 .product-title {
   display: -webkit-box;
   -webkit-line-clamp: var(--gs-card-title-lines, 2);
   -webkit-box-orient: vertical;
   overflow: hidden;
-  min-height: calc(var(--gs-card-title-lines, 2) * 1.3em);
   font-family: var(--headingFont);
   font-size: 1.3rem;
   font-weight: 700;
@@ -263,21 +300,18 @@
   text-decoration: underline;
 }
 
-/*
-  Reserved slot for the rating. gs-reviews renders NOTHING for a product
-  with no reviews, so without this a rated card is a line taller than an
-  unrated one and every button below sits out of line.
-*/
+/* gs-reviews renders nothing for an unrated product; the wrapper just
+   centres the stars when present. Height comes from the reserved region
+   on .product-card-detail, not from here. */
 .product-card-rating {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 21px;
   width: 100%;
 }
 
-.product-card-rating:empty {
-  min-height: 21px;
+.product-card-swatches {
+  width: 100%;
 }
 
 /* ---- Compare ---- */
@@ -304,11 +338,13 @@
 }
 
 /* ---- Quick add / quick view button ----
-   No `margin-top: auto`. Cards are the same shape now, so the buttons
-   line up on their own and stay attached to their content. */
+   Pinned to the bottom of the card. `margin-top: auto` takes up the
+   slack in the reserved region (and any grid-cell stretch), keeping the
+   button exactly --gs-card-inset from the card's bottom edge. */
 .product-quickview-button {
   width: 100%;
-  margin-top: 12px;
+  margin-top: auto;
+  padding-top: 12px;
 }
 
 .product-quickview {

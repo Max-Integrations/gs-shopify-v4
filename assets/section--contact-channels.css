@@ -1,0 +1,99 @@
+/*
+  ==================================================================
+  Contact channels
+  ==================================================================
+  Heading + subheading over a row of bordered cards. Card count per
+  row on desktop comes from --gs-contact-cols; one per row on mobile.
+*/
+
+.gs-contact {
+  padding-top: var(--gs-contact-pad-top, 48px);
+  padding-bottom: var(--gs-contact-pad-bottom, 48px);
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+.gs-contact__head {
+  margin-bottom: 2.5rem;
+}
+
+.gs-contact--center .gs-contact__head { text-align: center; }
+.gs-contact--left .gs-contact__head { text-align: left; }
+
+.gs-contact__heading {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.gs-contact__subheading {
+  margin: 0.5rem 0 0;
+  font-size: 1.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.gs-contact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+
+.gs-contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 2.4rem 2rem;
+  border: 1px solid rgba(var(--color-foreground), 0.25);
+  text-align: center;
+}
+
+.gs-contact-card__icon {
+  display: inline-flex;
+  color: rgb(var(--color-foreground));
+}
+
+.gs-contact-card__title {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.gs-contact-card__detail {
+  margin: 0;
+}
+
+.gs-contact-card__detail p {
+  margin: 0;
+}
+
+.gs-contact-card__action {
+  margin-top: auto;
+  padding-top: 0.8rem;
+}
+
+.gs-contact-card__button {
+  min-width: 0;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 750px) {
+  .gs-contact__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .gs-contact__grid {
+    grid-template-columns: repeat(var(--gs-contact-cols, 4), minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .gs-ct--visibility-large { display: none !important; }
+}
+
+@media screen and (min-width: 768px) {
+  .gs-ct--visibility-small { display: none !important; }
+}

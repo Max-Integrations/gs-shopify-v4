@@ -1,5 +1,13 @@
 {% comment %}
   ==================================================================
+  DEPRECATED - use sections/section--retail-location.liquid
+  ==================================================================
+  Renamed on 2026-09-21. Its map depended on a `googlemapapi` theme
+  setting that v4 never defined, so it could not render. Presets
+  removed so it no longer appears in the section picker; kept only so
+  any template still naming it keeps rendering.
+
+  ==================================================================
   RETAIL LOCATION MAIN
   Ported from gs-shopify-v3 sections/retail-location-main.liquid
   ==================================================================
@@ -288,7 +296,7 @@
 
 {% schema %}
 {
-  "name": "GS Retail - Location Main",
+  "name": "Retail main (deprecated)",
   "tag": "section",
   "class": "gs-retail-section",
   "settings": [
@@ -359,7 +367,5 @@
         { "type": "richtext", "id": "misc_textarea", "label": "Text", "default": "<p>This is some text</p>" }
       ]
     }
-  ],
-  "presets": [{ "name": "GS Retail - Location Main" }]
-}
+  ]}
 {% endschema %}

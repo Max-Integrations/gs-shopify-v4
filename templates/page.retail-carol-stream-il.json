@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "section--retail-location",
+      "settings": {
+        "title_override": "GRUNT STYLE CAROL STREAM RETAIL STORE",
+        "intro": "<p>Located at our production facility in Carol Stream, just 25 minutes from Chicago. Our store offers a wide variety of Grunt Style products, along with a view to the production floor.  Don't see what you want in our store?  Don't worry, we can order from our warehouse and have it for you in 20 minutes! </p>",
+        "hub_link": "grunt-style-retail-stores",
+        "hub_link_label": "View Other Stores",
+        "address": "400 E Fullerton Ave\nCarol Stream, IL 60188",
+        "phone": "630-473-6344",
+        "hours": "Monday: 9:00am - 5:00pm\nTuesday: 9:00am - 5:00pm\nWednesday: 9:00am - 5:00pm\nThursday: 9:00am - 5:00pm\nFriday: 9:00am - 5:00pm\nSaturday: 10:00am - 5:00pm\nSunday: 12:00pm - 5:00pm",
+        "notes": "",
+        "latitude": "41.9159168006625",
+        "longitude": "-88.11031032892797",
+        "map_zoom": 14,
+        "color_scheme": "scheme-4"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -42,11 +42,16 @@
   as single tiles. `nav_label` is new and optional.
 
   ------------------------------------------------------------------
-  ACCESSIBLE DISCLOSURE, NOT HOVER-ONLY
+  HOVER ON DESKTOP, ACCESSIBLE DISCLOSURE EVERYWHERE
   ------------------------------------------------------------------
   Mega menus use <details>/<summary>: reachable by Tab, activated by
-  Enter or Space, closed by Escape, expanded state announced. v3's
-  opened on mouseenter against a plain div.
+  Enter or Space, closed by Escape, expanded state announced.
+
+  On desktop pointer devices (min-width 990px and hover: hover) the
+  script below also opens a panel on mouseenter and closes it shortly
+  after mouseleave, and a click on the label navigates to the parent
+  link's URL, as v3's <a> did. Touch devices and keyboard keep the
+  click/Enter toggle, since a hover-only menu is unreachable there.
 
   ------------------------------------------------------------------
   NOT CARRIED OVER - DECIDE BEFORE LAUNCH
@@ -281,7 +286,7 @@
             {%- if link.links.size > 0 -%}
               <li class="gs-header__nav-item gs-header__nav-item--has-children{% if is_highlight %} gs-header__nav-item--highlight{% endif %}">
                 <details class="gs-mega" data-gs-mega>
-                  <summary class="gs-header__nav-link">
+                  <summary class="gs-header__nav-link" data-gs-mega-url="{{ link.url }}">
                     {{- link.title -}}
                     <svg class="gs-header__nav-chevron" viewBox="0 0 12 8" width="10" height="7" aria-hidden="true" focusable="false">
                       <path d="M11 1L6 6L1 1" stroke="currentColor" stroke-width="2" fill="none"/>
@@ -368,8 +373,58 @@
     if (window.gsHeaderBound) return;
     window.gsHeaderBound = true;
 
+    // Desktop with a real pointer: hover opens, the label is a link.
+    var hoverNav = window.matchMedia('(min-width: 990px) and (hover: hover)');
+    var closeTimer = null;
+
+    function closeAllMega(except) {
+      document.querySelectorAll('details[data-gs-mega][open]').forEach(function (d) {
+        if (d !== except) d.open = false;
+      });
+    }
+
+    function bindHover(details) {
+      if (details.gsHoverBound) return;
+      details.gsHoverBound = true;
+
+      details.addEventListener('mouseenter', function () {
+        if (!hoverNav.matches) return;
+        clearTimeout(closeTimer);
+        closeAllMega(details);
+        details.open = true;
+      });
+
+      details.addEventListener('mouseleave', function () {
+        if (!hoverNav.matches) return;
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(function () {
+          details.open = false;
+        }, 150);
+      });
+    }
+
+    function bindAll() {
+      document.querySelectorAll('details[data-gs-mega]').forEach(bindHover);
+    }
+
+    bindAll();
+    document.addEventListener('shopify:section:load', bindAll);
+
     document.addEventListener('click', function (evt) {
       if (!evt.target || !evt.target.closest) return;
+
+      // Hover already opened the panel, so a mouse click on the label goes
+      // to the parent link instead of collapsing the menu under the cursor.
+      // evt.detail is 0 for Enter/Space, which must keep toggling.
+      var megaLabel = evt.target.closest('summary[data-gs-mega-url]');
+      if (megaLabel && hoverNav.matches && evt.detail > 0) {
+        var url = megaLabel.getAttribute('data-gs-mega-url');
+        if (url && url !== '#' && url !== '') {
+          evt.preventDefault();
+          window.location.href = url;
+          return;
+        }
+      }
 
       var toggle = evt.target.closest('[data-gs-nav-toggle]');
       if (toggle) {
@@ -385,11 +440,7 @@
         if (!summary || d !== summary.parentElement) d.open = false;
       });
 
-      if (!evt.target.closest('.gs-mega')) {
-        document.querySelectorAll('details[data-gs-mega][open]').forEach(function (d) {
-          d.open = false;
-        });
-      }
+      if (!evt.target.closest('.gs-mega')) closeAllMega(null);
     });
 
     document.addEventListener('keydown', function (evt) {

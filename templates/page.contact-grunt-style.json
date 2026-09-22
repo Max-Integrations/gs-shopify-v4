@@ -1,0 +1,367 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "channels": {
+      "type": "section--contact-channels",
+      "blocks": {
+        "chat": {
+          "type": "block--contact-channel",
+          "settings": {
+            "icon": "chat",
+            "title": "Chat",
+            "detail": "<p>Mon - Fri: 9am - 5pm CST</p>",
+            "action": "chat",
+            "label": "",
+            "link": "",
+            "label_online": "Chat now",
+            "label_offline": "Leave us a message"
+          }
+        },
+        "email": {
+          "type": "block--contact-channel",
+          "settings": {
+            "icon": "email",
+            "title": "Email",
+            "detail": "<p>CustomerService@GruntStyle.com</p>",
+            "action": "link",
+            "label": "Email us",
+            "link": "mailto:customerservice@gruntstyle.com",
+            "label_online": "Chat now",
+            "label_offline": "Leave us a message"
+          }
+        },
+        "call": {
+          "type": "block--contact-channel",
+          "settings": {
+            "icon": "phone",
+            "title": "Call",
+            "detail": "<p>Mon - Fri: 9am - 5pm CST</p>",
+            "action": "link",
+            "label": "877-554-7868",
+            "link": "tel:8775547868",
+            "label_online": "Chat now",
+            "label_offline": "Leave us a message"
+          }
+        },
+        "store": {
+          "type": "block--contact-channel",
+          "settings": {
+            "icon": "store",
+            "title": "Visit a store",
+            "detail": "<p>Shop the Grunt Style experience in person at one of our retail locations.</p>",
+            "action": "link",
+            "label": "Find a store",
+            "link": "shopify://pages/grunt-style-retail-stores",
+            "label_online": "Chat now",
+            "label_offline": "Leave us a message"
+          }
+        }
+      },
+      "block_order": [
+        "chat",
+        "email",
+        "call",
+        "store"
+      ],
+      "settings": {
+        "heading": "Contact Us",
+        "subheading": "Customer Service",
+        "heading_alignment": "center",
+        "columns_desktop": 4,
+        "color_scheme": "scheme-4",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "section_visibility": "always"
+      }
+    },
+    "form": {
+      "type": "section--contact-form",
+      "settings": {
+        "heading": "Send us a message",
+        "description": "<p>We reply within one business day, Monday to Friday, 9am to 5pm CST.</p>",
+        "topics": "Order status\nReturns & exchanges\nProduct question\nClub Grunt Style\nWholesale\nCustom orders\nOther",
+        "show_order_number": true,
+        "submit_label": "Send message",
+        "success_message": "Thanks for reaching out. We'll get back to you soon.",
+        "color_scheme": "scheme-1",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "help": {
+      "type": "multicolumn",
+      "blocks": {
+        "track": {
+          "type": "column",
+          "settings": {
+            "title": "Track your order",
+            "text": "<p>See where your package is right now.</p>",
+            "link_label": "Track order",
+            "link": "shopify://pages/tracking"
+          }
+        },
+        "returns": {
+          "type": "column",
+          "settings": {
+            "title": "Returns & exchanges",
+            "text": "<p>Unworn, unwashed items can be returned within 60 days. Start a return at returns.gruntstyle.com.</p>",
+            "link_label": "Return policy",
+            "link": "shopify://pages/returns"
+          }
+        },
+        "faq": {
+          "type": "column",
+          "settings": {
+            "title": "FAQ",
+            "text": "<p>Answers to the questions we get most.</p>",
+            "link_label": "Read the FAQ",
+            "link": "shopify://pages/faq"
+          }
+        },
+        "sizes": {
+          "type": "column",
+          "settings": {
+            "title": "Size charts",
+            "text": "<p>Find your fit before you order.</p>",
+            "link_label": "Size charts",
+            "link": "shopify://pages/sizechart"
+          }
+        },
+        "shipping": {
+          "type": "column",
+          "settings": {
+            "title": "Shipping & handling",
+            "text": "<p>Rates, timelines, APO/FPO and international.</p>",
+            "link_label": "Shipping details",
+            "link": "shopify://pages/shipping-handling"
+          }
+        },
+        "giftcard": {
+          "type": "column",
+          "settings": {
+            "title": "Gift card balance",
+            "text": "<p>Check what is left on a Grunt Style gift card.</p>",
+            "link_label": "Check balance",
+            "link": "shopify://pages/check-gift-card-balance"
+          }
+        },
+        "govx": {
+          "type": "column",
+          "settings": {
+            "title": "Military & first responder discount",
+            "text": "<p>Verified through GovX. Thank you for your service.</p>",
+            "link_label": "Get the discount",
+            "link": "shopify://pages/govx-discount"
+          }
+        },
+        "wholesale": {
+          "type": "column",
+          "settings": {
+            "title": "Wholesale",
+            "text": "<p>Carry Grunt Style in your store.</p>",
+            "link_label": "Apply for wholesale",
+            "link": "shopify://pages/wholesale-account-registration"
+          }
+        },
+        "custom": {
+          "type": "column",
+          "settings": {
+            "title": "Custom orders",
+            "text": "<p>Your design on Grunt Style apparel.</p>",
+            "link_label": "Custom orders",
+            "link": "shopify://pages/custom-orders"
+          }
+        }
+      },
+      "block_order": [
+        "track",
+        "returns",
+        "faq",
+        "sizes",
+        "shipping",
+        "giftcard",
+        "govx",
+        "wholesale",
+        "custom"
+      ],
+      "settings": {
+        "title": "Help yourself",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 56,
+        "padding_bottom": 40
+      }
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How can I contact Customer Service?",
+            "icon": "none",
+            "row_content": "<p>Phone: 877-554-7868 (Mon–Fri, 9 AM–5 PM CST)</p><p>Email: CustomerService@GruntStyle.com</p><p>Chat: Mon–Fri, 9 AM–5 PM CST</p><p>Visit: <a href=\"/pages/grunt-style-retail-stores\" target=\"_blank\">Retail Locations</a></p>",
+            "page": ""
+          }
+        },
+        "q2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What's your return policy?",
+            "icon": "none",
+            "row_content": "<ul><li>Grunt Style will accept your return of unworn, unwashed, like new condition (per Grunt Style discretion) and defective merchandise by mail for a full refund of the purchase price (excluding shipping costs) if the merchandise is returned within 60 days of receipt.</li><li>Eligible refunds made within 60 days after receipt will be credited for the item's purchase price in the original form of payment.</li><li>Any other return/exchange will fall under the policy for merchandise credit or merchandise swap.</li><li>Purchases of third-party brands like EGO Cases, Grill Your Ass Off, Soledier Socks, or others are not eligible for coverage under our Beer Guarantee policy.</li></ul><p>Full details can be found here: <a href=\"/pages/returns\">/pages/returns </a></p>",
+            "page": ""
+          }
+        },
+        "q3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How does Free Shipping work?",
+            "icon": "none",
+            "row_content": "<p>If you are part of the Member tier, or Guest you must have a subtotal of $75 to receive free shipping!</p><p>If you’re a Silver or Gold member, you receive free shipping! Make sure you’re signed in and it automatically applies.</p>",
+            "page": ""
+          }
+        },
+        "q4": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How does Grunt Style Rewards work?",
+            "icon": "none",
+            "row_content": "<p>Members must be signed in for perks to apply instantly online. At a retail store, share your email for perks to apply.</p><p>No minimum spend required.</p><p>Credits are valid for 90 days. Use them before they disappear.</p><p>Earn 5-20% in Credit on spend, Birthday Credit, and other perks!</p><p><a href=\"/community/membership\">Click here</a> to see each tiers' perks!</p>",
+            "page": ""
+          }
+        },
+        "q5": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you ship internationally?",
+            "icon": "none",
+            "row_content": "<p>Would a statue of George Washington astride a bald eagle look epic on top of the white house? Yes. If you have trouble navigating the checkout process for international shipments, contact Customer Service.<br/><br/>For APO/FPO addresses, please ensure that your shipping information is properly formatted to fight against errors in our shipping systems. Here is an example of a properly formatted address:<br/><br/>NAME: JOHN DOE<br/>COMPANY (FPO ONLY): USS Grunt Style<br/>STREET 1: UNIT/PSC 1234<br/>STREET 2: BOX 1234<br/>CITY: APO/FPO<br/>STATE: ARMED FORCES PACIFIC<br/>COUNTRY: UNITED STATES<br/>ZIP: 00000-0000<br/><br/></p>",
+            "page": ""
+          }
+        },
+        "q6": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Where’s my return?",
+            "icon": "none",
+            "row_content": "<p>Likely still shipping to us. We’ll contact you via email as soon as we receive the item and are processing it.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Top questions",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 40,
+        "padding_bottom": 16
+      }
+    },
+    "faq_link": {
+      "type": "rich-text",
+      "blocks": {
+        "btn": {
+          "type": "button",
+          "settings": {
+            "button_label": "See all FAQs",
+            "button_link": "shopify://pages/faq",
+            "button_style_secondary": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "btn"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 48
+      }
+    },
+    "retail_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "SHOP THE GRUNT STYLE EXPERIENCE LOCALLY",
+            "heading_size": "h1"
+          }
+        },
+        "b": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Find a store near you",
+            "button_link_1": "shopify://pages/grunt-style-retail-stores",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "b"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/GS_CPB-retail-1440x300.png",
+        "image_overlay_opacity": 50,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-right",
+        "desktop_content_alignment": "right",
+        "show_text_box": false,
+        "color_scheme": "scheme-4",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "channels",
+    "form",
+    "help",
+    "faq",
+    "faq_link",
+    "retail_banner"
+  ]
+}

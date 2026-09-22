@@ -14,11 +14,15 @@
   gap: 4px;
 }
 
+/* The selected/focus ring is an outline drawn outside the swatch, and
+   this scroll container clips on both axes. Pad it so the ring is not
+   cut off at the top and bottom: 2px outline + up to 2px offset. */
 .gs-swatch-track {
+  --gs-swatch-ring: 4px;
   display: flex;
   gap: 5px;
   margin: 0;
-  padding: 0;
+  padding: var(--gs-swatch-ring);
   list-style: none;
   overflow-x: auto;
   scroll-snap-type: x proximity;

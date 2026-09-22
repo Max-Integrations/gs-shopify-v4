@@ -1,0 +1,118 @@
+{
+  "sections": {
+    "main": {
+      "type": "section--retail-location",
+      "settings": {
+        "title_override": "Outlet Shoppes at El Paso Retail Store",
+        "intro": "<p>Located in the Sun City, The Outlet Shoppes at El Paso is the only Outlet shopping center in the area. With almost 100 name-brand stores, The Outlet Shoppes offers an array of merchandise, with great value. This center is a shopping destination for fans from West Texas, Eastern New Mexico and Ft. Bliss.  Fort Bliss is home of the U.S. Army Air Defense Artillery Center, which is currently the U.S. Army's largest center for educating and training Air Defense Artillery soldiers and units.  El Paso is home to many military Veterans, 1st Responders and Patriots.</p>",
+        "hub_link": "grunt-style-retail-stores",
+        "hub_link_label": "View Other Stores",
+        "address": "7051 S Desert Blvd, Suite #E548\nCanutillo, TX 79835",
+        "phone": "915-877-7171",
+        "hours": "Monday: 10:00am - 9:00pm\nTuesday: 10:00am - 9:00pm\nWednesday: 10:00am - 9:00pm\nThursday: 10:00am - 9:00pm\nFriday: 10:00am - 9:00pm\nSaturday: 10:00am - 9:00pm\nSunday: 11:00am - 7:00pm",
+        "notes": "",
+        "latitude": "31.91364895255381",
+        "longitude": "-106.58578048679864",
+        "map_zoom": 14,
+        "color_scheme": "scheme-4"
+      }
+    },
+    "images_grid_TjxEbG": {
+      "type": "images-grid",
+      "blocks": {
+        "image_BzjBFT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS4684---Mess-with-the-Bull_WEB_READY-min_4b997750-9801-41d6-a5e2-44d0a959de5a.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_q4R3bn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS5540_-_Hell_Paso_Men_s_Tee_-_Black_WEB_READY-min_d0dbcce1-9d5f-4c2f-b5f0-cf42329bd1be.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_fzdqk9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS5927_-_Men_s_Texas_Reaper_Tee_-_Black_WEB_READY.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_JrFfN9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS6688_Web_Ready_Front_0a0e2421-19a9-4499-9fef-588350f0f3de.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        },
+        "image_BjTqKw": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GS7757_WEB-READY_STACKED.png",
+            "heading": "",
+            "btn_text": "",
+            "btn_link": "",
+            "button_as_link": false,
+            "button_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "image_BzjBFT",
+        "image_q4R3bn",
+        "image_fzdqk9",
+        "image_JrFfN9",
+        "image_BjTqKw"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "show_carousel": true,
+        "card_grid": false,
+        "card_inner_space": false,
+        "item_per_row_desktop": 5,
+        "item_per_row_mobile": "1",
+        "card_style": "vertical",
+        "grid_image_size": "large",
+        "content_position": "center",
+        "vertical_grid_image_size": "auto",
+        "heading": "In-Store Exclusives",
+        "highlight_style": "underline",
+        "bg__color": "solid",
+        "heading_size": "h3",
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "card_bg": "",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 50,
+        "bottom_space_desktop": 50,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40,
+        "section_width": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "images_grid_TjxEbG"
+  ]
+}
