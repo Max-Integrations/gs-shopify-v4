@@ -163,18 +163,24 @@
 
 {% schema %}
 {
-  "name": "Custom testimonials",
+  "name": "Custom testimonials (old)",
   "tag": "section",
   "class": "section gs-testimonials-section",
   "settings": [
-    { "type": "header", "content": "General" },
+    {
+      "type": "header",
+      "content": "General"
+    },
     {
       "type": "text",
       "id": "section_heading",
       "label": "Heading",
       "default": "WHAT PATRIOTS ARE SAYING"
     },
-    { "type": "header", "content": "Settings" },
+    {
+      "type": "header",
+      "content": "Settings"
+    },
     {
       "type": "checkbox",
       "id": "enable_content_border",
@@ -204,14 +210,20 @@
       "label": "Content alignment",
       "default": "center"
     },
-    { "type": "header", "content": "Colors" },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "Color scheme",
       "default": "scheme-1"
     },
-    { "type": "header", "content": "Spacing" },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
     {
       "type": "range",
       "id": "content_spacing_desktop",
@@ -238,25 +250,28 @@
       "type": "testimonial",
       "name": "Testimonial",
       "settings": [
-        { "type": "text", "id": "testimonial_heading", "label": "Testimonial heading" },
+        {
+          "type": "text",
+          "id": "testimonial_heading",
+          "label": "Testimonial heading"
+        },
         {
           "type": "textarea",
           "id": "comment_text",
           "label": "Testimonial text",
           "default": "This is a wonderful product!"
         },
-        { "type": "text", "id": "customer_name", "label": "Customer name", "default": "John Doe" },
-        { "type": "text", "id": "customer_jd", "label": "From" }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Custom testimonials",
-      "blocks": [
-        { "type": "testimonial" },
-        { "type": "testimonial" },
-        { "type": "testimonial" }
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer name",
+          "default": "John Doe"
+        },
+        {
+          "type": "text",
+          "id": "customer_jd",
+          "label": "From"
+        }
       ]
     }
   ]

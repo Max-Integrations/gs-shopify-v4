@@ -725,51 +725,66 @@
       }
     },
     "custom_testimonials_itRkeM": {
-      "type": "custom-testimonials",
+      "type": "section--testimonials",
       "blocks": {
         "testimonial_UdwCWN": {
-          "type": "testimonial",
+          "type": "quote",
           "settings": {
-            "testimonial_heading": "KING OF PATRIOTIC",
-            "comment_text": "“Out F+ckingstanding, as always, The undisputed King of Patriotic T - Shirts.”",
-            "customer_name": "John S.",
-            "customer_jd": ""
+            "author_title": "KING OF PATRIOTIC",
+            "image": "",
+            "author": "John S.",
+            "country_name": "",
+            "show_rating": true,
+            "rating": 5,
+            "message": "“Out F+ckingstanding, as always, The undisputed King of Patriotic T - Shirts.”"
           }
         },
         "testimonial_iyHhEk": {
-          "type": "testimonial",
+          "type": "quote",
           "settings": {
-            "testimonial_heading": "COMMUNITY",
-            "comment_text": "\"Thank you for being a community that is passionate and dedicated to supporting those who protect us. All of the products are top notch quality and ordering through the app is super easy!!!\"",
-            "customer_name": "Carrie C.",
-            "customer_jd": ""
+            "author_title": "COMMUNITY",
+            "image": "",
+            "author": "Carrie C.",
+            "country_name": "",
+            "show_rating": true,
+            "rating": 5,
+            "message": "\"Thank you for being a community that is passionate and dedicated to supporting those who protect us. All of the products are top notch quality and ordering through the app is super easy!!!\""
           }
         },
         "testimonial_Q4AXyT": {
-          "type": "testimonial",
+          "type": "quote",
           "settings": {
-            "testimonial_heading": "EXCELLENT SERVICE",
-            "comment_text": "\"never disappointed in the quality of the apparel and service. Top notch always. And I love supporting anything patriotic and our veterans!\"",
-            "customer_name": "CJ",
-            "customer_jd": ""
+            "author_title": "EXCELLENT SERVICE",
+            "image": "",
+            "author": "CJ",
+            "country_name": "",
+            "show_rating": true,
+            "rating": 5,
+            "message": "\"never disappointed in the quality of the apparel and service. Top notch always. And I love supporting anything patriotic and our veterans!\""
           }
         },
         "testimonial_wtBPmf": {
-          "type": "testimonial",
+          "type": "quote",
           "settings": {
-            "testimonial_heading": "PATRIOTIC SUPREME",
-            "comment_text": "\"Always a great experience and love the patriotic gear. GOD BLESS AMERICA!\"",
-            "customer_name": "Brad L.",
-            "customer_jd": ""
+            "author_title": "PATRIOTIC SUPREME",
+            "image": "",
+            "author": "Brad L.",
+            "country_name": "",
+            "show_rating": true,
+            "rating": 5,
+            "message": "\"Always a great experience and love the patriotic gear. GOD BLESS AMERICA!\""
           }
         },
         "testimonial_aWCigM": {
-          "type": "testimonial",
+          "type": "quote",
           "settings": {
-            "testimonial_heading": "FAST SHIPPING",
-            "comment_text": "\"Grunt Style is the best patriotic clothes & designs are sweet, & shipping is fast & don't have to worry about anything after you order!\"",
-            "customer_name": "Dustin B.",
-            "customer_jd": ""
+            "author_title": "FAST SHIPPING",
+            "image": "",
+            "author": "Dustin B.",
+            "country_name": "",
+            "show_rating": true,
+            "rating": 5,
+            "message": "\"Grunt Style is the best patriotic clothes & designs are sweet, & shipping is fast & don't have to worry about anything after you order!\""
           }
         }
       },
@@ -780,16 +795,23 @@
         "testimonial_wtBPmf",
         "testimonial_aWCigM"
       ],
-      "name": "Custom testimonials",
       "settings": {
-        "section_heading": "WHAT PATRIOTS ARE SAYING",
-        "enable_content_border": true,
-        "content_border_width": 2,
-        "enable_star_rating": true,
-        "content_alignment": "center",
+        "section_visibility": "always",
+        "enable_card_border": true,
+        "enable_card_shadow": false,
+        "enlargen_slide": false,
+        "auto_rotate": false,
+        "slider_thumbnail": "only-arrow",
+        "change_slides_speed": 5,
+        "enlargen_message_font_size": "h2",
+        "image_position": "left",
+        "heading": "WHAT PATRIOTS ARE SAYING",
+        "heading_size": "h2",
+        "description": "",
+        "heading_alignment": "text-center",
         "color_scheme": "scheme-1",
-        "content_spacing_desktop": 50,
-        "content_spacing_mobile": 25
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
     "multicolumn_with_content_hover_rUQ9Qn": {

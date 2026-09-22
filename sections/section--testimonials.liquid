@@ -37,6 +37,17 @@
     scale/opacity transition.
   - The v3 global `settings.enable_animation` (AOS fade-ups) is not a
     v4 setting and the store had it off. Dropped.
+  ------------------------------------------------------------------
+  CONSOLIDATION (2026-09-22)
+  ------------------------------------------------------------------
+  This is now the only testimonials section. custom-testimonials (the
+  homepage "WHAT PATRIOTS ARE SAYING" strip and the Foundation quotes)
+  is deprecated; its blocks map testimonial_heading -> author_title,
+  comment_text -> message, customer_name -> author, customer_jd ->
+  country_name. The v3 heading kit (bracket highlight, highlight style,
+  gradient flag, heading tag) and the four px paddings are gone:
+  heading + size + alignment, and Dawn's padding_top / padding_bottom
+  (mobile is 75%), like every Dawn section.
   ==================================================================
 {% endcomment %}
 
@@ -54,36 +65,24 @@
     assign autoplay_ms = s.change_slides_speed | default: 5 | times: 1000
   endif
 
-  # [bracketed] words in the heading become highlight spans.
-  assign highlight_class = 'line-marker highlight-underline'
-  if s.highlight_style == 'background'
-    assign highlight_class = 'line-marker highlight-background highlight-background-solid'
-    if s.bg__color == 'gradient'
-      assign highlight_class = 'line-marker highlight-background highlight-background-gradient'
-    endif
-  endif
-  assign highlight_prefix = '<span class="' | append: highlight_class | append: '">'
-  assign highlight_suffix = '</span>'
 -%}
 
 <div
-  class="gs-testimonials color-{{ s.color_scheme | default: 'scheme-1' }}{% if s.enable_gradient %} gradient{% endif %} gs-tm--visibility-{{ s.section_visibility | default: 'always' }}{% if enlarge %} gs-tm--enlarge{% endif %}{% if s.image_position == 'top' %} gs-tm--image-top{% endif %}"
+  class="gs-testimonials color-{{ s.color_scheme | default: 'scheme-1' }} gradient gs-tm--visibility-{{ s.section_visibility | default: 'always' }}{% if enlarge %} gs-tm--enlarge{% endif %}{% if s.image_position == 'top' %} gs-tm--image-top{% endif %}"
   id="GsTestimonials-{{ section.id }}"
   data-gs-testimonials
   data-autoplay="{{ autoplay_ms }}"
   style="
-    --tm-pad-top: {{ s.top_space_desktop | default: 70 }}px;
-    --tm-pad-bottom: {{ s.bottom_space_desktop | default: 70 }}px;
-    --tm-pad-top-mobile: {{ s.top_space_mobile | default: 40 }}px;
-    --tm-pad-bottom-mobile: {{ s.bottom_space_mobile | default: 40 }}px;
+    --tm-pad-top: {{ s.padding_top }}px;
+    --tm-pad-bottom: {{ s.padding_bottom }}px;
+    --tm-pad-top-mobile: {{ s.padding_top | times: 0.75 | round: 0 }}px;
+    --tm-pad-bottom-mobile: {{ s.padding_bottom | times: 0.75 | round: 0 }}px;
   "
 >
   <div class="page-width">
     {%- if s.heading != blank -%}
       <div class="section-title {{ s.heading_alignment | default: 'text-center' }}">
-        <{{ s.seo_heading | default: 'h2' }} class="{{ s.heading_size | default: 'h1' }} section-heading">
-          {{ s.heading | replace: '[', highlight_prefix | replace: ']', highlight_suffix }}
-        </{{ s.seo_heading | default: 'h2' }}>
+        <h2 class="{{ s.heading_size | default: 'h1' }} section-heading inline-richtext">{{ s.heading }}</h2>
         {%- if s.description != blank -%}
           <p class="testimonial-desc">{{ s.description }}</p>
         {%- endif -%}
@@ -284,7 +283,10 @@
   "tag": "section",
   "class": "gs-testimonials-section",
   "disabled_on": {
-    "groups": ["header", "footer"]
+    "groups": [
+      "header",
+      "footer"
+    ]
   },
   "settings": [
     {
@@ -292,49 +294,101 @@
       "id": "section_visibility",
       "label": "Show on",
       "options": [
-        { "value": "always", "label": "All devices" },
-        { "value": "small", "label": "Mobile only" },
-        { "value": "large", "label": "Desktop only" }
+        {
+          "value": "always",
+          "label": "All devices"
+        },
+        {
+          "value": "small",
+          "label": "Mobile only"
+        },
+        {
+          "value": "large",
+          "label": "Desktop only"
+        }
       ],
       "default": "always"
     },
     {
-      "type": "select",
-      "id": "testimonial_style",
-      "label": "Style",
-      "info": "The collage style is not ported from v3; it renders as the carousel.",
-      "options": [
-        { "value": "image-with-text-carousal", "label": "Carousel" },
-        { "value": "collage-carousal", "label": "Collage (renders as carousel)" }
-      ],
-      "default": "image-with-text-carousal"
+      "type": "checkbox",
+      "id": "enable_card_border",
+      "label": "Card border",
+      "default": false
     },
-    { "type": "checkbox", "id": "enable_card_border", "label": "Card border", "default": false },
-    { "type": "checkbox", "id": "enable_card_shadow", "label": "Card shadow", "default": false },
-    { "type": "checkbox", "id": "enlargen_slide", "label": "Enlarge the current quote", "info": "One centred quote at full size, the neighbours dimmed either side.", "default": false },
-    { "type": "checkbox", "id": "auto_rotate", "label": "Auto-rotate", "default": false },
+    {
+      "type": "checkbox",
+      "id": "enable_card_shadow",
+      "label": "Card shadow",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enlargen_slide",
+      "label": "Enlarge the current quote",
+      "info": "One centred quote at full size, the neighbours dimmed either side.",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "Auto-rotate",
+      "default": false
+    },
     {
       "type": "select",
       "id": "slider_thumbnail",
       "label": "Navigation",
       "options": [
-        { "value": "dots", "label": "Dots" },
-        { "value": "only-arrow", "label": "Arrows" }
+        {
+          "value": "dots",
+          "label": "Dots"
+        },
+        {
+          "value": "only-arrow",
+          "label": "Arrows"
+        }
       ],
       "default": "only-arrow"
     },
-    { "type": "range", "id": "change_slides_speed", "label": "Seconds per quote (auto-rotate)", "min": 3, "max": 9, "step": 1, "unit": "s", "default": 5 },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "label": "Seconds per quote (auto-rotate)",
+      "min": 3,
+      "max": 9,
+      "step": 1,
+      "unit": "s",
+      "default": 5
+    },
     {
       "type": "select",
       "id": "enlargen_message_font_size",
       "label": "Quote size (enlarged mode)",
       "options": [
-        { "value": "h1", "label": "H1" },
-        { "value": "h2", "label": "H2" },
-        { "value": "h3", "label": "H3" },
-        { "value": "h4", "label": "H4" },
-        { "value": "h5", "label": "H5" },
-        { "value": "h6", "label": "H6" }
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
       ],
       "default": "h2"
     },
@@ -343,98 +397,154 @@
       "id": "image_position",
       "label": "Author photo position",
       "options": [
-        { "value": "left", "label": "Left of the name" },
-        { "value": "top", "label": "Above the name" }
+        {
+          "value": "left",
+          "label": "Left of the name"
+        },
+        {
+          "value": "top",
+          "label": "Above the name"
+        }
       ],
       "default": "left"
     },
-    { "type": "header", "content": "Heading" },
-    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Wrap words in [brackets] to highlight them.", "default": "Testimonials" },
     {
-      "type": "select",
-      "id": "highlight_style",
-      "label": "Highlight style",
-      "options": [
-        { "value": "underline", "label": "Underline" },
-        { "value": "shape_2", "label": "Underline (shape 2)" },
-        { "value": "shape_3", "label": "Underline (shape 3)" },
-        { "value": "shape_4", "label": "Underline (shape 4)" },
-        { "value": "shape_5", "label": "Underline (shape 5)" },
-        { "value": "shape_6", "label": "Underline (shape 6)" },
-        { "value": "background", "label": "Background" }
-      ],
-      "default": "underline"
+      "type": "header",
+      "content": "Heading"
     },
     {
-      "type": "select",
-      "id": "bg__color",
-      "label": "Highlight background",
-      "options": [
-        { "value": "gradient", "label": "Gradient" },
-        { "value": "solid", "label": "Solid" }
-      ],
-      "default": "gradient"
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Testimonials"
     },
     {
       "type": "select",
       "id": "heading_size",
       "label": "Heading size",
       "options": [
-        { "value": "h1", "label": "H1" },
-        { "value": "h2", "label": "H2" },
-        { "value": "h3", "label": "H3" },
-        { "value": "h4", "label": "H4" },
-        { "value": "h5", "label": "H5" },
-        { "value": "h6", "label": "H6" }
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        }
       ],
       "default": "h1"
     },
     {
-      "type": "select",
-      "id": "seo_heading",
-      "label": "Heading tag",
-      "options": [
-        { "value": "h1", "label": "H1" },
-        { "value": "h2", "label": "H2" },
-        { "value": "h3", "label": "H3" },
-        { "value": "h4", "label": "H4" },
-        { "value": "h5", "label": "H5" },
-        { "value": "h6", "label": "H6" }
-      ],
-      "default": "h2"
+      "type": "inline_richtext",
+      "id": "description",
+      "label": "Description"
     },
-    { "type": "inline_richtext", "id": "description", "label": "Description" },
     {
       "type": "select",
       "id": "heading_alignment",
       "label": "Heading alignment",
       "options": [
-        { "value": "text-left", "label": "Left" },
-        { "value": "text-center", "label": "Center" },
-        { "value": "text-right", "label": "Right" }
+        {
+          "value": "text-left",
+          "label": "Left"
+        },
+        {
+          "value": "text-center",
+          "label": "Center"
+        },
+        {
+          "value": "text-right",
+          "label": "Right"
+        }
       ],
       "default": "text-center"
     },
-    { "type": "header", "content": "Colors and spacing" },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
-    { "type": "checkbox", "id": "enable_gradient", "label": "Use gradient background", "default": false },
-    { "type": "range", "id": "top_space_desktop", "label": "Top padding (desktop)", "unit": "px", "default": 70, "min": 0, "max": 150, "step": 5 },
-    { "type": "range", "id": "bottom_space_desktop", "label": "Bottom padding (desktop)", "unit": "px", "default": 70, "min": 0, "max": 150, "step": 5 },
-    { "type": "range", "id": "top_space_mobile", "label": "Top padding (mobile)", "unit": "px", "default": 40, "min": 0, "max": 100, "step": 5 },
-    { "type": "range", "id": "bottom_space_mobile", "label": "Bottom padding (mobile)", "unit": "px", "default": 40, "min": 0, "max": 100, "step": 5 }
+    {
+      "type": "header",
+      "content": "Colors and spacing"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
   ],
   "blocks": [
     {
       "type": "quote",
       "name": "Quote",
       "settings": [
-        { "type": "inline_richtext", "id": "author_title", "label": "Title", "info": "Shown above the quote. The Club page uses it for the customer's name." },
-        { "type": "image_picker", "id": "image", "label": "Author photo" },
-        { "type": "inline_richtext", "id": "author", "label": "Author name" },
-        { "type": "inline_richtext", "id": "country_name", "label": "Location" },
-        { "type": "checkbox", "id": "show_rating", "label": "Show star rating", "default": true },
-        { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 },
-        { "type": "inline_richtext", "id": "message", "label": "Quote", "default": "Share what a customer said about you." }
+        {
+          "type": "inline_richtext",
+          "id": "author_title",
+          "label": "Title",
+          "info": "Shown above the quote: a short headline, or the customer's name."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Author photo"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "author",
+          "label": "Author name"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "country_name",
+          "label": "Location or role"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_rating",
+          "label": "Show star rating",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "inline_richtext",
+          "id": "message",
+          "label": "Quote",
+          "default": "Share what a customer said about you."
+        }
       ]
     }
   ],
@@ -442,9 +552,15 @@
     {
       "name": "Testimonials",
       "blocks": [
-        { "type": "quote" },
-        { "type": "quote" },
-        { "type": "quote" }
+        {
+          "type": "quote"
+        },
+        {
+          "type": "quote"
+        },
+        {
+          "type": "quote"
+        }
       ]
     }
   ]

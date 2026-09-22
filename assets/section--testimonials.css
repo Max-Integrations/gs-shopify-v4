@@ -33,35 +33,6 @@
 .gs-testimonials .text-center { text-align: center; }
 .gs-testimonials .text-right { text-align: right; }
 
-/* [bracketed] heading highlight */
-.gs-testimonials .line-marker {
-  position: relative;
-  display: inline-block;
-}
-
-.gs-testimonials .line-marker.highlight-underline::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -0.1em;
-  height: 0.12em;
-  background: currentColor;
-}
-
-.gs-testimonials .line-marker.highlight-background {
-  padding: 0 0.2em;
-  color: var(--highlightTextColor, inherit);
-}
-
-.gs-testimonials .line-marker.highlight-background-solid {
-  background: rgb(var(--highlightBackground, var(--color-background)));
-}
-
-.gs-testimonials .line-marker.highlight-background-gradient {
-  background: var(--highlightGradientBackground, var(--gradient-background));
-}
-
 /* ---- Scroller + track ---- */
 .gs-tm__scroller {
   position: relative;

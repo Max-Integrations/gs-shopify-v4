@@ -208,60 +208,78 @@
       ]
     },
     "testimonials": {
-      "type": "custom-testimonials",
+      "type": "section--testimonials",
       "blocks": {
         "testimonial_bkk8cH": {
-          "type": "testimonial",
+          "type": "quote",
           "settings": {
-            "testimonial_heading": "",
-            "comment_text": "\"The Silkies Hike saved my life. I showed up expecting a walk and left with a brotherhood that checks on me every single day. That's what GSF builds — community that doesn't quit.\"",
-            "customer_name": "- SARAH K.",
-            "customer_jd": "U.S. Marine Corps Veteran"
+            "author_title": "",
+            "image": "",
+            "author": "- SARAH K.",
+            "country_name": "U.S. Marine Corps Veteran",
+            "show_rating": false,
+            "rating": 5,
+            "message": "\"The Silkies Hike saved my life. I showed up expecting a walk and left with a brotherhood that checks on me every single day. That's what GSF builds — community that doesn't quit.\""
           }
         },
         "testimonial_pz4GGa": {
-          "type": "testimonial",
+          "type": "quote",
           "settings": {
-            "testimonial_heading": "",
-            "comment_text": "\"After three deployments and years of struggling, GSF connected me with equine therapy that changed everything. For the first time in a decade, I feel like myself again.\"",
-            "customer_name": "- MARCUS T.",
-            "customer_jd": "U.S. Army, 3x Deployed"
+            "author_title": "",
+            "image": "",
+            "author": "- MARCUS T.",
+            "country_name": "U.S. Army, 3x Deployed",
+            "show_rating": false,
+            "rating": 5,
+            "message": "\"After three deployments and years of struggling, GSF connected me with equine therapy that changed everything. For the first time in a decade, I feel like myself again.\""
           }
         },
         "testimonial_GXHJAE": {
-          "type": "testimonial",
+          "type": "quote",
           "settings": {
-            "testimonial_heading": "",
-            "comment_text": "\"Excellent work. Don’t know how anyone could have watched any of the livestreams from your week in DC and not been moved to tears and action. Onward!\"",
-            "customer_name": "- Paige Figi",
-            "customer_jd": ""
+            "author_title": "",
+            "image": "",
+            "author": "- Paige Figi",
+            "country_name": "",
+            "show_rating": false,
+            "rating": 5,
+            "message": "\"Excellent work. Don’t know how anyone could have watched any of the livestreams from your week in DC and not been moved to tears and action. Onward!\""
           }
         },
         "testimonial_g9jaQN": {
-          "type": "testimonial",
+          "type": "quote",
           "settings": {
-            "testimonial_heading": "",
-            "comment_text": "\"As an MST Survivor, the healing modalities Grunt Style Foundation introduced me to removed the fear and anxiety, replacing it with an internal peace where the VA methods only masked my symptoms and never addressed the moral injury.\"",
-            "customer_name": "- Janae S.",
-            "customer_jd": ""
+            "author_title": "",
+            "image": "",
+            "author": "- Janae S.",
+            "country_name": "",
+            "show_rating": false,
+            "rating": 5,
+            "message": "\"As an MST Survivor, the healing modalities Grunt Style Foundation introduced me to removed the fear and anxiety, replacing it with an internal peace where the VA methods only masked my symptoms and never addressed the moral injury.\""
           }
         },
         "testimonial_dzLJbK": {
-          "type": "testimonial",
+          "type": "quote",
           "settings": {
-            "testimonial_heading": "",
-            "comment_text": "\"Every soul at the integration retreat was touched in a way that whispered: You are safe. You are family. You are loved exactly as you are.\"",
-            "customer_name": "- Emily J.",
-            "customer_jd": ""
+            "author_title": "",
+            "image": "",
+            "author": "- Emily J.",
+            "country_name": "",
+            "show_rating": false,
+            "rating": 5,
+            "message": "\"Every soul at the integration retreat was touched in a way that whispered: You are safe. You are family. You are loved exactly as you are.\""
           }
         },
         "testimonial_pAyLAJ": {
-          "type": "testimonial",
+          "type": "quote",
           "settings": {
-            "testimonial_heading": "",
-            "comment_text": "\"When it comes to healing veterans Grunt Style Integration is a force multiplier, it IS the Trojan Horse that wasn’t expected. Grunt Style Integration is bringing alternative healing, holistic healing, REAL healing to veterans as an alternative to being lost in the sauce of prescription pills and suicidal ideation.\"",
-            "customer_name": "- Caros Duran",
-            "customer_jd": "Plant Medicine Guide"
+            "author_title": "",
+            "image": "",
+            "author": "- Caros Duran",
+            "country_name": "Plant Medicine Guide",
+            "show_rating": false,
+            "rating": 5,
+            "message": "\"When it comes to healing veterans Grunt Style Integration is a force multiplier, it IS the Trojan Horse that wasn’t expected. Grunt Style Integration is bringing alternative healing, holistic healing, REAL healing to veterans as an alternative to being lost in the sauce of prescription pills and suicidal ideation.\""
           }
         }
       },
@@ -274,14 +292,22 @@
         "testimonial_pAyLAJ"
       ],
       "settings": {
-        "section_heading": "",
-        "enable_content_border": true,
-        "content_border_width": 2,
-        "enable_star_rating": false,
-        "content_alignment": "center",
+        "section_visibility": "always",
+        "enable_card_border": true,
+        "enable_card_shadow": false,
+        "enlargen_slide": false,
+        "auto_rotate": false,
+        "slider_thumbnail": "only-arrow",
+        "change_slides_speed": 5,
+        "enlargen_message_font_size": "h2",
+        "image_position": "left",
+        "heading": "",
+        "heading_size": "h2",
+        "description": "",
+        "heading_alignment": "text-center",
         "color_scheme": "scheme-1",
-        "content_spacing_desktop": 50,
-        "content_spacing_mobile": 25
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
     "irreverent": {
