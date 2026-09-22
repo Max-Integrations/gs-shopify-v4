@@ -1,0 +1,337 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "hero": {
+      "type": "section--full-width-image_text",
+      "blocks": {
+        "message_line_BVQD6q": {
+          "type": "message_line",
+          "settings": {
+            "text": "<em>Pride + Culture + Product = Grunt Style</em>",
+            "size_scale_desktop": "5rem",
+            "size_scale_mobile": "1rem",
+            "text_color": "#FFFFFF",
+            "background_color": "#00000000",
+            "letter_spacing": 0,
+            "padding_horizontal_desktop": 8,
+            "padding_vertical_desktop": 8,
+            "padding_horizontal_mobile": 8,
+            "padding_vertical_mobile": 8
+          }
+        }
+      },
+      "block_order": [
+        "message_line_BVQD6q"
+      ],
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#5D5D39",
+        "background_image_desktop": "shopify://shop_images/come-work-with-grunt-style-bg-min.jpg",
+        "background_image_mobile": "shopify://shop_images/come-work-with-grunt-style-bg-min.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 48,
+        "padding_bottom_desktop": 48,
+        "padding_horizontal_desktop": 24,
+        "item_gap_desktop": 4,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_horizontal_mobile": 24,
+        "item_gap_mobile": 4,
+        "button_gap": 12
+      }
+    },
+    "video_recruiting": {
+      "type": "video",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https://www.youtube.com/watch?v=8DPhECKtvWg",
+        "overlay_opacity": 40,
+        "play_label": "Play now",
+        "play_position": "bottom-right",
+        "play_button_bg": "#000000",
+        "play_button_text": "#ffffff",
+        "cover_image": "shopify://shop_images/careers-recruiting-youtube-thumbnail.jpg",
+        "description": "Grunt Style careers video",
+        "full_width": false,
+        "color_scheme": "scheme-4",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "culture": {
+      "type": "multicolumn",
+      "blocks": {
+        "icon_with_text_fKxpJE": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/Mission_1.png",
+            "title": "Our Mission",
+            "text": "<p>Be the leader in instilling pride in SELF, in our MILTARY, and our COUNTRY</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_znn7km": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/Vission_1.png",
+            "title": "Our Vision",
+            "text": "<p>Every Home in America will KNOW, CELEBRATE, and DEFEND the freedom we have as Americans for the next generation.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_qen4gh": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/Values_1.png",
+            "title": "Our Values",
+            "text": "<p>MISSION first, work as a TEAM, and have a great ATTITUDE to win.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_with_text_fKxpJE",
+        "icon_with_text_znn7km",
+        "icon_with_text_qen4gh"
+      ],
+      "settings": {
+        "title": "Born Of A Military Culture",
+        "heading_size": "h1",
+        "image_width": "half",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "image_position": "top",
+        "card_custom_scheme": true,
+        "card_color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 40,
+        "padding_bottom": 40
+      },
+      "custom_css": [
+        ".multicolumn-card__image-wrapper { margin: 2.5rem auto 0; }"
+      ]
+    },
+    "pitch": {
+      "type": "rich-text",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>GRUNT STYLE IS MORE THAN A BRAND, IT'S A LIFESTYLE! WE ARE A COMMUNITY OF PATRIOTS AND VETERANS WHO TAKE PRIDE IN WHO WE ARE AND WHAT WE'VE BUILT. </p><p>JOIN US TODAY!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text"
+      ],
+      "custom_css": [
+        ".rich-text__text p { font-size: 18px; }"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "jobs": {
+      "type": "section--embed-toggle",
+      "settings": {
+        "heading": "",
+        "embed_url": "https://recruiting.paylocity.com/recruiting/jobs/All/623d8578-bfbb-4e05-aac6-9d345670df03/Grunt-Style-LLC",
+        "frame_title": "Open positions at Grunt Style",
+        "cta_label": "View opportunities",
+        "close_label": "Hide opportunities",
+        "open_by_default": false,
+        "ratio": "16:9",
+        "color_scheme": "scheme-4",
+        "padding_top": 16,
+        "padding_bottom": 40
+      }
+    },
+    "benefits": {
+      "type": "multicolumn",
+      "blocks": {
+        "icon_with_text_jK4JjW": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/gs-careers-medical-benefits.png",
+            "title": "Medical Benefits",
+            "text": "<ul><li>Medical, Dental, and Vision</li><li>Health Savings Account (HSA) with Employer Contribution</li><li>Employee Assistance Program (EAP) at no cost to employee</li><li>Company Paid Life/AD&D</li><li>Supplemental Insurance Option</li></ul>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_ytQ7mx": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/gs-careers-time-away.png",
+            "title": "Time Away",
+            "text": "<ul><li>12 days of Paid Time Off (PTO) Annually</li><li>Anniversary Paid Time Off (PTO), Increases each year</li><li>2 days Volunteer Time Off (VTO) Per Quarter</li></ul>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_RQxqU3": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/gs-careers-health-and-wellness.png",
+            "title": "Health & Financial Wellness Benefits",
+            "text": "<ul><li>401(k) Plan with Employer Match</li><li>Paid Maternity and Paternity Leave</li><li>Onsite Health Screenings</li><li>Incentive Based Wellness Program</li></ul>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_QCrLwh": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/gs-careers-employee-perks.png",
+            "title": "Employee Perks",
+            "text": "<ul><li>Grunt Style Employee Discount</li><li>Tuition Reimbursement Program</li><li>Employee Development and Mentoring Opportunities</li><li>Teambuilding Events</li><li>Monthly Socials</li></ul>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_with_text_jK4JjW",
+        "icon_with_text_ytQ7mx",
+        "icon_with_text_RQxqU3",
+        "icon_with_text_QCrLwh"
+      ],
+      "settings": {
+        "title": "Benefits",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "image_position": "top",
+        "card_custom_scheme": true,
+        "card_color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 16,
+        "padding_bottom": 16
+      },
+      "custom_css": [
+        ".multicolumn-card__info h3 { display: block; padding: 0.5rem; background: #5e5c39; color: #ffffff; }",
+        ".multicolumn-card__info ul { list-style: disc; list-style-position: inside; text-align: left; padding-left: 0; }"
+      ]
+    },
+    "locations": {
+      "type": "multicolumn",
+      "blocks": {
+        "icon_with_text_RDNUgY": {
+          "type": "column",
+          "settings": {
+            "icon": "globe",
+            "image": "",
+            "title": "Headquarters",
+            "text": "<p>900 Broadway San Antonio, TX 78215</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_KNTXDd": {
+          "type": "column",
+          "settings": {
+            "icon": "truck",
+            "image": "",
+            "title": "Fulfillment & Production",
+            "text": "<p>680 Center Ave Carol Stream, IL 60188</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_with_text_RDNUgY",
+        "icon_with_text_KNTXDd"
+      ],
+      "settings": {
+        "title": "Locations",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "image_position": "left",
+        "card_custom_scheme": true,
+        "card_color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "video_flag": {
+      "type": "video",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https://www.youtube.com/watch?v=7iBJWWhL6c0",
+        "overlay_opacity": 40,
+        "play_label": "Play now",
+        "play_position": "bottom-right",
+        "play_button_bg": "#000000",
+        "play_button_text": "#ffffff",
+        "cover_image": "shopify://shop_images/careers-assaulting-flag-thumbnail.jpg",
+        "description": "Grunt Style careers video",
+        "full_width": false,
+        "color_scheme": "scheme-4",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero",
+    "video_recruiting",
+    "culture",
+    "pitch",
+    "jobs",
+    "benefits",
+    "locations",
+    "video_flag"
+  ]
+}

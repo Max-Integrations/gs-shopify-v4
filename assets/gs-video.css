@@ -1,0 +1,73 @@
+/*
+  ==================================================================
+  GS additions to Dawn's video section
+  ==================================================================
+  Cover overlay and a labelled play button, matching v3's video
+  banner. The whole poster remains the click target.
+*/
+
+.video-section__poster::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--gs-video-overlay, 0));
+  pointer-events: none;
+}
+
+.gs-video__poster--labelled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The span carries Dawn's deferred-media__poster-button class only so
+   base.css's `.media > *` rule (which stretches every poster child to
+   full size) skips it; the circle styling that class brings is undone
+   here with a more specific selector. */
+.gs-video__play.deferred-media__poster-button {
+  position: absolute;
+  z-index: 1;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 0;
+  padding: 1.4rem 2.4rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  background-color: var(--gs-video-btn-bg, rgb(var(--color-button)));
+  color: var(--gs-video-btn-text, rgb(var(--color-button-text)));
+  transition: transform 0.2s ease;
+}
+
+.gs-video__poster--center .gs-video__play.deferred-media__poster-button {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.gs-video__poster--bottom-right .gs-video__play.deferred-media__poster-button {
+  left: auto;
+  top: auto;
+  transform: none;
+  right: 3rem;
+  bottom: 3rem;
+}
+
+.gs-video__poster--center:hover .gs-video__play.deferred-media__poster-button {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.gs-video__poster--bottom-right:hover .gs-video__play.deferred-media__poster-button {
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-video__play { transition: none; }
+}

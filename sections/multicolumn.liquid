@@ -1,5 +1,19 @@
+{% comment %}
+  GS additions to Dawn's multicolumn, so it can replace v3's multi-column
+  and multi-column-with-rich-text sections (the two differed only in the
+  description field type; Dawn's is already rich text):
+    - `image_position` (top / left): v3's icon-left layout, image beside
+      the text.
+    - `card_color_scheme` + `card_custom_scheme`: paint the cards with a
+      different scheme than the section (v3 had white cards on black).
+    - block `icon`: a small inline SVG (globe, truck, person, pin,
+      building, chat) used when the column has no image, as v3's
+      icon_list did.
+  Styles for these live in assets/gs-multicolumn.css.
+{% endcomment %}
 {{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'gs-multicolumn.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -23,7 +37,7 @@
   endif
 -%}
 
-<div class="multicolumn color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
+<div class="multicolumn color-{{ section.settings.color_scheme }} gradient{% if section.settings.image_position == 'left' %} multicolumn--image-left{% endif %}{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
   <div
     class="page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     {% if settings.animations_reveal_on_scroll %}
@@ -75,7 +89,7 @@
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
           >
-            <div class="multicolumn-card content-container">
+            <div class="multicolumn-card content-container{% if section.settings.card_custom_scheme %} multicolumn-card--scheme color-{{ section.settings.card_color_scheme }}{% endif %}">
               {%- if block.settings.image != blank -%}
                 {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                   {% assign spaced_image = true %}
@@ -116,6 +130,24 @@
                         class: 'multicolumn-card__image'
                     }}
                   </div>
+                </div>
+              {%- endif -%}
+              {%- if block.settings.image == blank and block.settings.icon != blank and block.settings.icon != 'none' -%}
+                <div class="multicolumn-card__icon" aria-hidden="true">
+                  {%- case block.settings.icon -%}
+                    {%- when 'globe' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+                    {%- when 'truck' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
+                    {%- when 'person' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+                    {%- when 'pin' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+                    {%- when 'building' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5l8-2v18M12 9l8 2v10M4 21h16"/><path d="M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2"/></svg>
+                    {%- when 'chat' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H9l-4.2 3.4c-.4.3-.8 0-.8-.5V5.5Z"/></svg>
+                  {%- endcase -%}
                 </div>
               {%- endif -%}
               <div class="multicolumn-card__info">
@@ -343,6 +375,25 @@
       "label": "t:sections.multicolumn.settings.background_style.label"
     },
     {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "info": "GS addition.",
+      "options": [
+        { "value": "top", "label": "Above the text" },
+        { "value": "left", "label": "Beside the text" }
+      ],
+      "default": "top"
+    },
+    {
+      "type": "checkbox",
+      "id": "card_custom_scheme",
+      "label": "Use a separate color scheme for the cards",
+      "info": "GS addition. For example white cards on a black section.",
+      "default": false
+    },
+    { "type": "color_scheme", "id": "card_color_scheme", "label": "Card color scheme", "default": "scheme-1" },
+    {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
@@ -404,6 +455,22 @@
       "type": "column",
       "name": "t:sections.multicolumn.blocks.column.name",
       "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "info": "GS addition. Shown when no image is set.",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "globe", "label": "Globe" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "person", "label": "Person" },
+            { "value": "pin", "label": "Map pin" },
+            { "value": "building", "label": "Building" },
+            { "value": "chat", "label": "Chat" }
+          ],
+          "default": "none"
+        },
         {
           "type": "image_picker",
           "id": "image",

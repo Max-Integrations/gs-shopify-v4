@@ -1,0 +1,83 @@
+/*
+  ==================================================================
+  GS additions to Dawn's multicolumn
+  ==================================================================
+  - .multicolumn--image-left: image or icon beside the text.
+  - .multicolumn-card--scheme: the card carries its own color scheme
+    (Dawn's color-scheme-N class sets the custom properties; we paint
+    the card with them).
+  - .multicolumn-card__icon: inline SVG used when a column has no image.
+*/
+
+.multicolumn-card--scheme {
+  background: rgb(var(--color-background)) !important;
+  color: rgb(var(--color-foreground));
+}
+
+.multicolumn-card--scheme .multicolumn-card__info h3,
+.multicolumn-card--scheme .multicolumn-card__info .rte,
+.multicolumn-card--scheme .multicolumn-card__info .link {
+  color: rgb(var(--color-foreground));
+}
+
+.multicolumn-card__icon {
+  display: flex;
+  justify-content: center;
+  width: 5.6rem;
+  height: 5.6rem;
+  margin: 2.5rem auto 0;
+  color: rgb(var(--color-foreground));
+}
+
+.multicolumn-card__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.center .multicolumn-card__icon {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.multicolumn-list__item:not(.center) .multicolumn-card__icon {
+  margin-left: 2.5rem;
+}
+
+.background-none .multicolumn-card__icon {
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.multicolumn-card__icon + .multicolumn-card__info {
+  padding-top: 1.5rem;
+}
+
+/* ---- Image or icon beside the text ---- */
+@media screen and (min-width: 750px) {
+  .multicolumn--image-left .multicolumn-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .multicolumn--image-left .multicolumn-card__image-wrapper {
+    flex: 0 0 auto;
+    width: 30% !important;
+    margin: 2.5rem 0 2.5rem 2.5rem;
+  }
+
+  .multicolumn--image-left .multicolumn-card__icon {
+    flex: 0 0 auto;
+    margin: 2.5rem 0 0 2.5rem;
+  }
+
+  .multicolumn--image-left .multicolumn-card__info {
+    flex: 1 1 auto;
+    padding-left: 0;
+  }
+
+  .multicolumn--image-left.background-none .multicolumn-card__image-wrapper,
+  .multicolumn--image-left.background-none .multicolumn-card__icon {
+    margin: 0;
+  }
+}

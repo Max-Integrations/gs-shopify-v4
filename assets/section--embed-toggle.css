@@ -1,0 +1,53 @@
+/*
+  ==================================================================
+  Embed toggle
+  ==================================================================
+  Centred button; the frame below keeps the chosen aspect ratio.
+*/
+
+.gs-embed {
+  padding-top: var(--gs-embed-pad-top, 32px);
+  padding-bottom: var(--gs-embed-pad-bottom, 32px);
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+.gs-embed__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.gs-embed__heading {
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.gs-embed__toggle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.gs-embed__frame {
+  position: relative;
+  width: 100%;
+  padding-bottom: var(--gs-embed-ratio, 56.25%);
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+.gs-embed__frame[hidden] {
+  display: none;
+}
+
+.gs-embed__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #ffffff;
+}

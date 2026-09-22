@@ -1,5 +1,14 @@
+{% comment %}
+  GS additions to Dawn's video section, to match v3's video-banner
+  design: a darkening overlay on the cover image (`overlay_opacity`), a
+  labelled "Play now" button instead of the bare play icon
+  (`play_label`, `play_position`), and optional button colours. Styles
+  in assets/gs-video.css. The cover image stays the click target, and
+  the video still loads on demand.
+{% endcomment %}
 {{ 'video-section.css' | asset_url | stylesheet_tag }}
 {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+{{ 'gs-video.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -60,9 +69,10 @@
     >
       <button
         id="Deferred-Poster-Modal-{{ video_id }}"
-        class="video-section__poster media deferred-media__poster media--landscape"
+        class="video-section__poster media deferred-media__poster media--landscape{% if section.settings.play_label != blank %} gs-video__poster--labelled gs-video__poster--{{ section.settings.play_position | default: 'center' }}{% endif %}"
         type="button"
         aria-label="{{ alt }}"
+        style="--gs-video-overlay: {{ section.settings.overlay_opacity | default: 0 | divided_by: 100.0 }};{% if section.settings.play_button_bg != blank and section.settings.play_button_bg != 'rgba(0,0,0,0)' %} --gs-video-btn-bg: {{ section.settings.play_button_bg }};{% endif %}{% if section.settings.play_button_text != blank and section.settings.play_button_text != 'rgba(0,0,0,0)' %} --gs-video-btn-text: {{ section.settings.play_button_text }};{% endif %}"
       >
         {%- if poster != null -%}
           {{
@@ -73,11 +83,18 @@
         {%- else -%}
           {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
         {%- endif -%}
-        <span class="deferred-media__poster-button motion-reduce">
-          <span class="svg-wrapper">
-            {{- 'icon-play.svg' | inline_asset_content -}}
+        {%- if section.settings.play_label != blank -%}
+          <span class="gs-video__play deferred-media__poster-button button motion-reduce">
+            <svg width="22" height="22" viewBox="0 0 34 34" fill="none" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M17 34C26.3888 34 34 26.3888 34 17C34 7.61116 26.3888 0 17 0C7.61116 0 0 7.61116 0 17C0 26.3888 7.61116 34 17 34ZM13 10.8685C13 10.0698 13.8901 9.59343 14.5547 10.0365L23.7519 16.1679C24.3457 16.5638 24.3457 17.4362 23.7519 17.8321L14.5547 23.9635C13.8901 24.4066 13 23.9302 13 23.1315V10.8685Z" fill="currentColor"/></svg>
+            {{ section.settings.play_label }}
           </span>
-        </span>
+        {%- else -%}
+          <span class="deferred-media__poster-button motion-reduce">
+            <span class="svg-wrapper">
+              {{- 'icon-play.svg' | inline_asset_content -}}
+            </span>
+          </span>
+        {%- endif -%}
       </button>
       <template>
         {%- if section.settings.video == null and section.settings.video_url != null -%}
@@ -194,6 +211,21 @@
       "label": "t:sections.video.settings.video_url.label",
       "info": "t:sections.video.settings.video_url.info"
     },
+    { "type": "header", "content": "Cover (GS additions)" },
+    { "type": "range", "id": "overlay_opacity", "label": "Cover overlay", "min": 0, "max": 90, "step": 10, "unit": "%", "default": 0 },
+    { "type": "text", "id": "play_label", "label": "Play button label", "info": "Empty shows the round play icon instead." },
+    {
+      "type": "select",
+      "id": "play_position",
+      "label": "Play button position",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "bottom-right", "label": "Bottom right" }
+      ],
+      "default": "center"
+    },
+    { "type": "color", "id": "play_button_bg", "label": "Play button background", "info": "Empty uses the scheme's button color." },
+    { "type": "color", "id": "play_button_text", "label": "Play button text" },
     {
       "type": "image_picker",
       "id": "cover_image",
