@@ -217,11 +217,14 @@
 
 {% schema %}
 {
-  "name": "t:sections.collage.name",
+  "name": "Collage (old)",
   "tag": "section",
   "class": "section",
   "disabled_on": {
-    "groups": ["header", "footer"]
+    "groups": [
+      "header",
+      "footer"
+    ]
   },
   "settings": [
     {
@@ -261,7 +264,7 @@
     {
       "type": "header",
       "content": "t:sections.collage.settings.header_layout.content"
-    },       
+    },
     {
       "type": "select",
       "id": "desktop_layout",
@@ -395,7 +398,10 @@
         {
           "type": "video_url",
           "id": "video_url",
-          "accept": ["youtube", "vimeo"],
+          "accept": [
+            "youtube",
+            "vimeo"
+          ],
           "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
           "label": "t:sections.collage.blocks.video.settings.video_url.label",
           "placeholder": "t:sections.collage.blocks.video.settings.video_url.placeholder",
@@ -411,22 +417,6 @@
       ]
     }
   ],
-  "max_blocks": 3,
-  "presets": [
-    {
-      "name": "t:sections.collage.presets.name",
-      "blocks": [
-        {
-          "type": "image"
-        },
-        {
-          "type": "product"
-        },
-        {
-          "type": "collection"
-        }
-      ]
-    }
-  ]
+  "max_blocks": 3
 }
 {% endschema %}

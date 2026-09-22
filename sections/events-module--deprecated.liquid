@@ -45,7 +45,7 @@
     link and the CTA.
   - Location, date and time were hardcoded #fff, invisible on a light
     background and not editable. Now a setting.
-  - A commented-out grid implementation and an empty {% raw %}{% comment %}{% endraw %} block.
+  - A commented-out grid implementation and an empty comment block.
   - type="text/css" on style tags, obsolete since HTML5.
   - The event name was a <p>. It is the card's heading, so it is a
     heading element now with a configurable level.
@@ -175,11 +175,14 @@
 
 {% schema %}
 {
-  "name": "Events Module",
+  "name": "Events Module (old)",
   "tag": "section",
   "class": "gs-events-section",
   "settings": [
-    { "type": "header", "content": "Events Module Settings" }
+    {
+      "type": "header",
+      "content": "Events Module Settings"
+    }
   ],
   "blocks": [
     {
@@ -191,8 +194,14 @@
           "id": "module_layout",
           "label": "Module layout",
           "options": [
-            { "value": "one-column", "label": "One column" },
-            { "value": "two-column", "label": "Two column" }
+            {
+              "value": "one-column",
+              "label": "One column"
+            },
+            {
+              "value": "two-column",
+              "label": "Two column"
+            }
           ],
           "default": "two-column"
         },
@@ -202,7 +211,11 @@
           "label": "Module image",
           "info": "700x450 for two-column. Use a larger image for one-column."
         },
-        { "type": "text", "id": "title", "label": "Event name" },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Event name"
+        },
         {
           "type": "select",
           "id": "heading_tag",
@@ -210,10 +223,22 @@
           "info": "For SEO and accessibility. v3 used a paragraph.",
           "default": "h3",
           "options": [
-            { "value": "h2", "label": "H2" },
-            { "value": "h3", "label": "H3" },
-            { "value": "h4", "label": "H4" },
-            { "value": "p", "label": "p" }
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            }
           ]
         },
         {
@@ -222,20 +247,74 @@
           "label": "Event name font",
           "info": "Engravers MT has no font file in this theme yet and will fall back.",
           "options": [
-            { "value": "heading", "label": "Theme heading font" },
-            { "value": "body", "label": "Theme body font" },
-            { "value": "Engravers MT", "label": "Engravers MT" }
+            {
+              "value": "heading",
+              "label": "Theme heading font"
+            },
+            {
+              "value": "body",
+              "label": "Theme body font"
+            },
+            {
+              "value": "Engravers MT",
+              "label": "Engravers MT"
+            }
           ],
           "default": "heading"
         },
-        { "type": "color", "id": "event_name_color", "label": "Event name color", "default": "#ffffff" },
-        { "type": "range", "id": "event_name_size_desktop", "label": "Event name size (desktop)", "min": 18, "max": 32, "step": 1, "unit": "px", "default": 26 },
-        { "type": "range", "id": "event_name_size_mobile", "label": "Event name size (mobile)", "min": 12, "max": 26, "step": 1, "unit": "px", "default": 22 },
-        { "type": "checkbox", "id": "separator_bar", "label": "Show separator bar", "default": true },
-        { "type": "color", "id": "separator_bar_color", "label": "Separator bar color", "default": "#802629" },
-        { "type": "text", "id": "event_locations", "label": "Event location" },
-        { "type": "text", "id": "event_dates", "label": "Event dates" },
-        { "type": "text", "id": "event_times", "label": "Event times" },
+        {
+          "type": "color",
+          "id": "event_name_color",
+          "label": "Event name color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "range",
+          "id": "event_name_size_desktop",
+          "label": "Event name size (desktop)",
+          "min": 18,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "default": 26
+        },
+        {
+          "type": "range",
+          "id": "event_name_size_mobile",
+          "label": "Event name size (mobile)",
+          "min": 12,
+          "max": 26,
+          "step": 1,
+          "unit": "px",
+          "default": 22
+        },
+        {
+          "type": "checkbox",
+          "id": "separator_bar",
+          "label": "Show separator bar",
+          "default": true
+        },
+        {
+          "type": "color",
+          "id": "separator_bar_color",
+          "label": "Separator bar color",
+          "default": "#802629"
+        },
+        {
+          "type": "text",
+          "id": "event_locations",
+          "label": "Event location"
+        },
+        {
+          "type": "text",
+          "id": "event_dates",
+          "label": "Event dates"
+        },
+        {
+          "type": "text",
+          "id": "event_times",
+          "label": "Event times"
+        },
         {
           "type": "color",
           "id": "event_meta_color",
@@ -243,28 +322,81 @@
           "info": "v3 hardcoded these white, which is invisible on a light background.",
           "default": "#ffffff"
         },
-        { "type": "inline_richtext", "id": "event_disclaimer", "label": "Event disclaimer" },
-        { "type": "text", "id": "event_cta", "label": "CTA text" },
-        { "type": "url", "id": "event_cta_link", "label": "CTA link" },
-        { "type": "checkbox", "id": "event_cta_new_window_status", "label": "Open CTA in a new tab", "default": false },
+        {
+          "type": "inline_richtext",
+          "id": "event_disclaimer",
+          "label": "Event disclaimer"
+        },
+        {
+          "type": "text",
+          "id": "event_cta",
+          "label": "CTA text"
+        },
+        {
+          "type": "url",
+          "id": "event_cta_link",
+          "label": "CTA link"
+        },
+        {
+          "type": "checkbox",
+          "id": "event_cta_new_window_status",
+          "label": "Open CTA in a new tab",
+          "default": false
+        },
         {
           "type": "select",
           "id": "event_cta_font",
           "label": "CTA font",
           "options": [
-            { "value": "heading", "label": "Theme heading font" },
-            { "value": "body", "label": "Theme body font" },
-            { "value": "Engravers MT", "label": "Engravers MT" }
+            {
+              "value": "heading",
+              "label": "Theme heading font"
+            },
+            {
+              "value": "body",
+              "label": "Theme body font"
+            },
+            {
+              "value": "Engravers MT",
+              "label": "Engravers MT"
+            }
           ],
           "default": "heading"
         },
-        { "type": "color", "id": "event_cta_color", "label": "CTA text color", "default": "#000000" },
-        { "type": "color", "id": "event_cta_bg_color", "label": "CTA background", "default": "#ffffff" },
-        { "type": "range", "id": "event_cta_size_desktop", "label": "CTA size (desktop)", "min": 12, "max": 26, "step": 1, "unit": "px", "default": 18 },
-        { "type": "range", "id": "event_cta_size_mobile", "label": "CTA size (mobile)", "min": 11, "max": 22, "step": 1, "unit": "px", "default": 14 }
+        {
+          "type": "color",
+          "id": "event_cta_color",
+          "label": "CTA text color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "event_cta_bg_color",
+          "label": "CTA background",
+          "default": "#ffffff"
+        },
+        {
+          "type": "range",
+          "id": "event_cta_size_desktop",
+          "label": "CTA size (desktop)",
+          "min": 12,
+          "max": 26,
+          "step": 1,
+          "unit": "px",
+          "default": 18
+        },
+        {
+          "type": "range",
+          "id": "event_cta_size_mobile",
+          "label": "CTA size (mobile)",
+          "min": 11,
+          "max": 22,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        }
       ]
     }
-  ],
-  "presets": [{ "name": "Events Module" }]
+  ]
 }
 {% endschema %}

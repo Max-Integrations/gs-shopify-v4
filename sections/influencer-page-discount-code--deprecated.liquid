@@ -78,7 +78,7 @@
 
 {% schema %}
 {
-  "name": "Influencer Discount Code",
+  "name": "Influencer Discount (old)",
   "tag": "section",
   "class": "gs-influencer-discount",
   "settings": [
@@ -88,31 +88,77 @@
       "label": "Discount code text",
       "default": "Use Code XXX for 25% off your first purchase with Grunt Style"
     },
-    { "type": "color", "id": "influencer_code_bg_color", "label": "Background", "default": "#ab192d" },
-    { "type": "color", "id": "influencer_code_text_color", "label": "Text color", "default": "#ffffff" },
+    {
+      "type": "color",
+      "id": "influencer_code_bg_color",
+      "label": "Background",
+      "default": "#ab192d"
+    },
+    {
+      "type": "color",
+      "id": "influencer_code_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
     {
       "type": "select",
       "id": "influencer_code_text_font",
       "label": "Font",
       "info": "Engravers MT has no font file in this theme yet and will fall back.",
       "options": [
-        { "value": "body", "label": "Theme body font" },
-        { "value": "heading", "label": "Theme heading font" },
-        { "value": "Engravers MT", "label": "Engravers MT" }
+        {
+          "value": "body",
+          "label": "Theme body font"
+        },
+        {
+          "value": "heading",
+          "label": "Theme heading font"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        }
       ],
       "default": "body"
     },
-    { "type": "range", "id": "influencer_code_text_size_desktop", "label": "Size (desktop)", "min": 14, "max": 32, "step": 1, "unit": "px", "default": 16 },
-    { "type": "range", "id": "influencer_code_text_size_mobile", "label": "Size (mobile)", "min": 11, "max": 28, "step": 1, "unit": "px", "default": 12 },
+    {
+      "type": "range",
+      "id": "influencer_code_text_size_desktop",
+      "label": "Size (desktop)",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "influencer_code_text_size_mobile",
+      "label": "Size (mobile)",
+      "min": 11,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
     {
       "type": "select",
       "id": "influencer_code_text_alignment",
       "label": "Alignment",
       "info": "In v3 this had no effect. It now positions the pill within the section.",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "center"
     },
@@ -121,13 +167,22 @@
       "id": "influencer_code_border_type",
       "label": "Shape",
       "options": [
-        { "value": "square", "label": "Square" },
-        { "value": "rounded", "label": "Rounded" }
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "rounded",
+          "label": "Rounded"
+        }
       ],
       "default": "square"
     }
   ],
-  "presets": [{ "name": "Influencer Discount Code" }],
-  "enabled_on": { "templates": ["*"] }
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  }
 }
 {% endschema %}

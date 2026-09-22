@@ -247,59 +247,167 @@
 
 {% schema %}
 {
-  "name": "Influencer Details",
+  "name": "Influencer Details (old)",
   "tag": "section",
   "class": "gs-influencer-details",
   "settings": [
-    { "type": "header", "content": "Page header" },
-    { "type": "checkbox", "id": "header_visibility", "label": "Show header", "info": "This is the H1 of the page.", "default": true },
-    { "type": "inline_richtext", "id": "header_text", "label": "Header", "default": "Brand Influencer" },
+    {
+      "type": "header",
+      "content": "Page header"
+    },
+    {
+      "type": "checkbox",
+      "id": "header_visibility",
+      "label": "Show header",
+      "info": "This is the H1 of the page.",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "header_text",
+      "label": "Header",
+      "default": "Brand Influencer"
+    },
     {
       "type": "select",
       "id": "header_text_font",
       "label": "Header font",
       "info": "Engravers MT has no font file in this theme yet and will fall back.",
       "options": [
-        { "value": "heading", "label": "Theme heading font" },
-        { "value": "body", "label": "Theme body font" },
-        { "value": "Engravers MT", "label": "Engravers MT" }
+        {
+          "value": "heading",
+          "label": "Theme heading font"
+        },
+        {
+          "value": "body",
+          "label": "Theme body font"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        }
       ],
       "default": "heading"
     },
-    { "type": "color", "id": "header_text_color", "label": "Header color", "default": "#ffffff" },
-    { "type": "range", "id": "header_text_size_desktop", "label": "Header size (desktop)", "min": 24, "max": 64, "step": 1, "unit": "px", "default": 35 },
-    { "type": "range", "id": "header_text_size_mobile", "label": "Header size (mobile)", "min": 14, "max": 42, "step": 1, "unit": "px", "default": 24 },
+    {
+      "type": "color",
+      "id": "header_text_color",
+      "label": "Header color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "header_text_size_desktop",
+      "label": "Header size (desktop)",
+      "min": 24,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "header_text_size_mobile",
+      "label": "Header size (mobile)",
+      "min": 14,
+      "max": 42,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
     {
       "type": "select",
       "id": "header_text_alignment",
       "label": "Header alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "center"
     },
-    { "type": "header", "content": "Profile picture" },
-    { "type": "checkbox", "id": "profile_picture_visibility", "label": "Show profile picture", "default": true },
-    { "type": "image_picker", "id": "influencer_image_desktop", "label": "Profile picture (desktop)" },
-    { "type": "image_picker", "id": "influencer_image_mobile", "label": "Profile picture (mobile)", "info": "Falls back to the desktop image." },
-    { "type": "header", "content": "Name" },
-    { "type": "text", "id": "influencer_name", "label": "Name", "default": "Influencer Name" },
-    { "type": "checkbox", "id": "influencer_name_visibility", "label": "Show name", "default": true },
+    {
+      "type": "header",
+      "content": "Profile picture"
+    },
+    {
+      "type": "checkbox",
+      "id": "profile_picture_visibility",
+      "label": "Show profile picture",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "influencer_image_desktop",
+      "label": "Profile picture (desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "influencer_image_mobile",
+      "label": "Profile picture (mobile)",
+      "info": "Falls back to the desktop image."
+    },
+    {
+      "type": "header",
+      "content": "Name"
+    },
+    {
+      "type": "text",
+      "id": "influencer_name",
+      "label": "Name",
+      "default": "Influencer Name"
+    },
+    {
+      "type": "checkbox",
+      "id": "influencer_name_visibility",
+      "label": "Show name",
+      "default": true
+    },
     {
       "type": "select",
       "id": "influencer_text_font",
       "label": "Name font",
       "options": [
-        { "value": "heading", "label": "Theme heading font" },
-        { "value": "body", "label": "Theme body font" },
-        { "value": "Engravers MT", "label": "Engravers MT" }
+        {
+          "value": "heading",
+          "label": "Theme heading font"
+        },
+        {
+          "value": "body",
+          "label": "Theme body font"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        }
       ],
       "default": "Engravers MT"
     },
-    { "type": "color", "id": "influencer_name_color", "label": "Name color", "default": "#ffffff" },
-    { "type": "range", "id": "influencer_name_text_size_desktop", "label": "Name size (desktop)", "min": 24, "max": 64, "step": 1, "unit": "px", "default": 35 },
+    {
+      "type": "color",
+      "id": "influencer_name_color",
+      "label": "Name color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "influencer_name_text_size_desktop",
+      "label": "Name size (desktop)",
+      "min": 24,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "default": 35
+    },
     {
       "type": "range",
       "id": "influencer_name_text_size_mobile",
@@ -316,78 +424,207 @@
       "id": "influencer_name_text_alignment",
       "label": "Name alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "left"
     },
-    { "type": "header", "content": "Location" },
-    { "type": "text", "id": "influencer_location", "label": "Location", "default": "City, State" },
-    { "type": "checkbox", "id": "influencer_location_visibility", "label": "Show location", "default": true },
+    {
+      "type": "header",
+      "content": "Location"
+    },
+    {
+      "type": "text",
+      "id": "influencer_location",
+      "label": "Location",
+      "default": "City, State"
+    },
+    {
+      "type": "checkbox",
+      "id": "influencer_location_visibility",
+      "label": "Show location",
+      "default": true
+    },
     {
       "type": "select",
       "id": "influencer_location_font",
       "label": "Location font",
       "options": [
-        { "value": "body", "label": "Theme body font" },
-        { "value": "heading", "label": "Theme heading font" },
-        { "value": "Engravers MT", "label": "Engravers MT" }
+        {
+          "value": "body",
+          "label": "Theme body font"
+        },
+        {
+          "value": "heading",
+          "label": "Theme heading font"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        }
       ],
       "default": "body"
     },
-    { "type": "range", "id": "influencer_location_text_size_desktop", "label": "Location size (desktop)", "min": 12, "max": 32, "step": 1, "unit": "px", "default": 14 },
-    { "type": "range", "id": "influencer_location_text_size_mobile", "label": "Location size (mobile)", "min": 11, "max": 24, "step": 1, "unit": "px", "default": 14 },
+    {
+      "type": "range",
+      "id": "influencer_location_text_size_desktop",
+      "label": "Location size (desktop)",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "influencer_location_text_size_mobile",
+      "label": "Location size (mobile)",
+      "min": 11,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
     {
       "type": "select",
       "id": "influencer_location_text_alignment",
       "label": "Location alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "left"
     },
-    { "type": "header", "content": "Bio" },
-    { "type": "checkbox", "id": "influencer_details_line_separator", "label": "Show separator rule", "default": true },
-    { "type": "color", "id": "influencer_rule_color", "label": "Separator color", "default": "#802629" },
-    { "type": "richtext", "id": "influencer_details", "label": "Bio", "default": "<p>Tell their story here.</p>" },
-    { "type": "checkbox", "id": "influencer_details_visibility", "label": "Show bio", "default": true },
+    {
+      "type": "header",
+      "content": "Bio"
+    },
+    {
+      "type": "checkbox",
+      "id": "influencer_details_line_separator",
+      "label": "Show separator rule",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "influencer_rule_color",
+      "label": "Separator color",
+      "default": "#802629"
+    },
+    {
+      "type": "richtext",
+      "id": "influencer_details",
+      "label": "Bio",
+      "default": "<p>Tell their story here.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "influencer_details_visibility",
+      "label": "Show bio",
+      "default": true
+    },
     {
       "type": "select",
       "id": "influencer_details_text_font",
       "label": "Bio font",
       "options": [
-        { "value": "body", "label": "Theme body font" },
-        { "value": "heading", "label": "Theme heading font" },
-        { "value": "Engravers MT", "label": "Engravers MT" }
+        {
+          "value": "body",
+          "label": "Theme body font"
+        },
+        {
+          "value": "heading",
+          "label": "Theme heading font"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        }
       ],
       "default": "body"
     },
-    { "type": "range", "id": "influencer_details_text_size_desktop", "label": "Bio size (desktop)", "min": 14, "max": 32, "step": 1, "unit": "px", "default": 16 },
-    { "type": "range", "id": "influencer_details_text_size_mobile", "label": "Bio size (mobile)", "min": 11, "max": 28, "step": 1, "unit": "px", "default": 14 },
+    {
+      "type": "range",
+      "id": "influencer_details_text_size_desktop",
+      "label": "Bio size (desktop)",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "influencer_details_text_size_mobile",
+      "label": "Bio size (mobile)",
+      "min": 11,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
     {
       "type": "select",
       "id": "influencer_details_text_alignment",
       "label": "Bio alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "left"
     },
-    { "type": "header", "content": "Social" },
+    {
+      "type": "header",
+      "content": "Social"
+    },
     {
       "type": "select",
       "id": "influencer_social_icons_alignment",
       "label": "Social icon alignment",
       "info": "In v3 the grid was locked to five columns, so this had little visible effect.",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "left"
     }
@@ -397,34 +634,67 @@
       "name": "X / Twitter",
       "type": "twitter",
       "limit": 1,
-      "settings": [{ "type": "url", "id": "twitter_handle", "label": "Profile URL" }]
+      "settings": [
+        {
+          "type": "url",
+          "id": "twitter_handle",
+          "label": "Profile URL"
+        }
+      ]
     },
     {
       "name": "Facebook",
       "type": "facebook",
       "limit": 1,
-      "settings": [{ "type": "url", "id": "facebook_handle", "label": "Profile URL" }]
+      "settings": [
+        {
+          "type": "url",
+          "id": "facebook_handle",
+          "label": "Profile URL"
+        }
+      ]
     },
     {
       "name": "Instagram",
       "type": "instagram",
       "limit": 1,
-      "settings": [{ "type": "url", "id": "instagram_handle", "label": "Profile URL" }]
+      "settings": [
+        {
+          "type": "url",
+          "id": "instagram_handle",
+          "label": "Profile URL"
+        }
+      ]
     },
     {
       "name": "TikTok",
       "type": "tiktok",
       "limit": 1,
-      "settings": [{ "type": "url", "id": "tiktok_handle", "label": "Profile URL" }]
+      "settings": [
+        {
+          "type": "url",
+          "id": "tiktok_handle",
+          "label": "Profile URL"
+        }
+      ]
     },
     {
       "name": "YouTube",
       "type": "youtube",
       "limit": 1,
-      "settings": [{ "type": "url", "id": "youtube_handle", "label": "Profile URL" }]
+      "settings": [
+        {
+          "type": "url",
+          "id": "youtube_handle",
+          "label": "Profile URL"
+        }
+      ]
     }
   ],
-  "presets": [{ "name": "Influencer Details" }],
-  "enabled_on": { "templates": ["*"] }
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  }
 }
 {% endschema %}

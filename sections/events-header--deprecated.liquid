@@ -192,11 +192,14 @@
 
 {% schema %}
 {
-  "name": "Events Header",
+  "name": "Events Header (old)",
   "tag": "section",
   "class": "gs-events-header-section",
   "settings": [
-    { "type": "header", "content": "Heading" },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
     {
       "type": "text",
       "id": "heading_line_1",
@@ -217,8 +220,14 @@
       "info": "Use H2 if the page already has an H1.",
       "default": "h1",
       "options": [
-        { "value": "h1", "label": "H1" },
-        { "value": "h2", "label": "H2" }
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        }
       ]
     },
     {
@@ -227,37 +236,120 @@
       "label": "Heading font",
       "info": "Engravers MT has no font file in this theme yet and will fall back.",
       "options": [
-        { "value": "heading", "label": "Theme heading font" },
-        { "value": "body", "label": "Theme body font" },
-        { "value": "Engravers MT", "label": "Engravers MT" }
+        {
+          "value": "heading",
+          "label": "Theme heading font"
+        },
+        {
+          "value": "body",
+          "label": "Theme body font"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        }
       ],
       "default": "Engravers MT"
     },
-    { "type": "color", "id": "header_text_color", "label": "Heading color", "default": "#ffffff" },
-    { "type": "range", "id": "header_text_size_desktop", "label": "Heading size (desktop)", "min": 36, "max": 72, "step": 1, "unit": "px", "default": 48 },
-    { "type": "range", "id": "header_text_size_mobile", "label": "Heading size (mobile)", "min": 20, "max": 42, "step": 1, "unit": "px", "default": 32 },
-    { "type": "color", "id": "header_events_bg_color", "label": "Highlight background", "default": "#802629" },
-
-    { "type": "header", "content": "Subcopy" },
-    { "type": "richtext", "id": "subcopy", "label": "Subcopy", "default": "<p>Patriotism deserves to be celebrated</p>" },
+    {
+      "type": "color",
+      "id": "header_text_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "header_text_size_desktop",
+      "label": "Heading size (desktop)",
+      "min": 36,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "header_text_size_mobile",
+      "label": "Heading size (mobile)",
+      "min": 20,
+      "max": 42,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "header_events_bg_color",
+      "label": "Highlight background",
+      "default": "#802629"
+    },
+    {
+      "type": "header",
+      "content": "Subcopy"
+    },
+    {
+      "type": "richtext",
+      "id": "subcopy",
+      "label": "Subcopy",
+      "default": "<p>Patriotism deserves to be celebrated</p>"
+    },
     {
       "type": "select",
       "id": "subcopy_font",
       "label": "Subcopy font",
       "info": "This setting existed in v3 but was never applied.",
       "options": [
-        { "value": "body", "label": "Theme body font" },
-        { "value": "heading", "label": "Theme heading font" },
-        { "value": "Engravers MT", "label": "Engravers MT" }
+        {
+          "value": "body",
+          "label": "Theme body font"
+        },
+        {
+          "value": "heading",
+          "label": "Theme heading font"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        }
       ],
       "default": "body"
     },
-    { "type": "color", "id": "subcopy_text_color", "label": "Subcopy color", "default": "#ffffff" },
-    { "type": "range", "id": "subcopy_text_size_desktop", "label": "Subcopy size (desktop)", "min": 14, "max": 32, "step": 1, "unit": "px", "default": 18 },
-    { "type": "range", "id": "subcopy_text_size_mobile", "label": "Subcopy size (mobile)", "min": 11, "max": 28, "step": 1, "unit": "px", "default": 14 },
-
-    { "type": "header", "content": "Jump link" },
-    { "type": "text", "id": "events_header_cta_text", "label": "Link text", "default": "See Upcoming Events" },
+    {
+      "type": "color",
+      "id": "subcopy_text_color",
+      "label": "Subcopy color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "subcopy_text_size_desktop",
+      "label": "Subcopy size (desktop)",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subcopy_text_size_mobile",
+      "label": "Subcopy size (mobile)",
+      "min": 11,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Jump link"
+    },
+    {
+      "type": "text",
+      "id": "events_header_cta_text",
+      "label": "Link text",
+      "default": "See Upcoming Events"
+    },
     {
       "type": "text",
       "id": "cta_target",
@@ -271,20 +363,62 @@
       "label": "Link font",
       "info": "This setting existed in v3 but was never applied.",
       "options": [
-        { "value": "heading", "label": "Theme heading font" },
-        { "value": "body", "label": "Theme body font" },
-        { "value": "Engravers MT", "label": "Engravers MT" }
+        {
+          "value": "heading",
+          "label": "Theme heading font"
+        },
+        {
+          "value": "body",
+          "label": "Theme body font"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        }
       ],
       "default": "heading"
     },
-    { "type": "color", "id": "events_header_cta_text_color", "label": "Link text color", "default": "#ffffff" },
-    { "type": "color", "id": "events_header_cta_bg_color", "label": "Link background", "default": "#802629" },
-    { "type": "range", "id": "events_header_cta_text_size_desktop", "label": "Link size (desktop)", "min": 18, "max": 38, "step": 1, "unit": "px", "default": 26 },
-    { "type": "range", "id": "events_header_cta_text_size_mobile", "label": "Link size (mobile)", "min": 11, "max": 28, "step": 1, "unit": "px", "default": 24 },
-
-    { "type": "header", "content": "Image" },
-    { "type": "image_picker", "id": "events_header_img", "label": "Header image" }
-  ],
-  "presets": [{ "name": "Events Header" }]
+    {
+      "type": "color",
+      "id": "events_header_cta_text_color",
+      "label": "Link text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "events_header_cta_bg_color",
+      "label": "Link background",
+      "default": "#802629"
+    },
+    {
+      "type": "range",
+      "id": "events_header_cta_text_size_desktop",
+      "label": "Link size (desktop)",
+      "min": 18,
+      "max": 38,
+      "step": 1,
+      "unit": "px",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "events_header_cta_text_size_mobile",
+      "label": "Link size (mobile)",
+      "min": 11,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "events_header_img",
+      "label": "Header image"
+    }
+  ]
 }
 {% endschema %}

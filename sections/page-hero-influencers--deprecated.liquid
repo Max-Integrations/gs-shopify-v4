@@ -149,13 +149,25 @@
 
 {% schema %}
 {
-  "name": "Influencer Page Hero",
+  "name": "Influencer Page Her (old)",
   "tag": "section",
   "class": "influencers-overview",
   "settings": [
-    { "type": "header", "content": "Background" },
-    { "type": "image_picker", "id": "hero_bg_img_desktop", "label": "Background image (desktop)" },
-    { "type": "image_picker", "id": "hero_bg_img_mobile", "label": "Background image (mobile)", "info": "Falls back to the desktop image." },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_bg_img_desktop",
+      "label": "Background image (desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_bg_img_mobile",
+      "label": "Background image (mobile)",
+      "info": "Falls back to the desktop image."
+    },
     {
       "type": "range",
       "id": "hero_bg_img_opacity",
@@ -167,16 +179,33 @@
       "unit": "%",
       "default": 0
     },
-    { "type": "header", "content": "Headline" },
-    { "type": "text", "id": "hero_headline", "label": "Headline", "default": "Headline Copy" },
+    {
+      "type": "header",
+      "content": "Headline"
+    },
+    {
+      "type": "text",
+      "id": "hero_headline",
+      "label": "Headline",
+      "default": "Headline Copy"
+    },
     {
       "type": "select",
       "id": "hero_headline_type",
       "label": "Heading level",
       "options": [
-        { "value": "h1", "label": "H1" },
-        { "value": "h2", "label": "H2" },
-        { "value": "h3", "label": "H3" }
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        }
       ],
       "default": "h1"
     },
@@ -186,28 +215,77 @@
       "label": "Headline font",
       "info": "Engravers MT has no font file in this theme yet and will fall back.",
       "options": [
-        { "value": "heading", "label": "Theme heading font" },
-        { "value": "body", "label": "Theme body font" },
-        { "value": "Engravers MT", "label": "Engravers MT" }
+        {
+          "value": "heading",
+          "label": "Theme heading font"
+        },
+        {
+          "value": "body",
+          "label": "Theme body font"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        }
       ],
       "default": "heading"
     },
-    { "type": "color", "id": "hero_headline_text_color", "label": "Headline color", "default": "#ffffff" },
-    { "type": "range", "id": "hero_headline_text_size_desktop", "label": "Headline size (desktop)", "min": 24, "max": 64, "step": 1, "unit": "px", "default": 35 },
-    { "type": "range", "id": "hero_headline_text_size_mobile", "label": "Headline size (mobile)", "min": 14, "max": 42, "step": 1, "unit": "px", "default": 24 },
+    {
+      "type": "color",
+      "id": "hero_headline_text_color",
+      "label": "Headline color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "hero_headline_text_size_desktop",
+      "label": "Headline size (desktop)",
+      "min": 24,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "hero_headline_text_size_mobile",
+      "label": "Headline size (mobile)",
+      "min": 14,
+      "max": 42,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
     {
       "type": "select",
       "id": "hero_headline_text_alignment",
       "label": "Headline alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "center"
     },
-    { "type": "checkbox", "id": "hero_headline_line_separator", "label": "Show separator rule", "default": true },
-    { "type": "header", "content": "Subcopy" },
+    {
+      "type": "checkbox",
+      "id": "hero_headline_line_separator",
+      "label": "Show separator rule",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Subcopy"
+    },
     {
       "type": "richtext",
       "id": "hero_subcopy",
@@ -219,41 +297,123 @@
       "id": "hero_subcopy_text_font",
       "label": "Subcopy font",
       "options": [
-        { "value": "body", "label": "Theme body font" },
-        { "value": "heading", "label": "Theme heading font" },
-        { "value": "Engravers MT", "label": "Engravers MT" }
+        {
+          "value": "body",
+          "label": "Theme body font"
+        },
+        {
+          "value": "heading",
+          "label": "Theme heading font"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        }
       ],
       "default": "body"
     },
-    { "type": "color", "id": "hero_subcopy_text_color", "label": "Subcopy color", "default": "#ffffff" },
-    { "type": "range", "id": "hero_subcopy_text_size_desktop", "label": "Subcopy size (desktop)", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 14 },
-    { "type": "range", "id": "hero_subcopy_text_size_mobile", "label": "Subcopy size (mobile)", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 14 },
+    {
+      "type": "color",
+      "id": "hero_subcopy_text_color",
+      "label": "Subcopy color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "hero_subcopy_text_size_desktop",
+      "label": "Subcopy size (desktop)",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "hero_subcopy_text_size_mobile",
+      "label": "Subcopy size (mobile)",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
     {
       "type": "select",
       "id": "hero_subcopy_text_alignment",
       "label": "Subcopy alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "center"
     },
-    { "type": "header", "content": "CTA (optional)" },
-    { "type": "checkbox", "id": "show_cta", "label": "Show CTA", "default": false },
-    { "type": "text", "id": "cta_copy", "label": "CTA text", "default": "Learn More" },
-    { "type": "url", "id": "cta_btn_link", "label": "CTA link" },
-    { "type": "checkbox", "id": "cta_link_new_window", "label": "Open in a new tab", "default": false },
-    { "type": "color", "id": "cta_bg_color", "label": "CTA background", "default": "#ab192d" },
-    { "type": "color", "id": "cta_text_color", "label": "CTA text color", "default": "#ffffff" },
+    {
+      "type": "header",
+      "content": "CTA (optional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show CTA",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "cta_copy",
+      "label": "CTA text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "cta_btn_link",
+      "label": "CTA link"
+    },
+    {
+      "type": "checkbox",
+      "id": "cta_link_new_window",
+      "label": "Open in a new tab",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_color",
+      "label": "CTA background",
+      "default": "#ab192d"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "CTA text color",
+      "default": "#ffffff"
+    },
     {
       "type": "select",
       "id": "cta_text_font",
       "label": "CTA font",
       "options": [
-        { "value": "heading", "label": "Theme heading font" },
-        { "value": "body", "label": "Theme body font" },
-        { "value": "Engravers MT", "label": "Engravers MT" }
+        {
+          "value": "heading",
+          "label": "Theme heading font"
+        },
+        {
+          "value": "body",
+          "label": "Theme body font"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        }
       ],
       "default": "heading"
     },
@@ -262,13 +422,22 @@
       "id": "cta_btn_border_type",
       "label": "CTA shape",
       "options": [
-        { "value": "square", "label": "Square" },
-        { "value": "rounded", "label": "Rounded" }
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "rounded",
+          "label": "Rounded"
+        }
       ],
       "default": "square"
     }
   ],
-  "presets": [{ "name": "Influencer Page Hero" }],
-  "enabled_on": { "templates": ["*"] }
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  }
 }
 {% endschema %}

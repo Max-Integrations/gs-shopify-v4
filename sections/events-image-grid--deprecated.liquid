@@ -70,11 +70,14 @@
 
 {% schema %}
 {
-  "name": "Events Image Grid",
+  "name": "Events Image Grid (old)",
   "tag": "section",
   "class": "gs-events-ugc-section",
   "settings": [
-    { "type": "header", "content": "UGC image grid" }
+    {
+      "type": "header",
+      "content": "UGC image grid"
+    }
   ],
   "blocks": [
     {
@@ -88,7 +91,11 @@
           "label": "Image name",
           "info": "Used as alt text when the image has none, and makes the block easier to find in the editor."
         },
-        { "type": "image_picker", "id": "image", "label": "UGC image" },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "UGC image"
+        },
         {
           "type": "url",
           "id": "link",
@@ -97,7 +104,6 @@
         }
       ]
     }
-  ],
-  "presets": [{ "name": "Events Image Grid" }]
+  ]
 }
 {% endschema %}

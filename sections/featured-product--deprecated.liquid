@@ -510,11 +510,14 @@
 
 {% schema %}
 {
-  "name": "t:sections.featured-product.name",
+  "name": "Featured product (old)",
   "tag": "section",
   "class": "section section-featured-product",
   "disabled_on": {
-    "groups": ["header", "footer"]
+    "groups": [
+      "header",
+      "footer"
+    ]
   },
   "blocks": [
     {
@@ -1527,38 +1530,6 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
-    }
-  ],
-  "presets": [
-    {
-      "name": "t:sections.featured-product.presets.name",
-      "blocks": [
-        {
-          "type": "text",
-          "settings": {
-            "text": "{{ section.settings.product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
-        {
-          "type": "title"
-        },
-        {
-          "type": "price"
-        },
-        {
-          "type": "variant_picker"
-        },
-        {
-          "type": "quantity_selector"
-        },
-        {
-          "type": "buy_buttons"
-        },
-        {
-          "type": "share"
-        }
-      ]
     }
   ]
 }

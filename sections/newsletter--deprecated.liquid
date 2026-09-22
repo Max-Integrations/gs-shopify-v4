@@ -122,11 +122,13 @@
 
 {% schema %}
 {
-  "name": "t:sections.newsletter.name",
+  "name": "Email signup (old)",
   "tag": "section",
   "class": "section",
   "disabled_on": {
-    "groups": ["header"]
+    "groups": [
+      "header"
+    ]
   },
   "settings": [
     {
@@ -232,22 +234,6 @@
     },
     {
       "type": "@app"
-    }
-  ],
-  "presets": [
-    {
-      "name": "t:sections.newsletter.presets.name",
-      "blocks": [
-        {
-          "type": "heading"
-        },
-        {
-          "type": "paragraph"
-        },
-        {
-          "type": "email_form"
-        }
-      ]
     }
   ]
 }

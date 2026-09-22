@@ -122,34 +122,84 @@
 
 {% schema %}
 {
-  "name": "Influencer Highlights",
+  "name": "Influencer Highligh (old)",
   "tag": "section",
   "class": "influencers-overview-highlight",
   "settings": [
-    { "type": "header", "content": "Influencer Profile Highlights" }
+    {
+      "type": "header",
+      "content": "Influencer Profile Highlights"
+    }
   ],
   "blocks": [
     {
       "name": "Highlight",
       "type": "highlight",
       "settings": [
-        { "type": "image_picker", "id": "highlight_image", "label": "Profile image" },
-        { "type": "richtext", "id": "title", "label": "Name", "default": "<p>Name</p>" },
-        { "type": "richtext", "id": "highlight_subcopy", "label": "Subcopy", "default": "<p>Subcopy</p>" },
-        { "type": "text", "id": "highlight_cta", "label": "CTA text", "default": "Learn More" },
-        { "type": "url", "id": "highlight_cta_btn_link", "label": "CTA link" },
-        { "type": "checkbox", "id": "highlight_cta_link_new_window", "label": "Open in a new tab", "default": false },
-        { "type": "color", "id": "highlight_cta_bg_color", "label": "CTA background", "default": "#ffffff" },
-        { "type": "color", "id": "highlight_cta_text_color", "label": "CTA text color", "default": "#000000" },
+        {
+          "type": "image_picker",
+          "id": "highlight_image",
+          "label": "Profile image"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Name",
+          "default": "<p>Name</p>"
+        },
+        {
+          "type": "richtext",
+          "id": "highlight_subcopy",
+          "label": "Subcopy",
+          "default": "<p>Subcopy</p>"
+        },
+        {
+          "type": "text",
+          "id": "highlight_cta",
+          "label": "CTA text",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "highlight_cta_btn_link",
+          "label": "CTA link"
+        },
+        {
+          "type": "checkbox",
+          "id": "highlight_cta_link_new_window",
+          "label": "Open in a new tab",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "highlight_cta_bg_color",
+          "label": "CTA background",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "highlight_cta_text_color",
+          "label": "CTA text color",
+          "default": "#000000"
+        },
         {
           "type": "select",
           "id": "highlight_cta_text_font",
           "label": "CTA font",
           "info": "Engravers MT has no font file in this theme yet and will fall back.",
           "options": [
-            { "value": "body", "label": "Theme body font" },
-            { "value": "heading", "label": "Theme heading font" },
-            { "value": "Engravers MT", "label": "Engravers MT" }
+            {
+              "value": "body",
+              "label": "Theme body font"
+            },
+            {
+              "value": "heading",
+              "label": "Theme heading font"
+            },
+            {
+              "value": "Engravers MT",
+              "label": "Engravers MT"
+            }
           ],
           "default": "body"
         },
@@ -159,15 +209,24 @@
           "label": "CTA shape",
           "info": "In v3, choosing Circle broke both the shape and the text colour.",
           "options": [
-            { "value": "square", "label": "Square" },
-            { "value": "circle", "label": "Circle" }
+            {
+              "value": "square",
+              "label": "Square"
+            },
+            {
+              "value": "circle",
+              "label": "Circle"
+            }
           ],
           "default": "square"
         }
       ]
     }
   ],
-  "presets": [{ "name": "Influencer Highlights" }],
-  "enabled_on": { "templates": ["*"] }
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  }
 }
 {% endschema %}

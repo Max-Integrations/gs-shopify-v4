@@ -105,18 +105,27 @@
 
 {% schema %}
 {
-  "name": "Events Full Width Hero",
+  "name": "Events Full Width H (old)",
   "tag": "section",
   "class": "gs-events-hero-section",
   "settings": [
-    { "type": "image_picker", "id": "events_hero_img_desktop", "label": "Background image (desktop)" },
+    {
+      "type": "image_picker",
+      "id": "events_hero_img_desktop",
+      "label": "Background image (desktop)"
+    },
     {
       "type": "image_picker",
       "id": "events_hero_img_mobile",
       "label": "Background image (mobile)",
       "info": "Falls back to the desktop image. In v3 this never loaded at all."
     },
-    { "type": "text", "id": "events_full_width_img_header", "label": "Heading", "default": "More Than A T-Shirt Company" },
+    {
+      "type": "text",
+      "id": "events_full_width_img_header",
+      "label": "Heading",
+      "default": "More Than A T-Shirt Company"
+    },
     {
       "type": "select",
       "id": "heading_tag",
@@ -124,10 +133,22 @@
       "info": "v3 hardcoded H2.",
       "default": "h2",
       "options": [
-        { "value": "h1", "label": "H1" },
-        { "value": "h2", "label": "H2" },
-        { "value": "h3", "label": "H3" },
-        { "value": "p", "label": "p" }
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "p",
+          "label": "p"
+        }
       ]
     },
     {
@@ -136,31 +157,98 @@
       "label": "Heading font",
       "info": "Engravers MT has no font file in this theme yet and will fall back.",
       "options": [
-        { "value": "heading", "label": "Theme heading font" },
-        { "value": "body", "label": "Theme body font" },
-        { "value": "Engravers MT", "label": "Engravers MT" }
+        {
+          "value": "heading",
+          "label": "Theme heading font"
+        },
+        {
+          "value": "body",
+          "label": "Theme body font"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        }
       ],
       "default": "Engravers MT"
     },
-    { "type": "color", "id": "events_full_width_img_text_color", "label": "Heading color", "default": "#ffffff" },
-    { "type": "range", "id": "events_full_width_img_text_size_desktop", "label": "Heading size (desktop)", "min": 36, "max": 62, "step": 1, "unit": "px", "default": 42 },
-    { "type": "range", "id": "events_full_width_img_text_size_mobile", "label": "Heading size (mobile)", "min": 16, "max": 38, "step": 1, "unit": "px", "default": 28 },
-    { "type": "inline_richtext", "id": "events_full_width_img_subcopy", "label": "Subcopy" },
+    {
+      "type": "color",
+      "id": "events_full_width_img_text_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "events_full_width_img_text_size_desktop",
+      "label": "Heading size (desktop)",
+      "min": 36,
+      "max": 62,
+      "step": 1,
+      "unit": "px",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "events_full_width_img_text_size_mobile",
+      "label": "Heading size (mobile)",
+      "min": 16,
+      "max": 38,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "inline_richtext",
+      "id": "events_full_width_img_subcopy",
+      "label": "Subcopy"
+    },
     {
       "type": "select",
       "id": "events_full_width_img_subcopy_font",
       "label": "Subcopy font",
       "options": [
-        { "value": "body", "label": "Theme body font" },
-        { "value": "heading", "label": "Theme heading font" },
-        { "value": "Engravers MT", "label": "Engravers MT" }
+        {
+          "value": "body",
+          "label": "Theme body font"
+        },
+        {
+          "value": "heading",
+          "label": "Theme heading font"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        }
       ],
       "default": "body"
     },
-    { "type": "color", "id": "events_full_width_img_subcopy_color", "label": "Subcopy color", "default": "#ffffff" },
-    { "type": "range", "id": "events_full_width_img_subcopy_size_desktop", "label": "Subcopy size (desktop)", "min": 22, "max": 48, "step": 1, "unit": "px", "default": 30 },
-    { "type": "range", "id": "events_full_width_img_subcopy_size_mobile", "label": "Subcopy size (mobile)", "min": 11, "max": 38, "step": 1, "unit": "px", "default": 20 }
-  ],
-  "presets": [{ "name": "Events Full Width Hero" }]
+    {
+      "type": "color",
+      "id": "events_full_width_img_subcopy_color",
+      "label": "Subcopy color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "events_full_width_img_subcopy_size_desktop",
+      "label": "Subcopy size (desktop)",
+      "min": 22,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "events_full_width_img_subcopy_size_mobile",
+      "label": "Subcopy size (mobile)",
+      "min": 11,
+      "max": 38,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    }
+  ]
 }
 {% endschema %}

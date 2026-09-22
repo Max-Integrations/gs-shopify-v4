@@ -188,7 +188,7 @@
 
 {% schema %}
 {
-  "name": "Influencer Favorites",
+  "name": "Influencer Favorite (old)",
   "tag": "section",
   "class": "gs-influencer-collection",
   "limit": 1,
@@ -212,34 +212,90 @@
       "label": "Title font",
       "info": "Engravers MT has no font file in this theme yet and will fall back.",
       "options": [
-        { "value": "heading", "label": "Theme heading font" },
-        { "value": "body", "label": "Theme body font" },
-        { "value": "Engravers MT", "label": "Engravers MT" }
+        {
+          "value": "heading",
+          "label": "Theme heading font"
+        },
+        {
+          "value": "body",
+          "label": "Theme body font"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        }
       ],
       "default": "heading"
     },
-    { "type": "range", "id": "influencer_collection_title_size_desktop", "label": "Title size (desktop)", "min": 14, "max": 48, "step": 1, "unit": "px", "default": 28 },
-    { "type": "range", "id": "influencer_collection_title_size_mobile", "label": "Title size (mobile)", "min": 11, "max": 28, "step": 1, "unit": "px", "default": 20 },
+    {
+      "type": "range",
+      "id": "influencer_collection_title_size_desktop",
+      "label": "Title size (desktop)",
+      "min": 14,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "influencer_collection_title_size_mobile",
+      "label": "Title size (mobile)",
+      "min": 11,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
     {
       "type": "select",
       "id": "influencer_collection_title_alignment",
       "label": "Title alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "left"
     },
-    { "type": "text", "id": "cta_label", "label": "Product button text", "default": "View Product" },
-    { "type": "header", "content": "Product selection" },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Product button text",
+      "default": "View Product"
+    },
+    {
+      "type": "header",
+      "content": "Product selection"
+    },
     {
       "type": "paragraph",
       "content": "Choose products individually or pick a collection. If any products are selected individually, the collection is ignored."
     },
-    { "type": "product_list", "id": "influencer_recommendations_products", "label": "Recommended products", "limit": 50 },
-    { "type": "header", "content": "--- OR ---" },
-    { "type": "collection", "id": "influencer_recommendations_collection", "label": "Recommended collection" },
+    {
+      "type": "product_list",
+      "id": "influencer_recommendations_products",
+      "label": "Recommended products",
+      "limit": 50
+    },
+    {
+      "type": "header",
+      "content": "--- OR ---"
+    },
+    {
+      "type": "collection",
+      "id": "influencer_recommendations_collection",
+      "label": "Recommended collection"
+    },
     {
       "type": "range",
       "id": "influencer_recommendations_collection_count",
@@ -254,13 +310,22 @@
       "id": "influencer_recommendations_layout",
       "label": "Layout",
       "options": [
-        { "value": "swiper", "label": "Carousel" },
-        { "value": "grid", "label": "Grid" }
+        {
+          "value": "swiper",
+          "label": "Carousel"
+        },
+        {
+          "value": "grid",
+          "label": "Grid"
+        }
       ],
       "default": "swiper"
     }
   ],
-  "presets": [{ "name": "Influencer Favorites" }],
-  "enabled_on": { "templates": ["*"] }
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  }
 }
 {% endschema %}

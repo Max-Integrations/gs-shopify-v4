@@ -163,7 +163,7 @@
 
 {% schema %}
 {
-  "name": "Text Scroller",
+  "name": "Text Scroller (old)",
   "tag": "section",
   "class": "section",
   "settings": [
@@ -194,10 +194,22 @@
       "id": "header_font_weight",
       "label": "Heading Font Weight",
       "options": [
-        { "value": "300", "label": "Light" },
-        { "value": "400", "label": "Normal" },
-        { "value": "600", "label": "Semi-Bold" },
-        { "value": "700", "label": "Bold" }
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "600",
+          "label": "Semi-Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
       ],
       "default": "700"
     }
@@ -235,10 +247,22 @@
           "id": "block_font_weight",
           "label": "Font Weight",
           "options": [
-            { "value": "300", "label": "Light" },
-            { "value": "400", "label": "Normal" },
-            { "value": "600", "label": "Semi-Bold" },
-            { "value": "700", "label": "Bold" }
+            {
+              "value": "300",
+              "label": "Light"
+            },
+            {
+              "value": "400",
+              "label": "Normal"
+            },
+            {
+              "value": "600",
+              "label": "Semi-Bold"
+            },
+            {
+              "value": "700",
+              "label": "Bold"
+            }
           ],
           "default": "400"
         },
@@ -248,8 +272,14 @@
           "label": "Data Source",
           "info": "Link a Google Sheet or manually paste content?",
           "options": [
-            { "label": "Google Sheets", "value": "google-sheets" },
-            { "label": "Manually pasted content", "value": "manual" }
+            {
+              "label": "Google Sheets",
+              "value": "google-sheets"
+            },
+            {
+              "label": "Manually pasted content",
+              "value": "manual"
+            }
           ],
           "default": "manual"
         },
@@ -284,7 +314,6 @@
         }
       ]
     }
-  ],
-  "presets": [{ "name": "Text Scroller" }]
+  ]
 }
 {% endschema %}

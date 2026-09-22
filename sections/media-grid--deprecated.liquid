@@ -101,10 +101,17 @@
 {{ 'gs-media-grid.css' | asset_url | stylesheet_tag }}
 
 {%- comment -%} Hoisted above the heading check - v3 captured these inside it. {%- endcomment -%}
-{%- capture highlightPrefix -%}
-  <span class="line-marker{% if section.settings.highlight_style == 'background' %} highlight-background{% if section.settings.bg__color == 'gradient' %} highlight-background-gradient{% else %} highlight-background-solid{% endif %}{% else %} highlight-underline{% endif %}">
-{%- endcapture -%}
-{%- capture highlightSuffix -%}</span>{%- endcapture -%}
+{%- liquid
+  assign highlightClass = 'line-marker highlight-underline'
+  if section.settings.highlight_style == 'background'
+    assign highlightClass = 'line-marker highlight-background highlight-background-solid'
+    if section.settings.bg__color == 'gradient'
+      assign highlightClass = 'line-marker highlight-background highlight-background-gradient'
+    endif
+  endif
+  assign highlightPrefix = '<span class="' | append: highlightClass | append: '">'
+  assign highlightSuffix = '</span>'
+-%}
 
 <div
   class="gs-media-grid color-{{ section.settings.color_scheme }}{% if section.settings.enable_gradient %} gradient{% endif %} gs-mg--visibility-{{ section.settings.section_visibility }}"
@@ -290,7 +297,7 @@
 
 {% schema %}
 {
-  "name": "Media grid (deprecated)",
+  "name": "Media grid (old)",
   "tag": "section",
   "class": "section media-grid-section",
   "disabled_on": { "groups": ["header", "footer"] },

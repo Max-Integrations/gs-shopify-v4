@@ -1,7 +1,7 @@
 {
   "sections": {
     "section_sale_promo_message_4Qz89H": {
-      "type": "section--sale-promo-message",
+      "type": "section--sale-promo-message--deprecated",
       "blocks": {
         "message_line_iCYyeX": {
           "type": "message_line",
@@ -886,9 +886,7 @@
     }
   },
   "order": [
-    "full_width_image_with_text_v2_MqghR7",
-    "max_integrations_sale_promo_message_4Qz89H",
-    "full_width_image_with_text_v2_MiAgyh",
+    "section_sale_promo_message_4Qz89H",
     "value_props_c3pXEG",
     "media_grid_4zxLjX",
     "featured_collections_ABnVhm",
