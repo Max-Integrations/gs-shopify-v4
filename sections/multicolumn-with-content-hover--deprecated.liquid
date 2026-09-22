@@ -264,19 +264,31 @@
 
 {% schema %}
 {
-  "name": "Multicolumn w/ Hover",
+  "name": "Multicolumn w/ Hove (old)",
   "tag": "section",
   "class": "section multicolumn-with-content-hover",
   "settings": [
-    { "type": "header", "content": "General" },
+    {
+      "type": "header",
+      "content": "General"
+    },
     {
       "type": "select",
       "id": "section_visibility",
       "label": "Show section on",
       "options": [
-        { "value": "always", "label": "All devices" },
-        { "value": "small", "label": "Mobile only" },
-        { "value": "large", "label": "Desktop only" }
+        {
+          "value": "always",
+          "label": "All devices"
+        },
+        {
+          "value": "small",
+          "label": "Mobile only"
+        },
+        {
+          "value": "large",
+          "label": "Desktop only"
+        }
       ],
       "default": "always"
     },
@@ -285,10 +297,22 @@
       "id": "container_width",
       "label": "Container width",
       "options": [
-        { "value": "xs", "label": "XSmall" },
-        { "value": "sm", "label": "Small" },
-        { "value": "md", "label": "Medium" },
-        { "value": "lg", "label": "Large" }
+        {
+          "value": "xs",
+          "label": "XSmall"
+        },
+        {
+          "value": "sm",
+          "label": "Small"
+        },
+        {
+          "value": "md",
+          "label": "Medium"
+        },
+        {
+          "value": "lg",
+          "label": "Large"
+        }
       ],
       "default": "lg"
     },
@@ -297,8 +321,14 @@
       "id": "layout_style",
       "label": "Layout style",
       "options": [
-        { "value": "carousel", "label": "Carousel" },
-        { "value": "grid", "label": "Grid" }
+        {
+          "value": "carousel",
+          "label": "Carousel"
+        },
+        {
+          "value": "grid",
+          "label": "Grid"
+        }
       ],
       "default": "carousel"
     },
@@ -308,9 +338,18 @@
       "label": "Cards per view/row (desktop)",
       "info": "View if carousel, row if grid.",
       "options": [
-        { "value": "3", "label": "3" },
-        { "value": "4", "label": "4" },
-        { "value": "5", "label": "5" }
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        }
       ],
       "default": "3"
     },
@@ -320,86 +359,434 @@
       "label": "Cards per view/row (mobile)",
       "info": "View if carousel, row if grid.",
       "options": [
-        { "value": "1", "label": "1" },
-        { "value": "2", "label": "2" }
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
       ],
       "default": "1"
     },
-    { "type": "header", "content": "Section heading" },
-    { "type": "richtext", "id": "section_heading", "label": "Heading" },
-    { "type": "range", "id": "heading_font_size_desktop", "label": "Heading size (desktop)", "min": 22, "max": 96, "step": 2, "unit": "px", "default": 32 },
-    { "type": "range", "id": "heading_font_size_mobile", "label": "Heading size (mobile)", "min": 18, "max": 54, "step": 2, "unit": "px", "default": 24 },
-    { "type": "text_alignment", "id": "heading_alignment", "label": "Heading alignment", "default": "center" },
-    { "type": "header", "content": "Cards" },
-    { "type": "text_alignment", "id": "card_content_alignment", "label": "Card content alignment", "default": "center" },
-    { "type": "range", "id": "bg_image_opacity_overlay", "label": "Description overlay opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 50 },
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "type": "richtext",
+      "id": "section_heading",
+      "label": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "label": "Heading size (desktop)",
+      "min": 22,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading size (mobile)",
+      "min": 18,
+      "max": 54,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "text_alignment",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Cards"
+    },
+    {
+      "type": "text_alignment",
+      "id": "card_content_alignment",
+      "label": "Card content alignment",
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "bg_image_opacity_overlay",
+      "label": "Description overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 50
+    },
     {
       "type": "select",
       "id": "card_cta_style",
       "label": "Card CTA style",
       "options": [
-        { "value": "button", "label": "Button" },
-        { "value": "link", "label": "Text link" }
+        {
+          "value": "button",
+          "label": "Button"
+        },
+        {
+          "value": "link",
+          "label": "Text link"
+        }
       ],
       "default": "button"
     },
-    { "type": "checkbox", "id": "bold_card_cta_text", "label": "Bold CTA text", "default": true },
-    { "type": "range", "id": "card_cta_border_size", "label": "CTA border width", "min": 0, "max": 10, "step": 1, "unit": "px", "default": 2 },
-    { "type": "header", "content": "Font sizes" },
-    { "type": "range", "id": "card_heading_font_size_desktop", "label": "Card heading (desktop)", "min": 12, "max": 96, "step": 2, "unit": "px", "default": 32 },
-    { "type": "range", "id": "card_heading_font_size_mobile", "label": "Card heading (mobile)", "min": 12, "max": 72, "step": 2, "unit": "px", "default": 24 },
-    { "type": "range", "id": "card_subheading_font_size_desktop", "label": "Card subheading (desktop)", "min": 12, "max": 96, "step": 2, "unit": "px", "default": 32 },
-    { "type": "range", "id": "card_subheading_font_size_mobile", "label": "Card subheading (mobile)", "min": 12, "max": 72, "step": 2, "unit": "px", "default": 24 },
-    { "type": "range", "id": "card_description_font_size_desktop", "label": "Card description (desktop)", "min": 12, "max": 96, "step": 2, "unit": "px", "default": 32 },
-    { "type": "range", "id": "card_description_font_size_mobile", "label": "Card description (mobile)", "min": 12, "max": 72, "step": 2, "unit": "px", "default": 24 },
-    { "type": "range", "id": "card_cta_font_size_desktop", "label": "Card CTA (desktop)", "min": 12, "max": 96, "step": 2, "unit": "px", "default": 32 },
-    { "type": "range", "id": "card_cta_font_size_mobile", "label": "Card CTA (mobile)", "min": 12, "max": 72, "step": 2, "unit": "px", "default": 24 },
-    { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "section_heading_color", "label": "Section heading", "default": "#000000" },
-    { "type": "color", "id": "card_description_text_color", "label": "Card description text", "default": "#FFFFFF" },
-    { "type": "color", "id": "card_description_bg_color", "label": "Card description background", "default": "#000000" },
-    { "type": "color", "id": "card_heading_color", "label": "Card heading", "default": "#000000" },
-    { "type": "color", "id": "card_subheading_color", "label": "Card subheading", "default": "#A1A1A1" },
-    { "type": "color", "id": "card_cta_text_color", "label": "Card CTA text", "default": "#000000" },
-    { "type": "color", "id": "card_cta_bg_color", "label": "Card CTA background", "default": "rgba(0,0,0,0)" },
-    { "type": "color", "id": "card_cta_border_color", "label": "Card CTA border", "default": "#000000" },
-    { "type": "header", "content": "Spacing" },
-    { "type": "range", "id": "section_spacing_top_bottom_desktop", "label": "Section margin (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 50 },
-    { "type": "range", "id": "section_spacing_top_bottom_mobile", "label": "Section margin (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 25 },
-    { "type": "range", "id": "section_heading_spacing_top_bottom_desktop", "label": "Heading margin (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 50 },
-    { "type": "range", "id": "section_heading_spacing_top_bottom_mobile", "label": "Heading margin (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 25 },
-    { "type": "range", "id": "card_row_column_gap_desktop", "label": "Gap between cards (desktop)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 32 },
-    { "type": "range", "id": "card_row_column_gap_mobile", "label": "Gap between cards (mobile)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 16 },
-    { "type": "range", "id": "card_content_padding_desktop", "label": "Card content padding (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 50 },
-    { "type": "range", "id": "card_content_padding_mobile", "label": "Card content padding (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 25 },
-    { "type": "range", "id": "card_content_spacing_desktop", "label": "Gap between card items (desktop)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 24 },
-    { "type": "range", "id": "card_content_spacing_mobile", "label": "Gap between card items (mobile)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 16 },
-    { "type": "range", "id": "card_cta_top_bottom_spacing_desktop", "label": "CTA padding top/bottom (desktop)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 24 },
-    { "type": "range", "id": "card_cta_top_bottom_spacing_mobile", "label": "CTA padding top/bottom (mobile)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 16 },
-    { "type": "range", "id": "card_cta_left_right_spacing_desktop", "label": "CTA padding left/right (desktop)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 24 },
-    { "type": "range", "id": "card_cta_left_right_spacing_mobile", "label": "CTA padding left/right (mobile)", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 16 }
+    {
+      "type": "checkbox",
+      "id": "bold_card_cta_text",
+      "label": "Bold CTA text",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "card_cta_border_size",
+      "label": "CTA border width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Font sizes"
+    },
+    {
+      "type": "range",
+      "id": "card_heading_font_size_desktop",
+      "label": "Card heading (desktop)",
+      "min": 12,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_heading_font_size_mobile",
+      "label": "Card heading (mobile)",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_subheading_font_size_desktop",
+      "label": "Card subheading (desktop)",
+      "min": 12,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_subheading_font_size_mobile",
+      "label": "Card subheading (mobile)",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_description_font_size_desktop",
+      "label": "Card description (desktop)",
+      "min": 12,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_description_font_size_mobile",
+      "label": "Card description (mobile)",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_cta_font_size_desktop",
+      "label": "Card CTA (desktop)",
+      "min": 12,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_cta_font_size_mobile",
+      "label": "Card CTA (mobile)",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_heading_color",
+      "label": "Section heading",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_description_text_color",
+      "label": "Card description text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_description_bg_color",
+      "label": "Card description background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_heading_color",
+      "label": "Card heading",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_subheading_color",
+      "label": "Card subheading",
+      "default": "#A1A1A1"
+    },
+    {
+      "type": "color",
+      "id": "card_cta_text_color",
+      "label": "Card CTA text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_cta_bg_color",
+      "label": "Card CTA background",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "card_cta_border_color",
+      "label": "Card CTA border",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_top_bottom_desktop",
+      "label": "Section margin (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "section_spacing_top_bottom_mobile",
+      "label": "Section margin (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "section_heading_spacing_top_bottom_desktop",
+      "label": "Heading margin (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "section_heading_spacing_top_bottom_mobile",
+      "label": "Heading margin (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "card_row_column_gap_desktop",
+      "label": "Gap between cards (desktop)",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_row_column_gap_mobile",
+      "label": "Gap between cards (mobile)",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_content_padding_desktop",
+      "label": "Card content padding (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "card_content_padding_mobile",
+      "label": "Card content padding (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "card_content_spacing_desktop",
+      "label": "Gap between card items (desktop)",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_content_spacing_mobile",
+      "label": "Gap between card items (mobile)",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_cta_top_bottom_spacing_desktop",
+      "label": "CTA padding top/bottom (desktop)",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_cta_top_bottom_spacing_mobile",
+      "label": "CTA padding top/bottom (mobile)",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_cta_left_right_spacing_desktop",
+      "label": "CTA padding left/right (desktop)",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_cta_left_right_spacing_mobile",
+      "label": "CTA padding left/right (mobile)",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    }
   ],
   "blocks": [
     {
       "type": "content_card",
       "name": "Content Card",
       "settings": [
-        { "type": "header", "content": "Card content" },
-        { "type": "image_picker", "id": "card_bg_image", "label": "Card image" },
-        { "type": "richtext", "id": "card_heading", "label": "Card heading" },
-        { "type": "richtext", "id": "card_subheading", "label": "Card subheading", "info": "Displays above the heading." },
+        {
+          "type": "header",
+          "content": "Card content"
+        },
+        {
+          "type": "image_picker",
+          "id": "card_bg_image",
+          "label": "Card image"
+        },
+        {
+          "type": "richtext",
+          "id": "card_heading",
+          "label": "Card heading"
+        },
+        {
+          "type": "richtext",
+          "id": "card_subheading",
+          "label": "Card subheading",
+          "info": "Displays above the heading."
+        },
         {
           "type": "richtext",
           "id": "card_hover_description",
           "label": "Card description",
           "info": "Revealed on hover, or by the +/- button on touch and keyboard."
         },
-        { "type": "text", "id": "card_cta_text", "label": "CTA text" },
-        { "type": "url", "id": "card_cta_url", "label": "CTA link" },
-        { "type": "checkbox", "id": "open_in_new_window", "label": "Open in a new tab", "default": false }
+        {
+          "type": "text",
+          "id": "card_cta_text",
+          "label": "CTA text"
+        },
+        {
+          "type": "url",
+          "id": "card_cta_url",
+          "label": "CTA link"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_in_new_window",
+          "label": "Open in a new tab",
+          "default": false
+        }
       ]
     }
-  ],
-  "presets": [{ "name": "Multicolumn w/ Hover" }]
+  ]
 }
 {% endschema %}

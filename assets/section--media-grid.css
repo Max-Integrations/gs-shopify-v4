@@ -2,8 +2,10 @@
   ==================================================================
   Media grid (theme-block version)
   ==================================================================
-  Grid, tile frame, overlay, content placement, hover reveal, and the
-  section-scoped restatement of the child blocks' styles.
+  Grid or carousel, tile frame, overlay, content placement (over or
+  below the image), hover reveal, current-collection dimming, circle
+  badge headings, and the section-scoped restatement of the child
+  blocks' styles.
 
   The child blocks' own {% stylesheet %} rules are bundled by Shopify
   into compiled_assets/styles.css, which loads BEFORE Dawn's base.css;
@@ -12,16 +14,18 @@
   per-block overrides (colour, font size) and <strong> in headings take
   effect.
 
-  Content placement uses grid: the tile (and its optional link wrapper)
-  is a one-cell grid, the image is absolutely positioned behind, and
-  .media-content is placed with justify-self / align-self from the
-  tile's --content-justify / --content-align custom properties.
+  A tile is a one-column grid: row 1 is the image box (with the
+  overlay content and the hover text stacked on it), row 2 is the
+  below-the-image content when the section places it there.
   ==================================================================
 */
 
 .gs-media-grid {
-  padding-top: var(--padding-top-mobile, 40px);
-  padding-bottom: var(--padding-bottom-mobile, 40px);
+  padding-top: var(--padding-top-mobile, 27px);
+  padding-bottom: var(--padding-bottom-mobile, 27px);
+  /* The .color-* class only sets variables; paint them. */
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
 }
 
 .gs-mg--fullwidth {
@@ -49,73 +53,183 @@
   gap: var(--columnGap, 5px);
 }
 
+/* Tiles that follow the image ratio size their own rows. */
+.gs-mg--ratio-adapt .media-grid-wrapper,
+.gs-mg--ratio-square .media-grid-wrapper,
+.gs-mg--ratio-portrait .media-grid-wrapper,
+.gs-mg--ratio-landscape .media-grid-wrapper {
+  grid-auto-rows: auto;
+  align-items: start;
+}
+
+/* ---- Carousel ---- */
+.gs-mg__scroller {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.media-grid-wrapper--carousel {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  align-items: stretch;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.media-grid-wrapper--carousel::-webkit-scrollbar { display: none; }
+
+.media-grid-wrapper--carousel .media-grid-item {
+  flex: 0 0 calc((100% - (var(--columnGap, 5px) * (var(--cols-mobile, 1) - 1))) / var(--cols-mobile, 1));
+  scroll-snap-align: start;
+}
+
+.gs-mg--carousel.gs-mg--ratio-fixed .media-grid-item {
+  height: var(--mobileHeight, 200px);
+}
+
+.gs-mg__nav {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+}
+
+.gs-mg__nav[hidden] { display: none; }
+.gs-mg__nav:disabled { opacity: 0.3; cursor: default; }
+
+/* Full width: arrows float over the tiles at the edges. */
+.gs-mg--fullwidth .gs-mg__scroller {
+  gap: 0;
+}
+
+.gs-mg--fullwidth .gs-mg__nav {
+  position: absolute;
+  top: 40%;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+}
+
+.gs-mg--fullwidth .gs-mg__nav[data-swatch-scroll='prev'] { left: 12px; }
+.gs-mg--fullwidth .gs-mg__nav[data-swatch-scroll='next'] { right: 12px; }
+
+/* ---- Tile ---- */
 .media-grid-item {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
   overflow: hidden;
+  box-sizing: border-box;
   grid-column: span min(var(--col-span, 1), var(--cols-mobile, 1));
   grid-row: span var(--row-span, 1);
+  background: var(--mg-card-bg, transparent);
+  padding: var(--mg-card-pad, 0);
 }
+
+/* Smaller tiles centred in their slot (grid only). */
+.gs-mg--grid.gs-mg--width-three-quarter .media-grid-item { width: 75%; justify-self: center; }
+.gs-mg--grid.gs-mg--width-half .media-grid-item { width: 50%; justify-self: center; }
 
 .media-grid-wrapper.shadow-enabled .media-grid-item {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
-/* The whole-tile link is the same one-cell grid as the tile. */
+/* The whole-tile link is the same grid as the tile. */
 .media-grid-item__link {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: minmax(0, 1fr);
-  grid-area: 1 / 1;
+  grid-template-rows: minmax(0, 1fr) auto;
+  grid-area: 1 / 1 / 3 / 2;
   min-width: 0;
   min-height: 0;
   text-decoration: none;
   color: inherit;
 }
 
-.media-grid-item__link:focus-visible {
+.media-grid-item__link:focus-visible,
+.media-grid-item[tabindex]:focus-visible {
   outline: 3px solid #ffffff;
   outline-offset: -3px;
 }
 
 /* ---- Media ---- */
 .media-grid-image {
+  position: relative;
+  grid-area: 1 / 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.media-grid-image .media_image,
+.media-grid-image .media_video,
+.media-grid-image .placeholder-svg {
   position: absolute;
   inset: 0;
-}
-
-.media-grid-image .media {
-  width: 100%;
-  height: 100%;
-}
-
-.media-grid-image img,
-.media-grid-image video,
-.media-grid-image .placeholder-svg {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
+/* Ratio modes: the image box sizes itself. */
+.gs-mg--ratio-square .media-grid-image { aspect-ratio: 1 / 1; }
+.gs-mg--ratio-portrait .media-grid-image { aspect-ratio: 10 / 13; }
+.gs-mg--ratio-landscape .media-grid-image { aspect-ratio: 10 / 7; }
+
+.gs-mg--ratio-adapt .media-grid-image .media_image,
+.gs-mg--ratio-adapt .media-grid-image .placeholder-svg {
+  position: static;
+  height: auto;
+}
+
+.gs-mg--ratio-adapt .media-grid-image .media_video {
+  position: static;
+  height: auto;
+}
+
+/* Overlay scrim */
 .media-grid-image::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(var(--opacityColor, 0 0 0), var(--backgroundOpacity, 0.3));
+  background: rgb(var(--opacityColor, 0 0 0));
+  opacity: var(--scrim-base, 0.3);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
-.img-zoom .media-grid-image img {
+.media-grid-item:hover .media-grid-image::after,
+.media-grid-item:focus-within .media-grid-image::after {
+  opacity: var(--scrim-hover, var(--scrim-base, 0.3));
+}
+
+.img-zoom .media-grid-image .media_image {
   transition: transform 0.4s ease;
 }
 
-.img-zoom:hover .media-grid-image img {
+.img-zoom:hover .media-grid-image .media_image,
+.img-zoom:focus-within .media-grid-image .media_image {
   transform: scale(1.05);
 }
 
-/* ---- Content ---- */
+/* ---- Content over the image ---- */
 .media-content {
   position: relative;
   z-index: 1;
@@ -135,12 +249,105 @@
 .media-content.text-center { text-align: center; align-items: center; }
 .media-content.text-right { text-align: right; align-items: flex-end; }
 
+/* ---- Content below the image ---- */
+.gs-mg--below .media-content {
+  grid-area: 2 / 1;
+  justify-self: stretch;
+  align-self: start;
+  padding: 1rem 0 0;
+  color: inherit;
+}
+
+.gs-mg--below.gs-mg--ratio-fixed .media-content {
+  padding: 1rem 1.5rem 1.5rem;
+}
+
+/* ---- Hover text ---- */
+.media-hover {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+  color: var(--mg-text, #ffffff);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease 0.15s, visibility 0.3s ease 0.15s;
+}
+
+.media-hover.text-left { text-align: left; }
+.media-hover.text-center { text-align: center; }
+.media-hover.text-right { text-align: right; }
+
+.media-hover__text p {
+  margin: 0 0 0.6em;
+  color: inherit;
+}
+
+.media-hover__text > :last-child {
+  margin-bottom: 0;
+}
+
+.media-grid-item:hover .media-hover,
+.media-grid-item:focus-within .media-hover,
+.media-grid-item[tabindex]:focus .media-hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Overlay content slides up out of the way while the hover text shows,
+   so a badge heading and its story do not overlap. */
+.media-grid-item--has-hover:hover .media-content,
+.media-grid-item--has-hover:focus-within .media-content {
+  align-self: start;
+}
+
+/* ---- Circle badge headings (About timeline) ---- */
+.gs-mg--badge .media-content .gs-block-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+
+.gs-mg--badge .media-grid-item:hover .media-content .gs-block-heading,
+.gs-mg--badge .media-grid-item:focus-within .media-content .gs-block-heading {
+  background: #5f5e3b;
+  box-shadow: 0 0 0 10px #000000;
+}
+
+.gs-mg--badge .media-hover {
+  padding-top: 190px;
+  align-items: flex-start;
+}
+
+/* ---- Current collection ----
+   When one tile is the collection being viewed, the rest step back.
+   Hover/focus brings a dimmed tile forward on desktop. */
+.gs-mg--has-current .media-grid-item {
+  transition: opacity 0.25s;
+}
+
+.gs-mg--has-current .media-grid-item:not(.is-current) {
+  opacity: 0.2;
+}
+
 /* ---- Child blocks, restated so they win over Dawn ---- */
 .gs-media-grid .gs-block-heading {
   margin: 0;
   font-family: var(--font-heading-family);
   font-weight: 400;
-  color: var(--gs-heading-color, var(--mg-heading, #ffffff));
+  color: var(--gs-heading-color, var(--mg-heading, inherit));
 }
 
 .gs-media-grid .gs-block-heading strong,
@@ -157,7 +364,7 @@
 }
 
 .gs-media-grid .gs-block-text {
-  color: var(--gs-text-color, var(--mg-text, #ffffff));
+  color: var(--gs-text-color, var(--mg-text, inherit));
 }
 
 .gs-media-grid .gs-block-text p {
@@ -165,20 +372,24 @@
 }
 
 .gs-media-grid .gs-block-button--button {
-  background-color: var(--gs-btn-bg, var(--mg-btn-bg, #ffffff));
-  color: var(--gs-btn-text, var(--mg-btn-text, #000000));
-  border-color: var(--gs-btn-bg, var(--mg-btn-bg, #ffffff));
+  background-color: var(--gs-btn-bg, var(--mg-btn-bg, rgb(var(--color-button))));
+  color: var(--gs-btn-text, var(--mg-btn-text, rgb(var(--color-button-text))));
+  border-color: var(--gs-btn-bg, var(--mg-btn-bg, rgb(var(--color-button))));
 }
 
 .gs-media-grid .gs-block-button--button:hover,
 .gs-media-grid .gs-block-button--button:focus-visible,
 .gs-media-grid .media-grid-item:hover .gs-block-button--button {
-  background-color: var(--gs-btn-bg-hover, var(--mg-btn-bg-hover, #000000));
-  color: var(--gs-btn-text-hover, var(--mg-btn-text-hover, #ffffff));
-  border-color: var(--gs-btn-bg-hover, var(--mg-btn-bg-hover, #000000));
+  background-color: var(--gs-btn-bg-hover, var(--mg-btn-bg-hover, rgb(var(--color-button-text))));
+  color: var(--gs-btn-text-hover, var(--mg-btn-text-hover, rgb(var(--color-button))));
+  border-color: var(--gs-btn-bg-hover, var(--mg-btn-bg-hover, rgb(var(--color-button-text))));
 }
 
-/* ---- Reveal on hover ---- */
+.gs-media-grid .gs-block-button--link {
+  color: var(--gs-btn-text, var(--mg-text, inherit));
+}
+
+/* ---- Reveal all content on hover (section setting) ---- */
 .content-on-hover .media-content {
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -198,8 +409,8 @@
   .gs-mg--visibility-small { display: none !important; }
 
   .gs-media-grid {
-    padding-top: var(--padding-top, 70px);
-    padding-bottom: var(--padding-bottom, 70px);
+    padding-top: var(--padding-top, 36px);
+    padding-bottom: var(--padding-bottom, 36px);
   }
 
   .media-grid-wrapper {
@@ -208,26 +419,60 @@
     gap: var(--columnGapDesktop, 5px);
   }
 
+  .gs-mg--ratio-adapt .media-grid-wrapper,
+  .gs-mg--ratio-square .media-grid-wrapper,
+  .gs-mg--ratio-portrait .media-grid-wrapper,
+  .gs-mg--ratio-landscape .media-grid-wrapper {
+    grid-auto-rows: auto;
+  }
+
   .media-grid-item {
     grid-column: span min(var(--col-span, 1), var(--cols-desktop, 4));
+  }
+
+  .media-grid-wrapper--carousel .media-grid-item {
+    flex-basis: calc((100% - (var(--columnGapDesktop, 5px) * (var(--cols-desktop, 4) - 1))) / var(--cols-desktop, 4));
+  }
+
+  .gs-mg--carousel.gs-mg--ratio-fixed .media-grid-item {
+    height: var(--desktopHeight, 400px);
   }
 
   .media-content {
     padding: 2rem;
   }
 
+  .gs-mg--below .media-content {
+    padding: 1rem 0 0;
+  }
+
+  .gs-mg--below.gs-mg--ratio-fixed .media-content {
+    padding: 1rem 2rem 2rem;
+  }
+
   .gs-media-grid .gs-block-heading--custom-size {
     font-size: var(--gs-heading-size-d, var(--gs-heading-size-m));
+  }
+
+  .gs-mg--has-current .media-grid-item:not(.is-current):hover,
+  .gs-mg--has-current .media-grid-item:not(.is-current):focus-within {
+    opacity: 1;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .img-zoom .media-grid-image img,
-  .content-on-hover .media-content {
+  .img-zoom .media-grid-image .media_image,
+  .content-on-hover .media-content,
+  .media-grid-image::after,
+  .media-hover,
+  .gs-mg--badge .media-content .gs-block-heading,
+  .gs-mg--has-current .media-grid-item {
     transition: none;
   }
 
-  .img-zoom:hover .media-grid-image img {
+  .media-grid-wrapper--carousel { scroll-behavior: auto; }
+
+  .img-zoom:hover .media-grid-image .media_image {
     transform: none;
   }
 }

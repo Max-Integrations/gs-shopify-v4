@@ -2,11 +2,19 @@
   ==================================================================
   BLOCK: MEDIA TILE (theme block for section--media-grid)
   ==================================================================
-  One tile: image or looping video, how many grid columns and rows it
-  spans, a colour overlay, where its content sits, and an optional
-  link that makes the whole tile clickable. The content is CHILD
-  BLOCKS (block--heading, block--text, block--button, app blocks)
-  rendered with {% content_for 'blocks' %}.
+  One tile: image or looping video (or a collection, which supplies
+  the image, title and link unless overridden), how many grid columns
+  and rows it spans, a colour overlay and what it does on hover, where
+  its content sits, an optional link that makes the whole tile
+  clickable, and text revealed over the image on hover. The content is
+  CHILD BLOCKS (block--heading, block--text, block--button, app blocks)
+  rendered with {% content_for 'blocks' %}; a tile with a collection
+  and no child blocks shows the collection title.
+
+  CURRENT COLLECTION. When the tile's collection is the one being
+  viewed (or its link is the current path) the tile carries
+  .is-current and aria-current; the section dims the others. Keep the
+  test identical to the one in sections/section--media-grid.liquid.
 
   Positioning: the 9-way `content_position` maps to two custom
   properties (--content-justify / --content-align) that the section's
@@ -16,14 +24,39 @@
   When the tile has a link, child buttons render as <span>s (nested
   anchors are invalid HTML); a button that needs its own destination
   belongs in a tile without a link. The link's accessible name is the
-  first child heading, else the image alt.
+  first child heading, else the collection title, else the image alt.
+  A tile with hover text and no link is focusable so keyboard and touch
+  users can reveal it.
   ==================================================================
 {% endcomment %}
 
 {%- liquid
   assign s = block.settings
+  assign tile_collection = s.collection
   assign img = s.media_image
+  if img == blank and tile_collection != blank
+    assign img = tile_collection.image | default: tile_collection.featured_image
+  endif
+  assign tile_url = s.link
+  if tile_url == blank and tile_collection != blank
+    assign tile_url = tile_collection.url
+  endif
+  assign is_current = false
+  if tile_collection != blank and collection != blank and tile_collection.handle == collection.handle
+    assign is_current = true
+  elsif tile_url != blank and tile_url == request.path
+    assign is_current = true
+  endif
+
   assign overlay = s.background_color | default: '#000000'
+  assign scrim = s.background_opacity | default: 0.3
+  assign scrim_base = scrim
+  assign scrim_hover = scrim
+  if s.hover_overlay == 'remove'
+    assign scrim_hover = 0
+  elsif s.hover_overlay == 'show'
+    assign scrim_base = 0
+  endif
 
   assign pos = s.content_position | default: 'center'
   assign justify = 'center'
@@ -40,71 +73,95 @@
   endif
 
   assign link_label = img.alt
+  if tile_collection != blank and link_label == blank
+    assign link_label = tile_collection.title
+  endif
   for child in block.blocks
     if child.type == 'block--heading' and child.settings.text != blank
       assign link_label = child.settings.text | strip_html
       break
     endif
   endfor
+
+  assign has_hover = false
+  if s.hover_text != blank
+    assign has_hover = true
+  endif
+  assign has_content = false
+  if block.blocks.size > 0
+    assign has_content = true
+  elsif tile_collection != blank
+    assign has_content = true
+  endif
 -%}
 
 <div
   id="media-grid-{{ block.id }}"
-  class="img-zoom media-grid-item gs-block-hover-target"
+  class="img-zoom media-grid-item gs-block-hover-target{% if is_current %} is-current{% endif %}{% if has_hover %} media-grid-item--has-hover{% endif %}"
   style="
     --row-span: {% if s.span_two_rows %}2{% else %}1{% endif %};
     --col-span: {% if s.span_two_columns %}2{% else %}1{% endif %};
     --opacityColor: {{ overlay.red }},{{ overlay.green }},{{ overlay.blue }};
-    --backgroundOpacity: {{ s.background_opacity | default: 0.3 }};
+    --scrim-base: {{ scrim_base }};
+    --scrim-hover: {{ scrim_hover }};
     --content-justify: {{ justify }};
     --content-align: {{ align }};
   "
+  {% if has_hover and tile_url == blank %}tabindex="0"{% endif %}
   {{ block.shopify_attributes }}
 >
-  {%- if s.link != blank -%}
-    <a class="media-grid-item__link" href="{{ s.link }}"{% if link_label != blank %} aria-label="{{ link_label | escape }}"{% endif %}>
+  {%- if tile_url != blank -%}
+    <a class="media-grid-item__link" href="{{ tile_url }}"{% if link_label != blank %} aria-label="{{ link_label | escape }}"{% endif %}{% if is_current %} aria-current="page"{% endif %}>
   {%- endif -%}
 
   <div class="media-grid-image">
-    <div class="media media-fixed">
-      {%- if s.video != blank -%}
-        <video class="tabbed-collage-video" autoplay muted loop playsinline preload="metadata"
-          {% if s.video.preview_image %}poster="{{ s.video.preview_image | image_url: width: 1200 }}"{% endif %}
-        >
-          {%- for source in s.video.sources -%}
-            <source src="{{ source.url }}"{% if source.mime_type %} type="{{ source.mime_type }}"{% endif %}>
-          {%- endfor -%}
-        </video>
-      {%- elsif img != blank -%}
-        <img
-          class="media_image"
-          src="{{ img | image_url: width: 1000 }}"
-          srcset="
-            {{ img | image_url: width: 500 }} 500w,
-            {{ img | image_url: width: 1000 }} 1000w,
-            {{ img | image_url: width: 1500 }} 1500w,
-            {{ img | image_url: width: 2000 }} 2000w
-          "
-          sizes="(min-width: 750px) 50vw, 100vw"
-          alt="{{ img.alt | escape }}"
-          width="{{ img.width }}"
-          height="{{ img.height }}"
-          loading="lazy"
-          style="object-position: {{ img.presentation.focal_point | default: 'center' }};"
-        >
-      {%- else -%}
-        {{ 'collection-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
-      {%- endif -%}
-    </div>
+    {%- if s.video != blank -%}
+      <video class="media_video" autoplay muted loop playsinline preload="metadata"
+        {% if s.video.preview_image %}poster="{{ s.video.preview_image | image_url: width: 1200 }}"{% endif %}
+      >
+        {%- for source in s.video.sources -%}
+          <source src="{{ source.url }}"{% if source.mime_type %} type="{{ source.mime_type }}"{% endif %}>
+        {%- endfor -%}
+      </video>
+    {%- elsif img != blank -%}
+      <img
+        class="media_image"
+        src="{{ img | image_url: width: 1000 }}"
+        srcset="
+          {{ img | image_url: width: 500 }} 500w,
+          {{ img | image_url: width: 1000 }} 1000w,
+          {{ img | image_url: width: 1500 }} 1500w,
+          {{ img | image_url: width: 2000 }} 2000w
+        "
+        sizes="(min-width: 750px) calc(100vw / var(--cols-desktop, 4)), calc(100vw / var(--cols-mobile, 1))"
+        alt="{{ img.alt | default: link_label | escape }}"
+        width="{{ img.width }}"
+        height="{{ img.height }}"
+        loading="lazy"
+        style="object-position: {{ img.presentation.focal_point | default: 'center' }};"
+      >
+    {%- else -%}
+      {{ 'collection-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+
+    {%- if has_hover -%}
+      <div class="media-hover text-{{ s.content_alignment | default: 'center' }}">
+        <div class="media-hover__text rte">{{ s.hover_text }}</div>
+      </div>
+    {%- endif -%}
   </div>
 
-  {%- if block.blocks.size > 0 -%}
+  {%- if has_content -%}
     <div class="media-content text-{{ s.content_alignment | default: 'left' }}">
-      {% content_for 'blocks' %}
+      {%- if block.blocks.size > 0 -%}
+        {% content_for 'blocks' %}
+      {%- else -%}
+        <p class="gs-block-heading h6">{{ tile_collection.title }}</p>
+      {%- endif -%}
     </div>
   {%- endif -%}
 
-  {%- if s.link != blank -%}
+  {%- if tile_url != blank -%}
     </a>
   {%- endif -%}
 </div>
@@ -122,6 +179,12 @@
   "settings": [
     { "type": "image_picker", "id": "media_image", "label": "Image" },
     { "type": "video", "id": "video", "label": "Video", "info": "Autoplays muted and looped, replacing the image." },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Supplies the image, title and link unless set above or below. On that collection's page this tile stays bright and the others dim."
+    },
     { "type": "url", "id": "link", "label": "Link", "info": "Makes the whole tile clickable." },
     { "type": "header", "content": "Size" },
     { "type": "checkbox", "id": "span_two_columns", "label": "Span two columns", "default": false },
@@ -131,6 +194,7 @@
       "type": "select",
       "id": "content_position",
       "label": "Position",
+      "info": "When content is over the image.",
       "options": [
         { "value": "top-left", "label": "Top left" },
         { "value": "top-center", "label": "Top center" },
@@ -145,9 +209,21 @@
       "default": "center"
     },
     { "type": "text_alignment", "id": "content_alignment", "label": "Text alignment", "default": "center" },
+    { "type": "richtext", "id": "hover_text", "label": "Hover text", "info": "Revealed over the image on hover, focus or tap." },
     { "type": "header", "content": "Overlay" },
     { "type": "color", "id": "background_color", "label": "Color", "default": "#000000" },
-    { "type": "range", "id": "background_opacity", "label": "Opacity", "min": 0, "max": 1, "step": 0.1, "default": 0.3 }
+    { "type": "range", "id": "background_opacity", "label": "Opacity", "min": 0, "max": 1, "step": 0.1, "default": 0.3 },
+    {
+      "type": "select",
+      "id": "hover_overlay",
+      "label": "On hover",
+      "options": [
+        { "value": "keep", "label": "Keep the overlay" },
+        { "value": "remove", "label": "Lift the overlay" },
+        { "value": "show", "label": "Show the overlay only on hover" }
+      ],
+      "default": "keep"
+    }
   ],
   "presets": [
     {

@@ -18,72 +18,108 @@
       }
     },
     "images_grid_TjxEbG": {
-      "type": "images-grid",
+      "type": "section--media-grid",
       "blocks": {
         "image_BzjBFT": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/GSAR0028_-_Army_-_Combat_Medic_WEB_READY_BOTH-min.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/GSAR0028_-_Army_-_Combat_Medic_WEB_READY_BOTH-min.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_q4R3bn": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/GS3912_Hey_Doc_WEB_READY-min.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/GS3912_Hey_Doc_WEB_READY-min.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_6cgDWj": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/GS7756_WEB-READY_STACKED.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/GS7756_WEB-READY_STACKED.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_LLYHN9": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/GS4684---Mess-with-the-Bull_WEB_READY-min_f407fcb7-d08e-4589-8165-a73e8e3bfe6f.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/GS4684---Mess-with-the-Bull_WEB_READY-min_f407fcb7-d08e-4589-8165-a73e8e3bfe6f.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_xDzgKE": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/GS6688_Web_Ready_Front_0a0e2421-19a9-4499-9fef-588350f0f3de.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/GS6688_Web_Ready_Front_0a0e2421-19a9-4499-9fef-588350f0f3de.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_9Ba67V": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/GS5927_-_Men_s_Texas_Reaper_Tee_-_Black_WEB_READY.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/GS5927_-_Men_s_Texas_Reaper_Tee_-_Black_WEB_READY.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         }
       },
@@ -96,30 +132,35 @@
         "image_9Ba67V"
       ],
       "settings": {
+        "layout": "carousel",
+        "columns_desktop": 5,
+        "columns_mobile": 1,
+        "tile_ratio": "adapt",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 20,
+        "section_width": false,
         "section_visibility": "always",
-        "show_carousel": true,
-        "card_grid": false,
-        "card_inner_space": false,
-        "item_per_row_desktop": 5,
-        "item_per_row_mobile": "1",
-        "card_style": "vertical",
-        "grid_image_size": "large",
-        "content_position": "center",
-        "vertical_grid_image_size": "auto",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
         "heading": "In-Store Exclusives",
-        "highlight_style": "underline",
-        "bg__color": "solid",
         "heading_size": "h3",
-        "seo_heading": "h2",
         "heading_alignment": "text-center",
-        "card_bg": "",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#000000",
+        "btn_hover_color": "#000000",
+        "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-4",
-        "enable_gradient": false,
-        "top_space_desktop": 50,
-        "bottom_space_desktop": 50,
-        "top_space_mobile": 10,
-        "bottom_space_mobile": 10,
-        "section_width": false
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     }
   },

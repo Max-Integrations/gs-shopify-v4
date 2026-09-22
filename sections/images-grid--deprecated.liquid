@@ -310,36 +310,87 @@
 
 {% schema %}
 {
-  "name": "Images grid",
+  "name": "Images grid (old)",
   "tag": "section",
   "class": "section images-grid-section",
-  "disabled_on": { "groups": ["header", "footer"] },
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
   "settings": [
-    { "type": "header", "content": "General" },
+    {
+      "type": "header",
+      "content": "General"
+    },
     {
       "type": "select",
       "id": "section_visibility",
       "label": "Show section on",
       "default": "always",
       "options": [
-        { "value": "always", "label": "All devices" },
-        { "value": "small", "label": "Mobile only" },
-        { "value": "large", "label": "Desktop only" }
+        {
+          "value": "always",
+          "label": "All devices"
+        },
+        {
+          "value": "small",
+          "label": "Mobile only"
+        },
+        {
+          "value": "large",
+          "label": "Desktop only"
+        }
       ]
     },
-    { "type": "checkbox", "id": "section_width", "label": "Full width", "default": false },
-    { "type": "checkbox", "id": "show_carousel", "label": "Show grid as carousel", "default": false },
-    { "type": "checkbox", "id": "card_grid", "label": "Card background", "default": false },
-    { "type": "checkbox", "id": "card_inner_space", "label": "Space between card and image", "default": false },
-    { "type": "range", "id": "item_per_row_desktop", "label": "Images per row (desktop)", "min": 2, "max": 6, "step": 1, "default": 5 },
+    {
+      "type": "checkbox",
+      "id": "section_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_carousel",
+      "label": "Show grid as carousel",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "card_grid",
+      "label": "Card background",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "card_inner_space",
+      "label": "Space between card and image",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "item_per_row_desktop",
+      "label": "Images per row (desktop)",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 5
+    },
     {
       "type": "select",
       "id": "item_per_row_mobile",
       "label": "Images per row (mobile)",
       "default": "1",
       "options": [
-        { "value": "1", "label": "1" },
-        { "value": "2", "label": "2" }
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
       ]
     },
     {
@@ -348,8 +399,14 @@
       "label": "Card style",
       "default": "vertical",
       "options": [
-        { "value": "vertical", "label": "Image above content" },
-        { "value": "horizontal", "label": "Image beside content" }
+        {
+          "value": "vertical",
+          "label": "Image above content"
+        },
+        {
+          "value": "horizontal",
+          "label": "Image beside content"
+        }
       ]
     },
     {
@@ -359,25 +416,54 @@
       "info": "Horizontal cards: width of the image column. Vertical cards: tile width as a share of its slot (small 50%, medium 75%, large 100%), row centred.",
       "default": "large",
       "options": [
-        { "value": "small", "label": "Small" },
-        { "value": "medium", "label": "Medium" },
-        { "value": "large", "label": "Large" }
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
       ]
     },
-    { "type": "text_alignment", "id": "content_position", "label": "Content alignment (vertical cards)", "default": "left" },
+    {
+      "type": "text_alignment",
+      "id": "content_position",
+      "label": "Content alignment (vertical cards)",
+      "default": "left"
+    },
     {
       "type": "select",
       "id": "vertical_grid_image_size",
       "label": "Image ratio (vertical cards)",
       "default": "auto",
       "options": [
-        { "value": "auto", "label": "Natural" },
-        { "value": "landscape", "label": "Landscape" },
-        { "value": "portrait", "label": "Portrait" },
-        { "value": "square", "label": "Square" }
+        {
+          "value": "auto",
+          "label": "Natural"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
       ]
     },
-    { "type": "header", "content": "Heading" },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
     {
       "type": "inline_richtext",
       "id": "heading",
@@ -392,13 +478,34 @@
       "info": "Shape options need snippets/marker, which is not yet ported. They currently render as underline.",
       "default": "underline",
       "options": [
-        { "value": "underline", "label": "Underline" },
-        { "value": "shape_2", "label": "Shape 2" },
-        { "value": "shape_3", "label": "Shape 3" },
-        { "value": "shape_4", "label": "Shape 4" },
-        { "value": "shape_5", "label": "Shape 5" },
-        { "value": "shape_6", "label": "Shape 6" },
-        { "value": "background", "label": "Background" }
+        {
+          "value": "underline",
+          "label": "Underline"
+        },
+        {
+          "value": "shape_2",
+          "label": "Shape 2"
+        },
+        {
+          "value": "shape_3",
+          "label": "Shape 3"
+        },
+        {
+          "value": "shape_4",
+          "label": "Shape 4"
+        },
+        {
+          "value": "shape_5",
+          "label": "Shape 5"
+        },
+        {
+          "value": "shape_6",
+          "label": "Shape 6"
+        },
+        {
+          "value": "background",
+          "label": "Background"
+        }
       ]
     },
     {
@@ -407,8 +514,14 @@
       "label": "Highlight background",
       "default": "gradient",
       "options": [
-        { "value": "gradient", "label": "Gradient" },
-        { "value": "solid", "label": "Solid" }
+        {
+          "value": "gradient",
+          "label": "Gradient"
+        },
+        {
+          "value": "solid",
+          "label": "Solid"
+        }
       ]
     },
     {
@@ -417,28 +530,84 @@
       "label": "Heading size",
       "default": "h3",
       "options": [
-        { "value": "h1", "label": "H1" },
-        { "value": "h2", "label": "H2" },
-        { "value": "h3", "label": "H3" },
-        { "value": "h4", "label": "H4" },
-        { "value": "h5", "label": "H5" },
-        { "value": "h6", "label": "H6" }
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
       ]
     },
-    { "type": "range", "id": "heading_font_desktop", "label": "Heading font size (desktop)", "info": "0 uses the heading size above.", "min": 0, "max": 96, "step": 2, "unit": "px", "default": 0 },
-    { "type": "range", "id": "heading_font_mobile", "label": "Heading font size (mobile)", "info": "0 uses the heading size above.", "min": 0, "max": 72, "step": 2, "unit": "px", "default": 0 },
+    {
+      "type": "range",
+      "id": "heading_font_desktop",
+      "label": "Heading font size (desktop)",
+      "info": "0 uses the heading size above.",
+      "min": 0,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "heading_font_mobile",
+      "label": "Heading font size (mobile)",
+      "info": "0 uses the heading size above.",
+      "min": 0,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
     {
       "type": "select",
       "id": "seo_heading",
       "label": "Heading tag",
       "default": "h2",
       "options": [
-        { "value": "h1", "label": "H1" },
-        { "value": "h2", "label": "H2" },
-        { "value": "h3", "label": "H3" },
-        { "value": "h4", "label": "H4" },
-        { "value": "h5", "label": "H5" },
-        { "value": "h6", "label": "H6" }
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
       ]
     },
     {
@@ -447,69 +616,212 @@
       "label": "Heading alignment",
       "default": "text-left",
       "options": [
-        { "value": "text-left", "label": "Left" },
-        { "value": "text-center", "label": "Center" },
-        { "value": "text-right", "label": "Right" }
+        {
+          "value": "text-left",
+          "label": "Left"
+        },
+        {
+          "value": "text-center",
+          "label": "Center"
+        },
+        {
+          "value": "text-right",
+          "label": "Right"
+        }
       ]
     },
-    { "type": "header", "content": "Tile" },
-    { "type": "color", "id": "card_bg", "label": "Card background color", "info": "Needs \"Card background\" on. With \"Space between card and image\" on, this colour shows as a frame around the image." },
-    { "type": "range", "id": "card_inner_space_size", "label": "Space between card and image", "min": 0, "max": 30, "step": 1, "unit": "px", "default": 8 },
-    { "type": "color", "id": "media_bg", "label": "Image background color", "info": "Behind the image itself. Leave empty to use the color scheme background." },
-    { "type": "range", "id": "card_border_width", "label": "Tile border width", "min": 0, "max": 10, "step": 1, "unit": "px", "default": 0 },
-    { "type": "color", "id": "card_border_color", "label": "Tile border color", "default": "#000000" },
-    { "type": "header", "content": "Colors" },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
-    { "type": "checkbox", "id": "enable_gradient", "label": "Use gradient background", "default": false },
-    { "type": "header", "content": "Section padding" },
-    { "type": "range", "id": "top_space_desktop", "label": "Top padding (desktop)", "unit": "px", "default": 0, "min": 0, "max": 150, "step": 5 },
-    { "type": "range", "id": "bottom_space_desktop", "label": "Bottom padding (desktop)", "unit": "px", "default": 60, "min": 0, "max": 150, "step": 5 },
-    { "type": "range", "id": "top_space_mobile", "label": "Top padding (mobile)", "unit": "px", "default": 40, "min": 0, "max": 100, "step": 5 },
-    { "type": "range", "id": "bottom_space_mobile", "label": "Bottom padding (mobile)", "unit": "px", "default": 40, "min": 0, "max": 100, "step": 5 }
+    {
+      "type": "header",
+      "content": "Tile"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background color",
+      "info": "Needs \"Card background\" on. With \"Space between card and image\" on, this colour shows as a frame around the image."
+    },
+    {
+      "type": "range",
+      "id": "card_inner_space_size",
+      "label": "Space between card and image",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "media_bg",
+      "label": "Image background color",
+      "info": "Behind the image itself. Leave empty to use the color scheme background."
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "label": "Tile border width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Tile border color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gradient",
+      "label": "Use gradient background",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "Top padding (desktop)",
+      "unit": "px",
+      "default": 0,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "Bottom padding (desktop)",
+      "unit": "px",
+      "default": 60,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "Top padding (mobile)",
+      "unit": "px",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "Bottom padding (mobile)",
+      "unit": "px",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
   ],
   "blocks": [
     {
       "type": "image",
       "name": "Image",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "heading", "label": "Title" },
-        { "type": "range", "id": "title_font_desktop", "label": "Title font size (desktop)", "info": "0 uses the default size.", "min": 0, "max": 48, "step": 1, "unit": "px", "default": 0 },
-        { "type": "range", "id": "title_font_mobile", "label": "Title font size (mobile)", "info": "0 uses the default size.", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 0 },
-        { "type": "header", "content": "Link" },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Title"
+        },
+        {
+          "type": "range",
+          "id": "title_font_desktop",
+          "label": "Title font size (desktop)",
+          "info": "0 uses the default size.",
+          "min": 0,
+          "max": 48,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "title_font_mobile",
+          "label": "Title font size (mobile)",
+          "info": "0 uses the default size.",
+          "min": 0,
+          "max": 40,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Link"
+        },
         {
           "type": "collection",
           "id": "collection",
           "label": "Collection",
           "info": "Links the tile to this collection and uses its image and title unless overridden. The tile is highlighted, and the others dimmed, when viewing this collection."
         },
-        { "type": "text", "id": "btn_text", "label": "Button text", "info": "Leave empty to make the whole tile the link." },
-        { "type": "url", "id": "btn_link", "label": "Link", "info": "Overrides the collection link." },
-        { "type": "checkbox", "id": "button_as_link", "label": "Show button as a text link", "default": false },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button text",
+          "info": "Leave empty to make the whole tile the link."
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Link",
+          "info": "Overrides the collection link."
+        },
+        {
+          "type": "checkbox",
+          "id": "button_as_link",
+          "label": "Show button as a text link",
+          "default": false
+        },
         {
           "type": "select",
           "id": "button_size",
           "label": "Button size",
           "default": "large",
           "options": [
-            { "value": "small", "label": "Small" },
-            { "value": "medium", "label": "Medium" },
-            { "value": "large", "label": "Large" },
-            { "value": "regular", "label": "Regular" }
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            },
+            {
+              "value": "regular",
+              "label": "Regular"
+            }
           ]
         }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Images grid",
-      "blocks": [
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" }
       ]
     }
   ]

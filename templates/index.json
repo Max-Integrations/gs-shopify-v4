@@ -128,7 +128,11 @@
             "background_color": "#000000",
             "background_opacity": 0.5,
             "span_two_columns": false,
-            "span_two_rows": false
+            "span_two_rows": false,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "heading": {
@@ -155,7 +159,11 @@
             "background_color": "#000000",
             "background_opacity": 0.5,
             "span_two_columns": false,
-            "span_two_rows": false
+            "span_two_rows": false,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "heading": {
@@ -182,7 +190,11 @@
             "background_color": "#000000",
             "background_opacity": 0.5,
             "span_two_columns": false,
-            "span_two_rows": false
+            "span_two_rows": false,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "heading": {
@@ -209,7 +221,11 @@
             "background_color": "#000000",
             "background_opacity": 0.5,
             "span_two_columns": false,
-            "span_two_rows": false
+            "span_two_rows": false,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "heading": {
@@ -235,17 +251,25 @@
       ],
       "name": "Media grid",
       "settings": {
-        "section_width": false,
-        "section_visibility": "always",
+        "layout": "grid",
+        "columns_desktop": 4,
+        "columns_mobile": 2,
+        "tile_ratio": "fixed",
         "desktop_row_height": 400,
         "mobile_row_height": 200,
+        "tile_width": "full",
         "desktop_grid_gap": 5,
         "mobile_grid_gap": 5,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "overlay",
+        "card_background": "",
+        "card_padding": 0,
         "enable_shadow": false,
         "enable_hover_content": false,
+        "heading_badge": false,
         "heading": "",
         "heading_size": "h3",
-        "seo_heading": "h2",
         "heading_alignment": "text-center",
         "heading_color": "#ffffff",
         "text_color": "#ffffff",
@@ -254,13 +278,8 @@
         "btn_hover_color": "#000000",
         "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-1",
-        "enable_gradient": false,
-        "top_space_desktop": 15,
-        "bottom_space_desktop": 15,
-        "top_space_mobile": 10,
-        "bottom_space_mobile": 10,
-        "columns_desktop": 4,
-        "columns_mobile": 2
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     },
     "featured_collections_ABnVhm": {
@@ -428,7 +447,11 @@
             "background_color": "#000000",
             "background_opacity": 0.5,
             "span_two_columns": false,
-            "span_two_rows": true
+            "span_two_rows": true,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "heading": {
@@ -475,7 +498,11 @@
             "background_color": "#000000",
             "background_opacity": 0.4,
             "span_two_columns": false,
-            "span_two_rows": false
+            "span_two_rows": false,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "heading": {
@@ -522,7 +549,11 @@
             "background_color": "#000000",
             "background_opacity": 0.4,
             "span_two_columns": false,
-            "span_two_rows": false
+            "span_two_rows": false,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "heading": {
@@ -567,17 +598,25 @@
       ],
       "name": "Media grid",
       "settings": {
-        "section_width": false,
-        "section_visibility": "always",
+        "layout": "grid",
+        "columns_desktop": 2,
+        "columns_mobile": 1,
+        "tile_ratio": "fixed",
         "desktop_row_height": 500,
         "mobile_row_height": 250,
+        "tile_width": "full",
         "desktop_grid_gap": 5,
         "mobile_grid_gap": 5,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "overlay",
+        "card_background": "",
+        "card_padding": 0,
         "enable_shadow": false,
         "enable_hover_content": false,
+        "heading_badge": false,
         "heading": "",
         "heading_size": "h3",
-        "seo_heading": "h2",
         "heading_alignment": "text-center",
         "heading_color": "#ffffff",
         "text_color": "#ffffff",
@@ -586,13 +625,8 @@
         "btn_hover_color": "#000000",
         "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-1",
-        "enable_gradient": false,
-        "top_space_desktop": 10,
-        "bottom_space_desktop": 10,
-        "top_space_mobile": 10,
-        "bottom_space_mobile": 10,
-        "columns_desktop": 2,
-        "columns_mobile": 1
+        "padding_top": 8,
+        "padding_bottom": 8
       }
     },
     "featured_collections_RaEPWA": {
@@ -840,43 +874,184 @@
       }
     },
     "multicolumn_with_content_hover_rUQ9Qn": {
-      "type": "multicolumn-with-content-hover",
+      "type": "section--media-grid",
       "blocks": {
         "content_card_pM9jBd": {
-          "type": "content_card",
+          "type": "block--media-tile",
           "settings": {
-            "card_bg_image": "shopify://shop_images/GS-club-750X750.png",
-            "card_heading": "<p><strong>CLUB GRUNT STYLE</strong></p>",
-            "card_subheading": "<p>MONTHLY T-SHIRT SUBSCRIPTION</p>",
-            "card_hover_description": "<p>Sign up for monthly patriotic gear. Exclusive designs, straight to you doorstep. No Hassle. Plus, free shipping on every order & access to limited time designs! Pause, skip, or cancel anytime. Select your subscription now!</p>",
-            "card_cta_text": "LEARN MORE",
-            "card_cta_url": "shopify://pages/club-grunt-style",
-            "open_in_new_window": false
-          }
+            "media_image": "shopify://shop_images/GS-club-750X750.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "<p>Sign up for monthly patriotic gear. Exclusive designs, straight to you doorstep. No Hassle. Plus, free shipping on every order & access to limited time designs! Pause, skip, or cancel anytime. Select your subscription now!</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.8,
+            "hover_overlay": "show"
+          },
+          "blocks": {
+            "subheading": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>MONTHLY T-SHIRT SUBSCRIPTION</p>",
+                "size": "small",
+                "alignment": "center",
+                "color": "#5c5c5c"
+              }
+            },
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>CLUB GRUNT STYLE</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "button": {
+              "type": "block--button",
+              "settings": {
+                "label": "LEARN MORE",
+                "link": "shopify://pages/club-grunt-style",
+                "style": "button",
+                "size": "small",
+                "open_in_new_tab": false,
+                "bg": "",
+                "text_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "subheading",
+            "title",
+            "button"
+          ]
         },
         "content_card_zmDHqb": {
-          "type": "content_card",
+          "type": "block--media-tile",
           "settings": {
-            "card_bg_image": "shopify://shop_images/GS-rewards-750X750.png",
-            "card_heading": "<p><strong>GRUNT STYLE REWARDS</strong></p>",
-            "card_subheading": "<p>LOYALTY PERKS</p>",
-            "card_hover_description": "<p>Smart patriots get rewarded every time.<br/>Spend $60? That’s $3–$12 back in rewards! Get 5-20% Back on Every Order.<br/>Go VIP for up to 20% back in store credit and free shipping. Starts at $2/month.</p>",
-            "card_cta_text": "LEARN MORE",
-            "card_cta_url": "https://www.gruntstyle.com/community/membership",
-            "open_in_new_window": false
-          }
+            "media_image": "shopify://shop_images/GS-rewards-750X750.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "<p>Smart patriots get rewarded every time.<br/>Spend $60? That’s $3–$12 back in rewards! Get 5-20% Back on Every Order.<br/>Go VIP for up to 20% back in store credit and free shipping. Starts at $2/month.</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.8,
+            "hover_overlay": "show"
+          },
+          "blocks": {
+            "subheading": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>LOYALTY PERKS</p>",
+                "size": "small",
+                "alignment": "center",
+                "color": "#5c5c5c"
+              }
+            },
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>GRUNT STYLE REWARDS</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "button": {
+              "type": "block--button",
+              "settings": {
+                "label": "LEARN MORE",
+                "link": "https://www.gruntstyle.com/community/membership",
+                "style": "button",
+                "size": "small",
+                "open_in_new_tab": false,
+                "bg": "",
+                "text_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "subheading",
+            "title",
+            "button"
+          ]
         },
         "content_card_McLDVd": {
-          "type": "content_card",
+          "type": "block--media-tile",
           "settings": {
-            "card_bg_image": "shopify://shop_images/GS_foundation-750X750.png",
-            "card_heading": "<p><strong>GRUNT STYLE FOUNDATION</strong></p>",
-            "card_subheading": "<p>LIFE CHANGING RESOURCES</p>",
-            "card_hover_description": "<p>Grunt Style Foundation is a 501(c)(3) nonprofit dedicated to providing life-changing resources and experiences that help Service Members, Veterans, First Responders, and their families thrive. Focused on mental health, wellness and advocacy, the Foundation ensures those who have served—and continue to serve—receive the recognition, honor, and support they deserve.</p>",
-            "card_cta_text": "LEARN MORE",
-            "card_cta_url": "shopify://pages/grunt-style-foundation",
-            "open_in_new_window": false
-          }
+            "media_image": "shopify://shop_images/GS_foundation-750X750.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "<p>Grunt Style Foundation is a 501(c)(3) nonprofit dedicated to providing life-changing resources and experiences that help Service Members, Veterans, First Responders, and their families thrive. Focused on mental health, wellness and advocacy, the Foundation ensures those who have served—and continue to serve—receive the recognition, honor, and support they deserve.</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.8,
+            "hover_overlay": "show"
+          },
+          "blocks": {
+            "subheading": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>LIFE CHANGING RESOURCES</p>",
+                "size": "small",
+                "alignment": "center",
+                "color": "#5c5c5c"
+              }
+            },
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>GRUNT STYLE FOUNDATION</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "button": {
+              "type": "block--button",
+              "settings": {
+                "label": "LEARN MORE",
+                "link": "shopify://pages/grunt-style-foundation",
+                "style": "button",
+                "size": "small",
+                "open_in_new_tab": false,
+                "bg": "",
+                "text_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "subheading",
+            "title",
+            "button"
+          ]
         }
       },
       "block_order": [
@@ -886,50 +1061,35 @@
       ],
       "name": "Multicolumn w/ Hover",
       "settings": {
+        "layout": "carousel",
+        "columns_desktop": 3,
+        "columns_mobile": 1,
+        "tile_ratio": "square",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 10,
+        "mobile_grid_gap": 16,
+        "section_width": false,
         "section_visibility": "always",
-        "container_width": "lg",
-        "layout_style": "carousel",
-        "number_cards_per_view_row_desktop": "3",
-        "number_cards_per_view_row_mobile": "1",
-        "section_heading": "<h2><strong>ABOUT THE BRAND</strong></h2>",
-        "heading_font_size_desktop": 32,
-        "heading_font_size_mobile": 24,
-        "heading_alignment": "center",
-        "card_content_alignment": "center",
-        "bg_image_opacity_overlay": 75,
-        "card_cta_style": "button",
-        "bold_card_cta_text": true,
-        "card_cta_border_size": 2,
-        "card_heading_font_size_desktop": 18,
-        "card_heading_font_size_mobile": 20,
-        "card_subheading_font_size_desktop": 14,
-        "card_subheading_font_size_mobile": 14,
-        "card_description_font_size_desktop": 16,
-        "card_description_font_size_mobile": 14,
-        "card_cta_font_size_desktop": 14,
-        "card_cta_font_size_mobile": 12,
-        "section_heading_color": "#000000",
-        "card_description_text_color": "#ffffff",
-        "card_description_bg_color": "#000000",
-        "card_heading_color": "#000000",
-        "card_subheading_color": "#5c5c5c",
-        "card_cta_text_color": "#000000",
-        "card_cta_bg_color": "rgba(0,0,0,0)",
-        "card_cta_border_color": "#000000",
-        "section_spacing_top_bottom_desktop": 10,
-        "section_spacing_top_bottom_mobile": 10,
-        "section_heading_spacing_top_bottom_desktop": 20,
-        "section_heading_spacing_top_bottom_mobile": 10,
-        "card_row_column_gap_desktop": 10,
-        "card_row_column_gap_mobile": 16,
-        "card_content_padding_desktop": 10,
-        "card_content_padding_mobile": 10,
-        "card_content_spacing_desktop": 0,
-        "card_content_spacing_mobile": 0,
-        "card_cta_top_bottom_spacing_desktop": 2,
-        "card_cta_top_bottom_spacing_mobile": 6,
-        "card_cta_left_right_spacing_desktop": 18,
-        "card_cta_left_right_spacing_mobile": 18
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "<strong>ABOUT THE BRAND</strong>",
+        "heading_size": "h2",
+        "heading_alignment": "text-center",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#000000",
+        "btn_hover_color": "#000000",
+        "btn_hover_text_color": "#ffffff",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 8
       }
     }
   },

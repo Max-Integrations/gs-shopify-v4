@@ -206,397 +206,449 @@
       }
     },
     "stories_single_image_QGbgQJ": {
-      "type": "section--stories-single-image",
+      "type": "section--media-grid",
       "blocks": {
         "stories_content_mJWrE9": {
-          "type": "stories-content",
+          "type": "block--media-tile",
           "settings": {
-            "image1": "shopify://shop_images/2009_1.png",
-            "content_on_hover": true,
-            "content_background": false,
-            "heading": "2009",
-            "heading_size": "h2",
-            "seo_heading": "h2",
-            "description": "A former Army drill sergeant, founded Grunt Style in Fort Benning, Georgia with just $1200 in his pocket!",
+            "media_image": "shopify://shop_images/2009_1.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
             "content_position": "center",
-            "btn_text": "",
-            "btn_link": "shopify://collections/all",
-            "show_button_as_link": false,
-            "button_size": "medium",
-            "heading_color": "#ffffff",
-            "text_color": "#ffffff",
-            "btn_bg_color": "#ffffff",
-            "btn_shadow_color": "#575757",
-            "btn_text_color": "#000000",
-            "btn_border_color": "#ffffff",
-            "btn_hover_color": "#000000",
-            "btn_hover_text_color": "#ffffff",
-            "btn_hover_border_color": "#000000",
-            "content_overlay_color": "#000000",
-            "content_overlay_opacity": 0,
-            "content_background_color": "#ffffff",
-            "content_background_opacity": 50
-          }
+            "content_alignment": "center",
+            "hover_text": "<p>A former Army drill sergeant, founded Grunt Style in Fort Benning, Georgia with just $1200 in his pocket!</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.6,
+            "hover_overlay": "remove"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "2009",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "stories_content_9UryYe": {
-          "type": "stories-content",
+          "type": "block--media-tile",
           "settings": {
-            "image1": "shopify://shop_images/2010_1.png",
-            "content_on_hover": true,
-            "content_background": false,
-            "heading": "2010",
-            "heading_size": "h2",
-            "seo_heading": "h2",
-            "description": "Grunt Style opened a kiosk at Ft. Benning AAFES Mall, led by a small team running events and sales, while simultaneously traveling across the country to sell out of the trunk of a car.",
+            "media_image": "shopify://shop_images/2010_1.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
             "content_position": "center",
-            "btn_text": "",
-            "btn_link": "shopify://collections/all",
-            "show_button_as_link": false,
-            "button_size": "medium",
-            "heading_color": "#ffffff",
-            "text_color": "#ffffff",
-            "btn_bg_color": "#ffffff",
-            "btn_shadow_color": "#575757",
-            "btn_text_color": "#000000",
-            "btn_border_color": "#ffffff",
-            "btn_hover_color": "#000000",
-            "btn_hover_text_color": "#ffffff",
-            "btn_hover_border_color": "#000000",
-            "content_overlay_color": "#000000",
-            "content_overlay_opacity": 0,
-            "content_background_color": "#ffffff",
-            "content_background_opacity": 50
-          }
+            "content_alignment": "center",
+            "hover_text": "<p>Grunt Style opened a kiosk at Ft. Benning AAFES Mall, led by a small team running events and sales, while simultaneously traveling across the country to sell out of the trunk of a car.</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.6,
+            "hover_overlay": "remove"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "2010",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "stories_content_7ybkJW": {
-          "type": "stories-content",
+          "type": "block--media-tile",
           "settings": {
-            "image1": "shopify://shop_images/2011_1.png",
-            "content_on_hover": true,
-            "content_background": false,
-            "heading": "2011",
-            "heading_size": "h2",
-            "seo_heading": "h2",
-            "description": "Grunt Style expanded its reach by selling at flea markets, county fairs, MMA events, military installations, and so on. Expansion was driven by a strong will to succeed, and soon after the brand started selling online.",
+            "media_image": "shopify://shop_images/2011_1.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
             "content_position": "center",
-            "btn_text": "",
-            "btn_link": "shopify://collections/all",
-            "show_button_as_link": false,
-            "button_size": "medium",
-            "heading_color": "#ffffff",
-            "text_color": "#ffffff",
-            "btn_bg_color": "#ffffff",
-            "btn_shadow_color": "#575757",
-            "btn_text_color": "#000000",
-            "btn_border_color": "#ffffff",
-            "btn_hover_color": "#000000",
-            "btn_hover_text_color": "#ffffff",
-            "btn_hover_border_color": "#000000",
-            "content_overlay_color": "#000000",
-            "content_overlay_opacity": 0,
-            "content_background_color": "#ffffff",
-            "content_background_opacity": 50
-          }
+            "content_alignment": "center",
+            "hover_text": "<p>Grunt Style expanded its reach by selling at flea markets, county fairs, MMA events, military installations, and so on. Expansion was driven by a strong will to succeed, and soon after the brand started selling online.</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.6,
+            "hover_overlay": "remove"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "2011",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "stories_content_7D9VEJ": {
-          "type": "stories-content",
+          "type": "block--media-tile",
           "settings": {
-            "image1": "shopify://shop_images/2012_1.png",
-            "content_on_hover": true,
-            "content_background": false,
-            "heading": "2012",
-            "heading_size": "h2",
-            "seo_heading": "h2",
-            "description": "Grunt Style attended its first trade show in Las Vegas! Stakes were extremely high because if the veteran-owned company didn't make at least $6000 at the show, it would close its doors forever. Fortunately, Grunt Style made $6700 and rallied onward pushing their patriotic apparel to new heights.",
+            "media_image": "shopify://shop_images/2012_1.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
             "content_position": "center",
-            "btn_text": "",
-            "btn_link": "shopify://collections/all",
-            "show_button_as_link": false,
-            "button_size": "medium",
-            "heading_color": "#ffffff",
-            "text_color": "#ffffff",
-            "btn_bg_color": "#ffffff",
-            "btn_shadow_color": "#575757",
-            "btn_text_color": "#000000",
-            "btn_border_color": "#ffffff",
-            "btn_hover_color": "#000000",
-            "btn_hover_text_color": "#ffffff",
-            "btn_hover_border_color": "#000000",
-            "content_overlay_color": "#000000",
-            "content_overlay_opacity": 0,
-            "content_background_color": "#ffffff",
-            "content_background_opacity": 50
-          }
+            "content_alignment": "center",
+            "hover_text": "<p>Grunt Style attended its first trade show in Las Vegas! Stakes were extremely high because if the veteran-owned company didn't make at least $6000 at the show, it would close its doors forever. Fortunately, Grunt Style made $6700 and rallied onward pushing their patriotic apparel to new heights.</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.6,
+            "hover_overlay": "remove"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "2012",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "stories_content_wrRHaM": {
-          "type": "stories-content",
+          "type": "block--media-tile",
           "settings": {
-            "image1": "shopify://shop_images/2013_1.png",
-            "content_on_hover": true,
-            "content_background": false,
-            "heading": "2013",
-            "heading_size": "h2",
-            "seo_heading": "h2",
-            "description": "Grunt Style outgrew its current location and moved its headquarters to Schaumburg, Illinois. The company gained commercial independence with all decorative designs being produced in house!",
+            "media_image": "shopify://shop_images/2013_1.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
             "content_position": "center",
-            "btn_text": "",
-            "btn_link": "shopify://collections/all",
-            "show_button_as_link": false,
-            "button_size": "medium",
-            "heading_color": "#ffffff",
-            "text_color": "#ffffff",
-            "btn_bg_color": "#ffffff",
-            "btn_shadow_color": "#575757",
-            "btn_text_color": "#000000",
-            "btn_border_color": "#ffffff",
-            "btn_hover_color": "#000000",
-            "btn_hover_text_color": "#ffffff",
-            "btn_hover_border_color": "#000000",
-            "content_overlay_color": "#000000",
-            "content_overlay_opacity": 0,
-            "content_background_color": "#ffffff",
-            "content_background_opacity": 50
-          }
+            "content_alignment": "center",
+            "hover_text": "<p>Grunt Style outgrew its current location and moved its headquarters to Schaumburg, Illinois. The company gained commercial independence with all decorative designs being produced in house!</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.6,
+            "hover_overlay": "remove"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "2013",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "stories_content_wrTUeP": {
-          "type": "stories-content",
+          "type": "block--media-tile",
           "settings": {
-            "image1": "shopify://shop_images/2014_1.png",
-            "content_on_hover": true,
-            "content_background": false,
-            "heading": "2014",
-            "heading_size": "h2",
-            "seo_heading": "h2",
-            "description": "Grunt Style was now 50-employees strong, over 70% of the team being veterans. With continued rapid growth of the company, Grunt Style moved headquarters to Carol Stream, Illinois and purchased a 50k-square-foot building on 5.5 acres! This year the company started gaining mass social media attention, and from this growth Club Grunt Style was born!",
+            "media_image": "shopify://shop_images/2014_1.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
             "content_position": "center",
-            "btn_text": "",
-            "btn_link": "shopify://collections/all",
-            "show_button_as_link": false,
-            "button_size": "medium",
-            "heading_color": "#ffffff",
-            "text_color": "#ffffff",
-            "btn_bg_color": "#ffffff",
-            "btn_shadow_color": "#575757",
-            "btn_text_color": "#000000",
-            "btn_border_color": "#ffffff",
-            "btn_hover_color": "#000000",
-            "btn_hover_text_color": "#ffffff",
-            "btn_hover_border_color": "#000000",
-            "content_overlay_color": "#000000",
-            "content_overlay_opacity": 0,
-            "content_background_color": "#ffffff",
-            "content_background_opacity": 50
-          }
+            "content_alignment": "center",
+            "hover_text": "<p>Grunt Style was now 50-employees strong, over 70% of the team being veterans. With continued rapid growth of the company, Grunt Style moved headquarters to Carol Stream, Illinois and purchased a 50k-square-foot building on 5.5 acres! This year the company started gaining mass social media attention, and from this growth Club Grunt Style was born!</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.6,
+            "hover_overlay": "remove"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "2014",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "stories_content_hyWWpN": {
-          "type": "stories-content",
+          "type": "block--media-tile",
           "settings": {
-            "image1": "shopify://shop_images/2015_1.png",
-            "content_on_hover": true,
-            "content_background": false,
-            "heading": "2015",
-            "heading_size": "h2",
-            "seo_heading": "h2",
-            "description": "Grunt Style’s employees were driven by the company's values of MISSION first, Be a TEAM, and have a great ATTITUDE to win. This led the production team to break record numbers and quickly become the midwest’s best screen shop in productivity vs. error rate. This year Grunt Style took it to the next level by investing over 1.5 million dollars in capital improvements, equipment and software.",
+            "media_image": "shopify://shop_images/2015_1.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
             "content_position": "center",
-            "btn_text": "",
-            "btn_link": "shopify://collections/all",
-            "show_button_as_link": false,
-            "button_size": "medium",
-            "heading_color": "#ffffff",
-            "text_color": "#ffffff",
-            "btn_bg_color": "#ffffff",
-            "btn_shadow_color": "#575757",
-            "btn_text_color": "#000000",
-            "btn_border_color": "#ffffff",
-            "btn_hover_color": "#000000",
-            "btn_hover_text_color": "#ffffff",
-            "btn_hover_border_color": "#000000",
-            "content_overlay_color": "#000000",
-            "content_overlay_opacity": 0,
-            "content_background_color": "#ffffff",
-            "content_background_opacity": 50
-          }
+            "content_alignment": "center",
+            "hover_text": "<p>Grunt Style’s employees were driven by the company's values of MISSION first, Be a TEAM, and have a great ATTITUDE to win. This led the production team to break record numbers and quickly become the midwest’s best screen shop in productivity vs. error rate. This year Grunt Style took it to the next level by investing over 1.5 million dollars in capital improvements, equipment and software.</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.6,
+            "hover_overlay": "remove"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "2015",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "stories_content_BwTOQO": {
-          "type": "stories-content",
+          "type": "block--media-tile",
           "settings": {
-            "image1": "shopify://shop_images/2016_1.png",
-            "content_on_hover": true,
-            "content_background": false,
-            "heading": "2016",
-            "heading_size": "h2",
-            "seo_heading": "h2",
-            "description": "Grunt Style increased over 40% in annual revenue, expanding career opportunities for a growing labor force. Grunt Style decided to hire an additional 80 people to its family to help keep up with the customer demand. Despite this rapid growth, Grunt Style continued to focus on creating a lifestyle that is more than just a t-shirt company and was awarded the best in Warfighter Clothing by Redcon 1.",
+            "media_image": "shopify://shop_images/2016_1.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
             "content_position": "center",
-            "btn_text": "",
-            "btn_link": "shopify://collections/all",
-            "show_button_as_link": false,
-            "button_size": "medium",
-            "heading_color": "#ffffff",
-            "text_color": "#ffffff",
-            "btn_bg_color": "#ffffff",
-            "btn_shadow_color": "#575757",
-            "btn_text_color": "#000000",
-            "btn_border_color": "#ffffff",
-            "btn_hover_color": "#000000",
-            "btn_hover_text_color": "#ffffff",
-            "btn_hover_border_color": "#000000",
-            "content_overlay_color": "#000000",
-            "content_overlay_opacity": 0,
-            "content_background_color": "#ffffff",
-            "content_background_opacity": 50
-          }
+            "content_alignment": "center",
+            "hover_text": "<p>Grunt Style increased over 40% in annual revenue, expanding career opportunities for a growing labor force. Grunt Style decided to hire an additional 80 people to its family to help keep up with the customer demand. Despite this rapid growth, Grunt Style continued to focus on creating a lifestyle that is more than just a t-shirt company and was awarded the best in Warfighter Clothing by Redcon 1.</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.6,
+            "hover_overlay": "remove"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "2016",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "stories_content_HKIDsG": {
-          "type": "stories-content",
+          "type": "block--media-tile",
           "settings": {
-            "image1": "shopify://shop_images/2017_1.png",
-            "content_on_hover": true,
-            "content_background": false,
-            "heading": "2017",
-            "heading_size": "h2",
-            "seo_heading": "h2",
-            "description": ">In just 3 years, Grunt Style outgrew its Carol Stream facility. By adding a second building to the campus called “Center Ave,” the company was able to expand by an additional 100,000 sq. ft of space and an additional million dollars in capital improvement.",
+            "media_image": "shopify://shop_images/2017_1.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
             "content_position": "center",
-            "btn_text": "",
-            "btn_link": "shopify://collections/all",
-            "show_button_as_link": false,
-            "button_size": "medium",
-            "heading_color": "#ffffff",
-            "text_color": "#ffffff",
-            "btn_bg_color": "#ffffff",
-            "btn_shadow_color": "#575757",
-            "btn_text_color": "#000000",
-            "btn_border_color": "#ffffff",
-            "btn_hover_color": "#000000",
-            "btn_hover_text_color": "#ffffff",
-            "btn_hover_border_color": "#000000",
-            "content_overlay_color": "#000000",
-            "content_overlay_opacity": 0,
-            "content_background_color": "#ffffff",
-            "content_background_opacity": 50
-          }
+            "content_alignment": "center",
+            "hover_text": "<p>>In just 3 years, Grunt Style outgrew its Carol Stream facility. By adding a second building to the campus called “Center Ave,” the company was able to expand by an additional 100,000 sq. ft of space and an additional million dollars in capital improvement.</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.6,
+            "hover_overlay": "remove"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "2017",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "stories_content_vEGzOQ": {
-          "type": "stories-content",
+          "type": "block--media-tile",
           "settings": {
-            "image1": "shopify://shop_images/2018_1.png",
-            "content_on_hover": true,
-            "content_background": false,
-            "heading": "2018",
-            "heading_size": "h2",
-            "seo_heading": "h2",
-            "description": "Grunt Style decided to move its headquarters to San Antonio, Texas! It leased a 40,000-square-foot historic building listed in the National Register, soon to become the official headquarters location.",
+            "media_image": "shopify://shop_images/2018_1.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
             "content_position": "center",
-            "btn_text": "",
-            "btn_link": "shopify://collections/all",
-            "show_button_as_link": false,
-            "button_size": "medium",
-            "heading_color": "#ffffff",
-            "text_color": "#ffffff",
-            "btn_bg_color": "#ffffff",
-            "btn_shadow_color": "#575757",
-            "btn_text_color": "#000000",
-            "btn_border_color": "#ffffff",
-            "btn_hover_color": "#000000",
-            "btn_hover_text_color": "#ffffff",
-            "btn_hover_border_color": "#000000",
-            "content_overlay_color": "#000000",
-            "content_overlay_opacity": 0,
-            "content_background_color": "#ffffff",
-            "content_background_opacity": 50
-          }
+            "content_alignment": "center",
+            "hover_text": "<p>Grunt Style decided to move its headquarters to San Antonio, Texas! It leased a 40,000-square-foot historic building listed in the National Register, soon to become the official headquarters location.</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.6,
+            "hover_overlay": "remove"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "2018",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "stories_content_ksuXaG": {
-          "type": "stories-content",
+          "type": "block--media-tile",
           "settings": {
-            "image1": "shopify://shop_images/2019_1.png",
-            "content_on_hover": true,
-            "content_background": false,
-            "heading": "2019",
-            "heading_size": "h2",
-            "seo_heading": "h2",
-            "description": "Grunt Style celebrated its 10-year anniversary! In those 10 years, Grunt Style became a lifestyle brand that encouraged Pride in Self, Military, and Country in all of its customers. Those initial $1200 went a very long way, and Grunt Style was now bigger than ever.",
+            "media_image": "shopify://shop_images/2019_1.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
             "content_position": "center",
-            "btn_text": "",
-            "btn_link": "shopify://collections/all",
-            "show_button_as_link": false,
-            "button_size": "medium",
-            "heading_color": "#ffffff",
-            "text_color": "#ffffff",
-            "btn_bg_color": "#ffffff",
-            "btn_shadow_color": "#575757",
-            "btn_text_color": "#000000",
-            "btn_border_color": "#ffffff",
-            "btn_hover_color": "#000000",
-            "btn_hover_text_color": "#ffffff",
-            "btn_hover_border_color": "#000000",
-            "content_overlay_color": "#000000",
-            "content_overlay_opacity": 0,
-            "content_background_color": "#ffffff",
-            "content_background_opacity": 50
-          }
+            "content_alignment": "center",
+            "hover_text": "<p>Grunt Style celebrated its 10-year anniversary! In those 10 years, Grunt Style became a lifestyle brand that encouraged Pride in Self, Military, and Country in all of its customers. Those initial $1200 went a very long way, and Grunt Style was now bigger than ever.</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.6,
+            "hover_overlay": "remove"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "2019",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "stories_content_BnCZvv": {
-          "type": "stories-content",
+          "type": "block--media-tile",
           "settings": {
-            "image1": "shopify://shop_images/2020_1.png",
-            "content_on_hover": true,
-            "content_background": false,
-            "heading": "2020",
-            "heading_size": "h2",
-            "seo_heading": "h2",
-            "description": "Grunt Style launched its first brick-and-mortar retail store at its headquarters in San Antonio, Texas! The company focused on community and soon after launched Operation Hero. This community-based campaign recognized first responders and healthcare professionals providing financial and child services and meal donations during the peak of the COVID-19 pandemic.",
+            "media_image": "shopify://shop_images/2020_1.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
             "content_position": "center",
-            "btn_text": "",
-            "btn_link": "shopify://collections/all",
-            "show_button_as_link": false,
-            "button_size": "medium",
-            "heading_color": "#ffffff",
-            "text_color": "#ffffff",
-            "btn_bg_color": "#ffffff",
-            "btn_shadow_color": "#575757",
-            "btn_text_color": "#000000",
-            "btn_border_color": "#ffffff",
-            "btn_hover_color": "#000000",
-            "btn_hover_text_color": "#ffffff",
-            "btn_hover_border_color": "#000000",
-            "content_overlay_color": "#000000",
-            "content_overlay_opacity": 0,
-            "content_background_color": "#ffffff",
-            "content_background_opacity": 50
-          }
+            "content_alignment": "center",
+            "hover_text": "<p>Grunt Style launched its first brick-and-mortar retail store at its headquarters in San Antonio, Texas! The company focused on community and soon after launched Operation Hero. This community-based campaign recognized first responders and healthcare professionals providing financial and child services and meal donations during the peak of the COVID-19 pandemic.</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.6,
+            "hover_overlay": "remove"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "2020",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "stories_content_ZAVmIN": {
-          "type": "stories-content",
+          "type": "block--media-tile",
           "settings": {
-            "image1": "shopify://shop_images/2021_1.png",
-            "content_on_hover": true,
-            "content_background": false,
-            "heading": "2021",
-            "heading_size": "h2",
-            "seo_heading": "h2",
-            "description": "Grunt Style’s vision to deliver patriotism to every home in America was a reality. Grunt Style dove deeper into the brick-and-mortar retail market by launching five retail locations across the country, providing experiential moments with customers to know, celebrate, and defend the freedoms that we have as Americans. At this time, The Grunt Style Foundation was founded with a mission and vision to support service members, veterans, and their families, moving Forward with Purpose.",
+            "media_image": "shopify://shop_images/2021_1.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
             "content_position": "center",
-            "btn_text": "",
-            "btn_link": "shopify://collections/all",
-            "show_button_as_link": false,
-            "button_size": "medium",
-            "heading_color": "#ffffff",
-            "text_color": "#ffffff",
-            "btn_bg_color": "#ffffff",
-            "btn_shadow_color": "#575757",
-            "btn_text_color": "#000000",
-            "btn_border_color": "#ffffff",
-            "btn_hover_color": "#000000",
-            "btn_hover_text_color": "#ffffff",
-            "btn_hover_border_color": "#000000",
-            "content_overlay_color": "#000000",
-            "content_overlay_opacity": 0,
-            "content_background_color": "#ffffff",
-            "content_background_opacity": 50
-          }
+            "content_alignment": "center",
+            "hover_text": "<p>Grunt Style’s vision to deliver patriotism to every home in America was a reality. Grunt Style dove deeper into the brick-and-mortar retail market by launching five retail locations across the country, providing experiential moments with customers to know, celebrate, and defend the freedoms that we have as Americans. At this time, The Grunt Style Foundation was founded with a mission and vision to support service members, veterans, and their families, moving Forward with Purpose.</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.6,
+            "hover_overlay": "remove"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "2021",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         }
       },
       "block_order": [
@@ -615,27 +667,35 @@
         "stories_content_ZAVmIN"
       ],
       "settings": {
-        "section_width": false,
-        "section_visibility": "always",
+        "layout": "carousel",
+        "columns_desktop": 4,
+        "columns_mobile": 1,
+        "tile_ratio": "fixed",
         "desktop_row_height": 600,
         "mobile_row_height": 300,
+        "tile_width": "full",
         "desktop_grid_gap": 5,
         "mobile_grid_gap": 5,
-        "pagination_style": "bars",
-        "pagination_position": "top",
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "overlay",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": true,
         "heading": "History Of Grunt Style",
-        "highlight_style": "underline",
-        "bg__color": "gradient",
         "heading_size": "h1",
-        "seo_heading": "h2",
-        "description": "",
-        "content_alignment": "text-center",
+        "heading_alignment": "text-center",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#000000",
+        "btn_hover_color": "#000000",
+        "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-4",
-        "enable_gradient": false,
-        "top_space_desktop": 70,
-        "bottom_space_desktop": 70,
-        "top_space_mobile": 40,
-        "bottom_space_mobile": 40
+        "padding_top": 72,
+        "padding_bottom": 72
       }
     },
     "rich_text_aYe2m7": {
@@ -780,71 +840,91 @@
       }
     },
     "logo_list_kDiWJU": {
-      "type": "images-grid",
+      "type": "section--media-grid",
       "blocks": {
         "logo_QMCtw9": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/about-us-social-content-american-grit.png",
-            "heading": "",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "https://americangrit.com/",
-            "button_as_link": false,
-            "button_size": "small"
+            "media_image": "shopify://shop_images/about-us-social-content-american-grit.png",
+            "video": "",
+            "collection": "",
+            "link": "https://americangrit.com/",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "logo_pkjzf8": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/about-us-social-content-full-gruntle.png",
-            "heading": "",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "https://open.spotify.com/show/5pW9rjWSXGvdrihzhjLbnB",
-            "button_as_link": false,
-            "button_size": "small"
+            "media_image": "shopify://shop_images/about-us-social-content-full-gruntle.png",
+            "video": "",
+            "collection": "",
+            "link": "https://open.spotify.com/show/5pW9rjWSXGvdrihzhjLbnB",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "logo_rUYJwg": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/about-us-social-content-youtube-white-full.jpg",
-            "heading": "",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "https://www.youtube.com/c/GruntStyle1776",
-            "button_as_link": false,
-            "button_size": "small"
+            "media_image": "shopify://shop_images/about-us-social-content-youtube-white-full.jpg",
+            "video": "",
+            "collection": "",
+            "link": "https://www.youtube.com/c/GruntStyle1776",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "logo_PwTw87": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/about-us-social-content-tik-tok-full.png",
-            "heading": "",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "https://www.tiktok.com/@gruntstyle_official?lang=en",
-            "button_as_link": false,
-            "button_size": "small"
+            "media_image": "shopify://shop_images/about-us-social-content-tik-tok-full.png",
+            "video": "",
+            "collection": "",
+            "link": "https://www.tiktok.com/@gruntstyle_official?lang=en",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "logo_GeBQTX": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/about-us-social-content-twitch-full.jpg",
-            "heading": "",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "https://www.twitch.tv/gruntstyle_official",
-            "button_as_link": false,
-            "button_size": "small"
+            "media_image": "shopify://shop_images/about-us-social-content-twitch-full.jpg",
+            "video": "",
+            "collection": "",
+            "link": "https://www.twitch.tv/gruntstyle_official",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         }
       },
@@ -855,41 +935,36 @@
         "logo_PwTw87",
         "logo_GeBQTX"
       ],
-      "custom_css": [
-        ".gs-ig__media > img { object-fit: contain; }",
-        "@media screen and (max-width: 767px) { .gs-ig__item { flex-basis: calc(20% - var(--ig-gap)); } }"
-      ],
       "settings": {
-        "section_visibility": "always",
+        "layout": "grid",
+        "columns_desktop": 5,
+        "columns_mobile": 2,
+        "tile_ratio": "square",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "half",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 20,
         "section_width": false,
-        "show_carousel": false,
-        "card_grid": true,
-        "card_inner_space": true,
-        "item_per_row_desktop": 5,
-        "item_per_row_mobile": "2",
-        "card_style": "vertical",
-        "grid_image_size": "small",
-        "content_position": "center",
-        "vertical_grid_image_size": "square",
+        "section_visibility": "always",
+        "content_placement": "below",
+        "card_background": "#000000",
+        "card_padding": 10,
+        "enable_shadow": true,
+        "enable_hover_content": false,
+        "heading_badge": false,
         "heading": "Check Out Our Content!",
-        "highlight_style": "underline",
-        "bg__color": "gradient",
         "heading_size": "h1",
-        "heading_font_desktop": 0,
-        "heading_font_mobile": 0,
-        "seo_heading": "h2",
         "heading_alignment": "text-center",
-        "card_bg": "#000000",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#000000",
+        "btn_hover_color": "#000000",
+        "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-1",
-        "enable_gradient": false,
-        "top_space_desktop": 30,
-        "bottom_space_desktop": 30,
-        "top_space_mobile": 40,
-        "bottom_space_mobile": 40,
-        "card_inner_space_size": 10,
-        "media_bg": "#000000",
-        "card_border_width": 0,
-        "card_border_color": "#000000"
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     }
   },

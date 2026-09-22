@@ -65,33 +65,41 @@
       }
     },
     "images_grid_EnffGY": {
-      "type": "images-grid",
+      "type": "section--media-grid",
       "blocks": {
         "image_gqj887": {
-          "type": "image",
-          "disabled": true,
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/Animated_Join-Page-Key-Image_600x600_V1_Acquisition_Version2.gif",
-            "heading": "",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/Animated_Join-Page-Key-Image_600x600_V1_Acquisition_Version2.gif",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "left",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "disabled": true
         },
         "image_NzbjVQ": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/Join_Page_Key_Image_600x600_Club_Monthly_Tee-_OCTOBER.jpg",
-            "heading": "",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/Join_Page_Key_Image_600x600_Club_Monthly_Tee-_OCTOBER.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "left",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         }
       },
@@ -100,31 +108,35 @@
         "image_NzbjVQ"
       ],
       "settings": {
+        "layout": "grid",
+        "columns_desktop": 5,
+        "columns_mobile": 1,
+        "tile_ratio": "adapt",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 20,
+        "section_width": false,
         "section_visibility": "small",
-        "show_carousel": false,
-        "card_grid": false,
-        "card_inner_space": false,
-        "item_per_row_desktop": 5,
-        "item_per_row_mobile": "1",
-        "card_style": "vertical",
-        "grid_image_size": "large",
-        "content_position": "left",
-        "vertical_grid_image_size": "auto",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
         "heading": "",
-        "highlight_style": "underline",
-        "bg__color": "gradient",
         "heading_size": "h3",
-        "heading_font_desktop": 0,
-        "heading_font_mobile": 0,
-        "seo_heading": "h2",
         "heading_alignment": "text-left",
-        "card_bg": "",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#000000",
+        "btn_hover_color": "#000000",
+        "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-1",
-        "enable_gradient": false,
-        "top_space_desktop": 0,
-        "bottom_space_desktop": 60,
-        "top_space_mobile": 0,
-        "bottom_space_mobile": 20
+        "padding_top": 0,
+        "padding_bottom": 60
       }
     },
     "image_with_text_carousel_LEPPVj": {
@@ -282,332 +294,857 @@
       }
     },
     "images_grid_tDVVmL": {
-      "type": "images-grid",
+      "type": "section--media-grid",
       "blocks": {
         "image_TcKqcP": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS1026_WEB-READY_STACKED-MENS.png",
-            "heading": "OCTOBER 2026",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": true,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS1026_WEB-READY_STACKED-MENS.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "OCTOBER 2026",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_EeXciN": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0926_WEB-READY_FRONT-MEN.png",
-            "heading": "SEPTEMBER 2026",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0926_WEB-READY_FRONT-MEN.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "SEPTEMBER 2026",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_7XQ3BR": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0826_WEB-READY_MEN_STACKED.png",
-            "heading": "AUGUST 2026",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0826_WEB-READY_MEN_STACKED.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "AUGUST 2026",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_GxazFA": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0726_WEB-READY_MEN_STACKED.png",
-            "heading": "JULY 2026",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0726_WEB-READY_MEN_STACKED.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "JULY 2026",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_c6xbjV": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0626_WEB-READY_FRONT-MENS.png",
-            "heading": "JUNE 2026",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0626_WEB-READY_FRONT-MENS.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "JUNE 2026",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_mCayDa": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0526_WEB-READY_FRONT-MENS.jpg",
-            "heading": "MAY 2026",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/club-grunt-style-may-2026-mens",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0526_WEB-READY_FRONT-MENS.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/club-grunt-style-may-2026-mens",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "MAY 2026",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_pnjEDi": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0426_WEB-READY_STACKED-MENS.jpg",
-            "heading": "APRIL 2026",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/club-grunt-style-april-2026-mens",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0426_WEB-READY_STACKED-MENS.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/club-grunt-style-april-2026-mens",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "APRIL 2026",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_cEVFhQ": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0326_WEB-READY_FRONT-MENS.jpg",
-            "heading": "MARCH 2026",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/2026-march-club-mens-bite-me",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0326_WEB-READY_FRONT-MENS.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/2026-march-club-mens-bite-me",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "MARCH 2026",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_4LXB4g": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0226_WEB-READY_FRONT-MENS.jpg",
-            "heading": "FEBRUARY 2026",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/club-grunt-style-february-2026-mens",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0226_WEB-READY_FRONT-MENS.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/club-grunt-style-february-2026-mens",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "FEBRUARY 2026",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_8b73Xj": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0126_WEB-READY_STACKED-MENS.png",
-            "heading": "JANUARY 2026",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/club-grunt-style-january-2026-mens",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0126_WEB-READY_STACKED-MENS.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/club-grunt-style-january-2026-mens",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "JANUARY 2026",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_DeFrmn": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS1225_WEB-READY_FRONT_MENS.jpg",
-            "heading": "DECEMBER 2025",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/2025-december-club-mens-filthy-animal",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS1225_WEB-READY_FRONT_MENS.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/2025-december-club-mens-filthy-animal",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "DECEMBER 2025",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_UKHyVz": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/GS1125_WEB-READY_STACKED_MENS_4ff0ad7b-648d-4d9d-9b41-5524b9d9a5b0.jpg",
-            "heading": "NOVEMBER 2025",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/2025-november-club-mens-no-mercy",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/GS1125_WEB-READY_STACKED_MENS_4ff0ad7b-648d-4d9d-9b41-5524b9d9a5b0.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/2025-november-club-mens-no-mercy",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "NOVEMBER 2025",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_pgJcxc": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS1025_WEB-READY_STACKED.jpg",
-            "heading": "OCTOBER 2025",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/2025-october-club-mens-gourd-of-war",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS1025_WEB-READY_STACKED.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/2025-october-club-mens-gourd-of-war",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "OCTOBER 2025",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_jkQYBf": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0925_WEB-READY_FRONT.png",
-            "heading": "SEPTEMBER 2025",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/club-grunt-style-september-2025-mens",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0925_WEB-READY_FRONT.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/club-grunt-style-september-2025-mens",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "SEPTEMBER 2025",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_HDfQxW": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0825-WEB-READY-STACK.png",
-            "heading": "AUGUST 2025",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/2025-august-club-mens",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0825-WEB-READY-STACK.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/2025-august-club-mens",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "AUGUST 2025",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_LbYEyC": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0725_WEB-READY_STACKED.png",
-            "heading": "JULY 2025",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/2025-july-club-mens-the-reapers-price",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0725_WEB-READY_STACKED.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/2025-july-club-mens-the-reapers-price",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "JULY 2025",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_nPaCWq": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0625_WEB_READY_FRONT_1.png",
-            "heading": "JUNE 2025",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/club-grunt-style-june-2025-mens",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0625_WEB_READY_FRONT_1.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/club-grunt-style-june-2025-mens",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "JUNE 2025",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_nNFTkc": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0525_WEB-READY_STACK_2.png",
-            "heading": "May 2025",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/2025-may-club-mens-honor-and-glory-tribute",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0525_WEB-READY_STACK_2.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/2025-may-club-mens-honor-and-glory-tribute",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "May 2025",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_gNYnbn": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0425_WEB-READY_FRONT_1.png",
-            "heading": "April 2025",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/club-grunt-style-april-2025-mens",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0425_WEB-READY_FRONT_1.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/club-grunt-style-april-2025-mens",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "April 2025",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_LGjfWc": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0325_FRONT_MENS.png",
-            "heading": "March 2025",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/club-grunt-style-march-2025-mens",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0325_FRONT_MENS.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/club-grunt-style-march-2025-mens",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "March 2025",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_AGeRkb": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0225_-_February_2025_Club_Shirt_WEB_READY-2023_M_FRT_BK_1_-min.jpg",
-            "heading": "February 2025",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/2025-february-club-mens-dont-tread-rattler",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0225_-_February_2025_Club_Shirt_WEB_READY-2023_M_FRT_BK_1_-min.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/2025-february-club-mens-dont-tread-rattler",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "February 2025",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_KwF9tH": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS0125-WEBREADY-MENS-STACK.png",
-            "heading": "January 2025",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/2025-january-club-mens-patriot-eagle",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS0125-WEBREADY-MENS-STACK.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/2025-january-club-mens-patriot-eagle",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "January 2025",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_6nBbEt": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS1224_WEB_READY_FRONT.png",
-            "heading": "December 2024",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/club-grunt-style-december-2024-mens",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS1224_WEB_READY_FRONT.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/club-grunt-style-december-2024-mens",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "December 2024",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_DDFyKW": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS1124-NovemberClubGSShirt_WEB_READY-2023FRTBKM_021a7402-45a3-41cc-a47f-5c0735a571d0.png",
-            "heading": "November 2024",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/club-grunt-style-november-2024-mens",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS1124-NovemberClubGSShirt_WEB_READY-2023FRTBKM_021a7402-45a3-41cc-a47f-5c0735a571d0.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/club-grunt-style-november-2024-mens",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "November 2024",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "image_UqRbk4": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/CGS1024-WEBREADY-STACK.png",
-            "heading": "October 2024",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://products/club-grunt-style-october-2024-mens",
-            "button_as_link": false,
-            "button_size": "large"
-          }
+            "media_image": "shopify://shop_images/CGS1024-WEBREADY-STACK.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://products/club-grunt-style-october-2024-mens",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "October 2024",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         }
       },
       "block_order": [
@@ -638,31 +1175,35 @@
         "image_UqRbk4"
       ],
       "settings": {
+        "layout": "carousel",
+        "columns_desktop": 5,
+        "columns_mobile": 1,
+        "tile_ratio": "adapt",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 20,
+        "section_width": false,
         "section_visibility": "always",
-        "show_carousel": true,
-        "card_grid": false,
-        "card_inner_space": false,
-        "item_per_row_desktop": 5,
-        "item_per_row_mobile": "1",
-        "card_style": "vertical",
-        "grid_image_size": "large",
-        "content_position": "center",
-        "vertical_grid_image_size": "auto",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
         "heading": "",
-        "highlight_style": "underline",
-        "bg__color": "gradient",
         "heading_size": "h3",
-        "heading_font_desktop": 0,
-        "heading_font_mobile": 0,
-        "seo_heading": "h2",
         "heading_alignment": "text-center",
-        "card_bg": "#e5e5e5",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#000000",
+        "btn_hover_color": "#000000",
+        "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-1",
-        "enable_gradient": false,
-        "top_space_desktop": 0,
-        "bottom_space_desktop": 10,
-        "top_space_mobile": 10,
-        "bottom_space_mobile": 5
+        "padding_top": 0,
+        "padding_bottom": 8
       }
     },
     "join": {
@@ -840,84 +1381,108 @@
       }
     },
     "images_grid_hdYKhF": {
-      "type": "images-grid",
+      "type": "section--media-grid",
       "blocks": {
         "image_76hmbm": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/MEMBER_STORE_Gold_Club_Icon_f5229a6d-a707-47c9-89c3-658698b71777.png",
-            "heading": "",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "shopify://collections/club-grunt-style",
-            "button_as_link": false,
-            "button_size": "small"
+            "media_image": "shopify://shop_images/MEMBER_STORE_Gold_Club_Icon_f5229a6d-a707-47c9-89c3-658698b71777.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/club-grunt-style",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_dXEUmj": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/COMMUNITY_Gold_Club_Icons.png",
-            "heading": "",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "https://www.facebook.com/groups/clubgruntstyle",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/COMMUNITY_Gold_Club_Icons.png",
+            "video": "",
+            "collection": "",
+            "link": "https://www.facebook.com/groups/clubgruntstyle",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_hPzXTH": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/FIRST_DIBS_Gold_Club_Icon_95e4a268-75a7-46ce-9ddf-c06b06ec27eb.png",
-            "heading": "",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/FIRST_DIBS_Gold_Club_Icon_95e4a268-75a7-46ce-9ddf-c06b06ec27eb.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_QUzfeN": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/EASY_CANCEL_Gold_Club_Icons.png",
-            "heading": "",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/EASY_CANCEL_Gold_Club_Icons.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_hV3hfj": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/FREE_SHIPPING_Gold_Club_Icon_c7f29b7a-6732-4231-9956-32ceae60936e.png",
-            "heading": "",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/FREE_SHIPPING_Gold_Club_Icon_c7f29b7a-6732-4231-9956-32ceae60936e.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_yqdUap": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/EXTRA_SAVINGS_Gold_Club_Icon_99ef8ec3-fe86-4fc8-9a08-f998d9309fa8.png",
-            "heading": "",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/EXTRA_SAVINGS_Gold_Club_Icon_99ef8ec3-fe86-4fc8-9a08-f998d9309fa8.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         }
       },
@@ -929,35 +1494,36 @@
         "image_hV3hfj",
         "image_yqdUap"
       ],
-      "custom_css": [
-        "h3 { color: #ffca10; }"
-      ],
       "settings": {
+        "layout": "carousel",
+        "columns_desktop": 5,
+        "columns_mobile": 1,
+        "tile_ratio": "square",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 20,
+        "section_width": false,
         "section_visibility": "always",
-        "show_carousel": true,
-        "card_grid": false,
-        "card_inner_space": false,
-        "item_per_row_desktop": 5,
-        "item_per_row_mobile": "1",
-        "card_style": "vertical",
-        "grid_image_size": "large",
-        "content_position": "center",
-        "vertical_grid_image_size": "square",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
         "heading": "<em><strong>CLUB MEMBER PERKS</strong></em>",
-        "highlight_style": "underline",
-        "bg__color": "solid",
         "heading_size": "h3",
-        "heading_font_desktop": 0,
-        "heading_font_mobile": 0,
-        "seo_heading": "h3",
         "heading_alignment": "text-center",
-        "card_bg": "#000000",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#000000",
+        "btn_hover_color": "#000000",
+        "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-4",
-        "enable_gradient": false,
-        "top_space_desktop": 20,
-        "bottom_space_desktop": 10,
-        "top_space_mobile": 10,
-        "bottom_space_mobile": 10
+        "padding_top": 20,
+        "padding_bottom": 8
       }
     }
   },

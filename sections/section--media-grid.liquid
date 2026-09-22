@@ -1,9 +1,11 @@
 {% comment %}
   ==================================================================
   MEDIA GRID (theme-block version)
-  Replaces sections/media-grid--deprecated.liquid
+  Replaces sections/media-grid--deprecated.liquid, and since 2026-09-22
+  also images-grid, section--stories-single-image and
+  multicolumn-with-content-hover (all renamed --deprecated).
   ==================================================================
-  A heading over a grid of image/video tiles. Tiles are
+  A heading over a grid or carousel of image/video tiles. Tiles are
   block--media-tile THEME BLOCKS whose content is their own child
   blocks (block--heading, block--text, block--button, app blocks), so a
   tile carries any number of lines.
@@ -11,15 +13,33 @@
   ------------------------------------------------------------------
   SETTINGS MODEL
   ------------------------------------------------------------------
-  Section: columns (desktop 1-4, mobile 1-4), row heights, gap,
-  shadow, hover reveal, an optional heading, the tile colours (heading,
-  text, button, button hover) that apply to every tile, colour scheme
-  and padding. Tiles: media, link, span, position, alignment, overlay.
+  Section: layout (grid | carousel), columns (desktop 1-6, mobile 1-4),
+  tile height (fixed row heights, or the image's natural / square /
+  portrait / landscape ratio), tile width for centred rows of small
+  tiles, gap, where the content sits (over the image or below it),
+  an optional card background and padding, shadow, hover reveal,
+  circle-badge headings, a heading, the tile colours that apply to
+  every tile when content is over the image, colour scheme and Dawn's
+  padding pair.
+  Tiles (block--media-tile): media or a collection (which supplies the
+  image, title and link unless overridden), link, span, position,
+  alignment, overlay colour/opacity and what the overlay does on hover,
+  and text revealed on hover.
   Child blocks: content plus optional per-block overrides.
 
-  The old section had 23 section + 27 per-tile settings; this has 22
-  section + 9 per-tile, and tiles are no longer a fixed heading +
-  description + button.
+  ------------------------------------------------------------------
+  WHAT THE FOUR OLD SECTIONS MAPPED TO
+  ------------------------------------------------------------------
+  - images-grid (28 instances): layout carousel/grid, tile ratio from
+    the image, content below the image, a collection picker per tile
+    with the "current collection stays bright, the rest dim" behaviour
+    (.gs-mg--has-current / .is-current, from v3's collection-carousel).
+  - stories-single-image (About history): carousel, fixed 600/300px
+    tiles, 60% scrim lifted on hover, circle-badge year headings,
+    description as the tile's hover text.
+  - multicolumn-with-content-hover (homepage "About the brand"):
+    carousel of square tiles, content below, description as hover text
+    with the overlay shown only on hover.
 
   ------------------------------------------------------------------
   WHY THE CHILD BLOCK STYLES ARE RESTATED IN section--media-grid.css
@@ -32,6 +52,9 @@
   inside headings actually take effect. Headings inside tiles are
   weight 400 so bold from the rich text editor is visible (the theme's
   heading weight is 700, which made <strong> a no-op).
+
+  The carousel is a native scroll-snap track driven by the shared
+  gs-swatch-scroller.js (loaded once from layout/theme.liquid).
   ==================================================================
 {% endcomment %}
 
@@ -39,40 +62,101 @@
 
 {%- liquid
   assign s = section.settings
+  assign layout = s.layout | default: 'grid'
+  assign ratio = s.tile_ratio | default: 'fixed'
+  assign placement = s.content_placement | default: 'overlay'
+
+  # Does any tile point at the collection being viewed (or the current
+  # path)? If so the others dim. Keep this test identical to the one in
+  # blocks/block--media-tile.liquid.
+  assign has_current = false
+  for block in section.blocks
+    assign tile_collection = block.settings.collection
+    assign tile_url = block.settings.link
+    if tile_url == blank and tile_collection != blank
+      assign tile_url = tile_collection.url
+    endif
+    if tile_collection != blank and collection != blank and tile_collection.handle == collection.handle
+      assign has_current = true
+      break
+    elsif tile_url != blank and tile_url == request.path
+      assign has_current = true
+      break
+    endif
+  endfor
 -%}
 
 <div
-  class="gs-media-grid color-{{ s.color_scheme }}{% if s.enable_gradient %} gradient{% endif %} gs-mg--visibility-{{ s.section_visibility | default: 'always' }}"
+  class="gs-media-grid color-{{ s.color_scheme }} gradient gs-mg--visibility-{{ s.section_visibility | default: 'always' }} gs-mg--{{ layout }} gs-mg--ratio-{{ ratio }} gs-mg--{{ placement }} gs-mg--width-{{ s.tile_width | default: 'full' }}{% if s.heading_badge %} gs-mg--badge{% endif %}{% if has_current %} gs-mg--has-current{% endif %}"
   style="
-    --padding-top: {{ s.top_space_desktop }}px;
-    --padding-bottom: {{ s.bottom_space_desktop }}px;
-    --padding-top-mobile: {{ s.top_space_mobile }}px;
-    --padding-bottom-mobile: {{ s.bottom_space_mobile }}px;
+    --padding-top: {{ s.padding_top }}px;
+    --padding-bottom: {{ s.padding_bottom }}px;
+    --padding-top-mobile: {{ s.padding_top | times: 0.75 | round: 0 }}px;
+    --padding-bottom-mobile: {{ s.padding_bottom | times: 0.75 | round: 0 }}px;
     --cols-desktop: {{ s.columns_desktop | default: 4 }};
     --cols-mobile: {{ s.columns_mobile | default: 1 }};
     --desktopHeight: {{ s.desktop_row_height }}px;
     --mobileHeight: {{ s.mobile_row_height }}px;
     --columnGap: {{ s.mobile_grid_gap }}px;
     --columnGapDesktop: {{ s.desktop_grid_gap }}px;
+    --mg-card-pad: {{ s.card_padding | default: 0 }}px;
+    {%- unless s.card_background == blank or s.card_background == 'rgba(0,0,0,0)' %}
+    --mg-card-bg: {{ s.card_background }};
+    {%- endunless %}
+    {%- if placement == 'overlay' %}
     --mg-heading: {{ s.heading_color | default: '#ffffff' }};
     --mg-text: {{ s.text_color | default: '#ffffff' }};
     --mg-btn-bg: {{ s.btn_bg_color | default: '#ffffff' }};
     --mg-btn-text: {{ s.btn_text_color | default: '#000000' }};
     --mg-btn-bg-hover: {{ s.btn_hover_color | default: '#000000' }};
     --mg-btn-text-hover: {{ s.btn_hover_text_color | default: '#ffffff' }};
+    {%- endif %}
   "
 >
   <div class="{% if s.section_width %}gs-mg--fullwidth{% else %}page-width{% endif %}">
     {%- if s.heading != blank -%}
       <div class="section-title {{ s.heading_alignment | default: 'text-center' }}">
-        <{{ s.seo_heading | default: 'h2' }} class="mg-heading {{ s.heading_size | default: 'h3' }}">{{ s.heading }}</{{ s.seo_heading | default: 'h2' }}>
+        <h2 class="mg-heading inline-richtext {{ s.heading_size | default: 'h3' }}">{{ s.heading }}</h2>
       </div>
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
-      <div class="media-grid-wrapper{% if s.enable_shadow %} shadow-enabled{% endif %}{% if s.enable_hover_content %} content-on-hover{% endif %}">
-        {% content_for 'blocks' %}
-      </div>
+      {%- if layout == 'carousel' -%}
+        <div class="gs-mg__scroller" data-swatch-scroller>
+          <button
+            type="button"
+            class="gs-mg__nav"
+            data-swatch-scroll="prev"
+            aria-label="{{ 'general.slider.previous_slide' | t | default: 'Previous' }}"
+            hidden
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+              <path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div
+            class="media-grid-wrapper media-grid-wrapper--carousel{% if s.enable_shadow %} shadow-enabled{% endif %}{% if s.enable_hover_content %} content-on-hover{% endif %}"
+            data-swatch-track
+          >
+            {% content_for 'blocks' %}
+          </div>
+          <button
+            type="button"
+            class="gs-mg__nav"
+            data-swatch-scroll="next"
+            aria-label="{{ 'general.slider.next_slide' | t | default: 'Next' }}"
+            hidden
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+              <path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      {%- else -%}
+        <div class="media-grid-wrapper{% if s.enable_shadow %} shadow-enabled{% endif %}{% if s.enable_hover_content %} content-on-hover{% endif %}">
+          {% content_for 'blocks' %}
+        </div>
+      {%- endif -%}
     {%- endif -%}
   </div>
 </div>
@@ -90,15 +174,49 @@
   ],
   "settings": [
     { "type": "header", "content": "Layout" },
-    { "type": "range", "id": "columns_desktop", "label": "Columns (desktop)", "min": 1, "max": 4, "step": 1, "default": 4 },
-    { "type": "range", "id": "columns_mobile", "label": "Columns (mobile)", "min": 1, "max": 4, "step": 1, "default": 1 },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "grid", "label": "Grid" },
+        { "value": "carousel", "label": "Carousel" }
+      ],
+      "default": "grid"
+    },
+    { "type": "range", "id": "columns_desktop", "label": "Tiles per row (desktop)", "min": 1, "max": 6, "step": 1, "default": 4 },
+    { "type": "range", "id": "columns_mobile", "label": "Tiles per row (mobile)", "min": 1, "max": 4, "step": 1, "default": 1 },
+    {
+      "type": "select",
+      "id": "tile_ratio",
+      "label": "Tile height",
+      "info": "Fixed uses the row heights below; the others follow the image.",
+      "options": [
+        { "value": "fixed", "label": "Fixed row height" },
+        { "value": "adapt", "label": "Natural image height" },
+        { "value": "square", "label": "Square" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "landscape", "label": "Landscape" }
+      ],
+      "default": "fixed"
+    },
     { "type": "range", "id": "desktop_row_height", "label": "Row height (desktop)", "min": 200, "max": 600, "step": 5, "unit": "px", "default": 400 },
     { "type": "range", "id": "mobile_row_height", "label": "Row height (mobile)", "min": 150, "max": 300, "step": 5, "unit": "px", "default": 200 },
+    {
+      "type": "select",
+      "id": "tile_width",
+      "label": "Tile width",
+      "info": "Grid only. Smaller tiles sit centred in their slot.",
+      "options": [
+        { "value": "full", "label": "Full slot" },
+        { "value": "three-quarter", "label": "Three quarters" },
+        { "value": "half", "label": "Half" }
+      ],
+      "default": "full"
+    },
     { "type": "range", "id": "desktop_grid_gap", "label": "Gap (desktop)", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 5 },
     { "type": "range", "id": "mobile_grid_gap", "label": "Gap (mobile)", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 5 },
     { "type": "checkbox", "id": "section_width", "label": "Full width", "default": false },
-    { "type": "checkbox", "id": "enable_shadow", "label": "Tile shadow", "default": false },
-    { "type": "checkbox", "id": "enable_hover_content", "label": "Reveal content on hover", "default": false },
     {
       "type": "select",
       "id": "section_visibility",
@@ -110,6 +228,23 @@
       ],
       "default": "always"
     },
+
+    { "type": "header", "content": "Tiles" },
+    {
+      "type": "select",
+      "id": "content_placement",
+      "label": "Tile content",
+      "options": [
+        { "value": "overlay", "label": "Over the image" },
+        { "value": "below", "label": "Below the image" }
+      ],
+      "default": "overlay"
+    },
+    { "type": "color", "id": "card_background", "label": "Card background", "info": "Empty for no card." },
+    { "type": "range", "id": "card_padding", "label": "Card padding", "min": 0, "max": 30, "step": 1, "unit": "px", "default": 0 },
+    { "type": "checkbox", "id": "enable_shadow", "label": "Tile shadow", "default": false },
+    { "type": "checkbox", "id": "enable_hover_content", "label": "Reveal content on hover", "default": false },
+    { "type": "checkbox", "id": "heading_badge", "label": "Circle badge headings", "info": "Tile headings in a bordered circle, as on the About page timeline.", "default": false },
 
     { "type": "header", "content": "Heading" },
     { "type": "inline_richtext", "id": "heading", "label": "Heading" },
@@ -127,17 +262,6 @@
     },
     {
       "type": "select",
-      "id": "seo_heading",
-      "label": "HTML tag",
-      "options": [
-        { "value": "h1", "label": "h1" },
-        { "value": "h2", "label": "h2" },
-        { "value": "h3", "label": "h3" }
-      ],
-      "default": "h2"
-    },
-    {
-      "type": "select",
       "id": "heading_alignment",
       "label": "Alignment",
       "options": [
@@ -148,7 +272,7 @@
       "default": "text-center"
     },
 
-    { "type": "header", "content": "Tile colors", "info": "Apply to every tile. A child block can override its own." },
+    { "type": "header", "content": "Tile colors", "info": "Apply to every tile when content is over the image. Below the image the colour scheme applies. A child block can override its own." },
     { "type": "color", "id": "heading_color", "label": "Heading", "default": "#ffffff" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#ffffff" },
     { "type": "color", "id": "btn_bg_color", "label": "Button", "default": "#ffffff" },
@@ -158,11 +282,8 @@
 
     { "type": "header", "content": "Section" },
     { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
-    { "type": "checkbox", "id": "enable_gradient", "label": "Use gradient background", "default": false },
-    { "type": "range", "id": "top_space_desktop", "label": "Top padding (desktop)", "unit": "px", "default": 70, "min": 0, "max": 150, "step": 5 },
-    { "type": "range", "id": "bottom_space_desktop", "label": "Bottom padding (desktop)", "unit": "px", "default": 70, "min": 0, "max": 150, "step": 5 },
-    { "type": "range", "id": "top_space_mobile", "label": "Top padding (mobile)", "unit": "px", "default": 40, "min": 0, "max": 100, "step": 5 },
-    { "type": "range", "id": "bottom_space_mobile", "label": "Bottom padding (mobile)", "unit": "px", "default": 40, "min": 0, "max": 100, "step": 5 }
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Top padding", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Bottom padding", "default": 36 }
   ],
   "presets": [
     {
@@ -177,6 +298,17 @@
           "type": "block--media-tile",
           "blocks": [ { "type": "block--heading", "settings": { "text": "<strong>Second tile</strong>" } } ]
         }
+      ]
+    },
+    {
+      "name": "Image strip",
+      "settings": { "layout": "carousel", "columns_desktop": 5, "columns_mobile": 2, "tile_ratio": "adapt", "content_placement": "below", "heading": "Image strip" },
+      "blocks": [
+        { "type": "block--media-tile" },
+        { "type": "block--media-tile" },
+        { "type": "block--media-tile" },
+        { "type": "block--media-tile" },
+        { "type": "block--media-tile" }
       ]
     }
   ]

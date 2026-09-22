@@ -68,7 +68,11 @@
             "content_position": "center",
             "content_alignment": "center",
             "background_color": "#000000",
-            "background_opacity": 0.3
+            "background_opacity": 0.3,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "block_heading_KX4QdW": {
@@ -114,7 +118,11 @@
             "content_position": "center",
             "content_alignment": "center",
             "background_color": "#000000",
-            "background_opacity": 0.3
+            "background_opacity": 0.3,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "block_heading_jDrTDc": {
@@ -160,7 +168,11 @@
             "content_position": "center",
             "content_alignment": "center",
             "background_color": "#000000",
-            "background_opacity": 0.3
+            "background_opacity": 0.3,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "block_heading_KX4QdW": {
@@ -206,7 +218,11 @@
             "content_position": "center",
             "content_alignment": "center",
             "background_color": "#000000",
-            "background_opacity": 0.3
+            "background_opacity": 0.3,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "block_heading_KX4QdW": {
@@ -252,7 +268,11 @@
             "content_position": "center",
             "content_alignment": "center",
             "background_color": "#000000",
-            "background_opacity": 0.3
+            "background_opacity": 0.3,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "block_heading_KX4QdW": {
@@ -298,7 +318,11 @@
             "content_position": "center",
             "content_alignment": "center",
             "background_color": "#000000",
-            "background_opacity": 0.3
+            "background_opacity": 0.3,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "block_heading_KX4QdW": {
@@ -344,7 +368,11 @@
             "content_position": "center",
             "content_alignment": "center",
             "background_color": "#000000",
-            "background_opacity": 0.3
+            "background_opacity": 0.3,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "block_heading_KX4QdW": {
@@ -390,7 +418,11 @@
             "content_position": "center",
             "content_alignment": "center",
             "background_color": "#000000",
-            "background_opacity": 0.3
+            "background_opacity": 0.3,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "block_heading_KX4QdW": {
@@ -436,7 +468,11 @@
             "content_position": "center",
             "content_alignment": "center",
             "background_color": "#000000",
-            "background_opacity": 0.3
+            "background_opacity": 0.3,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "block_heading_KX4QdW": {
@@ -482,7 +518,11 @@
             "content_position": "center",
             "content_alignment": "center",
             "background_color": "#000000",
-            "background_opacity": 0.3
+            "background_opacity": 0.3,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "block_heading_KX4QdW": {
@@ -528,7 +568,11 @@
             "content_position": "center",
             "content_alignment": "center",
             "background_color": "#000000",
-            "background_opacity": 0.3
+            "background_opacity": 0.3,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "block_heading_KX4QdW": {
@@ -574,7 +618,11 @@
             "content_position": "center",
             "content_alignment": "center",
             "background_color": "#000000",
-            "background_opacity": 0.3
+            "background_opacity": 0.3,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "block_heading_KX4QdW": {
@@ -620,7 +668,11 @@
             "content_position": "center",
             "content_alignment": "center",
             "background_color": "#000000",
-            "background_opacity": 0.3
+            "background_opacity": 0.3,
+            "collection": "",
+            "video": "",
+            "hover_text": "",
+            "hover_overlay": "keep"
           },
           "blocks": {
             "block_heading_KX4QdW": {
@@ -674,19 +726,25 @@
       ],
       "name": "Media grid",
       "settings": {
+        "layout": "grid",
         "columns_desktop": 3,
         "columns_mobile": 1,
+        "tile_ratio": "fixed",
         "desktop_row_height": 400,
         "mobile_row_height": 200,
+        "tile_width": "full",
         "desktop_grid_gap": 5,
         "mobile_grid_gap": 5,
         "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "overlay",
+        "card_background": "",
+        "card_padding": 0,
         "enable_shadow": false,
         "enable_hover_content": false,
-        "section_visibility": "always",
+        "heading_badge": false,
         "heading": "",
         "heading_size": "h3",
-        "seo_heading": "h2",
         "heading_alignment": "text-center",
         "heading_color": "#ffffff",
         "text_color": "#ffffff",
@@ -695,11 +753,8 @@
         "btn_hover_color": "#000000",
         "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-4",
-        "enable_gradient": false,
-        "top_space_desktop": 70,
-        "bottom_space_desktop": 70,
-        "top_space_mobile": 40,
-        "bottom_space_mobile": 40
+        "padding_top": 72,
+        "padding_bottom": 72
       }
     }
   },

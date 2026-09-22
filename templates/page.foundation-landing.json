@@ -536,61 +536,91 @@
       }
     },
     "gallery": {
-      "type": "images-grid",
+      "type": "section--media-grid",
       "blocks": {
         "image_VXwNjw": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/Moved_2000x2000_7.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/Moved_2000x2000_7.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_79T7Dm": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/Moved_2000x2000_8_-min.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/Moved_2000x2000_8_-min.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_wFTNhH": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/Moved_2000x2000_11_-min.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/Moved_2000x2000_11_-min.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_EkYJiB": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/Moved_2000x2000_12.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/Moved_2000x2000_12.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_gUcQAR": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/Moved_2000x2000_10.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/Moved_2000x2000_10.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         }
       },
@@ -602,30 +632,35 @@
         "image_gUcQAR"
       ],
       "settings": {
+        "layout": "carousel",
+        "columns_desktop": 5,
+        "columns_mobile": 2,
+        "tile_ratio": "adapt",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 20,
+        "section_width": false,
         "section_visibility": "always",
-        "show_carousel": true,
-        "card_grid": false,
-        "card_inner_space": false,
-        "item_per_row_desktop": 5,
-        "item_per_row_mobile": "2",
-        "card_style": "vertical",
-        "grid_image_size": "large",
-        "content_position": "center",
-        "vertical_grid_image_size": "auto",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
         "heading": "",
-        "highlight_style": "underline",
-        "bg__color": "gradient",
         "heading_size": "h3",
-        "seo_heading": "h2",
         "heading_alignment": "text-left",
-        "card_bg": "",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#000000",
+        "btn_hover_color": "#000000",
+        "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-1",
-        "enable_gradient": false,
-        "top_space_desktop": 0,
-        "bottom_space_desktop": 10,
-        "top_space_mobile": 0,
-        "bottom_space_mobile": 0,
-        "section_width": false
+        "padding_top": 0,
+        "padding_bottom": 8
       }
     },
     "learn_more": {

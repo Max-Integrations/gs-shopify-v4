@@ -18,61 +18,91 @@
       }
     },
     "images_grid_TjxEbG": {
-      "type": "images-grid",
+      "type": "section--media-grid",
       "blocks": {
         "image_c9wKMq": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/GS4685_-_Texas_2A_-_Black_STANDARD_WEB_READY-front_1_-min.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/GS4685_-_Texas_2A_-_Black_STANDARD_WEB_READY-front_1_-min.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_BzjBFT": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/GS4686---Not-Texas_WEB_READY_1_-min.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/GS4686---Not-Texas_WEB_READY_1_-min.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_q4R3bn": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/temp_retail_exclusive_3.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/temp_retail_exclusive_3.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_GdarJ9": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/GS4683_STANDARD_WEB_READY-2021-front_1_-min.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/GS4683_STANDARD_WEB_READY-2021-front_1_-min.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_GdarK9": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/GS4745_-_Women_s_Great_Flag_of_Texas_STANDARD_WEB_READY-front_1_-min.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/GS4745_-_Women_s_Great_Flag_of_Texas_STANDARD_WEB_READY-front_1_-min.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         }
       },
@@ -84,29 +114,35 @@
         "image_GdarK9"
       ],
       "settings": {
+        "layout": "carousel",
+        "columns_desktop": 5,
+        "columns_mobile": 1,
+        "tile_ratio": "adapt",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 20,
+        "section_width": false,
         "section_visibility": "always",
-        "show_carousel": true,
-        "card_grid": false,
-        "card_inner_space": false,
-        "card_style": "vertical",
-        "grid_image_size": "large",
-        "content_position": "center",
-        "vertical_grid_image_size": "auto",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
         "heading": "In-Store Exclusives",
-        "highlight_style": "underline",
-        "bg__color": "solid",
         "heading_size": "h3",
-        "seo_heading": "h2",
         "heading_alignment": "text-center",
-        "card_bg": "",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#000000",
+        "btn_hover_color": "#000000",
+        "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-4",
-        "enable_gradient": false,
-        "top_space_desktop": 50,
-        "bottom_space_desktop": 50,
-        "top_space_mobile": 40,
-        "bottom_space_mobile": 40,
-        "item_per_row_desktop": 5,
-        "section_width": false
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     }
   },

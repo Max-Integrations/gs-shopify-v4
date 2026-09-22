@@ -1,97 +1,245 @@
 {
   "sections": {
     "shop_by_type": {
-      "type": "images-grid",
+      "type": "section--media-grid",
       "blocks": {
         "tile_1": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "heading": "Headwear",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "small"
-          }
+            "media_image": "",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "Headwear",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "tile_2": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "heading": "Basics",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "small",
-            "collection": "mens-basics"
-          }
+            "media_image": "",
+            "video": "",
+            "collection": "mens-basics",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "Basics",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "tile_3": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "heading": "Tees & Tanks",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "small",
-            "collection": "mens-graphic-tees-and-tanks"
-          }
+            "media_image": "",
+            "video": "",
+            "collection": "mens-graphic-tees-and-tanks",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "Tees & Tanks",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "tile_4": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "heading": "Hoodies & Long Sleeve",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "small",
-            "collection": "mens-hoodies-and-sweatshirts"
-          }
+            "media_image": "",
+            "video": "",
+            "collection": "mens-hoodies-and-sweatshirts",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "Hoodies & Long Sleeve",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "tile_5": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "heading": "Bottoms",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "small",
-            "collection": "mens-bottoms"
-          }
+            "media_image": "",
+            "video": "",
+            "collection": "mens-bottoms",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "Bottoms",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "tile_6": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "heading": "Button Downs & Polos",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "small",
-            "collection": "button-downs-polos"
-          }
+            "media_image": "",
+            "video": "",
+            "collection": "button-downs-polos",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "Button Downs & Polos",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         },
         "tile_7": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "heading": "Outerwear",
-            "title_font_desktop": 0,
-            "title_font_mobile": 0,
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "small",
-            "collection": "mens-outerwear"
-          }
+            "media_image": "",
+            "video": "",
+            "collection": "mens-outerwear",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "title": {
+              "type": "block--heading",
+              "settings": {
+                "text": "Outerwear",
+                "size": "h6",
+                "tag": "p",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "title"
+          ]
         }
       },
       "block_order": [
@@ -104,32 +252,35 @@
         "tile_7"
       ],
       "settings": {
-        "section_visibility": "always",
+        "layout": "carousel",
+        "columns_desktop": 6,
+        "columns_mobile": 2,
+        "tile_ratio": "square",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 20,
         "section_width": true,
-        "show_carousel": true,
-        "card_grid": false,
-        "card_inner_space": false,
-        "item_per_row_desktop": 6,
-        "item_per_row_mobile": "2",
-        "card_style": "vertical",
-        "grid_image_size": "large",
-        "content_position": "center",
-        "vertical_grid_image_size": "square",
+        "section_visibility": "always",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
         "heading": "SHOP BY PRODUCT TYPE",
-        "highlight_style": "underline",
-        "bg__color": "gradient",
         "heading_size": "h3",
-        "heading_font_desktop": 0,
-        "heading_font_mobile": 0,
-        "seo_heading": "h2",
         "heading_alignment": "text-center",
-        "card_bg": "",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#000000",
+        "btn_hover_color": "#000000",
+        "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-4",
-        "enable_gradient": false,
-        "top_space_desktop": 30,
-        "bottom_space_desktop": 30,
-        "top_space_mobile": 20,
-        "bottom_space_mobile": 20
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "banner": {

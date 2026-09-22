@@ -18,28 +18,40 @@
       }
     },
     "images_grid_TjxEbG": {
-      "type": "images-grid",
+      "type": "section--media-grid",
       "blocks": {
         "image_q4R3bn": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/GS6575_FRONT_1.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/GS6575_FRONT_1.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         },
         "image_KYNYDc": {
-          "type": "image",
+          "type": "block--media-tile",
           "settings": {
-            "image": "shopify://shop_images/GS7767_WEB-READY_STACKED.png",
-            "heading": "",
-            "btn_text": "",
-            "btn_link": "",
-            "button_as_link": false,
-            "button_size": "large"
+            "media_image": "shopify://shop_images/GS7767_WEB-READY_STACKED.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
           }
         }
       },
@@ -48,30 +60,35 @@
         "image_KYNYDc"
       ],
       "settings": {
+        "layout": "carousel",
+        "columns_desktop": 5,
+        "columns_mobile": 1,
+        "tile_ratio": "adapt",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 20,
+        "section_width": false,
         "section_visibility": "always",
-        "show_carousel": true,
-        "card_grid": false,
-        "card_inner_space": false,
-        "item_per_row_desktop": 5,
-        "item_per_row_mobile": "1",
-        "card_style": "vertical",
-        "grid_image_size": "large",
-        "content_position": "center",
-        "vertical_grid_image_size": "auto",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
         "heading": "In-Store Exclusives",
-        "highlight_style": "underline",
-        "bg__color": "solid",
         "heading_size": "h3",
-        "seo_heading": "h2",
         "heading_alignment": "text-center",
-        "card_bg": "",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#000000",
+        "btn_hover_color": "#000000",
+        "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-4",
-        "enable_gradient": false,
-        "top_space_desktop": 50,
-        "bottom_space_desktop": 50,
-        "top_space_mobile": 10,
-        "bottom_space_mobile": 10,
-        "section_width": false
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     }
   },
