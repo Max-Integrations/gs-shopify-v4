@@ -719,183 +719,64 @@
       }
     },
     "about-section-5": {
-      "type": "section--about-details",
+      "type": "multicolumn",
       "blocks": {
-        "95baacf8-0a56-42d2-abe1-f481aeec1c80": {
-          "type": "text",
+        "retail": {
+          "type": "column",
           "settings": {
-            "title": "Atlanta, GA",
-            "gs_retail_link": "outlet-shoppes-at-atlanta-retail-store"
+            "icon": "none",
+            "image": "",
+            "title": "RETAIL",
+            "text": "<p>We are THE destinations that represents the power of the Grunt Style Brand; bringing to life the Mission, Vision, Values with authentic and genuine experiences.</p><p><strong>VISIT OUR LOCATIONS</strong></p><p><a href=\"/pages/outlet-shoppes-at-atlanta-retail-store\">Atlanta, GA</a> &middot; <a href=\"/pages/branson-tanger-outlet-retail-store\">Branson, MO</a> &middot; <a href=\"/pages/grunt-style-broadway-retail-store\">Broadway, San Antonio, TX</a> &middot; <a href=\"/pages/phoenix-premium-outlets-retail-store\">Chandler, AZ</a> &middot; <a href=\"/pages/destin-commons-retail-store\">Destin, FL</a> &middot; <a href=\"/pages/outlet-shoppes-at-el-paso-retail-store\">El Paso, TX</a> &middot; <a href=\"/pages/las-vegas-south-premium-outlets-retail-store\">Las Vegas, NV</a> &middot; <a href=\"/pages/tampa-premium-outlet-retail-store\">Lutz, FL</a> &middot; <a href=\"/pages/myrtle-beach-retail-store\">Myrtle Beach, SC</a> &middot; <a href=\"/pages/opry-mills-retail-store\">Nashville, TN</a> &middot; <a href=\"/pages/grunt-style-norfolk-retail-store\">Norfolk, VA</a> &middot; <a href=\"/pages/grunt-style-sevierville-store\">Sevierville, TN</a> &middot; <a href=\"/pages/tulsa-premium-outlet-retail-store\">Tulsa, OK</a></p>",
+            "link_label": "",
+            "link": ""
           }
         },
-        "89b3d359-1ec1-425b-be30-a5e303e85993": {
-          "type": "text",
+        "perks": {
+          "type": "column",
           "settings": {
-            "title": "Branson, MO",
-            "gs_retail_link": "branson-tanger-outlet-retail-store"
+            "icon": "none",
+            "image": "shopify://shop_images/perks-discount-icon_300x300_a84326da-d174-4ea5-920e-a818739c4cdc.png",
+            "title": "",
+            "text": "<h4>FOCUSED ON THOSE WHO SERVE </h4><p>We provide more for our Military, First Responders, and Healthcare Heros who are Grunt Style customers. As a token of appreciation for your service, Grunt Style is now teamed up with GovX to give you an exclusive 10% discount in our store. </p>",
+            "link_label": "Learn More",
+            "link": "shopify://pages/govx-discount"
           }
         },
-        "5131df28-92c2-414e-bb2d-e1fcae1443ec": {
-          "type": "text",
+        "rewards": {
+          "type": "column",
           "settings": {
-            "title": "Broadway, San Antonio, TX",
-            "gs_retail_link": "grunt-style-broadway-retail-store"
-          }
-        },
-        "7bf79b0e-4460-4ed8-9ac2-c998ab79f432": {
-          "type": "text",
-          "settings": {
-            "title": "Chandler, AZ",
-            "gs_retail_link": "phoenix-premium-outlets-retail-store"
-          }
-        },
-        "d6c41001-2331-45e3-bbe8-a55a04e462da": {
-          "type": "text",
-          "settings": {
-            "title": "Destin, FL",
-            "gs_retail_link": "destin-commons-retail-store"
-          }
-        },
-        "b2e64e92-48a0-4404-9c0a-9c3f80d988f3": {
-          "type": "text",
-          "settings": {
-            "title": "El Paso, TX",
-            "gs_retail_link": "outlet-shoppes-at-el-paso-retail-store"
-          }
-        },
-        "85ae1d9f-ad2a-41b0-882b-ee39a546a00d": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "title": "Gretna, NE",
-            "gs_retail_link": "grunt-style-nebraska-crossing-store"
-          }
-        },
-        "text_qyJjtE": {
-          "type": "text",
-          "settings": {
-            "title": "Las Vegas, NV",
-            "gs_retail_link": "las-vegas-south-premium-outlets-retail-store"
-          }
-        },
-        "6c86f328-e900-4ad0-87a1-8152889af1d7": {
-          "type": "text",
-          "settings": {
-            "title": "Lutz, FL",
-            "gs_retail_link": "tampa-premium-outlet-retail-store"
-          }
-        },
-        "text_CmiVcd": {
-          "type": "text",
-          "settings": {
-            "title": "Myrtle Beach, SC",
-            "gs_retail_link": "myrtle-beach-retail-store"
-          }
-        },
-        "532963ef-83dc-46d4-9bd7-258392d9f86a": {
-          "type": "text",
-          "settings": {
-            "title": "Nashville, TN",
-            "gs_retail_link": "opry-mills-retail-store"
-          }
-        },
-        "text_zYbz67": {
-          "type": "text",
-          "settings": {
-            "title": "Norfolk, VA",
-            "gs_retail_link": "grunt-style-norfolk-retail-store"
-          }
-        },
-        "fe01a5cd-b4d1-4211-93e2-b0a21d3b1b49": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "title": "Pooler, GA",
-            "gs_retail_link": "savannah-tanger-outlets-retail-store"
-          }
-        },
-        "d3096867-308d-47b7-b5f0-3aec9ead8ea7": {
-          "type": "text",
-          "settings": {
-            "title": "Sevierville, TN",
-            "gs_retail_link": "grunt-style-sevierville-store"
-          }
-        },
-        "text_XVEywx": {
-          "type": "text",
-          "settings": {
-            "title": "Tulsa, OK",
-            "gs_retail_link": "tulsa-premium-outlet-retail-store"
-          }
-        },
-        "45f1e24c-5b66-46f9-9710-68735e73d56f": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "title": "Fort Sam Houston, TX",
-            "gs_retail_link": "grunt-style-fort-sam-houston-store"
-          }
-        },
-        "72d78f2f-b384-4de2-8517-582bc0b50955": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "title": "Fort Cavazos, TX",
-            "gs_retail_link": "ft-cavazos-aafes-retail-store"
-          }
-        },
-        "b1a02845-3545-494c-8380-5746ef1eaeaa": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "title": "Fort Campbell, KY",
-            "gs_retail_link": "fort-campbell-aafes-retail-store"
-          }
-        },
-        "text_YfmCtV": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "title": "Grand Prairie, TX",
-            "gs_retail_link": "grand-prairie-premium-outlets"
+            "icon": "none",
+            "image": "",
+            "title": "GRUNT STYLE REWARDS",
+            "text": "<p><em>5-20% BACK ON EVERY ORDER.</em></p><p>Smart patriots get rewarded every time. Spend $60? That's up to $12 back in rewards, not once, but every time you shop. Add free shipping, birthday perks, and it pays to stick with Grunt Style.</p>",
+            "link_label": "JOIN REWARDS NOW",
+            "link": "https://www.gruntstyle.com/community/membership"
           }
         }
       },
       "block_order": [
-        "95baacf8-0a56-42d2-abe1-f481aeec1c80",
-        "89b3d359-1ec1-425b-be30-a5e303e85993",
-        "5131df28-92c2-414e-bb2d-e1fcae1443ec",
-        "7bf79b0e-4460-4ed8-9ac2-c998ab79f432",
-        "d6c41001-2331-45e3-bbe8-a55a04e462da",
-        "b2e64e92-48a0-4404-9c0a-9c3f80d988f3",
-        "85ae1d9f-ad2a-41b0-882b-ee39a546a00d",
-        "text_qyJjtE",
-        "6c86f328-e900-4ad0-87a1-8152889af1d7",
-        "text_CmiVcd",
-        "532963ef-83dc-46d4-9bd7-258392d9f86a",
-        "text_zYbz67",
-        "fe01a5cd-b4d1-4211-93e2-b0a21d3b1b49",
-        "d3096867-308d-47b7-b5f0-3aec9ead8ea7",
-        "text_XVEywx",
-        "45f1e24c-5b66-46f9-9710-68735e73d56f",
-        "72d78f2f-b384-4de2-8517-582bc0b50955",
-        "b1a02845-3545-494c-8380-5746ef1eaeaa",
-        "text_YfmCtV"
+        "retail",
+        "perks",
+        "rewards"
       ],
       "settings": {
-        "content_box_1_headline": "RETAIL",
-        "content_box_1_description": "<p>We are THE destinations that represents the power of the Grunt Style Brand; bringing to life the Mission, Vision, Values with authentic and genuine experiences.</p>",
-        "show_locations_boolean": true,
-        "content_box_1_cta_text": "",
-        "content_box_1_cta_link": "",
-        "content_box_2_img": "shopify://shop_images/perks-discount-icon_300x300_a84326da-d174-4ea5-920e-a818739c4cdc.png",
-        "content_box_2_description": "<h4>FOCUSED ON THOSE WHO SERVE </h4><p>We provide more for our Military, First Responders, and Healthcare Heros who are Grunt Style customers. As a token of appreciation for your service, Grunt Style is now teamed up with GovX to give you an exclusive 10% discount in our store. </p>",
-        "content_box_2_cta_text": "Learn More",
-        "content_box_2_cta_link": "shopify://pages/govx-discount",
-        "content_box_3_headline": "GRUNT STYLE REWARDS",
-        "content_box_3_description": "<p><em>5-20% BACK ON EVERY ORDER.</em></p><p>Smart patriots get rewarded every time. Spend $60? That's up to $12 back in rewards, not once, but every time you shop. Add free shipping, birthday perks, and it pays to stick with Grunt Style.</p>",
-        "content_box_3_cta_text": "JOIN REWARDS NOW",
-        "content_box_3_cta_link": "https://www.gruntstyle.com/community/membership"
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "image_position": "top",
+        "card_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
     "logo_list_kDiWJU": {

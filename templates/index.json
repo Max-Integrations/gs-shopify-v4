@@ -665,62 +665,63 @@
       }
     },
     "product_highlight_tpQcaj": {
-      "type": "product-highlight",
-      "name": "Product Highlight",
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "SUPPORT THOSE WHO SERVE",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Step up and show your support for those who answer the call—day or night. The First Responder Collection honors the unwavering dedication of EMS, Firefighters, and Police Officers who are always first in and last out. Wear it with pride and stand with the heroes who never hesitate to serve.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_1": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP COLLECTION",
+            "button_link": "shopify://collections/first-responders",
+            "button_style_secondary": true
+          }
+        },
+        "button_2": {
+          "type": "button",
+          "settings": {
+            "button_label": "GRAB THE TEE",
+            "button_link": "shopify://products/first-in-last-out-t-shirt-black",
+            "button_style_secondary": true
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button_1",
+        "button_2"
+      ],
       "settings": {
-        "reverse_desktop": false,
-        "reverse_mobile": true,
-        "product_highlight_text_content_bg_color": "#dddad6",
-        "product_highlight_text_content_heading": "SUPPORT THOSE WHO SERVE",
-        "product_highlight_text_content_heading_color": "#000000",
-        "product_highlight_text_content_heading_font_size_desktop": 32,
-        "product_highlight_text_content_heading_font_size_mobile": 24,
-        "product_highlight_text_content_paragraph": "<p>Step up and show your support for those who answer the call—day or night. The First Responder Collection honors the unwavering dedication of EMS, Firefighters, and Police Officers who are always first in and last out. Wear it with pride and stand with the heroes who never hesitate to serve.</p>",
-        "product_highlight_text_content_paragraph_color": "#000000",
-        "product_highlight_text_content_paragraph_font_size_desktop": 22,
-        "product_highlight_text_content_paragraph_font_size_mobile": 14,
-        "link_cta_style": "button",
-        "link_cta_1_text": "SHOP COLLECTION",
-        "link_cta_1_link": "shopify://collections/first-responders",
-        "link_cta_2_text": "GRAB THE TEE",
-        "link_cta_2_link": "shopify://products/first-in-last-out-t-shirt-black",
-        "link_cta_layout": "side-by-side",
-        "product_highlight_text_content_link_cta_color": "#000000",
-        "product_highlight_text_content_cta_bg_color": "rgba(0,0,0,0)",
-        "product_highlight_text_content_cta_border_color": "#000000",
-        "product_highlight_text_content_cta_border_width": 2,
-        "product_highlight_text_content_link_cta_text_font_size_desktop": 18,
-        "product_highlight_text_content_link_cta_text_font_size_mobile": 12,
-        "product_highlight_text_link_cta_gap_desktop": 25,
-        "product_highlight_text_link_cta_gap_mobile": 15,
-        "product_highlight_text_content_spacing_desktop": 30,
-        "product_highlight_text_content_spacing_mobile": 25,
-        "product_highlight_text_content_gap_desktop": 5,
-        "product_highlight_text_content_gap_mobile": 10,
-        "enable_product_highlight_text_content_arrows": true,
-        "product_highlight_text_content_arrows_display": "solid",
-        "product_highlight_text_content_arrows_color": "#ab192d",
-        "product_highlight_text_content_arrows_size_desktop": 80,
-        "product_highlight_text_content_arrows_size_mobile": 64,
-        "product_highlight_text_arrows_gap_between_desktop": 30,
-        "product_highlight_text_arrows_gap_between_mobile": 30,
+        "section_visibility": "always",
         "image": "shopify://shop_images/Split_Banner_D_980x610_FW26_First_Responder_Collection.jpg",
-        "image_mobile": "shopify://shop_images/Split_Banner_M_750x750_FW26_First_Responder_Collection.jpg",
-        "product_highlight_image_heading": "",
-        "product_highlight_image_heading_color": "#9a723f",
-        "product_highlight_image_heading_font_size_desktop": 38,
-        "product_highlight_image_heading_font_size_mobile": 36,
-        "product_highlight_image_spacing_desktop": 30,
-        "product_highlight_image_spacing_mobile": 15,
-        "enable_product_highlight_image_arrows": true,
-        "product_highlight_image_arrows_display": "outline",
-        "product_highlight_image_arrows_color": "#ffffff",
-        "product_highlight_image_arrows_size_desktop": 78,
-        "product_highlight_image_arrows_size_mobile": 54,
-        "product_highlight_image_arrows_gap_between_desktop": 20,
-        "product_highlight_image_arrows_gap_between_mobile": 25,
-        "product_highlight_heading_arrows_gap_desktop": 10,
-        "product_highlight_heading_arrows_gap_mobile": 0
+        "height": "adapt",
+        "desktop_image_width": "large",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
+        "show_chevrons": true,
+        "chevron_color_text": "#ab192d",
+        "chevron_color_image": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "custom_testimonials_itRkeM": {

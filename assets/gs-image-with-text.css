@@ -1,0 +1,77 @@
+/*
+  ==================================================================
+  GS additions to Dawn's image-with-text: chevron decoration
+  ==================================================================
+  v3's product-highlight drew seven filled chevrons in a row under the
+  copy and six outlined chevrons up the side of the image. The colours
+  arrive as --gs-chevron on each group.
+*/
+
+.gs-iwt__chevrons {
+  display: flex;
+  color: var(--gs-chevron, currentColor);
+  pointer-events: none;
+}
+
+.gs-iwt__chevrons svg {
+  flex: 0 0 auto;
+  width: 4.8rem;
+  height: 4.8rem;
+}
+
+/* Row under the text: chevrons overlap so they read as one run. */
+.gs-iwt__chevrons--row {
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.gs-iwt__chevrons--row svg:not(:first-of-type) {
+  margin-left: -2.4rem;
+}
+
+/* Column over the image: bottom-right, stacked upward. */
+.image-with-text__media {
+  position: relative;
+}
+
+.gs-iwt__chevrons--column {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.gs-iwt__chevrons--column svg {
+  width: 4rem;
+  height: 4rem;
+}
+
+.gs-iwt__chevrons--column svg:not(:first-of-type) {
+  margin-top: -2rem;
+}
+
+/* Two buttons sit side by side. */
+.gs-iwt__content .button + .button {
+  margin-left: 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .gs-iwt__chevrons svg {
+    width: 6.4rem;
+    height: 6.4rem;
+  }
+
+  .gs-iwt__chevrons--row svg:not(:first-of-type) {
+    margin-left: -3.2rem;
+  }
+
+  .gs-iwt__chevrons--column svg {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+
+  .gs-iwt__chevrons--column svg:not(:first-of-type) {
+    margin-top: -2.8rem;
+  }
+}

@@ -763,21 +763,32 @@
       }
     },
     "single_cta_button_rNH9Wc": {
-      "type": "section--single-cta-button",
+      "type": "rich-text",
+      "blocks": {
+        "btn": {
+          "type": "button",
+          "settings": {
+            "button_label": "Join The Members-Only Community",
+            "button_link": "https://www.facebook.com/groups/clubgruntstyle",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false,
+            "open_in_new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "btn"
+      ],
       "settings": {
-        "single_cta_module_color": "#000000",
-        "single_cta_bg_color": "#ffca10",
-        "single_cta_text": "Join The Members-Only Community",
-        "single_cta_text_color": "#000000",
-        "single_cta_text_font": "Roboto, sans-serif",
-        "single_cta_text_size_desktop": 16,
-        "single_cta_text_size_mobile": 14,
-        "single_cta_text_alignment": "center",
-        "single_cta_border_type": "square",
-        "single_cta_url": "https://www.facebook.com/groups/clubgruntstyle",
-        "single_cta_link_window": true,
-        "single_cta_btn_width": "fit-content",
-        "section_visibility": "always"
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-6",
+        "full_width": true,
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     },
     "images_grid_hdYKhF": {

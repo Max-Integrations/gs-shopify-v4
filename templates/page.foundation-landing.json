@@ -6,14 +6,24 @@
       "settings": {}
     },
     "hero": {
-      "type": "section--video-banner",
+      "type": "image-banner",
+      "blocks": {},
+      "block_order": [],
       "settings": {
+        "image": "shopify://shop_images/GSF_Desktop_Header_STATIC_1440x400_1.jpg",
+        "image_2": "shopify://shop_images/GSF_Mobile_Header_STATIC_980x600_1.jpg",
         "video_desktop": "shopify://files/videos/GSF Desktop Header Video.mp4",
         "video_mobile": "shopify://files/videos/GSF Mobile Header Video 980x600.mp4",
-        "image_desktop": "shopify://shop_images/GSF_Desktop_Header_STATIC_1440x400_1.jpg",
-        "image_mobile": "shopify://shop_images/GSF_Mobile_Header_STATIC_980x600_1.jpg",
-        "overlay_opacity": 0,
-        "section_width": true
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-4",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
       }
     },
     "value_props": {

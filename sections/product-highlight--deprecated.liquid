@@ -230,51 +230,164 @@
 
 {% schema %}
 {
-  "name": "Product Highlight",
+  "name": "Product Highlight (old)",
   "tag": "section",
   "class": "section gs-ph-section",
   "settings": [
-    { "type": "header", "content": "General" },
-    { "type": "checkbox", "id": "reverse_desktop", "label": "Reverse layout (desktop)", "default": false },
-    { "type": "checkbox", "id": "reverse_mobile", "label": "Reverse layout (mobile)", "default": false },
-    { "type": "color", "id": "product_highlight_text_content_bg_color", "label": "Content background", "default": "#FFFFFF" },
-
-    { "type": "header", "content": "Text panel" },
-    { "type": "text", "id": "product_highlight_text_content_heading", "label": "Heading", "default": "Your Heading Here" },
-    { "type": "color", "id": "product_highlight_text_content_heading_color", "label": "Heading color", "default": "#000000" },
-    { "type": "range", "id": "product_highlight_text_content_heading_font_size_desktop", "label": "Heading size (desktop)", "min": 12, "max": 96, "step": 2, "unit": "px", "default": 32 },
-    { "type": "range", "id": "product_highlight_text_content_heading_font_size_mobile", "label": "Heading size (mobile)", "min": 12, "max": 72, "step": 2, "unit": "px", "default": 24 },
-    { "type": "richtext", "id": "product_highlight_text_content_paragraph", "label": "Paragraph", "default": "<p>Your description text here.</p>" },
-    { "type": "color", "id": "product_highlight_text_content_paragraph_color", "label": "Paragraph color", "default": "#000000" },
-    { "type": "range", "id": "product_highlight_text_content_paragraph_font_size_desktop", "label": "Paragraph size (desktop)", "min": 12, "max": 96, "step": 2, "unit": "px", "default": 32 },
-    { "type": "range", "id": "product_highlight_text_content_paragraph_font_size_mobile", "label": "Paragraph size (mobile)", "min": 12, "max": 72, "step": 2, "unit": "px", "default": 24 },
-
-    { "type": "header", "content": "Buttons" },
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_desktop",
+      "label": "Reverse layout (desktop)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_mobile",
+      "label": "Reverse layout (mobile)",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "product_highlight_text_content_bg_color",
+      "label": "Content background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Text panel"
+    },
+    {
+      "type": "text",
+      "id": "product_highlight_text_content_heading",
+      "label": "Heading",
+      "default": "Your Heading Here"
+    },
+    {
+      "type": "color",
+      "id": "product_highlight_text_content_heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_content_heading_font_size_desktop",
+      "label": "Heading size (desktop)",
+      "min": 12,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_content_heading_font_size_mobile",
+      "label": "Heading size (mobile)",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "richtext",
+      "id": "product_highlight_text_content_paragraph",
+      "label": "Paragraph",
+      "default": "<p>Your description text here.</p>"
+    },
+    {
+      "type": "color",
+      "id": "product_highlight_text_content_paragraph_color",
+      "label": "Paragraph color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_content_paragraph_font_size_desktop",
+      "label": "Paragraph size (desktop)",
+      "min": 12,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_content_paragraph_font_size_mobile",
+      "label": "Paragraph size (mobile)",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
     {
       "type": "select",
       "id": "link_cta_style",
       "label": "Style",
       "options": [
-        { "value": "text", "label": "Text link" },
-        { "value": "button", "label": "Button" }
+        {
+          "value": "text",
+          "label": "Text link"
+        },
+        {
+          "value": "button",
+          "label": "Button"
+        }
       ],
       "default": "button"
     },
-    { "type": "text", "id": "link_cta_1_text", "label": "Button 1 text", "default": "Learn More" },
-    { "type": "url", "id": "link_cta_1_link", "label": "Button 1 link" },
-    { "type": "text", "id": "link_cta_2_text", "label": "Button 2 text", "default": "Shop Now" },
-    { "type": "url", "id": "link_cta_2_link", "label": "Button 2 link" },
+    {
+      "type": "text",
+      "id": "link_cta_1_text",
+      "label": "Button 1 text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "link_cta_1_link",
+      "label": "Button 1 link"
+    },
+    {
+      "type": "text",
+      "id": "link_cta_2_text",
+      "label": "Button 2 text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "link_cta_2_link",
+      "label": "Button 2 link"
+    },
     {
       "type": "select",
       "id": "link_cta_layout",
       "label": "Button layout",
       "options": [
-        { "value": "stacked", "label": "Stacked" },
-        { "value": "side-by-side", "label": "Side by side" }
+        {
+          "value": "stacked",
+          "label": "Stacked"
+        },
+        {
+          "value": "side-by-side",
+          "label": "Side by side"
+        }
       ],
       "default": "side-by-side"
     },
-    { "type": "color", "id": "product_highlight_text_content_link_cta_color", "label": "Button text", "default": "#000000" },
+    {
+      "type": "color",
+      "id": "product_highlight_text_content_link_cta_color",
+      "label": "Button text",
+      "default": "#000000"
+    },
     {
       "type": "color",
       "id": "product_highlight_text_content_cta_bg_color",
@@ -282,67 +395,337 @@
       "info": "This setting existed in v3 but was never applied. It works now.",
       "default": "rgba(0,0,0,0)"
     },
-    { "type": "color", "id": "product_highlight_text_content_cta_border_color", "label": "Button border", "default": "#000000" },
-    { "type": "range", "id": "product_highlight_text_content_cta_border_width", "label": "Button border width", "min": 1, "max": 10, "step": 1, "unit": "px", "default": 2 },
-    { "type": "range", "id": "product_highlight_text_content_link_cta_text_font_size_desktop", "label": "Button size (desktop)", "min": 12, "max": 96, "step": 2, "unit": "px", "default": 32 },
-    { "type": "range", "id": "product_highlight_text_content_link_cta_text_font_size_mobile", "label": "Button size (mobile)", "min": 12, "max": 72, "step": 2, "unit": "px", "default": 24 },
-    { "type": "range", "id": "product_highlight_text_link_cta_gap_desktop", "label": "Gap between buttons (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 50 },
-    { "type": "range", "id": "product_highlight_text_link_cta_gap_mobile", "label": "Gap between buttons (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 25 },
-
-    { "type": "header", "content": "Text panel spacing" },
-    { "type": "range", "id": "product_highlight_text_content_spacing_desktop", "label": "Padding (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 50 },
-    { "type": "range", "id": "product_highlight_text_content_spacing_mobile", "label": "Padding (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 25 },
-    { "type": "range", "id": "product_highlight_text_content_gap_desktop", "label": "Gap between items (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 50 },
-    { "type": "range", "id": "product_highlight_text_content_gap_mobile", "label": "Gap between items (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 25 },
-
-    { "type": "header", "content": "Text panel chevrons" },
-    { "type": "checkbox", "id": "enable_product_highlight_text_content_arrows", "label": "Show chevrons", "default": false },
+    {
+      "type": "color",
+      "id": "product_highlight_text_content_cta_border_color",
+      "label": "Button border",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_content_cta_border_width",
+      "label": "Button border width",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_content_link_cta_text_font_size_desktop",
+      "label": "Button size (desktop)",
+      "min": 12,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_content_link_cta_text_font_size_mobile",
+      "label": "Button size (mobile)",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_link_cta_gap_desktop",
+      "label": "Gap between buttons (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_link_cta_gap_mobile",
+      "label": "Gap between buttons (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "header",
+      "content": "Text panel spacing"
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_content_spacing_desktop",
+      "label": "Padding (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_content_spacing_mobile",
+      "label": "Padding (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_content_gap_desktop",
+      "label": "Gap between items (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_content_gap_mobile",
+      "label": "Gap between items (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "header",
+      "content": "Text panel chevrons"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_product_highlight_text_content_arrows",
+      "label": "Show chevrons",
+      "default": false
+    },
     {
       "type": "select",
       "id": "product_highlight_text_content_arrows_display",
       "label": "Chevron style",
       "options": [
-        { "value": "solid", "label": "Solid" },
-        { "value": "outline", "label": "Outline" }
+        {
+          "value": "solid",
+          "label": "Solid"
+        },
+        {
+          "value": "outline",
+          "label": "Outline"
+        }
       ],
       "default": "solid"
     },
-    { "type": "color", "id": "product_highlight_text_content_arrows_color", "label": "Chevron color", "info": "Fill when solid, stroke when outline.", "default": "#000000" },
-    { "type": "range", "id": "product_highlight_text_content_arrows_size_desktop", "label": "Chevron size (desktop)", "min": 2, "max": 128, "step": 2, "unit": "px", "default": 64 },
-    { "type": "range", "id": "product_highlight_text_content_arrows_size_mobile", "label": "Chevron size (mobile)", "min": 2, "max": 96, "step": 2, "unit": "px", "default": 48 },
-    { "type": "range", "id": "product_highlight_text_arrows_gap_between_desktop", "label": "Chevron gap (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 50 },
-    { "type": "range", "id": "product_highlight_text_arrows_gap_between_mobile", "label": "Chevron gap (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 25 },
-
-    { "type": "header", "content": "Image panel" },
-    { "type": "image_picker", "id": "image", "label": "Desktop image" },
-    { "type": "image_picker", "id": "image_mobile", "label": "Mobile image", "info": "Optional - falls back to the desktop image." },
-    { "type": "text", "id": "product_highlight_image_heading", "label": "Image heading" },
-    { "type": "color", "id": "product_highlight_image_heading_color", "label": "Image heading color", "default": "#000000" },
-    { "type": "range", "id": "product_highlight_image_heading_font_size_desktop", "label": "Image heading size (desktop)", "min": 12, "max": 96, "step": 2, "unit": "px", "default": 32 },
-    { "type": "range", "id": "product_highlight_image_heading_font_size_mobile", "label": "Image heading size (mobile)", "min": 12, "max": 72, "step": 2, "unit": "px", "default": 24 },
-    { "type": "range", "id": "product_highlight_image_spacing_desktop", "label": "Image content padding (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 50 },
-    { "type": "range", "id": "product_highlight_image_spacing_mobile", "label": "Image content padding (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 25 },
-
-    { "type": "header", "content": "Image panel chevrons" },
-    { "type": "checkbox", "id": "enable_product_highlight_image_arrows", "label": "Show chevrons", "default": false },
+    {
+      "type": "color",
+      "id": "product_highlight_text_content_arrows_color",
+      "label": "Chevron color",
+      "info": "Fill when solid, stroke when outline.",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_content_arrows_size_desktop",
+      "label": "Chevron size (desktop)",
+      "min": 2,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_content_arrows_size_mobile",
+      "label": "Chevron size (mobile)",
+      "min": 2,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_arrows_gap_between_desktop",
+      "label": "Chevron gap (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_text_arrows_gap_between_mobile",
+      "label": "Chevron gap (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "header",
+      "content": "Image panel"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile image",
+      "info": "Optional - falls back to the desktop image."
+    },
+    {
+      "type": "text",
+      "id": "product_highlight_image_heading",
+      "label": "Image heading"
+    },
+    {
+      "type": "color",
+      "id": "product_highlight_image_heading_color",
+      "label": "Image heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_image_heading_font_size_desktop",
+      "label": "Image heading size (desktop)",
+      "min": 12,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_image_heading_font_size_mobile",
+      "label": "Image heading size (mobile)",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_image_spacing_desktop",
+      "label": "Image content padding (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_image_spacing_mobile",
+      "label": "Image content padding (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "header",
+      "content": "Image panel chevrons"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_product_highlight_image_arrows",
+      "label": "Show chevrons",
+      "default": false
+    },
     {
       "type": "select",
       "id": "product_highlight_image_arrows_display",
       "label": "Chevron style",
       "options": [
-        { "value": "solid", "label": "Solid" },
-        { "value": "outline", "label": "Outline" }
+        {
+          "value": "solid",
+          "label": "Solid"
+        },
+        {
+          "value": "outline",
+          "label": "Outline"
+        }
       ],
       "default": "outline"
     },
-    { "type": "color", "id": "product_highlight_image_arrows_color", "label": "Chevron color", "default": "#000000" },
-    { "type": "range", "id": "product_highlight_image_arrows_size_desktop", "label": "Chevron size (desktop)", "min": 2, "max": 128, "step": 2, "unit": "px", "default": 64 },
-    { "type": "range", "id": "product_highlight_image_arrows_size_mobile", "label": "Chevron size (mobile)", "min": 2, "max": 96, "step": 2, "unit": "px", "default": 48 },
-    { "type": "range", "id": "product_highlight_image_arrows_gap_between_desktop", "label": "Chevron gap (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 50 },
-    { "type": "range", "id": "product_highlight_image_arrows_gap_between_mobile", "label": "Chevron gap (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 25 },
-    { "type": "range", "id": "product_highlight_heading_arrows_gap_desktop", "label": "Gap between heading and chevrons (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 50 },
-    { "type": "range", "id": "product_highlight_heading_arrows_gap_mobile", "label": "Gap between heading and chevrons (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 25 }
-  ],
-  "presets": [{ "name": "Product Highlight" }]
+    {
+      "type": "color",
+      "id": "product_highlight_image_arrows_color",
+      "label": "Chevron color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_image_arrows_size_desktop",
+      "label": "Chevron size (desktop)",
+      "min": 2,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_image_arrows_size_mobile",
+      "label": "Chevron size (mobile)",
+      "min": 2,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_image_arrows_gap_between_desktop",
+      "label": "Chevron gap (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_image_arrows_gap_between_mobile",
+      "label": "Chevron gap (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_heading_arrows_gap_desktop",
+      "label": "Gap between heading and chevrons (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "product_highlight_heading_arrows_gap_mobile",
+      "label": "Gap between heading and chevrons (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    }
+  ]
 }
 {% endschema %}

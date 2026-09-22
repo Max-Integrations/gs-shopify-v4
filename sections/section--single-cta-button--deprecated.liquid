@@ -75,11 +75,14 @@
 
 {% schema %}
 {
-  "name": "Single CTA Button",
+  "name": "Single CTA Button (old)",
   "tag": "section",
   "class": "gs-single-cta",
   "disabled_on": {
-    "groups": ["header", "footer"]
+    "groups": [
+      "header",
+      "footer"
+    ]
   },
   "settings": [
     {
@@ -87,37 +90,101 @@
       "id": "section_visibility",
       "label": "Show on",
       "options": [
-        { "value": "always", "label": "All devices" },
-        { "value": "small", "label": "Mobile only" },
-        { "value": "large", "label": "Desktop only" }
+        {
+          "value": "always",
+          "label": "All devices"
+        },
+        {
+          "value": "small",
+          "label": "Mobile only"
+        },
+        {
+          "value": "large",
+          "label": "Desktop only"
+        }
       ],
       "default": "always"
     },
-    { "type": "color", "id": "single_cta_module_color", "label": "Module background", "default": "#ffffff" },
-    { "type": "color", "id": "single_cta_bg_color", "label": "Button background", "default": "#ff0000" },
-    { "type": "inline_richtext", "id": "single_cta_text", "label": "Button text" },
-    { "type": "color", "id": "single_cta_text_color", "label": "Button text color", "default": "#ffffff" },
+    {
+      "type": "color",
+      "id": "single_cta_module_color",
+      "label": "Module background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "single_cta_bg_color",
+      "label": "Button background",
+      "default": "#ff0000"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "single_cta_text",
+      "label": "Button text"
+    },
+    {
+      "type": "color",
+      "id": "single_cta_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
     {
       "type": "select",
       "id": "single_cta_text_font",
       "label": "Font family",
       "options": [
-        { "value": "Roboto, sans-serif", "label": "Roboto, Sans-Serif" },
-        { "value": "Engravers MT", "label": "Engravers MT" },
-        { "value": "Times New Roman", "label": "Times New Roman" }
+        {
+          "value": "Roboto, sans-serif",
+          "label": "Roboto, Sans-Serif"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        },
+        {
+          "value": "Times New Roman",
+          "label": "Times New Roman"
+        }
       ],
       "default": "Roboto, sans-serif"
     },
-    { "type": "range", "id": "single_cta_text_size_desktop", "label": "Text size (desktop)", "min": 16, "max": 48, "step": 1, "unit": "px", "default": 16 },
-    { "type": "range", "id": "single_cta_text_size_mobile", "label": "Text size (mobile)", "min": 11, "max": 32, "step": 1, "unit": "px", "default": 14 },
+    {
+      "type": "range",
+      "id": "single_cta_text_size_desktop",
+      "label": "Text size (desktop)",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "single_cta_text_size_mobile",
+      "label": "Text size (mobile)",
+      "min": 11,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
     {
       "type": "select",
       "id": "single_cta_text_alignment",
       "label": "Text alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "left"
     },
@@ -126,29 +193,56 @@
       "id": "single_cta_border_type",
       "label": "Button shape",
       "options": [
-        { "value": "square", "label": "Square" },
-        { "value": "rounded", "label": "Rounded" }
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "rounded",
+          "label": "Rounded"
+        }
       ],
       "default": "square"
     },
-    { "type": "url", "id": "single_cta_url", "label": "Link" },
-    { "type": "checkbox", "id": "single_cta_link_window", "label": "Open link in a new window", "default": false },
+    {
+      "type": "url",
+      "id": "single_cta_url",
+      "label": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "single_cta_link_window",
+      "label": "Open link in a new window",
+      "default": false
+    },
     {
       "type": "select",
       "id": "single_cta_btn_width",
       "label": "Button width",
       "options": [
-        { "value": "fit-content", "label": "Fit content" },
-        { "value": "full-width", "label": "Full width" },
-        { "value": "half-width", "label": "Half width" },
-        { "value": "three-quarter-width", "label": "3/4 width" },
-        { "value": "one-quarter-width", "label": "1/4 width" }
+        {
+          "value": "fit-content",
+          "label": "Fit content"
+        },
+        {
+          "value": "full-width",
+          "label": "Full width"
+        },
+        {
+          "value": "half-width",
+          "label": "Half width"
+        },
+        {
+          "value": "three-quarter-width",
+          "label": "3/4 width"
+        },
+        {
+          "value": "one-quarter-width",
+          "label": "1/4 width"
+        }
       ],
       "default": "fit-content"
     }
-  ],
-  "presets": [
-    { "name": "Single CTA Button" }
   ]
 }
 {% endschema %}

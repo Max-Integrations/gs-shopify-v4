@@ -1,10 +1,19 @@
 {% comment %}
-  GS addition: `section_visibility` (mobile only / desktop only) on this
-  Dawn section, so the club page can show a text block on mobile and an
-  image-with-text card on desktop. Breakpoint 767/768 matches the GS
-  sections (see assets/gs-images-grid.css).
+  GS additions to Dawn's image-with-text:
+    - `section_visibility` (mobile only / desktop only), so the club page
+      can show a text block on mobile and an image-with-text card on
+      desktop. Breakpoint 767/768 matches the GS sections.
+    - the button block allows two buttons (limit 2 instead of 1).
+    - `show_chevrons`: v3's product-highlight decoration, a row of
+      chevrons under the text and a column of outlined chevrons over the
+      image. With heading/text/two buttons this section replaces the
+      homepage product-highlight section (53 settings). Styles in
+      assets/gs-image-with-text.css.
 {% endcomment %}
 {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
+{%- if section.settings.show_chevrons -%}
+  {{ 'gs-image-with-text.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -73,12 +82,19 @@
             {%- else -%}
               {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
             {%- endif -%}
+            {%- if section.settings.show_chevrons -%}
+              <div class="gs-iwt__chevrons gs-iwt__chevrons--column" style="--gs-chevron: {{ section.settings.chevron_color_image | default: '#ffffff' }};" aria-hidden="true">
+                {%- for i in (1..6) -%}
+                  <svg viewBox="0 0 100 100" focusable="false"><path d="M100 0L50 50L100 100H50L0 50L50 0H100Z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
           </div>
         </div>
         <div class="image-with-text__text-item grid__item">
           <div
             id="ImageWithText--{{ section.id }}"
-            class="image-with-text__content image-with-text__content--{{ section.settings.desktop_content_position }} image-with-text__content--desktop-{{ section.settings.desktop_content_alignment }} image-with-text__content--mobile-{{ section.settings.mobile_content_alignment }} image-with-text__content--{{ section.settings.height }} content-container{% unless remove_color_classes %} gradient color-{{ section.settings.color_scheme }}{% else %} background-transparent{% endunless %}"
+            class="image-with-text__content gs-iwt__content image-with-text__content--{{ section.settings.desktop_content_position }} image-with-text__content--desktop-{{ section.settings.desktop_content_alignment }} image-with-text__content--mobile-{{ section.settings.mobile_content_alignment }} image-with-text__content--{{ section.settings.height }} content-container{% unless remove_color_classes %} gradient color-{{ section.settings.color_scheme }}{% else %} background-transparent{% endunless %}"
           >
             {%- for block in section.blocks -%}
               {% case block.type %}
@@ -116,6 +132,13 @@
                   {%- endif -%}
               {%- endcase -%}
             {%- endfor -%}
+            {%- if section.settings.show_chevrons -%}
+              <div class="gs-iwt__chevrons gs-iwt__chevrons--row" style="--gs-chevron: {{ section.settings.chevron_color_text | default: '#ab192d' }};" aria-hidden="true">
+                {%- for i in (1..7) -%}
+                  <svg viewBox="0 0 100 100" focusable="false"><path d="M100 0L50 50L100 100H50L0 50L50 0H100Z" fill="currentColor"/></svg>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
           </div>
         </div>
       </div>
@@ -324,6 +347,10 @@
       "label": "t:sections.multirow.settings.container_color_scheme.label",
       "default": "scheme-1"
     },
+    { "type": "header", "content": "Decoration (GS addition)" },
+    { "type": "checkbox", "id": "show_chevrons", "label": "Show chevrons", "info": "A row under the text and an outlined column over the image, as on the homepage product highlight.", "default": false },
+    { "type": "color", "id": "chevron_color_text", "label": "Chevrons under the text", "default": "#ab192d" },
+    { "type": "color", "id": "chevron_color_image", "label": "Chevrons over the image", "default": "#ffffff" },
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
@@ -472,7 +499,7 @@
     {
       "type": "button",
       "name": "t:sections.image-with-text.blocks.button.name",
-      "limit": 1,
+      "limit": 2,
       "settings": [
         {
           "type": "text",

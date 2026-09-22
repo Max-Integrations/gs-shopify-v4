@@ -77,22 +77,54 @@
 
 {% schema %}
 {
-  "name": "Video banner",
+  "name": "Video banner (old)",
   "tag": "section",
   "class": "gs-vbanner-section",
   "disabled_on": {
-    "groups": ["header", "footer"]
+    "groups": [
+      "header",
+      "footer"
+    ]
   },
   "settings": [
-    { "type": "video", "id": "video_desktop", "label": "Video (desktop)" },
-    { "type": "video", "id": "video_mobile", "label": "Video (mobile)", "info": "Empty uses the desktop video." },
-    { "type": "image_picker", "id": "image_desktop", "label": "Poster image (desktop)", "info": "Shown until the video plays, or instead of it when no video is set." },
-    { "type": "image_picker", "id": "image_mobile", "label": "Poster image (mobile)" },
-    { "type": "range", "id": "overlay_opacity", "label": "Overlay", "min": 0, "max": 90, "step": 10, "unit": "%", "default": 0 },
-    { "type": "checkbox", "id": "section_width", "label": "Full width", "default": true }
-  ],
-  "presets": [
-    { "name": "Video banner" }
+    {
+      "type": "video",
+      "id": "video_desktop",
+      "label": "Video (desktop)"
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "Video (mobile)",
+      "info": "Empty uses the desktop video."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Poster image (desktop)",
+      "info": "Shown until the video plays, or instead of it when no video is set."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Poster image (mobile)"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay",
+      "min": 0,
+      "max": 90,
+      "step": 10,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "section_width",
+      "label": "Full width",
+      "default": true
+    }
   ]
 }
 {% endschema %}

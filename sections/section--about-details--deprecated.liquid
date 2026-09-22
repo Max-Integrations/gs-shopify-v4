@@ -100,11 +100,14 @@
 
 {% schema %}
 {
-  "name": "About details",
+  "name": "About details (old)",
   "tag": "section",
   "class": "gs-about-details-section",
   "disabled_on": {
-    "groups": ["header", "footer"]
+    "groups": [
+      "header",
+      "footer"
+    ]
   },
   "settings": [
     {
@@ -112,56 +115,122 @@
       "id": "section_visibility",
       "label": "Show on",
       "options": [
-        { "value": "always", "label": "All devices" },
-        { "value": "small", "label": "Mobile only" },
-        { "value": "large", "label": "Desktop only" }
+        {
+          "value": "always",
+          "label": "All devices"
+        },
+        {
+          "value": "small",
+          "label": "Mobile only"
+        },
+        {
+          "value": "large",
+          "label": "Desktop only"
+        }
       ],
       "default": "always"
     },
-    { "type": "header", "content": "Card 1 (Retail)" },
-    { "type": "text", "id": "content_box_1_headline", "label": "Headline", "default": "Retail" },
+    {
+      "type": "header",
+      "content": "Card 1 (Retail)"
+    },
+    {
+      "type": "text",
+      "id": "content_box_1_headline",
+      "label": "Headline",
+      "default": "Retail"
+    },
     {
       "type": "richtext",
       "id": "content_box_1_description",
       "label": "Description",
       "default": "<p>We are THE destinations that represents the power of the Grunt Style Brand; bringing to life the Mission, Vision, Values with authentic and genuine experiences.</p>"
     },
-    { "type": "checkbox", "id": "show_locations_boolean", "label": "Show the locations list", "default": true },
-    { "type": "text", "id": "content_box_1_cta_text", "label": "CTA text (optional)" },
-    { "type": "url", "id": "content_box_1_cta_link", "label": "CTA link (optional)" },
-    { "type": "header", "content": "Card 2 (icon)" },
-    { "type": "image_picker", "id": "content_box_2_img", "label": "Image or logo" },
+    {
+      "type": "checkbox",
+      "id": "show_locations_boolean",
+      "label": "Show the locations list",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "content_box_1_cta_text",
+      "label": "CTA text (optional)"
+    },
+    {
+      "type": "url",
+      "id": "content_box_1_cta_link",
+      "label": "CTA link (optional)"
+    },
+    {
+      "type": "header",
+      "content": "Card 2 (icon)"
+    },
+    {
+      "type": "image_picker",
+      "id": "content_box_2_img",
+      "label": "Image or logo"
+    },
     {
       "type": "richtext",
       "id": "content_box_2_description",
       "label": "Description",
       "default": "<p>Did you know? Everything from Grunt Style is guaranteed for life!</p>"
     },
-    { "type": "text", "id": "content_box_2_cta_text", "label": "CTA text (optional)" },
-    { "type": "url", "id": "content_box_2_cta_link", "label": "CTA link (optional)" },
-    { "type": "header", "content": "Card 3" },
-    { "type": "text", "id": "content_box_3_headline", "label": "Headline", "default": "Customs" },
+    {
+      "type": "text",
+      "id": "content_box_2_cta_text",
+      "label": "CTA text (optional)"
+    },
+    {
+      "type": "url",
+      "id": "content_box_2_cta_link",
+      "label": "CTA link (optional)"
+    },
+    {
+      "type": "header",
+      "content": "Card 3"
+    },
+    {
+      "type": "text",
+      "id": "content_box_3_headline",
+      "label": "Headline",
+      "default": "Customs"
+    },
     {
       "type": "richtext",
       "id": "content_box_3_description",
       "label": "Description",
       "default": "<p>Grunt Style's vision is to deliver the highest quality, most patriotic apparel.</p>"
     },
-    { "type": "text", "id": "content_box_3_cta_text", "label": "CTA text" },
-    { "type": "url", "id": "content_box_3_cta_link", "label": "CTA link" }
+    {
+      "type": "text",
+      "id": "content_box_3_cta_text",
+      "label": "CTA text"
+    },
+    {
+      "type": "url",
+      "id": "content_box_3_cta_link",
+      "label": "CTA link"
+    }
   ],
   "blocks": [
     {
       "name": "Retail location",
       "type": "text",
       "settings": [
-        { "type": "text", "id": "title", "label": "Location name" },
-        { "type": "page", "id": "gs_retail_link", "label": "Location page" }
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Location name"
+        },
+        {
+          "type": "page",
+          "id": "gs_retail_link",
+          "label": "Location page"
+        }
       ]
     }
-  ],
-  "presets": [
-    { "name": "About details" }
   ]
 }
 {% endschema %}

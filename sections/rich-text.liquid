@@ -1,8 +1,12 @@
 {% comment %}
-  GS addition: `section_visibility` (mobile only / desktop only) on this
-  Dawn section, so the club page can show a text block on mobile and an
-  image-with-text card on desktop. Breakpoint 767/768 matches the GS
-  sections (see assets/gs-images-grid.css).
+  GS additions to Dawn's rich-text:
+    - `section_visibility` (mobile only / desktop only), so the club page
+      can show a text block on mobile and an image-with-text card on
+      desktop. Breakpoint 767/768 matches the GS sections.
+    - button block `open_in_new_tab`, so a lone button band can point at
+      an external community link. This section with a single button
+      block replaces v3's single-cta-button section (the button colours
+      come from the colour scheme, e.g. "Black, gold button").
 {% endcomment %}
 {{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
 
@@ -86,6 +90,7 @@
                       href="{{ block.settings.button_link }}"
                     {% endif %}
                     class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                    {% if block.settings.open_in_new_tab and block.settings.button_link != blank %}target="_blank" rel="noopener"{% endif %}
                   >
                     {{- block.settings.button_label | escape -}}
                   </a>
@@ -98,6 +103,7 @@
                       href="{{ block.settings.button_link_2 }}"
                     {% endif %}
                     class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}"
+                    {% if block.settings.open_in_new_tab and block.settings.button_link_2 != blank %}target="_blank" rel="noopener"{% endif %}
                   >
                     {{- block.settings.button_label_2 | escape -}}
                   </a>
@@ -359,6 +365,13 @@
           "id": "button_style_secondary_2",
           "default": false,
           "label": "t:sections.rich-text.blocks.buttons.settings.button_style_secondary_2.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_in_new_tab",
+          "default": false,
+          "label": "Open links in a new tab",
+          "info": "GS addition. Applies to both buttons."
         }
       ]
     }

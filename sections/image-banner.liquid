@@ -1,12 +1,45 @@
+{% comment %}
+  GS addition to Dawn's image banner: `video_desktop` / `video_mobile`.
+  When a video is set it plays muted, looped and inline in place of the
+  first image; the images become the posters. Only the video for the
+  current breakpoint loads (the other is display: none). "Adapt to
+  image" uses the video's own aspect ratio, so a wide desktop file and a
+  squarer mobile file each keep their shape. Replaces
+  section--video-banner (foundation hero) and, with heading/buttons
+  blocks, section--full-width-image_text (careers hero). Styles for the
+  video live in assets/gs-image-banner.css.
+{% endcomment %}
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
-
-{%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
+{%- liquid
+  assign video_d = section.settings.video_desktop
+  assign video_m = section.settings.video_mobile | default: video_d
+  assign has_video = false
+  if video_d != blank
+    assign has_video = true
+    assign poster_d = section.settings.image | default: video_d.preview_image
+    assign poster_m = section.settings.image_2 | default: poster_d
+  endif
+  assign ratio_d = section.settings.image.aspect_ratio
+  assign ratio_m = ratio_d
+  if has_video
+    assign ratio_d = video_d.aspect_ratio | default: ratio_d
+    assign ratio_m = video_m.aspect_ratio | default: ratio_d
+  endif
+  assign adapt = false
+  if section.settings.image_height == 'adapt' and ratio_d != blank
+    assign adapt = true
+  endif
+-%}
+{%- if has_video -%}
+  {{ 'gs-image-banner.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+{%- if adapt -%}
   {%- style -%}
     @media screen and (max-width: 749px) {
       #Banner-{{ section.id }}::before,
       #Banner-{{ section.id }} .banner__media::before,
       #Banner-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
-        padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+        padding-bottom: {{ 1 | divided_by: ratio_m | times: 100 }}%;
         content: '';
         display: block;
       }
@@ -15,7 +48,7 @@
     @media screen and (min-width: 750px) {
       #Banner-{{ section.id }}::before,
       #Banner-{{ section.id }} .banner__media::before {
-        padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+        padding-bottom: {{ 1 | divided_by: ratio_d | times: 100 }}%;
         content: '';
         display: block;
       }
@@ -53,9 +86,36 @@
 
 <div
   id="Banner-{{ section.id }}"
-  class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+  class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if adapt %} banner--adapt{% endif %}{% if has_video %} banner--video{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
 >
-  {%- if section.settings.image != blank -%}
+  {%- if has_video -%}
+    <div class="banner__media media gs-banner-video{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {%- assign variants = 'desktop,mobile' | split: ',' -%}
+      {%- for variant in variants -%}
+        {%- liquid
+          if variant == 'desktop'
+            assign video = video_d
+            assign poster = poster_d
+          else
+            assign video = video_m
+            assign poster = poster_m
+          endif
+        -%}
+        <video
+          class="gs-banner-video__media gs-banner-video__media--{{ variant }}"
+          autoplay muted loop playsinline preload="metadata"
+          {% if poster != blank %}poster="{{ poster | image_url: width: 2000 }}"{% endif %}
+          aria-hidden="true"
+        >
+          {%- for source in video.sources -%}
+            {%- if source.format == 'mp4' or source.mime_type contains 'mp4' -%}
+              <source src="{{ source.url }}" type="{{ source.mime_type }}">
+            {%- endif -%}
+          {%- endfor -%}
+        </video>
+      {%- endfor -%}
+    </div>
+  {%- elsif section.settings.image != blank -%}
     <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       {%- liquid
         assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
@@ -87,7 +147,7 @@
       {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
     </div>
   {%- endif -%}
-  {%- if section.settings.image_2 != blank -%}
+  {%- if section.settings.image_2 != blank and has_video == false -%}
     <div class="banner__media media{% if section.settings.image != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       {%- liquid
         assign image_height_2 = section.settings.image_2.width | divided_by: section.settings.image_2.aspect_ratio
@@ -183,8 +243,12 @@
     {
       "type": "image_picker",
       "id": "image_2",
-      "label": "t:sections.image-banner.settings.image_2.label"
+      "label": "t:sections.image-banner.settings.image_2.label",
+      "info": "With a video set, this is the mobile poster instead."
     },
+    { "type": "header", "content": "Video (GS addition)" },
+    { "type": "video", "id": "video_desktop", "label": "Video (desktop)", "info": "Plays muted and looped in place of the first image, which becomes its poster." },
+    { "type": "video", "id": "video_mobile", "label": "Video (mobile)", "info": "Empty uses the desktop video." },
     {
       "type": "range",
       "id": "image_overlay_opacity",
