@@ -1,1 +1,33 @@
-{"sections":{"main":{"type":"main-404","settings":{}}},"order":["main"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "blocks": {
+        "shop": {
+          "type": "button",
+          "settings": {
+            "label": "Shop all",
+            "link": "shopify://collections/all",
+            "style": "button"
+          }
+        },
+        "home": {
+          "type": "button",
+          "settings": {
+            "label": "Back to home",
+            "link": "shopify://",
+            "style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "shop",
+        "home"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,1 +1,177 @@
-{"name":"Header","type":"header","sections":{"announcement":{"type":"announcement-bar","blocks":{"announcement_Fki3r7":{"type":"announcement","settings":{"text":"Exclusive Monthly Drops + Free Shipping On Every Order | Join Club Grunt Style","link":"shopify:\/\/pages\/club-grunt-style"}},"announcement_gj83d9":{"type":"announcement","settings":{"text":"Fresh Gear Just Dropped — Get Them Before They're Gone! | Shop New Arrivals","link":"shopify:\/\/collections\/new"}},"announcement_6iBFBA":{"type":"announcement","settings":{"text":"Free Shipping on Orders Over $75","link":"shopify:\/\/collections\/new"}}},"block_order":["announcement_Fki3r7","announcement_gj83d9","announcement_6iBFBA"],"settings":{"auto_rotate":true,"change_slides_speed":7,"color_scheme":"scheme-5","show_line_separator":false,"show_social":false,"enable_country_selector":false,"enable_language_selector":false}},"header":{"type":"header","blocks":{"nav_menu_img_HyLX9c":{"type":"nav_menu_img","settings":{"menu_title":"New & Featured","nav_image":"shopify:\/\/shop_images\/Nav_Spotlight_IMAGE_700x450_FW26_Campaign_Veteran_-_GWOT_Collection.jpg","nav_link":"shopify:\/\/collections\/new","nav_label":""}},"nav_menu_img_men":{"type":"nav_menu_img","settings":{"menu_title":"Men","nav_image":"shopify:\/\/shop_images\/Split_Banner_D_980x610_FW26_Campaign_Summer_2A.jpg","nav_link":"shopify:\/\/collections\/men","nav_label":""}},"nav_menu_img_women":{"type":"nav_menu_img","settings":{"menu_title":"Women","nav_image":"shopify:\/\/shop_images\/BlankPoster_2000x2000_V1_GS8359_Women_sQueenOfWarSlimFitT-Shirt-Black.jpg","nav_link":"shopify:\/\/collections\/women","nav_label":""}},"nav_menu_img_PcjQjG":{"type":"nav_menu_img","settings":{"menu_title":"★ USA 250 ★","nav_image":"shopify:\/\/shop_images\/Split_Banner_D_980x610_250_Collection_Highlight_June.jpg","nav_link":"shopify:\/\/collections\/250-years-of-freedom","nav_label":""}},"nav_menu_img_last_chance":{"type":"nav_menu_img","settings":{"menu_title":"Last Chance","nav_image":"shopify:\/\/shop_images\/GS-Content_-7-700X450.png","nav_link":"shopify:\/\/collections\/86d-collection","nav_label":""}},"nav_menu_img_club":{"type":"nav_menu_img","settings":{"menu_title":"Club & Rewards","nav_image":"shopify:\/\/shop_images\/SunnyRoad_Homepage_Module_Custom_Split_Section_Mobile_1560x1560_5_1.png","nav_link":"shopify:\/\/pages\/club-grunt-style","nav_label":""}},"nav_menu_img_tcwBha":{"type":"nav_menu_img","settings":{"menu_title":"About","nav_image":"shopify:\/\/shop_images\/GS-logo-700x450-NAV.png","nav_link":"shopify:\/\/pages\/about","nav_label":""}}},"block_order":["nav_menu_img_HyLX9c","nav_menu_img_men","nav_menu_img_women","nav_menu_img_PcjQjG","nav_menu_img_last_chance","nav_menu_img_club","nav_menu_img_tcwBha"],"settings":{"logo":"shopify:\/\/shop_images\/GSLogoWideWhite_edce6efb-181a-4008-abf7-7ad90b959c54.svg","logo_width":300,"logo_width_mobile":130,"menu":"main-menu","sticky_header":true,"highlight_enable":true,"highlight_text":"BOGO 50%","highlight_background":"#ab192d","highlight_text_color":"#ffffff","show_search":true,"search_placeholder":"What are you looking for...","rewards_link":"shopify:\/\/pages\/club-grunt-style","rewards_label":"Rewards","help_link":"shopify:\/\/pages\/contact-us","help_label":"Help","stores_link":"shopify:\/\/pages\/retail-stores","stores_label":"Retail stores","color_scheme":"scheme-4","header_background":"#000000","nav_background":"#000000","header_text":"#ffffff","header_text_hover":"#e7e7e7","header_icon":"#ffffff","cart_count_background":"#5c5c5c","cart_count_text":"#ffffff","mega_background":"#ffffff","mega_text":"#121212"}}},"order":["announcement","header"]}
+{
+  "name": "Header",
+  "type": "header",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_Fki3r7": {
+          "type": "announcement",
+          "settings": {
+            "text": "Exclusive Monthly Drops + Free Shipping On Every Order | Join Club Grunt Style",
+            "link": "shopify://pages/club-grunt-style"
+          }
+        },
+        "announcement_gj83d9": {
+          "type": "announcement",
+          "settings": {
+            "text": "Fresh Gear Just Dropped — Get Them Before They're Gone! | Shop New Arrivals",
+            "link": "shopify://collections/new"
+          }
+        },
+        "announcement_6iBFBA": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free Shipping on Orders Over $75",
+            "link": "shopify://collections/new"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_Fki3r7",
+        "announcement_gj83d9",
+        "announcement_6iBFBA"
+      ],
+      "settings": {
+        "auto_rotate": true,
+        "change_slides_speed": 7,
+        "color_scheme": "scheme-5",
+        "show_line_separator": false,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "nav_menu_img_HyLX9c": {
+          "type": "nav_menu_img",
+          "settings": {
+            "menu_title": "New & Featured",
+            "nav_image": "shopify://shop_images/Nav_Spotlight_IMAGE_700x450_FW26_Campaign_Veteran_-_GWOT_Collection.jpg",
+            "nav_link": "shopify://collections/new",
+            "nav_label": ""
+          }
+        },
+        "nav_menu_img_men": {
+          "type": "nav_menu_img",
+          "settings": {
+            "menu_title": "Men",
+            "nav_image": "shopify://shop_images/Split_Banner_D_980x610_FW26_Campaign_Summer_2A.jpg",
+            "nav_link": "shopify://collections/men",
+            "nav_label": ""
+          }
+        },
+        "nav_menu_img_women": {
+          "type": "nav_menu_img",
+          "settings": {
+            "menu_title": "Women",
+            "nav_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8359_Women_sQueenOfWarSlimFitT-Shirt-Black.jpg",
+            "nav_link": "shopify://collections/women",
+            "nav_label": ""
+          }
+        },
+        "nav_menu_img_PcjQjG": {
+          "type": "nav_menu_img",
+          "settings": {
+            "menu_title": "★ USA 250 ★",
+            "nav_image": "shopify://shop_images/Split_Banner_D_980x610_250_Collection_Highlight_June.jpg",
+            "nav_link": "shopify://collections/250-years-of-freedom",
+            "nav_label": ""
+          }
+        },
+        "nav_menu_img_last_chance": {
+          "type": "nav_menu_img",
+          "settings": {
+            "menu_title": "Last Chance",
+            "nav_image": "shopify://shop_images/GS-Content_-7-700X450.png",
+            "nav_link": "shopify://collections/86d-collection",
+            "nav_label": ""
+          }
+        },
+        "nav_menu_img_club": {
+          "type": "nav_menu_img",
+          "settings": {
+            "menu_title": "Club & Rewards",
+            "nav_image": "shopify://shop_images/SunnyRoad_Homepage_Module_Custom_Split_Section_Mobile_1560x1560_5_1.png",
+            "nav_link": "shopify://pages/club-grunt-style",
+            "nav_label": ""
+          }
+        },
+        "nav_menu_img_tcwBha": {
+          "type": "nav_menu_img",
+          "settings": {
+            "menu_title": "About",
+            "nav_image": "shopify://shop_images/GS-logo-700x450-NAV.png",
+            "nav_link": "shopify://pages/about",
+            "nav_label": ""
+          }
+        },
+        "util_rewards": {
+          "type": "utility_link",
+          "settings": {
+            "icon": "star",
+            "label": "Rewards",
+            "link": "shopify://pages/club-grunt-style"
+          }
+        },
+        "util_help": {
+          "type": "utility_link",
+          "settings": {
+            "icon": "help",
+            "label": "Help",
+            "link": "shopify://pages/contact-us"
+          }
+        },
+        "util_stores": {
+          "type": "utility_link",
+          "settings": {
+            "icon": "pin",
+            "label": "Retail stores",
+            "link": "shopify://pages/retail-stores"
+          }
+        }
+      },
+      "block_order": [
+        "nav_menu_img_HyLX9c",
+        "nav_menu_img_men",
+        "nav_menu_img_women",
+        "nav_menu_img_PcjQjG",
+        "nav_menu_img_last_chance",
+        "nav_menu_img_club",
+        "nav_menu_img_tcwBha",
+        "util_rewards",
+        "util_help",
+        "util_stores"
+      ],
+      "settings": {
+        "logo": "shopify://shop_images/GSLogoWideWhite_edce6efb-181a-4008-abf7-7ad90b959c54.svg",
+        "logo_width": 300,
+        "logo_width_mobile": 130,
+        "menu": "main-menu",
+        "sticky_header": true,
+        "highlight_enable": true,
+        "highlight_text": "BOGO 50%",
+        "highlight_background": "#ab192d",
+        "highlight_text_color": "#ffffff",
+        "show_search": true,
+        "search_placeholder": "What are you looking for...",
+        "color_scheme": "scheme-4",
+        "header_background": "#000000",
+        "nav_background": "#000000",
+        "header_text": "#ffffff",
+        "header_text_hover": "#e7e7e7",
+        "header_icon": "#ffffff",
+        "cart_count_background": "#5c5c5c",
+        "cart_count_text": "#ffffff",
+        "mega_background": "#ffffff",
+        "mega_text": "#121212"
+      }
+    }
+  },
+  "order": [
+    "announcement",
+    "header"
+  ]
+}

@@ -667,31 +667,86 @@
     },
     "join": {
       "type": "club-join-steps",
+      "blocks": {
+        "fit": {
+          "type": "step_fit",
+          "settings": {
+            "heading": "Join Club Grunt Style",
+            "progress_label": "Patriot",
+            "icon": "",
+            "eyebrow": "Patriotic",
+            "mens_label": "Male",
+            "womens_label": "Female"
+          }
+        },
+        "size": {
+          "type": "step_size",
+          "settings": {
+            "heading": "What Size Fits You Best?",
+            "progress_label": "Size",
+            "icon": "",
+            "sizes": "S:Small,M:Medium,L:Large,XL:XL,2XL:2XL,3XL:3XL,4XL:4XL",
+            "womens_excluded_sizes": "3XL,4XL",
+            "size_icon": ""
+          }
+        },
+        "plan": {
+          "type": "step_plan",
+          "settings": {
+            "heading": "Select Your Plan",
+            "progress_label": "Plan",
+            "icon": "",
+            "disclaimer": "Notice: All monthly and prepaid subscriptions are set to automatically renew. You will be contacted via email prior to a renewal. Annual Subscriptions are non-refundable."
+          }
+        },
+        "monthly": {
+          "type": "plan",
+          "settings": {
+            "key": "monthly",
+            "label": "Monthly",
+            "price": "$25.00",
+            "note": "First Month: <strong>$25.00</strong>",
+            "saving": "",
+            "was_price": "",
+            "selling_plan_id": "1963917363",
+            "icon": ""
+          }
+        },
+        "annual": {
+          "type": "plan",
+          "settings": {
+            "key": "annual",
+            "label": "Annual",
+            "price": "$255.00",
+            "note": "",
+            "saving": "15% OFF",
+            "was_price": "$300.00",
+            "selling_plan_id": "1963884595",
+            "icon": ""
+          }
+        },
+        "review": {
+          "type": "step_review",
+          "settings": {
+            "heading": "Review Your Plan",
+            "progress_label": "Review",
+            "icon": "",
+            "join_label": "Join Now",
+            "restart_label": "Start Over"
+          }
+        }
+      },
+      "block_order": [
+        "fit",
+        "size",
+        "plan",
+        "monthly",
+        "annual",
+        "review"
+      ],
       "settings": {
         "anchor_id": "club-grunt-join-now",
-        "club_step_1_header": "Join Club Grunt Style",
-        "club_step_2_header": "What Size Fits You Best?",
-        "club_step_3_header": "Select Your Plan",
-        "club_step_4_header": "Review Your Plan",
-        "step_labels": "Patriot,Size,Plan,Review",
-        "gender_eyebrow": "Patriotic",
-        "mens_label": "Male",
-        "womens_label": "Female",
-        "sizes": "S:Small,M:Medium,L:Large,XL:XL,2XL:2XL,3XL:3XL,4XL:4XL",
-        "womens_excluded_sizes": "3XL,4XL",
-        "product_handle_prefix": "club",
-        "monthly_label": "Monthly",
-        "monthly_price": "$25.00",
-        "monthly_note": "First Month: <strong>$25.00</strong>",
-        "monthly_selling_plan_id": "1963917363",
-        "annual_label": "Annual",
-        "annual_price": "$255.00",
-        "annual_saving": "15% OFF",
-        "annual_was_price": "$300.00",
-        "annual_selling_plan_id": "1963884595",
-        "club_plan_select_disclaimer": "Notice: All monthly and prepaid subscriptions are set to automatically renew. You will be contacted via email prior to a renewal. Annual Subscriptions are non-refundable.",
-        "join_label": "Join Now",
-        "restart_label": "Start Over"
+        "product_handle_prefix": "club"
       }
     },
     "testimonials_Qa99ij": {

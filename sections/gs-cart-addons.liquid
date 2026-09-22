@@ -26,6 +26,11 @@
   Neither renders until its product is set, so a half-configured section
   shows nothing rather than erroring.
 
+  BLOCKS (2026-09-22). Each feature is a block (free_shipping,
+  gift_wrap, roundup), limit one each, rendered in block order, so a
+  feature is added, removed or reordered in the editor instead of
+  toggled by a checkbox. The section keeps only the colour scheme.
+
   ROUND-UP CAVEAT - NEEDS A DECISION. Rounding the cart up to the next
   dollar requires a variable-price line item, which Shopify does not
   support directly. The usual approaches are:
@@ -42,8 +47,24 @@
 
 {%- liquid
   assign s = section.settings
+  assign ship = nil
+  assign wrap = nil
+  assign roundup = nil
+  for block in section.blocks
+    case block.type
+      when 'free_shipping'
+        assign ship = block
+      when 'gift_wrap'
+        assign wrap = block
+      when 'roundup'
+        assign roundup = block
+    endcase
+  endfor
 
-  assign threshold = s.free_shipping_threshold | times: 100
+  assign threshold = 0
+  if ship
+    assign threshold = ship.settings.threshold | times: 100
+  endif
   assign remaining = threshold | minus: cart.total_price
   assign qualified = false
   if remaining <= 0
@@ -59,7 +80,10 @@
   endif
 
   # Gift wrap: is it already in the cart?
-  assign wrap_variant = s.gift_wrap_product.first_available_variant
+  assign wrap_variant = nil
+  if wrap
+    assign wrap_variant = wrap.settings.product.first_available_variant
+  endif
   assign wrap_in_cart = false
   assign wrap_line_key = ''
   if wrap_variant
@@ -80,20 +104,19 @@
     assign roundup_cents = 100 | minus: cents_over
   endif
 
-  assign donation_variant = null
-  if s.donation_product != blank and roundup_cents > 0
-    for variant in s.donation_product.variants
-      if variant.available and variant.price >= roundup_cents
-        assign donation_variant = variant
-        break
-      endif
-    endfor
-  endif
-
+  assign donation_variant = nil
   assign donation_in_cart = false
-  if s.donation_product != blank
+  if roundup and roundup.settings.product != blank
+    if roundup_cents > 0
+      for variant in roundup.settings.product.variants
+        if variant.available and variant.price >= roundup_cents
+          assign donation_variant = variant
+          break
+        endif
+      endfor
+    endif
     for line in cart.items
-      if line.product_id == s.donation_product.id
+      if line.product_id == roundup.settings.product.id
         assign donation_in_cart = true
         break
       endif
@@ -103,87 +126,94 @@
 
 {%- if cart.item_count > 0 -%}
   <div class="gs-cart-addons color-{{ s.color_scheme }}">
-
-    {%- if s.show_free_shipping and threshold > 0 -%}
-      <div class="gs-cart-ship" style="--gs-ship-progress: {{ progress }}%;">
-        <p class="gs-cart-ship__message" role="status">
-          {%- if qualified -%}
-            {{ s.free_shipping_success }}
-          {%- else -%}
-            {{ s.free_shipping_prefix }}
-            <strong>{{ remaining | money }}</strong>
-            {{ s.free_shipping_suffix }}
+    {%- for block in section.blocks -%}
+      {%- assign b = block.settings -%}
+      {%- case block.type -%}
+        {%- when 'free_shipping' -%}
+          {%- if threshold > 0 -%}
+            <div class="gs-cart-ship" style="--gs-ship-progress: {{ progress }}%;" {{ block.shopify_attributes }}>
+              <p class="gs-cart-ship__message" role="status">
+                {%- if qualified -%}
+                  {{ b.success }}
+                {%- else -%}
+                  {{ b.prefix }}
+                  <strong>{{ remaining | money }}</strong>
+                  {{ b.suffix }}
+                {%- endif -%}
+              </p>
+              <div
+                class="gs-cart-ship__track{% if qualified %} is-complete{% endif %}"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="{{ progress }}"
+              >
+                <span class="gs-cart-ship__fill"></span>
+              </div>
+            </div>
           {%- endif -%}
-        </p>
-        <div
-          class="gs-cart-ship__track{% if qualified %} is-complete{% endif %}"
-          role="progressbar"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          aria-valuenow="{{ progress }}"
-        >
-          <span class="gs-cart-ship__fill"></span>
-        </div>
-      </div>
-    {%- endif -%}
 
-    {%- if s.gift_wrap_product != blank and wrap_variant -%}
-      <div class="gs-cart-addon">
-        <div class="gs-cart-addon__body">
-          <p class="gs-cart-addon__title">
-            {{ s.gift_wrap_label }}
-            <span class="gs-cart-addon__price">{{ wrap_variant.price | money }}</span>
-          </p>
-          {%- if s.gift_wrap_description != blank -%}
-            <p class="gs-cart-addon__desc">{{ s.gift_wrap_description }}</p>
+        {%- when 'gift_wrap' -%}
+          {%- if wrap_variant -%}
+            <div class="gs-cart-addon" {{ block.shopify_attributes }}>
+              <div class="gs-cart-addon__body">
+                <p class="gs-cart-addon__title">
+                  {{ b.label }}
+                  <span class="gs-cart-addon__price">{{ wrap_variant.price | money }}</span>
+                </p>
+                {%- if b.description != blank -%}
+                  <p class="gs-cart-addon__desc">{{ b.description }}</p>
+                {%- endif -%}
+              </div>
+
+              {%- comment -%}
+                Real forms, so this works without JavaScript. The script below
+                only intercepts to avoid a full page reload.
+              {%- endcomment -%}
+              {%- if wrap_in_cart -%}
+                <form action="{{ routes.cart_change_url }}" method="post" class="gs-cart-addon__form" data-cart-addon>
+                  <input type="hidden" name="id" value="{{ wrap_line_key }}">
+                  <input type="hidden" name="quantity" value="0">
+                  <button type="submit" class="gs-cart-addon__button is-added">
+                    {{ b.remove_label }}
+                  </button>
+                </form>
+              {%- else -%}
+                <form action="{{ routes.cart_add_url }}" method="post" class="gs-cart-addon__form" data-cart-addon>
+                  <input type="hidden" name="id" value="{{ wrap_variant.id }}">
+                  <input type="hidden" name="quantity" value="1">
+                  <button type="submit" class="gs-cart-addon__button">
+                    {{ b.add_label }}
+                  </button>
+                </form>
+              {%- endif -%}
+            </div>
           {%- endif -%}
-        </div>
 
-        {%- comment -%}
-          Real forms, so this works without JavaScript. The script below
-          only intercepts to avoid a full page reload.
-        {%- endcomment -%}
-        {%- if wrap_in_cart -%}
-          <form action="{{ routes.cart_change_url }}" method="post" class="gs-cart-addon__form" data-cart-addon>
-            <input type="hidden" name="id" value="{{ wrap_line_key }}">
-            <input type="hidden" name="quantity" value="0">
-            <button type="submit" class="gs-cart-addon__button is-added">
-              {{ s.gift_wrap_remove_label }}
-            </button>
-          </form>
-        {%- else -%}
-          <form action="{{ routes.cart_add_url }}" method="post" class="gs-cart-addon__form" data-cart-addon>
-            <input type="hidden" name="id" value="{{ wrap_variant.id }}">
-            <input type="hidden" name="quantity" value="1">
-            <button type="submit" class="gs-cart-addon__button">
-              {{ s.gift_wrap_add_label }}
-            </button>
-          </form>
-        {%- endif -%}
-      </div>
-    {%- endif -%}
+        {%- when 'roundup' -%}
+          {%- if donation_variant and donation_in_cart == false -%}
+            <div class="gs-cart-addon gs-cart-addon--donation" {{ block.shopify_attributes }}>
+              <div class="gs-cart-addon__body">
+                <p class="gs-cart-addon__title">
+                  {{ b.label }}
+                  <span class="gs-cart-addon__price">{{ donation_variant.price | money }}</span>
+                </p>
+                {%- if b.description != blank -%}
+                  <p class="gs-cart-addon__desc">{{ b.description }}</p>
+                {%- endif -%}
+              </div>
 
-    {%- if s.show_roundup and donation_variant and donation_in_cart == false -%}
-      <div class="gs-cart-addon gs-cart-addon--donation">
-        <div class="gs-cart-addon__body">
-          <p class="gs-cart-addon__title">
-            {{ s.roundup_label }}
-            <span class="gs-cart-addon__price">{{ donation_variant.price | money }}</span>
-          </p>
-          {%- if s.roundup_description != blank -%}
-            <p class="gs-cart-addon__desc">{{ s.roundup_description }}</p>
+              <form action="{{ routes.cart_add_url }}" method="post" class="gs-cart-addon__form" data-cart-addon>
+                <input type="hidden" name="id" value="{{ donation_variant.id }}">
+                <input type="hidden" name="quantity" value="1">
+                <button type="submit" class="gs-cart-addon__button">
+                  {{ b.add_label }}
+                </button>
+              </form>
+            </div>
           {%- endif -%}
-        </div>
-
-        <form action="{{ routes.cart_add_url }}" method="post" class="gs-cart-addon__form" data-cart-addon>
-          <input type="hidden" name="id" value="{{ donation_variant.id }}">
-          <input type="hidden" name="quantity" value="1">
-          <button type="submit" class="gs-cart-addon__button">
-            {{ s.roundup_add_label }}
-          </button>
-        </form>
-      </div>
-    {%- endif -%}
+      {%- endcase -%}
+    {%- endfor -%}
   </div>
 
   <script>
@@ -224,46 +254,125 @@
   "tag": "section",
   "class": "gs-cart-addons-section",
   "settings": [
-    { "type": "header", "content": "Free shipping bar" },
-    { "type": "checkbox", "id": "show_free_shipping", "label": "Show free shipping progress", "default": true },
     {
-      "type": "number",
-      "id": "free_shipping_threshold",
-      "label": "Free shipping threshold",
-      "info": "In dollars. Set to 0 to hide.",
-      "default": 75
-    },
-    { "type": "text", "id": "free_shipping_prefix", "label": "Text before amount", "default": "Spend" },
-    { "type": "text", "id": "free_shipping_suffix", "label": "Text after amount", "default": "more for free shipping" },
-    { "type": "text", "id": "free_shipping_success", "label": "Qualified message", "default": "You've unlocked free shipping." },
-
-    { "type": "header", "content": "Gift wrap" },
-    {
-      "type": "product",
-      "id": "gift_wrap_product",
-      "label": "Gift wrap product",
-      "info": "Nothing renders until this is set."
-    },
-    { "type": "text", "id": "gift_wrap_label", "label": "Label", "default": "Add gift wrap" },
-    { "type": "text", "id": "gift_wrap_description", "label": "Description" },
-    { "type": "text", "id": "gift_wrap_add_label", "label": "Add button text", "default": "Add" },
-    { "type": "text", "id": "gift_wrap_remove_label", "label": "Remove button text", "default": "Remove" },
-
-    { "type": "header", "content": "Foundation round-up" },
-    { "type": "checkbox", "id": "show_roundup", "label": "Show round-up donation", "default": false },
-    {
-      "type": "product",
-      "id": "donation_product",
-      "label": "Donation product",
-      "info": "Needs fixed-price variants ($1, $2, $3, $5...). The smallest variant covering the round-up is offered. Verify this matches how v3 charged donations before enabling."
-    },
-    { "type": "text", "id": "roundup_label", "label": "Label", "default": "Round up for the Grunt Style Foundation" },
-    { "type": "text", "id": "roundup_description", "label": "Description" },
-    { "type": "text", "id": "roundup_add_label", "label": "Button text", "default": "Donate" },
-
-    { "type": "header", "content": "Colors" },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
   ],
-  "presets": [{ "name": "Cart add-ons" }]
+  "presets": [
+    {
+      "name": "Cart add-ons",
+      "blocks": [
+        {
+          "type": "free_shipping"
+        },
+        {
+          "type": "gift_wrap"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "free_shipping",
+      "name": "Free shipping bar",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "number",
+          "id": "threshold",
+          "label": "Free shipping threshold",
+          "info": "In dollars. 0 hides the bar.",
+          "default": 75
+        },
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": "Text before amount",
+          "default": "Spend"
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Text after amount",
+          "default": "more for free shipping"
+        },
+        {
+          "type": "text",
+          "id": "success",
+          "label": "Qualified message",
+          "default": "You've unlocked free shipping."
+        }
+      ]
+    },
+    {
+      "type": "gift_wrap",
+      "name": "Gift wrap",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Gift wrap product",
+          "info": "Nothing renders until this is set."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Add gift wrap"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "add_label",
+          "label": "Add button text",
+          "default": "Add"
+        },
+        {
+          "type": "text",
+          "id": "remove_label",
+          "label": "Remove button text",
+          "default": "Remove"
+        }
+      ]
+    },
+    {
+      "type": "roundup",
+      "name": "Foundation round-up",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Donation product",
+          "info": "Needs fixed-price variants ($1, $2, $3, $5...). The smallest variant covering the round-up is offered. Verify this matches how v3 charged donations before enabling."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Round up for the Grunt Style Foundation"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "add_label",
+          "label": "Button text",
+          "default": "Donate"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

@@ -100,6 +100,17 @@
   opened showing the cart as it was before the add.
 
   ------------------------------------------------------------------
+  BLOCKS (2026-09-22)
+  ------------------------------------------------------------------
+  The four steps are blocks (step_fit, step_size, step_plan,
+  step_review, one each, numbered in block order) carrying their own
+  heading, progress label, icon and step-specific copy, and the plans
+  are `plan` blocks (key, label, price, ribbon, saving, was-price, Skio
+  selling plan id, icon) so a third plan is an added block rather than
+  a code change. The section keeps the anchor id and the product handle
+  prefix: 31 settings became 2 plus blocks. The plan key is the handle
+  suffix (prefix-fit-key) and the radio value the script reads.
+  ------------------------------------------------------------------
   ANCHOR FOR THE PAGE'S JOIN BUTTONS
   ------------------------------------------------------------------
   v3 rendered id="club-grunt-join-now" on its wrapper and every "Join"
@@ -114,23 +125,8 @@
 
 {%- liquid
   assign s = section.settings
-  assign sizes = s.sizes | default: 'S:Small,M:Medium,L:Large,XL,2XL,3XL,4XL' | split: ','
-  assign womens_excluded = s.womens_excluded_sizes | default: '3XL,4XL' | split: ','
-  assign step_labels = s.step_labels | default: 'Patriot,Size,Plan,Review' | split: ','
-
-  # Icons: bundled theme assets unless the merchant picks an image.
-  assign size_icon_url = 'gs-club-icon-size.png' | asset_url
-  if s.size_icon != blank
-    assign size_icon_url = s.size_icon | image_url: width: 400
-  endif
-  assign monthly_icon_url = 'gs-club-icon-monthly.svg' | asset_url
-  if s.monthly_icon != blank
-    assign monthly_icon_url = s.monthly_icon | image_url: width: 150
-  endif
-  assign annual_icon_url = 'gs-club-icon-annual.svg' | asset_url
-  if s.annual_icon != blank
-    assign annual_icon_url = s.annual_icon | image_url: width: 150
-  endif
+  # Steps are the step_* blocks, numbered in block order; plans are the plan blocks.
+  assign plan_blocks = section.blocks | where: 'type', 'plan'
 -%}
 
 {%- if s.anchor_id != blank -%}<div id="{{ s.anchor_id | strip | escape }}" class="gs-club__anchor">{%- endif -%}
@@ -138,205 +134,217 @@
   <div class="page-width gs-club__inner">
 
     <div class="gs-club__steps">
+      {%- assign step_no = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        {%- case block.type -%}
 
-      <fieldset class="gs-club__step is-active" data-club-step="1">
-        <legend class="gs-club__heading">{{ s.club_step_1_header }}</legend>
-        <div class="gs-club__options gs-club__options--gender">
-          {%- assign genders = 'mens,ladies' | split: ',' -%}
-          {%- for g in genders -%}
+          {%- when 'step_fit' -%}
+            {%- assign step_no = step_no | plus: 1 -%}
+            <fieldset class="gs-club__step{% if step_no == 1 %} is-active{% endif %}" data-club-step="{{ step_no }}" {% if step_no > 1 %}hidden{% endif %} {{ block.shopify_attributes }}>
+              <legend class="gs-club__heading">{{ b.heading }}</legend>
+              <div class="gs-club__options gs-club__options--gender">
+                {%- assign genders = 'mens,ladies' | split: ',' -%}
+                {%- for g in genders -%}
+                  {%- liquid
+                    if g == 'mens'
+                      assign g_label = b.mens_label | default: 'Male'
+                    else
+                      assign g_label = b.womens_label | default: 'Female'
+                    endif
+                  -%}
+                  <div class="gs-club__option gs-club__option--gender">
+                    <input
+                      type="radio"
+                      class="gs-club__input"
+                      name="club_gender"
+                      id="GsClubGender-{{ section.id }}-{{ g }}"
+                      value="{{ g }}"
+                      data-club-field="gender"
+                    >
+                    <label class="gs-club__label gs-club__label--gender" for="GsClubGender-{{ section.id }}-{{ g }}">
+                      <span class="gs-club__eyebrow">{{ b.eyebrow | default: 'Patriotic' }}</span>
+                      <span class="gs-club__label-main">{{ g_label }}</span>
+                    </label>
+                  </div>
+                {%- endfor -%}
+              </div>
+            </fieldset>
+
+          {%- when 'step_size' -%}
+            {%- assign step_no = step_no | plus: 1 -%}
             {%- liquid
-              if g == 'mens'
-                assign g_label = s.mens_label | default: 'Male'
-              else
-                assign g_label = s.womens_label | default: 'Female'
+              assign sizes = b.sizes | default: 'S:Small,M:Medium,L:Large,XL,2XL,3XL,4XL' | split: ','
+              assign womens_excluded = b.womens_excluded_sizes | default: '3XL,4XL' | split: ','
+              assign size_icon_url = 'gs-club-icon-size.png' | asset_url
+              if b.size_icon != blank
+                assign size_icon_url = b.size_icon | image_url: width: 400
               endif
             -%}
-            <div class="gs-club__option gs-club__option--gender">
-              <input
-                type="radio"
-                class="gs-club__input"
-                name="club_gender"
-                id="GsClubGender-{{ section.id }}-{{ g }}"
-                value="{{ g }}"
-                data-club-field="gender"
-              >
-              <label class="gs-club__label gs-club__label--gender" for="GsClubGender-{{ section.id }}-{{ g }}">
-                <span class="gs-club__eyebrow">{{ s.gender_eyebrow | default: 'Patriotic' }}</span>
-                <span class="gs-club__label-main">{{ g_label }}</span>
-              </label>
-            </div>
-          {%- endfor -%}
-        </div>
-      </fieldset>
+            <fieldset class="gs-club__step{% if step_no == 1 %} is-active{% endif %}" data-club-step="{{ step_no }}" {% if step_no > 1 %}hidden{% endif %} {{ block.shopify_attributes }}>
+              <legend class="gs-club__heading">{{ b.heading }}</legend>
+              <div class="gs-club__options gs-club__options--size" data-club-sizes>
+                {%- for entry in sizes -%}
+                  {%- liquid
+                    # "S:Small" shows S and matches the variant titled Small.
+                    assign pair = entry | split: ':'
+                    assign size_label = pair[0] | strip
+                    if pair.size > 1
+                      assign size_value = pair[1] | strip
+                    else
+                      assign size_value = size_label
+                    endif
+                    if size_value == blank
+                      continue
+                    endif
+                    assign size_key = size_value | downcase | handleize
+                    assign size_value_down = size_value | downcase
+                    assign size_label_down = size_label | downcase
+                    assign womens_ok = true
+                    for excluded in womens_excluded
+                      assign excluded_clean = excluded | strip | downcase
+                      if excluded_clean == size_value_down or excluded_clean == size_label_down
+                        assign womens_ok = false
+                        break
+                      endif
+                    endfor
+                  -%}
+                  <div
+                    class="gs-club__option gs-club__option--size"
+                    {% unless womens_ok %}data-mens-only="true"{% endunless %}
+                  >
+                    <input
+                      type="radio"
+                      class="gs-club__input"
+                      name="club_size"
+                      id="GsClubSize-{{ section.id }}-{{ size_key }}"
+                      value="{{ size_value | escape }}"
+                      data-club-field="size"
+                    >
+                    <label class="gs-club__label gs-club__label--size" for="GsClubSize-{{ section.id }}-{{ size_key }}">
+                      <span class="gs-club__size">{{ size_label }}</span>
+                      <img class="gs-club__size-icon" src="{{ size_icon_url }}" alt="" width="199" height="52" loading="lazy">
+                    </label>
+                  </div>
+                {%- endfor -%}
+              </div>
+            </fieldset>
 
-      <fieldset class="gs-club__step" data-club-step="2" hidden>
-        <legend class="gs-club__heading">{{ s.club_step_2_header }}</legend>
-        <div class="gs-club__options gs-club__options--size" data-club-sizes>
-          {%- for entry in sizes -%}
-            {%- liquid
-              # "S:Small" shows S and matches the variant titled Small.
-              assign pair = entry | split: ':'
-              assign size_label = pair[0] | strip
-              if pair.size > 1
-                assign size_value = pair[1] | strip
-              else
-                assign size_value = size_label
-              endif
-              if size_value == blank
-                continue
-              endif
-              assign size_key = size_value | downcase | handleize
-              assign size_value_down = size_value | downcase
-              assign size_label_down = size_label | downcase
-              assign womens_ok = true
-              for excluded in womens_excluded
-                assign excluded_clean = excluded | strip | downcase
-                if excluded_clean == size_value_down or excluded_clean == size_label_down
-                  assign womens_ok = false
-                  break
-                endif
-              endfor
-            -%}
-            <div
-              class="gs-club__option gs-club__option--size"
-              {% unless womens_ok %}data-mens-only="true"{% endunless %}
-            >
-              <input
-                type="radio"
-                class="gs-club__input"
-                name="club_size"
-                id="GsClubSize-{{ section.id }}-{{ size_key }}"
-                value="{{ size_value | escape }}"
-                data-club-field="size"
-              >
-              <label class="gs-club__label gs-club__label--size" for="GsClubSize-{{ section.id }}-{{ size_key }}">
-                <span class="gs-club__size">{{ size_label }}</span>
-                <img class="gs-club__size-icon" src="{{ size_icon_url }}" alt="" width="199" height="52" loading="lazy">
-              </label>
-            </div>
-          {%- endfor -%}
-        </div>
-      </fieldset>
+          {%- when 'step_plan' -%}
+            {%- assign step_no = step_no | plus: 1 -%}
+            <fieldset class="gs-club__step{% if step_no == 1 %} is-active{% endif %}" data-club-step="{{ step_no }}" {% if step_no > 1 %}hidden{% endif %} {{ block.shopify_attributes }}>
+              <legend class="gs-club__heading">{{ b.heading }}</legend>
 
-      <fieldset class="gs-club__step" data-club-step="3" hidden>
-        <legend class="gs-club__heading">{{ s.club_step_3_header }}</legend>
-
-        {%- if s.club_plan_select_disclaimer != blank -%}
-          <p class="gs-club__disclaimer">{{ s.club_plan_select_disclaimer }}</p>
-        {%- endif -%}
-
-        <div class="gs-club__options gs-club__options--plan">
-          <div class="gs-club__option gs-club__option--plan">
-            <input
-              type="radio"
-              class="gs-club__input"
-              name="club_plan"
-              id="GsClubPlan-{{ section.id }}-monthly"
-              value="monthly"
-              data-club-field="plan"
-              data-selling-plan="{{ s.monthly_selling_plan_id }}"
-            >
-            <label class="gs-club__label gs-club__label--plan" for="GsClubPlan-{{ section.id }}-monthly">
-              <img class="gs-club__plan-icon" src="{{ monthly_icon_url }}" alt="" width="75" height="75" loading="lazy">
-              <span class="gs-club__plan-type">{{ s.monthly_label | default: 'Monthly' }}</span>
-              <span class="gs-club__plan-cost">{{ s.monthly_price }}</span>
-              {%- if s.monthly_note != blank -%}
-                <span class="gs-club__ribbon">{{ s.monthly_note }}</span>
+              {%- if b.disclaimer != blank -%}
+                <p class="gs-club__disclaimer">{{ b.disclaimer }}</p>
               {%- endif -%}
-            </label>
-          </div>
 
-          <div class="gs-club__option gs-club__option--plan">
-            <input
-              type="radio"
-              class="gs-club__input"
-              name="club_plan"
-              id="GsClubPlan-{{ section.id }}-annual"
-              value="annual"
-              data-club-field="plan"
-              data-selling-plan="{{ s.annual_selling_plan_id }}"
-            >
-            <label class="gs-club__label gs-club__label--plan" for="GsClubPlan-{{ section.id }}-annual">
-              <img class="gs-club__plan-icon" src="{{ annual_icon_url }}" alt="" width="75" height="75" loading="lazy">
-              <span class="gs-club__plan-type">{{ s.annual_label | default: 'Annual' }}</span>
-              <span class="gs-club__plan-cost">{{ s.annual_price }}</span>
-              {%- if s.annual_saving != blank or s.annual_was_price != blank -%}
-                <span class="gs-club__ribbon">
-                  <strong>{{ s.annual_saving }}</strong>
-                  {%- if s.annual_was_price != blank %} | <em class="gs-club__was">{{ s.annual_was_price }}</em>{% endif -%}
-                </span>
-              {%- endif -%}
-            </label>
-          </div>
-        </div>
-      </fieldset>
+              <div class="gs-club__options gs-club__options--plan">
+                {%- for plan in plan_blocks -%}
+                  {%- liquid
+                    assign pb = plan.settings
+                    assign plan_key = pb.key | default: 'monthly' | handleize
+                    assign plan_icon_url = 'gs-club-icon-monthly.svg' | asset_url
+                    if plan_key == 'annual'
+                      assign plan_icon_url = 'gs-club-icon-annual.svg' | asset_url
+                    endif
+                    if pb.icon != blank
+                      assign plan_icon_url = pb.icon | image_url: width: 150
+                    endif
+                  -%}
+                  <div class="gs-club__option gs-club__option--plan" {{ plan.shopify_attributes }}>
+                    <input
+                      type="radio"
+                      class="gs-club__input"
+                      name="club_plan"
+                      id="GsClubPlan-{{ section.id }}-{{ plan_key }}"
+                      value="{{ plan_key }}"
+                      data-club-field="plan"
+                      data-selling-plan="{{ pb.selling_plan_id }}"
+                    >
+                    <label class="gs-club__label gs-club__label--plan" for="GsClubPlan-{{ section.id }}-{{ plan_key }}">
+                      <img class="gs-club__plan-icon" src="{{ plan_icon_url }}" alt="" width="75" height="75" loading="lazy">
+                      <span class="gs-club__plan-type">{{ pb.label | default: plan_key }}</span>
+                      <span class="gs-club__plan-cost">{{ pb.price }}</span>
+                      {%- if pb.note != blank -%}
+                        <span class="gs-club__ribbon">{{ pb.note }}</span>
+                      {%- elsif pb.saving != blank or pb.was_price != blank -%}
+                        <span class="gs-club__ribbon">
+                          <strong>{{ pb.saving }}</strong>
+                          {%- if pb.was_price != blank %} | <em class="gs-club__was">{{ pb.was_price }}</em>{% endif -%}
+                        </span>
+                      {%- endif -%}
+                    </label>
+                  </div>
+                {%- endfor -%}
+              </div>
+            </fieldset>
 
-      <div class="gs-club__step" data-club-step="4" hidden>
-        <h2 class="gs-club__heading">{{ s.club_step_4_header }}</h2>
+          {%- when 'step_review' -%}
+            {%- assign step_no = step_no | plus: 1 -%}
+            <div class="gs-club__step{% if step_no == 1 %} is-active{% endif %}" data-club-step="{{ step_no }}" {% if step_no > 1 %}hidden{% endif %} {{ block.shopify_attributes }}>
+              <h2 class="gs-club__heading">{{ b.heading }}</h2>
 
-        <div class="gs-club__options gs-club__options--review">
-          <div class="gs-club__review-cards" data-club-review>
-            <div class="gs-club__review-card" data-review="gender"></div>
-            <div class="gs-club__review-card" data-review="size"></div>
-            <div class="gs-club__review-card" data-review="plan"></div>
-          </div>
+              <div class="gs-club__options gs-club__options--review">
+                <div class="gs-club__review-cards" data-club-review>
+                  <div class="gs-club__review-card" data-review="gender"></div>
+                  <div class="gs-club__review-card" data-review="size"></div>
+                  <div class="gs-club__review-card" data-review="plan"></div>
+                </div>
 
-          <div class="gs-club__actions">
-            <button type="button" class="gs-club__join" data-club-join>
-              {{ s.join_label | default: 'Join Now' }}
-            </button>
-            <button type="button" class="gs-club__restart" data-club-restart>
-              {{ s.restart_label | default: 'Start Over' }}
-            </button>
-            <p class="gs-club__error" role="alert" hidden data-club-error></p>
-          </div>
-        </div>
-      </div>
+                <div class="gs-club__actions">
+                  <button type="button" class="gs-club__join" data-club-join>
+                    {{ b.join_label | default: 'Join Now' }}
+                  </button>
+                  <button type="button" class="gs-club__restart" data-club-restart>
+                    {{ b.restart_label | default: 'Start Over' }}
+                  </button>
+                  <p class="gs-club__error" role="alert" hidden data-club-error></p>
+                </div>
+              </div>
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
     </div>
 
     <ol class="gs-club__progress" data-club-progress>
-      {%- for label in step_labels -%}
+      {%- assign step_no = 0 -%}
+      {%- for block in section.blocks -%}
         {%- liquid
-          case forloop.index
-            when 1
+          case block.type
+            when 'step_fit'
               assign icon_url = 'gs-club-step-1.jpg' | asset_url
-              if s.step_1_icon != blank
-                assign icon_url = s.step_1_icon | image_url: width: 200
-              endif
               assign icon_size = '95%'
-            when 2
+            when 'step_size'
               assign icon_url = 'gs-club-step-2.png' | asset_url
-              if s.step_2_icon != blank
-                assign icon_url = s.step_2_icon | image_url: width: 200
-              endif
               assign icon_size = '50%'
-            when 3
+            when 'step_plan'
               assign icon_url = 'gs-club-step-3.png' | asset_url
-              if s.step_3_icon != blank
-                assign icon_url = s.step_3_icon | image_url: width: 200
-              endif
+              assign icon_size = '40%'
+            when 'step_review'
+              assign icon_url = 'gs-club-step-4.png' | asset_url
               assign icon_size = '40%'
             else
-              assign icon_url = 'gs-club-step-4.png' | asset_url
-              if s.step_4_icon != blank
-                assign icon_url = s.step_4_icon | image_url: width: 200
-              endif
-              assign icon_size = '40%'
+              continue
           endcase
+          assign step_no = step_no | plus: 1
+          if block.settings.icon != blank
+            assign icon_url = block.settings.icon | image_url: width: 200
+          endif
         -%}
-        {%- unless forloop.first -%}
+        {%- unless step_no == 1 -%}
           <li class="gs-club__spacer" aria-hidden="true"></li>
         {%- endunless -%}
-        <li class="gs-club__progress-item{% if forloop.first %} is-current{% endif %}" data-progress-step="{{ forloop.index }}">
+        <li class="gs-club__progress-item{% if step_no == 1 %} is-current{% endif %}" data-progress-step="{{ step_no }}">
           <button
             type="button"
             class="gs-club__progress-btn"
-            data-club-goto="{{ forloop.index }}"
-            {% unless forloop.first %}disabled{% endunless %}
-            {% if forloop.first %}aria-current="step"{% endif %}
+            data-club-goto="{{ step_no }}"
+            {% unless step_no == 1 %}disabled{% endunless %}
+            {% if step_no == 1 %}aria-current="step"{% endif %}
           >
-            <span class="gs-club__progress-circle" style="--step-icon: url('{{ icon_url }}'); --step-icon-size: {{ icon_size }};">{{ forloop.index }}</span>
-            <span class="gs-club__progress-text">{{ label | strip }}</span>
+            <span class="gs-club__progress-circle" style="--step-icon: url('{{ icon_url }}'); --step-icon-size: {{ icon_size }};">{{ step_no }}</span>
+            <span class="gs-club__progress-text">{{ block.settings.progress_label | strip }}</span>
           </button>
         </li>
       {%- endfor -%}
@@ -557,75 +565,266 @@
       "info": "Join buttons elsewhere on the page link to #this-id.",
       "default": "club-grunt-join-now"
     },
-    { "type": "header", "content": "Step headings" },
-    { "type": "text", "id": "club_step_1_header", "label": "Step 1", "default": "Join Club Grunt Style" },
-    { "type": "text", "id": "club_step_2_header", "label": "Step 2", "default": "What Size Fits You Best?" },
-    { "type": "text", "id": "club_step_3_header", "label": "Step 3", "default": "Select Your Plan" },
-    { "type": "text", "id": "club_step_4_header", "label": "Step 4", "default": "Review Your Plan" },
-    { "type": "text", "id": "step_labels", "label": "Progress labels", "info": "Comma separated.", "default": "Patriot,Size,Plan,Review" },
-    { "type": "image_picker", "id": "step_1_icon", "label": "Step 1 icon", "info": "Shown in the circle while the step is current. Leave empty for the built-in icons." },
-    { "type": "image_picker", "id": "step_2_icon", "label": "Step 2 icon" },
-    { "type": "image_picker", "id": "step_3_icon", "label": "Step 3 icon" },
-    { "type": "image_picker", "id": "step_4_icon", "label": "Step 4 icon" },
-
-    { "type": "header", "content": "Fit" },
-    { "type": "text", "id": "gender_eyebrow", "label": "Eyebrow text", "default": "Patriotic" },
-    { "type": "text", "id": "mens_label", "label": "Men's label", "default": "Male" },
-    { "type": "text", "id": "womens_label", "label": "Women's label", "default": "Female" },
-
-    { "type": "header", "content": "Sizes" },
-    {
-      "type": "text",
-      "id": "sizes",
-      "label": "Sizes",
-      "info": "Comma separated Label:Value pairs. The value must match the Club product's variant title, e.g. S:Small. A bare entry uses the same text for both.",
-      "default": "S:Small,M:Medium,L:Large,XL,2XL,3XL,4XL"
-    },
-    { "type": "text", "id": "womens_excluded_sizes", "label": "Sizes not offered in the women's fit", "info": "Comma separated values or labels.", "default": "3XL,4XL" },
-    { "type": "image_picker", "id": "size_icon", "label": "Size icon", "info": "Leave empty for the built-in ruler." },
-
-    { "type": "header", "content": "Plans" },
     {
       "type": "text",
       "id": "product_handle_prefix",
       "label": "Product handle prefix",
       "info": "Handles are built as prefix-fit-plan, e.g. club-mens-monthly.",
       "default": "club"
-    },
-    { "type": "text", "id": "monthly_label", "label": "Monthly label", "default": "Monthly" },
-    { "type": "text", "id": "monthly_price", "label": "Monthly price", "default": "$25.00" },
-    { "type": "inline_richtext", "id": "monthly_note", "label": "Monthly ribbon", "default": "First Month: <strong>$25.00</strong>" },
-    {
-      "type": "text",
-      "id": "monthly_selling_plan_id",
-      "label": "Monthly Skio selling plan ID",
-      "info": "REQUIRED. A wrong id adds the subscription on the wrong billing terms, silently. Verify in Skio.",
-      "default": "1963917363"
-    },
-    { "type": "image_picker", "id": "monthly_icon", "label": "Monthly icon", "info": "Leave empty for the built-in chevrons." },
-    { "type": "text", "id": "annual_label", "label": "Annual label", "default": "Annual" },
-    { "type": "text", "id": "annual_price", "label": "Annual price", "default": "$255.00" },
-    { "type": "text", "id": "annual_saving", "label": "Annual saving badge", "default": "15% OFF" },
-    { "type": "text", "id": "annual_was_price", "label": "Annual was-price", "default": "$300.00" },
-    {
-      "type": "text",
-      "id": "annual_selling_plan_id",
-      "label": "Annual Skio selling plan ID",
-      "info": "REQUIRED. Verify in Skio.",
-      "default": "1963884595"
-    },
-    { "type": "image_picker", "id": "annual_icon", "label": "Annual icon", "info": "Leave empty for the built-in laurel." },
-    {
-      "type": "textarea",
-      "id": "club_plan_select_disclaimer",
-      "label": "Plan disclaimer",
-      "default": "Notice: All monthly and prepaid subscriptions are set to automatically renew. You will be contacted via email prior to a renewal. Annual Subscriptions are non-refundable."
-    },
-
-    { "type": "header", "content": "Review step" },
-    { "type": "text", "id": "join_label", "label": "Join button", "default": "Join Now" },
-    { "type": "text", "id": "restart_label", "label": "Start over link", "default": "Start Over" }
+    }
   ],
-  "presets": [{ "name": "Club Join Steps" }]
+  "blocks": [
+    {
+      "type": "step_fit",
+      "name": "Step: fit",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Join Club Grunt Style"
+        },
+        {
+          "type": "text",
+          "id": "progress_label",
+          "label": "Progress label",
+          "default": "Patriot"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Progress icon",
+          "info": "Shown in the circle while the step is current. Empty uses the built-in icon."
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow text",
+          "default": "Patriotic"
+        },
+        {
+          "type": "text",
+          "id": "mens_label",
+          "label": "Men's label",
+          "default": "Male"
+        },
+        {
+          "type": "text",
+          "id": "womens_label",
+          "label": "Women's label",
+          "default": "Female"
+        }
+      ]
+    },
+    {
+      "type": "step_size",
+      "name": "Step: size",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "What Size Fits You Best?"
+        },
+        {
+          "type": "text",
+          "id": "progress_label",
+          "label": "Progress label",
+          "default": "Size"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Progress icon",
+          "info": "Shown in the circle while the step is current. Empty uses the built-in icon."
+        },
+        {
+          "type": "text",
+          "id": "sizes",
+          "label": "Sizes",
+          "info": "Comma separated Label:Value pairs. The value must match the Club product's variant title, e.g. S:Small. A bare entry uses the same text for both.",
+          "default": "S:Small,M:Medium,L:Large,XL,2XL,3XL,4XL"
+        },
+        {
+          "type": "text",
+          "id": "womens_excluded_sizes",
+          "label": "Sizes not offered in the women's fit",
+          "info": "Comma separated values or labels.",
+          "default": "3XL,4XL"
+        },
+        {
+          "type": "image_picker",
+          "id": "size_icon",
+          "label": "Size icon",
+          "info": "Empty uses the built-in ruler."
+        }
+      ]
+    },
+    {
+      "type": "step_plan",
+      "name": "Step: plan",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Select Your Plan"
+        },
+        {
+          "type": "text",
+          "id": "progress_label",
+          "label": "Progress label",
+          "default": "Plan"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Progress icon",
+          "info": "Shown in the circle while the step is current. Empty uses the built-in icon."
+        },
+        {
+          "type": "textarea",
+          "id": "disclaimer",
+          "label": "Plan disclaimer",
+          "default": "Notice: All monthly and prepaid subscriptions are set to automatically renew. You will be contacted via email prior to a renewal. Annual Subscriptions are non-refundable."
+        }
+      ]
+    },
+    {
+      "type": "plan",
+      "name": "Plan",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "key",
+          "label": "Handle suffix",
+          "info": "monthly or annual: the last part of the product handle (prefix-fit-suffix).",
+          "default": "monthly"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Monthly"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "default": "$25.00"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "note",
+          "label": "Ribbon",
+          "info": "Shown instead of the saving badge when set."
+        },
+        {
+          "type": "text",
+          "id": "saving",
+          "label": "Saving badge",
+          "info": "e.g. 15% OFF"
+        },
+        {
+          "type": "text",
+          "id": "was_price",
+          "label": "Was-price"
+        },
+        {
+          "type": "text",
+          "id": "selling_plan_id",
+          "label": "Skio selling plan ID",
+          "info": "REQUIRED. A wrong id adds the subscription on the wrong billing terms, silently. Verify in Skio."
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon",
+          "info": "Empty uses the built-in chevrons (monthly) or laurel (annual)."
+        }
+      ]
+    },
+    {
+      "type": "step_review",
+      "name": "Step: review",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Review Your Plan"
+        },
+        {
+          "type": "text",
+          "id": "progress_label",
+          "label": "Progress label",
+          "default": "Review"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Progress icon",
+          "info": "Shown in the circle while the step is current. Empty uses the built-in icon."
+        },
+        {
+          "type": "text",
+          "id": "join_label",
+          "label": "Join button",
+          "default": "Join Now"
+        },
+        {
+          "type": "text",
+          "id": "restart_label",
+          "label": "Start over link",
+          "default": "Start Over"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Club Join Steps",
+      "blocks": [
+        {
+          "type": "step_fit"
+        },
+        {
+          "type": "step_size"
+        },
+        {
+          "type": "step_plan"
+        },
+        {
+          "type": "plan",
+          "settings": {
+            "key": "monthly",
+            "label": "Monthly",
+            "price": "$25.00",
+            "note": "First Month: <strong>$25.00</strong>",
+            "selling_plan_id": "1963917363"
+          }
+        },
+        {
+          "type": "plan",
+          "settings": {
+            "key": "annual",
+            "label": "Annual",
+            "price": "$255.00",
+            "saving": "15% OFF",
+            "was_price": "$300.00",
+            "selling_plan_id": "1963884595"
+          }
+        },
+        {
+          "type": "step_review"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

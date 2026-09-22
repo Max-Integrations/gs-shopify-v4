@@ -6,19 +6,43 @@
     },
     "gs_addons": {
       "type": "gs-cart-addons",
+      "blocks": {
+        "ship": {
+          "type": "free_shipping",
+          "settings": {
+            "threshold": 75,
+            "prefix": "Spend",
+            "suffix": "more for free shipping",
+            "success": "You've unlocked free shipping."
+          }
+        },
+        "wrap": {
+          "type": "gift_wrap",
+          "settings": {
+            "product": "",
+            "label": "Add gift wrap",
+            "description": "",
+            "add_label": "Add",
+            "remove_label": "Remove"
+          }
+        },
+        "roundup": {
+          "type": "roundup",
+          "disabled": true,
+          "settings": {
+            "product": "",
+            "label": "Round up for the Grunt Style Foundation",
+            "description": "Your change funds mental health, wellness and advocacy programs for Service Members, Veterans and First Responders.",
+            "add_label": "Donate"
+          }
+        }
+      },
+      "block_order": [
+        "ship",
+        "wrap",
+        "roundup"
+      ],
       "settings": {
-        "show_free_shipping": true,
-        "free_shipping_threshold": 75,
-        "free_shipping_prefix": "Spend",
-        "free_shipping_suffix": "more for free shipping",
-        "free_shipping_success": "You've unlocked free shipping.",
-        "gift_wrap_label": "Add gift wrap",
-        "gift_wrap_add_label": "Add",
-        "gift_wrap_remove_label": "Remove",
-        "show_roundup": false,
-        "roundup_label": "Round up for the Grunt Style Foundation",
-        "roundup_description": "Your change funds mental health, wellness and advocacy programs for Service Members, Veterans and First Responders.",
-        "roundup_add_label": "Donate",
         "color_scheme": "scheme-1"
       }
     },
@@ -27,5 +51,9 @@
       "settings": {}
     }
   },
-  "order": ["main", "gs_addons", "footer"]
+  "order": [
+    "main",
+    "gs_addons",
+    "footer"
+  ]
 }

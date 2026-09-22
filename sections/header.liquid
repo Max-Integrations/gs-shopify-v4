@@ -197,32 +197,28 @@
       {%- endif -%}
 
       <div class="gs-header__icons">
-        {%- if s.rewards_link != blank -%}
-          <a class="gs-header__icon" href="{{ s.rewards_link }}" aria-label="{{ s.rewards_label | escape }}">
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-              <path d="M12 2l2.9 6.3 6.9.8-5 4.7 1.3 6.8L12 17.4 5.9 20.6 7.2 13.8l-5-4.7 6.9-.8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-            </svg>
+        {%- for block in section.blocks -%}
+          {%- if block.type != 'utility_link' or block.settings.link == blank -%}{%- continue -%}{%- endif -%}
+          <a class="gs-header__icon" href="{{ block.settings.link }}" aria-label="{{ block.settings.label | escape }}" {{ block.shopify_attributes }}>
+            {%- case block.settings.icon -%}
+              {%- when 'help' -%}
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                  <circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                  <path d="M9.5 9a2.5 2.5 0 115 .5c0 1.5-2.5 2-2.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <circle cx="12" cy="17" r="1" fill="currentColor"/>
+                </svg>
+              {%- when 'pin' -%}
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                  <path d="M12 2.5c3.6 0 6.5 2.9 6.5 6.5 0 4.5-6.5 12-6.5 12S5.5 13.5 5.5 9c0-3.6 2.9-6.5 6.5-6.5z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                  <circle cx="12" cy="9" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                </svg>
+              {%- else -%}
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                  <path d="M12 2l2.9 6.3 6.9.8-5 4.7 1.3 6.8L12 17.4 5.9 20.6 7.2 13.8l-5-4.7 6.9-.8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                </svg>
+            {%- endcase -%}
           </a>
-        {%- endif -%}
-
-        {%- if s.help_link != blank -%}
-          <a class="gs-header__icon" href="{{ s.help_link }}" aria-label="{{ s.help_label | escape }}">
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-              <circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M9.5 9a2.5 2.5 0 115 .5c0 1.5-2.5 2-2.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              <circle cx="12" cy="17" r="1" fill="currentColor"/>
-            </svg>
-          </a>
-        {%- endif -%}
-
-        {%- if s.stores_link != blank -%}
-          <a class="gs-header__icon" href="{{ s.stores_link }}" aria-label="{{ s.stores_label | escape }}">
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-              <path d="M12 2.5c3.6 0 6.5 2.9 6.5 6.5 0 4.5-6.5 12-6.5 12S5.5 13.5 5.5 9c0-3.6 2.9-6.5 6.5-6.5z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-              <circle cx="12" cy="9" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/>
-            </svg>
-          </a>
-        {%- endif -%}
+        {%- endfor -%}
 
         {%- if shop.customer_accounts_enabled -%}
           <a
@@ -459,14 +455,55 @@
   "name": "Header",
   "class": "gs-header-section",
   "settings": [
-    { "type": "header", "content": "Logo" },
-    { "type": "image_picker", "id": "logo", "label": "Logo" },
-    { "type": "range", "id": "logo_width", "label": "Logo width (desktop)", "min": 80, "max": 320, "step": 10, "unit": "px", "default": 180 },
-    { "type": "range", "id": "logo_width_mobile", "label": "Logo width (mobile)", "min": 70, "max": 220, "step": 10, "unit": "px", "default": 130 },
-    { "type": "header", "content": "Navigation" },
-    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
-    { "type": "checkbox", "id": "sticky_header", "label": "Sticky header", "default": true },
-    { "type": "header", "content": "Highlighted nav item" },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width (desktop)",
+      "min": 80,
+      "max": 320,
+      "step": 10,
+      "unit": "px",
+      "default": 180
+    },
+    {
+      "type": "range",
+      "id": "logo_width_mobile",
+      "label": "Logo width (mobile)",
+      "min": 70,
+      "max": 220,
+      "step": 10,
+      "unit": "px",
+      "default": 130
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "label": "Sticky header",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Highlighted nav item"
+    },
     {
       "type": "checkbox",
       "id": "highlight_enable",
@@ -481,28 +518,90 @@
       "info": "Must match the menu item title exactly. Renaming the item in the Shopify menu silently removes the highlight.",
       "default": "BOGO 50%"
     },
-    { "type": "color", "id": "highlight_background", "label": "Highlight background", "default": "#ab192d" },
-    { "type": "color", "id": "highlight_text_color", "label": "Highlight text", "default": "#ffffff" },
-    { "type": "header", "content": "Search" },
-    { "type": "checkbox", "id": "show_search", "label": "Show search field", "default": true },
-    { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "What are you looking for..." },
-    { "type": "header", "content": "Icon links" },
-    { "type": "url", "id": "rewards_link", "label": "Rewards link" },
-    { "type": "text", "id": "rewards_label", "label": "Rewards label", "default": "Rewards" },
-    { "type": "url", "id": "help_link", "label": "Help link" },
-    { "type": "text", "id": "help_label", "label": "Help label", "default": "Help" },
-    { "type": "url", "id": "stores_link", "label": "Retail stores link" },
-    { "type": "text", "id": "stores_label", "label": "Retail stores label", "default": "Retail stores" },
-    { "type": "header", "content": "Colors" },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-4" },
-    { "type": "color", "id": "header_background", "label": "Header background", "default": "#000000" },
-    { "type": "color", "id": "nav_background", "label": "Nav row background", "default": "#000000" },
-    { "type": "color", "id": "header_text", "label": "Text", "default": "#ffffff" },
-    { "type": "color", "id": "header_text_hover", "label": "Text hover", "default": "#e7e7e7" },
-    { "type": "color", "id": "header_icon", "label": "Icons", "default": "#ffffff" },
-    { "type": "color", "id": "cart_count_background", "label": "Cart count background", "default": "#5c5c5c" },
-    { "type": "color", "id": "cart_count_text", "label": "Cart count text", "default": "#ffffff" },
-    { "type": "header", "content": "Mega menu" },
+    {
+      "type": "color",
+      "id": "highlight_background",
+      "label": "Highlight background",
+      "default": "#ab192d"
+    },
+    {
+      "type": "color",
+      "id": "highlight_text_color",
+      "label": "Highlight text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Search"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search field",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder",
+      "default": "What are you looking for..."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-4"
+    },
+    {
+      "type": "color",
+      "id": "header_background",
+      "label": "Header background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "nav_background",
+      "label": "Nav row background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "header_text",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "header_text_hover",
+      "label": "Text hover",
+      "default": "#e7e7e7"
+    },
+    {
+      "type": "color",
+      "id": "header_icon",
+      "label": "Icons",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "cart_count_background",
+      "label": "Cart count background",
+      "default": "#5c5c5c"
+    },
+    {
+      "type": "color",
+      "id": "cart_count_text",
+      "label": "Cart count text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Mega menu"
+    },
     {
       "type": "color",
       "id": "mega_background",
@@ -510,7 +609,12 @@
       "info": "The panel inverts against the header - white on the live site.",
       "default": "#ffffff"
     },
-    { "type": "color", "id": "mega_text", "label": "Panel text", "default": "#121212" }
+    {
+      "type": "color",
+      "id": "mega_text",
+      "label": "Panel text",
+      "default": "#121212"
+    }
   ],
   "blocks": [
     {
@@ -523,9 +627,60 @@
           "label": "Menu item title",
           "info": "Must match the top-level menu item title exactly. Add several blocks with the same title to show multiple tiles."
         },
-        { "type": "image_picker", "id": "nav_image", "label": "Image" },
-        { "type": "url", "id": "nav_link", "label": "Image link" },
-        { "type": "text", "id": "nav_label", "label": "Caption", "info": "Optional. Shown over the image." }
+        {
+          "type": "image_picker",
+          "id": "nav_image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "nav_link",
+          "label": "Image link"
+        },
+        {
+          "type": "text",
+          "id": "nav_label",
+          "label": "Caption",
+          "info": "Optional. Shown over the image."
+        }
+      ]
+    },
+    {
+      "type": "utility_link",
+      "name": "Icon link",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "star",
+              "label": "Star (rewards)"
+            },
+            {
+              "value": "help",
+              "label": "Question mark (help)"
+            },
+            {
+              "value": "pin",
+              "label": "Map pin (stores)"
+            }
+          ],
+          "default": "star"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Accessible label",
+          "default": "Rewards"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
       ]
     }
   ]

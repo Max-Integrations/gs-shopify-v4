@@ -245,8 +245,8 @@
 /* ---- Donation impact ---- */
 .donation-impact-text {
   color: var(--donationImpactFontColor, #ffffff);
-  text-align: var(--donationImpactTextAlign, center);
-  font-size: var(--donationImpactFontSizeMobile, 18px);
+  text-align: center;
+  font-size: 18px;
 }
 
 .donation-impact-text span {
@@ -275,7 +275,7 @@
 
   .donation-impact-text {
     grid-column: 1 / -1;
-    font-size: var(--donationImpactFontSizeDesktop, 24px);
+    font-size: 24px;
   }
 }
 
