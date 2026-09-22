@@ -121,8 +121,12 @@
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
-      {%- if layout == 'carousel' -%}
-        <div class="gs-mg__scroller" data-swatch-scroller>
+      {%- comment -%}
+        One track for both layouts: content_for 'blocks' may appear only
+        once. The carousel adds the scroller attributes and arrows.
+      {%- endcomment -%}
+      <div class="gs-mg__scroller"{% if layout == 'carousel' %} data-swatch-scroller{% endif %}>
+        {%- if layout == 'carousel' -%}
           <button
             type="button"
             class="gs-mg__nav"
@@ -134,12 +138,14 @@
               <path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
-          <div
-            class="media-grid-wrapper media-grid-wrapper--carousel{% if s.enable_shadow %} shadow-enabled{% endif %}{% if s.enable_hover_content %} content-on-hover{% endif %}"
-            data-swatch-track
-          >
-            {% content_for 'blocks' %}
-          </div>
+        {%- endif -%}
+        <div
+          class="media-grid-wrapper{% if layout == 'carousel' %} media-grid-wrapper--carousel{% endif %}{% if s.enable_shadow %} shadow-enabled{% endif %}{% if s.enable_hover_content %} content-on-hover{% endif %}"
+          {% if layout == 'carousel' %}data-swatch-track{% endif %}
+        >
+          {% content_for 'blocks' %}
+        </div>
+        {%- if layout == 'carousel' -%}
           <button
             type="button"
             class="gs-mg__nav"
@@ -151,12 +157,8 @@
               <path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
-        </div>
-      {%- else -%}
-        <div class="media-grid-wrapper{% if s.enable_shadow %} shadow-enabled{% endif %}{% if s.enable_hover_content %} content-on-hover{% endif %}">
-          {% content_for 'blocks' %}
-        </div>
-      {%- endif -%}
+        {%- endif -%}
+      </div>
     {%- endif -%}
   </div>
 </div>

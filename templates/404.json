@@ -15,7 +15,7 @@
           "type": "button",
           "settings": {
             "label": "Back to home",
-            "link": "shopify://",
+            "link": "/",
             "style": "link"
           }
         }

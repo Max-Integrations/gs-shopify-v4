@@ -46,6 +46,8 @@
 
 /* ---- Grid ---- */
 .media-grid-wrapper {
+  flex: 1 1 auto;
+  min-width: 0;
   display: grid;
   grid-template-columns: repeat(var(--cols-mobile, 1), minmax(0, 1fr));
   grid-auto-rows: var(--mobileHeight, 200px);
