@@ -22,7 +22,7 @@ One file had to be shortened to fit Shopify's 50-character section filename limi
 |---|---|---|
 | Section files | 78 | 83 (45 active, 38 deprecated) |
 | Sections doing the tile-grid job | 4 | 1 |
-| Sections doing the banner job | 5 | 2 |
+| Sections doing the banner job | 5 | 3 |
 | Testimonials sections | 2 | 1 |
 | Sections above theme-check's 40-setting limit | 4 | 0 |
 
@@ -37,7 +37,6 @@ Settings removed from the biggest offenders:
 | header | 27 | 21 |
 | product-highlight | 53 | retired |
 | multicolumn-with-content-hover | 44 | retired |
-| section--full-width-image_text | 18 (+ 27 across two block types) | retired |
 
 ---
 
@@ -110,7 +109,6 @@ No template referenced these. Renamed, not deleted.
 
 | Retired | Now | Notes |
 |---|---|---|
-| `section--full-width-image_text` | `image-banner` | Careers hero: an image with one heading block. |
 | `section--video-banner` | `image-banner` | `image-banner` gained `video_desktop` / `video_mobile`: muted looping background video, images as posters, "adapt" uses the video's own ratio so a wide desktop file and a squarer mobile file each keep their shape. Only the video for the current breakpoint loads. |
 | `product-highlight` (53 settings) | `image-with-text` | `image-with-text` gained a second button block and a `show_chevrons` decoration with two colours. |
 
@@ -126,6 +124,19 @@ No template referenced these. Renamed, not deleted.
 |---|---|---|
 | `section--single-cta-button` | `rich-text` + one button block | The button block gained `open_in_new_tab`; a new colour scheme-6 (black background, gold button) gives the club band its yellow-on-black look. |
 | `section--about-details` | `multicolumn` | Three columns on scheme-2 cards; the store-page links became a rich-text line in the first column. |
+
+### Reverted: `section--full-width-image_text`
+
+This was folded into `image-banner` and then **restored on request**. It is new work of the client's, merged from its own branch shortly before this audit, and `image-banner` could not carry it:
+
+- one heading size applies to both breakpoints, so the careers hero lost its `5rem` desktop / `1rem` mobile split
+- no separate desktop and mobile background images
+- no `image_height_auto`, where the image sets the section height and the content sits over it
+- no per-line text colour, background colour, letter spacing or padding
+- no layout presets (text left / CTA right, stacked, text right / CTA left)
+- no horizontal padding, item gap or button gap
+
+The section, its presets, its stylesheet and the careers hero's original template JSON are all back exactly as they were at `ec0265a`. The `video_desktop` / `video_mobile` additions to `image-banner` stay, since those serve the Foundation hero.
 
 ---
 

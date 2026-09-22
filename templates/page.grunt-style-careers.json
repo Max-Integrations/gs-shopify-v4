@@ -6,34 +6,46 @@
       "settings": {}
     },
     "hero": {
-      "type": "image-banner",
+      "type": "section--full-width-image_text",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "message_line_BVQD6q": {
+          "type": "message_line",
           "settings": {
-            "heading": "<em>Pride + Culture + Product = Grunt Style</em>",
-            "heading_size": "hxl"
+            "text": "<em>Pride + Culture + Product = Grunt Style</em>",
+            "size_scale_desktop": "5rem",
+            "size_scale_mobile": "1rem",
+            "text_color": "#FFFFFF",
+            "background_color": "#00000000",
+            "letter_spacing": 0,
+            "padding_horizontal_desktop": 8,
+            "padding_vertical_desktop": 8,
+            "padding_horizontal_mobile": 8,
+            "padding_vertical_mobile": 8
           }
         }
       },
       "block_order": [
-        "heading"
+        "message_line_BVQD6q"
       ],
       "settings": {
-        "image": "shopify://shop_images/come-work-with-grunt-style-bg-min.jpg",
-        "image_2": "",
-        "video_desktop": "",
-        "video_mobile": "",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "image_behavior": "none",
-        "desktop_content_position": "middle-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-4",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#5D5D39",
+        "background_image_desktop": "shopify://shop_images/come-work-with-grunt-style-bg-min.jpg",
+        "background_image_mobile": "shopify://shop_images/come-work-with-grunt-style-bg-min.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 48,
+        "padding_bottom_desktop": 48,
+        "padding_horizontal_desktop": 24,
+        "item_gap_desktop": 4,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_horizontal_mobile": 24,
+        "item_gap_mobile": 4,
+        "button_gap": 12
       }
     },
     "video_recruiting": {

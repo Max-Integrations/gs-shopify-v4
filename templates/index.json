@@ -1,7 +1,7 @@
 {
   "sections": {
     "section_sale_promo_message_4Qz89H": {
-      "type": "deprecated--section--full-width-image_text",
+      "type": "section--full-width-image_text",
       "blocks": {
         "message_line_iCYyeX": {
           "type": "message_line",
