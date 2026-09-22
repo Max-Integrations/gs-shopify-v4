@@ -2,9 +2,25 @@
   ==================================================================
   GS additions to Dawn's image-with-text: chevron decoration
   ==================================================================
-  v3's product-highlight drew seven filled chevrons in a row under the
-  copy and six outlined chevrons up the side of the image. The colours
-  arrive as --gs-chevron on each group.
+  v3's product-highlight drew seven chevrons in a row under the copy
+  and six up the side of the image.
+
+  ------------------------------------------------------------------
+  WHY THE GAP IS WHAT MAKES THEM STRIPES
+  ------------------------------------------------------------------
+  The chevron path spans its whole 100x100 viewBox but the band is only
+  50 units thick, so at any height it fills half its own box. The boxes
+  therefore have to be pulled together by HALF the chevron size before
+  the bands line up at all - that is the negative margin.
+
+  At exactly minus half the bands meet edge to edge and merge into one
+  solid mass. The `gap` pushes them apart again, and the space between
+  one band and the next is exactly the gap. v3 set both; porting only
+  the negative margin is what turned the red run solid.
+
+  Sizes, gaps and padding arrive as custom properties from the section
+  so each instance is positioned on its own.
+  ==================================================================
 */
 
 .gs-iwt__chevrons {
@@ -15,40 +31,46 @@
 
 .gs-iwt__chevrons svg {
   flex: 0 0 auto;
-  width: 4.8rem;
-  height: 4.8rem;
 }
 
-/* Row under the text: chevrons overlap so they read as one run. */
+/* ---- Row under the text ---- */
 .gs-iwt__chevrons--row {
   justify-content: center;
-  margin-top: 2rem;
+  gap: var(--chevron-row-gap-mobile, 30px);
+  padding-top: var(--chevron-row-space-above, 24px);
+  padding-bottom: var(--chevron-row-space-below, 0px);
+}
+
+.gs-iwt__chevrons--row svg {
+  width: var(--chevron-row-size-mobile, 64px);
+  height: var(--chevron-row-size-mobile, 64px);
 }
 
 .gs-iwt__chevrons--row svg:not(:first-of-type) {
-  margin-left: -2.4rem;
+  margin-left: calc(var(--chevron-row-size-mobile, 64px) / -2);
 }
 
-/* Column over the image: bottom-right, stacked upward. */
+/* ---- Column over the image ---- */
 .image-with-text__media {
   position: relative;
 }
 
 .gs-iwt__chevrons--column {
   position: absolute;
-  right: 1.5rem;
-  bottom: 1.5rem;
+  right: var(--chevron-col-inset-mobile, 15px);
+  bottom: var(--chevron-col-inset-mobile, 15px);
   flex-direction: column;
   justify-content: flex-end;
+  gap: var(--chevron-col-gap-mobile, 25px);
 }
 
 .gs-iwt__chevrons--column svg {
-  width: 4rem;
-  height: 4rem;
+  width: var(--chevron-col-size-mobile, 54px);
+  height: var(--chevron-col-size-mobile, 54px);
 }
 
 .gs-iwt__chevrons--column svg:not(:first-of-type) {
-  margin-top: -2rem;
+  margin-top: calc(var(--chevron-col-size-mobile, 54px) / -2);
 }
 
 /* Two buttons sit side by side. */
@@ -57,21 +79,31 @@
 }
 
 @media screen and (min-width: 750px) {
-  .gs-iwt__chevrons svg {
-    width: 6.4rem;
-    height: 6.4rem;
+  .gs-iwt__chevrons--row {
+    gap: var(--chevron-row-gap, 30px);
+  }
+
+  .gs-iwt__chevrons--row svg {
+    width: var(--chevron-row-size, 80px);
+    height: var(--chevron-row-size, 80px);
   }
 
   .gs-iwt__chevrons--row svg:not(:first-of-type) {
-    margin-left: -3.2rem;
+    margin-left: calc(var(--chevron-row-size, 80px) / -2);
+  }
+
+  .gs-iwt__chevrons--column {
+    right: var(--chevron-col-inset, 30px);
+    bottom: var(--chevron-col-inset, 30px);
+    gap: var(--chevron-col-gap, 20px);
   }
 
   .gs-iwt__chevrons--column svg {
-    width: 5.6rem;
-    height: 5.6rem;
+    width: var(--chevron-col-size, 78px);
+    height: var(--chevron-col-size, 78px);
   }
 
   .gs-iwt__chevrons--column svg:not(:first-of-type) {
-    margin-top: -2.8rem;
+    margin-top: calc(var(--chevron-col-size, 78px) / -2);
   }
 }

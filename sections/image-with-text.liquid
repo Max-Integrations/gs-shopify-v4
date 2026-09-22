@@ -5,10 +5,13 @@
       desktop. Breakpoint 767/768 matches the GS sections.
     - the button block allows two buttons (limit 2 instead of 1).
     - `show_chevrons`: v3's product-highlight decoration, a row of
-      chevrons under the text and a column of outlined chevrons over the
-      image. With heading/text/two buttons this section replaces the
-      homepage product-highlight section (53 settings). Styles in
-      assets/gs-image-with-text.css.
+      chevrons under the text and a column over the image. With
+      heading/text/two buttons this section replaces the homepage
+      product-highlight section (53 settings). Size, gap, fill and
+      position are per-instance settings, and the GAP is what separates
+      the chevrons into stripes rather than one solid run - see the note
+      in assets/gs-image-with-text.css. Defaults reproduce v3's live
+      homepage values, so an existing instance needs no template edit.
 {% endcomment %}
 {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
 {%- if section.settings.show_chevrons -%}
@@ -83,9 +86,30 @@
               {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
             {%- endif -%}
             {%- if section.settings.show_chevrons -%}
-              <div class="gs-iwt__chevrons gs-iwt__chevrons--column" style="--gs-chevron: {{ section.settings.chevron_color_image | default: '#ffffff' }};" aria-hidden="true">
+              <div
+                class="gs-iwt__chevrons gs-iwt__chevrons--column"
+                style="
+                  --gs-chevron: {{ section.settings.chevron_color_image | default: '#ffffff' }};
+                  --chevron-col-size: {{ section.settings.chevron_col_size | default: 78 }}px;
+                  --chevron-col-size-mobile: {{ section.settings.chevron_col_size_mobile | default: 54 }}px;
+                  --chevron-col-gap: {{ section.settings.chevron_col_gap | default: 20 }}px;
+                  --chevron-col-gap-mobile: {{ section.settings.chevron_col_gap_mobile | default: 25 }}px;
+                  --chevron-col-inset: {{ section.settings.chevron_col_inset | default: 30 }}px;
+                  --chevron-col-inset-mobile: {{ section.settings.chevron_col_inset_mobile | default: 15 }}px;
+                "
+                aria-hidden="true"
+              >
                 {%- for i in (1..6) -%}
-                  <svg viewBox="0 0 100 100" focusable="false"><path d="M100 0L50 50L100 100H50L0 50L50 0H100Z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                  <svg viewBox="0 0 100 100" focusable="false">
+                    <path
+                      d="M100 0L50 50L100 100H50L0 50L50 0H100Z"
+                      {% if section.settings.chevron_col_fill == 'solid' %}
+                        fill="currentColor"
+                      {% else %}
+                        fill="none" stroke="currentColor" stroke-width="{{ section.settings.chevron_stroke_width | default: 2 }}"
+                      {% endif %}
+                    />
+                  </svg>
                 {%- endfor -%}
               </div>
             {%- endif -%}
@@ -133,9 +157,30 @@
               {%- endcase -%}
             {%- endfor -%}
             {%- if section.settings.show_chevrons -%}
-              <div class="gs-iwt__chevrons gs-iwt__chevrons--row" style="--gs-chevron: {{ section.settings.chevron_color_text | default: '#ab192d' }};" aria-hidden="true">
+              <div
+                class="gs-iwt__chevrons gs-iwt__chevrons--row"
+                style="
+                  --gs-chevron: {{ section.settings.chevron_color_text | default: '#ab192d' }};
+                  --chevron-row-size: {{ section.settings.chevron_row_size | default: 80 }}px;
+                  --chevron-row-size-mobile: {{ section.settings.chevron_row_size_mobile | default: 64 }}px;
+                  --chevron-row-gap: {{ section.settings.chevron_row_gap | default: 30 }}px;
+                  --chevron-row-gap-mobile: {{ section.settings.chevron_row_gap_mobile | default: 30 }}px;
+                  --chevron-row-space-above: {{ section.settings.chevron_row_space_above | default: 24 }}px;
+                  --chevron-row-space-below: {{ section.settings.chevron_row_space_below | default: 0 }}px;
+                "
+                aria-hidden="true"
+              >
                 {%- for i in (1..7) -%}
-                  <svg viewBox="0 0 100 100" focusable="false"><path d="M100 0L50 50L100 100H50L0 50L50 0H100Z" fill="currentColor"/></svg>
+                  <svg viewBox="0 0 100 100" focusable="false">
+                    <path
+                      d="M100 0L50 50L100 100H50L0 50L50 0H100Z"
+                      {% if section.settings.chevron_row_fill == 'outline' %}
+                        fill="none" stroke="currentColor" stroke-width="{{ section.settings.chevron_stroke_width | default: 2 }}"
+                      {% else %}
+                        fill="currentColor"
+                      {% endif %}
+                    />
+                  </svg>
                 {%- endfor -%}
               </div>
             {%- endif -%}
@@ -347,10 +392,216 @@
       "label": "t:sections.multirow.settings.container_color_scheme.label",
       "default": "scheme-1"
     },
-    { "type": "header", "content": "Decoration (GS addition)" },
-    { "type": "checkbox", "id": "show_chevrons", "label": "Show chevrons", "info": "A row under the text and an outlined column over the image, as on the homepage product highlight.", "default": false },
-    { "type": "color", "id": "chevron_color_text", "label": "Chevrons under the text", "default": "#ab192d" },
-    { "type": "color", "id": "chevron_color_image", "label": "Chevrons over the image", "default": "#ffffff" },
+    {
+        "type": "header",
+        "content": "Chevrons (GS addition)"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_chevrons",
+        "label": "Show chevrons",
+        "info": "A row under the text and a column over the image, as on the homepage product highlight.",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "chevron_stroke_width",
+        "label": "Outline thickness",
+        "min": 1,
+        "max": 8,
+        "step": 1,
+        "unit": "px",
+        "default": 2,
+        "visible_if": "{{ section.settings.show_chevrons }}",
+        "info": "Only applies where the fill below is set to Outline."
+      },
+      {
+        "type": "header",
+        "content": "Chevrons under the text"
+      },
+      {
+        "type": "color",
+        "id": "chevron_color_text",
+        "label": "Color",
+        "default": "#ab192d"
+      },
+      {
+        "type": "select",
+        "id": "chevron_row_fill",
+        "label": "Fill",
+        "options": [
+          {
+            "value": "solid",
+            "label": "Solid"
+          },
+          {
+            "value": "outline",
+            "label": "Outline"
+          }
+        ],
+        "default": "solid",
+        "visible_if": "{{ section.settings.show_chevrons }}"
+      },
+      {
+        "type": "range",
+        "id": "chevron_row_size",
+        "label": "Size (desktop)",
+        "min": 20,
+        "max": 140,
+        "step": 2,
+        "unit": "px",
+        "default": 80,
+        "visible_if": "{{ section.settings.show_chevrons }}"
+      },
+      {
+        "type": "range",
+        "id": "chevron_row_size_mobile",
+        "label": "Size (mobile)",
+        "min": 16,
+        "max": 120,
+        "step": 2,
+        "unit": "px",
+        "default": 64,
+        "visible_if": "{{ section.settings.show_chevrons }}"
+      },
+      {
+        "type": "range",
+        "id": "chevron_row_gap",
+        "label": "Space between chevrons (desktop)",
+        "min": 0,
+        "max": 80,
+        "step": 1,
+        "unit": "px",
+        "default": 30,
+        "visible_if": "{{ section.settings.show_chevrons }}",
+        "info": "0 merges them into one solid run. Raise it to separate them into stripes."
+      },
+      {
+        "type": "range",
+        "id": "chevron_row_gap_mobile",
+        "label": "Space between chevrons (mobile)",
+        "min": 0,
+        "max": 80,
+        "step": 1,
+        "unit": "px",
+        "default": 30,
+        "visible_if": "{{ section.settings.show_chevrons }}"
+      },
+      {
+        "type": "range",
+        "id": "chevron_row_space_above",
+        "label": "Space above",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "unit": "px",
+        "default": 24,
+        "visible_if": "{{ section.settings.show_chevrons }}"
+      },
+      {
+        "type": "range",
+        "id": "chevron_row_space_below",
+        "label": "Space below",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "unit": "px",
+        "default": 0,
+        "visible_if": "{{ section.settings.show_chevrons }}"
+      },
+      {
+        "type": "header",
+        "content": "Chevrons over the image"
+      },
+      {
+        "type": "color",
+        "id": "chevron_color_image",
+        "label": "Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "select",
+        "id": "chevron_col_fill",
+        "label": "Fill",
+        "options": [
+          {
+            "value": "solid",
+            "label": "Solid"
+          },
+          {
+            "value": "outline",
+            "label": "Outline"
+          }
+        ],
+        "default": "outline",
+        "visible_if": "{{ section.settings.show_chevrons }}"
+      },
+      {
+        "type": "range",
+        "id": "chevron_col_size",
+        "label": "Size (desktop)",
+        "min": 20,
+        "max": 140,
+        "step": 2,
+        "unit": "px",
+        "default": 78,
+        "visible_if": "{{ section.settings.show_chevrons }}"
+      },
+      {
+        "type": "range",
+        "id": "chevron_col_size_mobile",
+        "label": "Size (mobile)",
+        "min": 16,
+        "max": 120,
+        "step": 2,
+        "unit": "px",
+        "default": 54,
+        "visible_if": "{{ section.settings.show_chevrons }}"
+      },
+      {
+        "type": "range",
+        "id": "chevron_col_gap",
+        "label": "Space between chevrons (desktop)",
+        "min": 0,
+        "max": 80,
+        "step": 1,
+        "unit": "px",
+        "default": 20,
+        "visible_if": "{{ section.settings.show_chevrons }}"
+      },
+      {
+        "type": "range",
+        "id": "chevron_col_gap_mobile",
+        "label": "Space between chevrons (mobile)",
+        "min": 0,
+        "max": 80,
+        "step": 1,
+        "unit": "px",
+        "default": 25,
+        "visible_if": "{{ section.settings.show_chevrons }}"
+      },
+      {
+        "type": "range",
+        "id": "chevron_col_inset",
+        "label": "Distance from the image edge (desktop)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 30,
+        "visible_if": "{{ section.settings.show_chevrons }}"
+      },
+      {
+        "type": "range",
+        "id": "chevron_col_inset_mobile",
+        "label": "Distance from the image edge (mobile)",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 15,
+        "visible_if": "{{ section.settings.show_chevrons }}"
+      },
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
