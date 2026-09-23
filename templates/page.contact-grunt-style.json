@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -299,14 +290,25 @@
       "type": "rich-text",
       "blocks": {
         "btn": {
-          "type": "button",
+          "type": "block--button",
           "settings": {
-            "button_label": "See all FAQs",
-            "button_link": "shopify://pages/faq",
-            "button_style_secondary": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "label": "See all FAQs",
+            "link": "shopify://pages/faq",
+            "open_in_new_tab": false,
+            "style": "outline",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "",
+            "text_color": "",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
           }
         }
       },
@@ -327,27 +329,43 @@
       "type": "image-banner",
       "blocks": {
         "h": {
-          "type": "heading",
+          "type": "block--heading",
           "settings": {
-            "heading": "SHOP THE GRUNT STYLE EXPERIENCE LOCALLY",
-            "heading_size": "h1"
+            "text": "SHOP THE GRUNT STYLE EXPERIENCE LOCALLY",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
           }
         },
-        "b": {
-          "type": "buttons",
+        "b_1": {
+          "type": "block--button",
           "settings": {
-            "button_label_1": "Find a store near you",
-            "button_link_1": "shopify://pages/grunt-style-retail-stores",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "label": "Find a store near you",
+            "link": "shopify://pages/grunt-style-retail-stores",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "",
+            "text_color": "",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
           }
         }
       },
       "block_order": [
         "h",
-        "b"
+        "b_1"
       ],
       "settings": {
         "image": "shopify://shop_images/GS_CPB-retail-1440x300.png",

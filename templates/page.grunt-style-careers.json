@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -18,18 +9,16 @@
       "type": "section--full-width-image_text",
       "blocks": {
         "message_line_BVQD6q": {
-          "type": "message_line",
+          "type": "block--message-line",
           "settings": {
             "text": "<em>Pride + Culture + Product = Grunt Style</em>",
-            "size_scale_desktop": "5rem",
-            "size_scale_mobile": "1rem",
+            "size_desktop": 50,
+            "size_mobile": 10,
             "text_color": "#FFFFFF",
-            "background_color": "#00000000",
+            "background_color": "",
             "letter_spacing": 0,
-            "padding_horizontal_desktop": 8,
-            "padding_vertical_desktop": 8,
-            "padding_horizontal_mobile": 8,
-            "padding_vertical_mobile": 8
+            "padding_y": 8,
+            "padding_x": 8
           }
         }
       },
@@ -145,9 +134,12 @@
       "type": "rich-text",
       "blocks": {
         "text": {
-          "type": "text",
+          "type": "block--text",
           "settings": {
-            "text": "<p>GRUNT STYLE IS MORE THAN A BRAND, IT'S A LIFESTYLE! WE ARE A COMMUNITY OF PATRIOTS AND VETERANS WHO TAKE PRIDE IN WHO WE ARE AND WHAT WE'VE BUILT. </p><p>JOIN US TODAY!</p>"
+            "text": "<p>GRUNT STYLE IS MORE THAN A BRAND, IT'S A LIFESTYLE! WE ARE A COMMUNITY OF PATRIOTS AND VETERANS WHO TAKE PRIDE IN WHO WE ARE AND WHAT WE'VE BUILT. </p><p>JOIN US TODAY!</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
           }
         }
       },
@@ -155,7 +147,7 @@
         "text"
       ],
       "custom_css": [
-        ".rich-text__text p { font-size: 18px; }"
+        ".gs-block-text p { font-size: 18px; }"
       ],
       "settings": {
         "section_visibility": "always",

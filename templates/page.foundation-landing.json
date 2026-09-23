@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -69,9 +60,12 @@
       "type": "rich-text",
       "blocks": {
         "text_pxhfpD": {
-          "type": "text",
+          "type": "block--text",
           "settings": {
-            "text": "<p>Grunt Style Foundation is a 501(c)(3) nonprofit dedicated to providing life-changing resources and experiences that help Service Members, Veterans, First Responders, and their families thrive. Focused on mental health, wellness and advocacy, the Foundation ensures those who have served—and continue to serve—receive the recognition, honor, and support they deserve.</p>"
+            "text": "<p>Grunt Style Foundation is a 501(c)(3) nonprofit dedicated to providing life-changing resources and experiences that help Service Members, Veterans, First Responders, and their families thrive. Focused on mental health, wellness and advocacy, the Foundation ensures those who have served—and continue to serve—receive the recognition, honor, and support they deserve.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
           }
         }
       },
@@ -321,17 +315,24 @@
       "type": "image-with-text",
       "blocks": {
         "heading": {
-          "type": "heading",
+          "type": "block--heading",
           "settings": {
-            "heading": "IRREVERENT WARRIORS",
-            "heading_size": "h1"
+            "text": "IRREVERENT WARRIORS",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
           }
         },
         "text": {
-          "type": "text",
+          "type": "block--text",
           "settings": {
             "text": "<p><b>Our Mission:</b> End veteran suicide by bringing back the platoon-level camaraderie most of us lost when we hung up the uniform.</p>\n<p><b>Here’s How We Do It:</b></p>\n<ul>\n<li><p><b>Silkies Hikes:</b> 8–10 miles of laughs, ruck rash, and real connection.</p></li>\n<li><p><b>Silkies Retreats:</b> Weekend resets with cold plunges, bonfires, and zero bureaucracy.</p></li>\n<li><p><b>Camaraderie Counseling:</b> No red tape, no sterile waiting rooms—just vets healing the way we know best.</p></li>\n<li><p><b> Dark Humor Allowed: </b>Laughter, sweat, and shared misery are part of the therapy.</p></li>\n</ul>\n\n<p><b>Irreverent Warriors</b> is powered by the <b>Grunt Style Foundation (501c3)</b> — a nonprofit on a mission to restore purpose, connection, and pride among veterans.</p>",
-            "text_style": "body"
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
           }
         }
       },
@@ -341,9 +342,9 @@
       ],
       "custom_css": [
         ".page-width { border-top: 2px solid #000000; border-bottom: 2px solid #000000; }",
-        ".image-with-text__text ul { list-style: disc; margin: 0 0 1rem 2rem; padding: 0; }",
-        ".image-with-text__text ul li p { margin: 0; }",
-        ".image-with-text__text p { margin: 0 0 0.6rem; }"
+        ".gs-block-text ul { list-style: disc; margin: 0 0 1rem 2rem; padding: 0; }",
+        ".gs-block-text ul li p { margin: 0; }",
+        ".gs-block-text p { margin: 0 0 0.6rem; }"
       ],
       "settings": {
         "section_visibility": "always",
@@ -366,28 +367,42 @@
       "type": "rich-text",
       "blocks": {
         "heading_Erz3MF": {
-          "type": "heading",
+          "type": "block--heading",
           "settings": {
-            "heading": "JOIN THE EFFORT",
-            "heading_size": "h1"
+            "text": "JOIN THE EFFORT",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
           }
         },
         "text_VkLhbC": {
-          "type": "text",
+          "type": "block--text",
           "settings": {
-            "text": "<p><strong>Grunt Style Foundation Giveback Tees<br/><br/></strong>When you purchase a <strong>Grunt Style Foundation</strong> shirt, <strong>all profits</strong> are donated to the <strong>Grunt Style Foundation</strong>, a 501(c)(3) nonprofit organization.</p>"
+            "text": "<p><strong>Grunt Style Foundation Giveback Tees<br/><br/></strong>When you purchase a <strong>Grunt Style Foundation</strong> shirt, <strong>all profits</strong> are donated to the <strong>Grunt Style Foundation</strong>, a 501(c)(3) nonprofit organization.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
           }
         },
         "text_jzU9xF": {
-          "type": "text",
+          "type": "block--text",
           "settings": {
-            "text": "<p>Your purchase helps fund programs that support <strong>veterans, service members, and their families</strong> through mental health resources and community outreach initiatives.</p>"
+            "text": "<p>Your purchase helps fund programs that support <strong>veterans, service members, and their families</strong> through mental health resources and community outreach initiatives.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
           }
         },
         "text_8cqRj6": {
-          "type": "text",
+          "type": "block--text",
           "settings": {
-            "text": "<p>The <strong>Grunt Style Foundation</strong> is a separate legal entity from <strong>Grunt Style, LLC</strong>, and all donations are transferred directly to the Foundation to support its charitable mission.</p>"
+            "text": "<p>The <strong>Grunt Style Foundation</strong> is a separate legal entity from <strong>Grunt Style, LLC</strong>, and all donations are transferred directly to the Foundation to support its charitable mission.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
           }
         }
       },
@@ -474,35 +489,53 @@
       "type": "image-banner",
       "blocks": {
         "h": {
-          "type": "heading",
+          "type": "block--heading",
           "settings": {
-            "heading": "EVERY DONATION AIDS THE VETERAN COMMUNITY",
-            "heading_size": "h1"
+            "text": "EVERY DONATION AIDS THE VETERAN COMMUNITY",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
           }
         },
         "t": {
-          "type": "text",
+          "type": "block--text",
           "settings": {
-            "text": "Grunt Style Foundation is a nonprofit, tax exempt charitable organization. Visit the website and donate directly.",
-            "text_style": "body"
+            "text": "<p>Grunt Style Foundation is a nonprofit, tax exempt charitable organization. Visit the website and donate directly.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
           }
         },
-        "b": {
-          "type": "buttons",
+        "b_1": {
+          "type": "block--button",
           "settings": {
-            "button_label_1": "DONATE DIRECTLY",
-            "button_link_1": "https://www.gruntstylefoundation.org/donate",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "label": "DONATE DIRECTLY",
+            "link": "https://www.gruntstylefoundation.org/donate",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "",
+            "text_color": "",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
           }
         }
       },
       "block_order": [
         "h",
         "t",
-        "b"
+        "b_1"
       ],
       "settings": {
         "image": "shopify://shop_images/HPC_D_Embed_1920x830_GS_Foundation_Background_Image_copy_5_6b50f276-e460-4bda-9ff9-4bf8d1b6979e.png",
@@ -522,10 +555,15 @@
       "type": "rich-text",
       "blocks": {
         "heading_MNDi6g": {
-          "type": "heading",
+          "type": "block--heading",
           "settings": {
-            "heading": "GRUNT STYLE FOUNDATION IN ACTION",
-            "heading_size": "h1"
+            "text": "GRUNT STYLE FOUNDATION IN ACTION",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
           }
         }
       },
@@ -669,21 +707,37 @@
       "type": "rich-text",
       "blocks": {
         "heading_kzeLda": {
-          "type": "heading",
+          "type": "block--heading",
           "settings": {
-            "heading": "VISIT GRUNT STYLE FOUNDATION FOR MORE INFORMATION",
-            "heading_size": "h1"
+            "text": "VISIT GRUNT STYLE FOUNDATION FOR MORE INFORMATION",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
           }
         },
         "button_B7R4kJ": {
-          "type": "button",
+          "type": "block--button",
           "settings": {
-            "button_label": "LEARN MORE",
-            "button_link": "https://www.gruntstylefoundation.org/about",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "label": "LEARN MORE",
+            "link": "https://www.gruntstylefoundation.org/about",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "",
+            "text_color": "",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
           }
         }
       },

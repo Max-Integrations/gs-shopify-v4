@@ -199,3 +199,17 @@ Preview: `https://gruntstyle.myshopify.com?preview_theme_id=145541234739`
 2. **`featured-collections`** still carries 44 settings, 20 of them pixel spacing and 6 CTA colours that Dawn's padding pair and colour scheme could replace. It is used 5 times, so it is a real migration rather than a rename.
 3. **Deleting the deprecated files** once the client signs off on the live result.
 4. **`gs-swatch-scroller.js`** now drives five components and should be renamed `gs-scroller.js`.
+
+---
+
+## Follow-up (same day): one button block everywhere
+
+`block--button` became the theme's only button. It renders Dawn's `.button` (or `.link`) with per-instance custom properties: rich-text label, link, new tab, filled / outline / text-link style, fit or full width, font size, padding, border width, corner radius, an optional own colour scheme (written as Dawn's `--color-button` variables), and background / text / border / hover overrides. 17 settings. The old small/medium/large presets were 8.75–11.25px text on this theme's 62.5% root and are gone.
+
+Because a section cannot mix its own blocks with theme blocks, five sections now take theme blocks for all their content: `rich-text`, `image-banner`, `image-with-text` (heading / text / button → `block--heading` / `block--text` / `block--button`), `main-404`, and `section--full-width-image_text` (message line → new `block--message-line`, button → `block--button`; its row layouts became a two-column grid). `block--heading` gained Dawn's h0 / hxl / hxxl sizes so nothing was lost.
+
+Left alone, because their button lives inside another block or a setting: `multirow`, `multicolumn`, `featured-collections`, `gs-footer-brand`, `block--contact-channel`, and the functional buttons (cart, embed toggle, club join, forms).
+
+**Templates:** `scripts/migrate-buttons.py` rewrites the block JSON (splits two-button blocks, maps rem sizes to px, converts the media-tile `size` preset, and rewrites `custom_css` selectors such as `.rich-text__text` → `.gs-block-text` so nothing goes dead). It is idempotent and takes a theme-pull directory as its source. `scripts/check-templates.py` validates every block type against its section schema.
+
+**Not pushed.** The dev theme is edited in the theme editor, and code and templates must land together. On "push": pull the dev theme, run the migration on the pull, push the whole theme, then verify pages.

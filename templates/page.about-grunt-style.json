@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -34,9 +25,12 @@
       "type": "rich-text",
       "blocks": {
         "text_VpE4G3": {
-          "type": "text",
+          "type": "block--text",
           "settings": {
-            "text": "<p>In 2009, with only $1,200 in his pocket, a former Army Drill Sergeant proudly started Grunt Style. As one of the most powerful and charitable post 9/11 Veteran owned companies in the United States, Grunt Style was born in Fort Benning, Georgia.</p>"
+            "text": "<p>In 2009, with only $1,200 in his pocket, a former Army Drill Sergeant proudly started Grunt Style. As one of the most powerful and charitable post 9/11 Veteran owned companies in the United States, Grunt Style was born in Fort Benning, Georgia.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
           }
         }
       },
@@ -45,8 +39,8 @@
       ],
       "custom_css": [
         ".rich-text__blocks { max-width: 100%; }",
-        ".rich-text__text { border-left: 8px solid #5f5e3b; padding-left: 20px; padding-top: 20px; }",
-        ".rich-text__text p { color: #ffffff; font-size: 22px; }"
+        ".gs-block-text { border-left: 8px solid #5f5e3b; padding-left: 20px; padding-top: 20px; }",
+        ".gs-block-text p { color: #ffffff; font-size: 22px; }"
       ],
       "settings": {
         "section_visibility": "always",
@@ -123,9 +117,12 @@
       "type": "rich-text",
       "blocks": {
         "text_8Dj8WR": {
-          "type": "text",
+          "type": "block--text",
           "settings": {
-            "text": "<p>You do not have to be a veteran to wear Grunt Style, but you do have to love freedom, bacon, and whiskey.</p>"
+            "text": "<p>You do not have to be a veteran to wear Grunt Style, but you do have to love freedom, bacon, and whiskey.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
           }
         }
       },
@@ -135,8 +132,8 @@
       "custom_css": [
         ".rich-text { background: #5e5c39; }",
         ".rich-text__blocks { max-width: 100%; }",
-        ".rich-text__text { padding: 20px 0 0 20px; }",
-        ".rich-text__text p { color: #ffffff; font-size: 22px; }"
+        ".gs-block-text { padding: 20px 0 0 20px; }",
+        ".gs-block-text p { color: #ffffff; font-size: 22px; }"
       ],
       "settings": {
         "section_visibility": "always",
@@ -696,9 +693,12 @@
       "type": "rich-text",
       "blocks": {
         "text_9Wb0UT": {
-          "type": "text",
+          "type": "block--text",
           "settings": {
-            "text": "<p>Pride in Self, in Military, and in Country starts with the commUNITY.</p>"
+            "text": "<p>Pride in Self, in Military, and in Country starts with the commUNITY.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
           }
         }
       },
@@ -708,8 +708,8 @@
       "custom_css": [
         ".rich-text { background: #5e5c39; }",
         ".rich-text__blocks { max-width: 100%; }",
-        ".rich-text__text { padding: 20px 0 0 20px; }",
-        ".rich-text__text p { color: #ffffff; font-size: 22px; }"
+        ".gs-block-text { padding: 20px 0 0 20px; }",
+        ".gs-block-text p { color: #ffffff; font-size: 22px; }"
       ],
       "settings": {
         "section_visibility": "always",

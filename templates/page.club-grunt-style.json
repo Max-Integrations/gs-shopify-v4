@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -35,28 +26,46 @@
       "type": "rich-text",
       "blocks": {
         "heading_KJiMjq": {
-          "type": "heading",
+          "type": "block--heading",
           "settings": {
-            "heading": "<em>Patriotic T-Shirt Subscription</em>",
-            "heading_size": "h2"
+            "text": "<em>Patriotic T-Shirt Subscription</em>",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
           }
         },
         "text_yq3QCm": {
-          "type": "text",
+          "type": "block--text",
           "settings": {
-            "text": "<p>Join <strong>America’s #1 T-Shirt Club</strong> — where loyalty pays off.<br/></p><p><strong>Your Monthly Membership Includes:</strong></p><ul><li>One Exclusive Shirt & Sticker Delivered Monthly</li><li>Free Shipping</li><li>10% Off All Orders</li><li>Access to <a href=\"https://www.facebook.com/groups/clubgruntstyle\" target=\"_blank\" title=\"https://www.facebook.com/groups/clubgruntstyle\">Members-Only Community</a></li><li>Access to <a href=\"/collections/club-grunt-style\" target=\"_blank\" title=\"/collections/club-grunt-style\">Club-Only Products</a> & Content</li><li>Early Access to Sales & New Drops</li><li>Cancel, Skip, or Pause Anytime</li></ul><p><strong>Plus, You’re Auto-Enrolled in Rewards:</strong></p><ul><li>5% Store Credit Back on Every Purchase</li><li>Birthday Perks</li><li>One-Time Bonus: 10% Off a Silver or Gold Rewards Membership.</li></ul>"
+            "text": "<p>Join <strong>America’s #1 T-Shirt Club</strong> — where loyalty pays off.<br/></p><p><strong>Your Monthly Membership Includes:</strong></p><ul><li>One Exclusive Shirt & Sticker Delivered Monthly</li><li>Free Shipping</li><li>10% Off All Orders</li><li>Access to <a href=\"https://www.facebook.com/groups/clubgruntstyle\" target=\"_blank\" title=\"https://www.facebook.com/groups/clubgruntstyle\">Members-Only Community</a></li><li>Access to <a href=\"/collections/club-grunt-style\" target=\"_blank\" title=\"/collections/club-grunt-style\">Club-Only Products</a> & Content</li><li>Early Access to Sales & New Drops</li><li>Cancel, Skip, or Pause Anytime</li></ul><p><strong>Plus, You’re Auto-Enrolled in Rewards:</strong></p><ul><li>5% Store Credit Back on Every Purchase</li><li>Birthday Perks</li><li>One-Time Bonus: 10% Off a Silver or Gold Rewards Membership.</li></ul>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
           }
         },
         "button_pjGdb4": {
-          "type": "button",
+          "type": "block--button",
           "settings": {
-            "button_label": "JOIN CLUB GRUNT STYLE",
-            "button_link": "/pages/club-grunt-style#club-grunt-join-now",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false,
-            "open_in_new_tab": false
+            "label": "JOIN CLUB GRUNT STYLE",
+            "link": "/pages/club-grunt-style#club-grunt-join-now",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "",
+            "text_color": "",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
           }
         }
       },
@@ -157,25 +166,46 @@
       "type": "image-with-text",
       "blocks": {
         "heading": {
-          "type": "heading",
+          "type": "block--heading",
           "settings": {
-            "heading": "<em>Patriotic T-Shirt Subscription</em>",
-            "heading_size": "h2"
+            "text": "<em>Patriotic T-Shirt Subscription</em>",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
           }
         },
         "text": {
-          "type": "text",
+          "type": "block--text",
           "settings": {
             "text": "<p>Join <strong>America’s #1 T-Shirt Club</strong> — where loyalty pays off.<br/></p><p><strong>Your Monthly Membership Includes:</strong></p><ul><li>One Exclusive Shirt & Sticker Delivered Monthly</li><li>Free Shipping</li><li>10% Off All Orders</li><li>Access to <a href=\"https://www.facebook.com/groups/clubgruntstyle\" target=\"_blank\" title=\"https://www.facebook.com/groups/clubgruntstyle\">Members-Only Community</a></li><li>Access to <a href=\"/collections/club-grunt-style\" target=\"_blank\" title=\"/collections/club-grunt-style\">Club-Only Products</a> & Content</li><li>Early Access to Sales & New Drops</li><li>Cancel, Skip, or Pause Anytime</li></ul><p><strong>Plus, You’re Auto-Enrolled in Rewards:</strong></p><ul><li>5% Store Credit Back on Every Purchase</li><li>Birthday Perks</li><li>One-Time Bonus: 10% Off a Silver or Gold Rewards Membership.</li></ul>",
-            "text_style": "body"
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
           }
         },
         "button": {
-          "type": "button",
+          "type": "block--button",
           "settings": {
-            "button_label": "Join Club Grunt Style",
-            "button_link": "/pages/club-grunt-style#club-grunt-join-now",
-            "button_style_secondary": false
+            "label": "Join Club Grunt Style",
+            "link": "/pages/club-grunt-style#club-grunt-join-now",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "",
+            "text_color": "",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
           }
         }
       },
@@ -186,7 +216,7 @@
       ],
       "custom_css": [
         ".image-with-text__media img {object-fit: contain;}",
-        ".image-with-text__text p {margin: 1px 0;}"
+        ".gs-block-text p {margin: 1px 0;}"
       ],
       "settings": {
         "section_visibility": "large",
@@ -289,16 +319,24 @@
       "type": "rich-text",
       "blocks": {
         "heading_UVeGhr": {
-          "type": "heading",
+          "type": "block--heading",
           "settings": {
-            "heading": "<em><strong>EXCLUSIVE CLUB DESIGNS</strong></em>",
-            "heading_size": "h2"
+            "text": "<em><strong>EXCLUSIVE CLUB DESIGNS</strong></em>",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
           }
         },
         "text_xnwf86": {
-          "type": "text",
+          "type": "block--text",
           "settings": {
-            "text": "<p>Experience exclusive member-only designs with Club Grunt Style Graphic Tees—crafted from a premium 60% cotton, 40% polyester blend for superior comfort and durability. Enjoy a tagless, ribbed finish for a sharp look, all designed in the USA. Easy-care and machine washable, these shirts deliver all-day wear you won’t find anywhere else.</p>"
+            "text": "<p>Experience exclusive member-only designs with Club Grunt Style Graphic Tees—crafted from a premium 60% cotton, 40% polyester blend for superior comfort and durability. Enjoy a tagless, ribbed finish for a sharp look, all designed in the USA. Easy-care and machine washable, these shirts deliver all-day wear you won’t find anywhere else.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
           }
         }
       },
@@ -1371,15 +1409,25 @@
       "type": "rich-text",
       "blocks": {
         "btn": {
-          "type": "button",
+          "type": "block--button",
           "settings": {
-            "button_label": "Join The Members-Only Community",
-            "button_link": "https://www.facebook.com/groups/clubgruntstyle",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false,
-            "open_in_new_tab": true
+            "label": "Join The Members-Only Community",
+            "link": "https://www.facebook.com/groups/clubgruntstyle",
+            "open_in_new_tab": true,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "",
+            "text_color": "",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
           }
         }
       },
