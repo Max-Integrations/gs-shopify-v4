@@ -48,10 +48,32 @@
   Enter or Space, closed by Escape, expanded state announced.
 
   On desktop pointer devices (min-width 990px and hover: hover) the
-  script below also opens a panel on mouseenter and closes it shortly
-  after mouseleave, and a click on the label navigates to the parent
-  link's URL, as v3's <a> did. Touch devices and keyboard keep the
-  click/Enter toggle, since a hover-only menu is unreachable there.
+  script below also opens a panel on mouseenter, and a click on the
+  label navigates to the parent link's URL, as v3's <a> did. Touch
+  devices and keyboard keep the click/Enter toggle, since a hover-only
+  menu is unreachable there.
+
+  CLOSE AND SWITCH RULES (2026-09-22). The first version closed a menu
+  150ms after the pointer left its <details>, and the row was taller
+  than the label (the highlighted tab sets the row height), so moving
+  down into the panel crossed a strip that fired mouseleave - menus
+  vanished on the way in. Now: the label stretches to the row (CSS), a
+  menu closes only 200ms after the pointer leaves the whole nav (panel
+  included), and while one menu is open another tab takes over only
+  after the pointer has rested on it for 120ms, so a diagonal path into
+  a panel that clips a neighbouring label no longer swaps menus.
+
+  ------------------------------------------------------------------
+  STICKY HEADER (2026-09-22)
+  ------------------------------------------------------------------
+  position: sticky lives on the SECTION WRAPPER (gs-header.css, via
+  :has()), because the <header>'s own parent is exactly its height and
+  gave it nowhere to stick. `sticky_header_type` mirrors v3: "on_scroll"
+  hides the header while scrolling down past its own height and brings
+  it back on the way up; "always" keeps it pinned. The script never
+  hides it while a mega menu or the mobile nav is open or the search
+  field has focus, and writes --gs-header-height on <body> for anchors
+  (gs-club-join.css reads it).
 
   ------------------------------------------------------------------
   NOT CARRIED OVER - DECIDE BEFORE LAUNCH
@@ -78,6 +100,7 @@
 
 <header
   class="gs-header color-{{ s.color_scheme }}{% if s.sticky_header %} gs-header--sticky{% endif %}"
+  {% if s.sticky_header %}data-gs-sticky="{{ s.sticky_header_type | default: 'on_scroll' }}"{% endif %}
   style="
     --gs-header-bg: {{ s.header_background | default: '#000000' }};
     --gs-header-text: {{ s.header_text | default: '#ffffff' }};
@@ -371,7 +394,12 @@
 
     // Desktop with a real pointer: hover opens, the label is a link.
     var hoverNav = window.matchMedia('(min-width: 990px) and (hover: hover)');
-    var closeTimer = null;
+    var closeTimer = null;   // closes every menu after the pointer leaves the nav
+    var switchTimer = null;  // pending switch to another tab while one is open
+
+    function openMega() {
+      return document.querySelector('details[data-gs-mega][open]');
+    }
 
     function closeAllMega(except) {
       document.querySelectorAll('details[data-gs-mega][open]').forEach(function (d) {
@@ -379,32 +407,65 @@
       });
     }
 
+    function cancelClose() { clearTimeout(closeTimer); closeTimer = null; }
+    function cancelSwitch() { clearTimeout(switchTimer); switchTimer = null; }
+
     function bindHover(details) {
       if (details.gsHoverBound) return;
       details.gsHoverBound = true;
 
       details.addEventListener('mouseenter', function () {
         if (!hoverNav.matches) return;
-        clearTimeout(closeTimer);
-        closeAllMega(details);
-        details.open = true;
+        cancelClose();
+        cancelSwitch();
+        if (details.open) return;
+        if (!openMega()) {
+          closeAllMega(details);
+          details.open = true;
+          return;
+        }
+        // Another menu is open: only take over once the pointer has
+        // settled here, so a diagonal move into a panel that clips a
+        // neighbouring label does not swap menus under the cursor.
+        switchTimer = setTimeout(function () {
+          switchTimer = null;
+          closeAllMega(details);
+          details.open = true;
+        }, 120);
       });
 
       details.addEventListener('mouseleave', function () {
         if (!hoverNav.matches) return;
-        clearTimeout(closeTimer);
+        cancelSwitch();
+      });
+    }
+
+    // The nav (panels included, they are descendants) is the hover
+    // region. Leaving it closes after a short grace; re-entering cancels.
+    function bindNav(nav) {
+      if (nav.gsNavBound) return;
+      nav.gsNavBound = true;
+
+      nav.addEventListener('mouseenter', function () {
+        if (hoverNav.matches) cancelClose();
+      });
+
+      nav.addEventListener('mouseleave', function () {
+        if (!hoverNav.matches) return;
+        cancelSwitch();
+        cancelClose();
         closeTimer = setTimeout(function () {
-          details.open = false;
-        }, 150);
+          closeTimer = null;
+          closeAllMega(null);
+        }, 200);
       });
     }
 
     function bindAll() {
       document.querySelectorAll('details[data-gs-mega]').forEach(bindHover);
+      document.querySelectorAll('.gs-header__nav').forEach(bindNav);
+      bindSticky();
     }
-
-    bindAll();
-    document.addEventListener('shopify:section:load', bindAll);
 
     document.addEventListener('click', function (evt) {
       if (!evt.target || !evt.target.closest) return;
@@ -447,6 +508,56 @@
         if (summary) summary.focus();
       });
     });
+
+    // ---- Sticky: hide on scroll down, return on scroll up ----
+    function bindSticky() {
+      var header = document.querySelector('.gs-header[data-gs-sticky]');
+      var section = header && header.closest('.shopify-section');
+      if (!header || !section || section.gsStickyBound) return;
+      section.gsStickyBound = true;
+
+      var onScroll = header.getAttribute('data-gs-sticky') === 'on_scroll';
+      var lastY = window.scrollY;
+      var raf = null;
+
+      function setHeight() {
+        document.body.style.setProperty('--gs-header-height', header.offsetHeight + 'px');
+      }
+
+      // Never hide while something in the header is in use.
+      function busy() {
+        if (header.classList.contains('gs-header--nav-open')) return true;
+        if (openMega()) return true;
+        var active = document.activeElement;
+        return !!(active && header.contains(active) && active.tagName === 'INPUT');
+      }
+
+      function paint() {
+        raf = null;
+        var y = window.scrollY;
+        section.classList.toggle('gs-header-section--stuck', y > 0);
+        if (onScroll) {
+          if (busy() || y <= header.offsetHeight) {
+            section.classList.remove('gs-header-section--hidden');
+          } else if (y > lastY + 2) {
+            section.classList.add('gs-header-section--hidden');
+          } else if (y < lastY - 2) {
+            section.classList.remove('gs-header-section--hidden');
+          }
+        }
+        lastY = y;
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!raf) raf = window.requestAnimationFrame(paint);
+      }, { passive: true });
+      window.addEventListener('resize', setHeight);
+      setHeight();
+      paint();
+    }
+
+    bindAll();
+    document.addEventListener('shopify:section:load', bindAll);
   })();
 </script>
 
@@ -499,6 +610,18 @@
       "id": "sticky_header",
       "label": "Sticky header",
       "default": true
+    },
+    {
+      "type": "select",
+      "id": "sticky_header_type",
+      "label": "Sticky behaviour",
+      "info": "As v3: hide while scrolling down, return on the way up.",
+      "options": [
+        { "value": "on_scroll", "label": "Show when scrolling up" },
+        { "value": "always", "label": "Always visible" }
+      ],
+      "default": "on_scroll",
+      "visible_if": "{{ section.settings.sticky_header }}"
     },
     {
       "type": "header",

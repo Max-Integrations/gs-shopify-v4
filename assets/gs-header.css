@@ -44,9 +44,34 @@
   z-index: 4;
 }
 
-.gs-header--sticky {
+/*
+  ------------------------------------------------------------------
+  STICKY: THE SECTION WRAPPER, NOT THE <header>
+  ------------------------------------------------------------------
+  position: sticky on the <header> never worked: its parent is the
+  section wrapper, exactly the header's height, so it had no room to
+  move. Shopify renders grouped sections straight into <body> (the
+  group class sits on the section div itself), so the wrapper is the
+  element to stick, as v3's `class: "header sticky"` did. The .gs-header
+  class only tells the wrapper, via :has(), that the setting is on.
+
+  With the "on scroll" type the script adds --hidden while scrolling
+  down (past the header's own height) and removes it on the way up, and
+  --stuck once the page has scrolled at all, for v3's shadow.
+*/
+.gs-header-section:has(> .gs-header--sticky) {
   position: sticky;
   top: 0;
+  z-index: 4;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gs-header-section--hidden {
+  transform: translateY(-100%);
+}
+
+.gs-header-section--stuck {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* ---- Row 1 ---- */
@@ -253,8 +278,12 @@
   list-style: none;
 }
 
+/* A long menu scrolls inside a sticky header instead of pushing it past
+   the viewport. */
 .gs-header--nav-open .gs-header__nav-list {
   display: block;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 
 /* Mobile needs this so each item can host its own submenu. Reset at
@@ -439,10 +468,28 @@
   /*
     BOTH must be static, or the absolutely positioned panel resolves
     against the <li> and comes out one nav item wide.
+
+    NO GAP UNDER THE LABEL. The row is as tall as the tallest tab (the
+    highlighted one), but a <details> is only as tall as its <summary>,
+    which left a strip at the bottom of every other tab that belonged to
+    neither the label nor the panel. Crossing it fired mouseleave and
+    the menu closed. Item, details and summary now all stretch to the
+    row, so the label meets the panel edge to edge.
   */
-  .gs-header__nav-item,
-  .gs-mega {
+  .gs-header__nav-item {
+    display: flex;
+    align-items: stretch;
     position: static;
+  }
+
+  .gs-mega {
+    display: flex;
+    flex-direction: column;
+    position: static;
+  }
+
+  .gs-header__nav-link {
+    flex: 1 1 auto;
   }
 
   .gs-mega__panel {
@@ -453,6 +500,16 @@
     padding: 32px 0 36px;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  }
+
+  /* Invisible bridge over any sub-pixel seam between row and panel. */
+  .gs-mega__panel::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -6px;
+    height: 6px;
   }
 
   /* Promo first in the DOM, so no explicit grid placement is needed. */
@@ -557,7 +614,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .gs-header__nav-chevron,
-  .gs-mega__tile img {
+  .gs-mega__tile img,
+  .gs-header-section:has(> .gs-header--sticky) {
     transition: none;
   }
 
