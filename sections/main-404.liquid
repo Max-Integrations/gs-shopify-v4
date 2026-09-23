@@ -7,9 +7,8 @@
   is a recovery point rather than a dead end.
 
   The carousel reuses gs-card-product and the shared scroller, so it
-  costs no new JavaScript. The buttons under the copy are `button`
-  blocks (label, link, button or text-link style) rather than a fixed
-  primary/secondary pair.
+  costs no new JavaScript. The buttons under the copy are block--button
+  theme blocks, the same button block used everywhere in the theme.
   ==================================================================
 {% endcomment %}
 
@@ -34,16 +33,7 @@
 
     {%- if section.blocks.size > 0 -%}
       <div class="gs-404__actions">
-        {%- for block in section.blocks -%}
-          {%- if block.settings.label == blank -%}{%- continue -%}{%- endif -%}
-          <a
-            class="{% if block.settings.style == 'link' %}gs-404__link{% else %}gs-404__button{% endif %}"
-            href="{{ block.settings.link | default: routes.root_url }}"
-            {{ block.shopify_attributes }}
-          >
-            {{ block.settings.label }}
-          </a>
-        {%- endfor -%}
+        {% content_for 'blocks' %}
       </div>
     {%- endif -%}
 
@@ -158,40 +148,7 @@
     }
   ],
   "blocks": [
-    {
-      "type": "button",
-      "name": "Button",
-      "limit": 3,
-      "settings": [
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Label",
-          "default": "Shop all"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link"
-        },
-        {
-          "type": "select",
-          "id": "style",
-          "label": "Style",
-          "options": [
-            {
-              "value": "button",
-              "label": "Button"
-            },
-            {
-              "value": "link",
-              "label": "Text link"
-            }
-          ],
-          "default": "button"
-        }
-      ]
-    }
+    { "type": "block--button" }
   ]
 }
 {% endschema %}

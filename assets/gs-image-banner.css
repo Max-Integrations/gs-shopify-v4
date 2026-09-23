@@ -33,3 +33,37 @@
     display: block;
   }
 }
+
+/* ---- Theme-block children (block--heading / block--text / block--button) ----
+   Dawn spaces .banner__heading / __text / __buttons; these are the
+   equivalents for the block classes. */
+.banner__box > .gs-block-heading {
+  margin: 0;
+}
+
+.banner__box > * + .gs-block-text {
+  margin-top: 1.5rem;
+}
+
+.banner__box > * + .gs-block-button-wrap {
+  margin-top: 2rem;
+}
+
+.banner__box > .gs-block-button-wrap + .gs-block-button-wrap {
+  margin-top: 0;
+  margin-left: 1rem;
+}
+
+.banner__box .gs-block-heading--custom-size {
+  font-size: var(--gs-heading-size-m, var(--gs-heading-size-d));
+}
+
+@media screen and (min-width: 750px) {
+  .banner__box > * + .gs-block-text {
+    margin-top: 2rem;
+  }
+
+  .banner__box .gs-block-heading--custom-size {
+    font-size: var(--gs-heading-size-d, var(--gs-heading-size-m));
+  }
+}

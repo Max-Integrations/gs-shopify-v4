@@ -73,12 +73,37 @@
   margin-top: calc(var(--chevron-col-size-mobile, 54px) / -2);
 }
 
+/* ---- Theme-block children (block--heading / block--text / block--button) ----
+   Dawn spaced .image-with-text__heading / __text / .button; these are
+   the equivalents for the block classes. */
+.gs-iwt__content > .gs-block-heading,
+.gs-iwt__content > .gs-block-text {
+  margin: 0;
+}
+
+.gs-iwt__content > * + .gs-block-text {
+  margin-top: 2rem;
+}
+
+.gs-iwt__content > * + .gs-block-button-wrap {
+  margin-top: 3rem;
+}
+
 /* Two buttons sit side by side. */
-.gs-iwt__content .button + .button {
+.gs-iwt__content > .gs-block-button-wrap + .gs-block-button-wrap {
+  margin-top: 0;
   margin-left: 1.5rem;
 }
 
+.gs-iwt__content .gs-block-heading--custom-size {
+  font-size: var(--gs-heading-size-m, var(--gs-heading-size-d));
+}
+
 @media screen and (min-width: 750px) {
+  .gs-iwt__content .gs-block-heading--custom-size {
+    font-size: var(--gs-heading-size-d, var(--gs-heading-size-m));
+  }
+
   .gs-iwt__chevrons--row {
     gap: var(--chevron-row-gap, 30px);
   }

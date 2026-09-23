@@ -3,7 +3,10 @@
     - `section_visibility` (mobile only / desktop only), so the club page
       can show a text block on mobile and an image-with-text card on
       desktop. Breakpoint 767/768 matches the GS sections.
-    - the button block allows two buttons (limit 2 instead of 1).
+    - THEME BLOCKS (2026-09-22): heading / caption / text / button are
+      block--heading, block--text and block--button, so the button is the
+      same block everywhere. Spacing for the block classes is in
+      assets/gs-image-with-text.css.
     - `show_chevrons`: v3's product-highlight decoration, a row of
       chevrons under the text and a column over the image. With
       heading/text/two buttons this section replaces the homepage
@@ -14,9 +17,7 @@
       homepage values, so an existing instance needs no template edit.
 {% endcomment %}
 {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
-{%- if section.settings.show_chevrons -%}
-  {{ 'gs-image-with-text.css' | asset_url | stylesheet_tag }}
-{%- endif -%}
+{{ 'gs-image-with-text.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -120,42 +121,7 @@
             id="ImageWithText--{{ section.id }}"
             class="image-with-text__content gs-iwt__content image-with-text__content--{{ section.settings.desktop_content_position }} image-with-text__content--desktop-{{ section.settings.desktop_content_alignment }} image-with-text__content--mobile-{{ section.settings.mobile_content_alignment }} image-with-text__content--{{ section.settings.height }} content-container{% unless remove_color_classes %} gradient color-{{ section.settings.color_scheme }}{% else %} background-transparent{% endunless %}"
           >
-            {%- for block in section.blocks -%}
-              {% case block.type %}
-                {%- when 'heading' -%}
-                  <h2
-                    class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
-                    {{ block.shopify_attributes }}
-                  >
-                    {{ block.settings.heading }}
-                  </h2>
-                {%- when 'caption' -%}
-                  <p
-                    class="image-with-text__text image-with-text__text--caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }} {{ block.settings.text_style }}"
-                    {{ block.shopify_attributes }}
-                  >
-                    {{ block.settings.caption | escape }}
-                  </p>
-                {%- when 'text' -%}
-                  <div class="image-with-text__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
-                    {{ block.settings.text }}
-                  </div>
-                {%- when 'button' -%}
-                  {%- if block.settings.button_label != blank -%}
-                    <a
-                      {% if block.settings.button_link == blank %}
-                        role="link" aria-disabled="true"
-                      {% else %}
-                        href="{{ block.settings.button_link }}"
-                      {% endif %}
-                      class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
-                      {{ block.shopify_attributes }}
-                    >
-                      {{ block.settings.button_label | escape }}
-                    </a>
-                  {%- endif -%}
-              {%- endcase -%}
-            {%- endfor -%}
+            {% content_for 'blocks' %}
             {%- if section.settings.show_chevrons -%}
               <div
                 class="gs-iwt__chevrons gs-iwt__chevrons--row"
@@ -629,148 +595,16 @@
   ],
   "blocks": [
     {
-      "type": "heading",
-      "name": "t:sections.image-with-text.blocks.heading.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "inline_richtext",
-          "id": "heading",
-          "default": "t:sections.image-with-text.blocks.heading.settings.heading.default",
-          "label": "t:sections.image-with-text.blocks.heading.settings.heading.label"
-        },
-        {
-          "type": "select",
-          "id": "heading_size",
-          "options": [
-            {
-              "value": "h2",
-              "label": "t:sections.all.heading_size.options__1.label"
-            },
-            {
-              "value": "h1",
-              "label": "t:sections.all.heading_size.options__2.label"
-            },
-            {
-              "value": "h0",
-              "label": "t:sections.all.heading_size.options__3.label"
-            },
-            {
-              "value": "hxl",
-              "label": "t:sections.all.heading_size.options__4.label"
-            },
-            {
-              "value": "hxxl",
-              "label": "t:sections.all.heading_size.options__5.label"
-            }
-          ],
-          "default": "h1",
-          "label": "t:sections.all.heading_size.label"
-        }
-      ]
+      "type": "block--heading"
     },
     {
-      "type": "caption",
-      "name": "t:sections.image-with-text.blocks.caption.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "caption",
-          "default": "t:sections.image-with-text.blocks.caption.settings.text.default",
-          "label": "t:sections.image-with-text.blocks.caption.settings.text.label"
-        },
-        {
-          "type": "select",
-          "id": "text_style",
-          "options": [
-            {
-              "value": "subtitle",
-              "label": "t:sections.image-with-text.blocks.caption.settings.text_style.options__1.label"
-            },
-            {
-              "value": "caption-with-letter-spacing",
-              "label": "t:sections.image-with-text.blocks.caption.settings.text_style.options__2.label"
-            }
-          ],
-          "default": "caption-with-letter-spacing",
-          "label": "t:sections.image-with-text.blocks.caption.settings.text_style.label"
-        },
-        {
-          "type": "select",
-          "id": "text_size",
-          "options": [
-            {
-              "value": "small",
-              "label": "t:sections.image-with-text.blocks.caption.settings.caption_size.options__1.label"
-            },
-            {
-              "value": "medium",
-              "label": "t:sections.image-with-text.blocks.caption.settings.caption_size.options__2.label"
-            },
-            {
-              "value": "large",
-              "label": "t:sections.image-with-text.blocks.caption.settings.caption_size.options__3.label"
-            }
-          ],
-          "default": "medium",
-          "label": "t:sections.image-with-text.blocks.caption.settings.caption_size.label"
-        }
-      ]
+      "type": "block--text"
     },
     {
-      "type": "text",
-      "name": "t:sections.image-with-text.blocks.text.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "richtext",
-          "id": "text",
-          "default": "t:sections.image-with-text.blocks.text.settings.text.default",
-          "label": "t:sections.image-with-text.blocks.text.settings.text.label"
-        },
-        {
-          "type": "select",
-          "id": "text_style",
-          "options": [
-            {
-              "value": "body",
-              "label": "t:sections.image-with-text.blocks.text.settings.text_style.options__1.label"
-            },
-            {
-              "value": "subtitle",
-              "label": "t:sections.image-with-text.blocks.text.settings.text_style.options__2.label"
-            }
-          ],
-          "default": "body",
-          "label": "t:sections.image-with-text.blocks.text.settings.text_style.label"
-        }
-      ]
+      "type": "block--button"
     },
     {
-      "type": "button",
-      "name": "t:sections.image-with-text.blocks.button.name",
-      "limit": 2,
-      "settings": [
-        {
-          "type": "text",
-          "id": "button_label",
-          "default": "t:sections.image-with-text.blocks.button.settings.button_label.default",
-          "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
-          "info": "t:sections.image-with-text.blocks.button.settings.button_label.info"
-        },
-        {
-          "type": "url",
-          "id": "button_link",
-          "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
-        },
-        {
-          "type": "checkbox",
-          "id": "button_style_secondary",
-          "default": false,
-          "label": "t:sections.image-with-text.blocks.button.settings.outline_button.label"
-        }
-      ]
+      "type": "@app"
     }
   ],
   "presets": [
@@ -778,13 +612,23 @@
       "name": "t:sections.image-with-text.presets.name",
       "blocks": [
         {
-          "type": "heading"
+          "type": "block--heading",
+          "settings": {
+            "text": "Image with text",
+            "size": "h1"
+          }
         },
         {
-          "type": "text"
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+          }
         },
         {
-          "type": "button"
+          "type": "block--button",
+          "settings": {
+            "label": "Button label"
+          }
         }
       ]
     }

@@ -75,29 +75,34 @@
   gap: var(--item-gap-desktop);
 }
 
-/* Desktop Alignment Logic */
-.fwit-promo.layout-left .promo-content {
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: left;
-}
-.fwit-promo.layout-right .promo-content {
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  text-align: right;
-}
+/* Desktop Alignment Logic. Content is theme blocks in merchant order:
+   block--message-line (.promo-message) and block--button
+   (.gs-block-button-wrap). Stacked layouts are a flex column; the row
+   layouts are a two-column grid with every message line in one column
+   and every button in the other, which replaces the group wrappers the
+   old local blocks needed. */
 .fwit-promo.layout-center .promo-content {
   flex-direction: column;
   justify-content: center;
   text-align: center;
 }
 
-.fwit-promo .promo-messages {
-  display: flex;
-  flex-direction: column;
-  gap: var(--item-gap-desktop);
-  align-items: var(--messages-align);
+.fwit-promo.layout-left .promo-content,
+.fwit-promo.layout-right .promo-content {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  column-gap: var(--item-gap-desktop);
+  row-gap: var(--item-gap-desktop);
 }
+
+.fwit-promo.layout-left .promo-content { text-align: left; }
+.fwit-promo.layout-right .promo-content { text-align: right; grid-template-columns: auto 1fr; }
+
+.fwit-promo.layout-left .promo-message { grid-column: 1; justify-self: start; }
+.fwit-promo.layout-left .gs-block-button-wrap { grid-column: 2; justify-self: end; }
+.fwit-promo.layout-right .promo-message { grid-column: 2; justify-self: end; }
+.fwit-promo.layout-right .gs-block-button-wrap { grid-column: 1; justify-self: start; }
 
 .fwit-promo .promo-message {
   color: var(--color);
@@ -107,45 +112,16 @@
   padding: var(--padding-y-desktop) var(--padding-x-desktop);
 }
 
+.fwit-promo .gs-block-button-wrap {
+  position: relative;
+  z-index: 6;
+}
+
 .fwit-promo a.promo-stretched-link {
   display: block;
   position: absolute;
   inset: 0;
   z-index: 5;
-}
-
-.fwit-promo .promo-actions {
-  position: relative;
-  z-index: 6;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--button-gap);
-}
-
-.fwit-promo .promo-btn {
-  position: relative;
-  z-index: 6;
-  display: inline-flex;
-  color: var(--color);
-  background-color: var(--background-color);
-  border: var(--border-width) solid var(--border-color);
-  font-size: var(--font-size-desktop);
-  letter-spacing: var(--letter-spacing);
-  padding: var(--padding-y-desktop) var(--padding-x-desktop);
-  text-decoration: none;
-  transition:
-    opacity 0.2s,
-    background-color 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-}
-
-.fwit-promo .promo-btn:hover {
-  opacity: var(--hover-opacity, 0.8);
-  color: var(--color-hover, var(--color));
-  background-color: var(--background-color-hover, var(--background-color));
-  border-color: var(--border-color-hover, var(--border-color));
 }
 
 /* Mobile Flex Override */
@@ -157,6 +133,7 @@
   }
 
   .fwit-promo .promo-content {
+    display: flex !important;
     flex-direction: column !important;
     justify-content: center;
     text-align: center;
@@ -164,18 +141,9 @@
     gap: var(--item-gap-mobile);
   }
 
-  .fwit-promo .promo-messages {
-    gap: var(--item-gap-mobile);
-    align-items: center;
-  }
-
   .fwit-promo .promo-message {
     padding: var(--padding-y-mobile) var(--padding-x-mobile);
     font-size: var(--font-size-mobile);
   }
 
-  .fwit-promo .promo-btn {
-    padding: var(--padding-y-mobile) var(--padding-x-mobile);
-    font-size: var(--font-size-mobile);
-  }
 }

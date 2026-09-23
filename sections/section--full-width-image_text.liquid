@@ -1,3 +1,19 @@
+{% comment %}
+  ==================================================================
+  FULL WIDTH IMAGE & TEXT
+  ==================================================================
+  A full-width banner: background colour or image (desktop and mobile
+  files), an optional whole-banner link, and message lines and buttons
+  laid out stacked, or text one side and CTA the other.
+
+  THEME BLOCKS (2026-09-22): the content is block--message-line and
+  block--button theme blocks, so the button is the same block used
+  everywhere in the theme. The old local blocks' settings map onto them
+  one for one (sizes in px instead of a rem scale, 1rem = 10px here).
+  Row layouts used to wrap messages and buttons in two groups; with
+  content_for that is a two-column grid in the stylesheet instead.
+  ==================================================================
+{% endcomment %}
 {%- liquid
     assign desktop_img = section.settings.background_image_desktop | default: section.settings.background_image_mobile
     assign mobile_img = section.settings.background_image_mobile | default: section.settings.background_image_desktop
@@ -7,24 +23,15 @@
         assign auto_height = true
     endif
 
-    # Banner label: first non-empty message line
-    assign message_blocks = section.blocks | where: 'type', 'message_line'
-    assign button_blocks = section.blocks | where: 'type', 'button'
-
-    # The stacked layout renders blocks in the order the merchant placed them.
-    # The row layouts keep the text-side / CTA-side split, so messages are
-    # forced ahead of buttons and each run is wrapped in its own group.
-    assign grouped = true
-    assign render_blocks = message_blocks | concat: button_blocks
-    if section.settings.layout_preset == 'center'
-        assign grouped = false
-        assign render_blocks = section.blocks
-    endif
-
+    # Banner label (the stretched link's accessible name): the first
+    # message line with text, else a generic label.
     assign banner_label = 'View promotion'
-    if message_blocks.size > 0 and message_blocks.first.settings.text != blank
-        assign banner_label = message_blocks.first.settings.text | strip_html | strip
-    endif
+    for block in section.blocks
+        if block.type == 'block--message-line' and block.settings.text != blank
+            assign banner_label = block.settings.text | strip_html | strip
+            break
+        endif
+    endfor
 
     assign content_align = 'center'
     assign messages_align = section.settings.layout_preset
@@ -96,73 +103,12 @@
 
     <div class="promo-content">
         {%- comment -%}
-            Group wrappers are opened and closed in separate branches, so the source
-            looks unbalanced even though every rendered group is closed exactly once.
+            Theme blocks render in the order the merchant placed them. The
+            "text left / CTA right" layouts are a two-column grid in the
+            stylesheet (message lines in one column, buttons in the other),
+            which replaces the group wrappers the old local blocks needed.
         {%- endcomment -%}
-        {% # theme-check-disable UnclosedHTMLElement %}
-        {%- for block in render_blocks -%}
-            {%- if grouped -%}
-                {%- assign prev_index = forloop.index0 | minus: 1 -%}
-                {%- if forloop.first or render_blocks[prev_index].type != block.type -%}
-                    <div class="{% if block.type == 'button' %}promo-actions{% else %}promo-messages{% endif %}">
-                {%- endif -%}
-            {%- endif -%}
-
-            {%- case block.type -%}
-                {%- when 'message_line' -%}
-                    <div
-                        class="promo-message"
-                        style="
-                            --color: {{ block.settings.text_color }};
-                            --background-color: {{ block.settings.background_color }};
-                            --padding-x-desktop: {{ block.settings.padding_horizontal_desktop }}px;
-                            --padding-y-desktop: {{ block.settings.padding_vertical_desktop }}px;
-                            --padding-x-mobile: {{ block.settings.padding_horizontal_mobile }}px;
-                            --padding-y-mobile: {{ block.settings.padding_vertical_mobile }}px;
-                            --font-size-desktop: {{ block.settings.size_scale_desktop }};
-                            --font-size-mobile: {{ block.settings.size_scale_mobile }};
-                            --letter-spacing: {{ block.settings.letter_spacing }}px;
-                        "
-                        {{ block.shopify_attributes }}
-                    >
-                        {{ block.settings.text }}
-                    </div>
-
-                {%- when 'button' -%}
-                    <a
-                        href="{{ block.settings.url }}"
-                        class="promo-btn"
-                        style="
-                            --color: {{ block.settings.text_color }};
-                            --background-color: {{ block.settings.background_color }};
-                            --border-color: {{ block.settings.border_color }};
-                            --border-width: {{ block.settings.border_width }}px;
-                            --padding-x-desktop: {{ block.settings.padding_horizontal_desktop }}px;
-                            --padding-y-desktop: {{ block.settings.padding_vertical_desktop }}px;
-                            --padding-x-mobile: {{ block.settings.padding_horizontal_mobile }}px;
-                            --padding-y-mobile: {{ block.settings.padding_vertical_mobile }}px;
-                            --font-size-desktop: {{ block.settings.size_scale_desktop }};
-                            --font-size-mobile: {{ block.settings.size_scale_mobile }};
-                            --letter-spacing: {{ block.settings.letter_spacing }}px;
-                            {% if block.settings.text_color_hover != blank %}--color-hover: {{ block.settings.text_color_hover }};{% endif %}
-                            {% if block.settings.background_color_hover != blank %}--background-color-hover: {{ block.settings.background_color_hover }};{% endif %}
-                            {% if block.settings.border_color_hover != blank %}--border-color-hover: {{ block.settings.border_color_hover }};{% endif %}
-                            {% if block.settings.text_color_hover != blank or block.settings.background_color_hover != blank or block.settings.border_color_hover != blank %}--hover-opacity: 1;{% endif %}
-                        "
-                        {% if block.settings.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
-                        {{ block.shopify_attributes }}
-                    >
-                        {{ block.settings.text }}
-                    </a>
-            {%- endcase -%}
-
-            {%- if grouped -%}
-                {%- if forloop.last or render_blocks[forloop.index].type != block.type -%}
-                    </div>
-                {%- endif -%}
-            {%- endif -%}
-        {%- endfor -%}
-        {% # theme-check-enable UnclosedHTMLElement %}
+        {% content_for 'blocks' %}
     </div>
 </div>
 
@@ -353,293 +299,34 @@
         }
     ],
     "blocks": [
-        {
-            "type": "message_line",
-            "name": "Message Line",
-            "limit": 3,
-            "settings": [
-                {
-                    "type": "header",
-                    "content": "Content"
-                },
-                {
-                    "type": "inline_richtext",
-                    "id": "text",
-                    "label": "Text"
-                },
-                {
-                    "type": "header",
-                    "content": "Content style"
-                },
-                {
-                    "type": "select",
-                    "id": "size_scale_desktop",
-                    "label": "Typography size (desktop)",
-                    "options": [
-                        { "label": "Small", "value": "0.875rem" },
-                        { "label": "Medium", "value": "1rem" },
-                        { "label": "Large", "value": "1.125rem" },
-                        { "label": "XL", "value": "1.5rem" },
-                        { "label": "2XL", "value": "2rem" },
-                        { "label": "3XL", "value": "2.5rem"  },
-                        { "label": "4XL", "value": "3rem"  },
-                        { "label": "5XL", "value": "4rem"  },
-                        { "label": "6XL", "value": "5rem"  }
-                    ],
-                    "default": "1rem"
-                },
-                {
-                    "type": "select",
-                    "id": "size_scale_mobile",
-                    "label": "Typography size (mobile)",
-                    "options": [
-                        { "label": "Small", "value": "0.875rem" },
-                        { "label": "Medium", "value": "1rem" },
-                        { "label": "Large", "value": "1.125rem" },
-                        { "label": "XL", "value": "1.5rem" },
-                        { "label": "2XL", "value": "2rem" },
-                        { "label": "3XL", "value": "2.5rem"  },
-                        { "label": "4XL", "value": "3rem"  },
-                        { "label": "5XL", "value": "4rem"  },
-                        { "label": "6XL", "value": "5rem"  }
-                    ],
-                    "default": "1rem"
-                },
-                {
-                    "type": "color",
-                    "id": "text_color",
-                    "label": "Text color",
-                    "default": "#000000"
-                },
-                {
-                    "type": "color",
-                    "id": "background_color",
-                    "label": "Background color",
-                    "default": "#00000000"
-                },
-                {
-                    "type": "range",
-                    "id": "letter_spacing",
-                    "label": "Space between letters",
-                    "default": 0,
-                    "min": 0,
-                    "max": 16,
-                    "step": 1
-                },
-                {
-                    "type": "header",
-                    "content": "Layout"
-                },
-                {
-                    "type": "range",
-                    "id": "padding_horizontal_desktop",
-                    "label": "Horizontal padding (desktop)",
-                    "default": 8,
-                    "min": 0,
-                    "max": 128,
-                    "step": 2
-                },
-                {
-                    "type": "range",
-                    "id": "padding_vertical_desktop",
-                    "label": "Vertical padding (desktop)",
-                    "default": 8,
-                    "min": 0,
-                    "max": 128,
-                    "step": 2
-                },
-                {
-                    "type": "range",
-                    "id": "padding_horizontal_mobile",
-                    "label": "Horizontal padding (mobile)",
-                    "default": 8,
-                    "min": 0,
-                    "max": 128,
-                    "step": 2
-                },
-                {
-                    "type": "range",
-                    "id": "padding_vertical_mobile",
-                    "label": "Vertical padding (mobile)",
-                    "default": 8,
-                    "min": 0,
-                    "max": 128,
-                    "step": 2
-                }
-            ]
-        },
-        {
-            "type": "button",
-            "name": "Button / Link",
-            "limit": 2,
-            "settings": [
-                {
-                    "type": "header",
-                    "content": "Content"
-                },
-                {
-                    "type": "text",
-                    "id": "text",
-                    "label": "Label",
-                    "default": "Shop Now"
-                },
-                {
-                    "type": "url",
-                    "id": "url",
-                    "label": "Link"
-                },
-                {
-                    "type": "checkbox",
-                    "id": "open_in_new_tab",
-                    "label": "Open in new tab",
-                    "default": false
-                },
-                {
-                    "type": "header",
-                    "content": "Content style"
-                },
-                {
-                    "type": "select",
-                    "id": "size_scale_desktop",
-                    "label": "Typography size (desktop)",
-                    "options": [
-                        { "label": "Small", "value": "0.875rem" },
-                        { "label": "Medium", "value": "1rem" },
-                        { "label": "Large", "value": "1.125rem" },
-                        { "label": "XL", "value": "1.5rem" },
-                        { "label": "2XL", "value": "2rem" },
-                        { "label": "3XL", "value": "2.5rem"  },
-                        { "label": "4XL", "value": "3rem"  },
-                        { "label": "5XL", "value": "4rem"  },
-                        { "label": "6XL", "value": "5rem"  }
-                    ],
-                    "default": "1rem"
-                },
-                {
-                    "type": "select",
-                    "id": "size_scale_mobile",
-                    "label": "Typography size (mobile)",
-                    "options": [
-                        { "label": "Small", "value": "0.875rem" },
-                        { "label": "Medium", "value": "1rem" },
-                        { "label": "Large", "value": "1.125rem" },
-                        { "label": "XL", "value": "1.5rem" },
-                        { "label": "2XL", "value": "2rem" },
-                        { "label": "3XL", "value": "2.5rem"  },
-                        { "label": "4XL", "value": "3rem"  },
-                        { "label": "5XL", "value": "4rem"  },
-                        { "label": "6XL", "value": "5rem"  }
-                    ],
-                    "default": "1rem"
-                },
-                {
-                    "type": "color",
-                    "id": "text_color",
-                    "label": "Text color",
-                    "default": "#ffffff"
-                },
-                {
-                    "type": "color",
-                    "id": "background_color",
-                    "label": "Background color",
-                    "default": "#000000"
-                },
-                {
-                    "type": "color",
-                    "id": "border_color",
-                    "label": "Border color",
-                    "default": "#000000"
-                },
-                {
-                    "type": "range",
-                    "id": "border_width",
-                    "label": "Border width",
-                    "default": 1,
-                    "min": 0,
-                    "max": 8,
-                    "step": 1,
-                    "unit": "px"
-                },
-                {
-                    "type": "range",
-                    "id": "letter_spacing",
-                    "label": "Space between letters",
-                    "default": 0,
-                    "min": 0,
-                    "max": 16,
-                    "step": 1
-                },
-                {
-                    "type": "header",
-                    "content": "Hover style",
-                    "info": "Leave a color empty to keep the resting color and fade instead."
-                },
-                {
-                    "type": "color",
-                    "id": "text_color_hover",
-                    "label": "Text color"
-                },
-                {
-                    "type": "color",
-                    "id": "background_color_hover",
-                    "label": "Background color"
-                },
-                {
-                    "type": "color",
-                    "id": "border_color_hover",
-                    "label": "Border color"
-                },
-                {
-                    "type": "header",
-                    "content": "Layout"
-                },
-                {
-                    "type": "range",
-                    "id": "padding_horizontal_desktop",
-                    "label": "Horizontal padding (desktop)",
-                    "default": 24,
-                    "min": 0,
-                    "max": 128,
-                    "step": 2
-                },
-                {
-                    "type": "range",
-                    "id": "padding_vertical_desktop",
-                    "label": "Vertical padding (desktop)",
-                    "default": 12,
-                    "min": 0,
-                    "max": 128,
-                    "step": 2
-                },
-                {
-                    "type": "range",
-                    "id": "padding_horizontal_mobile",
-                    "label": "Horizontal padding (mobile)",
-                    "default": 24,
-                    "min": 0,
-                    "max": 128,
-                    "step": 2
-                },
-                {
-                    "type": "range",
-                    "id": "padding_vertical_mobile",
-                    "label": "Vertical padding (mobile)",
-                    "default": 12,
-                    "min": 0,
-                    "max": 128,
-                    "step": 2
-                }
-            ]
-        }
+      {
+        "type": "block--message-line"
+      },
+      {
+        "type": "block--button"
+      }
     ],
     "presets": [
-        {
-            "name": "Full Width Image & Text",
-            "blocks": [
-                { "type": "message_line" },
-                { "type": "button" }
-            ]
-        }
+      {
+        "name": "Full Width Image & Text",
+        "blocks": [
+          {
+            "type": "block--message-line",
+            "settings": {
+              "text": "Your message here",
+              "size_desktop": 50,
+              "size_mobile": 24,
+              "text_color": "#ffffff"
+            }
+          },
+          {
+            "type": "block--button",
+            "settings": {
+              "label": "Shop now"
+            }
+          }
+        ]
+      }
     ]
 }
 {% endschema %}

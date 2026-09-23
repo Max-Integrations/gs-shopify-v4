@@ -1,0 +1,36 @@
+/*
+  ==================================================================
+  GS additions to Dawn's rich-text: theme-block children
+  ==================================================================
+  The blocks are block--heading / block--text / block--button, so
+  Dawn's spacing rules for .rich-text__heading / __text / __buttons no
+  longer match. The equivalents are restated here for the block
+  classes. Compiled block CSS loads before base.css, so the heading
+  size override is restated under the section too (see
+  section--media-grid.css for the same note).
+*/
+
+.rich-text__blocks > .gs-block-heading,
+.rich-text__blocks > .gs-block-text {
+  margin: 0;
+}
+
+.rich-text__blocks > * + .gs-block-button-wrap {
+  margin-top: 3rem;
+}
+
+/* Two buttons sit side by side, as Dawn's two-button block did. */
+.rich-text__blocks > .gs-block-button-wrap + .gs-block-button-wrap {
+  margin-top: 0;
+  margin-left: 1rem;
+}
+
+.rich-text__blocks .gs-block-heading--custom-size {
+  font-size: var(--gs-heading-size-m, var(--gs-heading-size-d));
+}
+
+@media screen and (min-width: 750px) {
+  .rich-text__blocks .gs-block-heading--custom-size {
+    font-size: var(--gs-heading-size-d, var(--gs-heading-size-m));
+  }
+}
