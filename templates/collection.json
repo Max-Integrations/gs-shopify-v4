@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "banner": {
@@ -6,7 +15,7 @@
         "promotion_UgpDQf": {
           "type": "promotion",
           "settings": {
-            "custom_content_position": 4,
+            "custom_content_position": 5,
             "custom_content_page": 1,
             "content_width_desktop": "2",
             "content_width_mobile": "2",

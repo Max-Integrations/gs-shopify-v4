@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "section_full_width_image_text_fzTCbL": {
@@ -794,9 +803,9 @@
         "navigation_title_size_mobile": 15,
         "cta_title_size_desktop": 18,
         "cta_title_size_mobile": 16,
-        "section_spacing_top_desktop": 10,
+        "section_spacing_top_desktop": 40,
         "section_spacing_top_mobile": 10,
-        "section_spacing_bottom_desktop": 10,
+        "section_spacing_bottom_desktop": 40,
         "section_spacing_bottom_mobile": 10,
         "heading_spacing_top_desktop": 10,
         "heading_spacing_top_mobile": 10,
@@ -1078,10 +1087,10 @@
                 "margin_x": 0,
                 "border_width": 1,
                 "border_radius": 0,
-                "custom_scheme": false,
-                "color_scheme": "scheme-1",
-                "bg": "#000000",
-                "text_color": "#ffffff",
+                "custom_scheme": true,
+                "color_scheme": "scheme-2",
+                "bg": "",
+                "text_color": "",
                 "border_color": "",
                 "hover_bg": "",
                 "hover_text_color": ""
@@ -1149,10 +1158,10 @@
                 "margin_x": 0,
                 "border_width": 1,
                 "border_radius": 0,
-                "custom_scheme": false,
-                "color_scheme": "scheme-1",
-                "bg": "#000000",
-                "text_color": "#ffffff",
+                "custom_scheme": true,
+                "color_scheme": "scheme-2",
+                "bg": "",
+                "text_color": "",
                 "border_color": "",
                 "hover_bg": "",
                 "hover_text_color": ""
@@ -1220,10 +1229,10 @@
                 "margin_x": 0,
                 "border_width": 1,
                 "border_radius": 0,
-                "custom_scheme": false,
-                "color_scheme": "scheme-1",
-                "bg": "#000000",
-                "text_color": "#ffffff",
+                "custom_scheme": true,
+                "color_scheme": "scheme-2",
+                "bg": "",
+                "text_color": "",
                 "border_color": "",
                 "hover_bg": "",
                 "hover_text_color": ""
@@ -1291,10 +1300,10 @@
                 "margin_x": 0,
                 "border_width": 1,
                 "border_radius": 0,
-                "custom_scheme": false,
-                "color_scheme": "scheme-1",
-                "bg": "#000000",
-                "text_color": "#ffffff",
+                "custom_scheme": true,
+                "color_scheme": "scheme-2",
+                "bg": "",
+                "text_color": "",
                 "border_color": "",
                 "hover_bg": "",
                 "hover_text_color": ""

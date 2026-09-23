@@ -51,6 +51,8 @@
 {%- capture style_vars -%}
   --gs-btn-py: {{ s.padding_y | default: 12 }}px;
   --gs-btn-px: {{ s.padding_x | default: 28 }}px;
+  --gs-btn-my: {{ s.margin_y | default: 12 }}px;
+  --gs-btn-mx: {{ s.margin_x | default: 28 }}px;
   --gs-btn-border-width: {{ s.border_width | default: 0 }}px;
   --buttons-border-width: {{ s.border_width | default: 0 }}px;
   --buttons-radius-outset: {{ s.border_radius | default: 0 }}px;
@@ -104,6 +106,7 @@
     min-width: 0;
     min-height: 0;
     padding: var(--gs-btn-py, 12px) var(--gs-btn-px, 28px);
+    margin: var(--gs-btn-my, 0) var(--gs-btn-mx, 0);
     font-size: var(--gs-btn-font-size, 1.5rem);
     line-height: 1.2;
     background-color: var(--gs-btn-bg, rgba(var(--color-button), var(--alpha-button-background)));
@@ -195,6 +198,8 @@
     { "type": "range", "id": "font_size", "label": "Font size", "info": "0 uses the theme's button size.", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 0 },
     { "type": "range", "id": "padding_y", "label": "Padding top and bottom", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 12 },
     { "type": "range", "id": "padding_x", "label": "Padding left and right", "min": 0, "max": 80, "step": 1, "unit": "px", "default": 28 },
+    { "type": "range", "id": "margin_y", "label": "Margin top and bottom", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_x", "label": "Margin left and right", "min": 0, "max": 80, "step": 1, "unit": "px", "default": 0 },
     { "type": "range", "id": "border_width", "label": "Border width", "min": 0, "max": 6, "step": 1, "unit": "px", "default": 1 },
     { "type": "range", "id": "border_radius", "label": "Corner radius", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 0 },
 

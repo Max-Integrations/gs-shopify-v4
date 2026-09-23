@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "shop_by_type": {
@@ -6,7 +15,6 @@
         "tile_1": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "",
             "collection": "womens-hoodies-and-sweatshirts",
             "link": "",
             "span_two_columns": false,
@@ -29,7 +37,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -62,7 +71,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -72,7 +82,6 @@
         "tile_3": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "",
             "collection": "womens-outerwear",
             "link": "",
             "span_two_columns": false,
@@ -95,7 +104,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -105,7 +115,6 @@
         "tile_4": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "",
             "collection": "womens-bottoms",
             "link": "",
             "span_two_columns": false,
@@ -128,7 +137,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -138,7 +148,6 @@
         "tile_5": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "",
             "collection": "womens-basics",
             "link": "",
             "span_two_columns": false,
@@ -161,7 +170,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -171,7 +181,6 @@
         "tile_6": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "",
             "collection": "slouchy-tees",
             "link": "",
             "span_two_columns": false,
@@ -194,7 +203,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -227,7 +237,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -260,7 +271,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -293,7 +305,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -350,7 +363,7 @@
         "promotion_UgpDQf": {
           "type": "promotion",
           "settings": {
-            "custom_content_position": 4,
+            "custom_content_position": 5,
             "custom_content_page": 1,
             "content_width_desktop": "2",
             "content_width_mobile": "2",
