@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -24,7 +33,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GS4774_STANDARD_WEB_READY-front-min.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -39,9 +47,9 @@
         },
         "image_q4R3bo": {
           "type": "block--media-tile",
+          "disabled": true,
           "settings": {
             "media_image": "shopify://shop_images/GS5279---This-We_ll-Defend---Tennessee_STANDARD_WEB_READY-2022_FRONT_BACK.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -52,14 +60,12 @@
             "background_color": "#000000",
             "background_opacity": 0,
             "hover_overlay": "keep"
-          },
-          "disabled": true
+          }
         },
         "image_DRBfK3": {
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GS6693_WEB_READY_FRONT.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -76,7 +82,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GS7759_WEB-READY_STACKED.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -93,7 +98,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GS7084_WEB-READY_FRONT.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -110,7 +114,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GS5431_-_True-Colors-Smoky-Mountains_WEBREADY_Front_d2aa2804-6fed-4cac-9d47-5310df101e0e.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -125,9 +128,9 @@
         },
         "image_79q8E4": {
           "type": "block--media-tile",
+          "disabled": true,
           "settings": {
             "media_image": "shopify://shop_images/GS7136_WEB-READY_FRONT.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -138,8 +141,7 @@
             "background_color": "#000000",
             "background_opacity": 0,
             "hover_overlay": "keep"
-          },
-          "disabled": true
+          }
         }
       },
       "block_order": [

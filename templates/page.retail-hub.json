@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -62,16 +71,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/gs-retail-hub-gulfport-ms.png",
+            "collection": "",
             "link": "shopify://pages/phoenix-premium-outlets-retail-store",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
+            "hover_text": "",
             "background_color": "#000000",
             "background_opacity": 0.3,
-            "collection": "",
-            "video": "",
-            "hover_text": "",
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -112,16 +120,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/gs-retail-hub-fort-myers-fl.png",
+            "collection": "",
             "link": "shopify://pages/destin-commons-retail-store",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
+            "hover_text": "",
             "background_color": "#000000",
             "background_opacity": 0.3,
-            "collection": "",
-            "video": "",
-            "hover_text": "",
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -162,16 +169,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/gs-retail-hub-amityville-ny.png",
+            "collection": "",
             "link": "shopify://pages/tampa-premium-outlet-retail-store",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
+            "hover_text": "",
             "background_color": "#000000",
             "background_opacity": 0.3,
-            "collection": "",
-            "video": "",
-            "hover_text": "",
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -212,16 +218,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/gs-retail-hub-amityville-ny.png",
+            "collection": "",
             "link": "shopify://pages/outlet-shoppes-at-atlanta-retail-store",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
+            "hover_text": "",
             "background_color": "#000000",
             "background_opacity": 0.3,
-            "collection": "",
-            "video": "",
-            "hover_text": "",
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -262,16 +267,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/gs-retail-hub-sugar-land-tx.png",
+            "collection": "",
             "link": "shopify://pages/branson-tanger-outlet-retail-store",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
+            "hover_text": "",
             "background_color": "#000000",
             "background_opacity": 0.3,
-            "collection": "",
-            "video": "",
-            "hover_text": "",
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -312,16 +316,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/gs-retail-hub-fort-myers-fl.png",
+            "collection": "",
             "link": "shopify://pages/las-vegas-south-premium-outlets-retail-store",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
+            "hover_text": "",
             "background_color": "#000000",
             "background_opacity": 0.3,
-            "collection": "",
-            "video": "",
-            "hover_text": "",
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -362,16 +365,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/gs-retail-hub-grand-forks-nd.png",
+            "collection": "",
             "link": "shopify://pages/tulsa-premium-outlet-retail-store",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
+            "hover_text": "",
             "background_color": "#000000",
             "background_opacity": 0.3,
-            "collection": "",
-            "video": "",
-            "hover_text": "",
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -412,16 +414,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/gs-retail-hub-sugar-land-tx.png",
+            "collection": "",
             "link": "shopify://pages/myrtle-beach-retail-store",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
+            "hover_text": "",
             "background_color": "#000000",
             "background_opacity": 0.3,
-            "collection": "",
-            "video": "",
-            "hover_text": "",
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -462,16 +463,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/gs-retail-hub-gulfport-ms.png",
+            "collection": "",
             "link": "shopify://pages/opry-mills-retail-store",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
+            "hover_text": "",
             "background_color": "#000000",
             "background_opacity": 0.3,
-            "collection": "",
-            "video": "",
-            "hover_text": "",
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -512,16 +512,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/gs-retail-hub-amityville-ny.png",
+            "collection": "",
             "link": "shopify://pages/grunt-style-sevierville-store",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
+            "hover_text": "",
             "background_color": "#000000",
             "background_opacity": 0.3,
-            "collection": "",
-            "video": "",
-            "hover_text": "",
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -562,16 +561,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/gs-retail-hub-fort-myers-fl.png",
+            "collection": "",
             "link": "shopify://pages/outlet-shoppes-at-el-paso-retail-store",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
+            "hover_text": "",
             "background_color": "#000000",
             "background_opacity": 0.3,
-            "collection": "",
-            "video": "",
-            "hover_text": "",
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -612,16 +610,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/gs-retail-hub-allen-tx.png",
+            "collection": "",
             "link": "shopify://pages/grunt-style-broadway-retail-store",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
+            "hover_text": "",
             "background_color": "#000000",
             "background_opacity": 0.3,
-            "collection": "",
-            "video": "",
-            "hover_text": "",
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -662,16 +659,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/gs-retail-hub-gulfport-ms.png",
+            "collection": "",
             "link": "shopify://pages/grunt-style-norfolk-retail-store",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
+            "hover_text": "",
             "background_color": "#000000",
             "background_opacity": 0.3,
-            "collection": "",
-            "video": "",
-            "hover_text": "",
             "hover_overlay": "keep"
           },
           "blocks": {

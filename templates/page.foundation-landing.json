@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -7,8 +16,6 @@
     },
     "hero": {
       "type": "image-banner",
-      "blocks": {},
-      "block_order": [],
       "settings": {
         "image": "shopify://shop_images/GSF_Desktop_Header_STATIC_1440x400_1.jpg",
         "image_2": "shopify://shop_images/GSF_Mobile_Header_STATIC_980x600_1.jpg",
@@ -184,6 +191,10 @@
         "image_with_text_wkjFe9",
         "image_with_text_cQG4PA"
       ],
+      "custom_css": [
+        ".multicolumn-card { background: #5c5d3a !important; }",
+        ".multicolumn-card__info h3 { color: #ffffff; font-size: calc(var(--font-heading-scale) * 1.8rem); }"
+      ],
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -201,11 +212,7 @@
         "swipe_on_mobile": false,
         "padding_top": 8,
         "padding_bottom": 24
-      },
-      "custom_css": [
-        ".multicolumn-card { background: #5c5d3a !important; }",
-        ".multicolumn-card__info h3 { color: #ffffff; font-size: calc(var(--font-heading-scale) * 1.8rem); }"
-      ]
+      }
     },
     "testimonials": {
       "type": "section--testimonials",
@@ -542,7 +549,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/Moved_2000x2000_7.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -559,7 +565,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/Moved_2000x2000_8_-min.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -576,7 +581,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/Moved_2000x2000_11_-min.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -593,7 +597,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/Moved_2000x2000_12.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -610,7 +613,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/Moved_2000x2000_10.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -689,6 +691,9 @@
         "heading_kzeLda",
         "button_B7R4kJ"
       ],
+      "custom_css": [
+        ".button { --color-button: 92, 93, 58; --color-button-text: 255, 255, 255; }"
+      ],
       "settings": {
         "section_visibility": "always",
         "desktop_content_position": "center",
@@ -697,10 +702,7 @@
         "full_width": true,
         "padding_top": 32,
         "padding_bottom": 48
-      },
-      "custom_css": [
-        ".button { --color-button: 92, 93, 58; --color-button-text: 255, 255, 255; }"
-      ]
+      }
     }
   },
   "order": [

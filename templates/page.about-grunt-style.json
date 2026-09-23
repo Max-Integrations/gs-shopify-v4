@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -7,8 +16,6 @@
     },
     "hero_banner_secondary_gWCzbB": {
       "type": "image-banner",
-      "blocks": {},
-      "block_order": [],
       "settings": {
         "image": "shopify://shop_images/Main_Hero.jpg",
         "image_overlay_opacity": 0,
@@ -189,6 +196,7 @@
         ".button { --color-button: 95, 94, 59; --color-button-text: 255, 255, 255; }"
       ],
       "settings": {
+        "stack_on_scroll": true,
         "image_height": "large",
         "desktop_image_width": "small",
         "image_layout": "align-left",
@@ -201,8 +209,7 @@
         "section_color_scheme": "scheme-1",
         "row_color_scheme": "scheme-1",
         "padding_top": 40,
-        "padding_bottom": 40,
-        "stack_on_scroll": true
+        "padding_bottom": 40
       }
     },
     "stories_single_image_QGbgQJ": {
@@ -212,7 +219,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/2009_1.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -246,7 +252,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/2010_1.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -280,7 +285,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/2011_1.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -314,7 +318,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/2012_1.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -348,7 +351,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/2013_1.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -382,7 +384,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/2014_1.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -416,7 +417,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/2015_1.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -450,7 +450,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/2016_1.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -484,7 +483,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/2017_1.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -518,7 +516,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/2018_1.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -552,7 +549,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/2019_1.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -586,7 +582,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/2020_1.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -620,7 +615,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/2021_1.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -762,6 +756,7 @@
         ".button { --color-button: 255, 255, 255; --color-button-text: 0, 0, 0; }"
       ],
       "settings": {
+        "stack_on_scroll": true,
         "image_height": "large",
         "desktop_image_width": "small",
         "image_layout": "alternate-left",
@@ -774,8 +769,7 @@
         "section_color_scheme": "scheme-4",
         "row_color_scheme": "scheme-4",
         "padding_top": 40,
-        "padding_bottom": 40,
-        "stack_on_scroll": true
+        "padding_bottom": 40
       }
     },
     "about-section-5": {
@@ -846,7 +840,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/about-us-social-content-american-grit.png",
-            "video": "",
             "collection": "",
             "link": "https://americangrit.com/",
             "span_two_columns": false,
@@ -863,7 +856,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/about-us-social-content-full-gruntle.png",
-            "video": "",
             "collection": "",
             "link": "https://open.spotify.com/show/5pW9rjWSXGvdrihzhjLbnB",
             "span_two_columns": false,
@@ -880,7 +872,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/about-us-social-content-youtube-white-full.jpg",
-            "video": "",
             "collection": "",
             "link": "https://www.youtube.com/c/GruntStyle1776",
             "span_two_columns": false,
@@ -897,7 +888,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/about-us-social-content-tik-tok-full.png",
-            "video": "",
             "collection": "",
             "link": "https://www.tiktok.com/@gruntstyle_official?lang=en",
             "span_two_columns": false,
@@ -914,7 +904,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/about-us-social-content-twitch-full.jpg",
-            "video": "",
             "collection": "",
             "link": "https://www.twitch.tv/gruntstyle_official",
             "span_two_columns": false,

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -22,9 +31,9 @@
       "blocks": {
         "image_c9wKMq": {
           "type": "block--media-tile",
+          "disabled": true,
           "settings": {
             "media_image": "shopify://shop_images/GS6996_Our_Roots_Run_Deep_T-Shirt_-_Midnight_Navy_WEB_READY-2023-min.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -35,14 +44,12 @@
             "background_color": "#000000",
             "background_opacity": 0,
             "hover_overlay": "keep"
-          },
-          "disabled": true
+          }
         },
         "image_LnqPxH": {
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GS7769_WEB-READY_STACKED.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -59,7 +66,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GS7086_WEB-READY_FRONT.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,

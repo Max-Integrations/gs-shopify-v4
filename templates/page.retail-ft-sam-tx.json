@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -24,7 +33,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GSAR0028_-_Army_-_Combat_Medic_WEB_READY_BOTH-min.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -41,7 +49,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GS3912_Hey_Doc_WEB_READY-min.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -58,7 +65,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GS7756_WEB-READY_STACKED.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -75,7 +81,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GS4684---Mess-with-the-Bull_WEB_READY-min_f407fcb7-d08e-4589-8165-a73e8e3bfe6f.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -92,7 +97,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GS6688_Web_Ready_Front_0a0e2421-19a9-4499-9fef-588350f0f3de.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -109,7 +113,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GS5927_-_Men_s_Texas_Reaper_Tee_-_Black_WEB_READY.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,

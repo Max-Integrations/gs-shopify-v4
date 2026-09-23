@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "shop_by_type": {
@@ -7,7 +16,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "",
-            "video": "",
             "collection": "womens-hoodies-and-sweatshirts",
             "link": "",
             "span_two_columns": false,
@@ -41,7 +49,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8546_Women_sPregamingHelpsV-Neck-Black.jpg",
-            "video": "",
             "collection": "womens-graphic-tees-and-tanks",
             "link": "",
             "span_two_columns": false,
@@ -75,7 +82,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "",
-            "video": "",
             "collection": "womens-outerwear",
             "link": "",
             "span_two_columns": false,
@@ -109,7 +115,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "",
-            "video": "",
             "collection": "womens-bottoms",
             "link": "",
             "span_two_columns": false,
@@ -143,7 +148,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "",
-            "video": "",
             "collection": "womens-basics",
             "link": "",
             "span_two_columns": false,
@@ -177,7 +181,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "",
-            "video": "",
             "collection": "slouchy-tees",
             "link": "",
             "span_two_columns": false,
@@ -211,7 +214,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V9_GS6803_AgilityLowImpactSportsBra-GrenadeParadise.jpg",
-            "video": "",
             "collection": "womens-more-tops",
             "link": "",
             "span_two_columns": false,
@@ -245,7 +247,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS7071_I_dSmokeThatMeshHat__1.jpg",
-            "video": "",
             "collection": "headwear",
             "link": "",
             "span_two_columns": false,
@@ -279,7 +280,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/Her-Accessories-BlankPoster_2000X2000_GS5363-Beautiful_DangerousSticker.jpg",
-            "video": "",
             "collection": "accessories",
             "link": "",
             "span_two_columns": false,

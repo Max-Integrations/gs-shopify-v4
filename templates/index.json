@@ -1,5 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
+    "section_full_width_image_text_fzTCbL": {
+      "type": "section--full-width-image_text",
+      "name": "Handpicked For Violence banner",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#000000",
+        "background_image_desktop": "shopify://shop_images/HPC_D_-_Short_CTA_1440x424_FW26_Violence_Campaign.jpg",
+        "background_image_mobile": "shopify://shop_images/HPC_M_-_Tall_CTA_750x994_FW26_Violence_Campaign.jpg",
+        "image_height_auto": true,
+        "banner_link": "shopify://collections/handpicked-for-violence",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 0,
+        "button_gap": 12
+      }
+    },
     "section_sale_promo_message_4Qz89H": {
       "type": "section--full-width-image_text",
       "blocks": {
@@ -38,8 +71,21 @@
           "settings": {
             "text": "SHOP NOW",
             "url": "",
-            "style": "btn-primary",
-            "open_in_new_tab": false
+            "open_in_new_tab": false,
+            "size_scale_desktop": "1rem",
+            "size_scale_mobile": "1rem",
+            "text_color": "#ffffff",
+            "background_color": "#000000",
+            "border_color": "#000000",
+            "border_width": 1,
+            "letter_spacing": 0,
+            "text_color_hover": "",
+            "background_color_hover": "",
+            "border_color_hover": "",
+            "padding_horizontal_desktop": 24,
+            "padding_vertical_desktop": 12,
+            "padding_horizontal_mobile": 24,
+            "padding_vertical_mobile": 12
           }
         },
         "message_line_QnpEPR": {
@@ -72,14 +118,18 @@
         "alignment_preset": "start",
         "background_color": "#5d5d39",
         "background_image_desktop": "shopify://shop_images/HPC_D_-_Tall_1920x700_Image_20_Off_Fall_V1.jpg",
+        "image_height_auto": true,
         "banner_link": "shopify://collections/hoodies",
         "open_in_new_tab": false,
         "padding_top_desktop": 96,
         "padding_bottom_desktop": 96,
+        "padding_horizontal_desktop": 24,
+        "item_gap_desktop": 0,
         "padding_top_mobile": 96,
         "padding_bottom_mobile": 96,
-        "item_gap_desktop": 0,
-        "item_gap_mobile": 0
+        "padding_horizontal_mobile": 24,
+        "item_gap_mobile": 0,
+        "button_gap": 12
       }
     },
     "value_props_c3pXEG": {
@@ -121,28 +171,31 @@
         "grid_yYV4YL": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/Split_Banner_M_750x750_FW26_First_Responder_Collection.jpg",
-            "link": "shopify://collections/first-responders",
-            "content_position": "center",
-            "content_alignment": "center",
-            "background_color": "#000000",
-            "background_opacity": 0.5,
+            "media_image": "shopify://shop_images/Custom_1250x1250_GS8214_FW26_Halloween_Collection.jpg",
+            "collection": "",
+            "link": "shopify://collections/halloween",
             "span_two_columns": false,
             "span_two_rows": false,
-            "collection": "",
-            "video": "",
+            "content_position": "center",
+            "content_alignment": "center",
             "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.5,
             "hover_overlay": "keep"
           },
           "blocks": {
             "heading": {
               "type": "block--heading",
               "settings": {
-                "text": "<strong>FIRST RESPONDERS</strong>",
+                "text": "<strong>HALLOWEEN</strong>",
                 "size": "h2",
                 "tag": "h2",
-                "alignment": "inherit"
-              }
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -152,17 +205,16 @@
         "grid_TTWhpz": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V6_GS8232_BasicStackedLogoT-Shirt-Tan_d9b7117e-946b-4512-97f2-ddf52059f2f3.jpg",
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V3_GS7608_HeavyweightPocketT-Shirt-Black.jpg",
+            "collection": "",
             "link": "shopify://collections/basics-franchise",
-            "content_position": "center",
-            "content_alignment": "center",
-            "background_color": "#000000",
-            "background_opacity": 0.5,
             "span_two_columns": false,
             "span_two_rows": false,
-            "collection": "",
-            "video": "",
+            "content_position": "center",
+            "content_alignment": "center",
             "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.5,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -172,8 +224,12 @@
                 "text": "<strong>BASICS</strong>",
                 "size": "h2",
                 "tag": "h2",
-                "alignment": "inherit"
-              }
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -183,17 +239,16 @@
         "grid_j3FnQz": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/Custom_1250x1250_Campaign_Outdoors_Realtree.jpg",
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8540_ProfessionalSh-tTalkerT-Shirt-Black.jpg",
+            "collection": "",
             "link": "shopify://collections/men",
-            "content_position": "center",
-            "content_alignment": "center",
-            "background_color": "#000000",
-            "background_opacity": 0.5,
             "span_two_columns": false,
             "span_two_rows": false,
-            "collection": "",
-            "video": "",
+            "content_position": "center",
+            "content_alignment": "center",
             "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.5,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -203,8 +258,12 @@
                 "text": "<strong>MEN</strong>",
                 "size": "h2",
                 "tag": "h2",
-                "alignment": "inherit"
-              }
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -215,16 +274,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V3_GS8456_Women_sBornDefiantSlimFitT-Shirt-MilitaryGreen.jpg",
+            "collection": "",
             "link": "shopify://collections/women",
-            "content_position": "center",
-            "content_alignment": "center",
-            "background_color": "#000000",
-            "background_opacity": 0.5,
             "span_two_columns": false,
             "span_two_rows": false,
-            "collection": "",
-            "video": "",
+            "content_position": "center",
+            "content_alignment": "center",
             "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.5,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -234,8 +292,12 @@
                 "text": "<strong>WOMEN</strong>",
                 "size": "h2",
                 "tag": "h2",
-                "alignment": "inherit"
-              }
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -419,6 +481,7 @@
         "products",
         "donation"
       ],
+      "disabled": true,
       "name": "Countdown",
       "settings": {
         "section_visibility": "always",
@@ -440,36 +503,31 @@
         "grid_DYVM8z": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8195_ProneToViolenceT-Shirt-Black.jpg",
-            "link": "shopify://collections/veteran-clothing-and-gear",
-            "content_position": "bottom-center",
-            "content_alignment": "center",
-            "background_color": "#000000",
-            "background_opacity": 0.5,
+            "media_image": "shopify://shop_images/Blog_Post_1250x1250_GS8541_General_FW26_Campaign_-_Drinking-Pregaming.jpg",
+            "collection": "",
+            "link": "shopify://collections/tailgating-gear",
             "span_two_columns": false,
             "span_two_rows": true,
-            "collection": "",
-            "video": "",
+            "content_position": "bottom-center",
+            "content_alignment": "center",
             "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.5,
             "hover_overlay": "keep"
           },
           "blocks": {
             "heading": {
               "type": "block--heading",
               "settings": {
-                "text": "<strong>VETERANS</strong>",
+                "text": "<strong>PREGAME SEASON</strong>",
                 "size": "h2",
                 "tag": "h3",
-                "alignment": "inherit"
-              }
-            },
-            "text": {
-              "type": "block--text",
-              "settings": {
-                "text": "<p>Military Inspired Collection</p>",
-                "size": "large",
-                "alignment": "inherit"
-              }
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
             },
             "button": {
               "type": "block--button",
@@ -477,50 +535,62 @@
                 "label": "SHOP NOW",
                 "link": "",
                 "style": "button",
-                "size": "small",
-                "open_in_new_tab": false
-              }
+                "size": "large",
+                "open_in_new_tab": false,
+                "bg": "",
+                "text_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "heading",
-            "text",
             "button"
           ]
         },
         "grid_DNCaHx": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/Custom_1250x1250_FW26_Campaign_Motorsports.jpg",
-            "link": "shopify://collections/motorsports",
-            "content_position": "bottom-center",
-            "content_alignment": "center",
-            "background_color": "#000000",
-            "background_opacity": 0.4,
+            "media_image": "shopify://shop_images/GS-1250x1250-new_arrivals.png",
+            "collection": "",
+            "link": "shopify://collections/outerwear",
             "span_two_columns": false,
             "span_two_rows": false,
-            "collection": "",
-            "video": "",
+            "content_position": "bottom-center",
+            "content_alignment": "center",
             "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.4,
             "hover_overlay": "keep"
           },
           "blocks": {
             "heading": {
               "type": "block--heading",
               "settings": {
-                "text": "<strong>ROAD REBELS</strong>",
+                "text": "<strong>OUTERWEAR</strong>",
                 "size": "h2",
                 "tag": "h2",
-                "alignment": "inherit"
-              }
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
             },
-            "text": {
-              "type": "block--text",
+            "block_heading_U389rp": {
+              "type": "block--heading",
               "settings": {
-                "text": "<p>Freedom in the Fast Lane</p>",
-                "size": "large",
-                "alignment": "inherit"
-              }
+                "text": "BACK IN STOCK",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
             },
             "button": {
               "type": "block--button",
@@ -528,50 +598,50 @@
                 "label": "SHOP NOW",
                 "link": "",
                 "style": "button",
-                "size": "small",
-                "open_in_new_tab": false
-              }
+                "size": "large",
+                "open_in_new_tab": false,
+                "bg": "",
+                "text_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "heading",
-            "text",
+            "block_heading_U389rp",
             "button"
           ]
         },
         "grid_PFPLjN": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/Custom_1250x1250_Warriors_Legacy.jpg",
-            "link": "shopify://collections/warriors-legacy",
-            "content_position": "bottom-center",
-            "content_alignment": "center",
-            "background_color": "#000000",
-            "background_opacity": 0.4,
+            "media_image": "shopify://shop_images/Custom_1250x1250_Goon_Squad.jpg",
+            "collection": "",
+            "link": "shopify://collections/goon-squad",
             "span_two_columns": false,
             "span_two_rows": false,
-            "collection": "",
-            "video": "",
+            "content_position": "bottom-center",
+            "content_alignment": "center",
             "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.4,
             "hover_overlay": "keep"
           },
           "blocks": {
             "heading": {
               "type": "block--heading",
               "settings": {
-                "text": "<strong>WARRIORS LEGACY</strong>",
+                "text": "<strong>GOON SQUAD</strong>",
                 "size": "h2",
                 "tag": "h2",
-                "alignment": "inherit"
-              }
-            },
-            "text": {
-              "type": "block--text",
-              "settings": {
-                "text": "<p>Honor History</p>",
-                "size": "large",
-                "alignment": "inherit"
-              }
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
             },
             "button": {
               "type": "block--button",
@@ -579,14 +649,18 @@
                 "label": "SHOP NOW",
                 "link": "",
                 "style": "button",
-                "size": "small",
-                "open_in_new_tab": false
-              }
+                "size": "large",
+                "open_in_new_tab": false,
+                "bg": "",
+                "text_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "heading",
-            "text",
             "button"
           ]
         }
@@ -632,15 +706,6 @@
     "featured_collections_RaEPWA": {
       "type": "featured-collections",
       "blocks": {
-        "collection_block_GPGBM4": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "R.E.D",
-            "collection": "r-e-d-franchise",
-            "cta_label": "SHOP COLLECTION",
-            "cta_link": "shopify://collections/r-e-d-franchise"
-          }
-        },
         "collection_block_JdXg6Y": {
           "type": "collection_block",
           "settings": {
@@ -659,6 +724,15 @@
             "cta_link": "shopify://collections/military-first-responders"
           }
         },
+        "collection_block_GPGBM4": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "R.E.D",
+            "collection": "r-e-d-franchise",
+            "cta_label": "SHOP COLLECTION",
+            "cta_link": "shopify://collections/r-e-d-franchise"
+          }
+        },
         "collection_block_aajarn": {
           "type": "collection_block",
           "settings": {
@@ -670,9 +744,9 @@
         }
       },
       "block_order": [
-        "collection_block_GPGBM4",
         "collection_block_JdXg6Y",
         "collection_block_MmLLUF",
+        "collection_block_GPGBM4",
         "collection_block_aajarn"
       ],
       "name": "Featured collections",
@@ -777,8 +851,23 @@
         "section_color_scheme": "scheme-1",
         "color_scheme": "scheme-2",
         "show_chevrons": true,
+        "chevron_stroke_width": 2,
         "chevron_color_text": "#ab192d",
+        "chevron_row_fill": "solid",
+        "chevron_row_size": 80,
+        "chevron_row_size_mobile": 64,
+        "chevron_row_gap": 30,
+        "chevron_row_gap_mobile": 30,
+        "chevron_row_space_above": 24,
+        "chevron_row_space_below": 0,
         "chevron_color_image": "#ffffff",
+        "chevron_col_fill": "outline",
+        "chevron_col_size": 78,
+        "chevron_col_size_mobile": 54,
+        "chevron_col_gap": 20,
+        "chevron_col_gap_mobile": 25,
+        "chevron_col_inset": 30,
+        "chevron_col_inset_mobile": 15,
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -790,7 +879,6 @@
           "type": "quote",
           "settings": {
             "author_title": "KING OF PATRIOTIC",
-            "image": "",
             "author": "John S.",
             "country_name": "",
             "show_rating": true,
@@ -802,7 +890,6 @@
           "type": "quote",
           "settings": {
             "author_title": "COMMUNITY",
-            "image": "",
             "author": "Carrie C.",
             "country_name": "",
             "show_rating": true,
@@ -814,7 +901,6 @@
           "type": "quote",
           "settings": {
             "author_title": "EXCELLENT SERVICE",
-            "image": "",
             "author": "CJ",
             "country_name": "",
             "show_rating": true,
@@ -826,7 +912,6 @@
           "type": "quote",
           "settings": {
             "author_title": "PATRIOTIC SUPREME",
-            "image": "",
             "author": "Brad L.",
             "country_name": "",
             "show_rating": true,
@@ -838,7 +923,6 @@
           "type": "quote",
           "settings": {
             "author_title": "FAST SHIPPING",
-            "image": "",
             "author": "Dustin B.",
             "country_name": "",
             "show_rating": true,
@@ -880,7 +964,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GS-club-750X750.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -900,7 +983,8 @@
                 "size": "small",
                 "alignment": "center",
                 "color": "#5c5c5c"
-              }
+              },
+              "blocks": {}
             },
             "title": {
               "type": "block--heading",
@@ -912,7 +996,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             },
             "button": {
               "type": "block--button",
@@ -920,13 +1005,14 @@
                 "label": "LEARN MORE",
                 "link": "shopify://pages/club-grunt-style",
                 "style": "button",
-                "size": "small",
+                "size": "medium",
                 "open_in_new_tab": false,
-                "bg": "",
-                "text_color": "",
+                "bg": "#000000",
+                "text_color": "#FFFFFF",
                 "hover_bg": "",
                 "hover_text_color": ""
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -938,15 +1024,14 @@
         "content_card_zmDHqb": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/GS-rewards-750X750.png",
-            "video": "",
+            "media_image": "shopify://shop_images/Email_Primary_600X600__Image_Only_Customs_Marketing_Materials.jpg",
             "collection": "",
             "link": "",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
-            "hover_text": "<p>Smart patriots get rewarded every time.<br/>Spend $60? That’s $3–$12 back in rewards! Get 5-20% Back on Every Order.<br/>Go VIP for up to 20% back in store credit and free shipping. Starts at $2/month.</p>",
+            "hover_text": "<p>Outfit your event, crew, or team with personalized gear from a brand you trust. Start your custom order (minimum 24 units) by completing the form today.</p>",
             "background_color": "#000000",
             "background_opacity": 0.8,
             "hover_overlay": "show"
@@ -955,37 +1040,40 @@
             "subheading": {
               "type": "block--text",
               "settings": {
-                "text": "<p>LOYALTY PERKS</p>",
+                "text": "<p>BUILD GEAR MADE FOR YOU</p>",
                 "size": "small",
                 "alignment": "center",
                 "color": "#5c5c5c"
-              }
+              },
+              "blocks": {}
             },
             "title": {
               "type": "block--heading",
               "settings": {
-                "text": "<strong>GRUNT STYLE REWARDS</strong>",
+                "text": "<strong>GRUNT STYLE CUSTOMS</strong>",
                 "size": "h4",
                 "tag": "h3",
                 "alignment": "center",
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             },
             "button": {
               "type": "block--button",
               "settings": {
                 "label": "LEARN MORE",
-                "link": "https://www.gruntstyle.com/community/membership",
+                "link": "shopify://pages/custom-orders",
                 "style": "button",
-                "size": "small",
+                "size": "medium",
                 "open_in_new_tab": false,
-                "bg": "",
-                "text_color": "",
+                "bg": "#000000",
+                "text_color": "#FFFFFF",
                 "hover_bg": "",
                 "hover_text_color": ""
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -998,7 +1086,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GS_foundation-750X750.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -1018,7 +1105,8 @@
                 "size": "small",
                 "alignment": "center",
                 "color": "#5c5c5c"
-              }
+              },
+              "blocks": {}
             },
             "title": {
               "type": "block--heading",
@@ -1030,7 +1118,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             },
             "button": {
               "type": "block--button",
@@ -1038,13 +1127,14 @@
                 "label": "LEARN MORE",
                 "link": "shopify://pages/grunt-style-foundation",
                 "style": "button",
-                "size": "small",
+                "size": "medium",
                 "open_in_new_tab": false,
-                "bg": "",
-                "text_color": "",
+                "bg": "#000000",
+                "text_color": "#FFFFFF",
                 "hover_bg": "",
                 "hover_text_color": ""
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1052,12 +1142,74 @@
             "title",
             "button"
           ]
+        },
+        "block_media_tile_hHb7Np": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/GS-rewards-750X750.png",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "<p>Grunt Style Foundation is a 501(c)(3) nonprofit dedicated to providing life-changing resources and experiences that help Service Members, Veterans, First Responders, and their families thrive. Focused on mental health, wellness and advocacy, the Foundation ensures those who have served—and continue to serve—receive the recognition, honor, and support they deserve.</p>",
+            "background_color": "#000000",
+            "background_opacity": 0.8,
+            "hover_overlay": "show"
+          },
+          "blocks": {
+            "block_text_CgwbLg": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>LOYALTY PERKS</p>",
+                "size": "small",
+                "alignment": "center",
+                "color": "#5c5c5c"
+              },
+              "blocks": {}
+            },
+            "block_heading_GX8XdH": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>GRUNT STYLE REWARDS</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "center",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
+            },
+            "block_button_kEbznd": {
+              "type": "block--button",
+              "settings": {
+                "label": "LEARN MORE",
+                "link": "https://www.gruntstyle.com/community/membership",
+                "style": "button",
+                "size": "medium",
+                "open_in_new_tab": false,
+                "bg": "#000000",
+                "text_color": "#FFFFFF",
+                "hover_bg": "",
+                "hover_text_color": ""
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_text_CgwbLg",
+            "block_heading_GX8XdH",
+            "block_button_kEbznd"
+          ]
         }
       },
       "block_order": [
         "content_card_pM9jBd",
         "content_card_zmDHqb",
-        "content_card_McLDVd"
+        "content_card_McLDVd",
+        "block_media_tile_hHb7Np"
       ],
       "name": "Multicolumn w/ Hover",
       "settings": {
@@ -1089,33 +1241,7 @@
         "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-1",
         "padding_top": 8,
-        "padding_bottom": 8
-      }
-    },
-    "section_full_width_image_text_fzTCbL": {
-      "type": "section--full-width-image_text",
-      "blocks": {},
-      "block_order": [],
-      "name": "Handpicked For Violence banner",
-      "settings": {
-        "visibility": "always",
-        "layout_preset": "center",
-        "alignment_preset": "center",
-        "background_color": "#000000",
-        "background_image_desktop": "shopify://shop_images/HPC_D_-_Short_CTA_1440x424_FW26_Violence_Campaign.jpg",
-        "background_image_mobile": "shopify://shop_images/HPC_M_-_Tall_CTA_750x994_FW26_Violence_Campaign.jpg",
-        "image_height_auto": true,
-        "banner_link": "shopify://collections/handpicked-for-violence",
-        "open_in_new_tab": false,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 0,
-        "button_gap": 12
+        "padding_bottom": 48
       }
     }
   },

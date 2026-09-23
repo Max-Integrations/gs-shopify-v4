@@ -1,1 +1,100 @@
-{"name":"Footer","type":"footer","sections":{"footer_brand":{"type":"gs-footer-brand","settings":{"heading":"<strong>THIS WE'LL DEFEND<\/strong>","seo_heading":"h3","subheading":"AMERICA'S PATRIOTIC T-SHIRT & APPAREL BRAND","body":"<p>Grunt Style is a lifestyle brand whose mission is to bring patriotic apparel to every home in America. We distill pure, 100-proof, American fighting spirit. We are a veteran-founded and operated company that honors service at home and abroad. We believe what you wear reflects who you are and what you stand for.<\/p>","button_label":"","button_link":"shopify:\/\/pages\/about","color_scheme":"scheme-4","heading_size_desktop":44,"heading_size_mobile":28,"subheading_size_desktop":20,"subheading_size_mobile":14,"padding_desktop":40,"padding_mobile":25}},"footer":{"type":"footer","blocks":{"newsletter_block":{"type":"newsletter","settings":{"enable_newsletter":true,"heading":"Subscribe To Our Emails","placeholder_text":"Enter email"}},"link_list_P4cgGq":{"type":"link_list","settings":{"heading":"Customer Service","menu":"customer-service","show_privacy_choices":false}},"link_list_F4CiEQ":{"type":"link_list","settings":{"heading":"Policies","menu":"footer-menu-2021-policies","show_privacy_choices":true}},"link_list_bCUtbq":{"type":"link_list","settings":{"heading":"About Us","menu":"footer-menu-2021-about-us","show_privacy_choices":false}}},"block_order":["newsletter_block","link_list_P4cgGq","link_list_F4CiEQ","link_list_bCUtbq"],"settings":{"footer_sticky":false,"logo_width":140,"logo_opacity":1,"logo_size":false,"enlarged_logo_carousel":false,"position":"bottom","social_icons":true,"heading":"Follow Us","copyright_text":"The Grunt Style Logo, designs, Grunt Fest, and Beer Guarantee are the registered trademarks or service marks of Grunt Style, LLC. You can try to copy us, but then we'll waterboard you with freedom.","show_sitemap_links":true,"html_sitemap_url":"shopify:\/\/pages\/sitemap","payment_enable":true,"enable_follow_on_shop":true,"footer_background_opacity":50,"bg_top_space_desktop":0,"bg_bottom_space_desktop":0,"bg_top_space_mobile":0,"bg_bottom_space_mobile":0}}},"order":["footer_brand","footer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "Footer",
+  "type": "footer",
+  "sections": {
+    "footer_brand": {
+      "type": "gs-footer-brand",
+      "settings": {
+        "heading": "<strong>THIS WE'LL DEFEND</strong>",
+        "seo_heading": "h3",
+        "subheading": "AMERICA'S PATRIOTIC T-SHIRT & APPAREL BRAND",
+        "body": "<p>Grunt Style is a lifestyle brand whose mission is to bring patriotic apparel to every home in America. We distill pure, 100-proof, American fighting spirit. We are a veteran-founded and operated company that honors service at home and abroad. We believe what you wear reflects who you are and what you stand for.</p>",
+        "button_label": "",
+        "button_link": "shopify://pages/about",
+        "color_scheme": "scheme-4",
+        "heading_size_desktop": 44,
+        "heading_size_mobile": 28,
+        "subheading_size_desktop": 20,
+        "subheading_size_mobile": 14,
+        "padding_desktop": 40,
+        "padding_mobile": 25
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "newsletter_block": {
+          "type": "newsletter",
+          "settings": {
+            "enable_newsletter": true,
+            "heading": "Subscribe To Our Emails",
+            "placeholder_text": "Enter email"
+          }
+        },
+        "link_list_P4cgGq": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Customer Service",
+            "menu": "customer-service",
+            "show_privacy_choices": false
+          }
+        },
+        "link_list_F4CiEQ": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Policies",
+            "menu": "footer-menu-2021-policies",
+            "show_privacy_choices": true
+          }
+        },
+        "link_list_bCUtbq": {
+          "type": "link_list",
+          "settings": {
+            "heading": "About Us",
+            "menu": "footer-menu-2021-about-us",
+            "show_privacy_choices": false
+          }
+        }
+      },
+      "block_order": [
+        "newsletter_block",
+        "link_list_P4cgGq",
+        "link_list_F4CiEQ",
+        "link_list_bCUtbq"
+      ],
+      "settings": {
+        "footer_sticky": false,
+        "logo_width": 140,
+        "logo_opacity": 1,
+        "logo_size": false,
+        "enlarged_logo_carousel": false,
+        "position": "bottom",
+        "social_icons": true,
+        "heading": "Follow Us",
+        "copyright_text": "The Grunt Style Logo, designs, Grunt Fest, and Beer Guarantee are the registered trademarks or service marks of Grunt Style, LLC. You can try to copy us, but then we'll waterboard you with freedom.",
+        "show_sitemap_links": true,
+        "html_sitemap_url": "shopify://pages/sitemap",
+        "payment_enable": true,
+        "enable_follow_on_shop": true,
+        "footer_background_opacity": 50,
+        "bg_top_space_desktop": 0,
+        "bg_bottom_space_desktop": 0,
+        "bg_top_space_mobile": 0,
+        "bg_bottom_space_mobile": 0
+      }
+    }
+  },
+  "order": [
+    "footer_brand",
+    "footer"
+  ]
+}

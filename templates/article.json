@@ -1,1 +1,54 @@
-{"sections":{"main":{"type":"main-article","settings":{}},"promoted":{"type":"featured-collections","settings":{"section_heading":"Shop This Story","heading_text_align":"center","collection_type":"tabs","collection_source":"metafield","layout_style":"carousel","container_width":"lg","grid_image_size":"square","max_number_products_loaded":10,"number_products_per_view_desktop":"4","number_products_per_view_mobile":"2","enable_product_badges":true,"enable_product_title":true,"enable_product_price":true,"enable_product_swatches":false,"enable_product_quick_view":true,"color_scheme":"scheme-1","heading_size_desktop":28,"heading_size_mobile":24,"section_spacing_top_desktop":50,"section_spacing_top_mobile":30,"section_spacing_bottom_desktop":50,"section_spacing_bottom_mobile":30,"cta_text_color":"#000000","cta_text_color_hover":"#ffffff","cta_background_color":"#ffffff","cta_background_color_hover":"#000000","cta_border_color":"#000000","cta_border_color_hover":"#000000"}}},"order":["main","promoted"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "settings": {}
+    },
+    "promoted": {
+      "type": "featured-collections",
+      "settings": {
+        "section_heading": "Shop This Story",
+        "heading_text_align": "center",
+        "collection_type": "tabs",
+        "collection_source": "metafield",
+        "layout_style": "carousel",
+        "container_width": "lg",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 10,
+        "number_products_per_view_desktop": "4",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": false,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-1",
+        "heading_size_desktop": 28,
+        "heading_size_mobile": 24,
+        "section_spacing_top_desktop": 50,
+        "section_spacing_top_mobile": 30,
+        "section_spacing_bottom_desktop": 50,
+        "section_spacing_bottom_mobile": 30,
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#ffffff",
+        "cta_background_color": "#ffffff",
+        "cta_background_color_hover": "#000000",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#000000"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "promoted"
+  ]
+}
