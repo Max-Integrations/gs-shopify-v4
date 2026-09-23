@@ -89,10 +89,11 @@
   margin-top: 3rem;
 }
 
-/* Two buttons sit side by side. */
+/* Dawn's content box is a flex column, so every child is its own row
+   and two buttons stack. A second button sits below the first; it must
+   never get a horizontal margin, which is what pushed it off centre. */
 .gs-iwt__content > .gs-block-button-wrap + .gs-block-button-wrap {
-  margin-top: 0;
-  margin-left: 1.5rem;
+  margin-top: 1rem;
 }
 
 .gs-iwt__content .gs-block-heading--custom-size {

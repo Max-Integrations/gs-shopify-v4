@@ -19,10 +19,25 @@
   margin-top: 3rem;
 }
 
-/* Two buttons sit side by side, as Dawn's two-button block did. */
-.rich-text__blocks > .gs-block-button-wrap + .gs-block-button-wrap {
-  margin-top: 0;
+/* Buttons are inline-block, so two sit side by side when there is room
+   and wrap otherwise. The spacing has to survive the wrap: every button
+   gets the same top margin (so two on one line align), and horizontal
+   spacing is symmetric in centred layouts so a wrapped button stays
+   centred, or one-sided in left / right layouts so it stays flush. */
+.rich-text__blocks > .gs-block-button-wrap {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  vertical-align: top;
+}
+
+.rich-text__blocks.left > .gs-block-button-wrap {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+
+.rich-text__blocks.right > .gs-block-button-wrap {
   margin-left: 1rem;
+  margin-right: 0;
 }
 
 .rich-text__blocks .gs-block-heading--custom-size {
