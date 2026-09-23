@@ -37,11 +37,14 @@
   ==================================================================
 */
 
+/* Above page content: a section below the header that leaks a z-index
+   (e.g. an absolutely positioned link) must never paint over an open
+   mega menu. Dawn's drawers and modals sit far higher. */
 .gs-header {
   background-color: var(--gs-header-bg, #000000);
   color: var(--gs-header-text, #ffffff);
   position: relative;
-  z-index: 4;
+  z-index: 20;
 }
 
 /*
@@ -62,7 +65,7 @@
 .gs-header-section:has(> .gs-header--sticky) {
   position: sticky;
   top: 0;
-  z-index: 4;
+  z-index: 20;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 

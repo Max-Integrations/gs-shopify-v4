@@ -3,6 +3,11 @@
   --padding-bottom: var(--section-padding-bottom-desktop);
   --padding-x: var(--section-padding-x-desktop);
   position: relative;
+  /* The stretched link and buttons carry z-indexes for ordering INSIDE
+     the banner. Without isolation those values escape to the page and
+     a z-index: 5 link painted over the header's mega menu, closing it
+     as the pointer moved down. */
+  isolation: isolate;
   width: 100%;
   padding-top: var(--padding-top);
   padding-bottom: var(--padding-bottom);
