@@ -38,7 +38,8 @@
             "letter_spacing": 4,
             "padding_y": 0,
             "padding_x": 16
-          }
+          },
+          "blocks": {}
         },
         "message_line_DAAzff": {
           "type": "block--message-line",
@@ -51,7 +52,8 @@
             "letter_spacing": 0,
             "padding_y": 8,
             "padding_x": 8
-          }
+          },
+          "blocks": {}
         },
         "button_ymiFK7": {
           "type": "block--button",
@@ -64,6 +66,8 @@
             "font_size": 10,
             "padding_y": 12,
             "padding_x": 24,
+            "margin_y": 0,
+            "margin_x": 0,
             "border_width": 1,
             "border_radius": 0,
             "custom_scheme": false,
@@ -73,7 +77,8 @@
             "border_color": "#000000",
             "hover_bg": "",
             "hover_text_color": ""
-          }
+          },
+          "blocks": {}
         },
         "message_line_QnpEPR": {
           "type": "block--message-line",
@@ -86,7 +91,8 @@
             "letter_spacing": 0,
             "padding_y": 8,
             "padding_x": 8
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -519,21 +525,23 @@
               "settings": {
                 "label": "SHOP NOW",
                 "link": "",
-                "style": "button",
                 "open_in_new_tab": false,
-                "bg": "",
-                "text_color": "",
-                "hover_bg": "",
-                "hover_text_color": "",
-                "font_size": 17,
-                "padding_y": 16,
-                "padding_x": 32,
+                "style": "button",
                 "width": "auto",
+                "font_size": 14,
+                "padding_y": 12,
+                "padding_x": 20,
+                "margin_y": 0,
+                "margin_x": 0,
                 "border_width": 1,
                 "border_radius": 0,
-                "custom_scheme": false,
-                "color_scheme": "scheme-1",
-                "border_color": ""
+                "custom_scheme": true,
+                "color_scheme": "scheme-5",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
               },
               "blocks": {}
             }
@@ -585,26 +593,28 @@
               },
               "blocks": {}
             },
-            "button": {
+            "block_button_P43Gpy": {
               "type": "block--button",
               "settings": {
                 "label": "SHOP NOW",
                 "link": "",
-                "style": "button",
                 "open_in_new_tab": false,
-                "bg": "",
-                "text_color": "",
-                "hover_bg": "",
-                "hover_text_color": "",
-                "font_size": 17,
-                "padding_y": 16,
-                "padding_x": 32,
+                "style": "button",
                 "width": "auto",
+                "font_size": 14,
+                "padding_y": 12,
+                "padding_x": 20,
+                "margin_y": 0,
+                "margin_x": 0,
                 "border_width": 1,
                 "border_radius": 0,
-                "custom_scheme": false,
-                "color_scheme": "scheme-1",
-                "border_color": ""
+                "custom_scheme": true,
+                "color_scheme": "scheme-5",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
               },
               "blocks": {}
             }
@@ -612,7 +622,7 @@
           "block_order": [
             "heading",
             "block_heading_U389rp",
-            "button"
+            "block_button_P43Gpy"
           ]
         },
         "grid_PFPLjN": {
@@ -644,33 +654,35 @@
               },
               "blocks": {}
             },
-            "button": {
+            "block_button_MxeTBh": {
               "type": "block--button",
               "settings": {
                 "label": "SHOP NOW",
                 "link": "",
-                "style": "button",
                 "open_in_new_tab": false,
-                "bg": "",
-                "text_color": "",
-                "hover_bg": "",
-                "hover_text_color": "",
-                "font_size": 17,
-                "padding_y": 16,
-                "padding_x": 32,
+                "style": "button",
                 "width": "auto",
+                "font_size": 14,
+                "padding_y": 12,
+                "padding_x": 20,
+                "margin_y": 0,
+                "margin_x": 0,
                 "border_width": 1,
                 "border_radius": 0,
-                "custom_scheme": false,
-                "color_scheme": "scheme-1",
-                "border_color": ""
+                "custom_scheme": true,
+                "color_scheme": "scheme-5",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
               },
               "blocks": {}
             }
           },
           "block_order": [
             "heading",
-            "button"
+            "block_button_MxeTBh"
           ]
         }
       },
@@ -819,7 +831,8 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "text": {
           "type": "block--text",
@@ -828,7 +841,8 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         },
         "button_1": {
           "type": "block--button",
@@ -837,10 +851,12 @@
             "link": "shopify://collections/first-responders",
             "open_in_new_tab": false,
             "style": "outline",
-            "width": "auto",
+            "width": "full",
             "font_size": 0,
             "padding_y": 12,
             "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
             "border_width": 1,
             "border_radius": 0,
             "custom_scheme": false,
@@ -850,7 +866,8 @@
             "border_color": "",
             "hover_bg": "",
             "hover_text_color": ""
-          }
+          },
+          "blocks": {}
         },
         "button_2": {
           "type": "block--button",
@@ -859,10 +876,12 @@
             "link": "shopify://products/first-in-last-out-t-shirt-black",
             "open_in_new_tab": false,
             "style": "outline",
-            "width": "auto",
+            "width": "full",
             "font_size": 0,
             "padding_y": 12,
             "padding_x": 28,
+            "margin_y": 12,
+            "margin_x": 0,
             "border_width": 1,
             "border_radius": 0,
             "custom_scheme": false,
@@ -872,7 +891,8 @@
             "border_color": "",
             "hover_bg": "",
             "hover_text_color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -1048,21 +1068,23 @@
               "settings": {
                 "label": "LEARN MORE",
                 "link": "shopify://pages/club-grunt-style",
-                "style": "button",
                 "open_in_new_tab": false,
-                "bg": "#000000",
-                "text_color": "#FFFFFF",
-                "hover_bg": "",
-                "hover_text_color": "",
+                "style": "button",
+                "width": "auto",
                 "font_size": 15,
                 "padding_y": 12,
                 "padding_x": 24,
-                "width": "auto",
+                "margin_y": 0,
+                "margin_x": 0,
                 "border_width": 1,
                 "border_radius": 0,
                 "custom_scheme": false,
                 "color_scheme": "scheme-1",
-                "border_color": ""
+                "bg": "#000000",
+                "text_color": "#ffffff",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
               },
               "blocks": {}
             }
@@ -1117,21 +1139,23 @@
               "settings": {
                 "label": "LEARN MORE",
                 "link": "shopify://pages/custom-orders",
-                "style": "button",
                 "open_in_new_tab": false,
-                "bg": "#000000",
-                "text_color": "#FFFFFF",
-                "hover_bg": "",
-                "hover_text_color": "",
+                "style": "button",
+                "width": "auto",
                 "font_size": 15,
                 "padding_y": 12,
                 "padding_x": 24,
-                "width": "auto",
+                "margin_y": 0,
+                "margin_x": 0,
                 "border_width": 1,
                 "border_radius": 0,
                 "custom_scheme": false,
                 "color_scheme": "scheme-1",
-                "border_color": ""
+                "bg": "#000000",
+                "text_color": "#ffffff",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
               },
               "blocks": {}
             }
@@ -1186,21 +1210,23 @@
               "settings": {
                 "label": "LEARN MORE",
                 "link": "shopify://pages/grunt-style-foundation",
-                "style": "button",
                 "open_in_new_tab": false,
-                "bg": "#000000",
-                "text_color": "#FFFFFF",
-                "hover_bg": "",
-                "hover_text_color": "",
+                "style": "button",
+                "width": "auto",
                 "font_size": 15,
                 "padding_y": 12,
                 "padding_x": 24,
-                "width": "auto",
+                "margin_y": 0,
+                "margin_x": 0,
                 "border_width": 1,
                 "border_radius": 0,
                 "custom_scheme": false,
                 "color_scheme": "scheme-1",
-                "border_color": ""
+                "bg": "#000000",
+                "text_color": "#ffffff",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
               },
               "blocks": {}
             }
@@ -1255,21 +1281,23 @@
               "settings": {
                 "label": "LEARN MORE",
                 "link": "https://www.gruntstyle.com/community/membership",
-                "style": "button",
                 "open_in_new_tab": false,
-                "bg": "#000000",
-                "text_color": "#FFFFFF",
-                "hover_bg": "",
-                "hover_text_color": "",
+                "style": "button",
+                "width": "auto",
                 "font_size": 15,
                 "padding_y": 12,
                 "padding_x": 24,
-                "width": "auto",
+                "margin_y": 0,
+                "margin_x": 0,
                 "border_width": 1,
                 "border_radius": 0,
                 "custom_scheme": false,
                 "color_scheme": "scheme-1",
-                "border_color": ""
+                "bg": "#000000",
+                "text_color": "#ffffff",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
               },
               "blocks": {}
             }
