@@ -1,0 +1,76 @@
+{% comment %}
+  ==================================================================
+  BLOCK: MESSAGE LINE (theme block for section--full-width-image_text)
+  ==================================================================
+  One line of banner copy with its own size per breakpoint, colour,
+  background, letter spacing and padding. Replaces that section's local
+  `message_line` block so the section can also take block--button.
+
+  Emits the same custom properties the section's stylesheet already
+  reads on `.promo-message` (--color, --background-color,
+  --font-size-desktop / -mobile, --letter-spacing, --padding-x / -y per
+  breakpoint), so the section's CSS did not change. Sizes are pixels
+  where the old block picked from a rem scale (1rem = 10px here).
+  ==================================================================
+{% endcomment %}
+
+{%- liquid
+  assign s = block.settings
+-%}
+
+{%- if s.text != blank or request.design_mode -%}
+  <div
+    class="gs-block-message-line promo-message"
+    style="
+      --color: {{ s.text_color | default: '#000000' }};
+      {%- if s.background_color != blank and s.background_color != 'rgba(0,0,0,0)' %} --background-color: {{ s.background_color }};{% else %} --background-color: transparent;{% endif %}
+      --font-size-desktop: {{ s.size_desktop | default: 16 }}px;
+      --font-size-mobile: {{ s.size_mobile | default: 16 }}px;
+      --letter-spacing: {{ s.letter_spacing | default: 0 }}px;
+      --padding-x-desktop: {{ s.padding_x | default: 8 }}px;
+      --padding-y-desktop: {{ s.padding_y | default: 8 }}px;
+      --padding-x-mobile: {{ s.padding_x | default: 8 }}px;
+      --padding-y-mobile: {{ s.padding_y | default: 8 }}px;
+    "
+    {{ block.shopify_attributes }}
+  >
+    {{- s.text | default: 'Message' -}}
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .gs-block-message-line {
+    color: var(--color, inherit);
+    background-color: var(--background-color, transparent);
+    font-size: var(--font-size-mobile, 16px);
+    letter-spacing: var(--letter-spacing, 0);
+    padding: var(--padding-y-mobile, 8px) var(--padding-x-mobile, 8px);
+  }
+
+  @media screen and (min-width: 769px) {
+    .gs-block-message-line {
+      font-size: var(--font-size-desktop, 16px);
+      padding: var(--padding-y-desktop, 8px) var(--padding-x-desktop, 8px);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Message line",
+  "settings": [
+    { "type": "inline_richtext", "id": "text", "label": "Text", "default": "Message" },
+    { "type": "range", "id": "size_desktop", "label": "Size (desktop)", "min": 10, "max": 100, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "size_mobile", "label": "Size (mobile)", "min": 10, "max": 80, "step": 1, "unit": "px", "default": 16 },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#000000" },
+    { "type": "color", "id": "background_color", "label": "Background", "info": "Empty is transparent." },
+    { "type": "range", "id": "letter_spacing", "label": "Letter spacing", "min": 0, "max": 16, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_y", "label": "Padding top and bottom", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 8 },
+    { "type": "range", "id": "padding_x", "label": "Padding left and right", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 8 }
+  ],
+  "presets": [
+    { "name": "Message line" }
+  ]
+}
+{% endschema %}

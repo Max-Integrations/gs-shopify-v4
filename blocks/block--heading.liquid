@@ -3,8 +3,9 @@
   BLOCK: HEADING (generic theme block)
   ==================================================================
   One heading line, nested inside any section or block that accepts
-  it. `size` is a Dawn heading class, `tag` is the HTML element so SEO
-  and look can differ. Colour and font sizes are optional overrides
+  it. `size` is a Dawn heading class (h1-h6 plus Dawn's larger h0 /
+  hxl / hxxl, so rich-text and image-banner headings migrate
+  losslessly), `tag` is the HTML element so SEO and look can differ. Colour and font sizes are optional overrides
   written as custom properties on the element; when blank the parent's
   --mg-heading (or inherited colour) applies.
 
@@ -65,7 +66,10 @@
         { "value": "h3", "label": "H3" },
         { "value": "h4", "label": "H4" },
         { "value": "h5", "label": "H5" },
-        { "value": "h6", "label": "H6" }
+        { "value": "h6", "label": "H6" },
+        { "value": "h0", "label": "Extra large (h0)" },
+        { "value": "hxl", "label": "2X large (hxl)" },
+        { "value": "hxxl", "label": "3X large (hxxl)" }
       ],
       "default": "h2"
     },

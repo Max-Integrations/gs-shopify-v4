@@ -2,39 +2,85 @@
   ==================================================================
   BLOCK: BUTTON (generic theme block)
   ==================================================================
-  One button or text link. With no link it renders as a <span> styled
-  like a button, for tiles that are already one big link (a nested <a>
-  is invalid HTML). Colours are optional overrides; when blank the
-  parent's --mg-btn-* custom properties apply. The border follows the
-  background.
+  The one button block. Used inside media tiles and, since 2026-09-22,
+  as the button of rich-text, image-banner, image-with-text, main-404
+  and section--full-width-image_text, replacing five different local
+  button blocks.
+
+  It renders Dawn's own `.button` (or `.link` for the text-link style),
+  so the theme-wide button settings, Dawn's hover treatment and any
+  existing custom_css such as `.button { --color-button: ... }` keep
+  applying. Everything the block adds is a custom property on the
+  element, and the block's rules are written as `.button.gs-block-button`
+  so they beat Dawn's `.button` on specificity even though compiled
+  block CSS loads before base.css.
+
+  COLOURS. With "Use own color scheme" off the button inherits the
+  section's scheme through Dawn's --color-button / --color-button-text
+  variables. With it on, the chosen scheme's button colours are written
+  as those same variables (Dawn's mechanism, not a `color-*` class, so
+  nothing paints a background). The five colour overrides sit on top of
+  either and apply only when set.
+
+  SIZE. Padding and font size are explicit pixels: the previous
+  small/medium/large presets used 0.875-1.125rem, which on this theme's
+  62.5% root is 8.75-11.25px text.
+
+  With no link it renders as a <span> styled like a button, for tiles
+  that are already one big link (a nested <a> is invalid HTML).
   ==================================================================
 {% endcomment %}
 
 {%- liquid
   assign s = block.settings
-  assign classes = 'gs-block-button gs-block-button--' | append: s.style | append: ' gs-block-button--' | append: s.size
+  assign style = s.style | default: 'button'
+  if style == 'link'
+    assign classes = 'link gs-block-button gs-block-button--link'
+  else
+    assign classes = 'button gs-block-button gs-block-button--' | append: style
+    if style == 'outline'
+      assign classes = classes | append: ' button--secondary'
+    endif
+  endif
+  if s.width == 'full'
+    assign classes = classes | append: ' gs-block-button--full'
+  endif
+  assign scheme = s.color_scheme
 -%}
 
 {%- capture style_vars -%}
-  {%- if s.bg != blank and s.bg != 'rgba(0,0,0,0)' %}--gs-btn-bg: {{ s.bg }};{% endif -%}
-  {%- if s.text_color != blank and s.text_color != 'rgba(0,0,0,0)' %}--gs-btn-text: {{ s.text_color }};{% endif -%}
-  {%- if s.hover_bg != blank and s.hover_bg != 'rgba(0,0,0,0)' %}--gs-btn-bg-hover: {{ s.hover_bg }};{% endif -%}
-  {%- if s.hover_text_color != blank and s.hover_text_color != 'rgba(0,0,0,0)' %}--gs-btn-text-hover: {{ s.hover_text_color }};{% endif -%}
+  --gs-btn-py: {{ s.padding_y | default: 12 }}px;
+  --gs-btn-px: {{ s.padding_x | default: 28 }}px;
+  --gs-btn-border-width: {{ s.border_width | default: 0 }}px;
+  --buttons-border-width: {{ s.border_width | default: 0 }}px;
+  --buttons-radius-outset: {{ s.border_radius | default: 0 }}px;
+  {%- if s.font_size > 0 %} --gs-btn-font-size: {{ s.font_size }}px;{% endif -%}
+  {%- if s.custom_scheme and scheme.settings.button != blank %}
+    --color-button: {{ scheme.settings.button.red }},{{ scheme.settings.button.green }},{{ scheme.settings.button.blue }};
+    --color-button-text: {{ scheme.settings.button_label.red }},{{ scheme.settings.button_label.green }},{{ scheme.settings.button_label.blue }};
+    --color-secondary-button-text: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
+    --color-link: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
+  {%- endif -%}
+  {%- if s.bg != blank and s.bg != 'rgba(0,0,0,0)' %} --gs-btn-bg: {{ s.bg }};{% endif -%}
+  {%- if s.text_color != blank and s.text_color != 'rgba(0,0,0,0)' %} --gs-btn-text: {{ s.text_color }};{% endif -%}
+  {%- if s.border_color != blank and s.border_color != 'rgba(0,0,0,0)' %} --gs-btn-border: {{ s.border_color }};{% endif -%}
+  {%- if s.hover_bg != blank and s.hover_bg != 'rgba(0,0,0,0)' %} --gs-btn-bg-hover: {{ s.hover_bg }};{% endif -%}
+  {%- if s.hover_text_color != blank and s.hover_text_color != 'rgba(0,0,0,0)' %} --gs-btn-text-hover: {{ s.hover_text_color }};{% endif -%}
 {%- endcapture -%}
 
 {%- if s.label != blank or request.design_mode -%}
-  <div class="gs-block-button-wrap" {{ block.shopify_attributes }}>
+  <div class="gs-block-button-wrap{% if s.width == 'full' %} gs-block-button-wrap--full{% endif %}" {{ block.shopify_attributes }}>
     {%- if s.link != blank -%}
       <a
         class="{{ classes }}"
         href="{{ s.link }}"
         {% if s.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
-        {% if style_vars != blank %}style="{{ style_vars | strip }}"{% endif %}
+        style="{{ style_vars | strip | replace: '  ', ' ' }}"
       >
         {{- s.label | default: 'Button' -}}
       </a>
     {%- else -%}
-      <span class="{{ classes }}" {% if style_vars != blank %}style="{{ style_vars | strip }}"{% endif %}>
+      <span class="{{ classes }}" style="{{ style_vars | strip | replace: '  ', ' ' }}">
         {{- s.label | default: 'Button' -}}
       </span>
     {%- endif -%}
@@ -42,36 +88,77 @@
 {%- endif -%}
 
 {% stylesheet %}
-  .gs-block-button {
+  .gs-block-button-wrap {
     display: inline-block;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    max-width: 100%;
   }
-  .gs-block-button--button {
-    background-color: var(--gs-btn-bg, var(--mg-btn-bg, #ffffff));
-    color: var(--gs-btn-text, var(--mg-btn-text, #000000));
-    border: 1px solid var(--gs-btn-bg, var(--mg-btn-bg, #ffffff));
+
+  .gs-block-button-wrap--full {
+    display: block;
+    width: 100%;
   }
-  .gs-block-button--button:hover,
-  .gs-block-button--button:focus-visible,
-  .gs-block-hover-target:hover .gs-block-button--button {
-    background-color: var(--gs-btn-bg-hover, var(--mg-btn-bg-hover, #000000));
-    color: var(--gs-btn-text-hover, var(--mg-btn-text-hover, #ffffff));
-    border-color: var(--gs-btn-bg-hover, var(--mg-btn-bg-hover, #000000));
+
+  /* Dawn's .button is (0,1,0); .button.gs-block-button is (0,2,0) and wins
+     regardless of load order. */
+  .button.gs-block-button {
+    min-width: 0;
+    min-height: 0;
+    padding: var(--gs-btn-py, 12px) var(--gs-btn-px, 28px);
+    font-size: var(--gs-btn-font-size, 1.5rem);
+    line-height: 1.2;
+    background-color: var(--gs-btn-bg, rgba(var(--color-button), var(--alpha-button-background)));
+    color: var(--gs-btn-text, rgb(var(--color-button-text)));
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
-  .gs-block-button--small { padding: 0.6em 1.4em; font-size: 0.875rem; }
-  .gs-block-button--medium { padding: 0.8em 1.8em; font-size: 1rem; }
-  .gs-block-button--large { padding: 1em 2.2em; font-size: 1.125rem; }
-  .gs-block-button--link {
-    padding: 0;
-    background: transparent;
-    border: 0;
-    color: var(--gs-btn-text, var(--mg-text, inherit));
-    text-decoration: underline;
+
+  /* Dawn draws the border on :after with a two-layer box-shadow that
+     follows the scheme; one layer, our width, our colour. Filled buttons
+     border in their background colour, outline buttons in their text. */
+  .button.gs-block-button--button:after {
+    box-shadow: 0 0 0 var(--gs-btn-border-width, 0px) var(--gs-btn-border, var(--gs-btn-bg, rgb(var(--color-button))));
   }
-  a.gs-block-button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
-  @media (prefers-reduced-motion: reduce) { .gs-block-button { transition: none; } }
+
+  .button.gs-block-button--outline:after {
+    box-shadow: 0 0 0 var(--gs-btn-border-width, 0px) var(--gs-btn-border, var(--gs-btn-text, rgb(var(--color-button-text))));
+  }
+
+  .button.gs-block-button:hover:after,
+  .button.gs-block-button:focus-visible:after {
+    box-shadow: 0 0 0 var(--gs-btn-border-width, 0px) var(--gs-btn-border, var(--gs-btn-bg-hover, var(--gs-btn-bg, rgb(var(--color-button)))));
+  }
+
+  .button.gs-block-button--outline:hover:after,
+  .button.gs-block-button--outline:focus-visible:after {
+    box-shadow: 0 0 0 var(--gs-btn-border-width, 0px) var(--gs-btn-border, var(--gs-btn-text-hover, var(--gs-btn-text, rgb(var(--color-button-text)))));
+  }
+
+  .button.gs-block-button:hover,
+  .button.gs-block-button:focus-visible,
+  .gs-block-hover-target:hover .button.gs-block-button {
+    background-color: var(--gs-btn-bg-hover, var(--gs-btn-bg, rgba(var(--color-button), var(--alpha-button-background))));
+    color: var(--gs-btn-text-hover, var(--gs-btn-text, rgb(var(--color-button-text))));
+  }
+
+  .gs-block-button--full {
+    display: flex;
+    width: 100%;
+  }
+
+  .link.gs-block-button {
+    padding: var(--gs-btn-py, 0px) var(--gs-btn-px, 0px);
+    font-size: var(--gs-btn-font-size, inherit);
+    color: var(--gs-btn-text, rgb(var(--color-link, var(--color-foreground))));
+    text-underline-offset: 0.2em;
+  }
+
+  .link.gs-block-button:hover,
+  .gs-block-hover-target:hover .link.gs-block-button {
+    color: var(--gs-btn-text-hover, var(--gs-btn-text, rgb(var(--color-link, var(--color-foreground)))));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .button.gs-block-button { transition: none; }
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -79,33 +166,44 @@
   "tag": null,
   "name": "Button",
   "settings": [
-    { "type": "text", "id": "label", "label": "Label", "default": "Shop now" },
+    { "type": "inline_richtext", "id": "label", "label": "Label", "default": "Shop now" },
     { "type": "url", "id": "link", "label": "Link", "info": "Leave empty inside a tile that is linked as a whole." },
+    { "type": "checkbox", "id": "open_in_new_tab", "label": "Open in a new tab", "default": false },
+
+    { "type": "header", "content": "Style" },
     {
       "type": "select",
       "id": "style",
       "label": "Style",
       "options": [
-        { "value": "button", "label": "Button" },
+        { "value": "button", "label": "Filled" },
+        { "value": "outline", "label": "Outline" },
         { "value": "link", "label": "Text link" }
       ],
       "default": "button"
     },
     {
       "type": "select",
-      "id": "size",
-      "label": "Size",
+      "id": "width",
+      "label": "Width",
       "options": [
-        { "value": "small", "label": "Small" },
-        { "value": "medium", "label": "Medium" },
-        { "value": "large", "label": "Large" }
+        { "value": "auto", "label": "Fit the label" },
+        { "value": "full", "label": "Full width" }
       ],
-      "default": "small"
+      "default": "auto"
     },
-    { "type": "checkbox", "id": "open_in_new_tab", "label": "Open in a new tab", "default": false },
-    { "type": "header", "content": "Overrides", "info": "Empty inherits the section's button colors." },
+    { "type": "range", "id": "font_size", "label": "Font size", "info": "0 uses the theme's button size.", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_y", "label": "Padding top and bottom", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 12 },
+    { "type": "range", "id": "padding_x", "label": "Padding left and right", "min": 0, "max": 80, "step": 1, "unit": "px", "default": 28 },
+    { "type": "range", "id": "border_width", "label": "Border width", "min": 0, "max": 6, "step": 1, "unit": "px", "default": 1 },
+    { "type": "range", "id": "border_radius", "label": "Corner radius", "min": 0, "max": 50, "step": 1, "unit": "px", "default": 0 },
+
+    { "type": "header", "content": "Colors", "info": "Off inherits the section's color scheme. Overrides below apply either way." },
+    { "type": "checkbox", "id": "custom_scheme", "label": "Use own color scheme", "default": false },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1", "visible_if": "{{ block.settings.custom_scheme }}" },
     { "type": "color", "id": "bg", "label": "Background" },
     { "type": "color", "id": "text_color", "label": "Text" },
+    { "type": "color", "id": "border_color", "label": "Border", "info": "Empty follows the background (filled) or the text (outline)." },
     { "type": "color", "id": "hover_bg", "label": "Hover background" },
     { "type": "color", "id": "hover_text_color", "label": "Hover text" }
   ],
