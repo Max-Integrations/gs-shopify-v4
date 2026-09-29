@@ -41,7 +41,7 @@
 }
 
 .gs-product__breadcrumb li + li::before {
-  content: '/';
+  content: "/";
   margin-right: 0.4em;
   opacity: 0.5;
 }
@@ -55,7 +55,7 @@
   text-decoration: underline;
 }
 
-.gs-product__breadcrumb [aria-current='page'] {
+.gs-product__breadcrumb [aria-current="page"] {
   opacity: 0.6;
 }
 
@@ -113,7 +113,9 @@
   scroll-behavior: smooth;
 }
 
-.gs-product__thumbs::-webkit-scrollbar { display: none; }
+.gs-product__thumbs::-webkit-scrollbar {
+  display: none;
+}
 
 .gs-product__thumb {
   flex: 0 0 auto;
@@ -147,10 +149,22 @@
   pointer-events: none;
 }
 
-.gs-product__badge--top-right { top: 5px; right: 10px; }
-.gs-product__badge--top-left { top: 5px; left: 10px; }
-.gs-product__badge--bottom-right { bottom: 5px; right: 10px; }
-.gs-product__badge--bottom-left { bottom: 5px; left: 10px; }
+.gs-product__badge--top-right {
+  top: 5px;
+  right: 10px;
+}
+.gs-product__badge--top-left {
+  top: 5px;
+  left: 10px;
+}
+.gs-product__badge--bottom-right {
+  bottom: 5px;
+  right: 10px;
+}
+.gs-product__badge--bottom-left {
+  bottom: 5px;
+  left: 10px;
+}
 
 /* Circular controls, as on the live site. */
 .gs-product__zoom-btn,
@@ -171,15 +185,22 @@
   cursor: pointer;
 }
 
-.gs-product__zoom-btn { top: 10px; left: 10px; }
+.gs-product__zoom-btn {
+  top: 10px;
+  left: 10px;
+}
 
 .gs-product__nav {
   top: 50%;
   transform: translateY(-50%);
 }
 
-.gs-product__nav--prev { left: 10px; }
-.gs-product__nav--next { right: 10px; }
+.gs-product__nav--prev {
+  left: 10px;
+}
+.gs-product__nav--next {
+  right: 10px;
+}
 
 .gs-product__nav[disabled] {
   opacity: 0.35;
@@ -187,7 +208,9 @@
 }
 
 @media screen and (max-width: 989px) {
-  .gs-product__nav { display: none; }
+  .gs-product__nav {
+    display: none;
+  }
 }
 
 .gs-product__gallery {
@@ -199,7 +222,9 @@
   -ms-overflow-style: none;
 }
 
-.gs-product__gallery::-webkit-scrollbar { display: none; }
+.gs-product__gallery::-webkit-scrollbar {
+  display: none;
+}
 
 .gs-product__slide {
   flex: 0 0 100%;
@@ -232,8 +257,12 @@
   object-fit: cover;
 }
 
-.gs-product--ratio-square .gs-product__slide { aspect-ratio: 1 / 1; }
-.gs-product--ratio-portrait .gs-product__slide { aspect-ratio: 4 / 5; }
+.gs-product--ratio-square .gs-product__slide {
+  aspect-ratio: 1 / 1;
+}
+.gs-product--ratio-portrait .gs-product__slide {
+  aspect-ratio: 4 / 5;
+}
 
 /* ---- Buy box ---- */
 .gs-product__info {
@@ -260,7 +289,7 @@
 }
 
 .gs-product__price-current {
-  font-size: 2.2rem;
+  font-size: 3rem;
   font-weight: 700;
 }
 
@@ -302,7 +331,9 @@
   letter-spacing: 0.04em;
 }
 
-.gs-product__option-name { font-weight: 700; }
+.gs-product__option-name {
+  font-weight: 700;
+}
 
 /* "SIZE: Small" - the label is uppercase, the value is not. */
 .gs-product__option-value {
@@ -367,7 +398,7 @@
 }
 
 .gs-product__option-input[data-unavailable] + .gs-product__option-pill::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(to top left, transparent 47%, currentColor 47%, currentColor 53%, transparent 53%);
@@ -381,10 +412,6 @@
   flex-direction: column;
   align-items: stretch;
   gap: 10px;
-}
-
-.gs-product__quantity {
-  align-self: flex-start;
 }
 
 .gs-product__title--upper {
@@ -402,9 +429,10 @@
 }
 
 .gs-product__quantity {
+  align-self: flex-start;
   display: inline-flex;
   align-items: stretch;
-  border: 1px solid rgba(var(--color-foreground), 0.35);
+  gap: 8px;
 }
 
 .gs-product__qty-btn {
@@ -414,6 +442,10 @@
   color: inherit;
   font-size: 1.8rem;
   cursor: pointer;
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.08);
 }
 
 .gs-product__qty-input {
@@ -424,6 +456,10 @@
   text-align: center;
   font-size: 1.4rem;
   -moz-appearance: textfield;
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.08);
 }
 
 .gs-product__qty-input::-webkit-outer-spin-button,
@@ -454,7 +490,11 @@
 /* ---- Desktop ---- */
 @media screen and (min-width: 990px) {
   .gs-product__grid {
-    grid-template-columns: minmax(0, 1fr) 440px;
+    /* The buy box is a fixed column and the media takes what is left,
+       but the media is capped below (see __media-inner) so the image
+       stops growing on wide screens instead of filling the row. The
+       live site holds the image at ~670px from 1440 up. */
+    grid-template-columns: minmax(0, 1fr) 540px;
     gap: 4rem;
     /* NOT align-items: start. The media column has to stretch to the
        row's full height, or the sticky wrapper inside it has no travel
@@ -463,6 +503,9 @@
   }
 
   .gs-product__media-inner {
+    /* 680 stage + 88 rail + 12 gap. Without this the stage inherits the
+       full grid column and the image is enormous at 1920. */
+    max-width: 780px;
     grid-template-columns: 88px minmax(0, 1fr);
     gap: 12px;
     align-items: start;
@@ -474,16 +517,22 @@
     align-items: stretch;
   }
 
-  .gs-product__rail-btn { display: block; }
+  .gs-product__rail-btn {
+    display: block;
+  }
 
   .gs-product__thumbs {
     flex-direction: column;
     max-height: 60vh;
   }
 
-  .gs-product__thumb { width: 100%; }
+  .gs-product__thumb {
+    width: 100%;
+  }
 
-  .gs-product__badge { width: 100px; }
+  .gs-product__badge {
+    width: 100px;
+  }
 
   /* The buy box is far taller than the gallery, so the gallery is what
      sticks. Both sticky at once would fight over the same scroll. */
@@ -494,7 +543,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gs-product__gallery { scroll-behavior: auto; }
+  .gs-product__gallery {
+    scroll-behavior: auto;
+  }
 }
 
 /* ---- Size guide link, on the legend row ----
@@ -596,7 +647,6 @@
   text-align: center;
 }
 
-
 /* ---- Zoom dialog ---- */
 .gs-product__dialog--zoom {
   width: min(96vw, 1000px);
@@ -615,7 +665,9 @@
   margin-bottom: 1.6rem;
 }
 
-.gs-product__zoom-image:last-child { margin-bottom: 0; }
+.gs-product__zoom-image:last-child {
+  margin-bottom: 0;
+}
 
 /* ---- Sticky add to cart (mobile only) ---- */
 .gs-product__sticky {
@@ -636,9 +688,13 @@
   transition: transform 0.25s ease;
 }
 
-.gs-product__sticky[hidden] { display: flex; }
+.gs-product__sticky[hidden] {
+  display: flex;
+}
 
-.gs-product__sticky.is-visible { transform: translateY(0); }
+.gs-product__sticky.is-visible {
+  transform: translateY(0);
+}
 
 .gs-product__sticky-media {
   flex: 0 0 48px;
@@ -667,7 +723,9 @@
   font-size: 1.3rem;
 }
 
-.gs-product__sticky-price { font-weight: 700; }
+.gs-product__sticky-price {
+  font-weight: 700;
+}
 
 .gs-product__sticky-submit {
   flex: 0 0 auto;
@@ -677,10 +735,16 @@
 }
 
 @media screen and (min-width: 990px) {
-  .gs-product__sticky { display: none; }
-  .gs-product__sticky[hidden] { display: none; }
+  .gs-product__sticky {
+    display: none;
+  }
+  .gs-product__sticky[hidden] {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gs-product__sticky { transition: none; }
+  .gs-product__sticky {
+    transition: none;
+  }
 }
