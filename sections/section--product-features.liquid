@@ -1,0 +1,273 @@
+{% comment %}
+  ==================================================================
+  PRODUCT FEATURES (metaobject slider)
+  Replaces v3's sections/features-benefits.liquid (542 lines)
+  ==================================================================
+  A row of feature cards from the product's custom.pdp_feature_slider
+  metaobject list: each entry has pdp_feature_image, pdp_feature_copy
+  (rich text: a title and a line or two) and an optional url (custom
+  URL, page, collection or product). Nothing renders when the product
+  has no entries, so the section can sit on every product template.
+
+  On the live site this band shows on desktop only; on mobile the same
+  entries appear inside the buy box as a "Features" accordion
+  (block--product-accordion, source "features"). The Show-on setting
+  keeps that split.
+
+  v3 sized the heading, item title and subcopy per breakpoint with
+  colours and alignments: 29 settings. Here the copy is what the
+  merchant wrote in the metaobject, styled by the section's colour
+  scheme, and only the heading, card width and spacing are settings.
+
+  The carousel is CSS scroll-snap with the theme's shared
+  gs-swatch-scroller arrows (loaded by layout/theme.liquid), not
+  Flickity. Self-contained: no snippets.
+  ==================================================================
+{% endcomment %}
+
+{%- liquid
+  assign s = section.settings
+  assign features = product.metafields.custom.pdp_feature_slider.value
+  assign heading = s.heading | strip
+-%}
+
+{%- if features != blank -%}
+  <div
+    class="gs-features color-{{ s.color_scheme }} gradient gs-features--{{ s.visibility | default: 'always' }}"
+    style="--gs-features-pad-top: {{ s.padding_top }}px; --gs-features-pad-bottom: {{ s.padding_bottom }}px; --gs-features-card: {{ s.card_width | default: 300 }}px; --gs-features-card-mobile: {{ s.card_width_mobile | default: 160 }}px; --gs-features-heading-size: {{ s.heading_size | default: 36 }}px; --gs-features-heading-size-mobile: {{ s.heading_size_mobile | default: 24 }}px; --gs-features-heading-align: {{ s.heading_align | default: 'left' }};"
+  >
+    <div class="page-width">
+      {%- if heading != blank -%}
+        <div class="gs-features__heading rte">{{ heading }}</div>
+      {%- endif -%}
+
+      <div class="gs-features__scroller" data-swatch-scroller>
+        <button type="button" class="gs-features__btn gs-features__btn--prev" data-swatch-scroll="prev" aria-label="Previous" hidden>
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <ul class="gs-features__track" data-swatch-track role="list">
+          {%- for feature in features -%}
+            {%- liquid
+              assign f_url = nil
+              if feature.url.value.custom_url
+                assign f_url = feature.url.value.custom_url
+              elsif feature.url.value.page
+                assign f_url = feature.url.value.page.value.url
+              elsif feature.url.value.collection
+                assign f_url = feature.url.value.collection.value.url
+              elsif feature.url.value.product
+                assign f_url = feature.url.value.product.value.url
+              endif
+            -%}
+            <li class="gs-features__item">
+              {%- if f_url != blank -%}
+                <a class="gs-features__card" href="{{ f_url }}"{% if s.link_new_window %} target="_blank" rel="noopener"{% endif %}>
+              {%- else -%}
+                <div class="gs-features__card">
+              {%- endif -%}
+                <div class="gs-features__image">
+                  {%- if feature.pdp_feature_image != blank -%}
+                    {{ feature.pdp_feature_image.value | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 600', sizes: '(min-width: 750px) 300px, 160px', alt: '' }}
+                  {%- endif -%}
+                </div>
+                <div class="gs-features__copy rte">
+                  {{ feature.pdp_feature_copy | metafield_tag }}
+                </div>
+              {%- if f_url != blank -%}</a>{%- else -%}</div>{%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        <button type="button" class="gs-features__btn gs-features__btn--next" data-swatch-scroll="next" aria-label="Next" hidden>
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .gs-features {
+    padding-top: var(--gs-features-pad-top, 10px);
+    padding-bottom: var(--gs-features-pad-bottom, 10px);
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+  }
+
+  .gs-features__heading {
+    margin-bottom: 1.6rem;
+    text-align: var(--gs-features-heading-align, left);
+  }
+
+  .gs-features__heading > * {
+    margin: 0;
+    font-size: var(--gs-features-heading-size-mobile, 24px);
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  .gs-features__scroller {
+    position: relative;
+  }
+
+  .gs-features__track {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+
+  .gs-features__track::-webkit-scrollbar { display: none; }
+
+  .gs-features__item {
+    flex: 0 0 var(--gs-features-card-mobile, 160px);
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  .gs-features__card {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .gs-features__image {
+    aspect-ratio: 4 / 5.5;
+    margin-bottom: 0.8rem;
+    overflow: hidden;
+  }
+
+  .gs-features__image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease;
+  }
+
+  .gs-features__card:hover .gs-features__image img {
+    transform: scale(1.1);
+  }
+
+  .gs-features__copy {
+    text-align: center;
+  }
+
+  .gs-features__copy > * { margin: 0 0 0.4em; }
+  .gs-features__copy > :last-child { margin-bottom: 0; }
+
+  .gs-features__copy h1,
+  .gs-features__copy h2,
+  .gs-features__copy h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .gs-features__copy p {
+    font-size: 1.2rem;
+  }
+
+  .gs-features__btn {
+    position: absolute;
+    top: 40%;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(var(--color-foreground), 0.3);
+    border-radius: 50%;
+    background: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+    cursor: pointer;
+  }
+
+  .gs-features__btn--prev { left: -12px; }
+  .gs-features__btn--next { right: -12px; }
+
+  @media screen and (min-width: 750px) {
+    .gs-features__heading > * {
+      font-size: var(--gs-features-heading-size, 36px);
+    }
+
+    .gs-features__item {
+      flex-basis: var(--gs-features-card, 300px);
+    }
+
+    .gs-features__copy h1,
+    .gs-features__copy h2,
+    .gs-features__copy h3 {
+      font-size: 2.4rem;
+    }
+
+    .gs-features__copy p {
+      font-size: 1.4rem;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .gs-features--mobile { display: none; }
+  }
+
+  @media screen and (max-width: 989px) {
+    .gs-features--desktop { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gs-features__track { scroll-behavior: auto; }
+    .gs-features__image img { transition: none; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Product features",
+  "tag": "section",
+  "class": "gs-features-section",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "richtext", "id": "heading", "label": "Heading", "info": "Accepts Liquid.", "default": "<p>{{ product.metafields.custom.pdp_feature_slider_name.value }}</p>" },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "Heading alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    { "type": "range", "id": "heading_size", "label": "Heading size", "min": 16, "max": 80, "step": 2, "unit": "px", "default": 36 },
+    { "type": "range", "id": "heading_size_mobile", "label": "Heading size (mobile)", "min": 12, "max": 60, "step": 2, "unit": "px", "default": 24 },
+    { "type": "range", "id": "card_width", "label": "Card width", "min": 160, "max": 480, "step": 10, "unit": "px", "default": 300 },
+    { "type": "range", "id": "card_width_mobile", "label": "Card width (mobile)", "min": 100, "max": 300, "step": 10, "unit": "px", "default": 160 },
+    { "type": "checkbox", "id": "link_new_window", "label": "Open feature links in a new tab", "default": false },
+    {
+      "type": "select",
+      "id": "visibility",
+      "label": "Show on",
+      "info": "The live site shows this on desktop and the Features accordion in the buy box on mobile.",
+      "options": [
+        { "value": "always", "label": "All screens" },
+        { "value": "desktop", "label": "Desktop only" },
+        { "value": "mobile", "label": "Mobile only" }
+      ],
+      "default": "desktop"
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Top padding", "default": 12 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Bottom padding", "default": 12 }
+  ],
+  "presets": [{ "name": "Product features" }]
+}
+{% endschema %}

@@ -442,10 +442,27 @@
         "cta_border_color": "#000000",
         "cta_border_color_hover": "#000000"
       }
+    },
+    "features": {
+      "type": "section--product-features",
+      "settings": {
+        "heading": "<p>{{ product.metafields.custom.pdp_feature_slider_name.value }}</p>",
+        "heading_align": "left",
+        "heading_size": 36,
+        "heading_size_mobile": 24,
+        "card_width": 300,
+        "card_width_mobile": 160,
+        "link_new_window": false,
+        "visibility": "desktop",
+        "color_scheme": "scheme-1",
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
     }
   },
   "order": [
     "main",
+    "features",
     "recommendations"
   ]
 }
