@@ -63,6 +63,9 @@
       if (!slide) return;
       gallery.scrollTo({ left: slide.offsetLeft - gallery.offsetLeft, behavior: 'smooth' });
       setActiveThumb(mediaId);
+      var stickyImg = root.querySelector('[data-gs-atc-image]');
+      var slideImg = slide.querySelector('img');
+      if (stickyImg && slideImg) stickyImg.src = slideImg.currentSrc || slideImg.src;
     }
 
     function setActiveThumb(mediaId) {
@@ -90,6 +93,8 @@
         compare.hidden = !onSale;
       }
       if (saving) saving.hidden = !onSale;
+      var stickyPrice = root.querySelector('[data-gs-atc-price]');
+      if (stickyPrice) stickyPrice.textContent = variant.price_money;
       if (savingValue && onSale) {
         savingValue.textContent = box.getAttribute('data-savings-style') === 'amount'
           ? variant.saving_money
@@ -110,6 +115,11 @@
           : text.textContent;
       }
       if (submit) submit.setAttribute('aria-disabled', variant.available ? 'false' : 'true');
+      var sticky = root.querySelector('[data-gs-atc-submit]');
+      if (sticky) {
+        sticky.setAttribute('aria-disabled', variant.available ? 'false' : 'true');
+        sticky.textContent = variant.available ? 'Add to cart' : 'Sold out';
+      }
     }
 
     function updateLegends() {
@@ -194,9 +204,66 @@
     });
 
     placeBadge(root);
+    bindZoom(root, gallery);
+    bindSticky(root);
     bindDialogs(root);
     bindLocator(root);
     loadComplementary(root);
+  }
+
+  /* ---------------- Zoom ----------------
+     Tap a slide, open the zoom dialog at that image. The dialog lists
+     every image, so scrolling on from there works as in Dawn. */
+  function bindZoom(root, gallery) {
+    var dialog = root.querySelector('[data-gs-zoom-dialog]');
+    if (!dialog || !gallery) return;
+    gallery.addEventListener('click', function (evt) {
+      var btn = evt.target.closest('[data-gs-zoom]');
+      if (!btn || typeof dialog.showModal !== 'function') return;
+      evt.preventDefault();
+      dialog.showModal();
+      var target = dialog.querySelector('[data-zoom-index="' + btn.getAttribute('data-gs-zoom') + '"]');
+      if (target) target.scrollIntoView({ block: 'start' });
+    });
+  }
+
+  /* ---------------- Sticky add to cart (mobile) ----------------
+     Visible while the real add-to-cart button is above the viewport.
+     Its button submits the real form (form= attribute), so the add
+     goes through the same AJAX handler. When the selection cannot be
+     bought, it scrolls to the picker instead of submitting. */
+  function bindSticky(root) {
+    var bar = root.querySelector('[data-gs-atc-bar]');
+    var submit = root.querySelector('[data-gs-submit]');
+    if (!bar || !submit) return;
+    bar.hidden = false;
+    // Scroll-driven rather than IntersectionObserver: the bar should
+    // show once the real button has scrolled ABOVE the viewport, and a
+    // rAF-throttled scroll listener is the simplest thing that is right
+    // on every browser (IO did not re-fire under mobile emulation).
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var above = submit.getBoundingClientRect().bottom < 0;
+      bar.classList.toggle('is-visible', above);
+    }
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }, { passive: true });
+    update();
+    var btn = bar.querySelector('[data-gs-atc-submit]');
+    if (btn) {
+      btn.addEventListener('click', function (evt) {
+        if (btn.getAttribute('aria-disabled') !== 'true' && !submit.disabled) return;
+        evt.preventDefault();
+        var picker = root.querySelector('.gs-product__options') || submit;
+        picker.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        var first = picker.querySelector('.gs-product__option-input');
+        if (first) first.focus({ preventScroll: true });
+      });
+    }
   }
 
   /* ---------------- Badge ----------------

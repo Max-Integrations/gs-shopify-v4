@@ -204,6 +204,72 @@
   </div>
 
   {%- comment -%}
+    Zoom: one dialog listing every image at full size, opened at the
+    slide that was tapped. Dawn's product-modal does the same thing
+    with a custom element; this is a native <dialog> and the same
+    open/close wiring the size guide and store locator use.
+  {%- endcomment -%}
+  {%- if product.media.size > 0 -%}
+    <dialog class="gs-product__dialog gs-product__dialog--zoom" id="GsZoom-{{ section.id }}" data-gs-zoom-dialog aria-label="Product images">
+      <div class="gs-product__dialog-box gs-product__zoom-box">
+        <button type="button" class="gs-product__dialog-close" data-gs-dialog-close aria-label="Close">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m17.25 6.75-10.5 10.5M6.75 6.75l10.5 10.5"/></svg>
+        </button>
+        {%- for media in product.media -%}
+          {%- if media.media_type == 'image' -%}
+            <img
+              class="gs-product__zoom-image"
+              data-zoom-index="{{ forloop.index0 }}"
+              src="{{ media | image_url: width: 1800 }}"
+              srcset="{{ media | image_url: width: 1000 }} 1000w, {{ media | image_url: width: 1800 }} 1800w"
+              sizes="(min-width: 990px) 900px, 100vw"
+              alt="{{ media.alt | escape }}"
+              width="{{ media.width }}"
+              height="{{ media.height }}"
+              loading="lazy"
+            >
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </dialog>
+  {%- endif -%}
+
+  {%- comment -%}
+    Sticky add to cart (mobile). v3 duplicated the whole variant picker
+    in its bar and synced the two; this bar holds image, title, price
+    and ONE button that submits the real form through form=, the same
+    attribute the option radios use. gs-product.js shows it when the
+    real button scrolls out of view and mirrors the button state. It
+    carries .gs-product__gated so a gating message hides it too.
+  {%- endcomment -%}
+  {%- if s.sticky_atc -%}
+    {%- liquid
+      assign sv = product.selected_or_first_available_variant
+      assign sticky_media = sv.featured_media | default: product.featured_media
+    -%}
+    <div class="gs-product__sticky gs-product__gated" data-gs-atc-bar hidden>
+      <div class="gs-product__sticky-media">
+        {%- if sticky_media != blank -%}
+          <img src="{{ sticky_media | image_url: width: 120 }}" alt="" width="60" height="60" loading="lazy" data-gs-atc-image>
+        {%- endif -%}
+      </div>
+      <div class="gs-product__sticky-info">
+        <p class="gs-product__sticky-title">{{ product.title }}</p>
+        <p class="gs-product__sticky-price" data-gs-atc-price>{{ sv.price | money }}</p>
+      </div>
+      <button
+        type="submit"
+        form="ProductForm-{{ product.id }}"
+        class="button gs-product__sticky-submit"
+        data-gs-atc-submit
+        {% unless sv.available %}aria-disabled="true"{% endunless %}
+      >
+        {%- if sv.available -%}Add to cart{%- else -%}Sold out{%- endif -%}
+      </button>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%}
     Variant data for the client. Prices are included so the price can
     update without a section fetch (v4's old section re-render was a
     no-op for price because gs-price read product.price_min).
