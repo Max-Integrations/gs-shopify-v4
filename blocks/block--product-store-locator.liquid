@@ -1,0 +1,190 @@
+{% comment %}
+  BLOCK: PRODUCT STORE LOCATOR
+  ==================================================================
+  "Find a store near you": a link that opens a dialog, search by ZIP
+  or city/state, or use the browser's location, and list the retail
+  stores within N miles. Stores come from the
+  shop.metafields.custom.retail_store_locations metaobject list
+  (name, latitude_longitude "lat,lng", page).
+
+  NO API KEY. v3 geocoded through Google Maps with a key hard-coded in
+  the theme file. Here a 5-digit ZIP resolves through api.zippopotam.us
+  and anything else through nominatim.openstreetmap.org, both keyless,
+  both fine for a product page's volume. "Use current location" is the
+  browser's own geolocation. The distance maths (haversine, miles) and
+  the 50-mile default are v3's. gs-product.js owns the behaviour; this
+  block only ships the markup and the store list as JSON.
+
+  Hidden on club, sticker club and dropship products, as v3.
+  ==================================================================
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign p = closest.product | default: product
+  assign hidden = false
+  if s.hide_for_tags != blank
+    assign hay = p.tags | join: '|' | downcase | prepend: '|' | append: '|'
+    assign list = s.hide_for_tags | split: ','
+    for t in list
+      assign needle = t | strip | downcase | prepend: '|' | append: '|'
+      if needle != '||' and hay contains needle
+        assign hidden = true
+      endif
+    endfor
+  endif
+  assign stores = shop.metafields.custom.retail_store_locations.value
+  assign dialog_id = 'GsStores-' | append: p.id
+-%}
+
+{%- if hidden == false and stores != blank -%}
+  <div class="gs-product__locator" data-gs-locator data-radius="{{ s.radius | default: 50 }}" data-all-url="{{ s.all_url }}" {{ block.shopify_attributes }}>
+    <button type="button" class="gs-product__locator-open" data-gs-dialog-open="{{ dialog_id }}">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18.25 11c0 4-6.25 8.25-6.25 8.25S5.75 15 5.75 11c0-3.5 2.936-6.25 6.25-6.25S18.25 7.5 18.25 11Z"/><path d="M12 8.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 1 0 0-4.5z"/></svg>
+      <span>{{ s.label | default: 'Find a store near you' }}</span>
+    </button>
+
+    <dialog class="gs-product__dialog" id="{{ dialog_id }}" aria-label="{{ s.label | default: 'Find a store near you' | escape }}">
+      <div class="gs-product__dialog-box gs-product__dialog-box--narrow">
+        <button type="button" class="gs-product__dialog-close" data-gs-dialog-close aria-label="Close">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m17.25 6.75-10.5 10.5M6.75 6.75l10.5 10.5"/></svg>
+        </button>
+        <h3 class="gs-product__dialog-title">{{ s.label | default: 'Find a store near you' }}</h3>
+        <form class="gs-product__locator-form" data-gs-locator-form>
+          <label class="gs-product__locator-hint" for="{{ dialog_id }}-q">Search by ZIP code or city, state</label>
+          <div class="gs-product__locator-row">
+            <input id="{{ dialog_id }}-q" type="text" name="q" autocomplete="postal-code" placeholder="ZIP or city, state" required>
+            <button type="submit" class="gs-product__locator-go" aria-label="Search">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19.25 19.25 15.5 15.5M4.75 11a6.25 6.25 0 1 1 12.5 0 6.25 6.25 0 0 1-12.5 0Z"/></svg>
+            </button>
+          </div>
+        </form>
+        <button type="button" class="gs-product__locator-geo" data-gs-locator-geo>Use current location</button>
+        <p class="gs-product__locator-status" data-gs-locator-status aria-live="polite" hidden></p>
+        <div class="gs-product__locator-list" data-gs-locator-list hidden></div>
+      </div>
+    </dialog>
+
+    <script type="application/json" data-gs-stores>
+      [
+        {%- for store in stores -%}
+          { "name": {{ store.name | json }}, "ll": {{ store.latitude_longitude | json }}, "url": {{ store.page.value.url | default: '' | json }} }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    </script>
+  </div>
+{%- elsif request.design_mode -%}
+  <div class="gs-product__editor-note" {{ block.shopify_attributes }}>
+    Store locator: {% if stores == blank %}no stores in the shop's retail_store_locations metafield{% else %}hidden for this product's tags{% endif %}.
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .gs-product__locator-open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    width: 100%;
+    padding: 0.4rem;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+  }
+
+  .gs-product__locator-open svg { color: #ab192d; }
+  .gs-product__locator-open:hover span { text-decoration: underline; }
+
+  .gs-product__locator-hint {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-size: 1.3rem;
+  }
+
+  .gs-product__locator-row {
+    display: flex;
+  }
+
+  .gs-product__locator-row input {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 45px;
+    padding: 0 0.75em;
+    border: 1px solid #828282;
+    border-right: 0;
+    border-radius: 0;
+    font-size: 1.5rem;
+  }
+
+  .gs-product__locator-go {
+    width: 50px;
+    height: 45px;
+    border: 1px solid #828282;
+    border-left: 0;
+    background: #ab192d;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .gs-product__locator-geo {
+    display: block;
+    margin: 1rem 0 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-size: 1.3rem;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .gs-product__locator-status {
+    margin: 1rem 0 0;
+    font-size: 1.3rem;
+  }
+
+  .gs-product__locator-list {
+    margin-top: 1rem;
+    border: 1px solid #e5e5e5;
+    max-height: 40vh;
+    overflow-y: auto;
+  }
+
+  .gs-product__locator-store {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 1.4rem;
+  }
+
+  .gs-product__locator-store p { margin: 0; }
+  .gs-product__locator-store a { display: block; font-size: 1.2rem; color: #802629; }
+  .gs-product__locator-distance { white-space: nowrap; }
+
+  .gs-product__locator-all {
+    padding: 0.8rem 1rem;
+    text-align: center;
+    font-size: 1.3rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Store locator",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label", "default": "Find a store near you" },
+    { "type": "range", "id": "radius", "label": "Search radius", "min": 10, "max": 200, "step": 10, "unit": "mi", "default": 50 },
+    { "type": "url", "id": "all_url", "label": "\"View all locations\" link" },
+    { "type": "text", "id": "hide_for_tags", "label": "Hide for products tagged", "info": "Comma separated.", "default": "club product, Sticker Club, dropship" }
+  ],
+  "presets": [{ "name": "Store locator" }]
+}
+{% endschema %}

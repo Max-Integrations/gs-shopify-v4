@@ -192,6 +192,208 @@
           if (submit) submit.disabled = false;
         });
     });
+
+    placeBadge(root);
+    bindDialogs(root);
+    bindLocator(root);
+    loadComplementary(root);
+  }
+
+  /* ---------------- Badge ----------------
+     block--product-badge renders in the buy box (a theme block can only
+     render there). The first one moves over the gallery; the rest go.
+     A section-rendered override badge already in the media column
+     wins, so block badges are simply removed then. */
+  function placeBadge(root) {
+    var badges = root.querySelectorAll('.gs-product__info [data-gs-badge]');
+    if (!badges.length) return;
+    var media = root.querySelector('.gs-product__media');
+    var already = media && media.querySelector('.gs-product__badge');
+    badges.forEach(function (img, i) {
+      if (i === 0 && media && !already) media.insertBefore(img, media.firstChild);
+      else img.remove();
+    });
+  }
+
+  /* ---------------- Dialogs (size guide, store locator) ----------------
+     Native <dialog>: showModal() gives focus trapping, Escape and the
+     backdrop for free. A click on the backdrop lands on the <dialog>
+     itself, not on its box, which is how it closes. */
+  function bindDialogs(root) {
+    root.addEventListener('click', function (evt) {
+      var opener = evt.target.closest('[data-gs-dialog-open]');
+      if (opener) {
+        var dlg = document.getElementById(opener.getAttribute('data-gs-dialog-open'));
+        if (dlg && typeof dlg.showModal === 'function') {
+          evt.preventDefault();
+          dlg.showModal();
+        }
+        return;
+      }
+      var closer = evt.target.closest('[data-gs-dialog-close]');
+      if (closer) {
+        var open = closer.closest('dialog');
+        if (open) open.close();
+        return;
+      }
+      if (evt.target.tagName === 'DIALOG' && evt.target.classList.contains('gs-product__dialog')) {
+        evt.target.close();
+      }
+    });
+  }
+
+  /* ---------------- Store locator ----------------
+     Keyless geocoding: a 5-digit ZIP goes to zippopotam.us, anything
+     else to Nominatim (OpenStreetMap), and "use current location" is
+     the browser's geolocation. Distances are haversine miles, as v3. */
+  function bindLocator(root) {
+    var box = root.querySelector('[data-gs-locator]');
+    if (!box) return;
+    var stores = [];
+    try {
+      stores = JSON.parse(box.querySelector('[data-gs-stores]').textContent);
+    } catch (e) {
+      return;
+    }
+    var radius = parseFloat(box.getAttribute('data-radius')) || 50;
+    var allUrl = box.getAttribute('data-all-url') || '';
+    var form = box.querySelector('[data-gs-locator-form]');
+    var geoBtn = box.querySelector('[data-gs-locator-geo]');
+    var status = box.querySelector('[data-gs-locator-status]');
+    var list = box.querySelector('[data-gs-locator-list]');
+
+    function say(msg) {
+      status.textContent = msg;
+      status.hidden = !msg;
+    }
+
+    function miles(lat1, lon1, lat2, lon2) {
+      var toRad = Math.PI / 180;
+      var dLat = (lat2 - lat1) * toRad;
+      var dLon = (lon2 - lon1) * toRad;
+      var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * toRad) * Math.cos(lat2 * toRad) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      return 3959 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    function geocode(q) {
+      q = q.trim();
+      if (/^\d{5}$/.test(q)) {
+        return fetch('https://api.zippopotam.us/us/' + q)
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (j) {
+            var pl = j && j.places && j.places[0];
+            return pl ? { lat: parseFloat(pl.latitude), lng: parseFloat(pl.longitude) } : null;
+          });
+      }
+      var url = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=us&q=' + encodeURIComponent(q);
+      return fetch(url, { headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) {
+          return j && j[0] ? { lat: parseFloat(j[0].lat), lng: parseFloat(j[0].lon) } : null;
+        });
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+
+    function show(origin, where) {
+      var near = [];
+      stores.forEach(function (st) {
+        var ll = String(st.ll || '').split(',');
+        if (ll.length < 2) return;
+        var d = miles(origin.lat, origin.lng, parseFloat(ll[0]), parseFloat(ll[1]));
+        if (d <= radius) near.push({ name: st.name, url: st.url, d: d });
+      });
+      near.sort(function (a, b) { return a.d - b.d; });
+      var html = '';
+      if (near.length) {
+        near.forEach(function (st) {
+          html += '<div class="gs-product__locator-store"><div><p>' + escapeHtml(st.name) + '</p>' +
+            (st.url ? '<a href="' + escapeHtml(st.url) + '">Store details</a>' : '') +
+            '</div><p class="gs-product__locator-distance">' + st.d.toFixed(1) + ' mi</p></div>';
+        });
+      } else {
+        html += '<p class="gs-product__locator-all">No Grunt Style retail stores found within ' + radius + ' miles of ' + where + '.</p>';
+      }
+      if (allUrl) html += '<div class="gs-product__locator-all"><a href="' + escapeHtml(allUrl) + '">View all locations</a></div>';
+      list.innerHTML = html;
+      list.hidden = false;
+      say('');
+    }
+
+    if (form) {
+      form.addEventListener('submit', function (evt) {
+        evt.preventDefault();
+        var q = form.querySelector('input[name="q"]').value;
+        if (!q.trim()) return;
+        say('Searching...');
+        geocode(q)
+          .then(function (origin) {
+            if (!origin) {
+              list.hidden = true;
+              say('Could not find that location. Try a 5-digit ZIP code.');
+              return;
+            }
+            show(origin, 'the location entered');
+          })
+          .catch(function () {
+            list.hidden = true;
+            say('Location search is unavailable right now.');
+          });
+      });
+    }
+
+    if (geoBtn) {
+      geoBtn.addEventListener('click', function () {
+        if (!navigator.geolocation) {
+          say('Your browser does not share location.');
+          return;
+        }
+        say('Finding you...');
+        navigator.geolocation.getCurrentPosition(
+          function (pos) {
+            show({ lat: pos.coords.latitude, lng: pos.coords.longitude }, 'your location');
+          },
+          function () {
+            list.hidden = true;
+            say('Unable to retrieve your location. Please enable location services and try again.');
+          }
+        );
+      });
+    }
+  }
+
+  /* ---------------- Complementary products ("LOAD UP") ----------------
+     The recommendations object only exists on a Section Rendering API
+     fetch with intent=complementary, so the block renders empty on the
+     page and is filled from a fetch of this same section. */
+  function loadComplementary(root) {
+    var box = root.querySelector('[data-gs-complementary]');
+    if (!box || box.hasAttribute('data-loaded')) return;
+    var sectionId = root.getAttribute('data-section-id');
+    var url = box.getAttribute('data-url') + '?section_id=' + encodeURIComponent(sectionId) +
+      '&product_id=' + encodeURIComponent(box.getAttribute('data-product-id')) +
+      '&limit=' + encodeURIComponent(box.getAttribute('data-limit') || '6') +
+      '&intent=complementary';
+    fetch(url)
+      .then(function (r) { return r.ok ? r.text() : ''; })
+      .then(function (html) {
+        if (!html) return;
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var fresh = doc.querySelector('[data-gs-complementary]');
+        if (!fresh || !fresh.querySelector('[data-swatch-track]')) {
+          box.innerHTML = '';
+          return;
+        }
+        box.innerHTML = fresh.innerHTML;
+        box.setAttribute('data-loaded', '');
+        if (typeof window.gsSwatchScrollerRefresh === 'function') window.gsSwatchScrollerRefresh();
+      })
+      .catch(function () { /* leave it empty */ });
   }
 
   function bindAll() {

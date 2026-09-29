@@ -1,0 +1,75 @@
+{% comment %}
+  BLOCK: PRODUCT VALUE PROPS (container)
+  ==================================================================
+  The bordered strip of icon + caption tiles under the buy box
+  (military discount, free shipping, beer guarantee, rewards). v3's
+  pdp_value_props block held four props in 17 settings; here each prop
+  is a nested block--product-value-prop, so there can be any number
+  and each has its own hide-for-tags rule (v3 hid the beer guarantee
+  on products tagged no-beer-guarantee).
+
+  Columns follow the number of props that rendered: the children are
+  laid out with flex so a hidden prop leaves no gap.
+
+  v3 hid the whole strip on Custom Apparel and gift card products;
+  that is the container's hide-for-tags default.
+  ==================================================================
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign p = closest.product | default: product
+  assign hidden = false
+  if s.hide_for_tags != blank
+    assign hay = p.tags | join: '|' | downcase | prepend: '|' | append: '|'
+    assign list = s.hide_for_tags | split: ','
+    for t in list
+      assign needle = t | strip | downcase | prepend: '|' | append: '|'
+      if needle != '||' and hay contains needle
+        assign hidden = true
+      endif
+    endfor
+  endif
+-%}
+
+{%- unless hidden -%}
+  <div class="gs-product__props{% if s.show_borders %} gs-product__props--bordered{% endif %}" {{ block.shopify_attributes }}>
+    {% content_for 'blocks' %}
+  </div>
+{%- endunless -%}
+
+{% stylesheet %}
+  .gs-product__props {
+    display: flex;
+    gap: 5px;
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  .gs-product__props--bordered {
+    border-top: 2px solid #666;
+    border-bottom: 2px solid #666;
+  }
+
+  .gs-product__props:empty { display: none; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Value props",
+  "blocks": [{ "type": "block--product-value-prop" }],
+  "settings": [
+    { "type": "checkbox", "id": "show_borders", "label": "Top and bottom border", "default": true },
+    { "type": "text", "id": "hide_for_tags", "label": "Hide for products tagged", "info": "Comma separated.", "default": "Custom Apparel, gift card" }
+  ],
+  "presets": [
+    {
+      "name": "Value props",
+      "blocks": [
+        { "type": "block--product-value-prop" },
+        { "type": "block--product-value-prop" }
+      ]
+    }
+  ]
+}
+{% endschema %}

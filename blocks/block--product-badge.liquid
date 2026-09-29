@@ -1,0 +1,77 @@
+{% comment %}
+  BLOCK: PRODUCT BADGE
+  ==================================================================
+  "Products tagged X get this image over the gallery". Replaces v3's
+  pdp_badges block (limit 16) and the two other badge systems that
+  read the same tags.
+
+  Theme blocks render only where the section calls content_for
+  'blocks', which is the buy box, and the badge belongs over the
+  gallery. The section cannot read this block's settings either
+  (section.blocks lists theme blocks as "@theme"). So the block renders
+  its <img data-gs-badge> here, hidden by CSS while it sits in the buy
+  box, and gs-product.js moves the FIRST matching badge into
+  .gs-product__media and removes any others. First match wins, as in
+  v3's pdp-gs-badge. A product-level override metafield
+  (custom.product_image_badge_override) is drawn by the section and
+  takes priority; the script leaves block badges alone when it exists.
+
+  Tag matching ignores case: v3 tried the tag as typed, upper and
+  lower. Nothing renders when the tag does not match.
+  ==================================================================
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign p = closest.product | default: product
+  assign matched = false
+  if s.tag != blank and s.image != blank
+    assign hay = p.tags | join: '|' | downcase | prepend: '|' | append: '|'
+    assign needle = s.tag | strip | downcase | prepend: '|' | append: '|'
+    if hay contains needle
+      assign matched = true
+    endif
+  endif
+-%}
+
+{%- if matched -%}
+  <img
+    class="gs-product__badge gs-product__badge--{{ s.position | default: 'top-left' }}"
+    data-gs-badge
+    src="{{ s.image | image_url: width: 200 }}"
+    srcset="{{ s.image | image_url: width: 100 }} 100w, {{ s.image | image_url: width: 200 }} 200w"
+    sizes="100px"
+    alt="{{ s.image.alt | default: s.tag | escape }}"
+    width="100"
+    height="100"
+    loading="lazy"
+    {{ block.shopify_attributes }}
+  >
+{%- elsif request.design_mode -%}
+  <div class="gs-product__editor-note" {{ block.shopify_attributes }}>
+    Badge for tag "{{ s.tag | default: 'none set' }}"{% if s.image == blank %}, no image{% endif %}: not on this product.
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Product badge",
+  "settings": [
+    { "type": "text", "id": "tag", "label": "Product tag", "info": "Case does not matter." },
+    { "type": "image_picker", "id": "image", "label": "Badge image" },
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Position",
+      "options": [
+        { "value": "top-left", "label": "Top left" },
+        { "value": "top-right", "label": "Top right" },
+        { "value": "bottom-left", "label": "Bottom left" },
+        { "value": "bottom-right", "label": "Bottom right" }
+      ],
+      "default": "top-left"
+    }
+  ],
+  "presets": [{ "name": "Product badge" }]
+}
+{% endschema %}

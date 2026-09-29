@@ -1,0 +1,129 @@
+{% comment %}
+  BLOCK: PRODUCT COMPLEMENTARY ("LOAD UP")
+  ==================================================================
+  Shopify's complementary-product recommendations (the pairs set in
+  the Search & Discovery app) as a small card carousel inside the buy
+  box, matching v3's complementary_products block.
+
+  HOW IT LOADS. The `recommendations` object only exists when the
+  section is fetched through the Section Rendering API with
+  product_id, section_id and intent=complementary. A theme block
+  cannot see section.id, so gs-product.js reads it from the section
+  wrapper, fetches this section with those params, and swaps in the
+  [data-gs-complementary] it finds in the response. On that fetch
+  `recommendations.performed` is true and the cards render below.
+  Nothing renders in the initial page, as on the live site.
+
+  Cards are the theme's gs-card-product, so they match the rest of
+  the site, and the carousel is the shared gs-swatch-scroller.
+  ==================================================================
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign p = closest.product | default: product
+  assign limit = s.limit | default: 6
+-%}
+
+<div
+  class="gs-product__complementary"
+  data-gs-complementary
+  data-swatch-scroller
+  data-url="{{ routes.product_recommendations_url }}"
+  data-product-id="{{ p.id }}"
+  data-limit="{{ limit }}"
+  {{ block.shopify_attributes }}
+>
+  {%- if recommendations.performed and recommendations.intent == 'complementary' and recommendations.products_count > 0 -%}
+    <div class="gs-product__complementary-head">
+      <h3 class="gs-product__complementary-heading">{{ s.heading }}</h3>
+      <div class="gs-product__complementary-nav">
+        <button type="button" class="gs-product__complementary-btn" data-swatch-scroll="prev" aria-label="Previous" hidden>
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="gs-product__complementary-btn" data-swatch-scroll="next" aria-label="Next" hidden>
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <ul class="gs-product__complementary-track" data-swatch-track role="list">
+      {%- for rec in recommendations.products limit: limit -%}
+        <li class="gs-product__complementary-item">
+          {%- render 'gs-card-product', cardProduct: rec, complementary: true -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- elsif request.design_mode and recommendations.performed != true -%}
+    <div class="gs-product__editor-note">"{{ s.heading }}" loads complementary products after the page renders.</div>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .gs-product__complementary:empty { display: none; }
+
+  .gs-product__complementary[data-loaded] {
+    padding: 20px 10px 10px;
+    border-radius: 10px;
+    background: rgba(var(--color-foreground), 0.03);
+  }
+
+  .gs-product__complementary-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0 10px 12px;
+  }
+
+  .gs-product__complementary-heading {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .gs-product__complementary-nav { display: flex; gap: 6px; }
+
+  .gs-product__complementary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(var(--color-foreground), 0.3);
+    border-radius: 50%;
+    background: rgb(var(--color-background));
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .gs-product__complementary-track {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .gs-product__complementary-track::-webkit-scrollbar { display: none; }
+
+  .gs-product__complementary-item {
+    flex: 0 0 calc(50% - 5px);
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Complementary products",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Load up" },
+    { "type": "range", "id": "limit", "label": "Products", "min": 2, "max": 10, "step": 1, "default": 6 }
+  ],
+  "presets": [{ "name": "Complementary products" }]
+}
+{% endschema %}

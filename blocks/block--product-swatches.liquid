@@ -1,0 +1,164 @@
+{% comment %}
+  BLOCK: PRODUCT SWATCHES
+  ==================================================================
+  Colourways that are SEPARATE PRODUCTS, linked through the
+  custom.product_swatches product-list metafield (v3's
+  product-color-swatches snippet). This product is listed first and
+  marked current; each sibling links to its own page. Label from
+  custom.product_swatch_label_override, else "Color"; the current
+  colour name from custom.product_color_title.
+
+  Two looks, as v3: "pattern" draws each product's
+  collection_color_swatch_image or _hex_code as a small chip; "image"
+  uses the featured image. Renders nothing when the metafield is empty.
+  ==================================================================
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign p = closest.product | default: product
+  assign siblings = p.metafields.custom.product_swatches.value
+  assign style = s.style | default: 'pattern'
+  assign label = p.metafields.custom.product_swatch_label_override | default: s.label | default: 'Color'
+-%}
+
+{%- if siblings != blank -%}
+  <div
+    class="gs-product__swatches gs-product__swatches--{{ style }} gs-product__swatches--{{ s.shape | default: 'circle' }}"
+    style="--gs-swatch-size: {{ s.size | default: 32 }}px;"
+    {{ block.shopify_attributes }}
+  >
+    {%- if s.show_label -%}
+      <p class="gs-product__swatches-label">
+        <span class="gs-product__swatches-name">{{ label }}:</span>
+        <span class="gs-product__swatches-value">{{ p.metafields.custom.product_color_title.value }}</span>
+      </p>
+    {%- endif -%}
+    <ul class="gs-product__swatch-list" role="list">
+      {%- comment -%} This product first, then the siblings. {%- endcomment -%}
+      {%- assign current_title = p.metafields.custom.product_color_title.value | default: p.title -%}
+      <li class="gs-product__swatch is-current{% unless p.available %} is-sold-out{% endunless %}">
+        <a class="gs-product__swatch-link" href="{{ p.url }}" title="{{ current_title | escape }}" aria-label="{{ current_title | escape }}" aria-current="page">
+          {%- if style == 'image' -%}
+            {{ p.featured_image | image_url: width: 200 | image_tag: loading: 'lazy', widths: '100, 200', sizes: '100px', alt: '' }}
+          {%- elsif p.metafields.custom.collection_color_swatch_image != blank -%}
+            {{ p.metafields.custom.collection_color_swatch_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: '' }}
+          {%- else -%}
+            <span class="gs-product__swatch-chip" style="background-color: {{ p.metafields.custom.collection_color_swatch_hex_code | default: '#ccc' }};"></span>
+          {%- endif -%}
+        </a>
+      </li>
+      {%- for sp in siblings -%}
+        {%- if sp == blank or sp.id == p.id -%}{%- continue -%}{%- endif -%}
+        {%- assign title = sp.metafields.custom.product_color_title.value | default: sp.title -%}
+        <li class="gs-product__swatch{% unless sp.available %} is-sold-out{% endunless %}">
+          <a class="gs-product__swatch-link" href="{{ sp.url }}" title="{{ title | escape }}" aria-label="{{ title | escape }}">
+            {%- if style == 'image' -%}
+              {{ sp.featured_image | image_url: width: 200 | image_tag: loading: 'lazy', widths: '100, 200', sizes: '100px', alt: '' }}
+            {%- elsif sp.metafields.custom.collection_color_swatch_image != blank -%}
+              {{ sp.metafields.custom.collection_color_swatch_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: '' }}
+            {%- else -%}
+              <span class="gs-product__swatch-chip" style="background-color: {{ sp.metafields.custom.collection_color_swatch_hex_code | default: '#ccc' }};"></span>
+            {%- endif -%}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- elsif request.design_mode -%}
+  <div class="gs-product__editor-note" {{ block.shopify_attributes }}>Swatches: this product has no linked colourways.</div>
+{%- endif -%}
+
+{% stylesheet %}
+  .gs-product__swatches-label {
+    margin: 0 0 0.8rem;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .gs-product__swatches-name { font-weight: 700; }
+  .gs-product__swatches-value { text-transform: none; }
+
+  .gs-product__swatch-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .gs-product__swatch-link {
+    display: block;
+    width: var(--gs-swatch-size, 32px);
+    height: var(--gs-swatch-size, 32px);
+    padding: 2px;
+    border: 1px solid transparent;
+    line-height: 0;
+  }
+
+  .gs-product__swatches--image .gs-product__swatch-link {
+    width: calc(var(--gs-swatch-size, 32px) * 2.5);
+    height: auto;
+  }
+
+  .gs-product__swatch-link img,
+  .gs-product__swatch-chip {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd;
+    object-fit: cover;
+  }
+
+  .gs-product__swatches--image .gs-product__swatch-link img { height: auto; }
+
+  .gs-product__swatches--circle .gs-product__swatch-link,
+  .gs-product__swatches--circle .gs-product__swatch-link img,
+  .gs-product__swatches--circle .gs-product__swatch-chip {
+    border-radius: 50%;
+  }
+
+  .gs-product__swatch.is-current .gs-product__swatch-link {
+    border-color: rgb(var(--color-foreground));
+  }
+
+  .gs-product__swatch:not(.is-current) .gs-product__swatch-link:hover {
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .gs-product__swatch.is-sold-out .gs-product__swatch-link { opacity: 0.45; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Product swatches",
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        { "value": "pattern", "label": "Colour chip" },
+        { "value": "image", "label": "Product image" }
+      ],
+      "default": "pattern"
+    },
+    {
+      "type": "select",
+      "id": "shape",
+      "label": "Shape",
+      "options": [
+        { "value": "circle", "label": "Circle" },
+        { "value": "square", "label": "Square" }
+      ],
+      "default": "circle"
+    },
+    { "type": "range", "id": "size", "label": "Size", "min": 20, "max": 60, "step": 2, "unit": "px", "default": 32 },
+    { "type": "checkbox", "id": "show_label", "label": "Show the colour name", "default": true },
+    { "type": "text", "id": "label", "label": "Label", "info": "The product's swatch label override metafield wins.", "default": "Color" }
+  ],
+  "presets": [{ "name": "Product swatches" }]
+}
+{% endschema %}

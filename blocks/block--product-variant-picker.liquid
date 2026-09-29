@@ -13,6 +13,16 @@
   so a customer can pick a sold-out size and be told, rather than the
   option silently vanishing.
 
+  SIZE GUIDE. v3 had a separate size-guide block that printed its own
+  "Size: Small" line plus a link, sitting above the picker. The legend
+  here already prints that line, so the link lives in the legend of the
+  size option instead of in a block of its own. The chart page is
+  chosen the way v3 chose it: the first product tag that equals a page
+  handle wins (men-size-chart, women-size-chart...), else the fallback
+  page set here. The link only renders when a chart was found and the
+  product has an option named like "Size". It opens a native <dialog>
+  that gs-product.js wires up.
+
   A <noscript> select posts the variant without JavaScript.
   ==================================================================
 {% endcomment %}
@@ -20,6 +30,21 @@
   assign s = block.settings
   assign p = closest.product | default: product
   assign form_id = 'ProductForm-' | append: p.id
+
+  assign size_page = nil
+  if s.size_guide_label != blank
+    for tag in p.tags
+      if pages[tag].handle == tag and pages[tag].content != blank
+        assign size_page = pages[tag]
+        break
+      endif
+    endfor
+    if size_page == blank and s.size_guide_page != blank
+      assign size_page = s.size_guide_page
+    endif
+  endif
+  assign size_option_lc = s.size_option_name | default: 'Size' | downcase
+  assign dialog_id = 'GsSizeGuide-' | append: p.id
 -%}
 {%- if p != blank and p.has_only_default_variant == false -%}
   <div class="gs-product__options gs-product__gated" {{ block.shopify_attributes }}>
@@ -28,6 +53,11 @@
         assign only_one = false
         if option.values.size == 1 and s.hide_single_value
           assign only_one = true
+        endif
+        assign option_lc = option.name | downcase
+        assign show_guide = false
+        if size_page != blank and option_lc == size_option_lc
+          assign show_guide = true
         endif
       -%}
       {%- unless only_one -%}
@@ -38,6 +68,18 @@
               {{- option.selected_value -}}
             </span>
           </legend>
+
+          {%- if show_guide -%}
+            {%- comment -%}
+              Sits on the legend row: a <legend> is outside the fieldset's
+              content box, so the button is positioned from the fieldset's
+              top edge and the legend is given the same height.
+            {%- endcomment -%}
+            <button type="button" class="gs-product__size-guide" data-gs-dialog-open="{{ dialog_id }}">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.28594 9.88566L4.22878 8.94282L5.64301 10.3571C5.90336 10.6174 6.32547 10.6174 6.58582 10.3571C6.84617 10.0967 6.84617 9.6746 6.58582 9.41425L5.17159 8.00002L6.11438 7.05722L7.05719 8.00004C7.31754 8.26039 7.73965 8.26039 8 8.00004C8.26035 7.73969 8.26035 7.31758 8 7.05723L7.05719 6.11442L8.00001 5.17159L9.41426 6.58583C9.6746 6.84618 10.0967 6.84618 10.3571 6.58583C10.6174 6.32548 10.6174 5.90337 10.3571 5.64302L8.94282 4.22878L9.88561 3.28599L10.8284 4.22881C11.0888 4.48916 11.5109 4.48916 11.7712 4.22881C12.0316 3.96846 12.0316 3.54635 11.7712 3.286L10.8284 2.34318L11.2998 1.87178L14.1282 4.70021L4.70015 14.1283L1.87172 11.2999L2.34314 10.8285L3.28595 11.7713C3.5463 12.0316 3.96841 12.0316 4.22876 11.7713C4.48911 11.5109 4.48911 11.0888 4.22876 10.8285L3.28594 9.88566ZM9.41422 1.87179L5.64298 5.64302L1.87174 9.41426L0.928915 10.3571C0.408216 10.8778 0.408216 11.722 0.928915 12.2427L3.75734 15.0711C4.27804 15.5918 5.12226 15.5918 5.64296 15.0711L15.0711 5.64302C15.5918 5.12232 15.5918 4.2781 15.0711 3.7574L12.2426 0.928977C11.7219 0.408278 10.8777 0.408277 10.357 0.928976L9.41422 1.87179Z" fill="currentColor"/></svg>
+              <span>{{ s.size_guide_label }}</span>
+            </button>
+          {%- endif -%}
 
           <div class="gs-product__option-values">
             {%- for value in option.values -%}
@@ -75,6 +117,20 @@
         {%- endfor -%}
       </select>
     </noscript>
+
+    {%- if size_page != blank -%}
+      <dialog class="gs-product__dialog" id="{{ dialog_id }}" aria-label="{{ s.size_guide_label | escape }}">
+        <div class="gs-product__dialog-box">
+          <button type="button" class="gs-product__dialog-close" data-gs-dialog-close aria-label="Close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m17.25 6.75-10.5 10.5M6.75 6.75l10.5 10.5"/></svg>
+          </button>
+          <h3 class="gs-product__dialog-title">{{ size_page.title }}</h3>
+          <div class="gs-product__dialog-body rte">
+            {{ size_page.content | replace: '<table', '<div class="table-responsive"><table' | replace: '</table>', '</table></div>' }}
+          </div>
+        </div>
+      </dialog>
+    {%- endif -%}
   </div>
 {%- endif -%}
 
@@ -83,7 +139,11 @@
   "tag": null,
   "name": "Variant picker",
   "settings": [
-    { "type": "checkbox", "id": "hide_single_value", "label": "Hide options that have only one value", "default": true }
+    { "type": "checkbox", "id": "hide_single_value", "label": "Hide options that have only one value", "default": true },
+    { "type": "header", "content": "Size guide" },
+    { "type": "text", "id": "size_guide_label", "label": "Link label", "info": "Empty hides the size guide.", "default": "Size guide" },
+    { "type": "text", "id": "size_option_name", "label": "Option that gets the link", "default": "Size" },
+    { "type": "page", "id": "size_guide_page", "label": "Fallback chart page", "info": "A product tag that matches a page handle (e.g. men-size-chart) takes priority, as on the live site." }
   ],
   "presets": [{ "name": "Variant picker" }]
 }

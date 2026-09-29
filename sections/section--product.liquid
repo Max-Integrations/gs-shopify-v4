@@ -28,13 +28,17 @@
   v3 hardcoded ten business rules that hide the variant picker,
   quantity and add-to-cart for club products, early access, licensed
   branch products and so on. Here each block--product-message carries
-  its own condition and an optional "hide buy controls" flag; this
-  section ORs the matched flags into `buy_hidden` and the buy blocks
-  gate on it. A new rule is a new block, not new code.
+  its own condition and an optional "hide buy controls" flag. A block
+  whose condition matches and has the flag emits one <style> rule that
+  hides everything carrying .gs-product__gated (picker, quantity, add
+  to cart, and the sticky bar). That is exactly what v3's snippet did,
+  minus the hardcoding. A new rule is a new block, not new code.
 
-  Theme blocks cannot read section variables, so the flag is published
-  as `data-buy-hidden` on the wrapper and gs-product.css hides anything
-  marked .gs-product__gated. No block repeats the condition logic.
+  THE SECTION CANNOT READ ITS THEME BLOCKS. Verified on the dev theme
+  2026-09-29: section.blocks reports every theme block as type
+  "@theme" with no settings, so a "section reads the blocks and
+  decides" pass never matches. Anything a block knows, the block must
+  act on itself. Do not reintroduce a section-side pass.
 
   ------------------------------------------------------------------
   THREE CONSTRAINTS THAT SHAPE THIS FILE
@@ -44,10 +48,12 @@
      individually and cannot be passed variables.
   2. So the badge, which belongs over the GALLERY and not in the buy
      box, cannot be rendered where it is placed. block--product-badge
-     therefore outputs nothing: it is configuration (tag -> image), and
-     this section reads section.blocks, picks the first tag match and
-     draws it over the gallery. That is exactly v3's rule, where
-     pdp-gs-badge took the first matching block.
+     renders its <img data-gs-badge> in the buy box (hidden there by
+     CSS) when the product carries its tag, and gs-product.js moves
+     the first one into .gs-product__media and drops the rest, so the
+     first matching block wins, as v3's pdp-gs-badge did. The
+     custom.product_image_badge_override metafield is product-level,
+     so this section renders that one directly and it takes priority.
   3. The form id must be shared between the buy-buttons block (which
      owns the <form>) and the variant picker, which sits outside it and
      joins by the form= attribute. Blocks cannot see section.id, so
@@ -69,67 +75,11 @@
 {%- liquid
   assign s = section.settings
 
-  # ---- Pass 1: does any message block hide the buy controls? ----
-  assign buy_hidden = false
-  for block in section.blocks
-    if block.type != 'block--product-message'
-      continue
-    endif
-    unless block.settings.hide_buy_controls
-      continue
-    endunless
-    assign b = block.settings
-    assign matched = false
-    case b.condition
-      when 'always'
-        assign matched = true
-      when 'product_tag'
-        if b.match != blank and product.tags contains b.match
-          assign matched = true
-        endif
-      when 'customer_tag'
-        if b.match != blank and customer != blank and customer.tags contains b.match
-          assign matched = true
-        endif
-      when 'customer_missing_tag'
-        if b.match != blank
-          assign matched = true
-          if customer != blank and customer.tags contains b.match
-            assign matched = false
-          endif
-        endif
-      when 'logged_out'
-        if customer == blank
-          assign matched = true
-        endif
-    endcase
-    if matched
-      assign buy_hidden = true
-      break
-    endif
-  endfor
-
-  # ---- Pass 2: first badge block whose tag matches, as v3 did ----
-  assign badge_image = nil
-  assign badge_position = 'top-right'
-  assign override = product.metafields.custom.product_image_badge_override
-  if override != blank
-    assign badge_image = override
-  else
-    for block in section.blocks
-      if block.type != 'block--product-badge'
-        continue
-      endif
-      if block.settings.image == blank or block.settings.tag == blank
-        continue
-      endif
-      if product.tags contains block.settings.tag
-        assign badge_image = block.settings.image
-        assign badge_position = block.settings.position | default: 'top-right'
-        break
-      endif
-    endfor
-  endif
+  # Badge from the product-level override metafield. Tag-matched badges
+  # are rendered by block--product-badge itself and moved over the
+  # gallery by gs-product.js (see the comment block above).
+  assign badge_image = product.metafields.custom.product_image_badge_override
+  assign badge_position = 'top-left'
 -%}
 
 <div
@@ -138,8 +88,8 @@
   id="GsProduct-{{ section.id }}"
   data-gs-product
   data-section-id="{{ section.id }}"
+  data-product-id="{{ product.id }}"
   data-url="{{ product.url }}"
-  {% if buy_hidden %}data-buy-hidden{% endif %}
 >
   <div class="page-width">
     {%- if s.show_breadcrumb -%}
@@ -299,6 +249,13 @@
     { "type": "block--product-price" },
     { "type": "block--product-variant-picker" },
     { "type": "block--product-buy-buttons" },
+    { "type": "block--product-swatches" },
+    { "type": "block--product-message" },
+    { "type": "block--product-badge" },
+    { "type": "block--product-accordion" },
+    { "type": "block--product-value-props" },
+    { "type": "block--product-store-locator" },
+    { "type": "block--product-complementary" },
     { "type": "block--heading" },
     { "type": "block--text" },
     { "type": "block--button" },

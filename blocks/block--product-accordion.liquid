@@ -1,0 +1,250 @@
+{% comment %}
+  BLOCK: PRODUCT ACCORDION
+  ==================================================================
+  One collapsible panel. v3 had a single product-accordion block with
+  four tabs baked in (40 settings); this is one tab per block, add as
+  many as needed, in any order.
+
+  SOURCES
+    text         rich text; Liquid inside is evaluated, so the live
+                 "Material Description" tab's metafield copy works
+                 as-is
+    description  the product description
+    page         a Shopify page's content
+    features     the custom.pdp_feature_slider metaobject list as a
+                 stacked list (v3's "Features & Benefits" tab, shown
+                 on mobile only where the desktop page has the slider
+                 section instead)
+
+  A YouTube URL, when set, embeds below whatever the source produced.
+
+  The panel hides itself when its source is empty for this product,
+  exactly as v3 did, so a "Material Description" tab with no metafield
+  does not render an empty box. The heading also takes Liquid (v3 fed
+  it product.metafields.custom.pdp_feature_slider_name).
+
+  Visibility "mobile"/"desktop" is CSS, not Liquid, so a section fetch
+  never changes it.
+  ==================================================================
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign p = closest.product | default: product
+  assign source = s.source | default: 'text'
+
+  capture body
+    case source
+      when 'text'
+        echo s.text
+      when 'description'
+        echo p.description
+      when 'page'
+        echo s.page.content
+      when 'features'
+        assign features = p.metafields.custom.pdp_feature_slider.value
+        if features != blank
+          if s.features_heading != blank
+            echo '<div class="gs-product__features-heading">'
+            echo s.features_heading
+            echo '</div>'
+          endif
+          echo '<div class="gs-product__features">'
+          for feature in features
+            assign f_url = nil
+            if feature.url.value.custom_url
+              assign f_url = feature.url.value.custom_url
+            elsif feature.url.value.page
+              assign f_url = feature.url.value.page.value.url
+            elsif feature.url.value.collection
+              assign f_url = feature.url.value.collection.value.url
+            elsif feature.url.value.product
+              assign f_url = feature.url.value.product.value.url
+            endif
+            if f_url != blank
+              echo '<a class="gs-product__feature" href="' | append: f_url | append: '">'
+            else
+              echo '<div class="gs-product__feature">'
+            endif
+            if feature.pdp_feature_image != blank
+              echo '<div class="gs-product__feature-image">'
+              echo feature.pdp_feature_image.value | image_url: width: 400 | image_tag: loading: 'lazy', widths: '200, 400', sizes: '120px'
+              echo '</div>'
+            endif
+            echo '<div class="gs-product__feature-copy">'
+            echo feature.pdp_feature_copy | metafield_tag
+            echo '</div>'
+            if f_url != blank
+              echo '</a>'
+            else
+              echo '</div>'
+            endif
+          endfor
+          echo '</div>'
+        endif
+    endcase
+  endcapture
+  assign body = body | strip
+
+  assign video_id = ''
+  if s.video_url != blank
+    assign video_id = s.video_url | split: 'v=' | last | split: '/' | last | split: '&' | first
+  endif
+
+  assign has_content = false
+  if body != blank or video_id != blank
+    assign has_content = true
+  endif
+  assign heading = s.heading | strip
+-%}
+
+{%- if has_content and heading != blank -%}
+  <details
+    class="gs-product__accordion gs-product__accordion--{{ s.visibility | default: 'always' }}"
+    {% if s.open_default %}open{% endif %}
+    {{ block.shopify_attributes }}
+  >
+    <summary class="gs-product__accordion-summary">
+      <span class="gs-product__accordion-heading">{{ heading }}</span>
+      <svg class="gs-product__accordion-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+        <path class="gs-product__accordion-h" d="M0 6h14v2H0z" fill="currentColor"/>
+        <path class="gs-product__accordion-v" d="M6 0h2v14H6z" fill="currentColor"/>
+      </svg>
+    </summary>
+    <div class="gs-product__accordion-body rte">
+      {{ body | replace: '<table', '<div class="table-responsive"><table' | replace: '</table>', '</table></div>' }}
+      {%- if video_id != blank -%}
+        <iframe
+          class="gs-product__accordion-video"
+          src="https://www.youtube.com/embed/{{ video_id }}?rel=0"
+          title="{{ heading | escape }}"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      {%- endif -%}
+    </div>
+  </details>
+{%- elsif request.design_mode -%}
+  <div class="gs-product__editor-note" {{ block.shopify_attributes }}>
+    Accordion "{{ heading | default: 'untitled' }}" is empty for this product.
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  /* v3: rounded card, faint shadow, uppercase bold summary, +/- icon. */
+  .gs-product__accordion {
+    border-radius: 10px;
+    background: rgba(var(--color-foreground), 0.03);
+    box-shadow: 1px 1px 2px rgba(36, 40, 53, 0.1);
+  }
+
+  .gs-product__accordion-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 14px 20px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .gs-product__accordion-summary::-webkit-details-marker { display: none; }
+
+  .gs-product__accordion-heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .gs-product__accordion-icon { flex: 0 0 auto; }
+  .gs-product__accordion[open] .gs-product__accordion-v { display: none; }
+
+  .gs-product__accordion-body {
+    padding: 0 20px 14px;
+  }
+
+  .gs-product__accordion-body > :first-child { margin-top: 0; }
+  .gs-product__accordion-body > :last-child { margin-bottom: 0; }
+
+  .gs-product__accordion-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-top: 1em;
+    border: 0;
+  }
+
+  .gs-product__features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .gs-product__features-heading {
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .gs-product__feature {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 1.2rem;
+    align-items: center;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .gs-product__feature-image img { display: block; width: 100%; height: auto; }
+  .gs-product__feature-copy > :first-child { margin-top: 0; }
+  .gs-product__feature-copy > :last-child { margin-bottom: 0; }
+
+  @media screen and (min-width: 990px) {
+    .gs-product__accordion--mobile { display: none; }
+  }
+
+  @media screen and (max-width: 989px) {
+    .gs-product__accordion--desktop { display: none; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Product accordion",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Accepts Liquid.", "default": "Product Description" },
+    {
+      "type": "select",
+      "id": "source",
+      "label": "Content",
+      "options": [
+        { "value": "text", "label": "Text below" },
+        { "value": "description", "label": "Product description" },
+        { "value": "page", "label": "Page" },
+        { "value": "features", "label": "Feature slider metaobjects" }
+      ],
+      "default": "description"
+    },
+    { "type": "richtext", "id": "text", "label": "Text", "info": "Accepts Liquid, e.g. a metafield.", "visible_if": "{{ block.settings.source == 'text' }}" },
+    { "type": "page", "id": "page", "label": "Page", "info": "Used when Content is Page." },
+    { "type": "text", "id": "features_heading", "label": "Heading above the features", "visible_if": "{{ block.settings.source == 'features' }}" },
+    { "type": "url", "id": "video_url", "label": "YouTube video", "info": "Embedded after the content." },
+    { "type": "checkbox", "id": "open_default", "label": "Open by default", "default": false },
+    {
+      "type": "select",
+      "id": "visibility",
+      "label": "Show on",
+      "options": [
+        { "value": "always", "label": "All screens" },
+        { "value": "mobile", "label": "Mobile only" },
+        { "value": "desktop", "label": "Desktop only" }
+      ],
+      "default": "always"
+    }
+  ],
+  "presets": [{ "name": "Product accordion" }]
+}
+{% endschema %}

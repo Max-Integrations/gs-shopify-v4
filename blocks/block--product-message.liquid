@@ -1,0 +1,191 @@
+{% comment %}
+  BLOCK: PRODUCT MESSAGE
+  ==================================================================
+  One conditional message. Replaces five v3 block types and the whole
+  of pdp-overrides.liquid: pdp_sale_message, pdp_conditional_message,
+  pdp_promo_banner, richtext_details and the ten hard-coded gating
+  rules (club product, rewards early access, wont-show, the licensed
+  branch US-only notices, Starbucks).
+
+  CONDITION. Product tags (all must match), excluded product tags (any
+  blocks it), and a customer rule: anyone, logged out, has any of the
+  listed tags, or is missing all of them. Tag matching ignores case
+  because v3 had to list USN and usn separately. Empty fields match
+  everything, so a block with no condition is a plain always-on
+  message. Examples, as the live rules translate:
+
+    wont-show            tags "wont-show", customer anyone, hide buy
+    club product         tags "club product", exclude "collection:
+                         Sticker Club Vault", customer missing all
+                         "Active Subscriber, Active Club Subscription",
+                         hide buy
+    Navy notice          tags "USN", customer anyone
+    Starbucks            tags "Starbucks", customer missing all
+                         "starbucks"
+
+  HIDE BUY CONTROLS. When the condition matches, the block emits one
+  <style> rule hiding every .gs-product__gated element in the section
+  (variant picker, quantity, add to cart, sticky bar). v3's snippet did
+  the same with a style tag. It has to be the block: the section cannot
+  read theme block settings (section.blocks shows them as "@theme").
+
+  Text or image. Text takes Liquid, so a metafield message works, e.g.
+  <p>{{ product.metafields.custom.promo_exclusions.value }}</p>.
+  ==================================================================
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign p = closest.product | default: product
+
+  # ---- condition ----
+  assign matched = true
+  assign hay = p.tags | join: '|' | downcase | prepend: '|' | append: '|'
+  if s.product_tags != blank
+    assign req = s.product_tags | split: ','
+    for t in req
+      assign needle = t | strip | downcase | prepend: '|' | append: '|'
+      if needle == '||'
+        continue
+      endif
+      unless hay contains needle
+        assign matched = false
+      endunless
+    endfor
+  endif
+  if matched and s.exclude_tags != blank
+    assign ex = s.exclude_tags | split: ','
+    for t in ex
+      assign needle = t | strip | downcase | prepend: '|' | append: '|'
+      if needle != '||' and hay contains needle
+        assign matched = false
+      endif
+    endfor
+  endif
+  if matched and s.customer_rule != 'any' and s.customer_rule != blank
+    assign chay = customer.tags | join: '|' | downcase | prepend: '|' | append: '|'
+    assign ctags = s.customer_tags | split: ','
+    assign has_any = false
+    for t in ctags
+      assign needle = t | strip | downcase | prepend: '|' | append: '|'
+      if needle != '||' and chay contains needle
+        assign has_any = true
+      endif
+    endfor
+    case s.customer_rule
+      when 'logged_out'
+        if customer != blank
+          assign matched = false
+        endif
+      when 'has_any'
+        unless has_any
+          assign matched = false
+        endunless
+      when 'missing_all'
+        if has_any
+          assign matched = false
+        endif
+    endcase
+  endif
+  # ---- end condition ----
+
+  assign has_content = false
+  if s.text != blank or s.image != blank
+    assign has_content = true
+  endif
+-%}
+
+{%- if matched and s.hide_buy_controls -%}
+  <style>.gs-product .gs-product__gated { display: none !important; }</style>
+{%- endif -%}
+
+{%- if matched and has_content -%}
+  <div
+    class="gs-product__message{% if s.boxed %} gs-product__message--boxed{% endif %}"
+    style="{% if s.text_color != blank and s.text_color != 'rgba(0,0,0,0)' %}--gs-msg-color: {{ s.text_color }};{% endif %}{% if s.bg != blank and s.bg != 'rgba(0,0,0,0)' %} --gs-msg-bg: {{ s.bg }};{% endif %} --gs-msg-align: {{ s.alignment | default: 'left' }};"
+    {{ block.shopify_attributes }}
+  >
+    {%- if s.image != blank -%}
+      {%- if s.image_link != blank -%}<a href="{{ s.image_link }}">{%- endif -%}
+      {{ s.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '450, 900', sizes: '(min-width: 990px) 440px, 100vw', class: 'gs-product__message-image', alt: s.image.alt }}
+      {%- if s.image_link != blank -%}</a>{%- endif -%}
+    {%- endif -%}
+    {%- if s.text != blank -%}
+      <div class="gs-product__message-text rte">{{ s.text }}</div>
+    {%- endif -%}
+  </div>
+{%- elsif request.design_mode -%}
+  <div class="gs-product__editor-note" {{ block.shopify_attributes }}>
+    Message hidden for this product: {{ s.product_tags | default: 'no tags' }}{% if s.customer_rule != 'any' and s.customer_rule != blank %}, customer {{ s.customer_rule | replace: '_', ' ' }}{% endif %}
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .gs-product__message {
+    color: var(--gs-msg-color, inherit);
+    background-color: var(--gs-msg-bg, transparent);
+    text-align: var(--gs-msg-align, left);
+  }
+
+  /* v3's .pdp-message: a soft shadowed card. */
+  .gs-product__message--boxed {
+    padding: 1rem 1.4rem;
+    box-shadow: 0 0 15px #b2b2b2;
+  }
+
+  .gs-product__message-text > :first-child { margin-top: 0; }
+  .gs-product__message-text > :last-child { margin-bottom: 0; }
+  .gs-product__message-text a { color: inherit; text-decoration: underline; }
+  .gs-product__message-image { display: block; width: 100%; height: auto; }
+
+  .gs-product__editor-note {
+    padding: 0.6rem 1rem;
+    border: 1px dashed rgba(var(--color-foreground), 0.4);
+    font-size: 1.2rem;
+    opacity: 0.7;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Product message",
+  "settings": [
+    { "type": "richtext", "id": "text", "label": "Text", "info": "Accepts Liquid, e.g. a metafield." },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Shown instead of, or above, the text." },
+    { "type": "url", "id": "image_link", "label": "Image link" },
+    { "type": "header", "content": "Show when" },
+    { "type": "text", "id": "product_tags", "label": "Product has all of these tags", "info": "Comma separated. Empty matches every product." },
+    { "type": "text", "id": "exclude_tags", "label": "...and none of these tags", "info": "Comma separated." },
+    {
+      "type": "select",
+      "id": "customer_rule",
+      "label": "Customer",
+      "options": [
+        { "value": "any", "label": "Anyone" },
+        { "value": "logged_out", "label": "Is logged out" },
+        { "value": "has_any", "label": "Has any of the tags below" },
+        { "value": "missing_all", "label": "Has none of the tags below" }
+      ],
+      "default": "any"
+    },
+    { "type": "text", "id": "customer_tags", "label": "Customer tags", "info": "Comma separated. Used by the two tag rules above." },
+    { "type": "checkbox", "id": "hide_buy_controls", "label": "Hide the variant picker and add to cart when shown", "default": false },
+    { "type": "header", "content": "Style" },
+    { "type": "checkbox", "id": "boxed", "label": "Shadowed box", "default": false },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    { "type": "color", "id": "text_color", "label": "Text color" },
+    { "type": "color", "id": "bg", "label": "Background" }
+  ],
+  "presets": [{ "name": "Product message" }]
+}
+{% endschema %}
