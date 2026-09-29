@@ -374,10 +374,31 @@
 }
 
 /* ---- Buy ---- */
+/* Stacked, as on the live site: quantity on its own row above a
+   full-width add to cart, not the two side by side. */
 .gs-product__buy-row {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
   align-items: stretch;
+  gap: 10px;
+}
+
+.gs-product__quantity {
+  align-self: flex-start;
+}
+
+.gs-product__title--upper {
+  text-transform: uppercase;
+}
+
+/* The promotions line comes from a metafield that renders a <ul>, so
+   it arrives bulleted and indented. The live site shows it as plain
+   lines. */
+.gs-product__message-text ul,
+.gs-product__message-text ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .gs-product__quantity {
@@ -412,8 +433,11 @@
 }
 
 .gs-product__submit {
-  flex: 1 1 auto;
-  min-height: 48px;
+  width: 100%;
+  min-height: 5.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .gs-product__buy-error {

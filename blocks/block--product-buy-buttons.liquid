@@ -38,6 +38,11 @@
         {% unless v.available %}disabled{% endunless %}
       >
 
+      {%- comment -%}
+        Stacked, as on the live site: quantity on its own row, then a
+        full-width add to cart. The wishlist button the live page shows
+        underneath is the Wishlist app's block, placed in the editor.
+      {%- endcomment -%}
       <div class="gs-product__buy-row gs-product__gated">
         {%- if s.show_quantity -%}
           <div class="gs-product__quantity">

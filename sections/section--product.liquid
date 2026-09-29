@@ -93,20 +93,24 @@
 >
   <div class="page-width">
     {%- if s.show_breadcrumb -%}
-      {%- comment -%}
-        Home / type / product. v3 also restored the collection from a
-        localStorage value written on collection pages; that is a
-        cross-page side effect for one crumb, so it is not carried over.
-      {%- endcomment -%}
       <nav class="gs-product__breadcrumb" aria-label="Breadcrumbs">
         <ol>
           <li><a href="{{ routes.root_url }}">Home</a></li>
-          {%- if collection != blank -%}
-            <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
-          {%- elsif product.type != blank -%}
-            <li>
-              <a href="{{ routes.search_url }}?q={{ product.type | url_encode }}&type=product">{{ product.type }}</a>
-            </li>
+          {%- comment -%}
+            v3 shows Home / All Products / <type> / <product>, using the
+            collection the customer arrived through in place of "All
+            Products" when there is one. v3 also restored that
+            collection from a localStorage value written on collection
+            pages; that is a cross-page side effect for one crumb, so it
+            is not carried over.
+          {%- endcomment -%}
+          {%- if collection != blank and collection.handle != 'all' -%}
+            <li><a href="{{ collection.url }}">{{ collection.title | strip_html | truncatewords: 5 }}</a></li>
+          {%- else -%}
+            <li><a href="{{ routes.all_products_collection_url }}">All Products</a></li>
+          {%- endif -%}
+          {%- if product.type != blank -%}
+            <li>{{ product.type | link_to_type }}</li>
           {%- endif -%}
           <li aria-current="page">{{ product.title }}</li>
         </ol>

@@ -9,7 +9,7 @@
 -%}
 {%- if p != blank -%}
   <{{ s.tag | default: 'h1' }}
-    class="gs-product__title {{ s.size | default: 'h2' }}"
+    class="gs-product__title {{ s.size | default: 'h2' }}{% if s.uppercase %} gs-product__title--upper{% endif %}"
     {{ block.shopify_attributes }}
   >
     {{ p.title }}
@@ -21,6 +21,7 @@
   "tag": null,
   "name": "Product title",
   "settings": [
+    { "type": "checkbox", "id": "uppercase", "label": "Uppercase", "default": true },
     {
       "type": "select",
       "id": "size",
