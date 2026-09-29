@@ -171,17 +171,26 @@ def features(s):
               'padding_top': pad(s, 'section_spacing_top_desktop', 10), 'padding_bottom': pad(s, 'section_spacing_bottom_desktop', 10)})
     return {'type': 'section--product-features', 'settings': f}
 
-IWT = {'section_visibility': 'always', 'height': 'adapt', 'desktop_image_width': 'medium', 'layout': 'image_first', 'image_behavior': 'none', 'content_layout': 'no-overlap', 'desktop_content_position': 'middle', 'desktop_content_alignment': 'left', 'mobile_content_alignment': 'center', 'section_color_scheme': 'scheme-1', 'color_scheme': 'scheme-1', 'show_chevrons': False, 'padding_top': 0, 'padding_bottom': 0}
-def image_with_text(image, blocks, layout='image_first', scheme='scheme-1', visibility='always', top=0, bottom=0, align='left'):
-    s = dict(IWT); s.update({'image': image or '', 'layout': layout, 'color_scheme': scheme, 'section_visibility': visibility, 'padding_top': top, 'padding_bottom': bottom, 'desktop_content_alignment': align, 'mobile_content_alignment': 'center'})
+IWT = {'section_visibility': 'always', 'height': 'adapt', 'desktop_image_width': 'medium', 'layout': 'image_first', 'image_behavior': 'none', 'content_layout': 'no-overlap', 'desktop_content_position': 'middle', 'desktop_content_alignment': 'left', 'mobile_content_alignment': 'center', 'section_color_scheme': 'scheme-1', 'color_scheme': 'scheme-1', 'show_chevrons': False, 'full_width': False, 'content_background': '', 'padding_top': 0, 'padding_bottom': 0}
+def image_with_text(image, blocks, layout='image_first', scheme='scheme-1', visibility='always', top=0, bottom=0, align='left', full=False, content_bg=''):
+    s = dict(IWT); s.update({'image': image or '', 'layout': layout, 'color_scheme': scheme, 'section_visibility': visibility, 'padding_top': top, 'padding_bottom': bottom, 'desktop_content_alignment': align, 'mobile_content_alignment': 'center', 'full_width': bool(full), 'content_background': content_bg or ''})
     bl = {f'b{i+1}': b for i, b in enumerate(blocks)}
     return {'type': 'image-with-text', 'settings': s, 'blocks': bl, 'block_order': list(bl)}
 
 def custom_split(s):
+    # The live band runs edge to edge, image on one side and a flat
+    # colour behind centred copy on the other, with outline buttons
+    # stacked under it. v3 carried the colour as a hex, which is why
+    # image-with-text gained a content background setting.
     blocks = [heading(s.get('heading', ''), 'h2'), text(s.get('paragraph', ''))]
     for i in (1, 2):
-        if s.get(f'cta_{i}_text'): blocks.append(button(s[f'cta_{i}_text'], s.get(f'cta_{i}_link')))
-    return image_with_text(s.get('image'), blocks, 'text_first' if s.get('reverse_desktop') else 'image_first', 'scheme-1' if light(s.get('bg_color')) else 'scheme-4')
+        if s.get(f'cta_{i}_text'): blocks.append(button(s[f'cta_{i}_text'], s.get(f'cta_{i}_link'), 'outline'))
+    return image_with_text(s.get('image'), blocks,
+                           # v3's reverse_desktop puts the IMAGE first; its unreversed
+                           # default is text on the left. Verified against the live club band.
+                           'image_first' if s.get('reverse_desktop') else 'text_first',
+                           'scheme-1' if light(s.get('bg_color')) else 'scheme-4',
+                           align='center', full=True, content_bg=s.get('bg_color'))
 
 def split_banner(sec):
     s = sec.get('settings', {}); media = content = {}

@@ -542,6 +542,8 @@
       "settings": {
         "section_visibility": "always",
         "image": "shopify://shop_images/Blank_Poster_2000x2000_Foundation__2024_Holiday_Gift_Guide_Landing_Page-min.jpg",
+        "full_width": false,
+        "content_background": "",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",

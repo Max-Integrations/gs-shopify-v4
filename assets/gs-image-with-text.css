@@ -133,3 +133,63 @@
     margin-top: calc(var(--chevron-col-size, 78px) / -2);
   }
 }
+
+
+/*
+  ==================================================================
+  FULL WIDTH (2026-09-29)
+  ==================================================================
+  The club band on the PDP runs edge to edge: image flush to the left
+  edge, a flat colour behind the copy on the right, content centred in
+  its half and the buttons stacked rather than sitting side by side.
+  All of it is scoped to .gs-iwt--full so the page-width instances
+  (the home page product highlight) are untouched.
+*/
+.gs-iwt__bleed {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Dawn rounds and insets the two panes; edge to edge wants neither. */
+.gs-iwt--full .image-with-text__media,
+.gs-iwt--full .gs-iwt__content {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* The colour goes on the grid pane, not the inner content box: Dawn
+   forces that box transparent with .background-transparent, and the
+   live band colours the whole half anyway. */
+.image-with-text__text-item.gs-iwt__pane--bg {
+  background-color: var(--gs-iwt-bg);
+}
+
+/* Buttons are inline-block, so in a wide pane two sit on one line.
+   The live band stacks them, each only as wide as its label. */
+.gs-iwt--full .gs-iwt__content > .gs-block-button-wrap {
+  display: block;
+  width: fit-content;
+}
+
+.gs-iwt--full .image-with-text__content--desktop-center > .gs-block-button-wrap {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* The copy sits on a narrow measure, not the full pane. */
+.gs-iwt--full .gs-iwt__content > .gs-block-text {
+  max-width: 34rem;
+}
+
+/* Stacked buttons need real separation; the default rhythm reads as a
+   single clump once they are block-level. */
+.gs-iwt--full .gs-iwt__content > .gs-block-button-wrap + .gs-block-button-wrap {
+  margin-top: 1.6rem;
+}
+
+.gs-iwt--full .image-with-text__content--desktop-center > .gs-block-text {
+  margin-left: auto;
+  margin-right: auto;
+}

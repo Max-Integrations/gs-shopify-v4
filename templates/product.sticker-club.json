@@ -530,6 +530,8 @@
       "settings": {
         "section_visibility": "always",
         "image": "shopify://shop_images/SunnyRoad_Homepage_Module_Custom_Split_Section_Mobile_1560x1560_5_1.png",
+        "full_width": false,
+        "content_background": "",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
