@@ -1,0 +1,349 @@
+/*
+  ==================================================================
+  GS Product (PDP)
+  ==================================================================
+  Two columns on desktop: gallery left, buy box right and sticky.
+  Stacked on mobile. Matches the live v3 layout.
+
+  GATING. The section publishes data-buy-hidden on the wrapper when a
+  message block with "hide buy controls" matched. Anything a merchant
+  should not be able to buy through carries .gs-product__gated and is
+  hidden by the single rule below, so no block repeats the condition.
+  ==================================================================
+*/
+
+.gs-product {
+  padding-top: var(--gs-product-pad-top, 24px);
+  padding-bottom: var(--gs-product-pad-bottom, 36px);
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+.gs-product[data-buy-hidden] .gs-product__gated {
+  display: none !important;
+}
+
+/* ---- Breadcrumb ---- */
+.gs-product__breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+  font-size: 1.2rem;
+}
+
+.gs-product__breadcrumb li + li::before {
+  content: '/';
+  margin-right: 0.4em;
+  opacity: 0.5;
+}
+
+.gs-product__breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gs-product__breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.gs-product__breadcrumb [aria-current='page'] {
+  opacity: 0.6;
+}
+
+/* ---- Grid ---- */
+.gs-product__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+}
+
+/* ---- Media ---- */
+.gs-product__media {
+  position: relative;
+  min-width: 0;
+}
+
+.gs-product__badge {
+  position: absolute;
+  z-index: 2;
+  width: 50px;
+  height: auto;
+  pointer-events: none;
+}
+
+.gs-product__badge--top-right { top: 1rem; right: 1rem; }
+.gs-product__badge--top-left { top: 1rem; left: 1rem; }
+.gs-product__badge--bottom-right { bottom: 1rem; right: 1rem; }
+.gs-product__badge--bottom-left { bottom: 1rem; left: 1rem; }
+
+.gs-product__gallery {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gs-product__gallery::-webkit-scrollbar { display: none; }
+
+.gs-product__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+.gs-product__zoom-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.gs-product__slide img,
+.gs-product__slide .placeholder-svg,
+.gs-product__slide video,
+.gs-product__slide iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Image shape, set per section. */
+.gs-product--ratio-square .gs-product__slide img,
+.gs-product--ratio-portrait .gs-product__slide img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.gs-product--ratio-square .gs-product__slide { aspect-ratio: 1 / 1; }
+.gs-product--ratio-portrait .gs-product__slide { aspect-ratio: 4 / 5; }
+
+.gs-product__thumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.gs-product__thumbs::-webkit-scrollbar { display: none; }
+
+.gs-product__thumb {
+  flex: 0 0 auto;
+  display: block;
+  width: 64px;
+  border: 2px solid transparent;
+}
+
+.gs-product__thumb.is-active {
+  border-color: rgb(var(--color-foreground));
+}
+
+.gs-product__thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---- Buy box ---- */
+.gs-product__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.gs-product__info > * {
+  margin: 0;
+}
+
+.gs-product__title {
+  margin: 0;
+}
+
+/* ---- Price ---- */
+.gs-product__price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6em;
+}
+
+.gs-product__price-current {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.gs-product__price-current.is-sale {
+  color: rgba(var(--line-color), 1);
+}
+
+.gs-product__price-compare {
+  opacity: 0.6;
+}
+
+.gs-product__price-saving {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+}
+
+.gs-product__price-tax,
+.gs-product__price-message {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+/* ---- Options ---- */
+.gs-product__option {
+  margin: 0 0 1.2rem;
+  padding: 0;
+  border: 0;
+}
+
+.gs-product__option-label {
+  display: flex;
+  gap: 0.4em;
+  padding: 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.gs-product__option-name { font-weight: 700; }
+
+.gs-product__option-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Visually hidden but focusable: a display:none radio leaves the
+   keyboard with nothing to land on. */
+.gs-product__option-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.gs-product__option-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  padding: 0.7em 1em;
+  border: 1px solid rgba(var(--color-foreground), 0.35);
+  cursor: pointer;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.gs-product__option-input:checked + .gs-product__option-pill {
+  border-color: rgb(var(--color-foreground));
+  background-color: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+}
+
+.gs-product__option-input:focus-visible + .gs-product__option-pill {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 2px;
+}
+
+/* Sold out stays selectable, struck through, as on the live site. */
+.gs-product__option-input[data-unavailable] + .gs-product__option-pill {
+  position: relative;
+  opacity: 0.45;
+}
+
+.gs-product__option-input[data-unavailable] + .gs-product__option-pill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top left, transparent 47%, currentColor 47%, currentColor 53%, transparent 53%);
+}
+
+/* ---- Buy ---- */
+.gs-product__buy-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.gs-product__quantity {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid rgba(var(--color-foreground), 0.35);
+}
+
+.gs-product__qty-btn {
+  width: 40px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.gs-product__qty-input {
+  width: 48px;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: center;
+  font-size: 1.4rem;
+  -moz-appearance: textfield;
+}
+
+.gs-product__qty-input::-webkit-outer-spin-button,
+.gs-product__qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.gs-product__submit {
+  flex: 1 1 auto;
+  min-height: 48px;
+}
+
+.gs-product__buy-error {
+  margin: 0.6rem 0 0;
+  color: rgba(var(--line-color), 1);
+  font-size: 1.3rem;
+}
+
+.gs-product__installments,
+.gs-product__dynamic {
+  margin-top: 0.8rem;
+}
+
+/* ---- Desktop ---- */
+@media screen and (min-width: 990px) {
+  .gs-product__grid {
+    grid-template-columns: minmax(0, 1fr) 440px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .gs-product--sticky .gs-product__info {
+    position: sticky;
+    top: calc(var(--gs-header-height, 80px) + 2rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gs-product__gallery { scroll-behavior: auto; }
+}

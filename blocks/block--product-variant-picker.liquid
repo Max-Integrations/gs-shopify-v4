@@ -1,0 +1,90 @@
+{% comment %}
+  BLOCK: PRODUCT VARIANT PICKER
+  ==================================================================
+  One fieldset per option, values as pill radios (v3's picker_type
+  "button"). The live "Size: Small" readout beside the legend is v3's,
+  and gs-product.js keeps it current.
+
+  The radios live OUTSIDE the <form> the buy-buttons block owns, and
+  join it with form="ProductForm-{product.id}". Both blocks derive that
+  id from the product because a theme block cannot see section.id.
+
+  Unavailable values stay selectable and are marked data-unavailable,
+  so a customer can pick a sold-out size and be told, rather than the
+  option silently vanishing.
+
+  A <noscript> select posts the variant without JavaScript.
+  ==================================================================
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign p = closest.product | default: product
+  assign form_id = 'ProductForm-' | append: p.id
+-%}
+{%- if p != blank and p.has_only_default_variant == false -%}
+  <div class="gs-product__options gs-product__gated" {{ block.shopify_attributes }}>
+    {%- for option in p.options_with_values -%}
+      {%- liquid
+        assign only_one = false
+        if option.values.size == 1 and s.hide_single_value
+          assign only_one = true
+        endif
+      -%}
+      {%- unless only_one -%}
+        <fieldset class="gs-product__option" data-option-position="{{ option.position }}">
+          <legend class="gs-product__option-label">
+            <span class="gs-product__option-name">{{ option.name }}:</span>
+            <span class="gs-product__option-value" data-selected-for="{{ option.position }}">
+              {{- option.selected_value -}}
+            </span>
+          </legend>
+
+          <div class="gs-product__option-values">
+            {%- for value in option.values -%}
+              {%- liquid
+                assign input_id = 'GsOpt-' | append: p.id | append: '-' | append: option.position | append: '-' | append: forloop.index
+                assign is_available = true
+                unless value.available
+                  assign is_available = false
+                endunless
+              -%}
+              <input
+                type="radio"
+                class="gs-product__option-input"
+                id="{{ input_id }}"
+                name="{{ option.name | escape }}-{{ option.position }}"
+                value="{{ value | escape }}"
+                form="{{ form_id }}"
+                data-option-position="{{ option.position }}"
+                {% if value.selected %}checked{% endif %}
+                {% unless is_available %}data-unavailable{% endunless %}
+              >
+              <label class="gs-product__option-pill" for="{{ input_id }}">{{ value }}</label>
+            {%- endfor -%}
+          </div>
+        </fieldset>
+      {%- endunless -%}
+    {%- endfor -%}
+
+    <noscript>
+      <select name="id" form="{{ form_id }}" class="gs-product__option-fallback">
+        {%- for v in p.variants -%}
+          <option value="{{ v.id }}" {% if v == p.selected_or_first_available_variant %}selected{% endif %} {% unless v.available %}disabled{% endunless %}>
+            {{ v.title }} - {{ v.price | money }}
+          </option>
+        {%- endfor -%}
+      </select>
+    </noscript>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Variant picker",
+  "settings": [
+    { "type": "checkbox", "id": "hide_single_value", "label": "Hide options that have only one value", "default": true }
+  ],
+  "presets": [{ "name": "Variant picker" }]
+}
+{% endschema %}

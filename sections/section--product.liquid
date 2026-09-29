@@ -1,0 +1,330 @@
+{% comment %}
+  ==================================================================
+  PRODUCT
+  Replaces sections/main-product.liquid (renamed deprecated--main-product)
+  ==================================================================
+  The product band: breadcrumb, media gallery, and the buy box. Matches
+  the v3 PDP layout (gallery left with a thumbnail rail, buy box right
+  and sticky on desktop; stacked on mobile with a fixed add-to-cart bar).
+
+  ------------------------------------------------------------------
+  THEME BLOCKS, BECAUSE OF THE APPS
+  ------------------------------------------------------------------
+  Four apps put blocks in this buy box: Klaviyo (average rating), Skio
+  (subscription plan picker), Wishlist Plus, and Loop/Wonderment
+  (delivery ETA). A section may accept `@app` blocks ALONGSIDE theme
+  blocks, but it may not mix `@app` with locally defined blocks. So
+  every buy-box element is a theme block in blocks/, and the generic
+  block--heading / block--text / block--button work here too.
+
+  v3 put 37 block types in one section and dispatched them from a
+  968-line snippet. This carries 12, and the messaging, badge and
+  gating blocks each absorb a family of v3 types. See the plan in
+  docs/ for the full mapping.
+
+  ------------------------------------------------------------------
+  GATING (v3's pdp-overrides.liquid, 94 lines of hardcoded rules)
+  ------------------------------------------------------------------
+  v3 hardcoded ten business rules that hide the variant picker,
+  quantity and add-to-cart for club products, early access, licensed
+  branch products and so on. Here each block--product-message carries
+  its own condition and an optional "hide buy controls" flag; this
+  section ORs the matched flags into `buy_hidden` and the buy blocks
+  gate on it. A new rule is a new block, not new code.
+
+  Theme blocks cannot read section variables, so the flag is published
+  as `data-buy-hidden` on the wrapper and gs-product.css hides anything
+  marked .gs-product__gated. No block repeats the condition logic.
+
+  ------------------------------------------------------------------
+  THREE CONSTRAINTS THAT SHAPE THIS FILE
+  ------------------------------------------------------------------
+  1. Theme blocks render only through {% content_for 'blocks' %}, all
+     of them, in merchant order, in one place. They cannot be rendered
+     individually and cannot be passed variables.
+  2. So the badge, which belongs over the GALLERY and not in the buy
+     box, cannot be rendered where it is placed. block--product-badge
+     therefore outputs nothing: it is configuration (tag -> image), and
+     this section reads section.blocks, picks the first tag match and
+     draws it over the gallery. That is exactly v3's rule, where
+     pdp-gs-badge took the first matching block.
+  3. The form id must be shared between the buy-buttons block (which
+     owns the <form>) and the variant picker, which sits outside it and
+     joins by the form= attribute. Blocks cannot see section.id, so
+     each derives the same id from the product: ProductForm-<id>. One
+     product section per page, so it is unique. Nothing in this file
+     needs it.
+
+  ------------------------------------------------------------------
+  STRUCTURED DATA
+  ------------------------------------------------------------------
+  Neither v3 nor the previous v4 section emitted any. Dawn does, and
+  Google reads it for rich results, so the Product JSON-LD is here.
+  ==================================================================
+{% endcomment %}
+
+{{ 'gs-product.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gs-product.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign s = section.settings
+
+  # ---- Pass 1: does any message block hide the buy controls? ----
+  assign buy_hidden = false
+  for block in section.blocks
+    if block.type != 'block--product-message'
+      continue
+    endif
+    unless block.settings.hide_buy_controls
+      continue
+    endunless
+    assign b = block.settings
+    assign matched = false
+    case b.condition
+      when 'always'
+        assign matched = true
+      when 'product_tag'
+        if b.match != blank and product.tags contains b.match
+          assign matched = true
+        endif
+      when 'customer_tag'
+        if b.match != blank and customer != blank and customer.tags contains b.match
+          assign matched = true
+        endif
+      when 'customer_missing_tag'
+        if b.match != blank
+          assign matched = true
+          if customer != blank and customer.tags contains b.match
+            assign matched = false
+          endif
+        endif
+      when 'logged_out'
+        if customer == blank
+          assign matched = true
+        endif
+    endcase
+    if matched
+      assign buy_hidden = true
+      break
+    endif
+  endfor
+
+  # ---- Pass 2: first badge block whose tag matches, as v3 did ----
+  assign badge_image = nil
+  assign badge_position = 'top-right'
+  assign override = product.metafields.custom.product_image_badge_override
+  if override != blank
+    assign badge_image = override
+  else
+    for block in section.blocks
+      if block.type != 'block--product-badge'
+        continue
+      endif
+      if block.settings.image == blank or block.settings.tag == blank
+        continue
+      endif
+      if product.tags contains block.settings.tag
+        assign badge_image = block.settings.image
+        assign badge_position = block.settings.position | default: 'top-right'
+        break
+      endif
+    endfor
+  endif
+-%}
+
+<div
+  class="gs-product color-{{ s.color_scheme }} gradient gs-product--ratio-{{ s.media_ratio | default: 'square' }}{% if s.sticky_info %} gs-product--sticky{% endif %}"
+  style="--gs-product-pad-top: {{ s.padding_top }}px; --gs-product-pad-bottom: {{ s.padding_bottom }}px;"
+  id="GsProduct-{{ section.id }}"
+  data-gs-product
+  data-section-id="{{ section.id }}"
+  data-url="{{ product.url }}"
+  {% if buy_hidden %}data-buy-hidden{% endif %}
+>
+  <div class="page-width">
+    {%- if s.show_breadcrumb -%}
+      {%- comment -%}
+        Home / type / product. v3 also restored the collection from a
+        localStorage value written on collection pages; that is a
+        cross-page side effect for one crumb, so it is not carried over.
+      {%- endcomment -%}
+      <nav class="gs-product__breadcrumb" aria-label="Breadcrumbs">
+        <ol>
+          <li><a href="{{ routes.root_url }}">Home</a></li>
+          {%- if collection != blank -%}
+            <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+          {%- elsif product.type != blank -%}
+            <li>
+              <a href="{{ routes.search_url }}?q={{ product.type | url_encode }}&type=product">{{ product.type }}</a>
+            </li>
+          {%- endif -%}
+          <li aria-current="page">{{ product.title }}</li>
+        </ol>
+      </nav>
+    {%- endif -%}
+
+    <div class="gs-product__grid">
+      {%- comment -%} ---------------- Media ---------------- {%- endcomment -%}
+      <div class="gs-product__media">
+        {%- if badge_image != blank -%}
+          <img
+            class="gs-product__badge gs-product__badge--{{ badge_position }}"
+            src="{{ badge_image | image_url: width: 200 }}"
+            srcset="{{ badge_image | image_url: width: 100 }} 100w, {{ badge_image | image_url: width: 200 }} 200w"
+            sizes="100px"
+            alt=""
+            width="100"
+            height="100"
+            loading="lazy"
+          >
+        {%- endif -%}
+
+        <div class="gs-product__gallery" data-gs-gallery>
+          {%- if product.media.size > 0 -%}
+            {%- for media in product.media -%}
+              <div
+                class="gs-product__slide"
+                id="GsMedia-{{ section.id }}-{{ media.id }}"
+                data-media-id="{{ media.id }}"
+              >
+                {%- case media.media_type -%}
+                  {%- when 'image' -%}
+                    <button
+                      type="button"
+                      class="gs-product__zoom-open"
+                      data-gs-zoom="{{ forloop.index0 }}"
+                      aria-label="{{ 'products.product.media.open_media' | t: index: forloop.index | default: 'Open media' }}"
+                    >
+                      <img
+                        src="{{ media | image_url: width: 1200 }}"
+                        srcset="
+                          {{ media | image_url: width: 600 }} 600w,
+                          {{ media | image_url: width: 900 }} 900w,
+                          {{ media | image_url: width: 1200 }} 1200w,
+                          {{ media | image_url: width: 1800 }} 1800w
+                        "
+                        sizes="(min-width: 990px) 50vw, 100vw"
+                        alt="{{ media.alt | escape }}"
+                        width="{{ media.width }}"
+                        height="{{ media.height }}"
+                        {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}
+                      >
+                    </button>
+                  {%- else -%}
+                    {{ media | media_tag: image_size: '1200x', autoplay: false, loop: false, controls: true }}
+                {%- endcase -%}
+              </div>
+            {%- endfor -%}
+          {%- else -%}
+            <div class="gs-product__slide">
+              {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- if product.media.size > 1 -%}
+          <div class="gs-product__thumbs" data-gs-thumbs>
+            {%- for media in product.media -%}
+              <a
+                class="gs-product__thumb{% if forloop.first %} is-active{% endif %}"
+                href="#GsMedia-{{ section.id }}-{{ media.id }}"
+                data-thumb-for="{{ media.id }}"
+                aria-label="{{ 'products.product.media.load_image' | t: index: forloop.index }}"
+              >
+                <img
+                  src="{{ media.preview_image | image_url: width: 160 }}"
+                  srcset="{{ media.preview_image | image_url: width: 80 }} 80w, {{ media.preview_image | image_url: width: 160 }} 160w"
+                  sizes="80px"
+                  alt=""
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                >
+              </a>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} ---------------- Buy box ---------------- {%- endcomment -%}
+      <div class="gs-product__info">
+        {% content_for 'blocks' %}
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%}
+    Variant data for the client. Price and compare are included so the
+    price can update without a section fetch (v4's old section re-render
+    was a no-op for price because gs-price read product.price_min).
+  {%- endcomment -%}
+  <script type="application/json" data-gs-variants>
+    [
+      {%- for v in product.variants -%}
+        {
+          "id": {{ v.id }},
+          "options": {{ v.options | json }},
+          "available": {{ v.available }},
+          "price": {{ v.price }},
+          "compare_at_price": {{ v.compare_at_price | default: 0 }},
+          "media": {{ v.featured_media.id | default: 0 }},
+          "sku": {{ v.sku | default: '' | json }}
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  </script>
+
+  {%- comment -%} Rich results. Neither v3 nor the old v4 section had this. {%- endcomment -%}
+  <script type="application/ld+json">
+    {{ product | structured_data }}
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "Product",
+  "tag": "section",
+  "class": "gs-product-section",
+  "enabled_on": { "templates": ["product"] },
+  "blocks": [
+    { "type": "block--product-title" },
+    { "type": "block--product-price" },
+    { "type": "block--product-variant-picker" },
+    { "type": "block--product-buy-buttons" },
+    { "type": "block--heading" },
+    { "type": "block--text" },
+    { "type": "block--button" },
+    { "type": "@app" }
+  ],
+  "settings": [
+    { "type": "checkbox", "id": "show_breadcrumb", "label": "Show breadcrumb", "default": true },
+    { "type": "checkbox", "id": "sticky_info", "label": "Stick the buy box while scrolling", "info": "Desktop only.", "default": true },
+    { "type": "checkbox", "id": "sticky_atc", "label": "Sticky add to cart bar", "info": "Mobile only, as on the live site.", "default": true },
+    {
+      "type": "select",
+      "id": "media_ratio",
+      "label": "Image shape",
+      "options": [
+        { "value": "natural", "label": "Natural" },
+        { "value": "square", "label": "Square" },
+        { "value": "portrait", "label": "Portrait" }
+      ],
+      "default": "square"
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Top padding", "default": 24 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Bottom padding", "default": 36 }
+  ],
+  "presets": [
+    {
+      "name": "Product",
+      "blocks": [
+        { "type": "block--product-title" },
+        { "type": "block--product-price" },
+        { "type": "block--product-variant-picker" },
+        { "type": "block--product-buy-buttons" }
+      ]
+    }
+  ]
+}
+{% endschema %}

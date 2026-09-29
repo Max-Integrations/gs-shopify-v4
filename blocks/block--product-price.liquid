@@ -1,0 +1,81 @@
+{% comment %}
+  BLOCK: PRODUCT PRICE
+  ==================================================================
+  Price, compare-at, savings, and v3's optional red conditional
+  message (custom.conditional_price_message).
+
+  VARIANT AWARE, unlike snippets/gs-price.liquid, which reads
+  product.price_min and so never changed when a variant was selected.
+  Values come from the SELECTED variant and carry data hooks that
+  assets/gs-product.js rewrites on change, with no section re-fetch.
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign p = closest.product | default: product
+  assign v = p.selected_or_first_available_variant
+  assign price = v.price
+  assign compare = v.compare_at_price | default: 0
+  assign on_sale = false
+  if compare > price
+    assign on_sale = true
+  endif
+-%}
+{%- if p != blank -%}
+  <div class="gs-product__price" data-gs-price {{ block.shopify_attributes }}>
+    <span class="gs-product__price-current{% if on_sale %} is-sale{% endif %}" data-gs-price-current>
+      {{ price | money }}
+    </span>
+
+    <s class="gs-product__price-compare" data-gs-price-compare {% unless on_sale %}hidden{% endunless %}>
+      {{ compare | money }}
+    </s>
+
+    {%- if s.show_savings -%}
+      <span class="gs-product__price-saving" data-gs-price-saving {% unless on_sale %}hidden{% endunless %}>
+        {%- if s.savings_style == 'percent' -%}
+          Save <span data-gs-saving-value>
+            {%- if on_sale -%}{{ compare | minus: price | times: 100 | divided_by: compare }}%{%- endif -%}
+          </span>
+        {%- else -%}
+          Save <span data-gs-saving-value>{% if on_sale %}{{ compare | minus: price | money }}{% endif %}</span>
+        {%- endif -%}
+      </span>
+    {%- endif -%}
+
+    {%- if s.show_tax_line -%}
+      <span class="gs-product__price-tax">Tax included. Shipping calculated at checkout.</span>
+    {%- endif -%}
+
+    {%- comment -%} v3 drove this from a metafield; the setting accepts Liquid. {%- endcomment -%}
+    {%- if s.conditional_message != blank -%}
+      <p class="gs-product__price-message" style="color: {{ s.message_color | default: '#ab192d' }};">
+        {{ s.conditional_message }}
+      </p>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Product price",
+  "settings": [
+    { "type": "checkbox", "id": "show_savings", "label": "Show savings when on sale", "default": true },
+    {
+      "type": "select",
+      "id": "savings_style",
+      "label": "Savings shown as",
+      "options": [
+        { "value": "percent", "label": "Percent off" },
+        { "value": "amount", "label": "Amount off" }
+      ],
+      "default": "percent"
+    },
+    { "type": "checkbox", "id": "show_tax_line", "label": "Show the tax and shipping line", "default": false },
+    { "type": "header", "content": "Conditional message" },
+    { "type": "richtext", "id": "conditional_message", "label": "Message", "info": "Accepts Liquid, e.g. a metafield." },
+    { "type": "color", "id": "message_color", "label": "Message color", "default": "#ab192d" }
+  ],
+  "presets": [{ "name": "Product price" }]
+}
+{% endschema %}

@@ -1,83 +1,57 @@
 {
   "sections": {
     "main": {
-      "type": "main-product",
+      "type": "section--product",
       "blocks": {
-        "vendor": {
-          "type": "vendor",
-          "settings": {}
-        },
         "title": {
-          "type": "title",
-          "settings": {}
-        },
-        "reviews": {
-          "type": "reviews",
-          "settings": {}
+          "type": "block--product-title",
+          "settings": {
+            "size": "h2",
+            "tag": "h1"
+          }
         },
         "price": {
-          "type": "price",
-          "settings": {}
-        },
-        "swatches": {
-          "type": "swatches",
-          "settings": {}
+          "type": "block--product-price",
+          "settings": {
+            "show_savings": true,
+            "savings_style": "percent",
+            "show_tax_line": false,
+            "conditional_message": "{{ product.metafields.custom.conditional_price_message.value }}",
+            "message_color": "#ab192d"
+          }
         },
         "variant_picker": {
-          "type": "variant_picker",
-          "settings": {}
+          "type": "block--product-variant-picker",
+          "settings": {
+            "hide_single_value": true
+          }
         },
         "buy_buttons": {
-          "type": "buy_buttons",
+          "type": "block--product-buy-buttons",
           "settings": {
             "show_quantity": true,
-            "show_dynamic_checkout": false
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {}
-        },
-        "accordion_CPJQ7R": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Material Descriptions",
-            "content": "{{ product.metafields.custom.material_description | metafield_tag }}",
-            "page": ""
-          }
-        },
-        "shipping": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Shipping & Returns",
-            "content": "<p>Free shipping on orders over $75. Easy returns within 30 days.</p>",
-            "page": ""
-          }
-        },
-        "sizing": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Sizing",
-            "content": "<p>See our <span style=\"text-decoration:underline\">size chart</span> for measurements.</p><p>{{ product.metafields.custom.size_fit.value }}</p>",
-            "page": ""
+            "add_label": "Add to cart",
+            "sold_out_label": "Sold out - email when available",
+            "sold_out_disables": false,
+            "show_dynamic_checkout": false,
+            "show_installments": true
           }
         }
       },
       "block_order": [
-        "vendor",
         "title",
-        "reviews",
         "price",
-        "swatches",
         "variant_picker",
-        "buy_buttons",
-        "description",
-        "accordion_CPJQ7R",
-        "shipping",
-        "sizing"
+        "buy_buttons"
       ],
       "settings": {
-        "color_scheme": "scheme-1"
+        "show_breadcrumb": true,
+        "sticky_info": true,
+        "sticky_atc": true,
+        "media_ratio": "square",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 36
       }
     },
     "recommendations": {

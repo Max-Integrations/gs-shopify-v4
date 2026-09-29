@@ -420,26 +420,62 @@
 
 {% schema %}
 {
-  "name": "Product",
+  "name": "Product (old)",
   "tag": "section",
   "class": "gs-pdp-section",
   "settings": [
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
   ],
   "blocks": [
-    { "type": "@app" },
-    { "type": "vendor", "name": "Vendor", "limit": 1 },
-    { "type": "title", "name": "Title", "limit": 1 },
-    { "type": "reviews", "name": "Reviews", "limit": 1 },
-    { "type": "price", "name": "Price", "limit": 1 },
-    { "type": "swatches", "name": "Colourway swatches", "limit": 1 },
-    { "type": "variant_picker", "name": "Variant picker", "limit": 1 },
+    {
+      "type": "@app"
+    },
+    {
+      "type": "vendor",
+      "name": "Vendor",
+      "limit": 1
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1
+    },
+    {
+      "type": "reviews",
+      "name": "Reviews",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1
+    },
+    {
+      "type": "swatches",
+      "name": "Colourway swatches",
+      "limit": 1
+    },
+    {
+      "type": "variant_picker",
+      "name": "Variant picker",
+      "limit": 1
+    },
     {
       "type": "buy_buttons",
       "name": "Buy buttons",
       "limit": 1,
       "settings": [
-        { "type": "checkbox", "id": "show_quantity", "label": "Show quantity selector", "default": true },
+        {
+          "type": "checkbox",
+          "id": "show_quantity",
+          "label": "Show quantity selector",
+          "default": true
+        },
         {
           "type": "checkbox",
           "id": "show_dynamic_checkout",
@@ -449,28 +485,33 @@
         }
       ]
     },
-    { "type": "description", "name": "Description", "limit": 1 },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1
+    },
     {
       "type": "accordion",
       "name": "Accordion row",
       "settings": [
-        { "type": "text", "id": "heading", "label": "Heading", "default": "Shipping & returns" },
-        { "type": "richtext", "id": "content", "label": "Content" },
-        { "type": "page", "id": "page", "label": "Or use a page" }
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Shipping & returns"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Or use a page"
+        }
       ]
     }
-  ],
-  "default": {
-    "blocks": [
-      { "type": "vendor" },
-      { "type": "title" },
-      { "type": "reviews" },
-      { "type": "price" },
-      { "type": "swatches" },
-      { "type": "variant_picker" },
-      { "type": "buy_buttons" },
-      { "type": "description" }
-    ]
-  }
+  ]
 }
 {% endschema %}

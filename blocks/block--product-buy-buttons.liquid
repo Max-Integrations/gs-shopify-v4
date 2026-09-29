@@ -1,0 +1,111 @@
+{% comment %}
+  BLOCK: PRODUCT BUY BUTTONS
+  ==================================================================
+  Owns the product <form>: quantity, add to cart, optional dynamic
+  checkout and Shop Pay installments. Absorbs three v3 block types
+  (quantity_selector, buttons, shop_pay_installments).
+
+  The form carries the shared id so the variant picker's radios, which
+  sit outside it, post with it.
+
+  ADD TO CART IS AJAX. The old v4 section posted the form and navigated
+  to /cart even though the cart is a drawer. gs-product.js intercepts
+  this form, posts /cart/add.js asking for the cart-drawer and
+  cart-icon-bubble sections, and hands the response to the drawer's
+  renderContents() - open() alone shows the drawer as it was BEFORE the
+  add, a trap already hit in club-join-steps.
+
+  SOLD OUT: the button keeps id="BIS_trigger" so the Restock Alerts app
+  binds its "email when available" flow, as it does in v3.
+  ==================================================================
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign p = closest.product | default: product
+  assign v = p.selected_or_first_available_variant
+  assign form_id = 'ProductForm-' | append: p.id
+  # A filter cannot appear in a tag argument, so both ids are precomputed.
+  assign installments_id = 'GsInstallments-' | append: p.id
+-%}
+{%- if p != blank -%}
+  <div class="gs-product__buy" data-gs-buy {{ block.shopify_attributes }}>
+    {%- form 'product', p, id: form_id, class: 'gs-product__form', novalidate: 'novalidate' -%}
+      <input
+        type="hidden"
+        name="id"
+        value="{{ v.id }}"
+        data-gs-variant-id
+        {% unless v.available %}disabled{% endunless %}
+      >
+
+      <div class="gs-product__buy-row gs-product__gated">
+        {%- if s.show_quantity -%}
+          <div class="gs-product__quantity">
+            <label class="visually-hidden" for="GsQty-{{ p.id }}">{{ 'products.product.quantity.label' | t }}</label>
+            <button type="button" class="gs-product__qty-btn" data-gs-qty="down" aria-label="{{ 'products.product.quantity.decrease' | t: product: p.title | escape }}">&minus;</button>
+            <input
+              id="GsQty-{{ p.id }}"
+              class="gs-product__qty-input"
+              type="number"
+              name="quantity"
+              value="1"
+              min="1"
+              step="1"
+              inputmode="numeric"
+            >
+            <button type="button" class="gs-product__qty-btn" data-gs-qty="up" aria-label="{{ 'products.product.quantity.increase' | t: product: p.title | escape }}">+</button>
+          </div>
+        {%- endif -%}
+
+        <button
+          type="submit"
+          name="add"
+          class="gs-product__submit button"
+          data-gs-submit
+          {% unless v.available %}id="BIS_trigger"{% endunless %}
+          {% if v.available == false and s.sold_out_disables %}disabled{% endif %}
+        >
+          <span data-gs-submit-text>
+            {%- if v.available -%}
+              {{ s.add_label | default: 'Add to cart' }}
+            {%- else -%}
+              {{ s.sold_out_label | default: 'Sold out - email when available' }}
+            {%- endif -%}
+          </span>
+        </button>
+      </div>
+
+      <p class="gs-product__buy-error" role="alert" hidden data-gs-error></p>
+
+      {%- if s.show_dynamic_checkout -%}
+        <div class="gs-product__dynamic gs-product__gated">{{ form | payment_button }}</div>
+      {%- endif -%}
+    {%- endform -%}
+
+    {%- if s.show_installments -%}
+      {%- comment -%} Its own form: payment_terms needs one and must not nest. {%- endcomment -%}
+      <div class="gs-product__installments gs-product__gated">
+        {%- form 'product', p, id: installments_id -%}
+          <input type="hidden" name="id" value="{{ v.id }}" data-gs-variant-id>
+          {{ form | payment_terms }}
+        {%- endform -%}
+      </div>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Buy buttons",
+  "settings": [
+    { "type": "checkbox", "id": "show_quantity", "label": "Show quantity selector", "default": true },
+    { "type": "text", "id": "add_label", "label": "Add to cart label", "default": "Add to cart" },
+    { "type": "text", "id": "sold_out_label", "label": "Sold out label", "default": "Sold out - email when available" },
+    { "type": "checkbox", "id": "sold_out_disables", "label": "Disable the button when sold out", "info": "Off keeps it clickable for the back-in-stock app.", "default": false },
+    { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show dynamic checkout button", "default": false },
+    { "type": "checkbox", "id": "show_installments", "label": "Show Shop Pay installments", "default": true }
+  ],
+  "presets": [{ "name": "Buy buttons" }]
+}
+{% endschema %}

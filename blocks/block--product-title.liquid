@@ -1,0 +1,51 @@
+{% comment %}
+  BLOCK: PRODUCT TITLE
+  The <h1>. Size and tag are separate so the visual weight and the
+  document outline can differ, as elsewhere in the theme.
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign p = closest.product | default: product
+-%}
+{%- if p != blank -%}
+  <{{ s.tag | default: 'h1' }}
+    class="gs-product__title {{ s.size | default: 'h2' }}"
+    {{ block.shopify_attributes }}
+  >
+    {{ p.title }}
+  </{{ s.tag | default: 'h1' }}>
+{%- endif -%}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Product title",
+  "settings": [
+    {
+      "type": "select",
+      "id": "size",
+      "label": "Size",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "tag",
+      "label": "HTML tag",
+      "info": "For SEO. One h1 per page.",
+      "options": [
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" },
+        { "value": "p", "label": "p" }
+      ],
+      "default": "h1"
+    }
+  ],
+  "presets": [{ "name": "Product title" }]
+}
+{% endschema %}
