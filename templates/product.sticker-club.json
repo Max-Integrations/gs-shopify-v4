@@ -15,9 +15,11 @@
         "title": {
           "type": "block--product-title",
           "settings": {
+            "uppercase": true,
             "size": "h2",
             "tag": "h1"
-          }
+          },
+          "blocks": {}
         },
         "klaviyo_reviews_average_rating_cGVYzj": {
           "type": "shopify://apps/klaviyo-reviews/blocks/average-rating/db20e365-d984-4ac4-9655-e1588d951ca9",
@@ -33,7 +35,8 @@
             "show_tax_line": false,
             "conditional_message": "<p>{{ product.metafields.custom.conditional_price_message.value }}</p>",
             "message_color": "#ab192d"
-          }
+          },
+          "blocks": {}
         },
         "custom_liquid": {
           "type": "block--custom-liquid",
@@ -49,114 +52,178 @@
             "size": 32,
             "show_label": true,
             "label": "Color"
-          }
+          },
+          "blocks": {}
         },
         "gate_wont_show": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>This product is not available for individual purchase</p>",
+            "image_link": "",
             "product_tags": "wont-show",
+            "exclude_tags": "",
             "customer_rule": "any",
+            "customer_tags": "",
             "hide_buy_controls": true,
-            "boxed": true
-          }
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "gate_club": {
           "type": "block--product-message",
           "settings": {
             "text": "<p><strong>Heads Up! You Must Be a Club Member To Purchase This Product.</strong></p><p>Please be advised there is no guarantee all sizes are in stock on this product. Although it may say 'Gone for Good' we may or may not re-release these products for pre-order in the future.</p><p>Already a Member? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/products/join-now\">Join today!</a></p>",
+            "image_link": "",
             "product_tags": "club product",
             "exclude_tags": "collection: Sticker Club Vault, wont-show",
             "customer_rule": "missing_all",
             "customer_tags": "Active Subscriber, Active Club Subscription",
             "hide_buy_controls": true,
-            "boxed": true
-          }
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "gate_sticker_vault": {
           "type": "block--product-message",
           "settings": {
             "text": "<p><strong>Heads Up! You Must Be a Sticker Club Member To Purchase This Product.</strong></p><p>Already a Member? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/products/sticker-club-monthly\">Join today!</a></p>",
+            "image_link": "",
             "product_tags": "club product, collection: Sticker Club Vault",
             "exclude_tags": "wont-show",
             "customer_rule": "missing_all",
             "customer_tags": "Active Sticker Subscription, Active Club Subscription",
             "hide_buy_controls": true,
-            "boxed": true
-          }
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "gate_rewards_early": {
           "type": "block--product-message",
           "settings": {
             "text": "<p><strong>Heads Up! You Must Be a Grunt Style Rewards Member To Purchase This Product Early.</strong></p><p>Already a Member of Grunt Style Rewards? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/community/membership\">Join today!</a></p>",
+            "image_link": "",
             "product_tags": "rewards early access",
             "exclude_tags": "club product, wont-show",
             "customer_rule": "missing_all",
             "customer_tags": "inveterate-subscriber, Active Sticker Subscription, Active Club Subscription",
             "hide_buy_controls": true,
-            "boxed": true
-          }
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "notice_usn": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>*Officially licensed Navy products are only sold and shipped within the United States*</p>",
+            "image_link": "",
             "product_tags": "USN",
             "exclude_tags": "club product, rewards early access, wont-show",
             "customer_rule": "any",
-            "boxed": true
-          }
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "notice_army": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>*Officially licensed Army products are only sold and shipped within the United States*</p>",
+            "image_link": "",
             "product_tags": "Army",
             "exclude_tags": "club product, rewards early access, wont-show",
             "customer_rule": "any",
-            "boxed": true
-          }
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "notice_usmc": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>*Officially licensed Marine Corps products are only sold and shipped within the United States*</p>",
+            "image_link": "",
             "product_tags": "USMC",
             "exclude_tags": "club product, rewards early access, wont-show",
             "customer_rule": "any",
-            "boxed": true
-          }
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "notice_usaf": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>*Officially licensed Air Force products are only sold and shipped within the United States*</p>",
+            "image_link": "",
             "product_tags": "USAF",
             "exclude_tags": "club product, rewards early access, wont-show",
             "customer_rule": "any",
-            "boxed": true
-          }
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "notice_ussf": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>*Officially licensed Space Force products are only sold and shipped within the United States*</p>",
+            "image_link": "",
             "product_tags": "USSF",
             "exclude_tags": "club product, rewards early access, wont-show",
             "customer_rule": "any",
-            "boxed": true
-          }
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "notice_starbucks": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>This product is only available to Starbucks members</p><p>Please <a href=\"/account/login\">sign in</a> or <a href=\"/account/register\">register</a> with your starbucks.com email to purchase.</p>",
+            "image_link": "",
             "product_tags": "Starbucks",
             "exclude_tags": "club product, rewards early access, wont-show",
             "customer_rule": "missing_all",
             "customer_tags": "starbucks",
-            "boxed": true
-          }
+            "hide_buy_controls": false,
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "variant_picker": {
           "type": "block--product-variant-picker",
@@ -165,7 +232,8 @@
             "size_guide_label": "Size guide",
             "size_option_name": "Size",
             "size_guide_page": "men-size-chart"
-          }
+          },
+          "blocks": {}
         },
         "buy_buttons": {
           "type": "block--product-buy-buttons",
@@ -175,8 +243,9 @@
             "sold_out_label": "Sold out - email when available",
             "sold_out_disables": false,
             "show_dynamic_checkout": false,
-            "show_installments": true
-          }
+            "show_installments": false
+          },
+          "blocks": {}
         },
         "wonderment_pdp_etas_j4BeBN": {
           "type": "shopify://apps/track-by-loop/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",

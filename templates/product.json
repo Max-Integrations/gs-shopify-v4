@@ -379,16 +379,6 @@
               },
               "blocks": {}
             },
-            "prop_beer": {
-              "type": "block--product-value-prop",
-              "settings": {
-                "image": "shopify://shop_images/Beer_Guarantee_Icon-min-1.webp",
-                "text": "",
-                "link": "",
-                "hide_for_tags": "no-beer-guarantee"
-              },
-              "blocks": {}
-            },
             "prop_rewards": {
               "type": "block--product-value-prop",
               "settings": {
@@ -403,7 +393,6 @@
           "block_order": [
             "prop_discounts",
             "prop_shipping",
-            "prop_beer",
             "prop_rewards"
           ]
         },
@@ -662,7 +651,7 @@
         "b2": {
           "type": "block--text",
           "settings": {
-            "text": "<p>Unlock this exclusive tee, made just for Club Grunt Style members! Don\u2019t miss your shot, join now before the month ends and claim yours. Delivered straight to your door.</p>",
+            "text": "<p>Unlock this exclusive tee, made just for Club Grunt Style members! Don’t miss your shot, join now before the month ends and claim yours. Delivered straight to your door.</p>",
             "size": "body",
             "alignment": "inherit",
             "color": ""

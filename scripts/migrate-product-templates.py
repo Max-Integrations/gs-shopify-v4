@@ -125,7 +125,10 @@ def main_section(v3main, suffix):
         elif t == 'pdp_value_props':
             vp = {'type': 'block--product-value-props', 'settings': {'show_borders': bool(s.get('show_borders', True)), 'hide_for_tags': 'Custom Apparel, gift card'}, 'blocks': {}, 'block_order': []}
             for i in (1, 2, 3, 4):
-                if not (s.get(f'title_{i}') or s.get(f'prop_image_{i}')): continue
+                # v3 gates each prop on its NAME alone: {% if block.settings[title_key] != blank %}.
+                # The live template leaves the beer-guarantee prop's name blank
+                # with its image still set, which is how it is switched off.
+                if not s.get(f'title_{i}'): continue
                 ps = {'image': s.get(f'prop_image_{i}', ''), 'text': s.get(f'prop_text_{i}', ''), 'link': s.get(f'prop_link_{i}', ''), 'hide_for_tags': ''}
                 if 'beer' in (s.get(f'title_{i}', '') + s.get(f'prop_image_{i}', '')).lower(): ps['hide_for_tags'] = 'no-beer-guarantee'
                 k = 'prop_' + (re.sub(r'[^a-z0-9]+', '_', s.get(f'title_{i}', '').lower()).strip('_') or f'{i}')
