@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -352,6 +361,24 @@
           },
           "blocks": {}
         },
+        "promo_banner": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "",
+            "image": "shopify://shop_images/Promo_Menu_Banner_750x200_FW26_20_-Off-GOVX.jpg",
+            "image_link": "shopify://pages/govx-discount",
+            "product_tags": "",
+            "exclude_tags": "",
+            "customer_rule": "any",
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": false,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
+        },
         "value_props": {
           "type": "block--product-value-props",
           "settings": {
@@ -484,23 +511,6 @@
             "position": "top-right"
           },
           "blocks": {}
-        },
-        "promo_banner": {
-          "type": "block--product-message",
-          "settings": {
-            "text": "",
-            "image": "shopify://shop_images/Promo_Menu_Banner_750x200_FW26_20_-Off-GOVX.jpg",
-            "image_link": "shopify://pages/govx-discount",
-            "product_tags": "",
-            "exclude_tags": "",
-            "customer_rule": "any",
-            "customer_tags": "",
-            "hide_buy_controls": false,
-            "boxed": false,
-            "alignment": "left",
-            "text_color": "",
-            "bg": ""
-          }
         }
       },
       "block_order": [
@@ -618,25 +628,6 @@
     },
     "custom_split_section_UJzhJF": {
       "type": "image-with-text",
-      "settings": {
-        "section_visibility": "always",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "center",
-        "mobile_content_alignment": "center",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-1",
-        "show_chevrons": false,
-        "full_width": true,
-        "content_background": "#e0dad0",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "image": "shopify://shop_images/Split_Banner_D_980x610_Club_August_2026_Acquisition.jpg"
-      },
       "blocks": {
         "b1": {
           "type": "block--heading",
@@ -648,7 +639,8 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "b2": {
           "type": "block--text",
@@ -657,7 +649,8 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         },
         "b3": {
           "type": "block--button",
@@ -674,14 +667,15 @@
             "margin_x": 0,
             "border_width": 1,
             "border_radius": 0,
-            "custom_scheme": false,
-            "color_scheme": "scheme-1",
+            "custom_scheme": true,
+            "color_scheme": "scheme-2",
             "bg": "",
             "text_color": "",
             "border_color": "",
             "hover_bg": "",
             "hover_text_color": ""
-          }
+          },
+          "blocks": {}
         },
         "b4": {
           "type": "block--button",
@@ -698,14 +692,15 @@
             "margin_x": 0,
             "border_width": 1,
             "border_radius": 0,
-            "custom_scheme": false,
-            "color_scheme": "scheme-1",
+            "custom_scheme": true,
+            "color_scheme": "scheme-2",
             "bg": "",
             "text_color": "",
             "border_color": "",
             "hover_bg": "",
             "hover_text_color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -713,13 +708,46 @@
         "b2",
         "b3",
         "b4"
-      ]
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "image": "shopify://shop_images/Split_Banner_D_980x610_Club_August_2026_Acquisition.jpg",
+        "full_width": true,
+        "content_background": "#e0dad0",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "show_chevrons": false,
+        "chevron_stroke_width": 2,
+        "chevron_color_text": "#ab192d",
+        "chevron_row_fill": "solid",
+        "chevron_row_size": 80,
+        "chevron_row_size_mobile": 64,
+        "chevron_row_gap": 30,
+        "chevron_row_gap_mobile": 30,
+        "chevron_row_space_above": 24,
+        "chevron_row_space_below": 0,
+        "chevron_color_image": "#ffffff",
+        "chevron_col_fill": "outline",
+        "chevron_col_size": 78,
+        "chevron_col_size_mobile": 54,
+        "chevron_col_gap": 20,
+        "chevron_col_gap_mobile": 25,
+        "chevron_col_inset": 30,
+        "chevron_col_inset_mobile": 15,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
     },
     "1713538328bea72ad4": {
       "type": "apps",
-      "settings": {
-        "include_margins": true
-      },
       "blocks": {
         "klaviyo_reviews_product_reviews_t9Jg48": {
           "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
@@ -728,7 +756,10 @@
       },
       "block_order": [
         "klaviyo_reviews_product_reviews_t9Jg48"
-      ]
+      ],
+      "settings": {
+        "include_margins": true
+      }
     },
     "custom_liquid_9fRRfL": {
       "type": "custom-liquid",
