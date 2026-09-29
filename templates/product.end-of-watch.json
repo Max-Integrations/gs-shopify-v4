@@ -1,0 +1,420 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_secondary_FAjPEQ": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/PDP_Image_Header_1440x200_-min.jpg",
+        "background_image_mobile": "shopify://shop_images/PDP_Image_Header_980x200_-min.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      }
+    },
+    "main": {
+      "type": "section--product",
+      "blocks": {
+        "title": {
+          "type": "block--product-title",
+          "settings": {
+            "size": "h2",
+            "tag": "h1"
+          }
+        },
+        "price": {
+          "type": "block--product-price",
+          "settings": {
+            "show_savings": true,
+            "savings_style": "percent",
+            "show_tax_line": false,
+            "conditional_message": "<p>{{ product.metafields.custom.conditional_price_message.value }}</p>",
+            "message_color": "#ab192d"
+          }
+        },
+        "richtext_1": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p><em><strong>{{ product.metafields.custom.limited_custom_product_message.value }}</strong></em></p>",
+            "image": "",
+            "image_link": "",
+            "product_tags": "",
+            "exclude_tags": "",
+            "customer_rule": "any",
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": false,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          }
+        },
+        "swatches": {
+          "type": "block--product-swatches",
+          "settings": {
+            "style": "pattern",
+            "shape": "square",
+            "size": 32,
+            "show_label": true,
+            "label": "Color"
+          }
+        },
+        "gate_wont_show": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>This product is not available for individual purchase</p>",
+            "product_tags": "wont-show",
+            "customer_rule": "any",
+            "hide_buy_controls": true,
+            "boxed": true
+          }
+        },
+        "gate_club": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p><strong>Heads Up! You Must Be a Club Member To Purchase This Product.</strong></p><p>Please be advised there is no guarantee all sizes are in stock on this product. Although it may say 'Gone for Good' we may or may not re-release these products for pre-order in the future.</p><p>Already a Member? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/products/join-now\">Join today!</a></p>",
+            "product_tags": "club product",
+            "exclude_tags": "collection: Sticker Club Vault, wont-show",
+            "customer_rule": "missing_all",
+            "customer_tags": "Active Subscriber, Active Club Subscription",
+            "hide_buy_controls": true,
+            "boxed": true
+          }
+        },
+        "gate_sticker_vault": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p><strong>Heads Up! You Must Be a Sticker Club Member To Purchase This Product.</strong></p><p>Already a Member? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/products/sticker-club-monthly\">Join today!</a></p>",
+            "product_tags": "club product, collection: Sticker Club Vault",
+            "exclude_tags": "wont-show",
+            "customer_rule": "missing_all",
+            "customer_tags": "Active Sticker Subscription, Active Club Subscription",
+            "hide_buy_controls": true,
+            "boxed": true
+          }
+        },
+        "gate_rewards_early": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p><strong>Heads Up! You Must Be a Grunt Style Rewards Member To Purchase This Product Early.</strong></p><p>Already a Member of Grunt Style Rewards? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/community/membership\">Join today!</a></p>",
+            "product_tags": "rewards early access",
+            "exclude_tags": "club product, wont-show",
+            "customer_rule": "missing_all",
+            "customer_tags": "inveterate-subscriber, Active Sticker Subscription, Active Club Subscription",
+            "hide_buy_controls": true,
+            "boxed": true
+          }
+        },
+        "notice_usn": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>*Officially licensed Navy products are only sold and shipped within the United States*</p>",
+            "product_tags": "USN",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "any",
+            "boxed": true
+          }
+        },
+        "notice_army": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>*Officially licensed Army products are only sold and shipped within the United States*</p>",
+            "product_tags": "Army",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "any",
+            "boxed": true
+          }
+        },
+        "notice_usmc": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>*Officially licensed Marine Corps products are only sold and shipped within the United States*</p>",
+            "product_tags": "USMC",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "any",
+            "boxed": true
+          }
+        },
+        "notice_usaf": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>*Officially licensed Air Force products are only sold and shipped within the United States*</p>",
+            "product_tags": "USAF",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "any",
+            "boxed": true
+          }
+        },
+        "notice_ussf": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>*Officially licensed Space Force products are only sold and shipped within the United States*</p>",
+            "product_tags": "USSF",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "any",
+            "boxed": true
+          }
+        },
+        "notice_starbucks": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>This product is only available to Starbucks members</p><p>Please <a href=\"/account/login\">sign in</a> or <a href=\"/account/register\">register</a> with your starbucks.com email to purchase.</p>",
+            "product_tags": "Starbucks",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "missing_all",
+            "customer_tags": "starbucks",
+            "boxed": true
+          }
+        },
+        "variant_picker": {
+          "type": "block--product-variant-picker",
+          "settings": {
+            "hide_single_value": true,
+            "size_guide_label": "Size guide",
+            "size_option_name": "Size",
+            "size_guide_page": "men-size-chart"
+          }
+        },
+        "buy_buttons": {
+          "type": "block--product-buy-buttons",
+          "settings": {
+            "show_quantity": true,
+            "add_label": "Add to cart",
+            "sold_out_label": "Sold out - email when available",
+            "sold_out_disables": false,
+            "show_dynamic_checkout": false,
+            "show_installments": true
+          }
+        },
+        "wonderment_pdp_etas_N4NGb7": {
+          "type": "shopify://apps/track-by-loop/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "settings": {
+            "eta_text_font_size": 16,
+            "hint_text_font_size": 12,
+            "custom_css": "#wonderment-pdp-eta {\nmargin-top: 25px;\nmargin-bottom: 25px;\n}\n@media screen and (min-width:768px) {\n#wonderment-pdp-eta {\nmargin-top: 0px;\nmargin-bottom: 30px;\n}\n}"
+          }
+        },
+        "value_props": {
+          "type": "block--product-value-props",
+          "settings": {
+            "show_borders": false,
+            "hide_for_tags": "Custom Apparel, gift card"
+          },
+          "blocks": {
+            "prop_folds_of_honor": {
+              "type": "block--product-value-prop",
+              "settings": {
+                "image": "shopify://shop_images/folds-of-honor-16-9-ratio.jpg",
+                "text": "",
+                "link": "https://foldsofhonor.org/",
+                "hide_for_tags": ""
+              }
+            },
+            "prop_grunt_style": {
+              "type": "block--product-value-prop",
+              "settings": {
+                "image": "shopify://shop_images/gs-logo-16-9-ratio.webp",
+                "text": "",
+                "link": "",
+                "hide_for_tags": ""
+              }
+            }
+          },
+          "block_order": [
+            "prop_folds_of_honor",
+            "prop_grunt_style"
+          ]
+        },
+        "richtext_2": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<h6><strong>GRUNT STYLE X FOLDS OF HONOR: END OF WATCH PROGRAM</strong></h6><p>Grunt Style is proud to partner with Folds of Honor, a nonprofit dedicated to providing educational scholarships to the families of America’s fallen or disabled service members and first responders. Together, through the End of Watch Program, we will honor a new family every month for the 12 months, ensuring their loved one’s legacy is carried forward.</p><p>Each month, a custom-designed shirt will be created in collaboration with the family of a fallen first responder. All profits from these shirts will benefit the family and others just like them through the Folds of Honor scholarship program. By purchasing these shirts, you’re providing critical support to these families and helping ensure their hero’s legacy lives on.</p><p>Join us in making a lasting impact. Support here and carry their legacy forward. Together, we can make a difference, one family at a time.</p>",
+            "image": "",
+            "image_link": "",
+            "product_tags": "",
+            "exclude_tags": "",
+            "customer_rule": "any",
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": false,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "richtext_1",
+        "swatches",
+        "gate_wont_show",
+        "gate_club",
+        "gate_sticker_vault",
+        "gate_rewards_early",
+        "notice_usn",
+        "notice_army",
+        "notice_usmc",
+        "notice_usaf",
+        "notice_ussf",
+        "notice_starbucks",
+        "variant_picker",
+        "buy_buttons",
+        "wonderment_pdp_etas_N4NGb7",
+        "value_props",
+        "richtext_2"
+      ],
+      "settings": {
+        "show_breadcrumb": true,
+        "sticky_info": true,
+        "sticky_atc": true,
+        "media_ratio": "square",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_YzmyVT": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_43QbTG": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>THEIR STORY</strong>",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_Y4GerE": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>{{ product.metafields.custom.end_of_watch_product_story | metafield_tag }}</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_43QbTG",
+        "text_Y4GerE"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "product_image_grid_metafields_rtmDEb": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{%- assign imgs = product.metafields.custom.end_of_watch_family_and_friends_images.value -%}\n{%- if imgs != blank -%}\n<div class=\"page-width gs-metafield-grid\">\n  {%- if \"FAMILY AND FRIENDS OF THE FALLEN\" != blank -%}<h2 class=\"gs-metafield-grid__heading\"><strong>FAMILY AND FRIENDS OF THE FALLEN</strong></h2>{%- endif -%}\n  <div class=\"gs-metafield-grid__items\">\n    {%- for img in imgs -%}\n      {{ img | image_url: width: 600 | image_tag: loading: 'lazy', class: 'gs-metafield-grid__img' }}\n    {%- endfor -%}\n  </div>\n</div>\n<style>\n  .gs-metafield-grid__heading { text-align: center; margin: 0 0 2rem; }\n  .gs-metafield-grid__items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }\n  .gs-metafield-grid__img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }\n  @media screen and (min-width: 750px) { .gs-metafield-grid__items { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; } }\n</style>\n{%- endif -%}",
+        "color_scheme": "scheme-1",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "product_secondary_content_fUae39": {
+      "type": "collapsible-content",
+      "blocks": {
+        "description": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Product Description",
+            "icon": "none",
+            "row_content": "<p>{{ product.description }}</p>",
+            "page": ""
+          }
+        },
+        "accordion_item_YRpGtY": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "About Grunt Style",
+            "icon": "none",
+            "row_content": "<p>GRUNT STYLE IS A LIFESTYLE BRAND THAT DISTILLS PURE, 100-PROOF AMERICAN FIGHTING SPIRIT AND SHARES IT IN THE FORM OF HIGH-QUALITY PATRIOTIC APPAREL.<br/></p><p>WE'RE A VETERAN-FOUNDED COMPANY THAT HONORS SERVICE AT HOME AND ABROAD. TO US, CLOTHES AREN'T JUST ABOUT FUNCTION: THEY REFLECT WHO YOU ARE AND WHAT YOU STAND FOR. WE ARE MORE THAN JUST A CLOTHING COMPANY - WE BOLSTER A LIFESTYLE.</p><p><a href=\"/pages/about\" title=\"About Grunt Style\">Learn More About Our Story.</a></p>",
+            "page": ""
+          }
+        },
+        "accordion_item_EALKTc": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "FAQ",
+            "icon": "none",
+            "row_content": "<h4><strong>What is the End of Watch Program?</strong></h4><p>The End of Watch Program is a collaboration between Grunt Style and Folds of Honor to honor fallen first responders. Each month, we create a custom-designed shirt to pay tribute to these heroes, with 70% of the profits going directly to the family and 30% being donated to the Folds of Honor’s scholarship program. This initiative aims to provide both financial support and educational opportunities for the families left behind.</p><h4><strong>How does the program work?</strong></h4><p>Each month, a new shirt is created in collaboration with the family of a fallen first responder. All profits from these shirts directly benefit the family, with a portion being donated by Grunt Style to the Folds of Honor to be applied  toward the scholarship initiatives of Folds of Honor. This partnership ensures that the hero’s legacy lives on through financial and educational support.</p><h4><strong>Who does the program benefit?</strong></h4><p>The program supports families of fallen first responders by providing financial aid through the profits from shirt sales. Additionally, part of the proceeds are donated to the Folds of Honor to be utilized for additional educational scholarships, giving these families opportunities for a brighter future.</p><h4><strong>What happens to the profits from shirt sales?</strong></h4><p>The profits from each sale are allocated as follows:</p><ul><li><strong>70%</strong> goes directly to the family of the honored fallen hero.</li><li><strong>30%</strong> is donated to the Folds of Honor scholarship program, providing educational assistance to families.</li></ul><h4><strong>Can I get discounts on these products?</strong></h4><p>The End of Watch Program shirts are sold at their standard price, with no discounts offered. However, each purchase directly supports the families of fallen heroes and contributes to Folds of Honor’s mission, ensuring every dollar makes a meaningful impact.</p><p><a href=\"/pages/end-of-watch-program-faq\" target=\"_blank\" title=\"End of Watch Program FAQ\">For even more of your questions answered, please visit our dedicated FAQ page for the End of Watch Program.</a></p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "description",
+        "accordion_item_YRpGtY",
+        "accordion_item_EALKTc"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "1713538328bea72ad4": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_reviews_product_reviews_WVeHyX": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "klaviyo_reviews_product_reviews_WVeHyX"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "hero_banner_secondary_FAjPEQ",
+    "main",
+    "rich_text_YzmyVT",
+    "product_image_grid_metafields_rtmDEb",
+    "product_secondary_content_fUae39",
+    "1713538328bea72ad4"
+  ]
+}

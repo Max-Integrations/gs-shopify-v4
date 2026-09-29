@@ -1,0 +1,93 @@
+{% comment %}
+  BLOCK: PRODUCT COUNTDOWN
+  ==================================================================
+  "DON'T MISS AWESOME!" plus a days / hours / minutes / seconds timer
+  to a fixed date (v3's countdown block, used by product.countdown).
+  The date is a plain text setting, "2026-03-23 23:59", read in the
+  shop's timezone by Liquid and handed to the script as a Unix time.
+  Renders nothing once the date has passed.
+  ==================================================================
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign ends = 0
+  if s.end_date != blank
+    assign ends = s.end_date | date: '%s' | plus: 0
+  endif
+  assign now = 'now' | date: '%s' | plus: 0
+-%}
+
+{%- if ends > now -%}
+  <div class="gs-product__countdown" data-gs-countdown="{{ ends }}" {{ block.shopify_attributes }}>
+    {%- if s.heading != blank -%}
+      <span class="gs-product__countdown-heading">{{ s.heading }}</span>
+    {%- endif -%}
+    <div class="gs-product__countdown-timer" role="timer" aria-live="off">
+      <span class="gs-product__countdown-unit"><b data-gs-cd="d">0</b>d</span>
+      <span class="gs-product__countdown-unit"><b data-gs-cd="h">0</b>h</span>
+      <span class="gs-product__countdown-unit"><b data-gs-cd="m">0</b>m</span>
+      <span class="gs-product__countdown-unit"><b data-gs-cd="s">0</b>s</span>
+    </div>
+  </div>
+{%- elsif request.design_mode -%}
+  <div class="gs-product__editor-note" {{ block.shopify_attributes }}>Countdown: {% if s.end_date == blank %}no end date set{% else %}the end date has passed{% endif %}.</div>
+{%- endif -%}
+
+{% stylesheet %}
+  .gs-product__countdown {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6em 1.2em;
+    padding: 0.8rem 1.2rem;
+    background: #e9322f;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .gs-product__countdown-timer {
+    display: flex;
+    gap: 1em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .gs-product__countdown-unit b {
+    font-size: 1.4em;
+    margin-right: 0.1em;
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  document.querySelectorAll('[data-gs-countdown]').forEach(function (el) {
+    if (el.gsBound) return;
+    el.gsBound = true;
+    var ends = parseInt(el.getAttribute('data-gs-countdown'), 10) * 1000;
+    var out = {};
+    ['d', 'h', 'm', 's'].forEach(function (k) { out[k] = el.querySelector('[data-gs-cd="' + k + '"]'); });
+    function tick() {
+      var left = Math.max(0, ends - Date.now());
+      var sec = Math.floor(left / 1000);
+      out.d.textContent = Math.floor(sec / 86400);
+      out.h.textContent = Math.floor((sec % 86400) / 3600);
+      out.m.textContent = Math.floor((sec % 3600) / 60);
+      out.s.textContent = sec % 60;
+      if (left <= 0) { el.hidden = true; clearInterval(timer); }
+    }
+    var timer = setInterval(tick, 1000);
+    tick();
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Product countdown",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Don't miss out!" },
+    { "type": "text", "id": "end_date", "label": "Ends at", "info": "YYYY-MM-DD HH:MM in the store's timezone, e.g. 2026-03-23 23:59." }
+  ],
+  "presets": [{ "name": "Product countdown" }]
+}
+{% endschema %}

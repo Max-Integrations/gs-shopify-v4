@@ -1,0 +1,873 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "section--product",
+      "blocks": {
+        "title": {
+          "type": "block--product-title",
+          "settings": {
+            "size": "h2",
+            "tag": "h1"
+          }
+        },
+        "klaviyo_reviews_average_rating_aTRYhe": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/average-rating/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "price": {
+          "type": "block--product-price",
+          "settings": {
+            "show_savings": true,
+            "savings_style": "percent",
+            "show_tax_line": false,
+            "conditional_message": "<p>{{ product.metafields.custom.conditional_price_message.value }}</p>",
+            "message_color": "#ab192d"
+          }
+        },
+        "richtext_1": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>{{ product.metafields.custom.limited_custom_product_message.value }}</p>",
+            "image": "",
+            "image_link": "",
+            "product_tags": "",
+            "exclude_tags": "",
+            "customer_rule": "any",
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": false,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          }
+        },
+        "swatches": {
+          "type": "block--product-swatches",
+          "settings": {
+            "style": "pattern",
+            "shape": "circle",
+            "size": 32,
+            "show_label": true,
+            "label": "Color"
+          }
+        },
+        "gate_wont_show": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>This product is not available for individual purchase</p>",
+            "product_tags": "wont-show",
+            "customer_rule": "any",
+            "hide_buy_controls": true,
+            "boxed": true
+          }
+        },
+        "gate_club": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p><strong>Heads Up! You Must Be a Club Member To Purchase This Product.</strong></p><p>Please be advised there is no guarantee all sizes are in stock on this product. Although it may say 'Gone for Good' we may or may not re-release these products for pre-order in the future.</p><p>Already a Member? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/products/join-now\">Join today!</a></p>",
+            "product_tags": "club product",
+            "exclude_tags": "collection: Sticker Club Vault, wont-show",
+            "customer_rule": "missing_all",
+            "customer_tags": "Active Subscriber, Active Club Subscription",
+            "hide_buy_controls": true,
+            "boxed": true
+          }
+        },
+        "gate_sticker_vault": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p><strong>Heads Up! You Must Be a Sticker Club Member To Purchase This Product.</strong></p><p>Already a Member? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/products/sticker-club-monthly\">Join today!</a></p>",
+            "product_tags": "club product, collection: Sticker Club Vault",
+            "exclude_tags": "wont-show",
+            "customer_rule": "missing_all",
+            "customer_tags": "Active Sticker Subscription, Active Club Subscription",
+            "hide_buy_controls": true,
+            "boxed": true
+          }
+        },
+        "gate_rewards_early": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p><strong>Heads Up! You Must Be a Grunt Style Rewards Member To Purchase This Product Early.</strong></p><p>Already a Member of Grunt Style Rewards? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/community/membership\">Join today!</a></p>",
+            "product_tags": "rewards early access",
+            "exclude_tags": "club product, wont-show",
+            "customer_rule": "missing_all",
+            "customer_tags": "inveterate-subscriber, Active Sticker Subscription, Active Club Subscription",
+            "hide_buy_controls": true,
+            "boxed": true
+          }
+        },
+        "notice_usn": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>*Officially licensed Navy products are only sold and shipped within the United States*</p>",
+            "product_tags": "USN",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "any",
+            "boxed": true
+          }
+        },
+        "notice_army": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>*Officially licensed Army products are only sold and shipped within the United States*</p>",
+            "product_tags": "Army",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "any",
+            "boxed": true
+          }
+        },
+        "notice_usmc": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>*Officially licensed Marine Corps products are only sold and shipped within the United States*</p>",
+            "product_tags": "USMC",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "any",
+            "boxed": true
+          }
+        },
+        "notice_usaf": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>*Officially licensed Air Force products are only sold and shipped within the United States*</p>",
+            "product_tags": "USAF",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "any",
+            "boxed": true
+          }
+        },
+        "notice_ussf": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>*Officially licensed Space Force products are only sold and shipped within the United States*</p>",
+            "product_tags": "USSF",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "any",
+            "boxed": true
+          }
+        },
+        "notice_starbucks": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>This product is only available to Starbucks members</p><p>Please <a href=\"/account/login\">sign in</a> or <a href=\"/account/register\">register</a> with your starbucks.com email to purchase.</p>",
+            "product_tags": "Starbucks",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "missing_all",
+            "customer_tags": "starbucks",
+            "boxed": true
+          }
+        },
+        "variant_picker": {
+          "type": "block--product-variant-picker",
+          "settings": {
+            "hide_single_value": true,
+            "size_guide_label": "Size guide",
+            "size_option_name": "Size",
+            "size_guide_page": "men-size-chart"
+          }
+        },
+        "buy_buttons": {
+          "type": "block--product-buy-buttons",
+          "settings": {
+            "show_quantity": true,
+            "add_label": "Add to cart",
+            "sold_out_label": "Sold out - email when available",
+            "sold_out_disables": false,
+            "show_dynamic_checkout": false,
+            "show_installments": true
+          }
+        },
+        "wonderment_pdp_etas_QjinAi": {
+          "type": "shopify://apps/track-by-loop/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "settings": {
+            "eta_text_font_size": 16,
+            "hint_text_font_size": 12,
+            "custom_css": "#wonderment-pdp-eta {\nmargin-top: 25px;\nmargin-bottom: 25px;\n}\n@media screen and (min-width:768px) {\n#wonderment-pdp-eta {\nmargin-top: 0px;\nmargin-bottom: 30px;\n}\n}"
+          }
+        },
+        "store_locator": {
+          "type": "block--product-store-locator",
+          "settings": {
+            "label": "Find a store near you",
+            "radius": 50,
+            "all_url": "shopify://pages/grunt-style-retail-stores",
+            "hide_for_tags": "club product, Sticker Club, dropship"
+          }
+        },
+        "accordion_1": {
+          "type": "block--product-accordion",
+          "settings": {
+            "heading": "Product Description",
+            "source": "text",
+            "text": "{{ product.description }}",
+            "features_heading": "",
+            "video_url": "",
+            "open_default": true,
+            "visibility": "always"
+          }
+        },
+        "accordion_2": {
+          "type": "block--product-accordion",
+          "settings": {
+            "heading": "Features & Benefits",
+            "source": "features",
+            "text": "",
+            "features_heading": "",
+            "video_url": "",
+            "open_default": true,
+            "visibility": "mobile"
+          }
+        },
+        "accordion_3": {
+          "type": "block--product-accordion",
+          "settings": {
+            "heading": "Behind the Design & Video",
+            "source": "text",
+            "text": "",
+            "features_heading": "",
+            "video_url": "",
+            "open_default": false,
+            "visibility": "always"
+          }
+        },
+        "value_props": {
+          "type": "block--product-value-props",
+          "settings": {
+            "show_borders": true,
+            "hide_for_tags": "Custom Apparel, gift card"
+          },
+          "blocks": {
+            "prop_discounts": {
+              "type": "block--product-value-prop",
+              "settings": {
+                "image": "shopify://shop_images/Military__First_Responders_Discount_Icon_2-min.png",
+                "text": "Military & First\nResponder Discounts",
+                "link": "shopify://pages/govx-discount",
+                "hide_for_tags": ""
+              }
+            },
+            "prop_free_shipping": {
+              "type": "block--product-value-prop",
+              "settings": {
+                "image": "shopify://shop_images/Free_Shipping_Icon-min_1806a916-b9f9-4698-b293-bddfd2a13325.png",
+                "text": "FREE SHIPPING OVER $75",
+                "link": "shopify://pages/shipping-handling",
+                "hide_for_tags": ""
+              }
+            },
+            "prop_beer_guarantee": {
+              "type": "block--product-value-prop",
+              "settings": {
+                "image": "shopify://shop_images/Beer_Guarantee_Icon-min-1.webp",
+                "text": "100% BEER GUARANTEE FOR LIFE",
+                "link": "shopify://pages/beerguarantee",
+                "hide_for_tags": "no-beer-guarantee"
+              }
+            },
+            "prop_loyalty_rewards": {
+              "type": "block--product-value-prop",
+              "settings": {
+                "image": "shopify://shop_images/Loyalty_Icon-min.png",
+                "text": "GRUNT STYLE REWARDS - Join & Get 5% Back",
+                "link": "https://www.gruntstyle.com/community/membership",
+                "hide_for_tags": ""
+              }
+            }
+          },
+          "block_order": [
+            "prop_discounts",
+            "prop_free_shipping",
+            "prop_beer_guarantee",
+            "prop_loyalty_rewards"
+          ]
+        },
+        "badge_100_series": {
+          "type": "block--product-badge",
+          "settings": {
+            "tag": "100 Series",
+            "image": "shopify://shop_images/PDP_Badge_100x100_Club_1_of_100_CGS081.svg",
+            "position": "top-left"
+          }
+        },
+        "badge_limited_edition": {
+          "type": "block--product-badge",
+          "settings": {
+            "tag": "Limited Edition",
+            "image": "shopify://shop_images/limited-edition-pdp-badge-100x100.png",
+            "position": "top-left"
+          }
+        },
+        "badge_preorder": {
+          "type": "block--product-badge",
+          "settings": {
+            "tag": "Preorder",
+            "image": "shopify://shop_images/PDP_Badging_Icon_Preorder_100x100_1_-min_ba587516-6353-43a7-8815-e3198b303aa7.png",
+            "position": "top-left"
+          }
+        },
+        "badge_new": {
+          "type": "block--product-badge",
+          "settings": {
+            "tag": "new",
+            "image": "shopify://shop_images/PDP_Badging_Icon_New_Item_100x100_2_-min_ae727a41-577d-4a82-99a6-010a52e1b113.png",
+            "position": "top-left"
+          }
+        },
+        "badge_best_seller": {
+          "type": "block--product-badge",
+          "settings": {
+            "tag": "Best Seller",
+            "image": "shopify://shop_images/Mobile_PDP_Badging_Icons_Best_Seller_100x100_2.png",
+            "position": "top-left"
+          }
+        },
+        "badge_dnr": {
+          "type": "block--product-badge",
+          "settings": {
+            "tag": "DNR",
+            "image": "shopify://shop_images/PDP_Badging_Icon_Last_Chance_100x100_1_-min_e0a2cedb-1f9a-4691-9832-30d9697b48bb.png",
+            "position": "top-left"
+          }
+        },
+        "badge_usa_made": {
+          "type": "block--product-badge",
+          "settings": {
+            "tag": "USA Made",
+            "image": "shopify://shop_images/07_Made_USA-min.png",
+            "position": "top-left"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "klaviyo_reviews_average_rating_aTRYhe",
+        "price",
+        "richtext_1",
+        "swatches",
+        "gate_wont_show",
+        "gate_club",
+        "gate_sticker_vault",
+        "gate_rewards_early",
+        "notice_usn",
+        "notice_army",
+        "notice_usmc",
+        "notice_usaf",
+        "notice_ussf",
+        "notice_starbucks",
+        "variant_picker",
+        "buy_buttons",
+        "wonderment_pdp_etas_QjinAi",
+        "store_locator",
+        "accordion_1",
+        "accordion_2",
+        "accordion_3",
+        "value_props",
+        "badge_100_series",
+        "badge_limited_edition",
+        "badge_preorder",
+        "badge_new",
+        "badge_best_seller",
+        "badge_dnr",
+        "badge_usa_made"
+      ],
+      "settings": {
+        "show_breadcrumb": true,
+        "sticky_info": true,
+        "sticky_atc": true,
+        "media_ratio": "square",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 36
+      }
+    },
+    "features": {
+      "type": "section--product-features",
+      "settings": {
+        "heading": "<h1><strong>FEATURES & BENEFITS</strong></h1>",
+        "heading_align": "left",
+        "heading_size": 36,
+        "heading_size_mobile": 24,
+        "card_width": 300,
+        "card_width_mobile": 160,
+        "link_new_window": false,
+        "visibility": "desktop",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "custom_split_section_JY6ijM": {
+      "type": "image-with-text",
+      "blocks": {
+        "b1": {
+          "type": "block--heading",
+          "settings": {
+            "text": "250TH COMMEMORIATIVE TEE",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "b2": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Your description text here.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "image": "shopify://shop_images/frontlogo775x610.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "show_chevrons": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "images_grid_fimkNe": {
+      "type": "section--media-grid",
+      "blocks": {
+        "image_3qMNLU": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/bottomleft750x750.png",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_b6CNag": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/bottomright750x750.png",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_n9MLP4": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/topleft750x750.png",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_3DMyf8": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/topright750x750.png",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        }
+      },
+      "block_order": [
+        "image_3qMNLU",
+        "image_b6CNag",
+        "image_n9MLP4",
+        "image_3DMyf8"
+      ],
+      "settings": {
+        "layout": "grid",
+        "columns_desktop": 4,
+        "columns_mobile": 2,
+        "tile_ratio": "square",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 12,
+        "section_width": false,
+        "section_visibility": "large",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "",
+        "heading_size": "h3",
+        "heading_alignment": "text-left",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "images_grid_TbW3GJ": {
+      "type": "section--media-grid",
+      "blocks": {
+        "image_TNJbFD": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/bottomleft750x750.png",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_TG8xbR": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/bottomright750x750.png",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_QzVVjT": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/topleft750x750.png",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_Dni9pr": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/topright750x750.png",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        }
+      },
+      "block_order": [
+        "image_TNJbFD",
+        "image_TG8xbR",
+        "image_QzVVjT",
+        "image_Dni9pr"
+      ],
+      "settings": {
+        "layout": "carousel",
+        "columns_desktop": 4,
+        "columns_mobile": 1,
+        "tile_ratio": "square",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 12,
+        "section_width": false,
+        "section_visibility": "small",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "",
+        "heading_size": "h3",
+        "heading_alignment": "text-left",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "recommendations": {
+      "type": "featured-collections",
+      "settings": {
+        "section_heading": "YOU MAY ALSO LIKE",
+        "heading_text_align": "left",
+        "collection_type": "recommendations",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "lg",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 10,
+        "number_products_per_view_desktop": "4",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-1",
+        "heading_size_desktop": 28,
+        "heading_size_mobile": 24,
+        "navigation_title_size_desktop": 26,
+        "navigation_title_size_mobile": 23,
+        "cta_title_size_desktop": 26,
+        "cta_title_size_mobile": 23,
+        "section_spacing_top_desktop": 25,
+        "section_spacing_top_mobile": 30,
+        "section_spacing_bottom_desktop": 25,
+        "section_spacing_bottom_mobile": 30,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#ffffff",
+        "cta_background_color": "#ffffff",
+        "cta_background_color_hover": "#000000",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#000000"
+      }
+    },
+    "1713538328bea72ad4": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_reviews_product_reviews_t9Jg48": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "klaviyo_reviews_product_reviews_t9Jg48"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "173107713268cb7756": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "custom_liquid_9fRRfL": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<script>\n  window.addEventListener('load', function() {\n  var _learnq = window._learnq || [];\n  function addedToCart() {\n   fetch(`${window.location.origin}/cart.js`)\n   .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price/100,\n      $value: data.total_price/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n       _learnq.push(['track', 'Added to Cart', cart]);\n       klAjax = false;\n      }\n   }))\n  };\n  (function (ns, fetch) {\n    ns.fetch = function() {\n      const response = fetch.apply(this, arguments);\n      response.then(res => {\n        if (`${window.location.origin}/cart/add.js`\n          .includes(res.url) && res.url !== '') {\n              addedToCart()\n        }\n      });\n      return response\n     }\n  }(window, window.fetch));\n  var klAjax = true;\n  var atcButtons = document.querySelectorAll(\"form[action*='/cart/add'] button[type='submit']\");\n  for (var i = 0; i < atcButtons.length; i++) { \n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n  }\n  });\n</script>",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "features",
+    "custom_split_section_JY6ijM",
+    "images_grid_fimkNe",
+    "images_grid_TbW3GJ",
+    "recommendations",
+    "1713538328bea72ad4",
+    "173107713268cb7756",
+    "custom_liquid_9fRRfL"
+  ]
+}

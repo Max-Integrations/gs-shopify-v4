@@ -1,0 +1,26 @@
+{% comment %}
+  BLOCK: CUSTOM LIQUID (generic theme block)
+  ==================================================================
+  A Liquid/HTML setting rendered as-is. The buy-box equivalent of the
+  custom-liquid section; product.sticker-club uses it for a one-line
+  members-save note. Nothing renders when empty.
+  ==================================================================
+{% endcomment %}
+{%- if block.settings.custom_liquid != blank -%}
+  <div class="gs-block-custom-liquid" {{ block.shopify_attributes }}>
+    {{ block.settings.custom_liquid }}
+  </div>
+{%- elsif request.design_mode -%}
+  <div class="gs-product__editor-note" {{ block.shopify_attributes }}>Custom Liquid: empty.</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Custom Liquid",
+  "settings": [
+    { "type": "liquid", "id": "custom_liquid", "label": "Liquid", "info": "HTML and Liquid, rendered as written." }
+  ],
+  "presets": [{ "name": "Custom Liquid" }]
+}
+{% endschema %}

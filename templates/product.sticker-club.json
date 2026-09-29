@@ -1,0 +1,502 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "section--product",
+      "blocks": {
+        "title": {
+          "type": "block--product-title",
+          "settings": {
+            "size": "h2",
+            "tag": "h1"
+          }
+        },
+        "klaviyo_reviews_average_rating_cGVYzj": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/average-rating/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "price": {
+          "type": "block--product-price",
+          "settings": {
+            "show_savings": true,
+            "savings_style": "percent",
+            "show_tax_line": false,
+            "conditional_message": "<p>{{ product.metafields.custom.conditional_price_message.value }}</p>",
+            "message_color": "#ab192d"
+          }
+        },
+        "custom_liquid": {
+          "type": "block--custom-liquid",
+          "settings": {
+            "custom_liquid": "<p style=\"font-size: 12px; font-style: italic; font-weight: bold;\">*Club Grunt Style members save 20% ($7.99/month)\n</p>"
+          }
+        },
+        "swatches": {
+          "type": "block--product-swatches",
+          "settings": {
+            "style": "pattern",
+            "shape": "square",
+            "size": 32,
+            "show_label": true,
+            "label": "Color"
+          }
+        },
+        "gate_wont_show": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>This product is not available for individual purchase</p>",
+            "product_tags": "wont-show",
+            "customer_rule": "any",
+            "hide_buy_controls": true,
+            "boxed": true
+          }
+        },
+        "gate_club": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p><strong>Heads Up! You Must Be a Club Member To Purchase This Product.</strong></p><p>Please be advised there is no guarantee all sizes are in stock on this product. Although it may say 'Gone for Good' we may or may not re-release these products for pre-order in the future.</p><p>Already a Member? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/products/join-now\">Join today!</a></p>",
+            "product_tags": "club product",
+            "exclude_tags": "collection: Sticker Club Vault, wont-show",
+            "customer_rule": "missing_all",
+            "customer_tags": "Active Subscriber, Active Club Subscription",
+            "hide_buy_controls": true,
+            "boxed": true
+          }
+        },
+        "gate_sticker_vault": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p><strong>Heads Up! You Must Be a Sticker Club Member To Purchase This Product.</strong></p><p>Already a Member? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/products/sticker-club-monthly\">Join today!</a></p>",
+            "product_tags": "club product, collection: Sticker Club Vault",
+            "exclude_tags": "wont-show",
+            "customer_rule": "missing_all",
+            "customer_tags": "Active Sticker Subscription, Active Club Subscription",
+            "hide_buy_controls": true,
+            "boxed": true
+          }
+        },
+        "gate_rewards_early": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p><strong>Heads Up! You Must Be a Grunt Style Rewards Member To Purchase This Product Early.</strong></p><p>Already a Member of Grunt Style Rewards? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/community/membership\">Join today!</a></p>",
+            "product_tags": "rewards early access",
+            "exclude_tags": "club product, wont-show",
+            "customer_rule": "missing_all",
+            "customer_tags": "inveterate-subscriber, Active Sticker Subscription, Active Club Subscription",
+            "hide_buy_controls": true,
+            "boxed": true
+          }
+        },
+        "notice_usn": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>*Officially licensed Navy products are only sold and shipped within the United States*</p>",
+            "product_tags": "USN",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "any",
+            "boxed": true
+          }
+        },
+        "notice_army": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>*Officially licensed Army products are only sold and shipped within the United States*</p>",
+            "product_tags": "Army",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "any",
+            "boxed": true
+          }
+        },
+        "notice_usmc": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>*Officially licensed Marine Corps products are only sold and shipped within the United States*</p>",
+            "product_tags": "USMC",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "any",
+            "boxed": true
+          }
+        },
+        "notice_usaf": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>*Officially licensed Air Force products are only sold and shipped within the United States*</p>",
+            "product_tags": "USAF",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "any",
+            "boxed": true
+          }
+        },
+        "notice_ussf": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>*Officially licensed Space Force products are only sold and shipped within the United States*</p>",
+            "product_tags": "USSF",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "any",
+            "boxed": true
+          }
+        },
+        "notice_starbucks": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p>This product is only available to Starbucks members</p><p>Please <a href=\"/account/login\">sign in</a> or <a href=\"/account/register\">register</a> with your starbucks.com email to purchase.</p>",
+            "product_tags": "Starbucks",
+            "exclude_tags": "club product, rewards early access, wont-show",
+            "customer_rule": "missing_all",
+            "customer_tags": "starbucks",
+            "boxed": true
+          }
+        },
+        "variant_picker": {
+          "type": "block--product-variant-picker",
+          "settings": {
+            "hide_single_value": true,
+            "size_guide_label": "Size guide",
+            "size_option_name": "Size",
+            "size_guide_page": "men-size-chart"
+          }
+        },
+        "buy_buttons": {
+          "type": "block--product-buy-buttons",
+          "settings": {
+            "show_quantity": true,
+            "add_label": "Add to cart",
+            "sold_out_label": "Sold out - email when available",
+            "sold_out_disables": false,
+            "show_dynamic_checkout": false,
+            "show_installments": true
+          }
+        },
+        "wonderment_pdp_etas_j4BeBN": {
+          "type": "shopify://apps/track-by-loop/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "settings": {
+            "eta_text_font_size": 16,
+            "hint_text_font_size": 12,
+            "custom_css": "#wonderment-pdp-eta {\nmargin-top: 25px;\nmargin-bottom: 25px;\n}\n@media screen and (min-width:768px) {\n#wonderment-pdp-eta {\nmargin-top: 0px;\nmargin-bottom: 30px;\n}\n}"
+          }
+        },
+        "accordion_1": {
+          "type": "block--product-accordion",
+          "settings": {
+            "heading": "Product Description",
+            "source": "description",
+            "text": "",
+            "features_heading": "",
+            "video_url": "",
+            "open_default": true,
+            "visibility": "always"
+          }
+        },
+        "accordion_2": {
+          "type": "block--product-accordion",
+          "settings": {
+            "heading": "Return/Cancellation Policy",
+            "source": "text",
+            "text": "<ul><li>To cancel your subscription, sign in to your account, select “Manage Subscriptions,” and follow the prompts. You can also contact customer service at 877-554-7868 or <a href=\"mailto:customerservice@gruntstyle.com\" title=\"mailto:customerservice@gruntstyle.com\">customerservice@gruntstyle.com</a>.</li><li>You’ll receive a monthly reminder email about your subscription renewal.</li><li>Stickers are not covered by our Beer Guarantee and cannot be exchanged or returned.</li></ul>",
+            "features_heading": "",
+            "video_url": "",
+            "open_default": false,
+            "visibility": "always"
+          }
+        },
+        "accordion_3": {
+          "type": "block--product-accordion",
+          "settings": {
+            "heading": "About Grunt Style Sticker Club",
+            "source": "text",
+            "text": "<p>At the Grunt Style Sticker Club, we believe in the power of unapologetic self-expression. Our<strong> mission i</strong>s to<strong> empower </strong>members to boldly showcase their <strong>love for country</strong> and embrace their <strong>adventurous spirit</strong> through daring, patriotic symbols. </p><p>We're <strong>building a community </strong>of like-minded individuals who live boldly, speak unapologetically, and aren't afraid to <strong>leave their mark</strong> on the world. </p><p>Rooted in <strong>freedom</strong>, <strong>authenticity</strong>, and the<strong> American spirit</strong>, our stickers are more than just decoration—they're a declaration. Whether you're decking out your gear, your space, or your ride, our stickers help you <strong>live loud</strong> and stay true to who you are. Join us, and <strong>be unapologetic</strong>.</p>",
+            "features_heading": "",
+            "video_url": "",
+            "open_default": false,
+            "visibility": "always"
+          }
+        },
+        "badge_best_seller": {
+          "type": "block--product-badge",
+          "settings": {
+            "tag": "Best Seller",
+            "image": "shopify://shop_images/Mobile_PDP_Badging_Icons_Best_Seller_100x100_2.png",
+            "position": "top-left"
+          }
+        },
+        "badge_dnr": {
+          "type": "block--product-badge",
+          "settings": {
+            "tag": "DNR",
+            "image": "shopify://shop_images/PDP_Badging_Icon_Last_Chance_100x100_1_-min_e0a2cedb-1f9a-4691-9832-30d9697b48bb.png",
+            "position": "top-left"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "klaviyo_reviews_average_rating_cGVYzj",
+        "price",
+        "custom_liquid",
+        "swatches",
+        "gate_wont_show",
+        "gate_club",
+        "gate_sticker_vault",
+        "gate_rewards_early",
+        "notice_usn",
+        "notice_army",
+        "notice_usmc",
+        "notice_usaf",
+        "notice_ussf",
+        "notice_starbucks",
+        "variant_picker",
+        "buy_buttons",
+        "wonderment_pdp_etas_j4BeBN",
+        "accordion_1",
+        "accordion_2",
+        "accordion_3",
+        "badge_best_seller",
+        "badge_dnr"
+      ],
+      "settings": {
+        "show_breadcrumb": true,
+        "sticky_info": true,
+        "sticky_atc": true,
+        "media_ratio": "square",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 36
+      }
+    },
+    "multi_column_f33aYq": {
+      "type": "multicolumn",
+      "blocks": {
+        "icon_with_text_NkBgEX": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GSSC_Join_VP.svg",
+            "title": "Join the Club",
+            "text": "<p>Receive badass limited edition stickers delivered to your door monthly.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_GkKaGz": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GSSC_Perks_VP.svg",
+            "title": "Get Killer Perks",
+            "text": "<p>Instant access to Free Shipping and Sticker Club Vault.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_TbWiWy": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GSSC_Cancel_VP.svg",
+            "title": "Skip or Cancel Anytime",
+            "text": "<p>Members are charged monthly. Cancel any time online or by contacting customer service.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_TmWtKE": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GSSC_Connected_VP.svg",
+            "title": "Stay Connected",
+            "text": "<p>Stay <a href=\"https://www.facebook.com/groups/clubgruntstyle\" target=\"_blank\" title=\"Club Grunt Style Facebook Group\">connected with other Club Members on Facebook</a>.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_with_text_NkBgEX",
+        "icon_with_text_GkKaGz",
+        "icon_with_text_TbWiWy",
+        "icon_with_text_TmWtKE"
+      ],
+      "settings": {
+        "title": "How it Works",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "collection_tab_9rxNTb": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_iXrpqN": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "Sticker Club Vault",
+            "collection": "sticker-club-vault",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_iXrpqN"
+      ],
+      "settings": {
+        "section_heading": "Sticker Club Vault",
+        "heading_text_align": "left",
+        "collection_type": "tabs",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "lg",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 10,
+        "number_products_per_view_desktop": "4",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-1",
+        "heading_size_desktop": 28,
+        "heading_size_mobile": 24,
+        "navigation_title_size_desktop": 26,
+        "navigation_title_size_mobile": 23,
+        "cta_title_size_desktop": 26,
+        "cta_title_size_mobile": 23,
+        "section_spacing_top_desktop": 10,
+        "section_spacing_top_mobile": 30,
+        "section_spacing_bottom_desktop": 10,
+        "section_spacing_bottom_mobile": 30,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#ffffff",
+        "cta_background_color": "#ffffff",
+        "cta_background_color_hover": "#000000",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#000000"
+      }
+    },
+    "split_banner_r9CC8E": {
+      "type": "image-with-text",
+      "blocks": {
+        "b1": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>WANT MORE MONTHLY PATRIOTISM?</strong>",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "b2": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>\n</p>\n<p><b>Your Monthly Membership Includes: </b></p>\n<ul>\n<li>Free Expedited Shipping</li>\n<li>Exclusive Drops</li>\n<li>VIP Deals</li>\n<li>Skip, Cancel, or Swap at Any Time</li>\n</ul>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        },
+        "b3": {
+          "type": "block--button",
+          "settings": {
+            "label": "LEARN MORE AND JOIN TODAY",
+            "link": "shopify://pages/club-grunt-style",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "",
+            "text_color": "",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "image": "shopify://shop_images/SunnyRoad_Homepage_Module_Custom_Split_Section_Mobile_1560x1560_5_1.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "show_chevrons": false,
+        "padding_top": 0,
+        "padding_bottom": 16
+      }
+    },
+    "1713538328bea72ad4": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_reviews_product_reviews_zYDLdf": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "klaviyo_reviews_product_reviews_zYDLdf"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "multi_column_f33aYq",
+    "collection_tab_9rxNTb",
+    "split_banner_r9CC8E",
+    "1713538328bea72ad4"
+  ]
+}
