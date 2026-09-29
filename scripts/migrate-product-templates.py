@@ -324,8 +324,12 @@ def featured_collections(sec):
 
 # ---------------------------------------------------------------- run
 written = []
-for path in sorted(glob.glob(os.path.join(V3, 'templates', 'product.*.json'))):
-    name = os.path.basename(path); suffix = name[len('product.'):-5]
+# The default template is included too, but its main/features/recommendations
+# are the hand-built reference this script reads its buy box from, so those
+# three are kept as they are and only the trailing bands are converted.
+for path in sorted(glob.glob(os.path.join(V3, 'templates', 'product.*.json'))) + [os.path.join(V3, 'templates', 'product.json')]:
+    name = os.path.basename(path)
+    suffix = 'default' if name == 'product.json' else name[len('product.'):-5]
     if 'test' in suffix: continue
     v3 = load(path); sections = {}; order = []
     for k in v3['order']:
@@ -356,6 +360,10 @@ for path in sorted(glob.glob(os.path.join(V3, 'templates', 'product.*.json'))):
         i = 2; kk = key
         while kk in sections: kk = f'{key}_{i}'; i += 1
         sections[kk] = new; order.append(kk)
+    if suffix == 'default':
+        for k in ('main', 'features', 'recommendations'):
+            if k in sections and k in base['sections']:
+                sections[k] = copy.deepcopy(base['sections'][k])
     out = {'sections': sections, 'order': order}
     save(os.path.join('templates', name), out); written.append(name)
 print('written:', written)

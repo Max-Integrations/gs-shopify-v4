@@ -6,9 +6,11 @@
         "title": {
           "type": "block--product-title",
           "settings": {
+            "uppercase": true,
             "size": "h2",
             "tag": "h1"
-          }
+          },
+          "blocks": {}
         },
         "klaviyo_rating": {
           "type": "shopify://apps/klaviyo-reviews/blocks/average-rating/db20e365-d984-4ac4-9655-e1588d951ca9",
@@ -24,14 +26,25 @@
             "show_tax_line": false,
             "conditional_message": "<p>{{ product.metafields.custom.conditional_price_message.value }}</p>",
             "message_color": "#ab192d"
-          }
+          },
+          "blocks": {}
         },
         "promo_exclusions": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>{{ product.metafields.custom.promo_exclusions | metafield_tag }}</p>",
-            "text_color": "#ab192d"
-          }
+            "image_link": "",
+            "product_tags": "",
+            "exclude_tags": "",
+            "customer_rule": "any",
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": false,
+            "alignment": "left",
+            "text_color": "#ab192d",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "swatches": {
           "type": "block--product-swatches",
@@ -41,7 +54,8 @@
             "size": 32,
             "show_label": true,
             "label": "Color"
-          }
+          },
+          "blocks": {}
         },
         "variant_picker": {
           "type": "block--product-variant-picker",
@@ -50,114 +64,178 @@
             "size_guide_label": "Size guide",
             "size_option_name": "Size",
             "size_guide_page": "men-size-chart"
-          }
+          },
+          "blocks": {}
         },
         "gate_wont_show": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>This product is not available for individual purchase</p>",
+            "image_link": "",
             "product_tags": "wont-show",
+            "exclude_tags": "",
             "customer_rule": "any",
+            "customer_tags": "",
             "hide_buy_controls": true,
-            "boxed": true
-          }
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "gate_club": {
           "type": "block--product-message",
           "settings": {
             "text": "<p><strong>Heads Up! You Must Be a Club Member To Purchase This Product.</strong></p><p>Please be advised there is no guarantee all sizes are in stock on this product. Although it may say 'Gone for Good' we may or may not re-release these products for pre-order in the future.</p><p>Already a Member? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/products/join-now\">Join today!</a></p>",
+            "image_link": "",
             "product_tags": "club product",
             "exclude_tags": "collection: Sticker Club Vault, wont-show",
             "customer_rule": "missing_all",
             "customer_tags": "Active Subscriber, Active Club Subscription",
             "hide_buy_controls": true,
-            "boxed": true
-          }
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "gate_sticker_vault": {
           "type": "block--product-message",
           "settings": {
             "text": "<p><strong>Heads Up! You Must Be a Sticker Club Member To Purchase This Product.</strong></p><p>Already a Member? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/products/sticker-club-monthly\">Join today!</a></p>",
+            "image_link": "",
             "product_tags": "club product, collection: Sticker Club Vault",
             "exclude_tags": "wont-show",
             "customer_rule": "missing_all",
             "customer_tags": "Active Sticker Subscription, Active Club Subscription",
             "hide_buy_controls": true,
-            "boxed": true
-          }
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "gate_rewards_early": {
           "type": "block--product-message",
           "settings": {
             "text": "<p><strong>Heads Up! You Must Be a Grunt Style Rewards Member To Purchase This Product Early.</strong></p><p>Already a Member of Grunt Style Rewards? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/community/membership\">Join today!</a></p>",
+            "image_link": "",
             "product_tags": "rewards early access",
             "exclude_tags": "club product, wont-show",
             "customer_rule": "missing_all",
             "customer_tags": "inveterate-subscriber, Active Sticker Subscription, Active Club Subscription",
             "hide_buy_controls": true,
-            "boxed": true
-          }
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "notice_usn": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>*Officially licensed Navy products are only sold and shipped within the United States*</p>",
+            "image_link": "",
             "product_tags": "USN",
             "exclude_tags": "club product, rewards early access, wont-show",
             "customer_rule": "any",
-            "boxed": true
-          }
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "notice_army": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>*Officially licensed Army products are only sold and shipped within the United States*</p>",
+            "image_link": "",
             "product_tags": "Army",
             "exclude_tags": "club product, rewards early access, wont-show",
             "customer_rule": "any",
-            "boxed": true
-          }
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "notice_usmc": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>*Officially licensed Marine Corps products are only sold and shipped within the United States*</p>",
+            "image_link": "",
             "product_tags": "USMC",
             "exclude_tags": "club product, rewards early access, wont-show",
             "customer_rule": "any",
-            "boxed": true
-          }
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "notice_usaf": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>*Officially licensed Air Force products are only sold and shipped within the United States*</p>",
+            "image_link": "",
             "product_tags": "USAF",
             "exclude_tags": "club product, rewards early access, wont-show",
             "customer_rule": "any",
-            "boxed": true
-          }
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "notice_ussf": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>*Officially licensed Space Force products are only sold and shipped within the United States*</p>",
+            "image_link": "",
             "product_tags": "USSF",
             "exclude_tags": "club product, rewards early access, wont-show",
             "customer_rule": "any",
-            "boxed": true
-          }
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "notice_starbucks": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>This product is only available to Starbucks members</p><p>Please <a href=\"/account/login\">sign in</a> or <a href=\"/account/register\">register</a> with your starbucks.com email to purchase.</p>",
+            "image_link": "",
             "product_tags": "Starbucks",
             "exclude_tags": "club product, rewards early access, wont-show",
             "customer_rule": "missing_all",
             "customer_tags": "starbucks",
-            "boxed": true
-          }
+            "hide_buy_controls": false,
+            "boxed": true,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "buy_buttons": {
           "type": "block--product-buy-buttons",
@@ -167,21 +245,59 @@
             "sold_out_label": "Sold out - email when available",
             "sold_out_disables": false,
             "show_dynamic_checkout": false,
-            "show_installments": true
+            "show_installments": false
+          },
+          "blocks": {}
+        },
+        "wishlist_plus_wishlist_pdp_button_WkEtAw": {
+          "type": "shopify://apps/wishlist-plus/blocks/wishlist-pdp-button/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
+          "settings": {
+            "swym_atw_button_icon": "heart",
+            "swym_atw_icon_thickness": 1.7,
+            "swym_atw_display_btn_text": true,
+            "swym_button_position": "default",
+            "swym_atw_button_vertical_offset": 0,
+            "swym_atw_full_width": true,
+            "swym_atw_button_alignment": "center",
+            "swym_add_to_wishlist_color": "#000000",
+            "swym_added_to_wishlist_color": "#222222",
+            "swym_button_text_color": "#fff",
+            "swym_atw_border_color": "#000",
+            "swym_atw_border_thickness": 0,
+            "swym_atw_button_border_radius": 0,
+            "swym_enable_hover_customization": false,
+            "swym_hover_add_to_wishlist_color": "#000000",
+            "swym_hover_added_to_wishlist_color": "#222222",
+            "swym_hover_button_text_color": "#fff",
+            "swym_hover_atw_border_color": "#000",
+            "swym_hover_atw_border_thickness": 0,
+            "swym_hover_atw_button_border_radius": 0,
+            "swym_custom_css": ""
           }
         },
         "limited_message": {
           "type": "block--product-message",
           "settings": {
-            "text": "<p>{{ product.metafields.custom.limited_custom_product_message.value }}</p>",
-            "alignment": "left"
-          }
+            "text": "<p><em><strong>{{ product.metafields.custom.limited_custom_product_message.value }}</strong></em></p>",
+            "image_link": "",
+            "product_tags": "",
+            "exclude_tags": "",
+            "customer_rule": "any",
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": false,
+            "alignment": "center",
+            "text_color": "",
+            "bg": ""
+          },
+          "blocks": {}
         },
         "wonderment_eta": {
           "type": "shopify://apps/track-by-loop/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
           "settings": {
             "eta_text_font_size": 16,
-            "hint_text_font_size": 12
+            "hint_text_font_size": 12,
+            "custom_css": ""
           }
         },
         "store_locator": {
@@ -191,7 +307,8 @@
             "radius": 50,
             "all_url": "shopify://pages/grunt-style-retail-stores",
             "hide_for_tags": "club product, Sticker Club, dropship"
-          }
+          },
+          "blocks": {}
         },
         "acc_description": {
           "type": "block--product-accordion",
@@ -199,18 +316,27 @@
             "heading": "Product Description",
             "source": "text",
             "text": "<p><strong>{{ product.metafields.custom.limited_custom_product_message.value }}</strong></p>{{ product.description }}",
+            "page": "",
+            "features_heading": "",
+            "video_url": "",
             "open_default": true,
             "visibility": "always"
-          }
+          },
+          "blocks": {}
         },
         "acc_features": {
           "type": "block--product-accordion",
           "settings": {
             "heading": "{{ product.metafields.custom.pdp_feature_slider_name.value }}",
             "source": "features",
+            "text": "",
+            "page": "",
+            "features_heading": "",
+            "video_url": "",
             "open_default": true,
             "visibility": "mobile"
-          }
+          },
+          "blocks": {}
         },
         "acc_material": {
           "type": "block--product-accordion",
@@ -218,9 +344,13 @@
             "heading": "Material Description",
             "source": "text",
             "text": "<p>{{ product.metafields.custom.size_fit.value }}</p>{{ product.metafields.custom.material_description | metafield_tag }}",
+            "page": "",
+            "features_heading": "",
+            "video_url": "",
             "open_default": false,
             "visibility": "always"
-          }
+          },
+          "blocks": {}
         },
         "value_props": {
           "type": "block--product-value-props",
@@ -234,31 +364,40 @@
               "settings": {
                 "image": "shopify://shop_images/Military__First_Responders_Discount_Icon_2-min.png",
                 "text": "Military & First\nResponder Discounts",
-                "link": "shopify://pages/govx-discount"
-              }
+                "link": "shopify://pages/govx-discount",
+                "hide_for_tags": ""
+              },
+              "blocks": {}
             },
             "prop_shipping": {
               "type": "block--product-value-prop",
               "settings": {
                 "image": "shopify://shop_images/Free_Shipping_Icon-min_1806a916-b9f9-4698-b293-bddfd2a13325.png",
                 "text": "FREE SHIPPING OVER $75",
-                "link": "shopify://pages/shipping-handling"
-              }
+                "link": "shopify://pages/shipping-handling",
+                "hide_for_tags": ""
+              },
+              "blocks": {}
             },
             "prop_beer": {
               "type": "block--product-value-prop",
               "settings": {
                 "image": "shopify://shop_images/Beer_Guarantee_Icon-min-1.webp",
+                "text": "",
+                "link": "",
                 "hide_for_tags": "no-beer-guarantee"
-              }
+              },
+              "blocks": {}
             },
             "prop_rewards": {
               "type": "block--product-value-prop",
               "settings": {
                 "image": "shopify://shop_images/Loyalty_Icon-min.png",
                 "text": "GRUNT STYLE REWARDS - Join & Get 5% Back",
-                "link": "https://www.gruntstyle.com/community/membership"
-              }
+                "link": "https://www.gruntstyle.com/community/membership",
+                "hide_for_tags": ""
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -273,7 +412,8 @@
           "settings": {
             "heading": "LOAD UP",
             "limit": 6
-          }
+          },
+          "blocks": {}
         },
         "badge_usa_250": {
           "type": "block--product-badge",
@@ -281,7 +421,8 @@
             "tag": "USA 250",
             "image": "shopify://shop_images/USA_250_Badge_Primary.svg",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_100_series": {
           "type": "block--product-badge",
@@ -289,7 +430,8 @@
             "tag": "100 Series",
             "image": "shopify://shop_images/PDP_Badge_100x100_Club_1_of_100_CGS081.svg",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_clubea": {
           "type": "block--product-badge",
@@ -297,7 +439,8 @@
             "tag": "ClubEA",
             "image": "shopify://shop_images/PDP_BADGES_Club_Early_Access.png",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_club_exclusive": {
           "type": "block--product-badge",
@@ -305,7 +448,8 @@
             "tag": "Club Exclusive",
             "image": "shopify://shop_images/PDP_BADGES_Club_Exclusive.png",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_limited_edition": {
           "type": "block--product-badge",
@@ -313,7 +457,8 @@
             "tag": "Limited Edition",
             "image": "shopify://shop_images/PDP_BADGES_Limited_Edition.png",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_new": {
           "type": "block--product-badge",
@@ -321,7 +466,8 @@
             "tag": "new",
             "image": "shopify://shop_images/PDP_BADGES_New.png",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_best_seller": {
           "type": "block--product-badge",
@@ -329,7 +475,8 @@
             "tag": "Best Seller",
             "image": "shopify://shop_images/PDP_BADGES_Best_Sellers.png",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_dnr": {
           "type": "block--product-badge",
@@ -337,7 +484,8 @@
             "tag": "DNR",
             "image": "shopify://shop_images/PDP_BADGES_Last_Chance.png",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_usa_made": {
           "type": "block--product-badge",
@@ -345,7 +493,8 @@
             "tag": "USA Made",
             "image": "shopify://shop_images/PDP_BADGES_Made_in_the_USA.png",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -366,6 +515,7 @@
         "notice_ussf",
         "notice_starbucks",
         "buy_buttons",
+        "wishlist_plus_wishlist_pdp_button_WkEtAw",
         "limited_message",
         "wonderment_eta",
         "store_locator",
@@ -386,12 +536,28 @@
       ],
       "settings": {
         "show_breadcrumb": true,
+        "sticky_media": true,
         "sticky_atc": true,
         "media_ratio": "square",
         "color_scheme": "scheme-1",
         "padding_top": 24,
-        "padding_bottom": 36,
-        "sticky_media": true
+        "padding_bottom": 36
+      }
+    },
+    "features": {
+      "type": "section--product-features",
+      "settings": {
+        "heading": "<p>{{ product.metafields.custom.pdp_feature_slider_name.value }}</p>",
+        "heading_align": "left",
+        "heading_size": 36,
+        "heading_size_mobile": 24,
+        "card_width": 300,
+        "card_width_mobile": 160,
+        "link_new_window": false,
+        "visibility": "desktop",
+        "color_scheme": "scheme-1",
+        "padding_top": 12,
+        "padding_bottom": 12
       }
     },
     "recommendations": {
@@ -443,26 +609,134 @@
         "cta_border_color_hover": "#000000"
       }
     },
-    "features": {
-      "type": "section--product-features",
+    "custom_split_section_UJzhJF": {
+      "type": "image-with-text",
       "settings": {
-        "heading": "<p>{{ product.metafields.custom.pdp_feature_slider_name.value }}</p>",
-        "heading_align": "left",
-        "heading_size": 36,
-        "heading_size_mobile": 24,
-        "card_width": 300,
-        "card_width_mobile": 160,
-        "link_new_window": false,
-        "visibility": "desktop",
+        "section_visibility": "always",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
         "color_scheme": "scheme-1",
-        "padding_top": 12,
-        "padding_bottom": 12
+        "show_chevrons": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "image": "shopify://shop_images/Split_Banner_D_980x610_Club_August_2026_Acquisition.jpg"
+      },
+      "blocks": {
+        "b1": {
+          "type": "block--heading",
+          "settings": {
+            "text": "CLUB GRUNT STYLE",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "b2": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Unlock this exclusive tee, made just for Club Grunt Style members! Don’t miss your shot, join now before the month ends and claim yours. Delivered straight to your door.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        },
+        "b3": {
+          "type": "block--button",
+          "settings": {
+            "label": "JOIN CLUB GRUNT STYLE",
+            "link": "shopify://pages/club-grunt-style",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "",
+            "text_color": "",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
+          }
+        },
+        "b4": {
+          "type": "block--button",
+          "settings": {
+            "label": "SHOP EXCLUSIVE STORE",
+            "link": "shopify://collections/club-grunt-style",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "",
+            "text_color": "",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "1713538328bea72ad4": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      },
+      "blocks": {
+        "klaviyo_reviews_product_reviews_t9Jg48": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "klaviyo_reviews_product_reviews_t9Jg48"
+      ]
+    },
+    "custom_liquid_9fRRfL": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<script>\n  window.addEventListener('load', function() {\n  var _learnq = window._learnq || [];\n  function addedToCart() {\n   fetch(`${window.location.origin}/cart.js`)\n   .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price/100,\n      $value: data.total_price/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n       _learnq.push(['track', 'Added to Cart', cart]);\n       klAjax = false;\n      }\n   }))\n  };\n  (function (ns, fetch) {\n    ns.fetch = function() {\n      const response = fetch.apply(this, arguments);\n      response.then(res => {\n        if (`${window.location.origin}/cart/add.js`\n          .includes(res.url) && res.url !== '') {\n              addedToCart()\n        }\n      });\n      return response\n     }\n  }(window, window.fetch));\n  var klAjax = true;\n  var atcButtons = document.querySelectorAll(\"form[action*='/cart/add'] button[type='submit']\");\n  for (var i = 0; i < atcButtons.length; i++) { \n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n  }\n  });\n</script>",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     }
   },
   "order": [
     "main",
     "features",
-    "recommendations"
+    "recommendations",
+    "custom_split_section_UJzhJF",
+    "1713538328bea72ad4",
+    "custom_liquid_9fRRfL"
   ]
 }
