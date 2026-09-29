@@ -766,3 +766,72 @@
     transition: none;
   }
 }
+
+/*
+  ==================================================================
+  KLAVIYO REVIEWS (2026-09-29)
+  ==================================================================
+  The reviews widget is an app block in a separate `apps` section, but
+  it only ever renders on a product page, so its styling rides along
+  with this stylesheet rather than adding another request.
+
+  Left alone, Klaviyo renders the reviews as a plain full-width list.
+  The live site turns them into a three-across grid of grey cards, and
+  that is theme CSS, not an app setting: v3 carried it in
+  assets/product.css. Ported here.
+
+  The repeated class names are v3's, and they are deliberate: Klaviyo's
+  own stylesheet is specific, so the rules need (0,3,0) to win. The
+  flex-basis is v3's too. It subtracts more than the 8px gap actually
+  needs, which leaves the row slightly loose but guarantees three
+  columns survive any rounding rather than dropping to two.
+  ==================================================================
+*/
+.kl_reviews__list_container > div:first-of-type {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.kl_reviews__review_item.kl_reviews__review_item.kl_reviews__review_item {
+  flex: 0 0 100%;
+  background: #e9e9eb;
+  padding: 24px;
+  margin-bottom: initial;
+}
+
+/* Heading size only; the family comes from the theme's own heading
+   font rather than v3's hard-coded Roboto Condensed. */
+.kl_reviews__summary__header,
+.kl_reviews__summary.kl_reviews__summary.kl_reviews__summary h2 {
+  font-size: 4.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.kl_reviews__reviews_list.kl_reviews__reviews_list button.kl_reviews__button {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.kl_reviews__load_more_button {
+  margin-top: 20px;
+}
+
+.kl_reviews__reviews_list.kl_reviews__reviews_list.kl_reviews__reviews_list .kl_reviews__filters__pill svg {
+  right: 6px;
+}
+
+@media screen and (min-width: 768px) {
+  .kl_reviews__review_item.kl_reviews__review_item.kl_reviews__review_item {
+    flex: 0 0 calc(33.333% - (2 * 20px / 3));
+  }
+
+  .kl_reviews__summary__header,
+  .kl_reviews__summary.kl_reviews__summary.kl_reviews__summary h2 {
+    font-size: 5.6rem;
+    padding-top: 20px;
+    text-align: left;
+  }
+}
