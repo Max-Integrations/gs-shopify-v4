@@ -21,7 +21,7 @@
   endif
 -%}
 {%- if p != blank -%}
-  <div class="gs-product__price" data-gs-price {{ block.shopify_attributes }}>
+  <div class="gs-product__price" data-gs-price data-savings-style="{{ s.savings_style | default: 'percent' }}" {{ block.shopify_attributes }}>
     <span class="gs-product__price-current{% if on_sale %} is-sale{% endif %}" data-gs-price-current>
       {{ price | money }}
     </span>

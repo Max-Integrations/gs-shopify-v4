@@ -11,6 +11,10 @@
   because the price markup read product.price_min. Everything needed is
   in the variant JSON, so the update is local and instant.
 
+  MONEY is never formatted here. window.Shopify.money_format is not
+  defined on this store, so a JS formatter guesses and drifts from
+  Liquid. The variant JSON carries strings Liquid already rendered.
+
   ADD TO CART. /cart/add.js is called asking for the cart-drawer and
   cart-icon-bubble sections, and the response is handed to the drawer's
   renderContents(). Dawn's open() alone does NOT refresh the drawer, so
@@ -21,25 +25,6 @@
 */
 (function () {
   'use strict';
-
-  var MONEY_FORMAT = (window.Shopify && window.Shopify.money_format) || '${{amount}}';
-
-  function formatMoney(cents) {
-    // Shopify's money_format placeholders, the common four.
-    function withCommas(n, decimals, sep) {
-      var parts = (cents / 100).toFixed(decimals).split('.');
-      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      return decimals ? parts.join(sep || '.') : parts[0];
-    }
-    return MONEY_FORMAT.replace(/\{\{\s*(\w+)\s*\}\}/, function (_, name) {
-      switch (name) {
-        case 'amount_no_decimals': return withCommas(0);
-        case 'amount_with_comma_separator': return withCommas(2, ',');
-        case 'amount_no_decimals_with_comma_separator': return withCommas(0, ',');
-        default: return withCommas(2);
-      }
-    });
-  }
 
   function init(root) {
     if (!root || root.gsProductBound) return;
@@ -97,17 +82,17 @@
       var onSale = variant.compare_at_price > variant.price;
 
       if (current) {
-        current.textContent = formatMoney(variant.price);
+        current.textContent = variant.price_money;
         current.classList.toggle('is-sale', onSale);
       }
       if (compare) {
-        compare.textContent = formatMoney(variant.compare_at_price);
+        compare.textContent = variant.compare_money;
         compare.hidden = !onSale;
       }
       if (saving) saving.hidden = !onSale;
       if (savingValue && onSale) {
-        savingValue.textContent = savingValue.getAttribute('data-style') === 'amount'
-          ? formatMoney(variant.compare_at_price - variant.price)
+        savingValue.textContent = box.getAttribute('data-savings-style') === 'amount'
+          ? variant.saving_money
           : Math.round((variant.compare_at_price - variant.price) * 100 / variant.compare_at_price) + '%';
       }
     }

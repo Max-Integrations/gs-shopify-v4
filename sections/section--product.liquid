@@ -254,9 +254,14 @@
   </div>
 
   {%- comment -%}
-    Variant data for the client. Price and compare are included so the
-    price can update without a section fetch (v4's old section re-render
-    was a no-op for price because gs-price read product.price_min).
+    Variant data for the client. Prices are included so the price can
+    update without a section fetch (v4's old section re-render was a
+    no-op for price because gs-price read product.price_min).
+
+    Money is pre-formatted BY LIQUID here rather than formatted in
+    JavaScript. window.Shopify.money_format is not defined on this
+    store, so any JS formatter is guessing at the shop's format and
+    will drift from every price Liquid renders elsewhere.
   {%- endcomment -%}
   <script type="application/json" data-gs-variants>
     [
@@ -267,6 +272,9 @@
           "available": {{ v.available }},
           "price": {{ v.price }},
           "compare_at_price": {{ v.compare_at_price | default: 0 }},
+          "price_money": {{ v.price | money | json }},
+          "compare_money": {{ v.compare_at_price | default: 0 | money | json }},
+          "saving_money": {{ v.compare_at_price | default: 0 | minus: v.price | money | json }},
           "media": {{ v.featured_media.id | default: 0 }},
           "sku": {{ v.sku | default: '' | json }}
         }{% unless forloop.last %},{% endunless %}

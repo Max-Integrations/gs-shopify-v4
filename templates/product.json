@@ -16,7 +16,7 @@
             "show_savings": true,
             "savings_style": "percent",
             "show_tax_line": false,
-            "conditional_message": "{{ product.metafields.custom.conditional_price_message.value }}",
+            "conditional_message": "<p>{{ product.metafields.custom.conditional_price_message.value }}</p>",
             "message_color": "#ab192d"
           }
         },
