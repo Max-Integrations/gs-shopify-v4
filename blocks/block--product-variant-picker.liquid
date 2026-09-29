@@ -101,7 +101,20 @@
                 {% if value.selected %}checked{% endif %}
                 {% unless is_available %}data-unavailable{% endunless %}
               >
-              <label class="gs-product__option-pill" for="{{ input_id }}">{{ value }}</label>
+              {%- comment -%}
+                v3's abbreviation, verbatim: Small -> S, Medium -> M,
+                Large -> L, XLarge -> XL, 2XLarge -> 2XL. It is plain
+                string removal, so a value without those fragments
+                ("One Size", "32x34") passes through unchanged and
+                non-apparel options are unaffected. The full value stays
+                on the input, the legend and the title.
+              {%- endcomment -%}
+              {%- assign short_value = value | remove: 'mall' | remove: 'edium' | remove: 'arge' -%}
+              <label
+                class="gs-product__option-pill{% if short_value.size > 2 %} gs-product__option-pill--long{% endif %}"
+                for="{{ input_id }}"
+                title="{{ value | escape }}"
+              >{{ short_value }}</label>
             {%- endfor -%}
           </div>
         </fieldset>
