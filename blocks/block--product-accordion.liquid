@@ -125,10 +125,6 @@
       {%- endif -%}
     </div>
   </details>
-{%- elsif request.design_mode -%}
-  <div class="gs-product__editor-note" {{ block.shopify_attributes }}>
-    Accordion "{{ heading | default: 'untitled' }}" is empty for this product.
-  </div>
 {%- endif -%}
 
 {% stylesheet %}

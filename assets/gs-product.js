@@ -57,11 +57,27 @@
       return null;
     }
 
+    function slides() {
+      return gallery ? gallery.children : [];
+    }
+
+    function currentIndex() {
+      if (!gallery || !gallery.clientWidth) return 0;
+      return Math.round(gallery.scrollLeft / gallery.clientWidth);
+    }
+
+    function goTo(i) {
+      if (!gallery) return;
+      var max = slides().length - 1;
+      i = Math.max(0, Math.min(max, i));
+      gallery.scrollTo({ left: i * gallery.clientWidth, behavior: 'smooth' });
+    }
+
     function showMedia(mediaId) {
       if (!mediaId || !gallery) return;
       var slide = gallery.querySelector('[data-media-id="' + mediaId + '"]');
       if (!slide) return;
-      gallery.scrollTo({ left: slide.offsetLeft - gallery.offsetLeft, behavior: 'smooth' });
+      goTo(Array.prototype.indexOf.call(slides(), slide));
       setActiveThumb(mediaId);
       var stickyImg = root.querySelector('[data-gs-atc-image]');
       var slideImg = slide.querySelector('img');
@@ -71,8 +87,29 @@
     function setActiveThumb(mediaId) {
       if (!thumbs) return;
       thumbs.querySelectorAll('[data-thumb-for]').forEach(function (t) {
-        t.classList.toggle('is-active', t.getAttribute('data-thumb-for') === String(mediaId));
+        var on = t.getAttribute('data-thumb-for') === String(mediaId);
+        t.classList.toggle('is-active', on);
+        // Keep the active thumb inside the rail without scrolling the page.
+        if (on && t.offsetParent) {
+          var tb = t.getBoundingClientRect();
+          var rb = thumbs.getBoundingClientRect();
+          if (tb.top < rb.top || tb.bottom > rb.bottom || tb.left < rb.left || tb.right > rb.right) {
+            thumbs.scrollTop += tb.top - rb.top;
+            thumbs.scrollLeft += tb.left - rb.left;
+          }
+        }
       });
+    }
+
+    // Arrows reflect where the gallery actually is, so a swipe updates them too.
+    function updateNav() {
+      var i = currentIndex();
+      var max = slides().length - 1;
+      root.querySelectorAll('[data-gs-nav]').forEach(function (b) {
+        b.disabled = b.getAttribute('data-gs-nav') === 'prev' ? i <= 0 : i >= max;
+      });
+      var slide = slides()[i];
+      if (slide) setActiveThumb(slide.getAttribute('data-media-id'));
     }
 
     function updatePrice(variant) {
@@ -144,12 +181,42 @@
     });
 
     /* ---------------- Gallery ---------------- */
+    if (gallery) {
+      var scrollTick = false;
+      gallery.addEventListener('scroll', function () {
+        if (scrollTick) return;
+        scrollTick = true;
+        window.requestAnimationFrame(function () { scrollTick = false; updateNav(); });
+      }, { passive: true });
+      updateNav();
+    }
+
     if (thumbs) {
+      // The thumbs are real anchors so they work without JavaScript, but a
+      // plain #hash jump scrolls the whole page. Move the gallery instead.
       thumbs.addEventListener('click', function (evt) {
         var thumb = evt.target.closest('[data-thumb-for]');
-        if (thumb) setActiveThumb(thumb.getAttribute('data-thumb-for'));
+        if (!thumb) return;
+        evt.preventDefault();
+        showMedia(thumb.getAttribute('data-thumb-for'));
       });
     }
+
+    root.addEventListener('click', function (evt) {
+      var nav = evt.target.closest('[data-gs-nav]');
+      if (nav) {
+        goTo(currentIndex() + (nav.getAttribute('data-gs-nav') === 'prev' ? -1 : 1));
+        return;
+      }
+      var rail = evt.target.closest('[data-gs-rail]');
+      if (rail && thumbs) {
+        var vertical = thumbs.scrollHeight > thumbs.clientHeight + 1;
+        var step = (vertical ? thumbs.clientHeight : thumbs.clientWidth) * 0.6;
+        if (rail.getAttribute('data-gs-rail') === 'up') step = -step;
+        if (vertical) thumbs.scrollTop += step;
+        else thumbs.scrollLeft += step;
+      }
+    });
 
     /* ---------------- Quantity ---------------- */
     root.addEventListener('click', function (evt) {
@@ -217,14 +284,20 @@
   function bindZoom(root, gallery) {
     var dialog = root.querySelector('[data-gs-zoom-dialog]');
     if (!dialog || !gallery) return;
+    function openZoom(index) {
+      if (typeof dialog.showModal !== 'function') return;
+      dialog.showModal();
+      var target = dialog.querySelector('[data-zoom-index="' + index + '"]');
+      if (target) target.scrollIntoView({ block: 'start' });
+    }
     gallery.addEventListener('click', function (evt) {
       var btn = evt.target.closest('[data-gs-zoom]');
-      if (!btn || typeof dialog.showModal !== 'function') return;
+      if (!btn) return;
       evt.preventDefault();
-      dialog.showModal();
-      var target = dialog.querySelector('[data-zoom-index="' + btn.getAttribute('data-gs-zoom') + '"]');
-      if (target) target.scrollIntoView({ block: 'start' });
+      openZoom(btn.getAttribute('data-gs-zoom'));
     });
+    var zoomBtn = root.querySelector('[data-gs-zoom-current]');
+    if (zoomBtn) zoomBtn.addEventListener('click', function () { openZoom(currentIndex()); });
   }
 
   /* ---------------- Sticky add to cart (mobile) ----------------
@@ -274,7 +347,7 @@
   function placeBadge(root) {
     var badges = root.querySelectorAll('.gs-product__info [data-gs-badge]');
     if (!badges.length) return;
-    var media = root.querySelector('.gs-product__media');
+    var media = root.querySelector('.gs-product__stage');
     var already = media && media.querySelector('.gs-product__badge');
     badges.forEach(function (img, i) {
       if (i === 0 && media && !already) media.insertBefore(img, media.firstChild);

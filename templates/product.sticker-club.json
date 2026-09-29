@@ -227,7 +227,7 @@
           "settings": {
             "tag": "Best Seller",
             "image": "shopify://shop_images/Mobile_PDP_Badging_Icons_Best_Seller_100x100_2.png",
-            "position": "top-left"
+            "position": "top-right"
           }
         },
         "badge_dnr": {
@@ -235,7 +235,7 @@
           "settings": {
             "tag": "DNR",
             "image": "shopify://shop_images/PDP_Badging_Icon_Last_Chance_100x100_1_-min_e0a2cedb-1f9a-4691-9832-30d9697b48bb.png",
-            "position": "top-left"
+            "position": "top-right"
           }
         }
       },
@@ -266,7 +266,7 @@
       ],
       "settings": {
         "show_breadcrumb": true,
-        "sticky_info": true,
+        "sticky_media": true,
         "sticky_atc": true,
         "media_ratio": "square",
         "color_scheme": "scheme-1",

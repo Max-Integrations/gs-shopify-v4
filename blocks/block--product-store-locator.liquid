@@ -72,10 +72,6 @@
       ]
     </script>
   </div>
-{%- elsif request.design_mode -%}
-  <div class="gs-product__editor-note" {{ block.shopify_attributes }}>
-    Store locator: {% if stores == blank %}no stores in the shop's retail_store_locations metafield{% else %}hidden for this product's tags{% endif %}.
-  </div>
 {%- endif -%}
 
 {% stylesheet %}

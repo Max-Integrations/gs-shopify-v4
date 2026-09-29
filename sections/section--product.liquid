@@ -79,11 +79,11 @@
   # are rendered by block--product-badge itself and moved over the
   # gallery by gs-product.js (see the comment block above).
   assign badge_image = product.metafields.custom.product_image_badge_override
-  assign badge_position = 'top-left'
+  assign badge_position = 'top-right'
 -%}
 
 <div
-  class="gs-product color-{{ s.color_scheme }} gradient gs-product--ratio-{{ s.media_ratio | default: 'square' }}{% if s.sticky_info %} gs-product--sticky{% endif %}"
+  class="gs-product color-{{ s.color_scheme }} gradient gs-product--ratio-{{ s.media_ratio | default: 'square' }}{% if s.sticky_media %} gs-product--sticky{% endif %}"
   style="--gs-product-pad-top: {{ s.padding_top }}px; --gs-product-pad-bottom: {{ s.padding_bottom }}px;"
   id="GsProduct-{{ section.id }}"
   data-gs-product
@@ -114,86 +114,125 @@
     {%- endif -%}
 
     <div class="gs-product__grid">
-      {%- comment -%} ---------------- Media ---------------- {%- endcomment -%}
-      <div class="gs-product__media">
-        {%- if badge_image != blank -%}
-          <img
-            class="gs-product__badge gs-product__badge--{{ badge_position }}"
-            src="{{ badge_image | image_url: width: 200 }}"
-            srcset="{{ badge_image | image_url: width: 100 }} 100w, {{ badge_image | image_url: width: 200 }} 200w"
-            sizes="100px"
-            alt=""
-            width="100"
-            height="100"
-            loading="lazy"
-          >
-        {%- endif -%}
+      {%- comment -%}
+        ---------------- Media ----------------
+        Matches the live v3 gallery: a vertical thumbnail rail on the
+        left with a chevron at each end, the main image to its right
+        with circular prev/next arrows overlaid, a zoom control top
+        left and the badge top right. The whole column sticks while
+        the (much taller) buy box scrolls past it.
 
-        <div class="gs-product__gallery" data-gs-gallery>
-          {%- if product.media.size > 0 -%}
-            {%- for media in product.media -%}
-              <div
-                class="gs-product__slide"
-                id="GsMedia-{{ section.id }}-{{ media.id }}"
-                data-media-id="{{ media.id }}"
-              >
-                {%- case media.media_type -%}
-                  {%- when 'image' -%}
-                    <button
-                      type="button"
-                      class="gs-product__zoom-open"
-                      data-gs-zoom="{{ forloop.index0 }}"
-                      aria-label="{{ 'products.product.media.open_media' | t: index: forloop.index | default: 'Open media' }}"
+        On mobile the rail drops below the image and runs horizontally,
+        and the gallery is swiped rather than arrowed.
+      {%- endcomment -%}
+      <div class="gs-product__media">
+        <div class="gs-product__media-sticky">
+          <div class="gs-product__media-inner">
+            {%- if product.media.size > 1 -%}
+              <div class="gs-product__rail">
+                <button type="button" class="gs-product__rail-btn" data-gs-rail="up" aria-label="Previous images">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 15 L12 7 L20 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="gs-product__thumbs" data-gs-thumbs>
+                  {%- for media in product.media -%}
+                    <a
+                      class="gs-product__thumb{% if forloop.first %} is-active{% endif %}"
+                      href="#GsMedia-{{ section.id }}-{{ media.id }}"
+                      data-thumb-for="{{ media.id }}"
+                      aria-label="{{ 'products.product.media.load_image' | t: index: forloop.index }}"
                     >
                       <img
-                        src="{{ media | image_url: width: 1200 }}"
-                        srcset="
-                          {{ media | image_url: width: 600 }} 600w,
-                          {{ media | image_url: width: 900 }} 900w,
-                          {{ media | image_url: width: 1200 }} 1200w,
-                          {{ media | image_url: width: 1800 }} 1800w
-                        "
-                        sizes="(min-width: 990px) 50vw, 100vw"
-                        alt="{{ media.alt | escape }}"
-                        width="{{ media.width }}"
-                        height="{{ media.height }}"
-                        {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}
+                        src="{{ media.preview_image | image_url: width: 220 }}"
+                        srcset="{{ media.preview_image | image_url: width: 110 }} 110w, {{ media.preview_image | image_url: width: 220 }} 220w"
+                        sizes="110px"
+                        alt=""
+                        width="110"
+                        height="110"
+                        loading="lazy"
                       >
-                    </button>
-                  {%- else -%}
-                    {{ media | media_tag: image_size: '1200x', autoplay: false, loop: false, controls: true }}
-                {%- endcase -%}
+                    </a>
+                  {%- endfor -%}
+                </div>
+                <button type="button" class="gs-product__rail-btn" data-gs-rail="down" aria-label="More images">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 9 L12 17 L20 9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
               </div>
-            {%- endfor -%}
-          {%- else -%}
-            <div class="gs-product__slide">
-              {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
-            </div>
-          {%- endif -%}
-        </div>
+            {%- endif -%}
 
-        {%- if product.media.size > 1 -%}
-          <div class="gs-product__thumbs" data-gs-thumbs>
-            {%- for media in product.media -%}
-              <a
-                class="gs-product__thumb{% if forloop.first %} is-active{% endif %}"
-                href="#GsMedia-{{ section.id }}-{{ media.id }}"
-                data-thumb-for="{{ media.id }}"
-                aria-label="{{ 'products.product.media.load_image' | t: index: forloop.index }}"
-              >
+            <div class="gs-product__stage">
+              {%- if badge_image != blank -%}
                 <img
-                  src="{{ media.preview_image | image_url: width: 160 }}"
-                  srcset="{{ media.preview_image | image_url: width: 80 }} 80w, {{ media.preview_image | image_url: width: 160 }} 160w"
-                  sizes="80px"
+                  class="gs-product__badge gs-product__badge--{{ badge_position }}"
+                  src="{{ badge_image | image_url: width: 200 }}"
+                  srcset="{{ badge_image | image_url: width: 100 }} 100w, {{ badge_image | image_url: width: 200 }} 200w"
+                  sizes="100px"
                   alt=""
-                  width="80"
-                  height="80"
+                  width="100"
+                  height="100"
                   loading="lazy"
                 >
-              </a>
-            {%- endfor -%}
+              {%- endif -%}
+
+              {%- if product.media.size > 0 -%}
+                <button type="button" class="gs-product__zoom-btn" data-gs-zoom-current aria-label="Zoom">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              {%- endif -%}
+
+              <div class="gs-product__gallery" data-gs-gallery>
+                {%- if product.media.size > 0 -%}
+                  {%- for media in product.media -%}
+                    <div
+                      class="gs-product__slide"
+                      id="GsMedia-{{ section.id }}-{{ media.id }}"
+                      data-media-id="{{ media.id }}"
+                    >
+                      {%- case media.media_type -%}
+                        {%- when 'image' -%}
+                          <button
+                            type="button"
+                            class="gs-product__zoom-open"
+                            data-gs-zoom="{{ forloop.index0 }}"
+                            aria-label="{{ 'products.product.media.open_media' | t: index: forloop.index | default: 'Open media' }}"
+                          >
+                            <img
+                              src="{{ media | image_url: width: 1200 }}"
+                              srcset="
+                                {{ media | image_url: width: 600 }} 600w,
+                                {{ media | image_url: width: 900 }} 900w,
+                                {{ media | image_url: width: 1200 }} 1200w,
+                                {{ media | image_url: width: 1800 }} 1800w
+                              "
+                              sizes="(min-width: 990px) 50vw, 100vw"
+                              alt="{{ media.alt | escape }}"
+                              width="{{ media.width }}"
+                              height="{{ media.height }}"
+                              {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}
+                            >
+                          </button>
+                        {%- else -%}
+                          {{ media | media_tag: image_size: '1200x', autoplay: false, loop: false, controls: true }}
+                      {%- endcase -%}
+                    </div>
+                  {%- endfor -%}
+                {%- else -%}
+                  <div class="gs-product__slide">
+                    {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {%- endif -%}
+              </div>
+
+              {%- if product.media.size > 1 -%}
+                <button type="button" class="gs-product__nav gs-product__nav--prev" data-gs-nav="prev" aria-label="Previous image">
+                  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M15 4 L7 12 L15 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button type="button" class="gs-product__nav gs-product__nav--next" data-gs-nav="next" aria-label="Next image">
+                  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M9 4 L17 12 L9 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              {%- endif -%}
+            </div>
           </div>
-        {%- endif -%}
+        </div>
       </div>
 
       {%- comment -%} ---------------- Buy box ---------------- {%- endcomment -%}
@@ -331,7 +370,7 @@
   ],
   "settings": [
     { "type": "checkbox", "id": "show_breadcrumb", "label": "Show breadcrumb", "default": true },
-    { "type": "checkbox", "id": "sticky_info", "label": "Stick the buy box while scrolling", "info": "Desktop only.", "default": true },
+    { "type": "checkbox", "id": "sticky_media", "label": "Keep the gallery in view while scrolling", "info": "Desktop only.", "default": true },
     { "type": "checkbox", "id": "sticky_atc", "label": "Sticky add to cart bar", "info": "Mobile only, as on the live site.", "default": true },
     {
       "type": "select",

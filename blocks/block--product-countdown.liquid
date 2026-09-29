@@ -29,8 +29,6 @@
       <span class="gs-product__countdown-unit"><b data-gs-cd="s">0</b>s</span>
     </div>
   </div>
-{%- elsif request.design_mode -%}
-  <div class="gs-product__editor-note" {{ block.shopify_attributes }}>Countdown: {% if s.end_date == blank %}no end date set{% else %}the end date has passed{% endif %}.</div>
 {%- endif -%}
 
 {% stylesheet %}

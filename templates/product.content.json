@@ -322,7 +322,7 @@
           "settings": {
             "tag": "USA 250",
             "image": "shopify://shop_images/USA_250_Badge_Primary.svg",
-            "position": "top-left"
+            "position": "top-right"
           }
         },
         "badge_100_series": {
@@ -330,7 +330,7 @@
           "settings": {
             "tag": "100 Series",
             "image": "shopify://shop_images/PDP_Badge_100x100_Club_1_of_100_CGS081.svg",
-            "position": "top-left"
+            "position": "top-right"
           }
         },
         "badge_clubea": {
@@ -338,7 +338,7 @@
           "settings": {
             "tag": "ClubEA",
             "image": "shopify://shop_images/PDP_BADGES_Club_Early_Access.png",
-            "position": "top-left"
+            "position": "top-right"
           }
         },
         "badge_club_exclusive": {
@@ -346,7 +346,7 @@
           "settings": {
             "tag": "Club Exclusive",
             "image": "shopify://shop_images/PDP_BADGES_Club_Exclusive.png",
-            "position": "top-left"
+            "position": "top-right"
           }
         },
         "badge_limited_edition": {
@@ -354,7 +354,7 @@
           "settings": {
             "tag": "Limited Edition",
             "image": "shopify://shop_images/PDP_BADGES_Limited_Edition.png",
-            "position": "top-left"
+            "position": "top-right"
           }
         },
         "badge_preorder": {
@@ -362,7 +362,7 @@
           "settings": {
             "tag": "Preorder",
             "image": "shopify://shop_images/PDP_BADGES_Preorder.png",
-            "position": "top-left"
+            "position": "top-right"
           }
         },
         "badge_new": {
@@ -370,7 +370,7 @@
           "settings": {
             "tag": "new",
             "image": "shopify://shop_images/PDP_BADGES_New.png",
-            "position": "top-left"
+            "position": "top-right"
           }
         },
         "badge_best_seller": {
@@ -378,7 +378,7 @@
           "settings": {
             "tag": "Best Seller",
             "image": "shopify://shop_images/PDP_BADGES_Best_Sellers.png",
-            "position": "top-left"
+            "position": "top-right"
           }
         },
         "badge_dnr": {
@@ -386,7 +386,7 @@
           "settings": {
             "tag": "DNR",
             "image": "shopify://shop_images/PDP_BADGES_Last_Chance.png",
-            "position": "top-left"
+            "position": "top-right"
           }
         },
         "badge_usa_made": {
@@ -394,7 +394,7 @@
           "settings": {
             "tag": "USA Made",
             "image": "shopify://shop_images/PDP_BADGES_Made_in_the_USA.png",
-            "position": "top-left"
+            "position": "top-right"
           }
         }
       },
@@ -437,7 +437,7 @@
       ],
       "settings": {
         "show_breadcrumb": true,
-        "sticky_info": true,
+        "sticky_media": true,
         "sticky_atc": true,
         "media_ratio": "square",
         "color_scheme": "scheme-1",

@@ -52,9 +52,8 @@
         </li>
       {%- endfor -%}
     </ul>
-  {%- elsif request.design_mode and recommendations.performed != true -%}
-    <div class="gs-product__editor-note">"{{ s.heading }}" loads complementary products after the page renders.</div>
-  {%- endif -%}
+  
+{%- endif -%}
 </div>
 
 {% stylesheet %}

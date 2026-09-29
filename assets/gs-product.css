@@ -66,24 +66,129 @@
   gap: 2rem;
 }
 
-/* ---- Media ---- */
+/* ---- Media ----
+   Desktop: a vertical thumbnail rail on the left, the stage on the
+   right, the pair sticky so the gallery stays in view while the taller
+   buy box scrolls past. Mobile: stage first, rail below it running
+   horizontally, swipe instead of arrows. */
 .gs-product__media {
+  min-width: 0;
+}
+
+.gs-product__media-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+}
+
+.gs-product__rail {
+  order: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.gs-product__rail-btn {
+  display: none;
+  flex: 0 0 auto;
+  padding: 2px;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.gs-product__rail-btn[disabled] {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.gs-product__thumbs {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+  overflow: auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.gs-product__thumbs::-webkit-scrollbar { display: none; }
+
+.gs-product__thumb {
+  flex: 0 0 auto;
+  display: block;
+  width: 64px;
+  border: 1px solid transparent;
+}
+
+.gs-product__thumb.is-active {
+  border-color: rgb(var(--color-foreground));
+}
+
+.gs-product__thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---- Stage ---- */
+.gs-product__stage {
+  order: 1;
   position: relative;
   min-width: 0;
 }
 
 .gs-product__badge {
   position: absolute;
-  z-index: 2;
-  width: 50px;
+  z-index: 3;
+  width: 56px;
   height: auto;
   pointer-events: none;
 }
 
-.gs-product__badge--top-right { top: 1rem; right: 1rem; }
-.gs-product__badge--top-left { top: 1rem; left: 1rem; }
-.gs-product__badge--bottom-right { bottom: 1rem; right: 1rem; }
-.gs-product__badge--bottom-left { bottom: 1rem; left: 1rem; }
+.gs-product__badge--top-right { top: 5px; right: 10px; }
+.gs-product__badge--top-left { top: 5px; left: 10px; }
+.gs-product__badge--bottom-right { bottom: 5px; right: 10px; }
+.gs-product__badge--bottom-left { bottom: 5px; left: 10px; }
+
+/* Circular controls, as on the live site. */
+.gs-product__zoom-btn,
+.gs-product__nav {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #121212;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+.gs-product__zoom-btn { top: 10px; left: 10px; }
+
+.gs-product__nav {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.gs-product__nav--prev { left: 10px; }
+.gs-product__nav--next { right: 10px; }
+
+.gs-product__nav[disabled] {
+  opacity: 0.35;
+  cursor: default;
+}
+
+@media screen and (max-width: 989px) {
+  .gs-product__nav { display: none; }
+}
 
 .gs-product__gallery {
   display: flex;
@@ -129,33 +234,6 @@
 
 .gs-product--ratio-square .gs-product__slide { aspect-ratio: 1 / 1; }
 .gs-product--ratio-portrait .gs-product__slide { aspect-ratio: 4 / 5; }
-
-.gs-product__thumbs {
-  display: flex;
-  gap: 8px;
-  margin-top: 8px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.gs-product__thumbs::-webkit-scrollbar { display: none; }
-
-.gs-product__thumb {
-  flex: 0 0 auto;
-  display: block;
-  width: 64px;
-  border: 2px solid transparent;
-}
-
-.gs-product__thumb.is-active {
-  border-color: rgb(var(--color-foreground));
-}
-
-.gs-product__thumb img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
 
 /* ---- Buy box ---- */
 .gs-product__info {
@@ -341,12 +419,40 @@
   .gs-product__grid {
     grid-template-columns: minmax(0, 1fr) 440px;
     gap: 4rem;
+    /* NOT align-items: start. The media column has to stretch to the
+       row's full height, or the sticky wrapper inside it has no travel
+       room and scrolls away with the page. */
+    align-items: stretch;
+  }
+
+  .gs-product__media-inner {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 12px;
     align-items: start;
   }
 
-  .gs-product--sticky .gs-product__info {
+  .gs-product__rail {
+    order: 0;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .gs-product__rail-btn { display: block; }
+
+  .gs-product__thumbs {
+    flex-direction: column;
+    max-height: 60vh;
+  }
+
+  .gs-product__thumb { width: 100%; }
+
+  .gs-product__badge { width: 100px; }
+
+  /* The buy box is far taller than the gallery, so the gallery is what
+     sticks. Both sticky at once would fight over the same scroll. */
+  .gs-product--sticky .gs-product__media-sticky {
     position: sticky;
-    top: calc(var(--gs-header-height, 80px) + 2rem);
+    top: calc(var(--gs-header-height, 80px) + 1.5rem);
   }
 }
 
@@ -453,14 +559,6 @@
   text-align: center;
 }
 
-/* Editor-only placeholders for blocks that render nothing for this
-   product (badge config, hidden messages, empty accordions). */
-.gs-product__editor-note {
-  padding: 0.6rem 1rem;
-  border: 1px dashed rgba(var(--color-foreground), 0.4);
-  font-size: 1.2rem;
-  opacity: 0.7;
-}
 
 /* ---- Zoom dialog ---- */
 .gs-product__dialog--zoom {

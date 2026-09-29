@@ -113,10 +113,6 @@
       <div class="gs-product__message-text rte">{{ s.text }}</div>
     {%- endif -%}
   </div>
-{%- elsif request.design_mode -%}
-  <div class="gs-product__editor-note" {{ block.shopify_attributes }}>
-    Message hidden for this product: {{ s.product_tags | default: 'no tags' }}{% if s.customer_rule != 'any' and s.customer_rule != blank %}, customer {{ s.customer_rule | replace: '_', ' ' }}{% endif %}
-  </div>
 {%- endif -%}
 
 {% stylesheet %}
@@ -136,13 +132,6 @@
   .gs-product__message-text > :last-child { margin-bottom: 0; }
   .gs-product__message-text a { color: inherit; text-decoration: underline; }
   .gs-product__message-image { display: block; width: 100%; height: auto; }
-
-  .gs-product__editor-note {
-    padding: 0.6rem 1rem;
-    border: 1px dashed rgba(var(--color-foreground), 0.4);
-    font-size: 1.2rem;
-    opacity: 0.7;
-  }
 {% endstylesheet %}
 
 {% schema %}

@@ -300,7 +300,7 @@
           "settings": {
             "tag": "Preorder",
             "image": "shopify://shop_images/PDP_Badging_Icon_Preorder_100x100_1_-min_ba587516-6353-43a7-8815-e3198b303aa7.png",
-            "position": "top-left"
+            "position": "top-right"
           }
         },
         "badge_new": {
@@ -308,7 +308,7 @@
           "settings": {
             "tag": "new",
             "image": "shopify://shop_images/PDP_Badging_Icon_New_Item_100x100_2_-min_ae727a41-577d-4a82-99a6-010a52e1b113.png",
-            "position": "top-left"
+            "position": "top-right"
           }
         },
         "badge_best_seller": {
@@ -316,7 +316,7 @@
           "settings": {
             "tag": "Best Seller",
             "image": "shopify://shop_images/Mobile_PDP_Badging_Icons_Best_Seller_100x100_2.png",
-            "position": "top-left"
+            "position": "top-right"
           }
         },
         "badge_dnr": {
@@ -324,7 +324,7 @@
           "settings": {
             "tag": "DNR",
             "image": "shopify://shop_images/PDP_Badging_Icon_Last_Chance_100x100_1_-min_e0a2cedb-1f9a-4691-9832-30d9697b48bb.png",
-            "position": "top-left"
+            "position": "top-right"
           }
         },
         "badge_usa_made": {
@@ -332,7 +332,7 @@
           "settings": {
             "tag": "USA Made",
             "image": "shopify://shop_images/07_Made_USA-min.png",
-            "position": "top-left"
+            "position": "top-right"
           }
         }
       },
@@ -369,7 +369,7 @@
       ],
       "settings": {
         "show_breadcrumb": true,
-        "sticky_info": true,
+        "sticky_media": true,
         "sticky_atc": true,
         "media_ratio": "square",
         "color_scheme": "scheme-1",

@@ -10,8 +10,6 @@
   <div class="gs-block-custom-liquid" {{ block.shopify_attributes }}>
     {{ block.settings.custom_liquid }}
   </div>
-{%- elsif request.design_mode -%}
-  <div class="gs-product__editor-note" {{ block.shopify_attributes }}>Custom Liquid: empty.</div>
 {%- endif -%}
 
 {% schema %}

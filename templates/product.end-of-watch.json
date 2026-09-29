@@ -286,7 +286,7 @@
       ],
       "settings": {
         "show_breadcrumb": true,
-        "sticky_info": true,
+        "sticky_media": true,
         "sticky_atc": true,
         "media_ratio": "square",
         "color_scheme": "scheme-1",

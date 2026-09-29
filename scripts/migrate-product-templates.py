@@ -66,7 +66,7 @@ def accordion(head, source='text', body='', video='', open_default=False, visibi
     return {'type': 'block--product-accordion', 'settings': {'heading': head, 'source': source, 'text': clean_rt(body), 'features_heading': '', 'video_url': video or '', 'open_default': bool(open_default), 'visibility': visibility}}
 
 GATES = [k for k in base['sections']['main']['block_order'] if k.startswith('gate_') or k.startswith('notice_')]
-BADGE_DEFAULT_POS = 'top-left'
+BADGE_DEFAULT_POS = 'top-right'
 
 def main_section(v3main, suffix):
     """v3 main-product -> section--product with theme blocks."""

@@ -46,10 +46,6 @@
     loading="lazy"
     {{ block.shopify_attributes }}
   >
-{%- elsif request.design_mode -%}
-  <div class="gs-product__editor-note" {{ block.shopify_attributes }}>
-    Badge for tag "{{ s.tag | default: 'none set' }}"{% if s.image == blank %}, no image{% endif %}: not on this product.
-  </div>
 {%- endif -%}
 
 {% schema %}
