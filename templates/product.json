@@ -495,6 +495,23 @@
             "position": "top-right"
           },
           "blocks": {}
+        },
+        "promo_banner": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "",
+            "image": "shopify://shop_images/Promo_Menu_Banner_750x200_FW26_20_-Off-GOVX.jpg",
+            "image_link": "shopify://pages/govx-discount",
+            "product_tags": "",
+            "exclude_tags": "",
+            "customer_rule": "any",
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": false,
+            "alignment": "left",
+            "text_color": "",
+            "bg": ""
+          }
         }
       },
       "block_order": [
@@ -522,6 +539,7 @@
         "acc_description",
         "acc_features",
         "acc_material",
+        "promo_banner",
         "value_props",
         "complementary",
         "badge_usa_250",
@@ -644,7 +662,7 @@
         "b2": {
           "type": "block--text",
           "settings": {
-            "text": "<p>Unlock this exclusive tee, made just for Club Grunt Style members! Don’t miss your shot, join now before the month ends and claim yours. Delivered straight to your door.</p>",
+            "text": "<p>Unlock this exclusive tee, made just for Club Grunt Style members! Don\u2019t miss your shot, join now before the month ends and claim yours. Delivered straight to your door.</p>",
             "size": "body",
             "alignment": "inherit",
             "color": ""
