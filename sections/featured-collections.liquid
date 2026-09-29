@@ -244,11 +244,21 @@
           Product recommendations. Only meaningful on a product template,
           where `product` is defined.
         {%- endcomment -%}
-        <div
+        {%- comment -%}
+          Must be the <product-recommendations> custom element that
+          assets/global.js defines, with data-url, data-product-id and
+          data-section-id: it fetches this section with those params
+          when scrolled near and swaps in the fetched element's
+          innerHTML. Until 2026-09-29 this was a plain <div> with a bare
+          `product-recommendations` attribute, so nothing ever fetched
+          and "You May Also Like" was empty on every product page.
+        {%- endcomment -%}
+        <product-recommendations
           class="featured-products-wrapper collection-tab active"
           id="collection-product-recommendations"
-          data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.max_number_products_loaded }}&intent=related"
-          product-recommendations
+          data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.max_number_products_loaded }}&intent=related"
+          data-product-id="{{ product.id }}"
+          data-section-id="{{ section.id }}"
         >
           {%- if recommendations.performed and recommendations.products_count > 0 -%}
             <div class="gs-fc__scroller" data-swatch-scroller>
@@ -293,7 +303,7 @@
               </button>
             </div>
           {%- endif -%}
-        </div>
+        </product-recommendations>
       {%- endif -%}
     </div>
   </div>

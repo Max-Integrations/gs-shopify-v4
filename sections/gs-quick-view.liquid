@@ -67,7 +67,7 @@
     {%- render 'gs-reviews', cardProduct: product, showCount: true -%}
 
     <div class="gs-qv__price" data-qv-price>
-      {%- render 'gs-price', cardProduct: product, cardVariant: current -%}
+      {%- render 'gs-price', cardProduct: product, cardVariant: current, useVariantPrice: true -%}
     </div>
 
     {%- unless product.has_only_default_variant -%}

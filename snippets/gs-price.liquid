@@ -7,6 +7,7 @@
   USAGE:
     render 'gs-price', cardProduct: product
     render 'gs-price', cardProduct: product, cardVariant: variant
+    render 'gs-price', cardProduct: product, cardVariant: variant, useVariantPrice: true
     render 'gs-price', cardProduct: product, hideComparePrice: true
     render 'gs-price', cardProduct: product, savePercentoff: false
 
@@ -74,8 +75,17 @@
     break
   endunless
 
-  assign price = cardProduct.price_min
-  assign compare_at_price = cardProduct.compare_at_price_min
+  # With useVariantPrice, the passed variant's price is shown. Before
+  # 2026-09-29 this read price_min regardless, so the quick view's
+  # variant re-render was a no-op for price. Cards pass a variant only
+  # for unit pricing and keep the "From" price_min behaviour.
+  if cardVariant and useVariantPrice
+    assign price = cardVariant.price
+    assign compare_at_price = cardVariant.compare_at_price
+  else
+    assign price = cardProduct.price_min
+    assign compare_at_price = cardProduct.compare_at_price_min
+  endif
 
   # Missing setting means enabled. See the header note.
   assign show_price = true
@@ -107,7 +117,7 @@
   {{ 'gs-price.css' | asset_url | stylesheet_tag }}
 
   <div class="product-price{% if on_sale %} product-price--on-sale{% endif %}">
-    {%- if cardProduct.price_varies -%}
+    {%- if cardProduct.price_varies and useVariantPrice != true -%}
       <span class="price-item actual-price price-varies" data-sl-attribute-p="{{ cardProduct.id }}">
         {{- 'products.product.price.from_price_html' | t: price: price_money -}}
       </span>
