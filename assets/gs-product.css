@@ -268,8 +268,24 @@
 .gs-product__info {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  /* 10px between blocks, measured off the live buy box. App blocks
+     (rating, wishlist, delivery ETA) are siblings here and pick up the
+     same rhythm. */
+  gap: 1rem;
   min-width: 0;
+}
+
+/* The last option's own bottom margin doubles up with the flex gap and
+   pushed the quantity row 27px off the pills; the live site has 10. */
+.gs-product__option:last-of-type {
+  margin-bottom: 0;
+}
+
+/* An app block placed directly under the buy buttons is the wishlist
+   button, which the live site stacks flush against add to cart rather
+   than floating below it. */
+.gs-product__buy + .shopify-block {
+  margin-top: -1rem;
 }
 
 .gs-product__info > * {
@@ -411,7 +427,9 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 10px;
+  /* The live site leaves real air between the quantity row and the
+     button; 10px read as a cramped stack. */
+  gap: 3.2rem;
 }
 
 .gs-product__title--upper {
