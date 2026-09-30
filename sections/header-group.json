@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "Header",
   "type": "header",
@@ -23,7 +32,7 @@
           "type": "announcement",
           "settings": {
             "text": "Free Shipping on Orders Over $75",
-            "link": "shopify://collections/new"
+            "link": "shopify://collections/best-sellers"
           }
         }
       },
@@ -112,7 +121,7 @@
           "type": "utility_link",
           "settings": {
             "icon": "star",
-            "label": "Rewards",
+            "label": "Club Grunt Style",
             "link": "shopify://pages/club-grunt-style"
           }
         },
@@ -129,7 +138,7 @@
           "settings": {
             "icon": "pin",
             "label": "Retail stores",
-            "link": "shopify://pages/retail-stores"
+            "link": "shopify://pages/grunt-style-retail-stores"
           }
         }
       },
@@ -151,6 +160,7 @@
         "logo_width_mobile": 130,
         "menu": "main-menu",
         "sticky_header": true,
+        "sticky_header_type": "on_scroll",
         "highlight_enable": true,
         "highlight_text": "BOGO 50%",
         "highlight_background": "#ab192d",
