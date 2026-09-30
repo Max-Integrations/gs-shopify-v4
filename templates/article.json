@@ -12,7 +12,7 @@
     "main": {
       "type": "main-article",
       "custom_css": [
-        ".gs-article__body{max-width: 120ch;}"
+        ".gs-article__body {max-width: 120ch;}"
       ],
       "settings": {
         "show_image": false,
@@ -34,14 +34,14 @@
         "container_width": "lg",
         "grid_image_size": "square",
         "max_number_products_loaded": 10,
-        "number_products_per_view_desktop": "4",
+        "number_products_per_view_desktop": "5",
         "number_products_per_view_mobile": "2",
-        "enable_product_badges": true,
+        "enable_product_badges": false,
         "enable_product_title": true,
         "enable_product_price": true,
         "enable_product_swatches": false,
-        "enable_product_quick_view": true,
-        "color_scheme": "scheme-1",
+        "enable_product_quick_view": false,
+        "color_scheme": "scheme-4",
         "heading_size_desktop": 28,
         "heading_size_mobile": 24,
         "navigation_title_size_desktop": 26,
