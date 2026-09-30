@@ -564,7 +564,7 @@
       "type": "featured-collections",
       "settings": {
         "section_heading": "You May Also Like",
-        "heading_text_align": "center",
+        "heading_text_align": "left",
         "collection_type": "recommendations",
         "collection_source": "manual",
         "layout_style": "carousel",
@@ -607,6 +607,47 @@
         "cta_background_color_hover": "#000000",
         "cta_border_color": "#000000",
         "cta_border_color_hover": "#000000"
+      }
+    },
+    "17908076236b71adb8": {
+      "type": "apps",
+      "blocks": {
+        "wishlist_plus_engage_myaccount_recently_viewed_online_cbwNRz": {
+          "type": "shopify://apps/wishlist-plus/blocks/engage-myaccount-recently-viewed-online/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
+          "settings": {
+            "swym_themeapp_container_background_color": "transparent",
+            "swym_themeapp_container_text_color": "#000000",
+            "swym_themeapp_container_title_font_size": 27,
+            "swym_themeapp_container_items_per_row_desktop": 5,
+            "swym_themeapp_container_items_per_row_tablet": 3,
+            "swym_themeapp_container_items_per_row_mobile": 2,
+            "swym_themeapp_container_nav_background_color": "#fff",
+            "swym_themeapp_container_nave_arrow_color": "#000",
+            "swym_themeapp_container_items_show_title": true,
+            "swym_themeapp_container_items_show_price": true,
+            "swym_themeapp_container_items_show_variant": false,
+            "swym_themeapp_container_items_show_vendor": false,
+            "swym_themeapp_container_items_font_size": 16,
+            "swym_themeapp_container_items_compare_price_color": "#AB192D",
+            "swym_themeapp_container_items_show_add_to_cart_button": true,
+            "swym_themeapp_container_items_show_view_product_button": false,
+            "swym_themeapp_container_items_button_type": "solid",
+            "swym_themeapp_container_items_button_width": "100%",
+            "swym_themeapp_container_items_button_align": "center",
+            "swym_themeapp_container_items_button_border_radious": 0,
+            "swym_themeapp_container_items_button_background_color": "#AB192D",
+            "swym_themeapp_container_items_button_text_color": "#fff"
+          }
+        }
+      },
+      "block_order": [
+        "wishlist_plus_engage_myaccount_recently_viewed_online_cbwNRz"
+      ],
+      "custom_css": [
+        ".swym-wishlistplus-themeapp-container-header {font-family: Roboto Condensed; font-weight: 700; text-transform: uppercase;}"
+      ],
+      "settings": {
+        "include_margins": true
       }
     },
     "custom_split_section_UJzhJF": {
@@ -758,6 +799,7 @@
     "main",
     "features",
     "recommendations",
+    "17908076236b71adb8",
     "custom_split_section_UJzhJF",
     "1713538328bea72ad4",
     "custom_liquid_9fRRfL"
