@@ -14,7 +14,8 @@
     "footer_brand": {
       "type": "gs-footer-brand",
       "custom_css": [
-        "h4 {font-family: Engravers MT; font-weight: 300;}"
+        "h4 {font-family: Engravers MT; font-weight: 300;}",
+        ".gs-footer-brand__subheading {font-family: Engravers MT; font-weight: 50;}"
       ],
       "settings": {
         "heading": "<strong>THIS WE'LL DEFEND</strong>",
@@ -28,8 +29,8 @@
         "heading_size_mobile": 28,
         "subheading_size_desktop": 20,
         "subheading_size_mobile": 14,
-        "padding_desktop": 40,
-        "padding_mobile": 25
+        "padding_desktop": 15,
+        "padding_mobile": 15
       }
     },
     "footer": {
