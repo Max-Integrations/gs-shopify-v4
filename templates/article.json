@@ -1,8 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-article",
-      "settings": {}
+      "custom_css": [
+        ".gs-article__body{max-width: 120ch;}"
+      ],
+      "settings": {
+        "show_image": false,
+        "show_breadcrumb": true,
+        "show_date": true,
+        "show_author": false,
+        "show_share": true,
+        "color_scheme": "scheme-4"
+      }
     },
     "promoted": {
       "type": "featured-collections",
@@ -25,10 +44,26 @@
         "color_scheme": "scheme-1",
         "heading_size_desktop": 28,
         "heading_size_mobile": 24,
+        "navigation_title_size_desktop": 26,
+        "navigation_title_size_mobile": 23,
+        "cta_title_size_desktop": 26,
+        "cta_title_size_mobile": 23,
         "section_spacing_top_desktop": 50,
         "section_spacing_top_mobile": 30,
         "section_spacing_bottom_desktop": 50,
         "section_spacing_bottom_mobile": 30,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
         "cta_text_color": "#000000",
         "cta_text_color_hover": "#ffffff",
         "cta_background_color": "#ffffff",
