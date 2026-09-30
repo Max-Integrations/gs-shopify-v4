@@ -77,7 +77,8 @@
       ],
       "custom_css": [
         ".list-unstyled {font-size: 12px; line-height: 1.25;}",
-        ".footer-social-block {padding-block: 0px;}"
+        ".footer-social-block {padding-block: 0px;}",
+        "h2{text-decoration: underline;}"
       ],
       "settings": {
         "footer_sticky": false,
