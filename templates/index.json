@@ -910,13 +910,14 @@
         "button_1",
         "button_2"
       ],
+      "name": "Image with text-D",
       "settings": {
-        "section_visibility": "always",
-        "image": "shopify://shop_images/Split_Banner_D_980x610_FW26_First_Responder_Collection.jpg",
-        "full_width": false,
+        "section_visibility": "large",
+        "image": "shopify://shop_images/Split_Banner_D_980x610_FW26_Freedom_Fighter_Collection.jpg",
+        "full_width": true,
         "content_background": "",
         "height": "adapt",
-        "desktop_image_width": "large",
+        "desktop_image_width": "medium",
         "layout": "text_first",
         "image_behavior": "none",
         "content_layout": "no-overlap",
@@ -943,6 +944,127 @@
         "chevron_col_gap_mobile": 25,
         "chevron_col_inset": 30,
         "chevron_col_inset_mobile": 15,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_NnJDxB": {
+      "type": "image-with-text",
+      "blocks": {
+        "block_heading_V8EQPy": {
+          "type": "block--heading",
+          "settings": {
+            "text": "SUPPORT THOSE WHO SERVE",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          },
+          "blocks": {}
+        },
+        "block_text_AGzFAc": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Step up and show your support for those who answer the call—day or night. The First Responder Collection honors the unwavering dedication of EMS, Firefighters, and Police Officers who are always first in and last out. Wear it with pride and stand with the heroes who never hesitate to serve.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          },
+          "blocks": {}
+        },
+        "block_button_xdfeEa": {
+          "type": "block--button",
+          "settings": {
+            "label": "SHOP COLLECTION",
+            "link": "shopify://collections/first-responders",
+            "open_in_new_tab": false,
+            "style": "outline",
+            "width": "full",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "",
+            "text_color": "",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
+          },
+          "blocks": {}
+        },
+        "block_button_Ny4TzW": {
+          "type": "block--button",
+          "settings": {
+            "label": "GRAB THE TEE",
+            "link": "shopify://products/first-in-last-out-t-shirt-black",
+            "open_in_new_tab": false,
+            "style": "outline",
+            "width": "full",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "margin_y": 12,
+            "margin_x": 0,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "",
+            "text_color": "",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "block_heading_V8EQPy",
+        "block_text_AGzFAc",
+        "block_button_xdfeEa",
+        "block_button_Ny4TzW"
+      ],
+      "name": "Image with text-M",
+      "settings": {
+        "section_visibility": "small",
+        "image": "shopify://shop_images/Split_Banner_M_750x750_FW26_Freedom_Fighter_Collection.jpg",
+        "full_width": true,
+        "content_background": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "show_chevrons": true,
+        "chevron_stroke_width": 4,
+        "chevron_color_text": "#ab192d",
+        "chevron_row_fill": "solid",
+        "chevron_row_size": 80,
+        "chevron_row_size_mobile": 38,
+        "chevron_row_gap": 23,
+        "chevron_row_gap_mobile": 19,
+        "chevron_row_space_above": 0,
+        "chevron_row_space_below": 0,
+        "chevron_color_image": "#ffffff",
+        "chevron_col_fill": "outline",
+        "chevron_col_size": 48,
+        "chevron_col_size_mobile": 44,
+        "chevron_col_gap": 20,
+        "chevron_col_gap_mobile": 38,
+        "chevron_col_inset": 60,
+        "chevron_col_inset_mobile": 67,
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -1370,6 +1492,7 @@
     "media_grid_EHBURP",
     "featured_collections_RaEPWA",
     "product_highlight_tpQcaj",
+    "image_with_text_NnJDxB",
     "custom_testimonials_itRkeM",
     "multicolumn_with_content_hover_rUQ9Qn"
   ]
