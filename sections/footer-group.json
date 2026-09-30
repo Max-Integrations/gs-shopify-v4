@@ -15,7 +15,8 @@
       "type": "gs-footer-brand",
       "custom_css": [
         "h4 {font-family: Engravers MT; font-weight: 300;}",
-        ".gs-footer-brand__subheading {font-family: Engravers MT; font-weight: 50;}"
+        ".gs-footer-brand__subheading {font-family: Engravers MT; font-weight: 50;}",
+        "p{margin-block: -10px;}"
       ],
       "settings": {
         "heading": "<strong>THIS WE'LL DEFEND</strong>",
