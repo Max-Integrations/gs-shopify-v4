@@ -269,6 +269,7 @@
         },
         "limited_message": {
           "type": "block--product-message",
+          "name": "PreOrder Message",
           "settings": {
             "text": "<p><em><strong>{{ product.metafields.custom.limited_custom_product_message.value }}</strong></em></p>",
             "image_link": "",
@@ -316,20 +317,6 @@
           },
           "blocks": {}
         },
-        "acc_features": {
-          "type": "block--product-accordion",
-          "settings": {
-            "heading": "{{ product.metafields.custom.pdp_feature_slider_name.value }}",
-            "source": "features",
-            "text": "",
-            "page": "",
-            "features_heading": "",
-            "video_url": "",
-            "open_default": true,
-            "visibility": "mobile"
-          },
-          "blocks": {}
-        },
         "acc_material": {
           "type": "block--product-accordion",
           "settings": {
@@ -341,6 +328,20 @@
             "video_url": "",
             "open_default": false,
             "visibility": "always"
+          },
+          "blocks": {}
+        },
+        "acc_features": {
+          "type": "block--product-accordion",
+          "settings": {
+            "heading": "{{ product.metafields.custom.pdp_feature_slider_name.value }}",
+            "source": "features",
+            "text": "",
+            "page": "",
+            "features_heading": "",
+            "video_url": "",
+            "open_default": true,
+            "visibility": "mobile"
           },
           "blocks": {}
         },
@@ -518,8 +519,8 @@
         "wonderment_eta",
         "store_locator",
         "acc_description",
-        "acc_features",
         "acc_material",
+        "acc_features",
         "promo_banner",
         "value_props",
         "complementary",
@@ -584,10 +585,10 @@
         "navigation_title_size_mobile": 23,
         "cta_title_size_desktop": 26,
         "cta_title_size_mobile": 23,
-        "section_spacing_top_desktop": 40,
-        "section_spacing_top_mobile": 30,
-        "section_spacing_bottom_desktop": 40,
-        "section_spacing_bottom_mobile": 30,
+        "section_spacing_top_desktop": 0,
+        "section_spacing_top_mobile": 10,
+        "section_spacing_bottom_desktop": 5,
+        "section_spacing_bottom_mobile": 5,
         "heading_spacing_top_desktop": 10,
         "heading_spacing_top_mobile": 10,
         "heading_spacing_bottom_desktop": 10,
