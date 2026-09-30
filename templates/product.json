@@ -41,7 +41,7 @@
         "promo_exclusions": {
           "type": "block--product-message",
           "settings": {
-            "text": "<p>{{ product.metafields.custom.promo_exclusions | metafield_tag }}</p>",
+            "text": "{{ product.metafields.custom.promo_exclusions | metafield_tag }}",
             "image_link": "",
             "product_tags": "",
             "exclude_tags": "",
@@ -229,23 +229,6 @@
           },
           "blocks": {}
         },
-        "notice_starbucks": {
-          "type": "block--product-message",
-          "settings": {
-            "text": "<p>This product is only available to Starbucks members</p><p>Please <a href=\"/account/login\">sign in</a> or <a href=\"/account/register\">register</a> with your starbucks.com email to purchase.</p>",
-            "image_link": "",
-            "product_tags": "Starbucks",
-            "exclude_tags": "club product, rewards early access, wont-show",
-            "customer_rule": "missing_all",
-            "customer_tags": "starbucks",
-            "hide_buy_controls": false,
-            "boxed": true,
-            "alignment": "left",
-            "text_color": "",
-            "bg": ""
-          },
-          "blocks": {}
-        },
         "buy_buttons": {
           "type": "block--product-buy-buttons",
           "settings": {
@@ -268,10 +251,10 @@
             "swym_atw_button_vertical_offset": 0,
             "swym_atw_full_width": true,
             "swym_atw_button_alignment": "center",
-            "swym_add_to_wishlist_color": "#000000",
+            "swym_add_to_wishlist_color": "#FFFFFF",
             "swym_added_to_wishlist_color": "#222222",
-            "swym_button_text_color": "#fff",
-            "swym_atw_border_color": "#FFFFFF",
+            "swym_button_text_color": "#000000",
+            "swym_atw_border_color": "#ffffff",
             "swym_atw_border_thickness": 0,
             "swym_atw_button_border_radius": 0,
             "swym_enable_hover_customization": false,
@@ -529,7 +512,6 @@
         "notice_usmc",
         "notice_usaf",
         "notice_ussf",
-        "notice_starbucks",
         "buy_buttons",
         "wishlist_plus_wishlist_pdp_button_WkEtAw",
         "limited_message",
