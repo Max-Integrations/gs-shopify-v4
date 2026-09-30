@@ -1,12 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "Footer",
   "type": "footer",
   "sections": {
     "footer_brand": {
       "type": "gs-footer-brand",
+      "custom_css": [
+        "h4 {font-family: Engravers MT; font-weight: 300;}"
+      ],
       "settings": {
         "heading": "<strong>THIS WE'LL DEFEND</strong>",
-        "seo_heading": "h3",
+        "seo_heading": "h4",
         "subheading": "AMERICA'S PATRIOTIC T-SHIRT & APPAREL BRAND",
         "body": "<p>Grunt Style is a lifestyle brand whose mission is to bring patriotic apparel to every home in America. We distill pure, 100-proof, American fighting spirit. We are a veteran-founded and operated company that honors service at home and abroad. We believe what you wear reflects who you are and what you stand for.</p>",
         "button_label": "",
