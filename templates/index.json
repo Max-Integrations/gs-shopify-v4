@@ -1213,11 +1213,11 @@
                 "border_radius": 0,
                 "custom_scheme": true,
                 "color_scheme": "scheme-2",
-                "bg": "",
-                "text_color": "",
-                "border_color": "",
-                "hover_bg": "",
-                "hover_text_color": ""
+                "bg": "#FFFFFF",
+                "text_color": "#000000",
+                "border_color": "#000000",
+                "hover_bg": "#000000",
+                "hover_text_color": "#FFFFFF"
               },
               "blocks": {}
             }
@@ -1284,11 +1284,11 @@
                 "border_radius": 0,
                 "custom_scheme": true,
                 "color_scheme": "scheme-2",
-                "bg": "",
-                "text_color": "",
-                "border_color": "",
-                "hover_bg": "",
-                "hover_text_color": ""
+                "bg": "#FFFFFF",
+                "text_color": "#000000",
+                "border_color": "#000000",
+                "hover_bg": "#000000",
+                "hover_text_color": "#FFFFFF"
               },
               "blocks": {}
             }
@@ -1355,11 +1355,11 @@
                 "border_radius": 0,
                 "custom_scheme": true,
                 "color_scheme": "scheme-2",
-                "bg": "",
-                "text_color": "",
-                "border_color": "",
-                "hover_bg": "",
-                "hover_text_color": ""
+                "bg": "#FFFFFF",
+                "text_color": "#000000",
+                "border_color": "#000000",
+                "hover_bg": "#000000",
+                "hover_text_color": "#FFFFFF"
               },
               "blocks": {}
             }
@@ -1426,11 +1426,11 @@
                 "border_radius": 0,
                 "custom_scheme": true,
                 "color_scheme": "scheme-2",
-                "bg": "",
-                "text_color": "",
-                "border_color": "",
-                "hover_bg": "",
-                "hover_text_color": ""
+                "bg": "#FFFFFF",
+                "text_color": "#000000",
+                "border_color": "#000000",
+                "hover_bg": "#000000",
+                "hover_text_color": "#FFFFFF"
               },
               "blocks": {}
             }
