@@ -86,7 +86,7 @@
       ],
       "settings": {
         "overlay_content_position": "text-center",
-        "overlay_text": true,
+        "overlay_text": false,
         "heading_size": "h1",
         "tag": "h1",
         "show_header": true,
