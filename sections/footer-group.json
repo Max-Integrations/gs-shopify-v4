@@ -15,8 +15,7 @@
       "type": "gs-footer-brand",
       "custom_css": [
         "h4 {font-family: Engravers MT; font-weight: 300;}",
-        ".gs-footer-brand__subheading {font-family: Engravers MT; font-weight: 50;}",
-        "p{margin-block: -10px;}"
+        ".gs-footer-brand__subheading {font-family: Engravers MT; font-weight: 50;}"
       ],
       "settings": {
         "heading": "<strong>THIS WE'LL DEFEND</strong>",
@@ -27,9 +26,9 @@
         "button_link": "shopify://pages/about",
         "color_scheme": "scheme-4",
         "heading_size_desktop": 44,
-        "heading_size_mobile": 28,
+        "heading_size_mobile": 22,
         "subheading_size_desktop": 20,
-        "subheading_size_mobile": 14,
+        "subheading_size_mobile": 12,
         "padding_desktop": 15,
         "padding_mobile": 15
       }
@@ -37,7 +36,7 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "newsletter_block": {
+        "newsletter_nTAX6G": {
           "type": "newsletter",
           "settings": {
             "enable_newsletter": true,
@@ -71,10 +70,14 @@
         }
       },
       "block_order": [
-        "newsletter_block",
+        "newsletter_nTAX6G",
         "link_list_P4cgGq",
         "link_list_F4CiEQ",
         "link_list_bCUtbq"
+      ],
+      "custom_css": [
+        ".list-unstyled {font-size: 12px; line-height: 1.25;}",
+        ".footer-social-block {padding-block: 0px;}"
       ],
       "settings": {
         "footer_sticky": false,
