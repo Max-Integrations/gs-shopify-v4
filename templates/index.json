@@ -421,9 +421,9 @@
         "collection_cta_spacing_bottom_desktop": 10,
         "collection_cta_spacing_bottom_mobile": 10,
         "cta_text_color": "#000000",
-        "cta_text_color_hover": "#000000",
+        "cta_text_color_hover": "#FFFFFF",
         "cta_background_color": "#ffffff",
-        "cta_background_color_hover": "#ffffff",
+        "cta_background_color_hover": "#000000",
         "cta_border_color": "#000000",
         "cta_border_color_hover": "#000000"
       }
