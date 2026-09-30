@@ -31,7 +31,7 @@
         "collection_type": "tabs",
         "collection_source": "metafield",
         "layout_style": "carousel",
-        "container_width": "lg",
+        "container_width": "md",
         "grid_image_size": "square",
         "max_number_products_loaded": 10,
         "number_products_per_view_desktop": "5",
