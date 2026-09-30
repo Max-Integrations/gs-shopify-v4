@@ -45,7 +45,7 @@
     "card_style": "card",
     "card_image_padding": 0,
     "card_text_alignment": "center",
-    "card_color_scheme": "scheme-1",
+    "card_color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
     "card_border_thickness": 0,
     "card_border_opacity": 10,
     "card_corner_radius": 0,
@@ -56,7 +56,7 @@
     "collection_card_style": "card",
     "collection_card_image_padding": 0,
     "collection_card_text_alignment": "center",
-    "collection_card_color_scheme": "scheme-1",
+    "collection_card_color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
     "collection_card_border_thickness": 0,
     "collection_card_border_opacity": 10,
     "collection_card_corner_radius": 0,
@@ -357,6 +357,17 @@
           "button_label": "#000000",
           "secondary_button_label": "#ffffff",
           "shadow": "#121212"
+        }
+      },
+      "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1": {
+        "settings": {
+          "background": "#ffffff",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "#000000",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
+          "shadow": "rgba(0,0,0,0)"
         }
       }
     }
