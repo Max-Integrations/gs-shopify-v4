@@ -70,6 +70,7 @@
           "type": "product-card-quick-view",
           "settings": {
             "product_card_quick_view_button_text": "Quick Add",
+            "enable_quick_add": true,
             "product_card_title_color": "#000000"
           }
         }
@@ -90,7 +91,7 @@
         "tag": "h1",
         "show_header": true,
         "show_description": true,
-        "description_position": "on_overlay",
+        "description_position": "below_products",
         "collection_image": false,
         "banner_height_desktop": "200px",
         "banner_height_mobile": "100px",
