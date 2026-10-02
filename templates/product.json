@@ -249,7 +249,7 @@
             "swym_atw_icon_thickness": 1.7,
             "swym_atw_display_btn_text": false,
             "swym_button_position": "product_title_right",
-            "swym_atw_button_vertical_offset": -12,
+            "swym_atw_button_vertical_offset": -2,
             "swym_atw_full_width": true,
             "swym_atw_button_alignment": "center",
             "swym_add_to_wishlist_color": "#ffffff",
@@ -291,7 +291,7 @@
           "settings": {
             "eta_text_font_size": 16,
             "hint_text_font_size": 12,
-            "custom_css": ".wonderment-pdp-eta {\nmargin-top: 25px;\nmargin-bottom: 15px;\n}\n@media screen and (min-width:768px) {\n.wonderment-pdp-eta {\nmargin-top: 0px;\nmargin-bottom: 5px;\n}\n}"
+            "custom_css": "#wonderment-pdp-eta {\nmargin-top: 25px;\nmargin-bottom: 15px;\n}\n@media screen and (min-width:768px) {\n#wonderment-pdp-eta {\nmargin-top: 0px;\nmargin-bottom: 5px;\n}\n}"
           }
         },
         "store_locator": {
