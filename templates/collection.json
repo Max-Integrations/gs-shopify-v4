@@ -88,7 +88,8 @@
         ".product-percent-off {display: none;}",
         ".compare-add-button {display: none;}",
         ".product-quickview {padding-block: 12px; margin-top: -33px;}",
-        ".qa-size-options {font-size: 12px; height: 120px;}"
+        ".qa-size {font-size: 11px; min-width: 10px; min-height: 18px; font-family: roboto condensed; padding: 2px; line-height: 0.21px;}",
+        ".quick-add-variants {max-block-size: 150px;}"
       ],
       "settings": {
         "overlay_content_position": "text-center",
