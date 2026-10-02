@@ -1,9 +1,14 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "main": {
-      "type": "main-cart-items",
-      "settings": {}
-    },
     "gs_addons": {
       "type": "gs-cart-addons",
       "blocks": {
@@ -18,6 +23,7 @@
         },
         "wrap": {
           "type": "gift_wrap",
+          "disabled": true,
           "settings": {
             "product": "",
             "label": "Add gift wrap",
@@ -30,7 +36,7 @@
           "type": "roundup",
           "disabled": true,
           "settings": {
-            "product": "",
+            "product": "gift",
             "label": "Round up for the Grunt Style Foundation",
             "description": "Your change funds mental health, wellness and advocacy programs for Service Members, Veterans and First Responders.",
             "add_label": "Donate"
@@ -43,17 +49,43 @@
         "roundup"
       ],
       "settings": {
-        "color_scheme": "scheme-1"
+        "color_scheme": "scheme-2"
+      }
+    },
+    "main": {
+      "type": "main-cart-items",
+      "settings": {
+        "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
+        "padding_top": 8,
+        "padding_bottom": 8
       }
     },
     "footer": {
       "type": "main-cart-footer",
-      "settings": {}
+      "blocks": {
+        "subtotal_XPqDi6": {
+          "type": "subtotal",
+          "settings": {}
+        },
+        "buttons_7YYPzq": {
+          "type": "buttons",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "subtotal_XPqDi6",
+        "buttons_7YYPzq"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
     }
   },
   "order": [
-    "main",
     "gs_addons",
+    "main",
     "footer"
   ]
 }
