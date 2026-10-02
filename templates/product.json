@@ -60,7 +60,7 @@
           "settings": {
             "style": "pattern",
             "shape": "circle",
-            "size": 32,
+            "size": 22,
             "show_label": true,
             "label": "Color"
           },
@@ -129,6 +129,7 @@
         },
         "gate_rewards_early": {
           "type": "block--product-message",
+          "disabled": true,
           "settings": {
             "text": "<p><strong>Heads Up! You Must Be a Grunt Style Rewards Member To Purchase This Product Early.</strong></p><p>Already a Member of Grunt Style Rewards? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/community/membership\">Join today!</a></p>",
             "image_link": "",
@@ -248,7 +249,7 @@
             "swym_atw_icon_thickness": 1.7,
             "swym_atw_display_btn_text": false,
             "swym_button_position": "product_title_right",
-            "swym_atw_button_vertical_offset": 0,
+            "swym_atw_button_vertical_offset": -12,
             "swym_atw_full_width": true,
             "swym_atw_button_alignment": "center",
             "swym_add_to_wishlist_color": "#ffffff",
@@ -290,11 +291,12 @@
           "settings": {
             "eta_text_font_size": 16,
             "hint_text_font_size": 12,
-            "custom_css": ""
+            "custom_css": ".wonderment-pdp-eta {\nmargin-top: 25px;\nmargin-bottom: 15px;\n}\n@media screen and (min-width:768px) {\n.wonderment-pdp-eta {\nmargin-top: 0px;\nmargin-bottom: 5px;\n}\n}"
           }
         },
         "store_locator": {
           "type": "block--product-store-locator",
+          "disabled": true,
           "settings": {
             "label": "Find a store near you",
             "radius": 50,
@@ -533,6 +535,10 @@
         "badge_best_seller",
         "badge_dnr",
         "badge_usa_made"
+      ],
+      "custom_css": [
+        ".gs-product__option-values {min-width: 20px; height: 30px;}",
+        ".gs-product__option-pill {width: 25px; height: 25px; font-size: 12px;}"
       ],
       "settings": {
         "show_breadcrumb": true,
