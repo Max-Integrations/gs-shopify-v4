@@ -84,6 +84,12 @@
         "card_swatches",
         "card_quick_view"
       ],
+      "custom_css": [
+        ".product-percent-off {display: none;}",
+        ".compare-add-button {display: none;}",
+        ".product-quickview {padding-block: 12px; margin-top: -33px;}",
+        ".qa-size-options {font-size: 12px;}"
+      ],
       "settings": {
         "overlay_content_position": "text-center",
         "overlay_text": false,
