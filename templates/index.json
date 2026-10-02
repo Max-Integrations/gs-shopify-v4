@@ -679,12 +679,12 @@
                 "border_width": 1,
                 "border_radius": 0,
                 "custom_scheme": true,
-                "color_scheme": "scheme-5",
-                "bg": "",
-                "text_color": "",
-                "border_color": "",
-                "hover_bg": "",
-                "hover_text_color": ""
+                "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
+                "bg": "#FFFFFF",
+                "text_color": "#000000",
+                "border_color": "#000000",
+                "hover_bg": "#000000",
+                "hover_text_color": "#FFFFFF"
               },
               "blocks": {}
             }
