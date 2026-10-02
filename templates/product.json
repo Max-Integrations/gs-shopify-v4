@@ -268,6 +268,14 @@
             "swym_custom_css": ""
           }
         },
+        "block_custom_liquid_GWteCU": {
+          "type": "block--custom-liquid",
+          "name": "Custom Liquid",
+          "settings": {
+            "custom_liquid": "{%- assign cashback_percent = 0.20 -%}\n{%- assign cashback_per_unit = product.price | times: cashback_percent -%}\n{%- assign formatted_cashback = cashback_per_unit | money -%}\n\n<p id=\"cashback-display\"\n   data-cashback-percent=\"{{ cashback_percent}}\"\n   style=\"color: #002F6E; font-weight: bold; font-size: 0.89em; margin-top: 3px;\">\n  Rewards Members Can Earn Up To {{ formatted_cashback}} For Their Next Purchase! <a href='https://www.gruntstyle.com/community/membership' style=\"text-decoration: underline;\"> | Join Now </a>\n</p>"
+          },
+          "blocks": {}
+        },
         "limited_message": {
           "type": "block--product-message",
           "name": "PreOrder Message",
@@ -310,7 +318,7 @@
           "settings": {
             "heading": "Product Description",
             "source": "text",
-            "text": "<p><strong>{{ product.metafields.custom.limited_custom_product_message.value }}</strong></p>{{ product.description }}",
+            "text": "{{ product.description }}",
             "page": "",
             "features_heading": "",
             "video_url": "",
@@ -351,7 +359,7 @@
           "type": "block--product-message",
           "settings": {
             "text": "",
-            "image": "shopify://shop_images/Promo_Menu_Banner_750x200_FW26_20_-Off-GOVX.jpg",
+            "image": "shopify://shop_images/Promo_Menu_Banner_750x200_FW26_20_Off_GOVX.jpg",
             "image_link": "shopify://pages/govx-discount",
             "product_tags": "",
             "exclude_tags": "",
@@ -517,6 +525,7 @@
         "notice_ussf",
         "buy_buttons",
         "wishlist_plus_wishlist_pdp_button_WkEtAw",
+        "block_custom_liquid_GWteCU",
         "limited_message",
         "wonderment_eta",
         "store_locator",
@@ -568,6 +577,11 @@
     },
     "recommendations": {
       "type": "featured-collections",
+      "custom_css": [
+        ".product-percent-off {display: none;}",
+        ".compare-add-button {display: none;}",
+        ".product-quickview {padding-block: 12px; margin-top: -33px;}"
+      ],
       "settings": {
         "section_heading": "You May Also Like",
         "heading_text_align": "left",
