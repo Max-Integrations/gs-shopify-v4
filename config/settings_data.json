@@ -290,6 +290,11 @@
           "storefront_layout_drawer_position": "left",
           "storefront_layout_as_section_page": ""
         }
+      },
+      "4335028968536508377": {
+        "type": "shopify://apps/uppush-order-limit/blocks/uppush-order-limit/ca40887b-827e-4555-9209-0b817b582223",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
