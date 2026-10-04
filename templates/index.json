@@ -680,11 +680,11 @@
                 "border_radius": 0,
                 "custom_scheme": true,
                 "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
-                "bg": "#FFFFFF",
+                "bg": "#ffffff",
                 "text_color": "#000000",
                 "border_color": "#000000",
                 "hover_bg": "#000000",
-                "hover_text_color": "#FFFFFF"
+                "hover_text_color": "#ffffff"
               },
               "blocks": {}
             }
@@ -1075,7 +1075,7 @@
         "testimonial_UdwCWN": {
           "type": "quote",
           "settings": {
-            "author_title": "KING OF PATRIOTIC",
+            "author_title": "<strong>KING OF PATRIOTIC</strong>",
             "author": "John S.",
             "country_name": "",
             "show_rating": true,
@@ -1086,7 +1086,7 @@
         "testimonial_iyHhEk": {
           "type": "quote",
           "settings": {
-            "author_title": "COMMUNITY",
+            "author_title": "<strong>COMMUNITY</strong>",
             "author": "Carrie C.",
             "country_name": "",
             "show_rating": true,
@@ -1097,7 +1097,7 @@
         "testimonial_Q4AXyT": {
           "type": "quote",
           "settings": {
-            "author_title": "EXCELLENT SERVICE",
+            "author_title": "<strong>EXCELLENT SERVICE</strong>",
             "author": "CJ",
             "country_name": "",
             "show_rating": true,
@@ -1108,7 +1108,7 @@
         "testimonial_wtBPmf": {
           "type": "quote",
           "settings": {
-            "author_title": "PATRIOTIC SUPREME",
+            "author_title": "<strong>PATRIOTIC SUPREME</strong>",
             "author": "Brad L.",
             "country_name": "",
             "show_rating": true,
@@ -1119,7 +1119,7 @@
         "testimonial_aWCigM": {
           "type": "quote",
           "settings": {
-            "author_title": "FAST SHIPPING",
+            "author_title": "<strong>FAST SHIPPING</strong>",
             "author": "Dustin B.",
             "country_name": "",
             "show_rating": true,
@@ -1134,6 +1134,9 @@
         "testimonial_Q4AXyT",
         "testimonial_wtBPmf",
         "testimonial_aWCigM"
+      ],
+      "custom_css": [
+        ".custom-comment {font-size: 20px; font-weight: 400;}"
       ],
       "settings": {
         "section_visibility": "always",
@@ -1150,8 +1153,8 @@
         "description": "",
         "heading_alignment": "text-center",
         "color_scheme": "scheme-1",
-        "padding_top": 48,
-        "padding_bottom": 48
+        "padding_top": 12,
+        "padding_bottom": 12
       }
     },
     "multicolumn_with_content_hover_rUQ9Qn": {
