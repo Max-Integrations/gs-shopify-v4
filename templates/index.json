@@ -1076,7 +1076,7 @@
           "type": "quote",
           "settings": {
             "author_title": "<strong>KING OF PATRIOTIC</strong>",
-            "author": "John S.",
+            "author": "<strong>John S.</strong>",
             "country_name": "",
             "show_rating": true,
             "rating": 5,
@@ -1087,7 +1087,7 @@
           "type": "quote",
           "settings": {
             "author_title": "<strong>COMMUNITY</strong>",
-            "author": "Carrie C.",
+            "author": "<strong>Carrie C.</strong>",
             "country_name": "",
             "show_rating": true,
             "rating": 5,
@@ -1098,7 +1098,7 @@
           "type": "quote",
           "settings": {
             "author_title": "<strong>EXCELLENT SERVICE</strong>",
-            "author": "CJ",
+            "author": "<strong>CJ</strong>",
             "country_name": "",
             "show_rating": true,
             "rating": 5,
@@ -1109,7 +1109,7 @@
           "type": "quote",
           "settings": {
             "author_title": "<strong>PATRIOTIC SUPREME</strong>",
-            "author": "Brad L.",
+            "author": "<strong>Brad L.</strong>",
             "country_name": "",
             "show_rating": true,
             "rating": 5,
@@ -1120,7 +1120,7 @@
           "type": "quote",
           "settings": {
             "author_title": "<strong>FAST SHIPPING</strong>",
-            "author": "Dustin B.",
+            "author": "<strong>Dustin B.</strong>",
             "country_name": "",
             "show_rating": true,
             "rating": 5,
@@ -1136,7 +1136,10 @@
         "testimonial_aWCigM"
       ],
       "custom_css": [
-        ".custom-comment {font-size: 20px; font-weight: 400;}"
+        ".testimonial-text {font-size: 16px; font-weight: 400;}",
+        ".testimonial-title {font-weight: 700; font-size: 20px;}",
+        ".testimonial-item-inner.card-border-enabled {border-color: #000; border: 2px solid; align-content: center; text-align: center;}",
+        ".testimonial-star-rating {display: inline;}"
       ],
       "settings": {
         "section_visibility": "always",
@@ -1152,7 +1155,7 @@
         "heading_size": "h2",
         "description": "",
         "heading_alignment": "text-center",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
         "padding_top": 12,
         "padding_bottom": 12
       }
