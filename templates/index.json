@@ -910,6 +910,7 @@
         "button_1",
         "button_2"
       ],
+      "disabled": true,
       "name": "Image with text-D",
       "settings": {
         "section_visibility": "large",
@@ -1031,6 +1032,7 @@
         "block_button_xdfeEa",
         "block_button_Ny4TzW"
       ],
+      "disabled": true,
       "name": "Image with text-M",
       "settings": {
         "section_visibility": "small",
@@ -1136,7 +1138,7 @@
         "testimonial_aWCigM"
       ],
       "custom_css": [
-        ".testimonial-text {font-size: 16px; font-weight: 400;}",
+        ".testimonial-text {font-size: 14px; font-weight: 400;}",
         ".testimonial-title {font-weight: 700; font-size: 20px;}",
         ".testimonial-item-inner.card-border-enabled {border-color: #000; border: 2px solid; align-content: center; text-align: center;}",
         ".testimonial-star-rating {display: inline;}"
