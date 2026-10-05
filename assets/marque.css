@@ -1,0 +1,59 @@
+.text-marque-wrapper {
+    overflow: hidden;
+}
+
+.text-marque-content {
+    display: flex;
+}
+
+.text-marque-node {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: marque;
+    animation-duration: var(--marqueeSpeed);
+    animation-play-state: running;
+}
+
+.text-marque-node.ltr-direction {
+    animation-direction: reverse;
+}
+
+.text-marque-node.rtl-direction {
+    animation-direction: normal;
+}
+
+.text-marque-node * {
+    color: var(--node-color);
+    font-size: var(--text-font-size);
+}
+
+.text-marque-node>* {
+    margin-left: var(--marquee-block-gap, 5px);
+    margin-right: var(--marquee-block-gap, 5px);
+}
+
+.text-marque-node svg,
+.text-marque-node img {
+    min-width: var(--marquee-icon-width, 44px);
+    max-width: var(--marquee-icon-width, 44px);
+    width: var(--marquee-icon-width, 44px);
+}
+
+.text-marque-node .highlight-text {
+    color: rgba(var(--text-hightlight-color));
+    -webkit-text-fill-color: transparent;
+}
+
+.text-marque-node .gradient-text {
+    background: var(--text-gradient-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.marquee-img,
+.marquee-icon {
+    display: flex;
+}

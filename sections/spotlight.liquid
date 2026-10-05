@@ -1,0 +1,673 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/spotlight.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+{{ 'spotlight.css' | asset_url | stylesheet_tag }}
+{%-liquid
+assign Colorscheme = section.settings.color_scheme
+ %}
+
+<div class="color-{{ Colorscheme }} section-padding{% if section.settings.enable_gradient %} gradiant{% endif %}">
+  <div class="container-sm">
+    {% if section.settings.heading != blank %}
+      {%- capture highlightPrefix -%}
+      <span class="line-marker {% if section.settings.highlight_style == 'background' %}highlight-background {% if section.settings.bg__color == 'gradient' %}highlight-background-gradient{% else %}highlight-background-solid{% endif %}{% endif %}">
+    {%- endcapture -%}
+    {%- capture highlightSuffix -%}
+    {% if section.settings.highlight_style != 'background' %}
+      {% case section.settings.highlight_style %}
+    {% when 'underline' %}
+        <svg class="marker-svg marker-svg-syle-1" viewBox="0 0 296 4" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0 2H295.21" stroke="currentColor" stroke-width="4" />
+         </svg>
+            
+    {% when 'shape_2' %}
+        <svg class="marker-svg marker-svg-syle-2"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 294.98 18.53" fill="none" preserveAspectRatio="none">
+              <path class="cls-1" d="M.61,16.63C16.91,11.37,46.89,2.71,56.75,2.05c9.86-.67,7.88,6.17,3.12,10.69-1.21,2.31,2.38,5.16,26.41-1.97l17.08-5.05c1.96-.59,6.11-.99,7,2.16,1.11,3.94,8.09,7.32,29.2,6.83,21.11-.48,51.69-6.97,72.81-8.66,21.13-1.69,39.15-3.31,82.47-.03"  stroke="currentColor" stroke-width="4px"/>
+          </svg>
+
+    {% when 'shape_3' %}
+        <svg  class="marker-svg marker-svg-syle-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.26 12.96" fill="none" preserveAspectRatio="none">
+              <path class="cls-1" d="M.96,11.2S30.88-5.22,295.18,5.81"  stroke="currentColor" stroke-width="4px"/>
+          </svg>
+
+    {% when 'shape_4' %}
+        <svg class="marker-svg marker-svg-syle-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.85 17.13" fill="none" preserveAspectRatio="none">
+              <path class="cls-1" d="M.33,15.15S94.86-.8,222.47,2.43c1.13.03,1.36,1.61.29,1.96l-23.04,6.62c-1.16.38-.77,2.1.44,1.95,20-2.56,32.17-7.48,95.38,2.19" stroke="currentColor" stroke-width="4px"/>
+        </svg>
+    {% when 'shape_5' %}
+        <svg class="marker-svg marker-svg-syle-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 297.8 16.66" fill="none" preserveAspectRatio="none">
+            <path class="cls-1" d="M.7,8.33s38.2-14.25,160.22,0c122.02,14.25,135.42,0,135.42,0" stroke="currentColor" stroke-width="4px"/>
+        </svg>
+    {% when 'shape_6' %}
+        <svg class="marker-svg marker-svg-syle-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.84 21.07" fill="none" preserveAspectRatio="none">
+          <path class="cls-1" d="M.51,8.31C5.44,7.01,38.25-.62,75.7,2.94c0,0,45.95,4.74-10.73,15.39-20.04,3.77-18.53-7.76,28.18-14.01,0,0,21.75-5.5,202.57,4.84" stroke="currentColor" stroke-width="4px"/>
+        </svg>
+        
+{% endcase %}
+
+
+
+   {% endif %}
+      </span>
+    {%- endcapture -%}
+    <div class="section-title {{ section.settings.heading_alignment }}">
+        <{{ section.settings.seo_heading }} class="{{ section.settings.heading_size }} section-heading">
+          {{ section.settings.heading | replace:"[", highlightPrefix | replace:"]",highlightSuffix }}
+      </{{ section.settings.seo_heading }}>
+      </div>
+    {% endif %}
+    <div class="hotspots-wrapper">
+      <div class="slider hotspot-items" data-slideshow='{
+        "cellAlign":"left",
+        "contain": true,
+        "pageDots": false,
+        "draggable": true,
+        "prevNextButtons": false,
+        "wrapAround":false,
+        "groupCells": true,
+        "cellSelector":".hotspot-item"
+                    }'>
+                    
+      {% for block in section.blocks %}
+        <div id="block-hotspot-item{{ block.id }}" class="hotspot-item" data-id="block-id-{{ block.id }}" {{ block.shopify_attributes }}>
+          <div class="hotspot-image">
+            <div class="media" style="--imageRatio: {% if block.settings.image_id != blank %}{{ 1 | divided_by: block.settings.image_id.aspect_ratio | times: 100 | append: '%' }}{% else %}56%{% endif %}" >
+              {% if block.settings.image_id != blank %}
+                {%- if block.settings.image_id != blank -%}<img class="{{ '' }}" src="{{ block.settings.image_id | image_url: width: 600 }}" srcset="{{ block.settings.image_id | image_url: width: 300 }} 300w, {{ block.settings.image_id | image_url: width: 600 }} 600w, {{ block.settings.image_id | image_url: width: 900 }} 900w, {{ block.settings.image_id | image_url: width: 1200 }} 1200w, {{ block.settings.image_id | image_url: width: 1500 }} 1500w, {{ block.settings.image_id | image_url: width: 2000 }} 2000w" sizes="(max-width: 600px) 300px, (max-width: 900px) 600px, (max-width: 1200px) 900px, (max-width: 1500px) 1200px, 100vw" width="{{ block.settings.image_id.width }}" height="{{ block.settings.image_id.height }}" alt="{{ block.settings.image_id.alt | escape }}" loading="lazy" style="object-position: {{ block.settings.image_id.presentation.focal_point | default: 'center' }}">{%- endif -%}
+                  {% else %}
+                  {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+            </div>
+          </div>
+          <div class="hotspot-buttons" data-hotspot-buttons>
+            {% assign hotspotOpen = false %}
+            {% assign activeHotSpot = 0 %}
+            {% for i in (1..3) %}
+              {% capture hotspotCount %}hotspot{{ i }}{% endcapture %}
+              {% assign hotspot = block.settings[hotspotCount] %}
+              {% capture productCount %}product{{ i }}{% endcapture %}
+              {% if block.settings[productCount] != blank %}
+                {% assign productDisplay = block.settings[productCount] %}
+                {% else %}
+                {% assign productDisplay = 'product-apparel' %}
+                {% endif %}
+              {% capture enablehotspot %}enable_{{ i }}{% endcapture %}
+              {% assign hotspotEnable = block.settings[enablehotspot] %}
+              {% liquid
+              assign currentStatus = false
+              if hotspotEnable and hotspotOpen == false
+                assign currentStatus = true
+                assign hotspotOpen = true
+                assign activeHotSpot = i 
+              endif 
+              %}
+            {% if hotspotEnable == true %}    
+            <a class="hotspot-dot dot{{ i }} {% if section.settings.open_bydefault == true %}{% if currentStatus %}active{% endif %}{% endif %}"
+              id="hot-spots{{ i }}-{{ block.id }}"
+              tabindex="0"
+              data-product="product_{{ i }}_{{ productDisplay }}-{{ block.id }}"
+              data-hotspot-dot
+            >
+              <span class="hotspot-dot-inner"></span>
+            </a>
+          {% endif %}
+          {% endfor %}
+          </div>
+          <div class="hotspot-product-main">
+            {% for i in (1..3) %}
+              {% capture productCount %}product{{ i }}{% endcapture %}
+                 {% if block.settings[productCount] != blank %}
+                  {% assign productDisplay = block.settings[productCount] %}
+                  {% else %}
+                  {% assign productDisplay = 'product-apparel' %}
+                  {% endif %}
+                  {% assign placeholder_image_index = i %}
+                  {% assign placeholder_image = 'product-apparel-' | append: placeholder_image_index %}
+                  {% capture enablehotspot %}enable_{{ i }}{% endcapture %}
+              {% assign hotspotEnable = block.settings[enablehotspot] %}
+              
+            <div class="hotspot-product-main-inner product-inner{{ i }} {% if section.settings.open_bydefault  %}{% if i == activeHotSpot %}active{% endif %}{% endif %}"
+              data-id="product_{{ i }}_{{ productDisplay }}-{{ block.id }}">
+              <div class="hotspot-product-image">
+                <div class="media" style="--imageRatio: {% if block.settings.productDisplay != blank and block.settings[productCount] != blank %}{{ 1 | divided_by: block.settings.productDisplay.aspect_ratio | times: 100 | append: '%' }}{% else %}100%{% endif %}">
+                  {% if block.settings[productCount].featured_media != blank %}
+                    {%- if productDisplay.featured_media.preview_image != blank -%}<img class="{{ '' }}" src="{{ productDisplay.featured_media.preview_image | image_url: width: 600 }}" srcset="{{ productDisplay.featured_media.preview_image | image_url: width: 300 }} 300w, {{ productDisplay.featured_media.preview_image | image_url: width: 600 }} 600w, {{ productDisplay.featured_media.preview_image | image_url: width: 900 }} 900w, {{ productDisplay.featured_media.preview_image | image_url: width: 1200 }} 1200w, {{ productDisplay.featured_media.preview_image | image_url: width: 1500 }} 1500w, {{ productDisplay.featured_media.preview_image | image_url: width: 2000 }} 2000w" sizes="(max-width: 600px) 300px, (max-width: 900px) 600px, (max-width: 1200px) 900px, (max-width: 1500px) 1200px, 100vw" width="{{ productDisplay.featured_media.preview_image.width }}" height="{{ productDisplay.featured_media.preview_image.height }}" alt="{{ productDisplay.featured_media.preview_image.alt | escape }}" loading="lazy" style="object-position: {{ productDisplay.featured_media.preview_image.presentation.focal_point | default: 'center' }}">{%- endif -%}
+                    {% else %}
+                    {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+                </div>
+              </div>
+              <div class="hotspot-product-detail">
+                {% if block.settings[productCount] != blank %}
+                <a href="{{ productDisplay.url }}" class="product-title text-small">{{ productDisplay.title }}</a>
+                {% render 'gs-price', cardProduct: productDisplay, cardVariant: productDisplay.selected_or_first_available_variant %}
+                {% else %}
+                <span class="product-title" >{{'onboarding.product_title' | t }}</span>
+                <span class="price-item actual-price">{{ 1990 | money }}</span>
+                {% endif %}
+                  {% if block.settings[productCount] != blank %}
+                    {% liquid
+                      assign productUrl = productDisplay.url | within: collection
+                      if settings.hide_collection_from_url
+                        assign productUrl = productDisplay.url 
+                      endif
+                     %}
+                  <a
+                    {% if productDisplay == blank %}
+                      role="link"
+                      aria-disabled="true"
+                    {% else %}
+                      href="{{ productUrl }}"
+                    {% endif %}
+                    class="button link-btn quick-view{% if false %} button-shadow{% endif %}"
+                    tabindex="-1"
+                    aria-label="{{ productDisplay.tite }} quick-view link"
+                    data-quick-view
+                  >
+                    <span>{{ 'onboarding.quickview' | t }}</span>
+                  </a>
+                {% endif %}
+              </div>
+              <div class="product-cross-icon">
+                <svg width="10"
+                height="10"
+                viewBox="0 0 10 10"
+                fill="none">
+                <path d="M4 0H6V10H4V0Z" fill="currentColor" />
+                <path d="M0 6L-8.74228e-08 4L10 4L10 6L0 6Z" fill="currentColor" />
+              </svg></div>
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+       {% if section.blocks.size > 1 %}
+            {%- assign arrow_class = 'custom-navigation-button-icon' -%}<button class="custom-navigation-button flickity-button flickity-prev-next-button swiper-button previous" type="button" aria-label="Previous" data-slideshow-navigation-button data-swatch-scroll="prev"><svg class="{{ arrow_class }}" width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M12 6H1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 1.5L1 6L5.5 10.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="custom-navigation-button flickity-button flickity-prev-next-button swiper-button next" type="button" aria-label="Next" data-slideshow-navigation-button data-swatch-scroll="next"><svg class="{{ arrow_class }}" width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6H12.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 1.5L12.5 6L8 10.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      {% for i in (1..3) %}
+        {% capture verticaldots %}vertical_pos{{ i }}{% endcapture %}
+        {% assign verticalPos = block.settings[verticaldots] %}
+        {% capture horizontaldots %}horizontal_pos{{ i }}{% endcapture %}
+        {% assign horizontalPos = block.settings[horizontaldots] %}
+        {% capture colordots %}color_id{{ i }}{% endcapture %}
+        {% assign colorDots = block.settings[colordots] %}
+        {% capture bordercolordots %}border_color_id{{ i }}{% endcapture %}
+        {% assign bordercolorDots = block.settings[bordercolordots] %}
+        #hot-spots{{ i }}-{{ block.id }}{
+          position: absolute;
+          top: {{ verticalPos | times: 1 }}%;
+          left: {{ horizontalPos | times: 1 }}%;
+          --spotlightDotBg: {{ colorDots }};
+          --spotlightDotActive: {{ bordercolorDots }};
+        }
+        #block-hotspot-item{{ block.id }} .product-inner{{ i }}{
+         --spotlightDotActive: {{ bordercolorDots }};
+        }
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+  #shopify-section-{{ section.id }}{
+    --padding-top: {{ section.settings.top_space_desktop}}px;
+    --padding-bottom: {{ section.settings.bottom_space_desktop}}px;
+  }
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}{
+      --padding-top: {{ section.settings.top_space_mobile }}px !important;
+      --padding-bottom: {{ section.settings.bottom_space_mobile }}px !important;
+    }
+  }
+  {% if section.settings.section_visibility == 'large' %}
+    @media(max-width: 767px) {
+      #shopify-section-{{ section.id }}{
+        display: none !important;
+      }
+    }
+  {% elsif section.settings.section_visibility == 'small' %}
+    @media(min-width: 768px) {
+      #shopify-section-{{ section.id }}{
+        display: none !important;
+      }
+    }
+  {% endif %}
+</style>
+
+{% schema %}
+{
+  "name": "Shop the look",
+  "tag": "section",
+  "class": "spotlight-section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "Section visibility",
+      "default": "always",
+      "options": [
+        {
+          "label": "Always",
+          "value": "always"
+        },
+        {
+          "label": "Small devices only",
+          "value": "small"
+        },
+        {
+          "label": "Large devices only",
+          "value": "large"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "open_bydefault",
+      "label": "Show first hotspot product opened by default",
+      "default": false
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Wrap your text between [ ] to add the markers. These [markers] will highlight the text. ",
+      "default": "Shop the look"
+    },
+    {
+      "type": "select",
+      "id": "highlight_style",
+      "label": "Marker text highlight style",
+      "default": "underline",
+      "options": [
+        {
+          "value": "underline",
+          "label": "Shape 1"
+        },
+        {
+          "value": "shape_2",
+          "label": "Shape 2"
+        },
+        {
+          "value": "shape_3",
+          "label": "Shape 3"
+        },
+        {
+          "value": "shape_4",
+          "label": "Shape 4"
+        },
+        {
+          "value": "shape_5",
+          "label": "Shape 5"
+        },
+        {
+          "value": "shape_6",
+          "label": "Shape 6"
+        },
+        {
+          "value": "background",
+          "label": "Background"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "bg__color",
+      "label": "Highlight background",
+      "default": "gradient",
+      "options": [
+        {
+          "value": "gradient",
+          "label": "Gradient"
+        },
+        {
+          "value": "solid",
+          "label": "Solid"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h1",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "seo_heading",
+      "label": "Heading tag",
+      "info": "Specify heading code types for SEO and search engines for crawling purposes.",
+      "default": "h2",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "default": "text-center",
+      "options": [
+        {
+          "label": "Left",
+          "value": "text-left"
+        },
+        {
+          "label": "Center",
+          "value": "text-center"
+        },
+        {
+          "label": "Right",
+          "value": "text-right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "primary",
+      "label": "Color scheme"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gradient",
+      "label": "Enable gradient",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "Top spacing (desktop)",
+      "default": 70,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "Bottom spacing (desktop)",
+      "default": 70,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "Top spacing (mobile)",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "Bottom spacing (mobile)",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Look image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_id",
+          "label": "Image"
+        },
+        {
+          "type": "header",
+          "content": "Hotspot 1"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_1",
+          "label": "Enable",
+          "default": true
+        },
+        {
+          "type": "product",
+          "id": "product1",
+          "label": "Product"
+        },
+        {
+          "type": "header",
+          "content": "Position"
+        },
+        {
+          "type": "range",
+          "id": "horizontal_pos1",
+          "min": 0,
+          "max": 90,
+          "step": 1,
+          "unit": "%",
+          "label": "Horizontal position",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "vertical_pos1",
+          "min": 0,
+          "max": 90,
+          "step": 1,
+          "unit": "%",
+          "label": "Vertical position",
+          "default": 30
+        },
+        {
+          "type": "color",
+          "id": "color_id1",
+          "label": "Background color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "border_color_id1",
+          "label": "Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "header",
+          "content": "Hotspot 2"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_2",
+          "label": "Enable",
+          "default": true
+        },
+        {
+          "type": "product",
+          "id": "product2",
+          "label": "Product"
+        },
+        {
+          "type": "header",
+          "content": "Position"
+        },
+        {
+          "type": "range",
+          "id": "horizontal_pos2",
+          "min": 0,
+          "max": 90,
+          "step": 1,
+          "unit": "%",
+          "label": "Horizontal position",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "vertical_pos2",
+          "min": 0,
+          "max": 90,
+          "step": 1,
+          "unit": "%",
+          "label": "Vertical position",
+          "default": 40
+        },
+        {
+          "type": "color",
+          "id": "color_id2",
+          "label": "Background color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "border_color_id2",
+          "label": "Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "header",
+          "content": "Hotspot 3"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_3",
+          "label": "Enable",
+          "default": true
+        },
+        {
+          "type": "product",
+          "id": "product3",
+          "label": "Product"
+        },
+        {
+          "type": "header",
+          "content": "Position"
+        },
+        {
+          "type": "range",
+          "id": "horizontal_pos3",
+          "min": 0,
+          "max": 90,
+          "step": 1,
+          "unit": "%",
+          "label": "Horizontal position",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "vertical_pos3",
+          "min": 0,
+          "max": 90,
+          "step": 1,
+          "unit": "%",
+          "label": "Vertical position",
+          "default": 50
+        },
+        {
+          "type": "color",
+          "id": "color_id3",
+          "label": "Background color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "border_color_id3",
+          "label": "Color",
+          "default": "#FFFFFF"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop the look",
+      "blocks": [
+        {
+          "type": "text"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

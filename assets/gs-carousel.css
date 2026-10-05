@@ -1,0 +1,62 @@
+/*
+  GS carousel helpers for sections ported from v3.
+
+  gs-slideshow.js turns v3's [data-slideshow] Flickity containers into
+  native scroll-snap scrollers; gs-marquee.js sets --marqueeSpeed for
+  the [data-marquee] strips. The `marque` keyframes lived in v3's
+  global style.css, which this theme does not load, so they are here.
+*/
+
+.gs-slideshow {
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gs-slideshow::-webkit-scrollbar {
+  display: none;
+}
+
+.gs-slideshow > *:not([data-slideshow-navigation-button]):not(.slider-pagination) {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+/* v3's "no carousel on mobile" option: stack the slides instead. */
+@media screen and (max-width: 767px) {
+  .gs-slideshow--stacked {
+    display: block;
+    overflow: visible;
+  }
+}
+
+/* Arrow state classes gs-slideshow.js keeps from v3. */
+.disable-arrows [data-slideshow-navigation-button] {
+  display: none;
+}
+
+.left-arrow-disabled [data-slideshow-navigation-button].previous,
+.right-arrow-disabled [data-slideshow-navigation-button].next {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+@keyframes marque {
+  0% {
+    transform: translate(0);
+    visibility: visible;
+  }
+  100% {
+    transform: translate(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-marquee] [data-marque-node] {
+    animation: none;
+  }
+}

@@ -1,0 +1,472 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/marquee.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+{{ 'marque.css' | asset_url | stylesheet_tag }}
+{% liquid
+  assign limit = 15
+  assign Colorscheme = section.settings.color_scheme
+%}
+<div class="color-{{ Colorscheme }} section-padding{% if section.settings.bg_color == 'rgba(0,0,0,0)' or section.settings.bg_color == blank %}{% if section.settings.enable_gradient %} gradiant{% endif %}{% endif %}">
+  <div class="text-marque-box">
+    {%- capture direction -%}
+      {%- if section.settings.direction == 'ltr' -%}
+      {%- cycle section_id:'ltr','rtl' -%}
+      {%- else -%}      
+      {%- cycle section_id:'rtl','ltr' -%}
+      {%- endif -%}
+    {%- endcapture -%}
+    <div class="text-marque-wrapper">
+      <div
+        class="text-marque-content"
+        data-marquee-speed="{{ section.settings.scrolling_speed }}"
+        data-marquee-speed-mobile="{{ section.settings.scrolling_speed_mobile }}"
+        data-marquee
+      >
+        {% for i in (1..limit) %}
+          <div
+            class="text-marque-node {{ direction }}-direction"
+            data-marque-node
+          >
+            {% for block in section.blocks %}
+              <div id="text-marque_{{ block.id}}" {{ block.shopify_attributes }}>
+                {% case block.type %}
+                  {% when 'text' %}
+                    {% if block.settings.heading != blank %}
+                      <div
+                        class="text-marque-item {{ block.settings.font_family }}-font {% if block.settings.text_style == 'solid' %} normal-text{% elsif block.settings.text_style == 'highlight'%} highlight-text{% else %}{% if block.settings.text_gradient != blank %} gradient-text{% endif %}{% endif %}"
+                        {% if block.settings.text_style == 'highlight' %}
+                          style="-webkit-text-stroke-width:{{ block.settings.outline_thickness }}"
+                        {% endif %}
+                      >
+                        {{ block.settings.heading }}
+                      </div>
+                    {% endif %}
+                  {% when 'icon' %}
+                    {% if block.settings.custom_icon != blank %}
+                      {% if block.settings.custom_icon != blank %}
+                        <span class="marqueeNode-{{ block.id }} marquee-icon{% if block.settings.default_color %} default-color{% endif %}">
+                          {{- block.settings.custom_icon -}}
+                        </span>
+                      {% else %}
+                        <span class="marqueeNode-{{ block.id }} marquee-icon{% if block.settings.default_color %} default-color{% endif %}">
+                          {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                        </span>
+                      {% endif %}
+                    {% else %}
+                      {% if block.settings.image != blank %}
+                        <span class="marquee-img">
+                          {%- if block.settings.image != blank -%}<img class="{{ '' }}" src="{{ block.settings.image | image_url: width: 600 }}" srcset="{{ block.settings.image | image_url: width: 300 }} 300w, {{ block.settings.image | image_url: width: 600 }} 600w, {{ block.settings.image | image_url: width: 900 }} 900w, {{ block.settings.image | image_url: width: 1200 }} 1200w, {{ block.settings.image | image_url: width: 1500 }} 1500w, {{ block.settings.image | image_url: width: 2000 }} 2000w" sizes="(max-width: 600px) 300px, (max-width: 900px) 600px, (max-width: 1200px) 900px, (max-width: 1500px) 1200px, 100vw" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy" style="object-position: {{ block.settings.image.presentation.focal_point | default: 'center' }}">{%- endif -%}
+                        </span>
+                      {% else %}
+                        <span class="marquee-img">
+                          {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                        </span>
+                      {% endif %}
+                    {% endif %}
+                {% endcase %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+     #shopify-section-{{ section.id }}{
+     --padding-top:{{ section.settings.top_space_desktop }}px;
+     --padding-bottom:{{ section.settings.bottom_space_desktop }}px;
+     --text-font-size: {{ section.settings.heading_size }}px;
+     --marquee-icon-width: {{ section.settings.image_size }}px;
+     }
+     {% unless section.settings.bg_color == 'rgba(0,0,0,0)' or section.settings.bg_color == blank %}
+     #shopify-section-{{ section.id }} .color-{{ Colorscheme }} {
+      --background: {{ section.settings.bg_color.red }}, {{ section.settings.bg_color.green }}, {{ section.settings.bg_color.blue }}
+    }
+  {% endunless %}
+  html[color-mode="dark"] #shopify-section-{{ section.id }} .color-{{ Colorscheme }} {
+    --background: 22,22,22;
+  }
+     {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        #text-marque_{{ block.id }}{
+          {% unless block.settings.color == 'rgba(0,0,0,0)' or block.settings.color == blank %}
+          --node-color: {{ block.settings.color }};
+        {% else %}
+        --node-color:var(--textColor);
+        {% endunless%}
+          {% unless block.settings.highlight_color == 'rgba(0,0,0,0)' or block.settings.highlight_color == blank %}
+          --text-hightlight-color:{{ block.settings.highlight_color.red }},{{ block.settings.highlight_color.green }},{{ block.settings.highlight_color.blue }},1;
+          {% else %}
+          --text-hightlight-color:var(--line-color);
+          {% endunless%}
+          {% if block.settings.text_gradient != blank %}
+          --text-gradient-color: {{ block.settings.text_gradient }};
+          {% endif %}
+          --marquee-block-gap:{{ block.settings.text_icon_gap }}px;
+        }
+        #text-marque_{{ block.id }} .marquee-icon:not(.default-color),
+        #text-marque_{{ block.id }} .marquee-icon:not(.default-color) *{
+          color:{{ block.settings.icon_color}};
+        }
+        #text-marque_{{ block.id }} .marquee-icon:not(.default-color) svg{
+          fill:{{ block.settings.icon_color}};
+        }
+      {% endfor %}
+      {% for block in section.blocks %}html[color-mode="dark"] #text-marque_{{ block.id }}{% unless forloop.last %},{% endunless %}{% endfor %}{
+        --node-color: #d1d1d1 ;
+        --text-hightlight-color:255,255,255;
+        --text-gradient-color: #de3906;
+      }
+      {% for block in section.blocks %}html[color-mode="dark"] #text-marque_{{ block.id }} .marquee-icon:not(.default-color),{% endfor %}
+      {% for block in section.blocks %}html[color-mode="dark"] #text-marque_{{ block.id }} .marquee-icon:not(.default-color) *{% unless forloop.last %},{% endunless %}{% endfor %}{
+        color:#d1d1d1;
+      }
+      {% for block in section.blocks %}html[color-mode="dark"] #text-marque_{{ block.id }} .marquee-icon:not(.default-color) svg{% unless forloop.last %},{% endunless %}{% endfor %}{
+        fill:#d1d1d1;
+      }
+     {% endif %}
+     @media only screen and (max-width:767px){
+     #shopify-section-{{ section.id }}{
+     --padding-top:{{ section.settings.top_space_mobile }}px;
+     --padding-bottom:{{ section.settings.bottom_space_mobile }}px;
+     --text-font-size: {{ section.settings.mobile_heading_size }}px;
+     --marquee-icon-width: {{ section.settings.mobile_image_size }}px;
+     }
+     }
+     {% if section.settings.section_visibility == 'large' %}
+      @media (max-width: 767px) {
+        #shopify-section-{{ section.id }}{
+          display: none !important;
+        }
+      }
+    {% elsif section.settings.section_visibility == 'small' %}
+      @media (min-width: 768px) {
+        #shopify-section-{{ section.id }}{
+          display: none !important;
+        }
+      }
+  {% endif %}
+</style>
+
+{% schema %}
+{
+  "name": "Marquee text",
+  "tag": "section",
+  "class": "text-marque-section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "Section visibility",
+      "default": "always",
+      "options": [
+        {
+          "label": "Always",
+          "value": "always"
+        },
+        {
+          "label": "Small devices only",
+          "value": "small"
+        },
+        {
+          "label": "Large devices only",
+          "value": "large"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Direction",
+      "options": [
+        {
+          "value": "rtl",
+          "label": "Right to left"
+        },
+        {
+          "value": "ltr",
+          "label": "Left to right"
+        }
+      ],
+      "default": "rtl"
+    },
+    {
+      "type": "range",
+      "id": "scrolling_speed",
+      "label": "Desktop scrolling speed",
+      "min": 5,
+      "max": 100,
+      "unit": "s",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "scrolling_speed_mobile",
+      "label": "Mobile scrolling speed",
+      "min": 5,
+      "max": 100,
+      "unit": "s",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Desktop heading size",
+      "default": 80,
+      "min": 10,
+      "max": 150,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "label": "Mobile heading size",
+      "default": 40,
+      "min": 10,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "image_size",
+      "label": "Desktop image size",
+      "default": 70,
+      "min": 44,
+      "max": 200,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_image_size",
+      "label": "Mobile image size",
+      "default": 52,
+      "min": 20,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "primary",
+      "label": "Color scheme"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gradient",
+      "label": "Enable gradient",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "Top spacing (desktop)",
+      "default": 40,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "Bottom spacing (desktop)",
+      "default": 40,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "Top spacing (mobile)",
+      "default": 25,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "Bottom spacing (mobile)",
+      "default": 25,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Marquee text"
+        },
+        {
+          "type": "select",
+          "id": "font_family",
+          "label": "Font family",
+          "options": [
+            {
+              "value": "heading",
+              "label": "Heading"
+            },
+            {
+              "value": "body",
+              "label": "Body"
+            }
+          ],
+          "default": "heading"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "label": "Text style",
+          "default": "solid",
+          "options": [
+            {
+              "label": "Solid",
+              "value": "solid"
+            },
+            {
+              "label": "Highlight",
+              "value": "highlight"
+            },
+            {
+              "label": "Gradient",
+              "value": "gradient"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "outline_thickness",
+          "default": "1px",
+          "label": "Outline stroke",
+          "info": "This works on highlighted text.",
+          "options": [
+            {
+              "value": "1px",
+              "label": "Thin"
+            },
+            {
+              "value": "2px",
+              "label": "Thick"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Custom colors"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Solid"
+        },
+        {
+          "type": "color",
+          "id": "highlight_color",
+          "label": "Highlight text"
+        },
+        {
+          "type": "color_background",
+          "id": "text_gradient",
+          "label": "Gradient text"
+        },
+        {
+          "type": "range",
+          "id": "text_icon_gap",
+          "label": "Space between block",
+          "min": 5,
+          "max": 100,
+          "unit": "px",
+          "default": 15
+        }
+      ]
+    },
+    {
+      "type": "icon",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "custom_icon",
+          "label": "SVG code"
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Custom color"
+        },
+        {
+          "type": "checkbox",
+          "id": "default_color",
+          "label": "Use default color",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "text_icon_gap",
+          "label": "Space between block",
+          "min": 5,
+          "max": 100,
+          "unit": "px",
+          "default": 15
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee text",
+      "blocks": [
+        {
+          "type": "text"
+        },
+        {
+          "type": "icon"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

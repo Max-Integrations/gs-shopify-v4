@@ -342,6 +342,7 @@
       cannot load it for the shell itself.
     {%- endcomment -%}
     {{ 'gs-quick-view.css' | asset_url | stylesheet_tag }}
+    {{ 'gs-carousel.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -485,6 +486,14 @@
     {% endcomment %}
     <script src="{{ 'gs-quick-view.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'gs-quick-add.js' | asset_url }}" defer="defer"></script>
+
+    {% comment %}
+      Carousel and marquee behaviour for the sections ported from v3
+      (slideshow, marquee, collection-carousel, video-banner, spotlight,
+      product-short-videos), replacing v3's Flickity and theme.js.
+    {% endcomment %}
+    <script src="{{ 'gs-slideshow.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'gs-marquee.js' | asset_url }}" defer="defer"></script>
 
     {%- if settings.enable_accessibe -%}
       {%- comment -%}

@@ -1,0 +1,873 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/collection-carousel.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+{% liquid
+  # Collection source: 'manual' uses the section blocks (default, unchanged behavior).
+  # 'metafield' pulls the collections selected in the blog post's Promoted Collections metafield.
+  assign use_metafield = false
+  assign items = section.blocks
+  if section.settings.collection_source == 'metafield'
+    assign use_metafield = true
+    assign items = article.metafields.blogpost.promoted_collections.value
+  endif
+  assign item_count = items.size
+%}
+{% unless use_metafield and item_count == 0 %}
+{{ 'collection-carousel.css' | asset_url | stylesheet_tag }}
+
+<div class="color-{{ section.settings.color_scheme }} section-padding{% if section.settings.enable_gradient %} gradiant{% endif %}">
+  <div class="container-sm">
+    {% if section.settings.heading != blank %}
+      <div class="section-title {{ section.settings.heading_alignment }}" >
+        {%- capture highlightPrefix -%}
+          <span class="line-marker {% if section.settings.highlight_style == 'background' %}highlight-background {% if section.settings.bg__color == 'gradient' %}highlight-background-gradient{% else %}highlight-background-solid{% endif %}{% endif %}">
+        {%- endcapture -%}
+        {%- capture highlightSuffix -%}
+        {% if section.settings.highlight_style != 'background' %}
+          {% case section.settings.highlight_style %}
+    {% when 'underline' %}
+        <svg class="marker-svg marker-svg-syle-1" viewBox="0 0 296 4" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0 2H295.21" stroke="currentColor" stroke-width="4" />
+         </svg>
+            
+    {% when 'shape_2' %}
+        <svg class="marker-svg marker-svg-syle-2"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 294.98 18.53" fill="none" preserveAspectRatio="none">
+              <path class="cls-1" d="M.61,16.63C16.91,11.37,46.89,2.71,56.75,2.05c9.86-.67,7.88,6.17,3.12,10.69-1.21,2.31,2.38,5.16,26.41-1.97l17.08-5.05c1.96-.59,6.11-.99,7,2.16,1.11,3.94,8.09,7.32,29.2,6.83,21.11-.48,51.69-6.97,72.81-8.66,21.13-1.69,39.15-3.31,82.47-.03"  stroke="currentColor" stroke-width="4px"/>
+          </svg>
+
+    {% when 'shape_3' %}
+        <svg  class="marker-svg marker-svg-syle-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.26 12.96" fill="none" preserveAspectRatio="none">
+              <path class="cls-1" d="M.96,11.2S30.88-5.22,295.18,5.81"  stroke="currentColor" stroke-width="4px"/>
+          </svg>
+
+    {% when 'shape_4' %}
+        <svg class="marker-svg marker-svg-syle-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.85 17.13" fill="none" preserveAspectRatio="none">
+              <path class="cls-1" d="M.33,15.15S94.86-.8,222.47,2.43c1.13.03,1.36,1.61.29,1.96l-23.04,6.62c-1.16.38-.77,2.1.44,1.95,20-2.56,32.17-7.48,95.38,2.19" stroke="currentColor" stroke-width="4px"/>
+        </svg>
+    {% when 'shape_5' %}
+        <svg class="marker-svg marker-svg-syle-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 297.8 16.66" fill="none" preserveAspectRatio="none">
+            <path class="cls-1" d="M.7,8.33s38.2-14.25,160.22,0c122.02,14.25,135.42,0,135.42,0" stroke="currentColor" stroke-width="4px"/>
+        </svg>
+    {% when 'shape_6' %}
+        <svg class="marker-svg marker-svg-syle-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.84 21.07" fill="none" preserveAspectRatio="none">
+          <path class="cls-1" d="M.51,8.31C5.44,7.01,38.25-.62,75.7,2.94c0,0,45.95,4.74-10.73,15.39-20.04,3.77-18.53-7.76,28.18-14.01,0,0,21.75-5.5,202.57,4.84" stroke="currentColor" stroke-width="4px"/>
+        </svg>
+        
+{% endcase %}
+
+
+
+       {% endif %}
+          </span>
+        {%- endcapture -%}
+        <{{ section.settings.seo_heading }} class="{{ section.settings.heading_size }}">
+          {{ section.settings.heading | replace:"[", highlightPrefix | replace:"]",highlightSuffix}}
+        </{{ section.settings.seo_heading }}>
+      </div>
+    {% endif %}
+
+
+    {% if section.settings.shape == 'customshapes' %}
+    <svg width="0" height="0" viewBox="0 0 200 200" role="presentation" aria-hidden="true" focusable="false">
+      <defs>
+      <clipPath id="clip-path-{{ section.id }}" clipPathUnits="objectBoundingBox">
+        <path clip-rule="evenodd" transform="scale(0.005,0.005)" 
+          {%- case section.settings.customshapes -%}
+    {%- when 'shape1' -%}
+        d="M169.426 161.43C182.124 154.375 190 140.991 190 126.464V73.5361C190 59.0095 182.124 45.6246 169.426 38.5698L119.426 10.7921C107.345 4.08045 92.6552 4.08045 80.5743 10.7921L30.5743 38.5698C17.8757 45.6246 10 59.0095 10 73.5361V126.464C10 140.991 17.8757 154.375 30.5743 161.43L80.5743 189.208C92.6552 195.92 107.345 195.92 119.426 189.208L169.426 161.43Z"
+    {%- when 'shape2' -%}
+        d="M195 100.497C195 89.9135 186.99 81.2009 176.704 80.076C185.054 73.9647 187.634 62.4128 182.339 53.2459C177.045 44.0791 165.753 40.5367 156.283 44.7118C160.458 35.2421 156.916 23.9498 147.749 18.6552C138.582 13.3605 127.03 15.9403 120.919 24.2905C119.799 14.0095 111.087 6 100.497 6C89.9081 6 81.2009 14.0095 80.0814 24.2959C73.9701 15.9457 62.4182 13.366 53.2514 18.6606C44.0845 23.9552 40.5421 35.2475 44.7172 44.7172C35.2475 40.5421 23.9552 44.0845 18.6606 53.2514C13.366 62.4182 15.9457 73.9701 24.2959 80.0814C14.0095 81.2009 6 89.9135 6 100.497C6 111.081 14.0095 119.794 24.2959 120.919C15.9457 127.03 13.366 138.582 18.6606 147.749C23.9552 156.916 35.2475 160.458 44.7172 156.283C40.5421 165.753 44.0845 177.045 53.2514 182.339C62.4182 187.634 73.9701 185.054 80.0814 176.704C81.2009 186.99 89.9135 195 100.497 195C111.081 195 119.794 186.99 120.919 176.704C127.03 185.054 138.582 187.634 147.749 182.339C156.916 177.045 160.458 165.753 156.283 156.283C165.753 160.458 177.045 156.916 182.339 147.749C187.634 138.582 185.054 127.03 176.704 120.919C186.99 119.799 195 111.087 195 100.497Z"
+    {%- when 'shape3' -%}
+        d="M51.3822 24.9581C67.0415 14.3507 85.5947 9.94678 103.794 8.57894C127.087 6.82758 152.677 7.94062 169.615 27.9566C207.643 72.8941 195.591 151.336 145.8 178.982C126.283 189.817 103.789 193.105 81.9288 191.689C66.2498 190.673 50.2463 187.122 37.1982 177.582C16.479 162.434 6.2976 133.546 8.23257 106.417C10.4478 75.3723 26.8718 41.5599 51.3798 24.9581H51.3822Z"
+    {%- when 'shape4' -%}
+        d="M182.903 69.171V68.8099C182.903 52.4543 170.704 39.1906 155.657 39.1906H134.909C128.04 25.9476 114.986 17 100.004 17C85.0216 17 71.9637 25.9476 65.1025 39.1906H44.3549C29.3078 39.1906 17.1089 52.4502 17.1089 68.8099V69.171C6.93368 75.0184 0 86.6263 0 100.002C0 113.378 6.93368 124.986 17.1051 130.833V131.194C17.1051 147.55 29.304 160.809 44.3511 160.809H65.0987C71.9637 174.057 85.0178 183 100 183C114.982 183 128.04 174.052 134.901 160.809H155.649C170.696 160.809 182.895 147.55 182.895 131.194V130.833C193.066 124.986 200 113.378 200 100.002C200 86.6263 193.066 75.0143 182.895 69.171H182.903Z"
+    {%- when 'shape5' -%}
+        d="M124.437 59.6132C167.704 -15.8711 34.2999 -15.8711 77.5631 59.6132C34.2999 -15.8711 -32.4045 100.5 54.1262 100.5C-32.4045 100.5 34.2956 216.875 77.5631 141.387C34.2956 216.871 167.7 216.871 124.437 141.387C167.704 216.871 234.404 100.5 147.874 100.5C234.404 100.5 167.704 -15.8754 124.437 59.6132Z"
+    {%- when 'shape6' -%}
+        d="M150.752 13H50.2524L0 100.5L50.2524 188H150.752L201 100.5L150.752 13Z"
+    {%- when 'shape7' -%}
+        d="M99.9976 4L0 77.1925L38.1965 195.617H161.804L200 77.1925L99.9976 4Z"
+    {%- when 'shape8' -%}
+        d="M179.785 114.707C185.689 109.722 191.165 104.213 196 98.1826C191.318 92.6697 186.082 87.6332 180.477 83.0585C183.819 76.6298 186.632 69.917 188.755 62.9888C181.925 59.3612 174.72 56.4321 167.317 54.1904C167.966 46.4906 167.943 38.7229 167.097 31.0396C159.887 30.452 152.619 30.5696 145.42 31.2984C143.238 24.3979 140.483 17.67 137.088 11.277C129.694 13.5414 122.528 16.5647 115.708 20.2146C110.722 14.3108 105.213 8.8349 99.1828 4C93.6698 8.68157 88.6336 13.9179 84.0586 19.523C77.6299 16.181 70.9171 13.3678 63.9891 11.2446C60.3613 18.0748 57.4325 25.2796 55.1909 32.6832C47.491 32.034 39.7232 32.0571 32.0396 32.9023C31.452 40.1125 31.5696 47.3805 32.2985 54.5807C25.3977 56.7622 18.6706 59.5173 12.2773 62.9112C14.5414 70.3061 17.5647 77.4719 21.2146 84.2923C15.3108 89.2776 9.8349 94.7864 5 100.817C9.68184 106.329 14.9179 111.366 20.5233 115.941C17.181 122.37 14.3683 129.083 12.2449 136.011C19.0748 139.639 26.2796 142.567 33.6833 144.809C33.034 152.509 33.0571 160.277 33.9026 167.96C41.1126 168.548 48.3806 168.43 55.5808 167.701C57.7628 174.602 60.5174 181.329 63.9115 187.723C71.3064 185.458 78.4722 182.435 85.2924 178.785C90.2783 184.689 95.7866 190.165 101.817 195C107.33 190.318 112.367 185.082 116.941 179.477C123.37 182.819 130.083 185.631 137.011 187.755C140.639 180.925 143.568 173.72 145.81 166.317C153.51 166.966 161.277 166.942 168.96 166.097C169.548 158.887 169.43 151.619 168.702 144.419C175.602 142.237 182.33 139.482 188.723 136.088C186.459 128.693 183.435 121.528 179.785 114.707Z"
+{%- endcase -%}
+          fill="none"></path>
+      </clipPath>
+      </defs>
+    </svg>
+  {% endif %}
+
+  {% liquid
+    assign is_current_collection_in_collection_carousel = false
+
+    for item in items
+      if use_metafield
+        assign current_check_collection = item
+      else
+        assign current_check_collection = item.settings.collection
+      endif
+      if current_check_collection.url == request.path
+        assign is_current_collection_in_collection_carousel = true
+      endif
+    endfor
+  %}
+    <div class="collection-carousel-wrapper {% if section.settings.enable_border %}border-enabled{% endif %} {% if item_count >5 and section.settings.carousel_type == 'carousel' %}slider-active {% endif %} pause-on-hover {{ section.settings.shape }} {% if section.settings.carousel_type == 'marquee'%}marquee-enable{% elsif section.settings.carousel_type == 'stacked' %}collection-stacked{% elsif section.settings.carousel_type == 'tiles' %}collection-stacked rounded-tiles{% else %}slider{% if section.settings.carousel_type == 'grid'%} grid{% endif %}{% endif %} {% if section.settings.shape == 'customshapes' %}shapes-enabled{% endif %}" 
+     {% if item_count >5 and section.settings.carousel_type == 'carousel' %}   
+       data-slideshow='
+      {
+      "cellAlign":"left",
+      "contain": true,
+      "pageDots": false,
+      "draggable": true,
+      "prevNextButtons": false,
+      "wrapAround":true,
+      "groupCells": true,
+      "cellSelector":".collection-carousel-item"
+      }'
+      {% elsif section.settings.carousel_type == 'stacked' %} data-stacked {% else %}data-marquee data-marquee-speed="{{ section.settings.scrolling_speed }}"
+      data-marquee-speed-mobile="{{ section.settings.scrolling_speed_mobile }}"{% endif %}
+      {% if is_current_collection_in_collection_carousel %}current-collection-in-collection-carousel{% endif %}
+    >
+      {%liquid
+        assign imageSize = 200
+        if section.settings.carousel_type == 'stacked'
+        assign imageSize = 90
+        endif
+        if section.settings.carousel_type == 'marquee'
+          assign limit = 3 
+          if item_count <= 2
+            assign limit = 10 
+          elsif item_count <= 4
+            assign limit = 4
+          endif 
+        else
+          assign limit=1
+        endif 
+      %}
+        {% for i in (1..limit) %}
+          {% if section.settings.carousel_type == 'marquee' %}
+            <div class="collection-carousel-marquee {{ section.settings.direction }}" data-marque-node>
+          {% endif %}
+          {% assign animationDelay = 500 %}
+          {% for item in items %}
+            {%-liquid
+                assign imageContent = ''
+                assign collectionproductscount=0
+                assign collection = ''
+
+                # Normalize block vs metafield-collection into shared vars so the markup below is source-agnostic.
+                if use_metafield
+                  assign collection = item
+                  assign block_image = blank
+                  assign block_heading = blank
+                  assign block_id = 'mf-' | append: forloop.index
+                else
+                  assign collection = item.settings.collection
+                  assign block_image = item.settings.image
+                  assign block_heading = item.settings.collection_heading
+                  assign block_id = item.id
+                endif
+
+                if block_image != blank
+                  assign imageContent = block_image
+                elsif collection.featured_image
+                  assign imageContent = collection.featured_image
+                endif
+                if section.settings.image_style == 'landscape'
+                  assign tileImgRatio = 75 
+                elsif section.settings.image_style == 'square'
+                  assign tileImgRatio = 100 
+                elsif section.settings.image_style == 'portrait'
+                  assign tileImgRatio = 125
+                else
+                  if imageContent != blank
+                    assign tileImgRatio = 1 | divided_by: imageContent.aspect_ratio | times: 100
+                  else
+                    assign tileImgRatio = 100 
+                  endif                  
+                endif
+                unless section.settings.shape == 'customshapes'
+                  if section.settings.carousel_type == 'tiles'
+                  assign imageRatio = tileImgRatio
+                  else
+                    assign imageRatio = 100 
+                  endif
+                else
+                  assign imageRatio = 100 
+                endunless
+               if collection != blank
+               assign collectionproductscount = collection.all_products_count
+                if collection.all_products_count > 99
+                assign collectionproductscount = "99+"
+                endif
+               endif 
+               assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1
+               assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index
+            -%}
+            {% capture collection_product_count%}
+              {% if  collection != blank  and section.settings.product_count and collection.all_products_count > 0 %}
+                <sup class="collection-item-count">{{ collectionproductscount }} 
+                  {% if section.settings.carousel_type == 'stacked' or section.settings.carousel_type == 'tiles' %}
+                    {% if collection.all_products_count == 1 %}
+                      {{'sections.collection_carousel.item' | t }}
+                    {% elsif collection.all_products_count > 1 %}
+                      {{'sections.collection_carousel.items' | t }}
+                    {% endif %}
+                  {% endif %} 
+               </sup>
+              {% endif %}
+            {% endcapture %}
+            {% liquid
+              if section.settings.carousel_type == 'tiles'
+              assign animationDelay = animationDelay | plus:100
+              endif
+            %}
+            <div class="collection-carousel-item{% if section.settings.carousel_type == 'carousel' or section.settings.carousel_type == 'marquee' %} hover-effect{% endif %}{% if section.settings.title_on_hover %} title-on-hover{% endif %}{% if collection.url == request.path %} selected-collection{% endif %}" {% unless use_metafield %} {{ item.shopify_attributes }}{% endunless %} id="collection-carousel-item-{{ block_id }}"{% if section.settings.carousel_type == 'tiles' %} {% if false %}data-aos="fade-up" data-aos-duration="{{ animationDelay }}" {%  endif%}{% endif %}>
+              <a class="collection-carousel-image" aria-label="{%- if block_heading != blank -%}{{ block_heading -}}{%- elsif collection != blank -%}{{- collection.title | strip_html -}}{%- else -%}{{- 'sections.collection_carousel.collection' | t  -}}{%- endif %} "
+                {% if collection.url == blank %}role="link"aria-disabled="true"{% else %}href="{{ collection.url | default : '#' }}"{% endif %}{% if section.settings.carousel_type != 'tiles' %} {% endif %}>
+                  {% comment %} <span class="background-shape shape-square">
+                    <svg viewBox="0 0 267 298" fill="none" >
+                      <path d="M251.908 234.144C261.237 228.798 266.992 218.868 266.992 208.115V89.8849C266.992 79.1324 261.237 69.2023 251.908 63.856L148.416 4.54811C139.177 -0.746723 127.823 -0.74672 118.584 4.54812L15.0921 63.856C5.76292 69.2023 0.00842285 79.1324 0.00842285 89.8849V208.115C0.00842285 218.868 5.76293 228.798 15.0921 234.144L118.584 293.452C127.823 298.747 139.177 298.747 148.416 293.452L251.908 234.144Z" fill="currentColor"/>
+                    </svg>
+                  </span> {% endcomment %}
+                  
+
+                  {% if section.settings.shape == 'customshapes' %}
+                    <svg class="background-hover-shape" viewBox="0 0 200 200" role="presentation" aria-hidden="true" focusable="false">
+                        <path clip-rule="evenodd" 
+                          {%- case section.settings.customshapes -%}
+    {%- when 'shape1' -%}
+        d="M169.426 161.43C182.124 154.375 190 140.991 190 126.464V73.5361C190 59.0095 182.124 45.6246 169.426 38.5698L119.426 10.7921C107.345 4.08045 92.6552 4.08045 80.5743 10.7921L30.5743 38.5698C17.8757 45.6246 10 59.0095 10 73.5361V126.464C10 140.991 17.8757 154.375 30.5743 161.43L80.5743 189.208C92.6552 195.92 107.345 195.92 119.426 189.208L169.426 161.43Z"
+    {%- when 'shape2' -%}
+        d="M195 100.497C195 89.9135 186.99 81.2009 176.704 80.076C185.054 73.9647 187.634 62.4128 182.339 53.2459C177.045 44.0791 165.753 40.5367 156.283 44.7118C160.458 35.2421 156.916 23.9498 147.749 18.6552C138.582 13.3605 127.03 15.9403 120.919 24.2905C119.799 14.0095 111.087 6 100.497 6C89.9081 6 81.2009 14.0095 80.0814 24.2959C73.9701 15.9457 62.4182 13.366 53.2514 18.6606C44.0845 23.9552 40.5421 35.2475 44.7172 44.7172C35.2475 40.5421 23.9552 44.0845 18.6606 53.2514C13.366 62.4182 15.9457 73.9701 24.2959 80.0814C14.0095 81.2009 6 89.9135 6 100.497C6 111.081 14.0095 119.794 24.2959 120.919C15.9457 127.03 13.366 138.582 18.6606 147.749C23.9552 156.916 35.2475 160.458 44.7172 156.283C40.5421 165.753 44.0845 177.045 53.2514 182.339C62.4182 187.634 73.9701 185.054 80.0814 176.704C81.2009 186.99 89.9135 195 100.497 195C111.081 195 119.794 186.99 120.919 176.704C127.03 185.054 138.582 187.634 147.749 182.339C156.916 177.045 160.458 165.753 156.283 156.283C165.753 160.458 177.045 156.916 182.339 147.749C187.634 138.582 185.054 127.03 176.704 120.919C186.99 119.799 195 111.087 195 100.497Z"
+    {%- when 'shape3' -%}
+        d="M51.3822 24.9581C67.0415 14.3507 85.5947 9.94678 103.794 8.57894C127.087 6.82758 152.677 7.94062 169.615 27.9566C207.643 72.8941 195.591 151.336 145.8 178.982C126.283 189.817 103.789 193.105 81.9288 191.689C66.2498 190.673 50.2463 187.122 37.1982 177.582C16.479 162.434 6.2976 133.546 8.23257 106.417C10.4478 75.3723 26.8718 41.5599 51.3798 24.9581H51.3822Z"
+    {%- when 'shape4' -%}
+        d="M182.903 69.171V68.8099C182.903 52.4543 170.704 39.1906 155.657 39.1906H134.909C128.04 25.9476 114.986 17 100.004 17C85.0216 17 71.9637 25.9476 65.1025 39.1906H44.3549C29.3078 39.1906 17.1089 52.4502 17.1089 68.8099V69.171C6.93368 75.0184 0 86.6263 0 100.002C0 113.378 6.93368 124.986 17.1051 130.833V131.194C17.1051 147.55 29.304 160.809 44.3511 160.809H65.0987C71.9637 174.057 85.0178 183 100 183C114.982 183 128.04 174.052 134.901 160.809H155.649C170.696 160.809 182.895 147.55 182.895 131.194V130.833C193.066 124.986 200 113.378 200 100.002C200 86.6263 193.066 75.0143 182.895 69.171H182.903Z"
+    {%- when 'shape5' -%}
+        d="M124.437 59.6132C167.704 -15.8711 34.2999 -15.8711 77.5631 59.6132C34.2999 -15.8711 -32.4045 100.5 54.1262 100.5C-32.4045 100.5 34.2956 216.875 77.5631 141.387C34.2956 216.871 167.7 216.871 124.437 141.387C167.704 216.871 234.404 100.5 147.874 100.5C234.404 100.5 167.704 -15.8754 124.437 59.6132Z"
+    {%- when 'shape6' -%}
+        d="M150.752 13H50.2524L0 100.5L50.2524 188H150.752L201 100.5L150.752 13Z"
+    {%- when 'shape7' -%}
+        d="M99.9976 4L0 77.1925L38.1965 195.617H161.804L200 77.1925L99.9976 4Z"
+    {%- when 'shape8' -%}
+        d="M179.785 114.707C185.689 109.722 191.165 104.213 196 98.1826C191.318 92.6697 186.082 87.6332 180.477 83.0585C183.819 76.6298 186.632 69.917 188.755 62.9888C181.925 59.3612 174.72 56.4321 167.317 54.1904C167.966 46.4906 167.943 38.7229 167.097 31.0396C159.887 30.452 152.619 30.5696 145.42 31.2984C143.238 24.3979 140.483 17.67 137.088 11.277C129.694 13.5414 122.528 16.5647 115.708 20.2146C110.722 14.3108 105.213 8.8349 99.1828 4C93.6698 8.68157 88.6336 13.9179 84.0586 19.523C77.6299 16.181 70.9171 13.3678 63.9891 11.2446C60.3613 18.0748 57.4325 25.2796 55.1909 32.6832C47.491 32.034 39.7232 32.0571 32.0396 32.9023C31.452 40.1125 31.5696 47.3805 32.2985 54.5807C25.3977 56.7622 18.6706 59.5173 12.2773 62.9112C14.5414 70.3061 17.5647 77.4719 21.2146 84.2923C15.3108 89.2776 9.8349 94.7864 5 100.817C9.68184 106.329 14.9179 111.366 20.5233 115.941C17.181 122.37 14.3683 129.083 12.2449 136.011C19.0748 139.639 26.2796 142.567 33.6833 144.809C33.034 152.509 33.0571 160.277 33.9026 167.96C41.1126 168.548 48.3806 168.43 55.5808 167.701C57.7628 174.602 60.5174 181.329 63.9115 187.723C71.3064 185.458 78.4722 182.435 85.2924 178.785C90.2783 184.689 95.7866 190.165 101.817 195C107.33 190.318 112.367 185.082 116.941 179.477C123.37 182.819 130.083 185.631 137.011 187.755C140.639 180.925 143.568 173.72 145.81 166.317C153.51 166.966 161.277 166.942 168.96 166.097C169.548 158.887 169.43 151.619 168.702 144.419C175.602 142.237 182.33 139.482 188.723 136.088C186.459 128.693 183.435 121.528 179.785 114.707Z"
+{%- endcase -%}
+                          fill="none"></path>
+                    </svg>
+                  {% endif %}
+                  <div class="media" style="--imageRatio:{{ imageRatio }}%;{% if section.settings.shape == 'customshapes' %} clip-path:url(#clip-path-{{ section.id }}){% endif %}">
+                      {% if imageContent != blank %}
+                        {%- if imageContent != blank -%}<img class="{{ '' }}" src="{{ imageContent | image_url: width: 600 }}" srcset="{{ imageContent | image_url: width: 300 }} 300w, {{ imageContent | image_url: width: 600 }} 600w, {{ imageContent | image_url: width: 900 }} 900w, {{ imageContent | image_url: width: 1200 }} 1200w, {{ imageContent | image_url: width: 1500 }} 1500w, {{ imageContent | image_url: width: 2000 }} 2000w" sizes="(max-width: 600px) 300px, (max-width: 900px) 600px, (max-width: 1200px) 900px, (max-width: 1500px) 1200px, 100vw" width="{{ imageContent.width }}" height="{{ imageContent.height }}" alt="{{ imageContent.alt | escape }}" loading="lazy" style="object-position: {{ imageContent.presentation.focal_point | default: 'center' }}">{%- endif -%}
+                      {% else %}
+                        {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                      {% endif %}
+                  </div>
+              </a>
+              <div class="collection-carousel-content text-center">
+                <a class="collection-carousel-title text"
+                  aria-label="{%- if block_heading != blank -%}{{ block_heading -}}{%- elsif collection != blank -%}{{- collection.title | strip_html -}}{%- else -%}{{- 'sections.collection_carousel.collection' | t  -}}{%- endif %} "
+                  {% if collection.url == blank %}role="link"aria-disabled="true"{% else %}href="{{ collection.url | default : '#' }}"{% endif %}
+                  id="collection-carousel-title-{{ block_id }}"
+                  {% if section.settings.carousel_type != 'tiles' %}
+                    
+                  {% endif %}
+                > 
+                  {%- if block_heading != blank -%}
+                    {{ block_heading -}}               
+                    {% if collection_product_count != blank %}
+                      {{ collection_product_count }}
+                    {% endif %}
+                  {%- elsif collection != blank -%}
+                    {{- collection.title | strip_html -}}
+                    {% if collection_product_count != blank %}
+                      {{ collection_product_count }}
+                    {% endif %}
+                  {%- else -%}
+                    {{'sections.collection_carousel.collection' | t }}
+                  {%- endif %}
+                </a>
+              </div>
+            </div>
+          {% endfor %} 
+          {% if  section.settings.carousel_type == 'marquee' %}
+            </div>
+          {% endif %} 
+        {% endfor %}
+     
+      {% if  section.settings.carousel_type == 'carousel' and item_count > 5  %}
+        {%- assign arrow_class = 'custom-navigation-button-icon' -%}<button class="custom-navigation-button flickity-button flickity-prev-next-button swiper-button previous" type="button" aria-label="Previous" data-slideshow-navigation-button data-swatch-scroll="prev"><svg class="{{ arrow_class }}" width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M12 6H1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 1.5L1 6L5.5 10.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="custom-navigation-button flickity-button flickity-prev-next-button swiper-button next" type="button" aria-label="Next" data-slideshow-navigation-button data-swatch-scroll="next"><svg class="{{ arrow_class }}" width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"><path d="M1.5 6H12.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 1.5L12.5 6L8 10.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      {% endif %}
+
+    </div> 
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }}{
+    --padding-top:{{ section.settings.top_space_desktop }}px;
+    --padding-bottom:{{ section.settings.bottom_space_desktop }}px;
+    --imageFit:{{ section.settings.image_fit  }};
+  }
+ 
+  @media only screen and (max-width:767px){
+    #shopify-section-{{ section.id }}{
+      --padding-top:{{ section.settings.top_space_mobile }}px;
+      --padding-bottom:{{ section.settings.bottom_space_mobile }}px;
+    }
+  }
+  {% if section.settings.shape == 'customshapes' %}
+  #shopify-section-{{ section.id }} .collection-carousel-wrapper.shapes-enabled .collection-carousel-image:before {
+    clip-path: url(#clip-path-{{ section.id }});
+  }
+  {% endif %}
+  {% if section.settings.section_visibility == 'large' %}
+    @media (max-width: 767px) {
+      #shopify-section-{{ section.id }}{
+        display: none !important;
+      }
+    }
+  {% elsif section.settings.section_visibility == 'small' %}
+    @media (min-width: 768px) {
+      #shopify-section-{{ section.id }}{
+        display: none !important;
+      }
+    }
+{% endif %}
+
+{% unless use_metafield %}
+{% for block in section.blocks %}
+  #collection-carousel-item-{{ block.id }} {
+    {% if block.settings.background_gradient != empty %}
+      --cardBackground: {{ block.settings.background_gradient }};
+    {% else %}
+      --cardBackground: {{ block.settings.background_color }};
+    {% endif %}
+  }
+  #collection-carousel-title-{{ block.id }} {
+    --cardColor: {{ block.settings.text_color }}
+  }
+{% endfor %}
+{% endunless %}
+</style>
+{% endunless %}
+
+{% schema %}
+{
+  "name": "Collections carousel",
+  "tag": "section",
+  "class": "section collection-carousel-section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "max_blocks": 14,
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "Section visibility",
+      "default": "always",
+      "options": [
+        {
+          "label": "Always",
+          "value": "always"
+        },
+        {
+          "label": "Small devices only",
+          "value": "small"
+        },
+        {
+          "label": "Large devices only",
+          "value": "large"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "collection_source",
+      "label": "Collection source",
+      "info": "Choose \"Blog post metafield\" to dynamically show the collections selected in the blog post's Promoted Collections metafield. Only applies on blog post templates; the section is hidden when no collections are set.",
+      "default": "manual",
+      "options": [
+        {
+          "value": "manual",
+          "label": "Selected collections (blocks)"
+        },
+        {
+          "value": "metafield",
+          "label": "Blog post metafield (Promoted collections)"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "carousel_type",
+      "default": "stacked",
+      "label": "Style",
+      "options": [
+        {
+          "value": "carousel",
+          "label": "Carousel"
+        },
+        {
+          "value": "marquee",
+          "label": "Marquee"
+        },
+        {
+          "value": "stacked",
+          "label": "Stacked"
+        },
+        {
+          "value": "tiles",
+          "label": "Tiles"
+        },
+        {
+          "value": "grid",
+          "label": "Grid"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "scrolling_speed",
+      "label": "Desktop marquee speed",
+      "min": 1,
+      "max": 100,
+      "unit": "s",
+      "default": 15,
+      "visible_if": "{{ section.settings.carousel_type == 'marquee' }}"
+    },
+    {
+      "type": "range",
+      "id": "scrolling_speed_mobile",
+      "label": "Mobile marquee speed",
+      "min": 1,
+      "max": 100,
+      "unit": "s",
+      "default": 15,
+      "visible_if": "{{ section.settings.carousel_type == 'marquee' }}"
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Marquee direction",
+      "default": "ltr",
+      "options": [
+        {
+          "value": "ltr",
+          "label": "Left to right"
+        },
+        {
+          "value": "rtl",
+          "label": "Right to left"
+        }
+      ],
+      "visible_if": "{{ section.settings.carousel_type == 'marquee' }}"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Wrap your text between [ ] to add the markers. These [markers] will highlight the text. ",
+      "default": "Collection carousel"
+    },
+    {
+      "type": "select",
+      "id": "highlight_style",
+      "label": "Marker text highlight style",
+      "default": "underline",
+      "options": [
+        {
+          "value": "underline",
+          "label": "Shape 1"
+        },
+        {
+          "value": "shape_2",
+          "label": "Shape 2"
+        },
+        {
+          "value": "shape_3",
+          "label": "Shape 3"
+        },
+        {
+          "value": "shape_4",
+          "label": "Shape 4"
+        },
+        {
+          "value": "shape_5",
+          "label": "Shape 5"
+        },
+        {
+          "value": "shape_6",
+          "label": "Shape 6"
+        },
+        {
+          "value": "background",
+          "label": "Background"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "bg__color",
+      "label": "Highlight background",
+      "default": "gradient",
+      "options": [
+        {
+          "value": "gradient",
+          "label": "Gradient"
+        },
+        {
+          "value": "solid",
+          "label": "Solid"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h3",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "seo_heading",
+      "label": "Heading tag",
+      "info": "Specify heading code types for SEO and search engines for crawling purposes.",
+      "default": "h2",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "default": "text-left",
+      "options": [
+        {
+          "label": "Left",
+          "value": "text-left"
+        },
+        {
+          "label": "Center",
+          "value": "text-center"
+        },
+        {
+          "label": "Right",
+          "value": "text-right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_border",
+      "label": "Enable border",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "shape",
+      "label": "Image layouts",
+      "default": "rounded",
+      "options": [
+        {
+          "value": "rounded",
+          "label": "Round"
+        },
+        {
+          "value": "sharp",
+          "label": "Sharp"
+        },
+        {
+          "value": "customshapes",
+          "label": "Shapes"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "customshapes",
+      "label": "Shapes style",
+      "default": "shape1",
+      "options": [
+        {
+          "value": "shape1",
+          "label": "Shape 1"
+        },
+        {
+          "value": "shape2",
+          "label": "Shape 2"
+        },
+        {
+          "value": "shape3",
+          "label": "Shape 3"
+        },
+        {
+          "value": "shape4",
+          "label": "Shape 4"
+        },
+        {
+          "value": "shape5",
+          "label": "Shape 5"
+        },
+        {
+          "value": "shape6",
+          "label": "Shape 6"
+        },
+        {
+          "value": "shape7",
+          "label": "Shape 7"
+        },
+        {
+          "value": "shape8",
+          "label": "Shape 8"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image fit",
+      "default": "cover",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_style",
+      "label": "Image height",
+      "info": "It is applicable to tiles without the shapes layout.",
+      "default": "adapt",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Adapt to image"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "title_on_hover",
+      "label": "Show title on hover",
+      "info": "This is not applicable to the stacked and tiles style.",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "product_count",
+      "label": "Show product count",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "primary",
+      "label": "Color scheme"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gradient",
+      "label": "Enable gradient",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "Top spacing (desktop)",
+      "default": 20,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "Bottom spacing (desktop)",
+      "default": 55,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "Top spacing (mobile)",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "Bottom spacing (mobile)",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "collection_heading",
+          "label": "Title"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "header",
+          "content": "Tiles background"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color_background",
+          "id": "background_gradient",
+          "label": "Enable gradient"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collections carousel",
+      "blocks": [
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
