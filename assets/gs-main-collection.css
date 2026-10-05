@@ -295,17 +295,15 @@
   object-fit: cover;
 }
 
-.gs-promo__media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--promo-overlay, transparent);
-}
-
+/* The overlay colour sits behind the text strip only, as v3 did
+   (.promotion-card-content), so the image itself is never tinted. */
 .gs-promo__content {
   position: absolute;
   inset: auto 0 0 0;
+  max-height: 100%;
   padding: 1.5rem;
+  overflow: auto;
+  background: var(--promo-overlay, transparent);
 }
 
 .gs-promo__heading {
@@ -328,6 +326,65 @@
   margin: 0;
   color: inherit;
   font-size: inherit;
+}
+
+/* ---- Pagination ----
+   v3's boxed pagination (assets/style.css "new changes" block): 44px
+   squares, 1px border, 2px on the current page, hover tint, no
+   disabled arrows. Colours are --pg-* custom properties set by the
+   section from its Pagination block; defaults are v3's black on white.
+   Overrides Dawn's component-pagination.css, which underlines instead. */
+.gs-collection .pagination-wrapper {
+  margin-top: 3rem;
+}
+
+.gs-collection .pagination__list {
+  gap: 5px;
+}
+
+.gs-collection .pagination__list > li {
+  flex: 0 0 44px;
+  max-width: 44px;
+  margin-right: 0;
+}
+
+.gs-collection .pagination__item {
+  width: 44px;
+  height: 44px;
+  box-sizing: border-box;
+  border: 1px solid var(--pg-border, #000000);
+  border-radius: 0;
+  background-color: var(--pg-bg, #ffffff);
+  color: var(--pg-text, #000000);
+  font-size: var(--smallText);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.gs-collection a.pagination__item:hover {
+  background-color: var(--pg-hover-bg, #f5f5f5);
+}
+
+.gs-collection .pagination__item--current {
+  border-width: 2px;
+  border-color: var(--pg-active-border, var(--pg-border, #000000));
+  background-color: var(--pg-active-bg, var(--pg-bg, #ffffff));
+  color: var(--pg-active-text, var(--pg-text, #000000));
+  font-weight: 700;
+}
+
+.gs-collection .pagination__item::after,
+.gs-collection a.pagination__item:hover::after {
+  display: none;
+}
+
+.gs-collection .pagination__item .icon-caret {
+  height: 1rem;
+}
+
+/* App blocks added to the section (Shopify app blocks render here). */
+.gs-collection__app {
+  margin-top: 2rem;
 }
 
 /* ---- Collection background image ---- */

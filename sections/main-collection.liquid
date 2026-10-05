@@ -124,6 +124,25 @@
     assign show_quickview = true
   endif
 
+  # Quick view (dialog) or quick add (sizes in the card). A template's
+  # Quick View block chooses; the theme-wide default is the dialog.
+  assign enable_quick_add = false
+  if qv_block.settings.style == 'quick_add'
+    assign enable_quick_add = true
+  endif
+  assign quick_add_label = qv_block.settings.product_card_quick_view_button_text
+
+  # "% off" on sale prices: the Price block can force it on or off for
+  # this template; 'theme' leaves it to settings.show_savings.
+  assign save_percent = nil
+  if price_block.settings.show_percent_off == 'show'
+    assign save_percent = true
+  elsif price_block.settings.show_percent_off == 'hide'
+    assign save_percent = false
+  endif
+
+  assign pagination_block = section.blocks | where: 'type', 'pagination' | first
+
   # Banner visibility
   assign show_overlay_desc = false
   assign show_overlay_heading = false
@@ -184,6 +203,31 @@
     {%- if price_block.settings.product_card_price_color != blank -%}
       --cardPriceColor: {{ price_block.settings.product_card_price_color }};
     {%- endif -%}
+    {%- if grid_block != blank -%}
+      --gs-card-content-gap: {{ grid_block.settings.card_content_gap | default: 2 }}px;
+      --gs-card-content-height: {{ grid_block.settings.card_content_height | default: 104 }}px;
+      --gs-card-button-gap: {{ grid_block.settings.card_button_gap | default: 8 }}px;
+    {%- endif -%}
+    {%- liquid
+      # Per-template overrides of the theme's card button colours. A
+      # cleared colour picker reads rgba(0,0,0,0); treat it as unset.
+      assign qv_colors = 'button_bg:--card-atc-bg,button_text:--card-atc-text,button_hover_bg:--card-atc-hover-bg,button_hover_text:--card-atc-hover-text' | split: ','
+      for pair in qv_colors
+        assign parts = pair | split: ':'
+        assign qv_val = qv_block.settings[parts[0]]
+        if qv_val != blank and qv_val.alpha != 0
+          echo parts[1] | append: ': ' | append: qv_val | append: ';'
+        endif
+      endfor
+      assign pg_colors = 'background:--pg-bg,text:--pg-text,border:--pg-border,hover_background:--pg-hover-bg,active_background:--pg-active-bg,active_text:--pg-active-text,active_border:--pg-active-border' | split: ','
+      for pair in pg_colors
+        assign parts = pair | split: ':'
+        assign pg_val = pagination_block.settings[parts[0]]
+        if pg_val != blank and pg_val.alpha != 0
+          echo parts[1] | append: ': ' | append: pg_val | append: ';'
+        endif
+      endfor
+    -%}
     {%- if bg_image_block.settings.collection_bg_image != blank -%}
       --collectionBgImage: url('{{ bg_image_block.settings.collection_bg_image | image_url: width: 2000 }}');
     {%- endif -%}
@@ -388,16 +432,33 @@
               -%}
 
               {%- if promo_here != blank -%}
+                {%- liquid
+                  # A cleared colour picker stores rgba(0,0,0,0), which made
+                  # the text invisible on the live template. Fall back to
+                  # white, the original default.
+                  assign promo_heading_color = promo_here.settings.heading_color
+                  if promo_heading_color == blank or promo_heading_color.alpha == 0
+                    assign promo_heading_color = '#ffffff'
+                  endif
+                  assign promo_desc_color = promo_here.settings.desc_color
+                  if promo_desc_color == blank or promo_desc_color.alpha == 0
+                    assign promo_desc_color = '#ffffff'
+                  endif
+                  assign promo_overlay_color = promo_here.settings.background_color
+                  if promo_overlay_color == blank or promo_overlay_color.alpha == 0
+                    assign promo_overlay_color = '#000000'
+                  endif
+                -%}
                 <div
                   class="gs-collection__cell gs-promo gs-promo--w{{ promo_here.settings.content_width_desktop }} gs-promo--mw{{ promo_here.settings.content_width_mobile }}"
                   style="
-                    --promo-overlay: {{ promo_here.settings.background_color | color_modify: 'alpha', promo_here.settings.background_opacity }};
-                    --promo-heading-color: {{ promo_here.settings.heading_color }};
+                    --promo-overlay: {{ promo_overlay_color | color_modify: 'alpha', promo_here.settings.background_opacity }};
+                    --promo-heading-color: {{ promo_heading_color }};
                     --promo-heading-weight: {{ promo_here.settings.heading_font_weight }};
                     --promo-heading-size: {{ promo_here.settings.heading_font_size_desktop }}px;
                     --promo-heading-size-mobile: {{ promo_here.settings.heading_font_size_mobile }}px;
                     --promo-heading-font: {{ promo_here.settings.heading_font_family.family }}, {{ promo_here.settings.heading_font_family.fallback_families }};
-                    --promo-desc-color: {{ promo_here.settings.desc_color }};
+                    --promo-desc-color: {{ promo_desc_color }};
                     --promo-desc-weight: {{ promo_here.settings.desc_font_weight }};
                     --promo-desc-size: {{ promo_here.settings.desc_font_size_desktop }}px;
                     --promo-desc-size-mobile: {{ promo_here.settings.desc_font_size_mobile }}px;
@@ -449,13 +510,27 @@
                   cycleIndex: forloop.index,
                   gridImageSize: s.grid_image_size,
                   showCount: true,
-                  compareTrue: true,
                   quickViewtrue: show_quickview,
+                  enableQuickAdd: enable_quick_add,
+                  quickAddLabel: quick_add_label,
+                  savePercentoff: save_percent,
                   showSwatches: show_swatches
                 -%}
               </div>
             {%- endfor -%}
           </div>
+
+          {%- comment -%}
+            App blocks (the schema has always declared @app; this is
+            where they render).
+          {%- endcomment -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == '@app' -%}
+              <div class="gs-collection__app" {{ block.shopify_attributes }}>
+                {%- render block -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
 
           {%- if s.load_type == 'infinite' and paginate.next -%}
             <div class="gs-collection__more" data-scroll>
@@ -650,7 +725,11 @@
             { "value": "2", "label": "2" }
           ]
         },
-        { "type": "color", "id": "product_card_bg_color", "label": "Product card background", "default": "#FFFFFF" }
+        { "type": "color", "id": "product_card_bg_color", "label": "Product card background", "default": "#FFFFFF" },
+        { "type": "header", "content": "Card spacing" },
+        { "type": "range", "id": "card_content_gap", "label": "Gap between title, rating and price", "min": 0, "max": 16, "step": 1, "unit": "px", "default": 2 },
+        { "type": "range", "id": "card_content_height", "label": "Reserved height for title, rating and price", "info": "Keeps the buttons level across a row. Lower it to pull the button up toward the price.", "min": 60, "max": 200, "step": 4, "unit": "px", "default": 104 },
+        { "type": "range", "id": "card_button_gap", "label": "Space above the button", "min": 0, "max": 24, "step": 1, "unit": "px", "default": 8 }
       ]
     },
     {
@@ -667,7 +746,19 @@
       "name": "Product Card Price",
       "limit": 1,
       "settings": [
-        { "type": "color", "id": "product_card_price_color", "label": "Color", "default": "#000000" }
+        { "type": "color", "id": "product_card_price_color", "label": "Color", "default": "#000000" },
+        {
+          "type": "select",
+          "id": "show_percent_off",
+          "label": "Show \"% off\" on sale prices",
+          "info": "Overrides Theme settings > Product cards for this template, so one collection can be A/B tested.",
+          "default": "theme",
+          "options": [
+            { "value": "theme", "label": "Follow theme setting" },
+            { "value": "show", "label": "Show" },
+            { "value": "hide", "label": "Hide" }
+          ]
+        }
       ]
     },
     { "type": "product-card-swatches", "name": "Product Card Swatches", "limit": 1 },
@@ -676,8 +767,38 @@
       "name": "Product Card Quick View",
       "limit": 1,
       "settings": [
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Button action",
+          "default": "quick_view",
+          "options": [
+            { "value": "quick_view", "label": "Open quick view dialog" },
+            { "value": "quick_add", "label": "Quick add: pick a size on the card" }
+          ]
+        },
         { "type": "text", "id": "product_card_quick_view_button_text", "label": "Button text", "default": "Quick Add" },
-        { "type": "color", "id": "product_card_title_color", "label": "Color", "default": "#000000" }
+        { "type": "header", "content": "Button colors" },
+        { "type": "paragraph", "content": "Leave empty to use Theme settings > Product cards." },
+        { "type": "color", "id": "button_bg", "label": "Background" },
+        { "type": "color", "id": "button_text", "label": "Text" },
+        { "type": "color", "id": "button_hover_bg", "label": "Background on hover" },
+        { "type": "color", "id": "button_hover_text", "label": "Text on hover" }
+      ]
+    },
+    {
+      "type": "pagination",
+      "name": "Pagination colors",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Boxed page numbers, as on the live site. Leave a color empty for the default (black on white)." },
+        { "type": "color", "id": "background", "label": "Background" },
+        { "type": "color", "id": "text", "label": "Text" },
+        { "type": "color", "id": "border", "label": "Border" },
+        { "type": "color", "id": "hover_background", "label": "Background on hover" },
+        { "type": "color", "id": "active_background", "label": "Current page background" },
+        { "type": "color", "id": "active_text", "label": "Current page text" },
+        { "type": "color", "id": "active_border", "label": "Current page border" }
       ]
     },
     {

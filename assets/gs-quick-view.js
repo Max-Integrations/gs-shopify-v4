@@ -217,19 +217,27 @@
     if (errorBox) errorBox.hidden = true;
     if (submit) submit.disabled = true;
 
+    // Ask for the sections Dawn's drawer re-renders, so it opens showing
+    // the new line rather than stale contents.
+    var body = new FormData(form);
+    body.append('sections', 'cart-drawer,cart-icon-bubble');
+    body.append('sections_url', window.location.pathname);
+
     fetch('/cart/add.js', {
       method: 'POST',
-      body: new FormData(form),
+      body: body,
       headers: { Accept: 'application/json' }
     })
       .then(function (res) {
         if (!res.ok) throw new Error('Could not add to cart');
         return res.json();
       })
-      .then(function () {
+      .then(function (json) {
         close();
         var drawer = document.querySelector('cart-drawer');
-        if (drawer && typeof drawer.open === 'function') {
+        if (drawer && typeof drawer.renderContents === 'function' && json && json.sections) {
+          drawer.renderContents(json);
+        } else if (drawer && typeof drawer.open === 'function') {
           drawer.open();
         } else {
           window.location.reload();

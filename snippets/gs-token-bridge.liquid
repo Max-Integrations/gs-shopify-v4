@@ -235,11 +235,20 @@
     --discount-background: #ab192d;
     --discount-color: #ffffff;
 
-    /* Stock status - v3 product_in_stock_color / product_low_stock_color.
-       In-stock is navy #002F6E, NOT green. */
-    --instock-text: #002F6E;
-    --outofstock-text: #777777;
-    --lowstock-text: #ab192d;
+    /* Stock status - theme settings (Product cards group) since the
+       2026-10 review; defaults are v3's live values. In-stock is navy
+       #002F6E, NOT green. */
+    --instock-text: {{ settings.product_in_stock_color | default: '#002F6E' }};
+    --outofstock-text: {{ settings.product_no_stock_color | default: '#777777' }};
+    --lowstock-text: {{ settings.product_low_stock_color | default: '#ab192d' }};
+
+    /* Product card button (quick add / quick view). Theme settings;
+       a collection template's Quick View block can override per page.
+       The client's cards are black, not brand red. */
+    --card-atc-bg: {{ settings.card_button_bg | default: '#000000' }};
+    --card-atc-text: {{ settings.card_button_text | default: '#ffffff' }};
+    --card-atc-hover-bg: {{ settings.card_button_hover_bg | default: '#333333' }};
+    --card-atc-hover-text: {{ settings.card_button_hover_text | default: '#ffffff' }};
 
     /* HEADER - v3 background_header #000000, header_text #ffffff,
        header_text_hover #e7e7e7, header_icon #ffffff,

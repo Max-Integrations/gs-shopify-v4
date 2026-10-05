@@ -164,29 +164,34 @@
   opacity: 1;
 }
 
-/* ---- Quick-add size overlay ---- */
+/* ---- Quick-add size strip ----
+   A translucent band over the bottom of the image (the Nosto design the
+   client had): "Select Size" then the abbreviated sizes in a row. Hidden
+   below the image edge until the card is hovered on pointer devices;
+   always shown on touch screens, where there is no hover. */
 .quick-add-variants {
   position: absolute;
-  inset: auto auto 0 auto;
-  width: 100%;
-  padding: 20px;
+  inset: auto 0 0 0;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
+  padding: 10px 8px 12px;
   box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.88);
   color: rgb(var(--cardDetailsTextColor));
   transform: translateY(100%);
   transition: transform 0.25s ease;
 }
 
 .product-card:hover .quick-add-variants,
+.product-card:focus-within .quick-add-variants,
 .quick-add-variants.active {
   transform: translateY(0);
 }
 
-.quick-add-variants p {
+.quick-add-variants__label {
   margin: 0;
   font-size: var(--xsmallText);
   text-transform: uppercase;
@@ -196,21 +201,37 @@
 .qa-size-options {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 18px;
+  gap: 4px 6px;
   justify-content: center;
 }
 
 .qa-size {
-  cursor: pointer;
+  min-width: 30px;
+  padding: 3px 6px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: inherit;
+  font: inherit;
   font-size: var(--smallText);
+  line-height: 1.2;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
-.qa-size:not([data-variant-available='false']):hover {
+.qa-size:not([disabled]):hover,
+.qa-size:focus-visible {
+  border-color: rgba(var(--cardDetailsTextColor), 0.5);
+  outline: 0;
+}
+
+.qa-size.is-selected {
+  background-color: var(--card-atc-bg, #000000);
+  border-color: var(--card-atc-bg, #000000);
+  color: var(--card-atc-text, #ffffff);
   font-weight: 700;
 }
 
-.qa-size[data-variant-available='false'] {
+.qa-size[disabled] {
   color: rgba(var(--cardDetailsTextColor), 0.35);
   cursor: not-allowed;
   text-decoration: line-through;
@@ -230,12 +251,14 @@
    absorbs that. */
 .product-card-detail {
   --gs-card-inset: 20px;
-  --gs-card-content-height: 130px;
+  /* The three spacing numbers are overridable from the collection
+     template's Product Grid block (--gs-card-* custom properties set on
+     the section). Defaults tightened after the 2026-10 review. */
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
   align-items: center;
-  padding: 12px var(--gs-card-inset) var(--gs-card-inset);
+  padding: 10px var(--gs-card-inset) var(--gs-card-inset);
   text-align: center;
 }
 
@@ -243,9 +266,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: var(--gs-card-content-gap, 2px);
   width: 100%;
-  min-height: var(--gs-card-content-height);
+  min-height: var(--gs-card-content-height, 104px);
 }
 
 .product-card-info {
@@ -314,37 +337,17 @@
   width: 100%;
 }
 
-/* ---- Compare ---- */
-.compare-add-button {
-  display: flex;
-  justify-content: center;
-}
-
-.compare-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: var(--xsmallText);
-  text-transform: uppercase;
-  cursor: pointer;
-  color: rgba(var(--cardDetailsTextColor), 0.7);
-}
-
-.js-compare-checkbox {
-  width: 14px;
-  height: 14px;
-  margin: 0 4px 0 0;
-  accent-color: rgba(var(--line-color), 1);
-}
-
 /* ---- Quick add / quick view button ----
    Pinned to the bottom of the card. `margin-top: auto` takes up the
    slack in the reserved region (and any grid-cell stretch), keeping the
-   button exactly --gs-card-inset from the card's bottom edge. */
+   button exactly --gs-card-inset from the card's bottom edge.
+
+   Colours: --card-atc-* come from the theme's Product cards settings
+   (gs-token-bridge) and can be overridden per collection template. */
 .product-quickview-button {
   width: 100%;
   margin-top: auto;
-  padding-top: 12px;
+  padding-top: var(--gs-card-button-gap, 8px);
 }
 
 .product-quickview {
@@ -352,8 +355,8 @@
   width: 100%;
   padding: 0.75em 1em;
   box-sizing: border-box;
-  background-color: rgba(var(--line-color), 1);
-  color: #ffffff;
+  background-color: var(--card-atc-bg, #000000);
+  color: var(--card-atc-text, #ffffff);
   font-family: var(--headingFont);
   font-size: 1.2rem;
   font-weight: 700;
@@ -363,6 +366,21 @@
   text-decoration: none;
   cursor: pointer;
   border: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.product-quickview:not([disabled]):hover {
+  background-color: var(--card-atc-hover-bg, #333333);
+  color: var(--card-atc-hover-text, #ffffff);
+}
+
+.product-quickview.is-loading {
+  opacity: 0.7;
+}
+
+.product-quickview.needs-size {
+  outline: 2px solid var(--card-atc-bg, #000000);
+  outline-offset: 2px;
 }
 
 /* The icon variant is a circle over the image, not a full-width bar. */
@@ -379,8 +397,10 @@
   outline-offset: 2px;
 }
 
-.product-quickview[data-quick-view-availability='false'] {
+.product-quickview[data-quick-view-availability='false'],
+.product-quickview[disabled] {
   background-color: rgb(var(--soldBadgeBackground));
+  color: #ffffff;
   cursor: not-allowed;
 }
 
@@ -391,9 +411,7 @@
   }
 
   .quick-add-variants {
-    position: static;
     transform: translateY(0);
-    background-color: transparent;
   }
 }
 

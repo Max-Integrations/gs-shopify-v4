@@ -335,6 +335,13 @@
     {% render 'gs-token-bridge' %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {%- comment -%}
+      The quick view dialog shell is created by gs-quick-view.js outside
+      any section, so its stylesheet is global. gs-quick-view.js keeps
+      only the fetched section's content node, which is why the section
+      cannot load it for the shell itself.
+    {%- endcomment -%}
+    {{ 'gs-quick-view.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -468,12 +475,15 @@
     <script src="{{ 'gs-swatch-scroller.js' | asset_url }}" defer="defer"></script>
 
     {% comment %}
-      Quick view. Loaded here rather than from gs-card-product because
-      that snippet renders up to 28 times on a collection page and Shopify
-      de-duplicates stylesheet_tag but NOT script_tag - it would emit 28
-      copies. The card's QUICK VIEW stays a real link, so this file is
-      enhancement only.
+      Quick view and quick add. Loaded here rather than from
+      gs-card-product because that snippet renders up to 28 times on a
+      collection page and Shopify de-duplicates NEITHER stylesheet_tag nor
+      script_tag (verified 2026-10-05: 28 link tags each for
+      gs-card-product.css and gs-price.css on /collections/all). The
+      card's QUICK VIEW stays a real link, so these files are enhancement
+      only. Their stylesheet is in the head, next to base.css.
     {% endcomment %}
     <script src="{{ 'gs-quick-view.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'gs-quick-add.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>

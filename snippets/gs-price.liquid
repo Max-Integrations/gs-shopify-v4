@@ -93,12 +93,17 @@
     assign show_price = false
   endif
 
+  # Theme setting first (off by default since the 2026-10 review, so the
+  # client can A/B test it); a caller may force it either way, which is
+  # how a single collection template switches it on.
   assign show_savings = true
   if settings.show_savings == false
     assign show_savings = false
   endif
   if savePercentoff == false
     assign show_savings = false
+  elsif savePercentoff == true
+    assign show_savings = true
   endif
 
   assign on_sale = false
@@ -147,7 +152,7 @@
 
     {%- if show_savings and on_sale -%}
       <span class="product-percent-off" data-sl-attribute-discount="{{ cardProduct.id }}">
-        {%- if settings.sale_label_type == 'amount-off' -%}
+        {%- if settings.sale_label_type == 'money-off' -%}
           {{- saving_money }} {{ 'products.product.badges.off' | t -}}
         {%- else -%}
           {{- compare_at_price | minus: price | times: 100 | divided_by: compare_at_price -}}%

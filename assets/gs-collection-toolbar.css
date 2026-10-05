@@ -51,9 +51,12 @@
   position: relative;
 }
 
+/* Anchored to the LEFT edge: on desktop the sort control sits at the top
+   of the left sidebar, and a right-anchored 240px panel hung 88px off
+   the viewport (seen in the 2026-10 review as "sort does not work"). */
 .gs-toolbar__panel {
   position: absolute;
-  right: 0;
+  left: 0;
   top: 100%;
   z-index: 5;
   min-width: 240px;

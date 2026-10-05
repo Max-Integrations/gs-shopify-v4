@@ -113,6 +113,10 @@
           window.history.pushState({ gsFilter: true }, '', url);
         }
 
+        // Back/forward and applied-filter pills change sort_by without
+        // touching the radios.
+        syncSortFromUrl(url);
+
         if (opts.scrollToTop !== false) scrollToResultsIfNeeded();
 
         if (typeof window.gsSwatchScrollerRefresh === 'function') {
@@ -175,9 +179,39 @@
     }, delay);
   }
 
+  // The sort control lives in the toolbar, which is outside both
+  // re-rendered regions, so it has to update itself: mark the chosen
+  // option and close the panel (on mobile it is a bottom sheet that
+  // would otherwise sit over the re-sorted grid, which is what made
+  // sorting look broken).
+  function syncSortUi(value) {
+    document.querySelectorAll('.gs-toolbar__option').forEach(function (li) {
+      var radio = li.querySelector('input[name="sort_by"]');
+      var on = Boolean(radio && radio.value === value);
+      li.classList.toggle('is-selected', on);
+      if (radio) radio.checked = on;
+    });
+    document.querySelectorAll('details.gs-toolbar__sort[open]').forEach(function (d) {
+      d.open = false;
+    });
+  }
+
+  function syncSortFromUrl(url) {
+    var params;
+    try {
+      params = new URL(url, window.location.origin).searchParams;
+    } catch (e) {
+      return;
+    }
+    var value = params.get('sort_by');
+    if (value) syncSortUi(value);
+  }
+
   document.addEventListener('change', function (evt) {
     var target = evt.target;
     if (!target || !target.form || target.form.id !== 'FiltersForm') return;
+
+    if (target.name === 'sort_by') syncSortUi(target.value);
 
     var isPriceField = target.classList && target.classList.contains('gs-filters__field-input');
     scheduleFromForm(target.form, isPriceField ? DEBOUNCE_MS : 0);

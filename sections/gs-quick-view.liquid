@@ -32,14 +32,20 @@
   ==================================================================
 {% endcomment %}
 
-{{ 'gs-quick-view.css' | asset_url | stylesheet_tag }}
-
 {%- liquid
   assign current = product.selected_or_first_available_variant
   assign form_id = 'GsQuickViewForm-' | append: product.id
 -%}
 
 <div class="gs-qv" data-quick-view-content data-product-url="{{ product.url }}">
+  {%- comment -%}
+    Inside the content node on purpose: gs-quick-view.js keeps only
+    [data-quick-view-content] from the fetched markup, so a stylesheet
+    outside it never reached the page. The card that opens the dialog
+    loads the same file too (gs-card-product), so the shell is styled
+    before the fetch returns.
+  {%- endcomment -%}
+  {{ 'gs-quick-view.css' | asset_url | stylesheet_tag }}
   <div class="gs-qv__media">
     {%- if product.featured_media -%}
       <img

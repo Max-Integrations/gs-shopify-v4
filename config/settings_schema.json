@@ -1489,6 +1489,284 @@
     ]
   },
   {
+    "name": "Product cards",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Carried over from the v3 \"Product grid\", \"Product badges\" and \"Custom Grunt Style Features\" groups. These apply to every product card: collections, search, featured collections, countdown and complementary products."
+      },
+      {
+        "type": "header",
+        "content": "Card content"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_price",
+        "label": "Show price",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "product_vendor",
+        "label": "Show vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "product_second_image",
+        "label": "Show the second image on hover",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_color_swatches",
+        "label": "Show colourway swatches",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_countdown",
+        "label": "Show the countdown timer on cards",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_collection_from_url",
+        "label": "Link to /products/ rather than /collections/.../products/",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Quick view / quick add"
+      },
+      {
+        "type": "checkbox",
+        "id": "quickview",
+        "label": "Enable quick view and quick add",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "quickview_style",
+        "label": "Style",
+        "default": "button",
+        "options": [
+          {
+            "value": "button",
+            "label": "Button under the card"
+          },
+          {
+            "value": "icon",
+            "label": "Icon over the image"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "card_button_bg",
+        "label": "Button background",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "card_button_text",
+        "label": "Button text",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "card_button_hover_bg",
+        "label": "Button background on hover",
+        "default": "#333333"
+      },
+      {
+        "type": "color",
+        "id": "card_button_hover_text",
+        "label": "Button text on hover",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "paragraph",
+        "content": "A collection template's Product Card Quick View block can override the style and colours for that template only."
+      },
+      {
+        "type": "header",
+        "content": "Sale savings"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_savings",
+        "label": "Show the saving next to a sale price",
+        "info": "Off by default so it can be A/B tested per collection: the Product Card Price block on a collection template overrides this.",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "sale_label_type",
+        "label": "Saving format",
+        "default": "percent-off",
+        "options": [
+          {
+            "value": "percent-off",
+            "label": "Percentage off"
+          },
+          {
+            "value": "money-off",
+            "label": "Amount off"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Inventory status"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_inventory",
+        "label": "Show stock status on cards",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "low_inventory",
+        "label": "Low stock threshold",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 10
+      },
+      {
+        "type": "text",
+        "id": "card_in_stock_text",
+        "label": "In stock text",
+        "default": "Available Now"
+      },
+      {
+        "type": "text",
+        "id": "card_low_stock_text",
+        "label": "Low stock text",
+        "default": "Low Stock, Grab It Now"
+      },
+      {
+        "type": "text",
+        "id": "card_out_of_stock_text",
+        "label": "Out of stock text",
+        "default": "Out of Stock"
+      },
+      {
+        "type": "text",
+        "id": "card_made_to_order_text",
+        "label": "Made to order text",
+        "info": "Shown when a product keeps selling after stock runs out.",
+        "default": "Made To Order"
+      },
+      {
+        "type": "color",
+        "id": "product_in_stock_color",
+        "label": "In stock colour",
+        "default": "#002F6E"
+      },
+      {
+        "type": "color",
+        "id": "product_low_stock_color",
+        "label": "Low stock colour",
+        "default": "#AB192D"
+      },
+      {
+        "type": "color",
+        "id": "product_no_stock_color",
+        "label": "Out of stock colour",
+        "default": "#777777"
+      },
+      {
+        "type": "color",
+        "id": "product_made_to_sell_color",
+        "label": "Made to order colour",
+        "default": "#2C7E3F"
+      },
+      {
+        "type": "header",
+        "content": "Badges"
+      },
+      {
+        "type": "checkbox",
+        "id": "new_label",
+        "label": "Show NEW badge",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "days_ago_created",
+        "label": "NEW for this many days",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 12
+      },
+      {
+        "type": "checkbox",
+        "id": "new_collection_label",
+        "label": "Also show NEW for products in these collections",
+        "default": false
+      },
+      {
+        "type": "collection_list",
+        "id": "add_new_collection",
+        "label": "NEW collections"
+      },
+      {
+        "type": "checkbox",
+        "id": "sale_label",
+        "label": "Show SALE badge",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "sale_label_with_percentage",
+        "label": "Show the percentage in the SALE badge",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "soldout_label",
+        "label": "Show SOLD OUT badge",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "preorder_label",
+        "label": "Show PRE-ORDER badge",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Tag badge"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_collection_product_badge",
+        "label": "Show a badge on products with a matching tag",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "collection_product_badge_tag_match",
+        "label": "Matching product tag"
+      },
+      {
+        "type": "text",
+        "id": "collection_product_badge_text",
+        "label": "Badge text"
+      },
+      {
+        "type": "color",
+        "id": "collection_product_badge_bg_color",
+        "label": "Badge background",
+        "default": "#AB192D"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.cart.name",
     "settings": [
       {

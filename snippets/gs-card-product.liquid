@@ -13,11 +13,33 @@
     cycleIndex      integer, drives eager/fetchpriority for the first 4
     hideContent     true to render image only
     complementary   true when used in a cross-sell context
-    quickViewtrue   true to allow the quick-view affordance
-    compareTrue     true to allow the compare checkbox
+    quickViewtrue   true to allow the quick-view / quick-add button
     showCount       true to allow the countdown timer
     showSwatches    true to render colourway swatches
-    enableQuickAdd  true for the size-picker overlay
+    enableQuickAdd  true for the in-card size picker and QUICK ADD button
+                    (adds to the cart from the card); false/nil opens the
+                    quick-view dialog instead
+    quickAddLabel   button label override (a template block setting)
+    savePercentoff  true/false to force the "% off" line on or off; nil
+                    follows the theme setting
+    themeSettings   (none) - see the header note on fail-open settings
+
+  ------------------------------------------------------------------
+  REVISION 2026-10-05 - CLIENT REVIEW
+  ------------------------------------------------------------------
+  - Compare is gone. The checkbox had no JavaScript behind it in v4 and
+    only showed because settings.compare did not exist; the client does
+    not want a compare feature.
+  - The theme settings this snippet reads now exist (settings_schema
+    "Product cards" group), so the fail-open rule below is a fallback,
+    not the normal path.
+  - Quick add is real: sizes over the bottom of the image (abbreviated
+    like the PDP tiles), a QUICK ADD button that posts the chosen variant
+    to /cart/add.js (assets/gs-quick-add.js). Always visible on touch
+    screens, where there is no hover to reveal it.
+  - The button's colours come from --card-atc-* (theme settings via
+    gs-token-bridge, overridable per collection template).
+  - "Made to order" stock state restored from v3 (continue selling).
 
   ------------------------------------------------------------------
   REVISION 2026-08-14 - EVEN CARDS, AND A REAL QUICK VIEW
@@ -91,11 +113,6 @@
     assign show_quickview = false
   endif
 
-  assign show_compare = true
-  if settings.compare == false
-    assign show_compare = false
-  endif
-
   assign show_swatch_row = true
   if settings.enable_color_swatches == false
     assign show_swatch_row = false
@@ -117,6 +134,12 @@
   endif
 
   assign quickview_style = settings.quickview_style | default: 'button'
+
+  assign quick_add_default = 'products.product.quick_add' | t
+  assign quick_view_default = 'onboarding.quickview' | t
+  assign quick_add_label = quickAddLabel | default: quick_add_default
+  assign quick_view_label = quickAddLabel | default: quick_view_default
+  assign sold_out_label = 'products.product.sold_out' | t
 
   case gridImageSize
     when 'landscape'
@@ -140,25 +163,36 @@
 
   if show_inventory and complementary != true
     assign total_stock = 0
-    assign stock_known = true
+    assign untracked = false
+    assign made_to_order = false
 
     for variant in cardProduct.variants
-      if variant.inventory_management == blank or variant.inventory_policy == 'continue'
-        assign stock_known = false
+      if variant.inventory_management == blank
+        assign untracked = true
         break
+      endif
+      if variant.inventory_policy == 'continue'
+        assign made_to_order = true
       endif
       if variant.inventory_quantity > 0
         assign total_stock = total_stock | plus: variant.inventory_quantity
       endif
     endfor
 
+    assign low_threshold = settings.low_inventory | default: 10
+
     if cardProduct.available == false
       assign stock_content = settings.card_out_of_stock_text | default: 'Out of stock'
       assign stock_color = settings.product_no_stock_color | default: '#777777'
-    elsif stock_known == false
+    elsif untracked
       assign stock_content = settings.card_in_stock_text | default: 'Available now'
       assign stock_color = settings.product_in_stock_color | default: '#002F6E'
-    elsif total_stock > 0 and total_stock <= settings.low_inventory
+    elsif total_stock <= 0 and made_to_order
+      # v3's "Made To Order": still purchasable because the variant keeps
+      # selling when out of stock.
+      assign stock_content = settings.card_made_to_order_text | default: 'Made to order'
+      assign stock_color = settings.product_made_to_sell_color | default: '#2C7E3F'
+    elsif total_stock > 0 and total_stock <= low_threshold
       assign stock_content = settings.card_low_stock_text | default: 'Low stock'
       assign stock_color = settings.product_low_stock_color | default: '#AB192D'
     else
@@ -268,14 +302,30 @@
         </a>
       {%- endif -%}
 
-      {%- if enableQuickAdd and cardProduct.variants.size > 1 -%}
-        <div class="quick-add-variants">
-          <p>{{ 'products.product.pick_a_size' | t }}</p>
-          <div class="qa-size-options">
+      {%- if enableQuickAdd and cardProduct.available and cardProduct.variants.size > 1 -%}
+        {%- comment -%}
+          In-card size picker, over the bottom of the image. Labels are
+          abbreviated the way the PDP tiles are (Small -> S, 2XLarge ->
+          2XL); the full title stays in the tooltip. Real buttons, so they
+          are keyboard-operable; gs-quick-add.js reads data-variant-id.
+        {%- endcomment -%}
+        <div class="quick-add-variants" data-quick-add-variants>
+          <p class="quick-add-variants__label">{{ 'products.product.pick_a_size' | t }}</p>
+          <div class="qa-size-options" role="group" aria-label="{{ 'products.product.pick_a_size' | t }}">
             {%- for variant in cardProduct.variants -%}
-              <div class="qa-size" data-variant-id="{{ variant.id }}" data-variant-available="{{ variant.available }}">
-                {{- variant.title -}}
-              </div>
+              {%- assign short_title = variant.title | remove: 'mall' | remove: 'edium' | remove: 'arge' -%}
+              <button
+                type="button"
+                class="qa-size"
+                data-qa-size
+                data-variant-id="{{ variant.id }}"
+                data-variant-available="{{ variant.available }}"
+                aria-pressed="false"
+                title="{{ variant.title | escape }}"
+                {% unless variant.available %}disabled{% endunless %}
+              >
+                {{- short_title -}}
+              </button>
             {%- endfor -%}
           </div>
         </div>
@@ -324,7 +374,7 @@
         </div>
 
         {%- if cardProduct != blank -%}
-          {%- render 'gs-price', cardProduct: cardProduct, cardVariant: card_variant -%}
+          {%- render 'gs-price', cardProduct: cardProduct, cardVariant: card_variant, savePercentoff: savePercentoff -%}
         {%- else -%}
           <div class="product-price">
             <span class="price-item actual-price">&mdash;</span>
@@ -337,25 +387,6 @@
           </div>
         {%- endif -%}
 
-        {%- if compareTrue and show_compare and cardProduct != blank -%}
-          <div class="compare-add-button" data-compare-item>
-            <div class="compare-checkbox">
-              <input
-                type="checkbox"
-                name="productCompare{{ cardProduct.id }}"
-                id="ProductCompare-{{ cardProduct.id }}"
-                class="js-compare-checkbox"
-                data-product-url="{{ cardProduct.url }}"
-                data-product-id="{{ cardProduct.id }}"
-                data-compare-checkbox
-              >
-              <label class="compare-checkmark compare-label" for="ProductCompare-{{ cardProduct.id }}">
-                {{ 'onboarding.compare' | t }}
-              </label>
-            </div>
-          </div>
-        {%- endif -%}
-
       {%- endunless -%}
       </div>
 
@@ -363,21 +394,37 @@
         {%- if show_quickview and quickview_style == 'button' and cardProduct != blank and quickViewtrue -%}
           <div class="product-quickview-button">
             {%- if enableQuickAdd -%}
-              <div
-                class="product-quickview"
+              {%- comment -%}
+                Adds the chosen variant (or the only variant) to the cart
+                without leaving the grid. With no size chosen the script
+                reveals the size picker instead. Falls back to a link to
+                the product when JavaScript is off: the button is wrapped
+                in a <noscript> link alternative below.
+              {%- endcomment -%}
+              <button
+                type="button"
+                class="product-quickview product-quickview--add"
+                data-quick-add
+                data-product-handle="{{ cardProduct.handle }}"
+                data-product-url="{{ product_url }}"
                 data-quick-view-availability="{{ cardProduct.available }}"
                 {% if cardProduct.variants.size == 1 %}
                   data-variant-id="{{ cardProduct.variants[0].id }}"
                 {% endif %}
+                {% unless cardProduct.available %}disabled{% endunless %}
+                aria-label="{{ quick_add_label | escape }}: {{ cardProduct.title | escape }}"
               >
-                <span>
+                <span data-quick-add-label>
                   {%- if cardProduct.available -%}
-                    {{- 'products.product.quick_add' | t -}}
+                    + {{ quick_add_label }}
                   {%- else -%}
-                    {{- 'products.product.sold_out' | t -}}
+                    {{- sold_out_label -}}
                   {%- endif -%}
                 </span>
-              </div>
+              </button>
+              <noscript>
+                <a class="product-quickview" href="{{ product_url }}">{{ quick_add_label }}</a>
+              </noscript>
             {%- else -%}
               {%- comment -%}
                 A real link, so this works with JavaScript off and is
@@ -387,14 +434,14 @@
                 href="{{ product_url }}"
                 data-quick-view-availability="{{ cardProduct.available }}"
                 class="product-quickview"
-                aria-label="{{ 'onboarding.quickview' | t }}: {{ cardProduct.title | escape }}"
+                aria-label="{{ quick_view_label | escape }}: {{ cardProduct.title | escape }}"
                 data-quick-view="{{ cardProduct.handle }}"
               >
                 <span>
                   {%- if cardProduct.available -%}
-                    {{- 'onboarding.quickview' | t -}}
+                    {{- quick_view_label -}}
                   {%- else -%}
-                    {{- 'products.product.sold_out' | t -}}
+                    {{- sold_out_label -}}
                   {%- endif -%}
                 </span>
               </a>
