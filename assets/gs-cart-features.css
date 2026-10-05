@@ -1,0 +1,136 @@
+/*
+  GS cart features (snippets/cart-drawer.liquid)
+
+  Sale message under the drawer heading, countdown timer, and the
+  empty-cart promo (copy + banner with overlay and CTA). Carried over
+  from v3's cart-drawer-content and its inline styles; colours and
+  spacing come from Theme settings > Grunt Style features as custom
+  properties set on each element.
+*/
+
+/* ---- Sale message ---- */
+.gs-cart-sale {
+  display: block;
+  margin: 0 0 0.5em;
+  padding: 0.5em 1rem;
+  background-color: var(--gs-cart-sale-bg, #002f6e);
+  color: var(--gs-cart-sale-text, #ffffff);
+  font-size: var(--smallText, 1.4rem);
+  text-align: center;
+  text-decoration: none;
+}
+
+.gs-cart-sale--bold {
+  font-weight: 700;
+}
+
+/* ---- Countdown ---- */
+.gs-cart-countdown {
+  margin: 0 0 1em;
+  padding: 0.5em 1rem;
+  border-top: 2px solid #666666;
+  border-bottom: 2px solid #666666;
+  background-color: var(--gs-cart-countdown-bg, #e8e9eb);
+  color: var(--gs-cart-countdown-text, #000000);
+  text-align: center;
+}
+
+.gs-cart-countdown[hidden] {
+  display: none;
+}
+
+.gs-cart-countdown p {
+  margin: 0;
+  font-size: var(--smallText, 1.4rem);
+}
+
+.gs-cart-countdown__timer {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Empty cart ---- */
+.gs-cart-empty__copy {
+  margin-bottom: var(--gs-cart-empty-gap, 25px);
+  color: var(--gs-cart-empty-copy-color, #000000);
+}
+
+.gs-cart-empty__copy h1,
+.gs-cart-empty__copy h2,
+.gs-cart-empty__copy h3 {
+  margin: 0 0 0.3em;
+  color: inherit;
+  text-transform: uppercase;
+}
+
+.gs-cart-empty__copy p {
+  margin: 0;
+  color: inherit;
+}
+
+.gs-cart-empty__promo {
+  position: relative;
+  margin: var(--gs-cart-empty-gap, 25px) 0 0;
+  overflow: hidden;
+}
+
+.gs-cart-empty__promo-link {
+  display: block;
+  text-decoration: none;
+}
+
+.gs-cart-empty__promo picture,
+.gs-cart-empty__promo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gs-cart-empty__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: var(--gs-cart-promo-align-mobile, center);
+  gap: var(--gs-cart-promo-cta-gap, 25px);
+  padding: var(--gs-cart-promo-pad-mobile, 5px);
+  background-color: var(--gs-cart-promo-overlay, rgba(0, 0, 0, 0.3));
+  color: var(--gs-cart-promo-text, #ffffff);
+  text-align: var(--gs-cart-promo-align-mobile, center);
+}
+
+.gs-cart-empty__overlay-copy,
+.gs-cart-empty__overlay-copy h1,
+.gs-cart-empty__overlay-copy h2,
+.gs-cart-empty__overlay-copy p {
+  margin: 0;
+  color: inherit;
+}
+
+.gs-cart-empty__overlay-copy h1,
+.gs-cart-empty__overlay-copy h2 {
+  font-size: 2.4rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.gs-cart-empty__cta {
+  display: inline-block;
+  padding: var(--gs-cart-promo-cta-pad, 10px 20px);
+  background-color: var(--gs-cart-promo-cta-bg, #ab192d);
+  color: var(--gs-cart-promo-cta-text, #ffffff);
+  font-family: var(--headingFont);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 750px) {
+  .gs-cart-empty__overlay {
+    align-items: var(--gs-cart-promo-align, center);
+    padding: var(--gs-cart-promo-pad, 25px);
+    text-align: var(--gs-cart-promo-align, center);
+  }
+}

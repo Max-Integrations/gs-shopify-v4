@@ -1501,6 +1501,262 @@
         "label": "Load the accessiBe widget",
         "info": "The accessiBe script the live site uses. Its floating button is hidden; the header's accessibility icon opens it (add an Icon link block to the header with the action \"Open the accessibility menu\").",
         "default": true
+      },
+      {
+        "type": "header",
+        "content": "Cart sale message",
+        "info": "A bar under the cart drawer heading."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_cart_sale_messaging",
+        "label": "Show the sale message",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "cart_sale_messaging_text",
+        "label": "Text",
+        "default": "Snag Your 4th of July Gear—Order By 6/24 To Beat The Holiday Rush!"
+      },
+      {
+        "type": "url",
+        "id": "cart_sale_messaging_link",
+        "label": "Link (optional)"
+      },
+      {
+        "type": "color",
+        "id": "cart_sale_messaging_bg_color",
+        "label": "Background",
+        "default": "#002F6E"
+      },
+      {
+        "type": "color",
+        "id": "cart_sale_messaging_text_color",
+        "label": "Text color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_sale_messaging_bold_text",
+        "label": "Bold text",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Cart countdown timer",
+        "info": "Hidden until the start time, counts down to the end time, hidden after."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_cart_countdown_timer",
+        "label": "Show the countdown",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "cart_countdown_timer_text",
+        "label": "Text above the timer"
+      },
+      {
+        "type": "text",
+        "id": "cart_countdown_timer_start",
+        "label": "Start",
+        "info": "YYYY-MM-DD HH:MM, store time.",
+        "default": "2026-01-31 00:00"
+      },
+      {
+        "type": "text",
+        "id": "cart_countdown_timer_end",
+        "label": "End",
+        "info": "YYYY-MM-DD HH:MM, store time.",
+        "default": "2026-12-31 23:59"
+      },
+      {
+        "type": "color",
+        "id": "cart_countdown_timer_bg_color",
+        "label": "Background",
+        "default": "#E8E9EB"
+      },
+      {
+        "type": "color",
+        "id": "cart_countdown_timer_text_color",
+        "label": "Text color",
+        "default": "#000000"
+      },
+      {
+        "type": "header",
+        "content": "Empty cart",
+        "info": "Copy and a promo banner shown in the drawer when the cart is empty. With no banner image the Cart settings' empty-cart collection card shows instead."
+      },
+      {
+        "type": "richtext",
+        "id": "empty_cart_content_copy",
+        "label": "Copy",
+        "default": "<h2>YOUR ARSENAL IS EMPTY</h2><p>An empty cart is a weak flex. Time to get loud.</p>"
+      },
+      {
+        "type": "color",
+        "id": "empty_cart_content_copy_color",
+        "label": "Copy color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "empty_cart_spacing_between_content_copy_promo_banner",
+        "label": "Space between copy and banner",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 25
+      },
+      {
+        "type": "image_picker",
+        "id": "empty_cart_promo_banner_image_desktop",
+        "label": "Banner image (desktop)"
+      },
+      {
+        "type": "image_picker",
+        "id": "empty_cart_promo_banner_image_mobile",
+        "label": "Banner image (mobile)"
+      },
+      {
+        "type": "checkbox",
+        "id": "empty_cart_promo_banner_overlay",
+        "label": "Show the overlay",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "empty_cart_promo_banner_image_overlay_color",
+        "label": "Overlay color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "empty_cart_promo_banner_image_overlay_opacity",
+        "label": "Overlay opacity",
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "unit": "%",
+        "default": 30
+      },
+      {
+        "type": "richtext",
+        "id": "empty_cart_promo_banner_overlay_content",
+        "label": "Overlay text",
+        "default": "<h1><strong>VETERAN COLLECTION</strong></h1><p><strong>FORGED IN FREEDOM</strong></p>"
+      },
+      {
+        "type": "color",
+        "id": "empty_cart_promo_banner_overlay_content_color",
+        "label": "Overlay text color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "range",
+        "id": "empty_cart_promo_banner_overlay_content_padding_desktop",
+        "label": "Overlay padding (desktop)",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 25
+      },
+      {
+        "type": "range",
+        "id": "empty_cart_promo_banner_overlay_content_padding_mobile",
+        "label": "Overlay padding (mobile)",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 5
+      },
+      {
+        "type": "text_alignment",
+        "id": "empty_cart_promo_banner_overlay_content_alignment_desktop",
+        "label": "Overlay alignment (desktop)",
+        "default": "center"
+      },
+      {
+        "type": "text_alignment",
+        "id": "empty_cart_promo_banner_overlay_content_alignment_mobile",
+        "label": "Overlay alignment (mobile)",
+        "default": "center"
+      },
+      {
+        "type": "url",
+        "id": "empty_cart_promo_banner_cta_link",
+        "label": "Link"
+      },
+      {
+        "type": "checkbox",
+        "id": "empty_cart_promo_banner_cta_link_new_window",
+        "label": "Open the link in a new tab",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "empty_cart_full_image_link",
+        "label": "Whole banner is the link",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "empty_cart_show_cta",
+        "label": "Show the CTA button",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "empty_cart_banner_cta_text",
+        "label": "CTA text",
+        "default": "SHOP NOW"
+      },
+      {
+        "type": "range",
+        "id": "empty_cart_banner_cta_padding_top_bottom",
+        "label": "CTA padding (top and bottom)",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "empty_cart_banner_cta_padding_left_right",
+        "label": "CTA padding (sides)",
+        "min": 0,
+        "max": 60,
+        "step": 2,
+        "unit": "px",
+        "default": 20
+      },
+      {
+        "type": "color",
+        "id": "empty_cart_banner_cta_text_color",
+        "label": "CTA text color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "empty_cart_banner_cta_bg_color",
+        "label": "CTA background",
+        "default": "#AB192D"
+      },
+      {
+        "type": "range",
+        "id": "empty_cart_spacing_between_promo_banner_cta",
+        "label": "Space between overlay text and CTA",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 25
       }
     ]
   },

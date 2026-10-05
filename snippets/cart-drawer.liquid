@@ -7,6 +7,37 @@
 
 {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'gs-cart-features.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  Grunt Style cart features (2026-10-05), carried over from v3's
+  cart-drawer-content: a sale message under the heading, a countdown
+  timer, and an empty-cart promo (copy + banner with overlay and CTA).
+  All driven by Theme settings > Grunt Style features, with v3's setting
+  ids, as the client knows them. v3 only showed these in the drawer, so
+  the cart page is untouched.
+{%- endcomment -%}
+{%- liquid
+  assign gs_cart_sale = false
+  if settings.enable_cart_sale_messaging and settings.cart_sale_messaging_text != blank
+    assign gs_cart_sale = true
+  endif
+
+  assign gs_cart_countdown = false
+  if settings.enable_cart_countdown_timer and settings.cart_countdown_timer_end != blank
+    assign gs_cart_countdown = true
+    assign gs_countdown_start = settings.cart_countdown_timer_start | default: '2000-01-01 00:00' | date: '%s'
+    assign gs_countdown_end = settings.cart_countdown_timer_end | date: '%s'
+  endif
+
+  assign gs_empty_promo = false
+  if settings.empty_cart_promo_banner_image_desktop != blank or settings.empty_cart_promo_banner_image_mobile != blank
+    assign gs_empty_promo = true
+  endif
+  assign gs_empty_promo_link = settings.empty_cart_promo_banner_cta_link
+  assign gs_empty_overlay_color = settings.empty_cart_promo_banner_image_overlay_color | default: '#000000'
+  assign gs_empty_overlay_alpha = settings.empty_cart_promo_banner_image_overlay_opacity | default: 30 | divided_by: 100.0
+-%}
 
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
@@ -29,9 +60,15 @@
     >
       {%- if cart == empty -%}
         <div class="drawer__inner-empty">
-          <div class="cart-drawer__warnings center{% if settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
+          <div class="cart-drawer__warnings center{% if settings.cart_drawer_collection != blank or gs_empty_promo %} cart-drawer__warnings--has-collection{% endif %}">
             <div class="cart-drawer__empty-content">
-              <h2 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
+              {%- if settings.empty_cart_content_copy != blank -%}
+                <div class="gs-cart-empty__copy rte" style="--gs-cart-empty-copy-color: {{ settings.empty_cart_content_copy_color | default: '#000000' }}; --gs-cart-empty-gap: {{ settings.empty_cart_spacing_between_content_copy_promo_banner | default: 25 }}px;">
+                  {{ settings.empty_cart_content_copy }}
+                </div>
+              {%- else -%}
+                <h2 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
+              {%- endif -%}
               <button
                 class="drawer__close"
                 type="button"
@@ -54,7 +91,68 @@
               {%- endif -%}
             </div>
           </div>
-          {%- if settings.cart_drawer_collection != blank -%}
+
+          {%- if gs_empty_promo -%}
+            {%- comment -%}
+              v3's empty-cart promo banner: desktop and mobile images (one
+              <picture>, so only one downloads), optional tinted overlay
+              with rich text and a CTA. "Full image link" wraps the whole
+              banner in the CTA link and renders the CTA as a label.
+            {%- endcomment -%}
+            {%- capture gs_promo_inner -%}
+              <picture>
+                {%- if settings.empty_cart_promo_banner_image_mobile != blank -%}
+                  <source media="(max-width: 749px)" srcset="{{ settings.empty_cart_promo_banner_image_mobile | image_url: width: 400 }} 400w, {{ settings.empty_cart_promo_banner_image_mobile | image_url: width: 600 }} 600w, {{ settings.empty_cart_promo_banner_image_mobile | image_url: width: 750 }} 750w" sizes="100vw">
+                {%- endif -%}
+                {%- assign gs_promo_img = settings.empty_cart_promo_banner_image_desktop | default: settings.empty_cart_promo_banner_image_mobile -%}
+                <img
+                  src="{{ gs_promo_img | image_url: width: 650 }}"
+                  srcset="{{ gs_promo_img | image_url: width: 400 }} 400w, {{ gs_promo_img | image_url: width: 500 }} 500w, {{ gs_promo_img | image_url: width: 650 }} 650w"
+                  sizes="(min-width: 750px) 400px, 100vw"
+                  alt="{{ gs_promo_img.alt | escape }}"
+                  width="{{ gs_promo_img.width }}"
+                  height="{{ gs_promo_img.height }}"
+                  loading="lazy"
+                >
+              </picture>
+              {%- if settings.empty_cart_promo_banner_overlay -%}
+                <div class="gs-cart-empty__overlay">
+                  {%- if settings.empty_cart_promo_banner_overlay_content != blank -%}
+                    <div class="gs-cart-empty__overlay-copy rte">{{ settings.empty_cart_promo_banner_overlay_content }}</div>
+                  {%- endif -%}
+                  {%- if settings.empty_cart_show_cta and settings.empty_cart_banner_cta_text != blank and gs_empty_promo_link != blank -%}
+                    {%- if settings.empty_cart_full_image_link -%}
+                      <span class="gs-cart-empty__cta">{{ settings.empty_cart_banner_cta_text }}</span>
+                    {%- else -%}
+                      <a class="gs-cart-empty__cta" href="{{ gs_empty_promo_link }}" {% if settings.empty_cart_promo_banner_cta_link_new_window %}target="_blank" rel="noopener"{% endif %}>{{ settings.empty_cart_banner_cta_text }}</a>
+                    {%- endif -%}
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            {%- endcapture -%}
+
+            <div
+              class="gs-cart-empty__promo"
+              style="
+                --gs-cart-promo-overlay: {{ gs_empty_overlay_color | color_modify: 'alpha', gs_empty_overlay_alpha }};
+                --gs-cart-promo-text: {{ settings.empty_cart_promo_banner_overlay_content_color | default: '#ffffff' }};
+                --gs-cart-promo-pad: {{ settings.empty_cart_promo_banner_overlay_content_padding_desktop | default: 25 }}px;
+                --gs-cart-promo-pad-mobile: {{ settings.empty_cart_promo_banner_overlay_content_padding_mobile | default: 5 }}px;
+                --gs-cart-promo-align: {{ settings.empty_cart_promo_banner_overlay_content_alignment_desktop | default: 'center' }};
+                --gs-cart-promo-align-mobile: {{ settings.empty_cart_promo_banner_overlay_content_alignment_mobile | default: 'center' }};
+                --gs-cart-promo-cta-pad: {{ settings.empty_cart_banner_cta_padding_top_bottom | default: 10 }}px {{ settings.empty_cart_banner_cta_padding_left_right | default: 20 }}px;
+                --gs-cart-promo-cta-text: {{ settings.empty_cart_banner_cta_text_color | default: '#ffffff' }};
+                --gs-cart-promo-cta-bg: {{ settings.empty_cart_banner_cta_bg_color | default: '#ab192d' }};
+                --gs-cart-promo-cta-gap: {{ settings.empty_cart_spacing_between_promo_banner_cta | default: 25 }}px;
+              "
+            >
+              {%- if settings.empty_cart_full_image_link and gs_empty_promo_link != blank -%}
+                <a class="gs-cart-empty__promo-link" href="{{ gs_empty_promo_link }}" {% if settings.empty_cart_promo_banner_cta_link_new_window %}target="_blank" rel="noopener"{% endif %}>{{ gs_promo_inner }}</a>
+              {%- else -%}
+                {{ gs_promo_inner }}
+              {%- endif -%}
+            </div>
+          {%- elsif settings.cart_drawer_collection != blank -%}
             <div class="cart-drawer__collection">
               {% render 'card-collection', card_collection: settings.cart_drawer_collection, columns: 1 %}
             </div>
@@ -74,6 +172,60 @@
           </span>
         </button>
       </div>
+
+      {%- if gs_cart_sale -%}
+        {%- if settings.cart_sale_messaging_link != blank -%}
+          <a href="{{ settings.cart_sale_messaging_link }}" class="gs-cart-sale{% if settings.cart_sale_messaging_bold_text %} gs-cart-sale--bold{% endif %}" style="--gs-cart-sale-bg: {{ settings.cart_sale_messaging_bg_color | default: '#002F6E' }}; --gs-cart-sale-text: {{ settings.cart_sale_messaging_text_color | default: '#ffffff' }};">{{ settings.cart_sale_messaging_text }}</a>
+        {%- else -%}
+          <p class="gs-cart-sale{% if settings.cart_sale_messaging_bold_text %} gs-cart-sale--bold{% endif %}" style="--gs-cart-sale-bg: {{ settings.cart_sale_messaging_bg_color | default: '#002F6E' }}; --gs-cart-sale-text: {{ settings.cart_sale_messaging_text_color | default: '#ffffff' }};">{{ settings.cart_sale_messaging_text }}</p>
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- if gs_cart_countdown -%}
+        {%- comment -%}
+          Hidden until the start time, counts down to the end time, hides
+          after. The drawer is re-rendered by cart-drawer.js on every add,
+          so the script binds once and looks the element up each tick.
+        {%- endcomment -%}
+        <div
+          class="gs-cart-countdown"
+          data-gs-cart-countdown
+          data-start="{{ gs_countdown_start }}"
+          data-end="{{ gs_countdown_end }}"
+          style="--gs-cart-countdown-bg: {{ settings.cart_countdown_timer_bg_color | default: '#e8e9eb' }}; --gs-cart-countdown-text: {{ settings.cart_countdown_timer_text_color | default: '#000000' }};"
+          hidden
+        >
+          {%- if settings.cart_countdown_timer_text != blank -%}
+            <p class="gs-cart-countdown__text">{{ settings.cart_countdown_timer_text }}</p>
+          {%- endif -%}
+          <p class="gs-cart-countdown__timer" data-gs-cart-countdown-timer aria-live="off"></p>
+        </div>
+        <script>
+          (function () {
+            if (window.gsCartCountdownBound) return;
+            window.gsCartCountdownBound = true;
+            function pad(n) { return String(n).padStart(2, '0'); }
+            function tick() {
+              var el = document.querySelector('[data-gs-cart-countdown]');
+              if (!el) return;
+              var now = Date.now();
+              var start = Number(el.getAttribute('data-start')) * 1000;
+              var end = Number(el.getAttribute('data-end')) * 1000;
+              if (now < start || now > end) { el.hidden = true; return; }
+              var left = end - now;
+              var d = Math.floor(left / 86400000);
+              var h = Math.floor((left % 86400000) / 3600000);
+              var m = Math.floor((left % 3600000) / 60000);
+              var s = Math.floor((left % 60000) / 1000);
+              var out = el.querySelector('[data-gs-cart-countdown-timer]');
+              if (out) out.textContent = pad(d) + ' days • ' + pad(h) + ' hours • ' + pad(m) + ' minutes • ' + pad(s) + ' seconds';
+              el.hidden = false;
+            }
+            tick();
+            window.setInterval(tick, 1000);
+          })();
+        </script>
+      {%- endif -%}
       <cart-drawer-items
         view-event-payload="{{ cart | standard_event_data: 'view', context: 'dialog' | escape }}"
         view-event-trigger="manual"
