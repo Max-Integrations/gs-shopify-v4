@@ -20,8 +20,11 @@
   object-fit: cover;
 }
 
+/* Width is the section's "Article width" setting (--gs-article-width,
+   set inline on the body div); 68ch was the previous fixed value and
+   the client was overriding it with custom CSS. Capped by .page-width. */
 .gs-article__body {
-  max-width: 68ch;
+  max-width: min(var(--gs-article-width, 68ch), var(--page-width, 100%));
   margin-inline: auto;
   padding-top: 2.5rem;
 }
@@ -104,7 +107,7 @@
 
 /* ---- Comments ---- */
 .gs-article__comments {
-  max-width: 68ch;
+  max-width: min(var(--gs-article-width, 68ch), var(--page-width, 100%));
   margin-inline: auto;
   padding-top: 3rem;
 }

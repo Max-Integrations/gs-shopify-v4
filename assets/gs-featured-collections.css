@@ -38,7 +38,7 @@
   font-weight: 700;
   text-align: var(--fc-heading-align, center);
   text-transform: uppercase;
-  color: rgb(var(--headingColor, var(--textColor)));
+  color: var(--fc-heading-color, rgb(var(--headingColor, var(--textColor))));
 }
 
 /* ---- Tabs ---- */
@@ -61,7 +61,7 @@
   font-size: var(--fc-nav-size-mobile, 23px);
   font-weight: 400;
   text-transform: uppercase;
-  color: rgba(var(--textColor), 0.45);
+  color: var(--fc-tab-color, rgba(var(--textColor), 0.45));
   background: transparent;
   border: none;
   padding: 0;
@@ -70,7 +70,7 @@
 }
 
 .featured-collections-navigation button.active {
-  color: rgb(var(--textColor));
+  color: var(--fc-tab-active-color, rgb(var(--textColor)));
 }
 
 .featured-collections-navigation button:focus-visible {

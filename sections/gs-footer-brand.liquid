@@ -29,10 +29,11 @@
   The black background and white text are now a colour scheme
   (scheme-4), which is the supported way to express the same thing.
 
-  ENGRAVERS MT IS NOT AVAILABLE. v3 loaded it from assets/EngraversMT.TTF
-  via an @font-face rule somewhere in style.css, which is not ported. The
-  subheading currently renders in the theme heading font. Either port the
-  @font-face and the .TTF, or accept Roboto Condensed here.
+  ENGRAVERS MT (2026-10-05): ported. v3 declared it in
+  custom-theme-styles.css from assets/EngraversMT.TTF; the regular and
+  bold files are now theme assets and gs-footer-brand.css carries the
+  @font-face. The subheading uses it, as the live "This We'll Defend"
+  band does.
 
   Also note `font-weight: 50` in the original - not a valid CSS weight
   (the range is 1-1000, and keywords aside, browsers clamp it to 100).
@@ -104,7 +105,7 @@
       "type": "text",
       "id": "subheading",
       "label": "Subheading",
-      "info": "v3 set this in Engravers MT, which is not available in this theme yet.",
+      "info": "Set in Engravers MT, as on the live site.",
       "default": "AMERICA'S PATRIOTIC T-SHIRT & APPAREL BRAND"
     },
     { "type": "richtext", "id": "body", "label": "Body copy" },

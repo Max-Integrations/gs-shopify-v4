@@ -50,7 +50,7 @@
     </div>
   {%- endif -%}
 
-  <div class="page-width gs-article__body">
+  <div class="page-width gs-article__body" style="--gs-article-width: {{ s.body_max_width | default: 68 }}ch;">
     <header class="gs-article__header">
       {%- if s.show_breadcrumb -%}
         <a class="gs-article__back" href="{{ blog.url }}">
@@ -157,6 +157,7 @@
     { "type": "checkbox", "id": "show_date", "label": "Show date", "default": true },
     { "type": "checkbox", "id": "show_author", "label": "Show author", "default": false },
     { "type": "checkbox", "id": "show_share", "label": "Show share icons", "default": true },
+    { "type": "range", "id": "body_max_width", "label": "Article width", "info": "In characters of body text. 68 is the previous fixed width; 120 fills the page.", "min": 40, "max": 120, "step": 2, "default": 68, "unit": "ch" },
     { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
   ]
 }

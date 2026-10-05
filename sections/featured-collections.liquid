@@ -91,13 +91,43 @@
   if show_detail == false
     assign hide_card_content = true
   endif
+
+  # enable_product_badges was in the schema but never reached the card.
+  assign hide_badges = false
+  if section.settings.enable_product_badges == false
+    assign hide_badges = true
+  endif
+
+  # Three product templates carry color_scheme: "" which emitted
+  # class="color-" and fell back to :root; treat blank as scheme-1.
+  assign fc_scheme = section.settings.color_scheme | default: 'scheme-1'
+  if fc_scheme == blank
+    assign fc_scheme = 'scheme-1'
+  endif
+
+  # Optional heading and tab colours; a cleared picker is rgba(0,0,0,0).
+  assign fc_heading_color = section.settings.heading_color
+  if fc_heading_color == blank or fc_heading_color.alpha == 0
+    assign fc_heading_color = ''
+  endif
+  assign fc_tab_color = section.settings.tab_color
+  if fc_tab_color == blank or fc_tab_color.alpha == 0
+    assign fc_tab_color = ''
+  endif
+  assign fc_tab_active_color = section.settings.tab_active_color
+  if fc_tab_active_color == blank or fc_tab_active_color.alpha == 0
+    assign fc_tab_active_color = ''
+  endif
 -%}
 
 {%- unless hide_section -%}
   <div
-    class="gs-featured-collections color-{{ section.settings.color_scheme }}{% unless show_detail %} gs-fc--no-detail{% endunless %}"
+    class="gs-featured-collections color-{{ fc_scheme }}{% unless show_detail %} gs-fc--no-detail{% endunless %}"
     id="featured-collections-{{ section.id }}"
     style="
+      {%- if fc_heading_color != '' %} --fc-heading-color: {{ fc_heading_color }};{% endif -%}
+      {%- if fc_tab_color != '' %} --fc-tab-color: {{ fc_tab_color }};{% endif -%}
+      {%- if fc_tab_active_color != '' %} --fc-tab-active-color: {{ fc_tab_active_color }};{% endif -%}
       --fc-pad-top: {{ section.settings.section_spacing_top_desktop }}px;
       --fc-pad-bottom: {{ section.settings.section_spacing_bottom_desktop }}px;
       --fc-pad-top-mobile: {{ section.settings.section_spacing_top_mobile }}px;
@@ -210,6 +240,7 @@
                       gridImageSize: section.settings.grid_image_size,
                       quickViewtrue: section.settings.enable_product_quick_view,
                       showSwatches: section.settings.enable_product_swatches,
+                      hideBadges: hide_badges,
                       hideContent: hide_card_content
                     -%}
                   </li>
@@ -282,6 +313,7 @@
                       cycleIndex: forloop.index,
                       gridImageSize: section.settings.grid_image_size,
                       showCount: true,
+                      hideBadges: hide_badges,
                       quickViewtrue: true,
                       showSwatches: true
                     -%}
@@ -473,6 +505,10 @@
     { "type": "range", "id": "collection_cta_spacing_bottom_desktop", "label": "CTA bottom (desktop)", "min": 0, "max": 150, "step": 5, "unit": "px", "default": 10 },
     { "type": "range", "id": "collection_cta_spacing_bottom_mobile", "label": "CTA bottom (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 10 },
     { "type": "header", "content": "Colors" },
+    { "type": "paragraph", "content": "Heading and tab colours follow the color scheme when left empty." },
+    { "type": "color", "id": "heading_color", "label": "Heading" },
+    { "type": "color", "id": "tab_color", "label": "Tabs" },
+    { "type": "color", "id": "tab_active_color", "label": "Active tab" },
     { "type": "color", "id": "cta_text_color", "label": "CTA text", "default": "#000000" },
     { "type": "color", "id": "cta_text_color_hover", "label": "CTA text (hover)", "default": "#FFFFFF" },
     { "type": "color", "id": "cta_background_color", "label": "CTA background", "default": "#FFFFFF" },

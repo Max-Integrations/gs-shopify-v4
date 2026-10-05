@@ -113,6 +113,29 @@
     min-width: 0;
     scroll-snap-align: start;
   }
+
+  /* Review stars, at v3's size for this slot (assets/product.css
+     .complimentory-product ... svg { width: 10px; height: 10px }). The
+     card renders them whenever the product's reviews.rating metafields
+     are set; nothing here hides them. */
+  .gs-product__complementary .product-card-rating {
+    min-height: 14px;
+  }
+
+  .gs-product__complementary .star-rating svg {
+    width: 10px;
+    height: 12px;
+  }
+
+  .gs-product__complementary .product-card-detail {
+    --gs-card-inset: 8px;
+    --gs-card-content-height: 0;
+    padding-top: 6px;
+  }
+
+  .gs-product__complementary .product-title {
+    font-size: 1.1rem;
+  }
 {% endstylesheet %}
 
 {% schema %}

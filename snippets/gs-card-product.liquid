@@ -277,7 +277,7 @@
         {%- endif -%}
       </a>
 
-      {%- if cardProduct != blank and complementary != true -%}
+      {%- if cardProduct != blank and complementary != true and hideBadges != true -%}
         <div class="product-card-badges">
           {%- render 'gs-product-badge', cardProduct: cardProduct -%}
         </div>

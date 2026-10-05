@@ -9,6 +9,23 @@
   `div { background-color: #000 }` rule buried in template JSON.
 */
 
+/* Engravers MT, as on the live site (v3 custom-theme-styles.css). The
+   files are theme assets (copied from v3), so the URLs resolve next to
+   this stylesheet. */
+@font-face {
+  font-family: "Engravers MT";
+  src: url("EngraversMT.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Engravers MT";
+  src: url("EngraversMTBold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
 .gs-footer-brand {
   padding: var(--fb-pad-mobile, 25px) 0;
   background-color: rgb(var(--color-background));
@@ -30,7 +47,7 @@
 
 .gs-footer-brand__subheading {
   margin: 0.3em 0 0;
-  font-family: var(--headingFont);
+  font-family: "Engravers MT", var(--headingFont);
   font-size: var(--fb-sub-size-mobile, 14px);
   font-weight: 400;
   letter-spacing: 0.06em;
