@@ -1489,6 +1489,22 @@
     ]
   },
   {
+    "name": "Grunt Style features",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Accessibility"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_accessibe",
+        "label": "Load the accessiBe widget",
+        "info": "The accessiBe script the live site uses. Its floating button is hidden; the header's accessibility icon opens it (add an Icon link block to the header with the action \"Open the accessibility menu\").",
+        "default": true
+      }
+    ]
+  },
+  {
     "name": "Product cards",
     "settings": [
       {

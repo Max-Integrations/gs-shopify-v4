@@ -245,8 +245,50 @@
   outline-offset: 2px;
 }
 
-.gs-header__icons .gs-header__icon:not(.gs-header__cart):not(:nth-last-child(2)) {
+/* Mobile shows: icon links marked "show on mobile", the search toggle,
+   account and cart. Desktop-only links and app blocks (the Swym star)
+   are hidden here and shown in the 990px block below. */
+.gs-header__icon--desktop,
+.gs-header__icon--app {
   display: none;
+}
+
+.gs-header__icon {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* App blocks (Swym's wishlist launcher) inherit the icon colour and size. */
+.gs-header__icon--app > * {
+  color: inherit;
+}
+
+.gs-header__icon--app svg,
+.gs-header__icon--app img {
+  width: 20px;
+  height: 20px;
+}
+
+/* The search field drops under the top row when the mobile toggle opens
+   it. Scoped to mobile so the desktop grid is untouched. */
+@media screen and (max-width: 989px) {
+  .gs-header--search-open .gs-header__main-inner {
+    grid-template-areas:
+      'burger logo icons'
+      'search search search';
+  }
+
+  .gs-header--search-open .gs-header__search {
+    display: block;
+    padding-bottom: 6px;
+  }
+
+  .gs-header--search-open [data-gs-search-toggle] {
+    color: var(--gs-header-hover, #e7e7e7);
+  }
 }
 
 .gs-header__cart-count {
@@ -441,6 +483,10 @@
 
   .gs-header__icons .gs-header__icon {
     display: inline-flex;
+  }
+
+  .gs-header__icons .gs-header__icon--mobile {
+    display: none;
   }
 
   .gs-header__nav {

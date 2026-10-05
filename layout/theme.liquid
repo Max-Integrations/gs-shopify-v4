@@ -485,5 +485,13 @@
     {% endcomment %}
     <script src="{{ 'gs-quick-view.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'gs-quick-add.js' | asset_url }}" defer="defer"></script>
+
+    {%- if settings.enable_accessibe -%}
+      {%- comment -%}
+        accessiBe, as on the live site (v3 theme.js loadAccessibe). The
+        header's accessibility icon is its trigger.
+      {%- endcomment -%}
+      <script src="{{ 'gs-accessibe.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
   </body>
 </html>
