@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -248,7 +239,7 @@
           "blocks": {}
         },
         "wonderment_pdp_etas_j4BeBN": {
-          "type": "shopify://apps/track-by-loop/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "type": "shopify://apps/wonderment/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
           "settings": {
             "eta_text_font_size": 16,
             "hint_text_font_size": 12,
@@ -345,6 +336,22 @@
     },
     "multi_column_f33aYq": {
       "type": "multicolumn",
+      "settings": {
+        "title": "How it Works",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 72,
+        "padding_bottom": 72
+      },
       "blocks": {
         "icon_with_text_NkBgEX": {
           "type": "column",
@@ -392,40 +399,10 @@
         "icon_with_text_GkKaGz",
         "icon_with_text_TbWiWy",
         "icon_with_text_TmWtKE"
-      ],
-      "settings": {
-        "title": "How it Works",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 4,
-        "column_alignment": "center",
-        "background_style": "primary",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
+      ]
     },
     "collection_tab_9rxNTb": {
       "type": "featured-collections",
-      "blocks": {
-        "collection_iXrpqN": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "Sticker Club Vault",
-            "collection": "sticker-club-vault",
-            "cta_label": "",
-            "cta_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection_iXrpqN"
-      ],
       "settings": {
         "section_heading": "Sticker Club Vault",
         "heading_text_align": "left",
@@ -471,10 +448,43 @@
         "cta_background_color_hover": "#000000",
         "cta_border_color": "#000000",
         "cta_border_color_hover": "#000000"
-      }
+      },
+      "blocks": {
+        "collection_iXrpqN": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "Sticker Club Vault",
+            "collection": "sticker-club-vault",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_iXrpqN"
+      ]
     },
     "split_banner_r9CC8E": {
       "type": "image-with-text",
+      "settings": {
+        "section_visibility": "always",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "show_chevrons": false,
+        "full_width": false,
+        "content_background": "",
+        "padding_top": 0,
+        "padding_bottom": 16,
+        "image": "shopify://shop_images/SunnyRoad_Homepage_Module_Custom_Split_Section_Mobile_1560x1560_5_1.png"
+      },
       "blocks": {
         "b1": {
           "type": "block--heading",
@@ -526,29 +536,13 @@
         "b1",
         "b2",
         "b3"
-      ],
-      "settings": {
-        "section_visibility": "always",
-        "image": "shopify://shop_images/SunnyRoad_Homepage_Module_Custom_Split_Section_Mobile_1560x1560_5_1.png",
-        "full_width": false,
-        "content_background": "",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "center",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-1",
-        "show_chevrons": false,
-        "padding_top": 0,
-        "padding_bottom": 16
-      }
+      ]
     },
     "1713538328bea72ad4": {
       "type": "apps",
+      "settings": {
+        "include_margins": true
+      },
       "blocks": {
         "klaviyo_reviews_product_reviews_zYDLdf": {
           "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
@@ -557,10 +551,7 @@
       },
       "block_order": [
         "klaviyo_reviews_product_reviews_zYDLdf"
-      ],
-      "settings": {
-        "include_margins": true
-      }
+      ]
     }
   },
   "order": [

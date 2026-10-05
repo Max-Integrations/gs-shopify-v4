@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -236,33 +227,6 @@
           },
           "blocks": {}
         },
-        "variant_picker": {
-          "type": "block--product-variant-picker",
-          "settings": {
-            "hide_single_value": true,
-            "size_guide_label": "Size guide",
-            "size_option_name": "Size",
-            "size_guide_page": "men-size-chart"
-          },
-          "blocks": {}
-        },
-        "richtext_2": {
-          "type": "block--product-message",
-          "settings": {
-            "text": "<p>{{ product.metafields.custom.limited_custom_product_message.value }}</p>",
-            "image": "",
-            "image_link": "",
-            "product_tags": "",
-            "exclude_tags": "",
-            "customer_rule": "any",
-            "customer_tags": "",
-            "hide_buy_controls": false,
-            "boxed": false,
-            "alignment": "left",
-            "text_color": "",
-            "bg": ""
-          }
-        },
         "buy_buttons": {
           "type": "block--product-buy-buttons",
           "settings": {
@@ -275,12 +239,55 @@
           },
           "blocks": {}
         },
+        "app_wishlist-plus": {
+          "type": "shopify://apps/wishlist-plus/blocks/wishlist-pdp-button/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
+          "settings": {
+            "swym_atw_button_icon": "star",
+            "swym_atw_icon_thickness": 1.7,
+            "swym_atw_display_btn_text": false,
+            "swym_button_position": "product_title_right",
+            "swym_atw_button_vertical_offset": -8,
+            "swym_atw_full_width": true,
+            "swym_atw_button_alignment": "center",
+            "swym_add_to_wishlist_color": "#ffffff",
+            "swym_added_to_wishlist_color": "#ffffff",
+            "swym_button_text_color": "#000000",
+            "swym_atw_border_color": "#ffffff",
+            "swym_atw_border_thickness": 0,
+            "swym_atw_button_border_radius": 0,
+            "swym_enable_hover_customization": false,
+            "swym_hover_add_to_wishlist_color": "#000000",
+            "swym_hover_added_to_wishlist_color": "#222222",
+            "swym_hover_button_text_color": "#fff",
+            "swym_hover_atw_border_color": "#000",
+            "swym_hover_atw_border_thickness": 0,
+            "swym_hover_atw_button_border_radius": 0,
+            "swym_custom_css": ""
+          }
+        },
+        "richtext_2": {
+          "type": "block--product-message",
+          "settings": {
+            "text": "<p><em><strong>{{ product.metafields.custom.limited_custom_product_message.value }}</strong></em></p>",
+            "image": "",
+            "image_link": "",
+            "product_tags": "",
+            "exclude_tags": "",
+            "customer_rule": "any",
+            "customer_tags": "",
+            "hide_buy_controls": false,
+            "boxed": false,
+            "alignment": "center",
+            "text_color": "",
+            "bg": ""
+          }
+        },
         "wonderment_pdp_etas_QjinAi": {
           "type": "shopify://apps/track-by-loop/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
           "settings": {
             "eta_text_font_size": 16,
             "hint_text_font_size": 12,
-            "custom_css": "#wonderment-pdp-eta {\nmargin-top: 25px;\nmargin-bottom: 25px;\n}\n@media screen and (min-width:768px) {\n#wonderment-pdp-eta {\nmargin-top: 0px;\nmargin-bottom: 30px;\n}\n}"
+            "custom_css": "#wonderment-pdp-eta {\nmargin-top: 25px;\nmargin-bottom: 15px;\n}\n@media screen and (min-width:768px) {\n#wonderment-pdp-eta {\nmargin-top: 0px;\nmargin-bottom: 5px;\n}\n}"
           }
         },
         "store_locator": {
@@ -298,7 +305,7 @@
           "settings": {
             "heading": "Product Description",
             "source": "text",
-            "text": "<p><strong>{{ product.metafields.custom.limited_custom_product_message.value }}</strong></p>{{ product.description }}",
+            "text": "{{ product.description }}",
             "features_heading": "",
             "video_url": "",
             "open_default": true,
@@ -475,9 +482,9 @@
         "notice_usaf",
         "notice_ussf",
         "notice_starbucks",
-        "variant_picker",
-        "richtext_2",
         "buy_buttons",
+        "app_wishlist-plus",
+        "richtext_2",
         "wonderment_pdp_etas_QjinAi",
         "store_locator",
         "accordion_1",
@@ -571,182 +578,72 @@
         "cta_border_color_hover": "#ffffff"
       }
     },
-    "product_short_videos_a6rxwe": {
-      "type": "section--media-grid",
-      "blocks": {
-        "video_NCUDGw": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "",
-            "collection": "",
-            "link": "shopify://products/250th-commemorative-t-shirt-midnight-navy",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          }
-        },
-        "video_EfhxgA": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "",
-            "collection": "",
-            "link": "shopify://products/basic-t-shirt-battlefield-terrain-3-pack",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          }
-        },
-        "video_N7GFpa": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "",
-            "collection": "",
-            "link": "shopify://products/1776-flag",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          }
-        },
-        "video_CFxycn": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "",
-            "collection": "",
-            "link": "shopify://products/dad-tax-t-shirt-black",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          }
-        },
-        "video_rdXWEE": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "",
-            "collection": "",
-            "link": "shopify://products/defy-t-shirt-white",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          }
-        },
-        "video_bPjfQq": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "",
-            "collection": "",
-            "link": "shopify://products/live-armed-t-shirt-black",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          }
-        },
-        "video_jDQnQ7": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "",
-            "collection": "",
-            "link": "shopify://products/wiener-party-t-shirt-midnight-navy",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          }
-        },
-        "video_bqUBjw": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "",
-            "collection": "",
-            "link": "shopify://products/strength-through-suffering-full-zip-hoodie-black",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          }
-        }
-      },
-      "block_order": [
-        "video_NCUDGw",
-        "video_EfhxgA",
-        "video_N7GFpa",
-        "video_CFxycn",
-        "video_rdXWEE",
-        "video_bPjfQq",
-        "video_jDQnQ7",
-        "video_bqUBjw"
-      ],
+    "product_highlight_hpFLY3": {
+      "type": "product-highlight",
       "settings": {
-        "layout": "carousel",
-        "columns_desktop": 4,
-        "columns_mobile": 2,
-        "tile_ratio": "portrait",
-        "desktop_row_height": 400,
-        "mobile_row_height": 200,
-        "tile_width": "full",
-        "desktop_grid_gap": 20,
-        "mobile_grid_gap": 12,
-        "section_width": false,
-        "section_visibility": "always",
-        "content_placement": "overlay",
-        "card_background": "",
-        "card_padding": 0,
-        "enable_shadow": false,
-        "enable_hover_content": false,
-        "heading_badge": false,
-        "heading": "<strong>GRUNT STYLE IN ACTION</strong>",
-        "heading_size": "h2",
-        "heading_alignment": "text-center",
-        "heading_color": "",
-        "text_color": "",
-        "btn_bg_color": "",
-        "btn_text_color": "",
-        "btn_hover_color": "",
-        "btn_hover_text_color": "",
-        "color_scheme": "scheme-4",
-        "padding_top": 32,
-        "padding_bottom": 8
-      }
+        "reverse_desktop": true,
+        "reverse_mobile": true,
+        "product_highlight_text_content_bg_color": "#dddad6",
+        "product_highlight_text_content_heading": "CLUB GRUNT STYLE",
+        "product_highlight_text_content_heading_color": "#000000",
+        "product_highlight_text_content_heading_font_size_desktop": 32,
+        "product_highlight_text_content_heading_font_size_mobile": 24,
+        "product_highlight_text_content_paragraph": "<p>Unlock this exclusive tee, made just for Club Grunt Style members! Don’t miss your shot, join now before the month ends and claim yours. Delivered straight to your door.</p>",
+        "product_highlight_text_content_paragraph_color": "#000000",
+        "product_highlight_text_content_paragraph_font_size_desktop": 22,
+        "product_highlight_text_content_paragraph_font_size_mobile": 16,
+        "link_cta_style": "button",
+        "link_cta_1_text": "JOIN CLUB NOW",
+        "link_cta_1_link": "shopify://pages/club-grunt-style",
+        "link_cta_2_text": "SHOP THE EXCLUSIVES",
+        "link_cta_2_link": "shopify://collections/club-grunt-style",
+        "link_cta_layout": "side-by-side",
+        "product_highlight_text_content_link_cta_color": "#000000",
+        "product_highlight_text_content_cta_bg_color": "#000000",
+        "product_highlight_text_content_cta_border_color": "#000000",
+        "product_highlight_text_content_cta_border_width": 2,
+        "product_highlight_text_content_link_cta_text_font_size_desktop": 18,
+        "product_highlight_text_content_link_cta_text_font_size_mobile": 14,
+        "product_highlight_text_link_cta_gap_desktop": 25,
+        "product_highlight_text_link_cta_gap_mobile": 5,
+        "product_highlight_text_content_spacing_desktop": 60,
+        "product_highlight_text_content_spacing_mobile": 35,
+        "product_highlight_text_content_gap_desktop": 5,
+        "product_highlight_text_content_gap_mobile": 10,
+        "enable_product_highlight_text_content_arrows": true,
+        "product_highlight_text_content_arrows_display": "solid",
+        "product_highlight_text_content_arrows_color": "#000000",
+        "product_highlight_text_content_arrows_size_desktop": 80,
+        "product_highlight_text_content_arrows_size_mobile": 64,
+        "product_highlight_text_arrows_gap_between_desktop": 30,
+        "product_highlight_text_arrows_gap_between_mobile": 30,
+        "product_highlight_image_heading": "",
+        "product_highlight_image_heading_font_size_desktop": 38,
+        "product_highlight_image_heading_font_size_mobile": 36,
+        "product_highlight_image_heading_color": "#9a723f",
+        "image": "shopify://shop_images/Split_Banner_D_980x610_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
+        "image_mobile": "shopify://shop_images/Split_Banner_M_750x750_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
+        "enable_product_highlight_image_arrows": false,
+        "product_highlight_image_arrows_display": "solid",
+        "product_highlight_image_arrows_color": "#FFCC01",
+        "product_highlight_image_arrows_size_desktop": 78,
+        "product_highlight_image_arrows_size_mobile": 54,
+        "product_highlight_image_arrows_gap_between_desktop": 25,
+        "product_highlight_image_arrows_gap_between_mobile": 25,
+        "product_highlight_image_spacing_desktop": 30,
+        "product_highlight_image_spacing_mobile": 15,
+        "product_highlight_heading_arrows_gap_desktop": 10,
+        "product_highlight_heading_arrows_gap_mobile": 0
+      },
+      "custom_css": [
+        ".custom-cta {background-color: #ffcc01;}"
+      ]
     },
     "1713538328bea72ad4": {
       "type": "apps",
+      "settings": {
+        "include_margins": true
+      },
       "blocks": {
         "klaviyo_reviews_product_reviews_t9Jg48": {
           "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
@@ -755,109 +652,7 @@
       },
       "block_order": [
         "klaviyo_reviews_product_reviews_t9Jg48"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "custom_split_section_4ckMBF": {
-      "type": "image-with-text",
-      "blocks": {
-        "b1": {
-          "type": "block--heading",
-          "settings": {
-            "text": "CLUB GRUNT STYLE",
-            "size": "h2",
-            "tag": "h2",
-            "alignment": "inherit",
-            "color": "",
-            "font_size_desktop": 0,
-            "font_size_mobile": 0
-          }
-        },
-        "b2": {
-          "type": "block--text",
-          "settings": {
-            "text": "<p>Ready to level up your locker? Enlist & get a fresh, high-speed patriotic tees shipped straight to your tent every month. Don’t wait, join the ranks & stand out!</p>",
-            "size": "body",
-            "alignment": "inherit",
-            "color": ""
-          }
-        },
-        "b3": {
-          "type": "block--button",
-          "settings": {
-            "label": "JOIN CLUB NOW",
-            "link": "shopify://pages/club-grunt-style",
-            "open_in_new_tab": false,
-            "style": "outline",
-            "width": "auto",
-            "font_size": 0,
-            "padding_y": 12,
-            "padding_x": 28,
-            "margin_y": 0,
-            "margin_x": 0,
-            "border_width": 1,
-            "border_radius": 0,
-            "custom_scheme": false,
-            "color_scheme": "scheme-1",
-            "bg": "",
-            "text_color": "",
-            "border_color": "",
-            "hover_bg": "",
-            "hover_text_color": ""
-          }
-        },
-        "b4": {
-          "type": "block--button",
-          "settings": {
-            "label": "SHOP EXCLUSIVE STORE",
-            "link": "shopify://collections/club-grunt-style",
-            "open_in_new_tab": false,
-            "style": "outline",
-            "width": "auto",
-            "font_size": 0,
-            "padding_y": 12,
-            "padding_x": 28,
-            "margin_y": 0,
-            "margin_x": 0,
-            "border_width": 1,
-            "border_radius": 0,
-            "custom_scheme": false,
-            "color_scheme": "scheme-1",
-            "bg": "",
-            "text_color": "",
-            "border_color": "",
-            "hover_bg": "",
-            "hover_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "b1",
-        "b2",
-        "b3",
-        "b4"
-      ],
-      "settings": {
-        "section_visibility": "always",
-        "image": "shopify://shop_images/Split_Banner_D_980x610_Club_June_2026_Acquisition.jpg",
-        "full_width": true,
-        "content_background": "#e0dad0",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "center",
-        "mobile_content_alignment": "center",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-1",
-        "show_chevrons": false,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
+      ]
     },
     "custom_liquid_9fRRfL": {
       "type": "custom-liquid",
@@ -873,9 +668,8 @@
     "main",
     "features",
     "recommendations",
-    "product_short_videos_a6rxwe",
+    "product_highlight_hpFLY3",
     "1713538328bea72ad4",
-    "custom_split_section_4ckMBF",
     "custom_liquid_9fRRfL"
   ]
 }

@@ -7,6 +7,17 @@
   CTAs on one side, an image with optional chevron arrows on the other.
 
   ------------------------------------------------------------------
+  RESTORED 2026-10-05 (was deprecated--product-highlight)
+  ------------------------------------------------------------------
+  The 2026-09-22 audit retired this in favour of Dawn's image-with-text.
+  The client's review asked for it back by name: image-with-text has no
+  mobile image, one on/off for both chevron sets, no content padding,
+  no mobile order reverse, and a colour scheme instead of per-section
+  button and background colours. This is the client's "Product Feature"
+  module and it stays. v3's product templates also switched to it on
+  2026-10-01, so migrate-product-templates.py passes it through.
+
+  ------------------------------------------------------------------
   THREE SETTINGS REFERENCED IN CSS THAT DO NOT EXIST
   ------------------------------------------------------------------
   1. product_highlight_image_arrows_spacing_desktop
@@ -230,7 +241,7 @@
 
 {% schema %}
 {
-  "name": "Product Highlight (old)",
+  "name": "Product Highlight",
   "tag": "section",
   "class": "section gs-ph-section",
   "settings": [
@@ -725,6 +736,12 @@
       "step": 5,
       "unit": "px",
       "default": 25
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Highlight",
+      "category": "Custom"
     }
   ]
 }

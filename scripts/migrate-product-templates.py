@@ -351,6 +351,9 @@ for path in sorted(glob.glob(os.path.join(V3, 'templates', 'product.*.json'))) +
         if t == 'main-product': key, new = 'main', main_section(sec, suffix)
         elif t == 'features-benefits': key, new = 'features', features(s)
         elif t == 'custom-split-section': key, new = k, custom_split(s)
+        # Restored verbatim on 2026-10-05 (the client's "Product Feature"
+        # module); v3's product templates switched to it on 2026-10-01.
+        elif t == 'product-highlight': key, new = k, {'type': 'product-highlight', 'settings': s, **({'custom_css': sec['custom_css']} if sec.get('custom_css') else {})}
         elif t == 'split-banner': key, new = k, split_banner(sec)
         elif t == 'products-collage': key, new = k, products_collage(s, suffix)
         elif t == 'images-grid': key, new = k, images_grid(sec)

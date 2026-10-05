@@ -3,6 +3,32 @@
     "main": {
       "type": "section--product",
       "blocks": {
+        "app_wishlist-plus": {
+          "type": "shopify://apps/wishlist-plus/blocks/wishlist-pdp-button/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
+          "settings": {
+            "swym_atw_button_icon": "star",
+            "swym_atw_icon_thickness": 1.7,
+            "swym_atw_display_btn_text": false,
+            "swym_button_position": "product_title_right",
+            "swym_atw_button_vertical_offset": -9,
+            "swym_atw_full_width": true,
+            "swym_atw_button_alignment": "center",
+            "swym_add_to_wishlist_color": "#FFFFFF",
+            "swym_added_to_wishlist_color": "#AB192D",
+            "swym_button_text_color": "#000000",
+            "swym_atw_border_color": "#FFFFFF",
+            "swym_atw_border_thickness": 0,
+            "swym_atw_button_border_radius": 0,
+            "swym_enable_hover_customization": false,
+            "swym_hover_add_to_wishlist_color": "#000000",
+            "swym_hover_added_to_wishlist_color": "#222222",
+            "swym_hover_button_text_color": "#fff",
+            "swym_hover_atw_border_color": "#000",
+            "swym_hover_atw_border_thickness": 0,
+            "swym_hover_atw_button_border_radius": 0,
+            "swym_custom_css": ""
+          }
+        },
         "title": {
           "type": "block--product-title",
           "settings": {
@@ -369,6 +395,14 @@
           },
           "blocks": {}
         },
+        "badge_club_limited": {
+          "type": "block--product-badge",
+          "settings": {
+            "tag": "Club Limited",
+            "image": "shopify://shop_images/Custom_Web_Icon_100x76_4705caa3-7cc4-441d-9b01-48f713be8bb7.png",
+            "position": "top-right"
+          }
+        },
         "badge_usa_250": {
           "type": "block--product-badge",
           "settings": {
@@ -435,6 +469,7 @@
         }
       },
       "block_order": [
+        "app_wishlist-plus",
         "title",
         "klaviyo_reviews_average_rating_aTRYhe",
         "price",
@@ -460,6 +495,7 @@
         "accordion_3",
         "value_props",
         "complementary",
+        "badge_club_limited",
         "badge_usa_250",
         "badge_limited_edition",
         "badge_clubea",
@@ -544,78 +580,65 @@
         "cta_border_color_hover": "#ffffff"
       }
     },
-    "custom_split_section_La8w9h": {
-      "type": "image-with-text",
+    "product_highlight_dErwzg": {
+      "type": "product-highlight",
       "settings": {
-        "section_visibility": "always",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "center",
-        "mobile_content_alignment": "center",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-1",
-        "show_chevrons": false,
-        "full_width": true,
-        "content_background": "#e0dad0",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "image": "shopify://shop_images/Split_Banner_D_980x610_Club_August_2026_Acquisition.jpg"
+        "reverse_desktop": true,
+        "reverse_mobile": true,
+        "product_highlight_text_content_bg_color": "#dddad6",
+        "product_highlight_text_content_heading": "CLUB GRUNT STYLE",
+        "product_highlight_text_content_heading_color": "#000000",
+        "product_highlight_text_content_heading_font_size_desktop": 32,
+        "product_highlight_text_content_heading_font_size_mobile": 24,
+        "product_highlight_text_content_paragraph": "<p>Unlock this exclusive tee, made just for Club Grunt Style members! Don’t miss your shot, join now before the month ends and claim yours. Delivered straight to your door.</p>",
+        "product_highlight_text_content_paragraph_color": "#000000",
+        "product_highlight_text_content_paragraph_font_size_desktop": 22,
+        "product_highlight_text_content_paragraph_font_size_mobile": 16,
+        "link_cta_style": "button",
+        "link_cta_1_text": "JOIN CLUB NOW",
+        "link_cta_1_link": "shopify://pages/club-grunt-style",
+        "link_cta_2_text": "SHOP THE EXCLUSIVES",
+        "link_cta_2_link": "shopify://collections/club-grunt-style",
+        "link_cta_layout": "side-by-side",
+        "product_highlight_text_content_link_cta_color": "#000000",
+        "product_highlight_text_content_cta_bg_color": "#000000",
+        "product_highlight_text_content_cta_border_color": "#000000",
+        "product_highlight_text_content_cta_border_width": 2,
+        "product_highlight_text_content_link_cta_text_font_size_desktop": 18,
+        "product_highlight_text_content_link_cta_text_font_size_mobile": 14,
+        "product_highlight_text_link_cta_gap_desktop": 25,
+        "product_highlight_text_link_cta_gap_mobile": 5,
+        "product_highlight_text_content_spacing_desktop": 60,
+        "product_highlight_text_content_spacing_mobile": 35,
+        "product_highlight_text_content_gap_desktop": 5,
+        "product_highlight_text_content_gap_mobile": 10,
+        "enable_product_highlight_text_content_arrows": true,
+        "product_highlight_text_content_arrows_display": "solid",
+        "product_highlight_text_content_arrows_color": "#000000",
+        "product_highlight_text_content_arrows_size_desktop": 80,
+        "product_highlight_text_content_arrows_size_mobile": 64,
+        "product_highlight_text_arrows_gap_between_desktop": 30,
+        "product_highlight_text_arrows_gap_between_mobile": 30,
+        "product_highlight_image_heading": "",
+        "product_highlight_image_heading_font_size_desktop": 38,
+        "product_highlight_image_heading_font_size_mobile": 36,
+        "product_highlight_image_heading_color": "#9a723f",
+        "image": "shopify://shop_images/Split_Banner_D_980x610_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
+        "image_mobile": "shopify://shop_images/Split_Banner_M_750x750_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
+        "enable_product_highlight_image_arrows": false,
+        "product_highlight_image_arrows_display": "solid",
+        "product_highlight_image_arrows_color": "#FFCC01",
+        "product_highlight_image_arrows_size_desktop": 78,
+        "product_highlight_image_arrows_size_mobile": 54,
+        "product_highlight_image_arrows_gap_between_desktop": 25,
+        "product_highlight_image_arrows_gap_between_mobile": 25,
+        "product_highlight_image_spacing_desktop": 30,
+        "product_highlight_image_spacing_mobile": 15,
+        "product_highlight_heading_arrows_gap_desktop": 10,
+        "product_highlight_heading_arrows_gap_mobile": 0
       },
-      "blocks": {
-        "b1": {
-          "type": "block--heading",
-          "settings": {
-            "text": "CLUB GRUNT STYLE",
-            "size": "h2",
-            "tag": "h2",
-            "alignment": "inherit",
-            "color": "",
-            "font_size_desktop": 0,
-            "font_size_mobile": 0
-          }
-        },
-        "b2": {
-          "type": "block--text",
-          "settings": {
-            "text": "<p>Secure your spot in Club Grunt Style and get this month’s exclusive tee! Join now and wear the mindset: if you want peace, prepare for war. Don’t let this drop pass you by.</p>",
-            "size": "body",
-            "alignment": "inherit",
-            "color": ""
-          }
-        },
-        "b3": {
-          "type": "block--button",
-          "settings": {
-            "label": "SHOP EXCLUSIVE STORE",
-            "link": "shopify://collections/club-grunt-style",
-            "open_in_new_tab": false,
-            "style": "outline",
-            "width": "auto",
-            "font_size": 0,
-            "padding_y": 12,
-            "padding_x": 28,
-            "margin_y": 0,
-            "margin_x": 0,
-            "border_width": 1,
-            "border_radius": 0,
-            "custom_scheme": false,
-            "color_scheme": "scheme-1",
-            "bg": "",
-            "text_color": "",
-            "border_color": "",
-            "hover_bg": "",
-            "hover_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "b1",
-        "b2",
-        "b3"
+      "custom_css": [
+        ".custom-cta {background-color: #ffcc01;}"
       ]
     },
     "1713538328bea72ad4": {
@@ -647,7 +670,7 @@
     "main",
     "features",
     "recommendations",
-    "custom_split_section_La8w9h",
+    "product_highlight_dErwzg",
     "1713538328bea72ad4",
     "custom_liquid_9fRRfL"
   ]

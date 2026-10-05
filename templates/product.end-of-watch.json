@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero_banner_secondary_FAjPEQ": {
@@ -276,7 +267,7 @@
           "blocks": {}
         },
         "wonderment_pdp_etas_N4NGb7": {
-          "type": "shopify://apps/track-by-loop/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "type": "shopify://apps/wonderment/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
           "settings": {
             "eta_text_font_size": 16,
             "hint_text_font_size": 12,
@@ -365,6 +356,15 @@
     },
     "rich_text_YzmyVT": {
       "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
       "blocks": {
         "heading_43QbTG": {
           "type": "block--heading",
@@ -391,16 +391,7 @@
       "block_order": [
         "heading_43QbTG",
         "text_Y4GerE"
-      ],
-      "settings": {
-        "section_visibility": "always",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 8,
-        "padding_bottom": 8
-      }
+      ]
     },
     "product_image_grid_metafields_rtmDEb": {
       "type": "custom-liquid",
@@ -413,6 +404,20 @@
     },
     "product_secondary_content_fUae39": {
       "type": "collapsible-content",
+      "settings": {
+        "caption": "",
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 40,
+        "padding_bottom": 40
+      },
       "blocks": {
         "description": {
           "type": "collapsible_row",
@@ -446,24 +451,13 @@
         "description",
         "accordion_item_YRpGtY",
         "accordion_item_EALKTc"
-      ],
-      "settings": {
-        "caption": "",
-        "heading": "",
-        "heading_size": "h1",
-        "heading_alignment": "center",
-        "layout": "row",
-        "container_color_scheme": "scheme-2",
-        "color_scheme": "scheme-1",
-        "open_first_collapsible_row": false,
-        "image_ratio": "adapt",
-        "desktop_layout": "image_second",
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
+      ]
     },
     "1713538328bea72ad4": {
       "type": "apps",
+      "settings": {
+        "include_margins": true
+      },
       "blocks": {
         "klaviyo_reviews_product_reviews_WVeHyX": {
           "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
@@ -472,10 +466,7 @@
       },
       "block_order": [
         "klaviyo_reviews_product_reviews_WVeHyX"
-      ],
-      "settings": {
-        "include_margins": true
-      }
+      ]
     }
   },
   "order": [
