@@ -1,0 +1,184 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/text-scroller.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+<div id="text-scroller-wrapper">
+  <h2>{{ section.settings.text_scroller_heading }}</h2>
+  <div id="text-scroller-grid-container">
+    {% for block in section.blocks %}
+      <div id="text-scroller-container">
+        {% if block.settings.title %}
+          <h3 class="scroller-headline">{{ block.settings.title }}</h3>
+        {% endif %}
+  
+        <div style="" class="{% if block.settings.is_auto_scroll %}auto-{% endif %}scroller">
+          {% if block.settings.in_memory_of_list %}
+            <div class="names-list" data-names="{{ block.settings.names_list }}">
+              <ul></ul>
+            </div>
+          {% else %}
+            <div class="scroller-content">
+              {{ block.settings.scroller_content }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+</div>
+</div>
+
+<style>
+  #text-scroller-wrapper { padding: 2.5em; background-color: #121212 !important; }
+  #text-scroller-wrapper h2 { margin-bottom: 1em; color: #fff !important; text-align: center; text-transform: uppercase; }
+  #text-scroller-grid-container { display: grid; grid-template-columns: repeat(auto-fill, calc((100% - 2em) / {{ section.blocks.size }})); gap: 1em; }
+  #text-scroller-container h3 { color: #fff !important; text-align: center; }
+  .auto-scroller, .scroller { color: #fff !important; margin-top: 1em; height: 300px; font-size: 12px; overflow-y: scroll; -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%); }
+  .auto-scroller::-webkit-scrollbar { width: 0px; background: transparent; /* make scrollbar transparent */ }
+  .names-list { text-align: center; text-transform: uppercase; }
+  .names-list ul { padding: 0; list-style-type: none; }
+  .scroller-content { padding: 1em; }
+
+  @media screen and (max-width: 768px) {
+    #text-scroller-grid-container { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  let tsc = document.querySelectorAll('#text-scroller-container');
+
+  tsc.forEach((sc) => {
+    let s = sc.querySelector('div[class$="scroller"]'),
+      nl = s.querySelector('.names-list'),
+      ul = nl.querySelector('ul');
+
+    if (nl) {
+      let csv = nl.getAttribute('data-names');
+
+      csv = csv.substring(0, csv.lastIndexOf('/')) + '/gviz/tq?tqx=out:json';
+
+      const csvToJson = async (csv) => {
+        try {
+          const response = await fetch(csv);
+
+          if (!response.ok) throw new Error('Error fetching data');
+
+          const data = await response.text();
+
+          const json = JSON.parse(data.substr(47).slice(0, -2));
+
+
+          let ci = {};
+
+          if(json.table.cols.length === 1) {
+            json.table.rows.forEach(r => {
+              let li = document.createElement('li');
+              
+              li.textContent = r.c[0].v;
+              ul.append(li);
+            })
+          } else {
+            json.table.cols.forEach((c, i) => {
+              if (c.label.includes('Service')) {
+                ci.serviceIndex = i;
+              } else if (c.label.includes('Name  (Last, First M)')) {
+                ci.nameIndex = i;
+              }
+            });
+      
+            json.table.rows.forEach(r => {
+              let li = document.createElement('li'),
+                  service = r.c[ci.serviceIndex]?.v,
+                  name = r.c[ci.nameIndex]?.v;
+      
+              li.textContent = `${name} - ${service}`;
+              ul.append(li);
+            });
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      csvToJson(csv);
+    }
+  });
+
+  if (document.querySelectorAll('.auto-scroller')) {
+    let as = document.querySelectorAll('.auto-scroller');
+
+    as.forEach((s) => {
+      let isPaused = false;
+
+      window.setInterval(() => {
+        if (!isPaused) {
+          s.scrollTop = s.scrollTop + 1;
+
+          if (s.scrollHeight - s.offsetHeight <= s.scrollTop) {
+            s.scrollTop = 0;
+          }
+        }
+
+        s.addEventListener('mouseover', () => {
+          isPaused = true;
+        });
+        s.addEventListener('mouseout', () => {
+          isPaused = false;
+        });
+      }, 100);
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Text Scroller",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text_scroller_heading",
+      "label": "Text Scroller Section Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Content",
+      "type": "text_scroller",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Scroller Content Heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "in_memory_of_list",
+          "label": "In Memory Of List"
+        },
+        {
+          "type": "richtext",
+          "id": "scroller_content",
+          "label": "Scroll Content"
+        },
+        {
+          "type": "url",
+          "id": "names_list",
+          "label": "Names List"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_auto_scroll",
+          "label": "Auto-Scroll"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Scroller"
+    }
+  ]
+}
+{% endschema %}

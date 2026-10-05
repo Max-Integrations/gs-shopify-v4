@@ -1,0 +1,101 @@
+.countdown-banner-container {
+    padding: 2.5em;
+    background: var(--countdownBannerBg);
+    text-align: center;
+}
+
+.promo-copy-coundown-container {
+    display: flex;
+    flex-direction: var(--countdownBannerStyle);
+}
+
+.promo-copy-coundown-container>* {
+    flex-grow: 1;
+}
+
+.promo-copy-coundown-container .promo-copy {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.promo-copy-coundown-container .promo-copy>*,
+.promo-copy-coundown-container .countdown>* {
+    margin: .25em 0;
+}
+
+.promo-copy-coundown-container .promo-copy h2 {
+    color: var(--countdownBannerHeaderColor);
+}
+
+.promo-copy-coundown-container .promo-copy h4 {
+    color: var(--countdownBannerSubcopyColor);
+}
+
+.promo-copy-coundown-container .countdown {
+    display: flex;
+    flex-direction: var(--countdownSubcopyTimerDirection);
+}
+
+.promo-copy-coundown-container .countdown .timer {
+    display: flex;
+    justify-content: center;
+    gap: .75em;
+    font-weight: bold;
+}
+
+.promo-copy-coundown-container .countdown .timer p {
+    color: var(--countdownBannerCountdownTimerColor);
+}
+
+.promo-copy-coundown-container .countdown .timer .numbers {
+    font-family: var(--countdownBannerTimerNumbers);
+    font-size: 2em;
+}
+
+.promo-copy-coundown-container .countdown .timer .colon {
+    font-size: 2em;
+}
+
+.promo-copy-coundown-container .countdown .timer[data-timer-style="blocks"]>* {
+    padding: .5em 1.5em;
+    background-color: var(--countdownBannerTimerBlocksBackgroundColor);
+    border: var(--countdownBannerTimerBlocksBorder);
+    border-radius: 10px;
+}
+
+.promo-copy-coundown-container .countdown .timer[data-timer-style="text"]>* {
+    align-self: center;
+}
+
+.promo-copy-coundown-container .countdown h4 {
+    color: var(--countdownBannerCountdownSubcopyColor);
+}
+
+.countdown-banner-container .terms {
+    color: var(--countdownBannerTermsTextColor);
+}
+
+.countdown-banner-container .terms a {
+    color: var(--countdownBannerTermsLinkColor);
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 767px) {
+    .countdown-banner-container {
+        padding: 1.5em;
+        flex-direction: column;
+    }
+
+    .promo-copy-coundown-container {
+        flex-direction: column;
+    }
+
+    .promo-copy-coundown-container .countdown {
+        flex-direction: column-reverse;
+    }
+
+    .promo-copy-coundown-container .countdown .timer .numbers {
+        font-family: var(--countdownBannerTimerNumbers);
+        font-size: 1.5em;
+    }
+}

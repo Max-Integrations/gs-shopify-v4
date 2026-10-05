@@ -1,0 +1,385 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/countdown-banner.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+{{ 'countdown-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="section-padding">
+  <div class="{% if section.settings.countdown_banner_full_width %}fullwidth{% else %}container{% endif %}">
+    <div class="countdown-banner-container">
+      <div class="promo-copy-coundown-container">
+        <div class="promo-copy">
+          <h2 class="{{ section.settings.countdown_banner_promo_copy_header_font_size }}">
+            {{ section.settings.countdown_banner_promo_copy_header }}
+          </h2>
+          {% unless section.settings.countdown_banner_promo_subcopy == empty %}
+            <h4>{{ section.settings.countdown_banner_promo_subcopy }}</h4>
+          {% endunless %}
+        </div>
+
+        <div class="countdown">
+          {% unless section.settings.countdown_banner_countdown_subcopy == empty %}
+            <h4>{{ section.settings.countdown_banner_countdown_subcopy }}</h4>
+          {% endunless %}
+          <div class="timer" data-timer-style="{{ section.settings.countdown_timer_style }}"></div>
+        </div>
+      </div>
+
+      {% unless section.settings.countdown_banner_terms == empty %}
+        <div class="terms">{{ section.settings.countdown_banner_terms }}</div>
+      {% endunless %}
+    </div>
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --padding-top: {{ section.settings.countdown_banner_top_space_desktop }}px;
+    --padding-bottom: {{ section.settings.countdown_banner_bottom_space_desktop }}px;
+
+    {% if section.settings.countdown_banner_style == 'basic' %}
+      --countdownBannerStyle: column;
+      --countdownSubcopyTimerDirection: column-reverse;
+    {% else %}
+      --countdownBannerStyle: row;
+      --countdownSubcopyTimerDirection: column;
+    {% endif %}
+
+
+    {% case section.settings.countdown_banner_background_style %}
+      {% when 'solid' %}
+        --countdownBannerBg: {{ section.settings.countdown_banner_bg_color_solid }};
+      {% when 'gradient' %}
+        --countdownBannerBg: {{ section.settings.countdown_banner_bg_color_gradient }};
+      {% when 'image' %}
+        --countdownBannerBg: url({{ section.settings.countdown_banner_bg_image | image_url }}) no-repeat center center / cover;
+    {% endcase %}
+
+    --countdownBannerTimerNumbers: {{ section.settings.countdown_timer_numbers_font }};
+
+    --countdownBannerHeaderColor: {{ section.settings.countdown_banner_header_color }};
+    --countdownBannerSubcopyColor: {{ section.settings.countdown_banner_subcopy_color }};
+    --countdownBannerCountdownSubcopyColor: {{ section.settings.countdown_banner_countdown_subcopy_color }};
+    --countdownBannerCountdownTimerColor: {{ section.settings.countdown_banner_countdown_timer_color }};
+    --countdownBannerTimerBlocksBackgroundColor: {{ section.settings.countdown_banner_countdown_blocks_bg_color }};
+    --countdownBannerTimerBlocksBorder: 2px solid {{ section.settings.countdown_banner_countdown_blocks_border_color }};
+    --countdownBannerTermsTextColor: {{ section.settings.countdown_banner_terms_text_color }};
+    --countdownBannerTermsLinkColor: {{ section.settings.countdown_banner_terms_link_color }};
+  }
+
+  @media only screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} {
+      --padding-top: {{ section.settings.countdown_banner_top_space_mobile }}px;
+      --padding-bottom: {{ section.settings.countdown_banner_bottom_space_mobile }}px;
+    }
+  }
+</style>
+
+<script>
+  const countdownBannerEnd = new Date({{ section.settings.countdown_banner_timer_end | date: '%s' | json }} * 1000);
+  const timer = document.querySelector('.timer');
+  const timerStyle = timer.getAttribute('data-timer-style');
+
+  const countdownBannerTimer = setInterval(() => {
+    const countdownBannerNow = new Date();
+
+    const countdownBannerFinal = countdownBannerEnd - countdownBannerNow;
+
+    const days = Math.floor(countdownBannerFinal / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((countdownBannerFinal % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((countdownBannerFinal % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((countdownBannerFinal % (1000 * 60)) / 1000);
+
+    timer.innerHTML = `<p><span class="numbers">${days.toString().padStart(2, '0')}</span><br>Days</p>${
+      timerStyle === 'text' ? '<p class="colon">:</p>' : ''
+    }<p><span class="numbers">${hours.toString().padStart(2, '0')}</span><br>Hrs</p>${
+      timerStyle === 'text' ? '<p class="colon">:</p>' : ''
+    }<p><span class="numbers">${minutes.toString().padStart(2, '0')}</span><br>Min</p>${
+      timerStyle === 'text' ? '<p class="colon">:</p>' : ''
+    }<p><span class="numbers">${seconds.toString().padStart(2, '0')}</span><br>Sec</p>`;
+
+    if (countdownBannerFinal < 0) {
+      clearInterval(countdownBannerTimer);
+
+      document.querySelector('.countdown-banner-container').style.display = 'none';
+
+      return;
+    }
+  }, 1000);
+</script>
+
+{% schema %}
+{
+  "name": "Countdown Banner",
+  "tag": "section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "checkbox",
+      "id": "countdown_banner_full_width",
+      "label": "Make section full width",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "countdown_banner_style",
+      "label": "Banner Style",
+      "options": [
+        {
+          "label": "Basic",
+          "value": "basic"
+        },
+        {
+          "label": "Multicolumn",
+          "value": "multicolumn"
+        }
+      ],
+      "default": "basic"
+    },
+    {
+      "type": "select",
+      "id": "countdown_timer_style",
+      "label": "Timer Style",
+      "options": [
+        {
+          "label": "Text",
+          "value": "text"
+        },
+        {
+          "label": "Blocks",
+          "value": "blocks"
+        }
+      ],
+      "default": "text"
+    },
+    {
+      "type": "select",
+      "id": "countdown_timer_numbers_font",
+      "label": "Timer Numbers Font",
+      "options": [
+        {
+          "value": "Roboto, sans-serif",
+          "label": "Roboto, Sans-Serif"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        }
+      ],
+      "default": "Roboto, sans-serif"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "countdown_banner_promo_copy_header",
+      "label": "Promo header"
+    },
+    {
+      "type": "select",
+      "id": "countdown_banner_promo_copy_header_font_size",
+      "label": "Promo header font size",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "text",
+      "id": "countdown_banner_promo_subcopy",
+      "label": "Promo subcopy"
+    },
+    {
+      "type": "text",
+      "id": "countdown_banner_countdown_subcopy",
+      "label": "Countdown subcopy"
+    },
+    {
+      "type": "text",
+      "id": "countdown_banner_timer_end",
+      "label": "Countdown end",
+      "default": "2026-12-31 23:59",
+      "info": "Date must be formatted YYYY-MM-DD: 2026-01-31 00:00 or 2026-12-31 23:59"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "countdown_banner_terms",
+      "label": "Terms"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "select",
+      "id": "countdown_banner_background_style",
+      "label": "Style",
+      "options": [
+        {
+          "label": "Solid",
+          "value": "solid"
+        },
+        {
+          "label": "Gradient",
+          "value": "gradient"
+        },
+        {
+          "label": "Image",
+          "value": "image"
+        }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "color",
+      "id": "countdown_banner_bg_color_solid",
+      "label": "Solid",
+      "default": "#000000"
+    },
+    {
+      "type": "color_background",
+      "id": "countdown_banner_bg_color_gradient",
+      "label": "Gradient",
+      "default": "linear-gradient(320deg, #000000 0%, #802629 75%)"
+    },
+    {
+      "type": "image_picker",
+      "id": "countdown_banner_bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "countdown_banner_top_space_desktop",
+      "label": "Top spacing (desktop)",
+      "default": 75,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "countdown_banner_bottom_space_desktop",
+      "label": "Bottom spacing (desktop)",
+      "default": 75,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "countdown_banner_top_space_mobile",
+      "label": "Top spacing (mobile)",
+      "default": 25,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "countdown_banner_bottom_space_mobile",
+      "label": "Bottom spacing (mobile)",
+      "default": 25,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "countdown_banner_header_color",
+      "label": "Promo header",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "countdown_banner_subcopy_color",
+      "label": "Promo subcopy",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "countdown_banner_countdown_subcopy_color",
+      "label": "Countdown subcopy",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "countdown_banner_countdown_timer_color",
+      "label": "Countdown time",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "countdown_banner_countdown_blocks_bg_color",
+      "label": "Countdown blocks background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "countdown_banner_countdown_blocks_border_color",
+      "label": "Countdown blocks border",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "countdown_banner_terms_text_color",
+      "label": "Terms text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "countdown_banner_terms_link_color",
+      "label": "Terms link",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Countdown Banner"
+    }
+  ]
+}
+{% endschema %}

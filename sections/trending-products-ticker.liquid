@@ -1,0 +1,520 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/trending-products-ticker.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+{% liquid
+  assign products_to_show = section.settings.product_list
+  if products_to_show.size == 0
+    assign products_to_show = collections['new'].products | sort: 'created_at' | reverse | slice: 0, section.settings.recent_products_count
+  endif
+
+  assign scroll_duration = 0
+  if section.settings.animation_speed > 0
+    assign scroll_duration = products_to_show.size | times: 500 | divided_by: section.settings.animation_speed
+  endif
+%}
+
+{% style %}
+  #tpt-{{ section.id }} {
+    display: block;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_vertical }}px 0;
+  }
+
+  #tpt-{{ section.id }} .tpt__label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    background-color: {{ section.settings.label_background_color }};
+    color: {{ section.settings.label_text_color }};
+    padding: {{ section.settings.padding_vertical }}px 20px;
+    font-weight: 600;
+    font-size: {{ section.settings.label_font_size }}px;
+  }
+
+  #tpt-{{ section.id }} .tpt__track {
+    display: flex;
+    align-items: center;
+    gap: {{ section.settings.item_spacing }}px;
+    width: max-content;
+    padding-left: {% if section.settings.show_label %}200px{% else %}20px{% endif %};
+    {% if scroll_duration > 0 %}animation: tpt-scroll {{ scroll_duration }}s linear infinite;{% endif %}
+  }
+
+  #tpt-{{ section.id }} .tpt__track:hover {
+    animation-play-state: {% if section.settings.pause_on_hover %}paused{% else %}running{% endif %};
+  }
+
+  #tpt-{{ section.id }} .tpt__item {
+    display: flex;
+    align-items: center;
+    gap: {{ section.settings.item_gap }}px;
+    white-space: nowrap;
+    text-decoration: none;
+    color: {{ section.settings.item_text_color }};
+    font-size: {{ section.settings.item_font_size }}px;
+    background-color: {{ section.settings.item_background_color }};
+    border-radius: {{ section.settings.item_border_radius }}px;
+    padding: {{ section.settings.item_padding_y }}px {{ section.settings.item_padding_x }}px;
+    {% if section.settings.show_item_border %}
+      border: {{ section.settings.item_border_width }}px solid {{ section.settings.item_border_color }};
+    {% endif %}
+    transition: transform color background-color 300ms;
+  }
+  
+  #tpt-{{ section.id }} .tpt__item:hover {
+    background-color: {{ section.settings.item_background_color_hover }};
+    {% if section.settings.item_animate_hover == 'float-up'%}
+        transform: translateY(-2px);
+    {% endif %}
+        
+  }
+
+  #tpt-{{ section.id }} .tpt__title {
+    color: {{ section.settings.title_text_color }};
+    font-size: {{ section.settings.title_font_size }}px;
+    font-weight: {{ section.settings.title_font_weight }};
+  }
+
+  #tpt-{{ section.id }} .tpt__price {
+    color: {{ section.settings.price_text_color }};
+    font-size: {{ section.settings.price_font_size }}px;
+    font-weight: {{ section.settings.price_font_weight }};
+  }
+
+  #tpt-{{ section.id }} .tpt__image {
+    width: {{ section.settings.item_image_size }}px;
+    height: {{ section.settings.item_image_size }}px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: {{ section.settings.item_image_radius }}px;
+    background-color: #f4f4f4;
+  }
+
+  #tpt-{{ section.id }} .tpt__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @keyframes tpt-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media screen and (max-width: 749px) {
+    #tpt-{{ section.id }} .tpt__label {
+      font-size: {{ section.settings.label_font_size | times: 0.85 }}px;
+      padding: {{ section.settings.padding_vertical }}px 15px;
+    }
+
+    #tpt-{{ section.id }} .tpt__item {
+      font-size: {{ section.settings.item_font_size | times: 0.85 }}px;
+    }
+
+    #tpt-{{ section.id }} .tpt__track {
+      padding-left: {% if section.settings.show_label %}150px{% else %}15px{% endif %};
+    }
+
+    #tpt-{{ section.id }} .tpt__image {
+      width: {{ section.settings.item_image_size | times: 0.8 }}px;
+      height: {{ section.settings.item_image_size | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+{%- capture ticker_items -%}
+  {%- for product in products_to_show -%}
+    <a href="{{ product.url }}" class="tpt__item">
+      {%- if section.settings.show_image -%}
+        <div class="tpt__image">
+          {%- if product.featured_image -%}
+            <img src="{{ product.featured_image | image_url: width: 100 }}" alt="{{ product.featured_image.alt | escape }}" width="100" height="100" loading="lazy">
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+      <div>
+        <p class="tpt__title">{{ product.title }}</p>
+        <p class="tpt__price">{{ product.price | money }}</p>
+      </div>
+    </a>
+  {%- endfor -%}
+{%- endcapture -%}
+
+<trending-products-ticker id="tpt-{{ section.id }}" {{ section.shopify_attributes }}>
+  {% if section.settings.show_label %}
+    <div class="tpt__label">{{ section.settings.label_text }}</div>
+  {% endif %}
+
+  <div class="tpt__track">
+    {{ ticker_items }}
+    {{ ticker_items }}
+  </div>
+</trending-products-ticker>
+
+<script>
+  if (!customElements.get('trending-products-ticker')) {
+    customElements.define('trending-products-ticker', class extends HTMLElement {
+      connectedCallback() {
+        const track = this.querySelector('.tpt__track');
+        if (track && track.scrollWidth / 2 < this.offsetWidth) {
+          track.style.animation = 'none';
+        }
+      }
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Trending products ticker",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Trending products",
+      "limit": 20,
+      "info": "Leave empty to auto-show products created within the timeline below."
+    },
+    {
+      "type": "range",
+      "id": "recent_products_count",
+      "label": "Show most recent products",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "default": 10,
+      "info": "Only includes products in the `New Arrivals` collection. Number of products to show when none are selected above, newest first."
+    },
+    {
+      "type": "header",
+      "content": "Ticker behavior"
+    },
+    {
+      "type": "range",
+      "id": "item_spacing",
+      "label": "Space between items",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "label": "Scroll speed",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "%",
+      "default": 100,
+      "info": "Automatically scales to the number of products. 100% is the default speed; 0% stops scrolling."
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on hover",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Container style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Vertical padding",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Product item style"
+    },
+    {
+      "type": "color",
+      "id": "item_background_color",
+      "label": "Background color",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "item_background_color_hover",
+      "label": "Hover background color",
+      "default": "#2A2A2A"
+    },
+    {
+      "type": "select",
+      "id": "item_animate_hover",
+      "label": "Hover animation",
+      "options": [
+        {
+          "label": "None",
+          "value": "none"
+        },
+        {
+          "label": "Float up",
+          "value": "float-up"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "item_padding_y",
+      "label": "Vertical padding",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "item_padding_x",
+      "label": "Horizontal padding",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "item_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_item_border",
+      "label": "Show border?",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "item_border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 1,
+      "visible_if": "{{ section.settings.show_item_border }}"
+    },
+    {
+      "type": "color",
+      "id": "item_border_color",
+      "label": "Border color",
+      "default": "#2A2A2A",
+      "visible_if": "{{ section.settings.show_item_border }}"
+    },
+    {
+      "type": "range",
+      "id": "item_gap",
+      "label": "Gap between image and text",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_label",
+      "label": "Show label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "label_text",
+      "label": "Label text",
+      "default": "TRENDING NOW",
+      "visible_if": "{{ section.settings.show_label }}"
+    },
+    {
+      "type": "range",
+      "id": "label_font_size",
+      "label": "Label font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14,
+      "visible_if": "{{ section.settings.show_label }}"
+    },
+    {
+      "type": "color",
+      "id": "label_background_color",
+      "label": "Label background",
+      "default": "#000000",
+      "visible_if": "{{ section.settings.show_label }}"
+    },
+    {
+      "type": "color",
+      "id": "label_text_color",
+      "label": "Label text",
+      "default": "#FFFFFF",
+      "visible_if": "{{ section.settings.show_label }}"
+    },
+    {
+      "type": "header",
+      "content": "Product item image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show product images",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "item_image_size",
+      "label": "Image size",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 50,
+      "visible_if": "{{ section.settings.show_image }}"
+    },
+    {
+      "type": "range",
+      "id": "item_image_radius",
+      "label": "Image corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 4,
+      "visible_if": "{{ section.settings.show_image }}"
+    },
+    {
+      "type": "header",
+      "content": "Product item label"
+    },
+    {
+      "type": "color",
+      "id": "title_text_color",
+      "label": "Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "header",
+      "content": "Product item price"
+    },
+    {
+      "type": "color",
+      "id": "price_text_color",
+      "label": "Color",
+      "default": "#FFCA10"
+    },
+    {
+      "type": "range",
+      "id": "price_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "select",
+      "id": "price_font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "700"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Enhanced Trending products ticker"
+    }
+  ]
+}
+{% endschema %}

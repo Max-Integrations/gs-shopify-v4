@@ -1,0 +1,503 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/full-width-image-with-text.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+{% assign bg_image = false %}
+<style type="text/css">
+    {% if bg_image %}
+        #full-width-iat-{{section.id}} {            
+            background: url({{ section.settings.full_width_image_desktop | image_url: width: 2000 }}) rgba(0, 0, 0, {{ section.settings.full_width_image_overlay | divided_by: 100.0 }});
+            {% if section.settings.full_width_image_overlay > 1 %}
+            background-blend-mode: multiply;
+            {% endif %}
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            padding: 50px 25px;
+        }
+        {% if section.settings.full_width_image_mobile != nil %}
+        #full-width-iat-{{section.id}} {
+            background-image: url({{ section.settings.full_width_image_mobile | image_url: width: 1000 }});
+        }
+        {% endif %}
+    {% endif %}
+    .full-width-image { position: relative; }
+    .full-width-image img { width: 100%; }
+    #full-width-iat-{{section.id}} { position: relative; z-index: 1; }
+    {% if section.settings.full_width_image_overlay > 1 %}
+        #full-width-iat-{{section.id}} .full-width-image:after {
+            content: "";
+            background-color: rgba(0, 0, 0, {{ section.settings.full_width_image_overlay | divided_by: 100.0 }});
+            display: block;
+            height: 100%;
+            left: 0;
+            position: absolute;            
+            top: 0;
+            width: 100%;
+            z-index: 5;
+        }
+    {% endif%}
+    .full-width-image-text-container { display: flex; flex-direction: column; height: 100%; justify-content: center; position: {% if section.settings.full_width_image_desktop != nil %}absolute{% else %}relative{% endif %}; left: 0; {% if section.settings.full_width_image_desktop == nil %}padding: 2rem;{% endif %}top: 0; width: 100%; z-index: 10; }
+    #full-width-image-header-text-{{section.id}}>* {
+        color: {{ section.settings.full_width_header_text_color }} !important;
+        font-family: {{ section.settings.full_width_header_font }} !important;
+        font-size: {{ section.settings.full_width_header_text_size_desktop }}px !important;
+        line-height: calc({{ section.settings.full_width_header_text_size_desktop }}px + 6px) !important;
+        margin: 0;
+        padding: 15px;
+        text-align: {{ section.settings.full_width_header_text_alignment }} !important;
+    }
+    #full-width-image-subcopy-text-{{ section.id }}>* {
+        color: {{ section.settings.full_width_subcopy_text_color }} !important;
+        font-family: {{ section.settings.full_width_subcopy_text_font }} !important;
+        font-size: {{ section.settings.full_width_subcopy_desktop_text_size }}px !important;
+        line-height: calc({{ section.settings.full_width_subcopy_desktop_text_size }}px + 6px) !important;
+        margin: 0;
+        padding: 15px;
+        text-align: {{ section.settings.full_width_subcopy_text_alignment }} !important;
+    }
+    #full-width-image-cta-{{section.id}} {
+        background-color: {{ section.settings.full_width_cta_background_color }};
+        {% if section.settings.full_width_cta_border_style == "rounded" %}
+            border-radius: 25px;
+        {% endif %}
+        color: {{ section.settings.full_width_cta_text_color}};
+        display: block;
+        font-family: {{ section.settings.full_width_cta_text_font }} !important;
+        font-size: {{ section.settings.full_width_cta_text_size }}px !important;
+        {% case section.settings.full_width_cta_alignment %}
+            {% when 'left' %}
+            float: left;
+            margin: 0 10px;
+            {% when 'center' %}
+            margin: 0 auto;
+            {% when 'right' %}
+            float: right;
+            margin: 0 10px;
+        {% endcase %}
+        padding: 10px 20px;
+        text-decoration: none;
+        width: fit-content;
+    }
+    #full-width-image-terms-{{section.id}}>* {
+        color: {{ section.settings.full_width_terms_text_color }};
+        display: block;
+        font-family: {{ section.settings.full_width_terms_text_font }}!important;
+        font-size: {{ section.settings.full_width_terms_desktop_text_size }}px!important;
+        line-height: {{ section.settings.full_width_terms_desktop_text_size | plus: 8 }}px!important;
+        margin: 0;
+        padding: 20px 0 0;
+        text-align: {{ section.settings.full_width_terms_text_alignment }} !important;
+    }
+
+    @media screen and (max-width: 989px) {
+        #full-width-image-header-text-{{section.id}}>* {
+            font-size: {{ section.settings.full_width_header_text_size_mobile }}px !important;
+            line-height: calc({{ section.settings.full_width_header_text_size_mobile }}px + 6px) !important;
+        }
+        #full-width-image-subcopy-text-{{ section.id }}>* {
+            font-size: {{ section.settings.full_width_subcopy_mobile_text_size }}px !important;
+            line-height: calc({{ section.settings.full_width_subcopy_mobile_text_size }}px + 6px) !important;
+        }
+        #full-width-image-terms-{{section.id}}>* {
+            font-size: {{ section.settings.full_width_terms_mobile_text_size }}px!important;
+            line-height: {{ section.settings.full_width_terms_mobile_text_size | plus: 4 }}px!important;
+        }
+    }
+</style>
+<div id="full-width-iat-{{section.id}}">
+    {% unless bg_image %}
+    <div class="full-width-image">
+        <a href="{{ section.settings.full_width_image_link }}" class="" {% if section.settings.full_width_link_new_window %}target="_blank"{% endif %}>
+            {% if section.settings.full_width_image_desktop != blank %}
+            <img
+                alt="{{ section.settings.full_width_image_desktop.alt }}"
+                src="{{ section.settings.full_width_image_desktop | image_url: width: 2000 }}"
+                class="{% if section.settings.full_width_image_mobile != nil %}small--hide{% endif %}"
+                loading="lazy"
+            >
+            {% endif %}
+            {% if section.settings.full_width_image_mobile != nil%}
+            <img 
+                alt="{{ section.settings.full_width_image_mobile.alt }}"
+                src="{{ section.settings.full_width_image_mobile | image_url: width: 1000 }}"
+                class="medium-up--hide"
+                loading="lazy"
+            >
+            {% endif %}
+        </a>
+    </div>
+    {% endunless %}
+    <div class="full-width-image-text-container">
+        {% if section.settings.full_width_header_text != empty %}
+        <div id="full-width-image-header-text-{{ section.id }}">{{ section.settings.full_width_header_text }}</div>
+        {% endif %}
+        {% if section.settings.full_width_subcopy != empty %}
+        <div id="full-width-image-subcopy-text-{{ section.id }}">{{ section.settings.full_width_subcopy }}</div>
+        {% endif %}
+        {% if section.settings.full_width_cta_text != empty %}
+        <a href="{{ section.settings.full_width_image_link }}" id="full-width-image-cta-{{section.id}}" class="" {% if section.settings.full_width_link_new_window %}target="_blank"{% endif %}>
+        {{ section.settings.full_width_cta_text }}
+        </a>
+        {% endif %}
+        {% if section.settings.full_width_terms != empty %}
+        <div id="full-width-image-terms-{{section.id}}">{{ section.settings.full_width_terms }}</div>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Full Width Image and Text",
+  "tag": "section",
+  "class": "full-width-image-text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "full_width_image_desktop",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "full_width_image_mobile",
+      "label": "Mobile Image (Optional)"
+    },
+    {
+      "type": "url",
+      "id": "full_width_image_link",
+      "label": "Full Width Image Link",
+      "info": "IF CTA Button is used, this link will be used"
+    },
+    {
+      "type": "range",
+      "id": "full_width_image_overlay",
+      "label": "Image Overlay Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "unit": "%"
+    },
+    {
+      "type": "richtext",
+      "id": "full_width_header_text",
+      "label": "Full Width Header Text (Optional)"
+    },
+    {
+      "type": "select",
+      "id": "full_width_header_font",
+      "label": "Header Font Family",
+      "options": [
+        {
+          "value": "Roboto, sans-serif",
+          "label": "Roboto, Sans-Serif"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        },
+        {
+          "value": "Times New Roman",
+          "label": "Times New Roman"
+        }
+      ],
+      "default": "Roboto, sans-serif"
+    },
+    {
+      "type": "color",
+      "id": "full_width_header_text_color",
+      "label": "Header Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "full_width_header_text_size_desktop",
+      "label": "Header Text Size - Desktop",
+      "min": 24,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "full_width_header_text_size_mobile",
+      "label": "Header Text Size - Mobile",
+      "min": 14,
+      "max": 42,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "full_width_header_text_alignment",
+      "label": "Header Text Alignment",
+      "options": [
+        {
+          "label": "Left",
+          "value": "left"
+        },
+        {
+          "label": "Center",
+          "value": "center"
+        },
+        {
+          "label": "Right",
+          "value": "right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "richtext",
+      "id": "full_width_subcopy",
+      "label": "Subcopy"
+    },
+    {
+      "type": "select",
+      "id": "full_width_subcopy_text_font",
+      "label": "Subcopy Text Font Family",
+      "options": [
+        {
+          "value": "Roboto, sans-serif",
+          "label": "Roboto, Sans-Serif"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        },
+        {
+          "value": "Times New Roman",
+          "label": "Times New Roman"
+        }
+      ],
+      "default": "Roboto, sans-serif"
+    },
+    {
+      "type": "color",
+      "id": "full_width_subcopy_text_color",
+      "label": "Subcopy Text Color",
+      "default": "#5D5D39"
+    },
+    {
+      "type": "range",
+      "id": "full_width_subcopy_desktop_text_size",
+      "label": "Subcopy Text Size",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "full_width_subcopy_mobile_text_size",
+      "label": "Subcopy Text Size (Mobile)",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "full_width_subcopy_text_alignment",
+      "label": "Subcopy Text Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "text",
+      "id": "full_width_cta_text",
+      "label": "CTA Text",
+      "info": "CTA Text will be below the image"
+    },
+    {
+      "type": "select",
+      "id": "full_width_cta_text_font",
+      "label": "CTA Text Font Family",
+      "options": [
+        {
+          "value": "Roboto, sans-serif",
+          "label": "Roboto, Sans-Serif"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        },
+        {
+          "value": "Times New Roman",
+          "label": "Times New Roman"
+        }
+      ],
+      "default": "Roboto, sans-serif"
+    },
+    {
+      "type": "color",
+      "id": "full_width_cta_background_color",
+      "label": "CTA Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "full_width_cta_border_style",
+      "label": "CTA Border Style",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "rounded",
+          "label": "Rounded"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "color",
+      "id": "full_width_cta_text_color",
+      "label": "CTA Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "full_width_cta_text_size",
+      "label": "CTA Text Size",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "full_width_cta_alignment",
+      "label": "CTA Btn Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width_link_new_window",
+      "label": "Open Link(s) In New Window",
+      "default": false
+    },
+    {
+      "type": "richtext",
+      "id": "full_width_terms",
+      "label": "Terms and Conditions"
+    },
+    {
+      "type": "select",
+      "id": "full_width_terms_text_font",
+      "label": "Terms and Conditions Text Font Family",
+      "options": [
+        {
+          "value": "Roboto, sans-serif",
+          "label": "Roboto, Sans-Serif"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        },
+        {
+          "value": "Times New Roman",
+          "label": "Times New Roman"
+        }
+      ],
+      "default": "Roboto, sans-serif"
+    },
+    {
+      "type": "color",
+      "id": "full_width_terms_text_color",
+      "label": "Terms Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "full_width_terms_desktop_text_size",
+      "label": "Terms Text Size",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "full_width_terms_mobile_text_size",
+      "label": "Terms Text Size (Mobile)",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "full_width_terms_text_alignment",
+      "label": "Terms Text Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Full Width Image and Text"
+    }
+  ],
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  }
+}
+{% endschema %}

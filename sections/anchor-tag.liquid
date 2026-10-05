@@ -1,0 +1,37 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/anchor-tag.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+<a id="anchor-{{ section.settings.anchor_tag }}"></a>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('a[href="#{{ section.settings.anchor_tag }}"').addEventListener('click', () => {
+      document.querySelector('#anchor-{{ section.settings.anchor_tag }}').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Anchor Tag",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor_tag",
+      "label": "Anchor Tag",
+      "info": "Should be the same as the link, but without the '#.' For example, if the link is '#jump-to-section,' the anchor tag just be 'jump-to-section.' If anchoring from another page, make sure the parent link is everything after https://www.gruntstyle.com. For example, if the destination link is https://www.gruntstyle.com/pages/memorial-day#jump-to-section, then all needed is /pages/memorial-day#jump-to-section."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Anchor Tag"
+    }
+  ]
+}
+{% endschema %}

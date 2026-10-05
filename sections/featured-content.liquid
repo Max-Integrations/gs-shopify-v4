@@ -1,0 +1,790 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/featured-content.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+{{ 'featured-content.css' | asset_url | stylesheet_tag }}
+
+{% liquid 
+    assign Colorscheme = section.settings.color_scheme
+  %}
+<div class="color-{{ Colorscheme }} section-padding{% if section.settings.enable_gradient %} gradiant{% endif %}">
+    <div class="container">
+        <div class="featured-content-wrapper">
+            <div class="featured-content-text-block">
+                {% if section.settings.text != blank %}
+                  <div class="featured-content-tag-text">{{ section.settings.text }} </div>
+                {% endif %}
+                {% if section.settings.heading != blank %}
+                    <{{ section.settings.seo_heading }} class="{{ section.settings.heading_size }} section-heading">
+                      
+                    {%- capture highlightPrefix -%}
+                    <span class="line-marker {% if section.settings.highlight_style == 'background' %}highlight-background {% if section.settings.bg__color == 'gradient' %}highlight-background-gradient{% else %}highlight-background-solid{% endif %}{% endif %}">
+                        {%- endcapture -%}
+                        {%- capture highlightSuffix -%}
+                        {% if section.settings.highlight_style != 'background' %}
+                          {% case section.settings.highlight_style %}
+    {% when 'underline' %}
+        <svg class="marker-svg marker-svg-syle-1" viewBox="0 0 296 4" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0 2H295.21" stroke="currentColor" stroke-width="4" />
+         </svg>
+            
+    {% when 'shape_2' %}
+        <svg class="marker-svg marker-svg-syle-2"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 294.98 18.53" fill="none" preserveAspectRatio="none">
+              <path class="cls-1" d="M.61,16.63C16.91,11.37,46.89,2.71,56.75,2.05c9.86-.67,7.88,6.17,3.12,10.69-1.21,2.31,2.38,5.16,26.41-1.97l17.08-5.05c1.96-.59,6.11-.99,7,2.16,1.11,3.94,8.09,7.32,29.2,6.83,21.11-.48,51.69-6.97,72.81-8.66,21.13-1.69,39.15-3.31,82.47-.03"  stroke="currentColor" stroke-width="4px"/>
+          </svg>
+
+    {% when 'shape_3' %}
+        <svg  class="marker-svg marker-svg-syle-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.26 12.96" fill="none" preserveAspectRatio="none">
+              <path class="cls-1" d="M.96,11.2S30.88-5.22,295.18,5.81"  stroke="currentColor" stroke-width="4px"/>
+          </svg>
+
+    {% when 'shape_4' %}
+        <svg class="marker-svg marker-svg-syle-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.85 17.13" fill="none" preserveAspectRatio="none">
+              <path class="cls-1" d="M.33,15.15S94.86-.8,222.47,2.43c1.13.03,1.36,1.61.29,1.96l-23.04,6.62c-1.16.38-.77,2.1.44,1.95,20-2.56,32.17-7.48,95.38,2.19" stroke="currentColor" stroke-width="4px"/>
+        </svg>
+    {% when 'shape_5' %}
+        <svg class="marker-svg marker-svg-syle-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 297.8 16.66" fill="none" preserveAspectRatio="none">
+            <path class="cls-1" d="M.7,8.33s38.2-14.25,160.22,0c122.02,14.25,135.42,0,135.42,0" stroke="currentColor" stroke-width="4px"/>
+        </svg>
+    {% when 'shape_6' %}
+        <svg class="marker-svg marker-svg-syle-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.84 21.07" fill="none" preserveAspectRatio="none">
+          <path class="cls-1" d="M.51,8.31C5.44,7.01,38.25-.62,75.7,2.94c0,0,45.95,4.74-10.73,15.39-20.04,3.77-18.53-7.76,28.18-14.01,0,0,21.75-5.5,202.57,4.84" stroke="currentColor" stroke-width="4px"/>
+        </svg>
+        
+{% endcase %}
+
+
+
+                      {% endif %}
+                    </span>
+                      {%- endcapture -%}
+                      {{ section.settings.heading | replace:"[", highlightPrefix | replace:"]",highlightSuffix }}
+                    </{{ section.settings.seo_heading }}>
+                {% endif %}
+
+                {% if section.settings.description != blank %}
+                  <div class="section-description">{{ section.settings.description }}</div>
+                {% endif %}
+
+                {% if section.settings.btn_link != blank and section.settings.btn_text != blank %}
+                  <div class="featured-content-text-block-button">
+                      <a href="{{ section.settings.btn_link }}" aria-label="{{ section.settings.btn_text }}" class="button {{ section.settings.button_size }}-btn">{{ section.settings.btn_text }}</a>
+                  </div>
+                {% endif %}
+            </div>
+            {% if section.blocks.size > 0 %}
+                <div class="featured-content-contain-block">
+                    {% for block in section.blocks %}
+                        {% case block.type %}
+                        {% when 'media' %}
+                            <div class="featured-content-contain-item" {{ block.shopify_attributes }}>
+                                <div class="featured-content-contain-item-text">
+                                    {% if block.settings.subheading != blank %}
+                                        <div class="featured-content-tag-text">{{ block.settings.subheading }}</div>
+                                    {% endif %}
+
+                                    {% if block.settings.heading != blank %}
+                                        <{{ block.settings.seo_heading }} class="{{ block.settings.heading_size }} featured-content-contain-heading">{{ block.settings.heading }}</{{ block.settings.seo_heading }}>
+                                    {% endif %}
+
+                                    {% if block.settings.description != blank %}
+                                        <div class="featured-content-contain-desc">{{ block.settings.description }}</div>
+                                    {% endif %}
+
+                                    {% if block.settings.block_tags != blank %}
+                                        {% capture tagsPrefix %}
+                                            <div class="featured-content-tag-box">
+                                                <span class="featured-content-tag-box-icon">
+                                                <svg width="32" height="34" viewBox="0 0 32 34" fill="none">
+                                                    <path d="M30.1378 7.21538L17.6933 0.43324C17.1735 0.148933 16.5912 0 15.9996 0C15.4079 0 14.8256 0.148933 14.3058 0.43324L1.86133 7.21538C1.29816 7.52258 0.827909 7.9772 0.500274 8.53119C0.172639 9.08518 -0.000208317 9.71796 1.88417e-07 10.3627V23.6371C-0.000121581 24.2819 0.172859 24.9147 0.500656 25.4687C0.828452 26.0227 1.29888 26.4773 1.86222 26.7844L14.3067 33.5665C14.8265 33.851 15.4088 34 16.0004 34C16.5921 34 17.1744 33.851 17.6942 33.5665L30.1387 26.7844C30.7018 26.4772 31.1721 26.0226 31.4997 25.4686C31.8274 24.9146 32.0002 24.2818 32 23.6371V10.3627C32.0001 9.71787 31.8271 9.08503 31.4993 8.53103C31.1715 7.97703 30.7011 7.52246 30.1378 7.21538ZM15.1538 2.00688C15.413 1.86539 15.7033 1.79129 15.9982 1.79129C16.2931 1.79129 16.5834 1.86539 16.8427 2.00688L29.1093 8.68972L23.4356 11.9506L10.616 4.47962L15.1538 2.00688ZM16 16.2242L2.89156 8.68972L8.784 5.47892L21.6489 12.9741L16 16.2242ZM2.70933 25.2107C2.42758 25.0572 2.19228 24.83 2.0283 24.553C1.86432 24.276 1.77776 23.9595 1.77778 23.6371V10.3627C1.78318 10.2839 1.79387 10.2056 1.80978 10.1283L15.1111 17.7737V31.9696L2.70933 25.2107ZM30.2222 23.6371C30.2222 23.9595 30.1357 24.276 29.9717 24.553C29.8077 24.83 29.5724 25.0572 29.2907 25.2107L16.8889 31.9696V17.7737L30.1902 10.1292C30.2061 10.2065 30.2168 10.2848 30.2222 10.3636V23.6371Z" fill="currentColor"></path>
+                                                </svg>
+                                                </span>
+                                                <span class="featured-content-tag-box-text">
+                                        {% endcapture %}
+                                        {% capture tagSuffix %}
+                                                {% comment %} IT solutions {% endcomment %}
+                                                </span>
+                                            </div>
+                                        {% endcapture %}
+                                        <div class="featured-content-tag-wrap">
+                                            {{ block.settings.block_tags | replace: '[', tagsPrefix | replace: ']', tagSuffix }}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if block.settings.end_date != blank %}
+                                        {% assign launch_date = block.settings.end_date %}
+                                        <div class="lowest-price-offer">
+                                            {% if block.settings.heading_text != blank %}
+                                                <span>{{ block.settings.heading_text }}</span>
+                                            {% endif %}
+                                            <div
+                                                class="count-timer"
+                                                {% if block.settings.end_date != blank %}
+                                                data-launch-date="{{ launch_date }}"
+                                                data-countdown-timer
+                                                {% endif %}
+                                            >
+                                                <div class="count count-day"><span class="days"></span>Days</div>
+                                                <div class="count count-hours"><span class="hours"></span>Hours</div>
+                                                <div class="count count-minutes"><span class="minutes"></span>Minutes</div>
+                                                <div class="count count-sec"><span class="seconds"></span>Seconds</div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if block.settings.btn_link != blank and block.settings.btn_text != blank %}
+                                        <div class="featured-content-contain-button">
+                                            <a href="{{ block.settings.btn_link }}" class="{% if block.settings.button_as_link %}hyperlink {% else %} button small-btn{% if false %} button-shadow{% endif %}{% endif %} " aria-label="{{ block.settings.btn_text }} " title="{{ block.settings.btn_text }}">
+                                            {{block.settings.btn_text}}
+                                            </a>
+                                            {% comment %} <a href="{{ block.settings.btn_link }}" class="text-underline">{{ block.settings.btn_text }}</a> {% endcomment %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="featured-content-contain-item-image">
+                                    <div class="featured-content-contain-item-image-inner">
+                                        <div class="media" style="--imageRatio:100%;">
+                                            {% if block.settings.video !=blank %}
+                                                <deferred-media class="deferred-media">
+                                                    <template>
+                                                        <video class="featured_content_video" autoPlay muted loop playsinline>
+                                                            <source src="{{ block.settings.video.sources[0].url }}" type="video/mp4">
+                                                            <source src="{{ block.settings.video.sources[1].url }}">
+                                                        </video>
+                                                    </template>
+                                                    <div class="deferred-media-placeholder">
+                                                        {%- if block.settings.video.preview_image != blank -%}<img class="{{ '' }}" src="{{ block.settings.video.preview_image | image_url: width: 600 }}" srcset="{{ block.settings.video.preview_image | image_url: width: 300 }} 300w, {{ block.settings.video.preview_image | image_url: width: 600 }} 600w, {{ block.settings.video.preview_image | image_url: width: 900 }} 900w, {{ block.settings.video.preview_image | image_url: width: 1200 }} 1200w, {{ block.settings.video.preview_image | image_url: width: 1500 }} 1500w, {{ block.settings.video.preview_image | image_url: width: 2000 }} 2000w" sizes="(max-width: 600px) 300px, (max-width: 900px) 600px, (max-width: 1200px) 900px, (max-width: 1500px) 1200px, 100vw" width="{{ block.settings.video.preview_image.width }}" height="{{ block.settings.video.preview_image.height }}" alt="{{ block.settings.video.preview_image.alt | escape }}" loading="lazy" style="object-position: {{ block.settings.video.preview_image.presentation.focal_point | default: 'center' }}">{%- endif -%}
+                                                    </div>
+                                                    <noscript>
+                                                        <a
+                                                            href="{{ block.settings.video | external_video_url }}"
+                                                            target="_blank"
+                                                            class="unstyled-link"
+                                                            aria-label="{{ block.settings.video.alt | default: product.title | strip_html }}"
+                                                        >
+                                                        {% comment %}theme-check-disable ImgWidthAndHeight{% endcomment %}
+                                                        <img
+                                                            src="{{ block.settings.video.preview_image | image_url: width: 2048 }}"
+                                                            alt="{{ block.settings.video.preview_image.alt | escape }}"
+                                                            loading="lazy"
+                                                        >
+                                                        {% comment %}theme-check-enable ImgWidthAndHeight{% endcomment %}
+                                                        </a>
+                                                    </noscript>
+                                                </deferred-media>
+                                            {% elsif block.settings.image != blank %}
+                                                {%- if block.settings.image != blank -%}<img class="{{ '' }}" src="{{ block.settings.image | image_url: width: 600 }}" srcset="{{ block.settings.image | image_url: width: 300 }} 300w, {{ block.settings.image | image_url: width: 600 }} 600w, {{ block.settings.image | image_url: width: 900 }} 900w, {{ block.settings.image | image_url: width: 1200 }} 1200w, {{ block.settings.image | image_url: width: 1500 }} 1500w, {{ block.settings.image | image_url: width: 2000 }} 2000w" sizes="(max-width: 600px) 300px, (max-width: 900px) 600px, (max-width: 1200px) 900px, (max-width: 1500px) 1200px, 100vw" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy" style="object-position: {{ block.settings.image.presentation.focal_point | default: 'center' }}">{%- endif -%}
+                                            {% else %}
+                                                {% capture placeholderIndex %}{% cycle cycleGroup: '1', '2' %}{% endcapture %}
+                                                {{ 'hero-apparel-'| append: placeholderIndex | placeholder_svg_tag: 'placeholder-svg' }}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% when 'collection' %}
+                            {% liquid assign collection = block.settings.featured_collection %}
+                            <div class="featured-content-contain-item" {{ block.shopify_attributes }}>
+                                <div class="featured-content-contain-item-text">
+                                    {% if block.settings.collection_custom_title != blank %}
+                                        <h2 class="h2 featured-content-contain-heading">{{ block.settings.collection_custom_title }}</h2>
+                                    {% else %}
+                                        <h2 class="h2 featured-content-contain-heading">{{ collection.title }}</h2>
+                                    {% endif %}
+
+                                    {% if block.settings.coll_block_tags != blank %}
+                                        {% capture colltagsPrefix %}
+                                            <div class="featured-content-tag-box">
+                                                <span class="featured-content-tag-box-icon">
+                                                <svg width="32" height="34" viewBox="0 0 32 34" fill="none">
+                                                    <path d="M30.1378 7.21538L17.6933 0.43324C17.1735 0.148933 16.5912 0 15.9996 0C15.4079 0 14.8256 0.148933 14.3058 0.43324L1.86133 7.21538C1.29816 7.52258 0.827909 7.9772 0.500274 8.53119C0.172639 9.08518 -0.000208317 9.71796 1.88417e-07 10.3627V23.6371C-0.000121581 24.2819 0.172859 24.9147 0.500656 25.4687C0.828452 26.0227 1.29888 26.4773 1.86222 26.7844L14.3067 33.5665C14.8265 33.851 15.4088 34 16.0004 34C16.5921 34 17.1744 33.851 17.6942 33.5665L30.1387 26.7844C30.7018 26.4772 31.1721 26.0226 31.4997 25.4686C31.8274 24.9146 32.0002 24.2818 32 23.6371V10.3627C32.0001 9.71787 31.8271 9.08503 31.4993 8.53103C31.1715 7.97703 30.7011 7.52246 30.1378 7.21538ZM15.1538 2.00688C15.413 1.86539 15.7033 1.79129 15.9982 1.79129C16.2931 1.79129 16.5834 1.86539 16.8427 2.00688L29.1093 8.68972L23.4356 11.9506L10.616 4.47962L15.1538 2.00688ZM16 16.2242L2.89156 8.68972L8.784 5.47892L21.6489 12.9741L16 16.2242ZM2.70933 25.2107C2.42758 25.0572 2.19228 24.83 2.0283 24.553C1.86432 24.276 1.77776 23.9595 1.77778 23.6371V10.3627C1.78318 10.2839 1.79387 10.2056 1.80978 10.1283L15.1111 17.7737V31.9696L2.70933 25.2107ZM30.2222 23.6371C30.2222 23.9595 30.1357 24.276 29.9717 24.553C29.8077 24.83 29.5724 25.0572 29.2907 25.2107L16.8889 31.9696V17.7737L30.1902 10.1292C30.2061 10.2065 30.2168 10.2848 30.2222 10.3636V23.6371Z" fill="currentColor"></path>
+                                                </svg>
+                                                </span>
+                                                <span class="featured-content-tag-box-text">
+                                        {% endcapture %}
+                                        {% capture colltagSuffix %}
+                                                {% comment %} IT solutions {% endcomment %}
+                                                </span>
+                                            </div>
+                                        {% endcapture %}
+                                        <div class="featured-content-tag-wrap">
+                                            {{ block.settings.coll_block_tags | replace: '[', colltagsPrefix | replace: ']', colltagSuffix }}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if block.settings.coll_end_date != blank %}
+                                        {% assign coll_launch_date = block.settings.coll_end_date %}
+                                        <div class="lowest-price-offer">
+                                            {% if block.settings.coll_heading_text != blank %}
+                                                <span>{{ block.settings.coll_heading_text }}</span>
+                                            {% endif %}
+                                            <div
+                                                class="count-timer"
+                                                {% if block.settings.coll_end_date != blank %}
+                                                data-launch-date="{{ coll_launch_date }}"
+                                                data-countdown-timer
+                                                {% endif %}
+                                            >
+                                                <div class="count count-day"><span class="days"></span>Days</div>
+                                                <div class="count count-hours"><span class="hours"></span>Hours</div>
+                                                <div class="count count-minutes"><span class="minutes"></span>Minutes</div>
+                                                <div class="count count-sec"><span class="seconds"></span>Seconds</div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if collection.url != blank %}
+                                        <div class="featured-content-contain-button">
+                                            <a href="{{ collection.url }}" class="{% if block.settings.coll_button_as_link %}hyperlink {% else %} button small-btn{% if false %} button-shadow{% endif %}{% endif %} " aria-label="{{ collection.title }}">
+                                                {{ block.settings.coll_btn_text | default : 'Shop now'}}
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="featured-content-contain-item-image">
+                                    <div class="featured-content-contain-item-image-inner">
+                                        <div class="media" style="--imageRatio:100%;">
+                                            {% if block.settings.coll_image != blank %}
+                                                {%- if block.settings.coll_image != blank -%}<img class="{{ '' }}" src="{{ block.settings.coll_image | image_url: width: 600 }}" srcset="{{ block.settings.coll_image | image_url: width: 300 }} 300w, {{ block.settings.coll_image | image_url: width: 600 }} 600w, {{ block.settings.coll_image | image_url: width: 900 }} 900w, {{ block.settings.coll_image | image_url: width: 1200 }} 1200w, {{ block.settings.coll_image | image_url: width: 1500 }} 1500w, {{ block.settings.coll_image | image_url: width: 2000 }} 2000w" sizes="(max-width: 600px) 300px, (max-width: 900px) 600px, (max-width: 1200px) 900px, (max-width: 1500px) 1200px, 100vw" width="{{ block.settings.coll_image.width }}" height="{{ block.settings.coll_image.height }}" alt="{{ block.settings.coll_image.alt | escape }}" loading="lazy" style="object-position: {{ block.settings.coll_image.presentation.focal_point | default: 'center' }}">{%- endif -%}
+                                            {% elsif collection.featured_image != blank %}
+                                                {%- if collection.featured_image != blank -%}<img class="{{ '' }}" src="{{ collection.featured_image | image_url: width: 600 }}" srcset="{{ collection.featured_image | image_url: width: 300 }} 300w, {{ collection.featured_image | image_url: width: 600 }} 600w, {{ collection.featured_image | image_url: width: 900 }} 900w, {{ collection.featured_image | image_url: width: 1200 }} 1200w, {{ collection.featured_image | image_url: width: 1500 }} 1500w, {{ collection.featured_image | image_url: width: 2000 }} 2000w" sizes="(max-width: 600px) 300px, (max-width: 900px) 600px, (max-width: 1200px) 900px, (max-width: 1500px) 1200px, 100vw" width="{{ collection.featured_image.width }}" height="{{ collection.featured_image.height }}" alt="{{ collection.featured_image.alt | escape }}" loading="lazy" style="object-position: {{ collection.featured_image.presentation.focal_point | default: 'center' }}">{%- endif -%}
+                                            {% else %}
+                                                {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endcase %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }}{
+    --padding-top: {{ section.settings.top_space_desktop}}px;
+    --padding-bottom: {{ section.settings.bottom_space_desktop}}px;
+  }
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}{
+      --padding-top: {{ section.settings.top_space_mobile }}px !important;
+      --padding-bottom: {{ section.settings.bottom_space_mobile }}px !important;
+    }
+  }
+  {% if section.settings.section_visibility == 'large' %}
+    @media(max-width: 767px) {
+      #shopify-section-{{ section.id }}{
+        display: none !important;
+      }
+    }
+  {% elsif section.settings.section_visibility == 'small' %}
+    @media(min-width: 768px) {
+      #shopify-section-{{ section.id }}{
+        display: none !important;
+      }
+    }
+  {% endif %} 
+</style>
+
+{% schema %}
+{
+  "name": "Featured content",
+  "tag": "section",
+  "class": "featured-content-section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "Section visibility",
+      "default": "always",
+      "options": [
+        {
+          "label": "Always",
+          "value": "always"
+        },
+        {
+          "label": "Small devices only",
+          "value": "small"
+        },
+        {
+          "label": "Large devices only",
+          "value": "large"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Tag",
+      "default": "Add your offered service"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Wrap your text between [ ] to add the markers. These [markers] will highlight the text. ",
+      "default": "Add featured heading here"
+    },
+    {
+      "type": "select",
+      "id": "highlight_style",
+      "label": "Marker text highlight style",
+      "default": "underline",
+      "options": [
+        {
+          "value": "underline",
+          "label": "Shape 1"
+        },
+        {
+          "value": "shape_2",
+          "label": "Shape 2"
+        },
+        {
+          "value": "shape_3",
+          "label": "Shape 3"
+        },
+        {
+          "value": "shape_4",
+          "label": "Shape 4"
+        },
+        {
+          "value": "shape_5",
+          "label": "Shape 5"
+        },
+        {
+          "value": "shape_6",
+          "label": "Shape 6"
+        },
+        {
+          "value": "background",
+          "label": "Background"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "bg__color",
+      "label": "Highlight background",
+      "default": "gradient",
+      "options": [
+        {
+          "value": "gradient",
+          "label": "Gradient"
+        },
+        {
+          "value": "solid",
+          "label": "Solid"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h1",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "seo_heading",
+      "label": "Heading tag",
+      "info": "Specify heading code types for SEO and search engines for crawling purposes.",
+      "default": "h2",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ]
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Add short description</p>"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Text",
+      "default": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "select",
+      "id": "button_size",
+      "label": "Size",
+      "default": "medium",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "primary",
+      "label": "Color scheme"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gradient",
+      "label": "Enable gradient",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "Top spacing (desktop)",
+      "default": 30,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "Bottom spacing (desktop)",
+      "default": 40,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "Top spacing (mobile)",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "Bottom spacing (mobile)",
+      "default": 25,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "media",
+      "name": "Featured media",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Add subheading here"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Featured heading here"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Heading size",
+          "default": "h2",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "seo_heading",
+          "label": "Heading tag",
+          "info": "Specify heading code types for SEO and search engines for crawling purposes.",
+          "default": "h2",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            }
+          ]
+        },
+        {
+          "type": "textarea",
+          "id": "block_tags",
+          "label": "Featured tags",
+          "info": "Wrap your text between [ ] to change the text into tags.",
+          "default": "[Featured tag][Featured tag][Featured tag]"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Add description about your brand or featured content.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Media"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "header",
+          "content": "Countdown"
+        },
+        {
+          "type": "text",
+          "id": "heading_text",
+          "label": "Text",
+          "default": "Counter text"
+        },
+        {
+          "type": "text",
+          "id": "end_date",
+          "label": "End date",
+          "info": "The end date must be set to a future date and include the following format: YYYY-MM-DD: 2026-01-31 00:00 or 2026-12-31 23:59."
+        },
+        {
+          "type": "header",
+          "content": "Button"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Text",
+          "default": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Link",
+          "default": "/collections/all"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_as_link",
+          "label": "Show button as link",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "collection",
+      "name": "Collection",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "collection",
+          "id": "featured_collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "coll_image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "collection_custom_title",
+          "label": "Title",
+          "info": "It will replace the selected collection title.",
+          "default": "Featured heading here"
+        },
+        {
+          "type": "textarea",
+          "id": "coll_block_tags",
+          "label": "Featured tags",
+          "info": "Wrap your text between [ ] to change the text into tags.",
+          "default": "[Featured tag][Featured tag][Featured tag]"
+        },
+        {
+          "type": "header",
+          "content": "Countdown"
+        },
+        {
+          "type": "text",
+          "id": "coll_heading_text",
+          "label": "Text",
+          "default": "Counter text"
+        },
+        {
+          "type": "text",
+          "id": "coll_end_date",
+          "label": "End date",
+          "info": "The end date must be set to a future date and include the following format: YYYY-MM-DD: 2026-01-31 00:00 or 2026-12-31 23:59."
+        },
+        {
+          "type": "header",
+          "content": "Button"
+        },
+        {
+          "type": "text",
+          "id": "coll_btn_text",
+          "label": "Text",
+          "default": "Shop now"
+        },
+        {
+          "type": "checkbox",
+          "id": "coll_button_as_link",
+          "label": "Show button as link",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured content",
+      "blocks": [
+        {
+          "type": "media"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "media"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

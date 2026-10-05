@@ -1,0 +1,290 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/events-header.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+<style type="text/css">
+    #events-header-{{ section.id }} { margin: 15px 0; }
+    .events-header { display: grid; column-gap: 100px; grid-template-columns: repeat(2, calc(50% - 50px)); justify-content: center; align-items: center; }
+    .event-container { text-align: center; }
+    .events-h1 {
+       color: {{ section.settings.header_text_color }} !important;
+       font-family: {{ section.settings.header_font }} !important;
+       font-size: {{ section.settings.header_text_size_desktop }}px !important;
+       line-height: {{ section.settings.header_text_size_desktop | plus: 8 }}px !important;
+       margin: 0;
+       padding: 0;
+       text-transform: uppercase;
+    }
+    .events-h1 span {
+        background-color: {{ section.settings.header_events_bg_color }};
+        display: block;
+        font-size: 1.25em;
+        margin: 0 auto;        
+        padding: 10px 50px;
+        text-align: center;
+        width: fit-content;
+    }
+    .events-subcopy>* {
+        color: {{ section.settings.subcopy_text_color }} !important;
+        display: block;
+        font-size: {{ section.settings.subcopy_text_size_desktop }}px !important;
+        line-height: {{ section.settings.subcopy_text_size_desktop | plus: 6 }}px !important;
+        margin: 10px 0 25px !important;
+        padding: 0 15px !important;
+        text-align: center;
+    }
+    .events-header-cta {
+        background-color: {{ section.settings.events_header_cta_bg_color }} !important;
+        color: {{ section.settings.events_header_cta_text_color }} !important;
+        display: block;
+        font-size: {{ section.settings.events_header_cta_text_size_desktop }}px !important;        
+        margin: 15px auto;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        width: fit-content;
+    }
+    .events-header-image-container img { display: block; height: auto; width: 100%; }
+
+    @media screen and (max-width: 989px) {
+        .events-header { grid-template-columns: repeat(1, 100%); column-gap: 0; row-gap: 50px; }
+        .events-h1 {
+            font-size: {{ section.settings.header_text_size_mobile }}px !important;
+            line-height: {{ section.settings.header_text_size_mobile | plus: 6 }}px !important;
+        }
+        .events-subcopy>* {
+            font-size: {{ section.settings.subcopy_text_size_mobile }}px !important;
+            line-height: {{ section.settings.subcopy_text_size_mobile | plus: 4 }}px !important;
+        }
+        .events-header-cta {
+            font-size: {{ section.settings.events_header_cta_text_size_mobile }}px !important;            
+        }
+    }
+</style>
+<div id="events-header-{{ section.id }}" class="page-width">
+    <div class="events-header">
+        <div class="event-container events-header-text-container">
+            <h1 class="events-h1">Grunt Style<span>Events</span></h1>
+            <div class="events-subcopy">{{ section.settings.subcopy }}</div>
+            <a href="#events" id="events-cta-btn" class="events-header-cta">{{ section.settings.events_header_cta_text }}</a>
+        </div>
+        <div class="event-container events-header-image-container">
+            {%- if section.settings.events_header_img != blank -%}
+              {{ section.settings.events_header_img | image_url: width: 1000 | image_tag: alt: section.settings.events_header_img.alt }}
+            {%- endif -%}
+        </div>
+    </div>
+</div>
+<script defer>
+    let eBtn = document.getElementById('events-cta-btn')
+    eBtn.addEventListener( "click", (e) => {
+        e.preventDefault()
+        if ( document.querySelector('div[data-module-target="events"]') ){
+            let targetEl = document.querySelector('div[data-module-target="events"]')
+            let targetOffset = targetEl.offsetTop - 50
+            window.scrollTo({
+                top: targetOffset,
+                behavior: 'smooth'
+            })
+        }
+    } )
+</script>
+
+{% schema %}
+{
+  "name": "Events Header",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "H1 Text Is Hardcoded"
+    },
+    {
+      "type": "select",
+      "id": "header_font",
+      "label": "Header H1 Font Family",
+      "options": [
+        {
+          "value": "Roboto, sans-serif",
+          "label": "Roboto, Sans-Serif"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        },
+        {
+          "value": "Times New Roman",
+          "label": "Times New Roman"
+        }
+      ],
+      "default": "Engravers MT"
+    },
+    {
+      "type": "color",
+      "id": "header_text_color",
+      "label": "Header H1 Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "header_text_size_desktop",
+      "label": "Header H1 Text Size - Desktop",
+      "min": 36,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "header_text_size_mobile",
+      "label": "Header H1 Text Size - Mobile",
+      "min": 20,
+      "max": 42,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "header_events_bg_color",
+      "label": "Header H1 'Events' BG Color",
+      "default": "#802629"
+    },
+    {
+      "type": "richtext",
+      "id": "subcopy",
+      "label": "Subcopy",
+      "default": "<p>Patriotism deserves to be celebrated</p>"
+    },
+    {
+      "type": "select",
+      "id": "subcopy_font",
+      "label": "Subcopy Font Family",
+      "options": [
+        {
+          "value": "Roboto, sans-serif",
+          "label": "Roboto, Sans-Serif"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        },
+        {
+          "value": "Times New Roman",
+          "label": "Times New Roman"
+        }
+      ],
+      "default": "Roboto, sans-serif"
+    },
+    {
+      "type": "color",
+      "id": "subcopy_text_color",
+      "label": "Subcopy Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "subcopy_text_size_desktop",
+      "label": "Subcopy Text Size - Desktop",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subcopy_text_size_mobile",
+      "label": "Subcopy Text Size - Mobile",
+      "min": 11,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "text",
+      "id": "events_header_cta_text",
+      "label": "Header Events CTA Text",
+      "default": "See Upcoming Events"
+    },
+    {
+      "type": "select",
+      "id": "events_header_cta_font",
+      "label": "Events Header CTA Font Family",
+      "options": [
+        {
+          "value": "Roboto, sans-serif",
+          "label": "Roboto, Sans-Serif"
+        },
+        {
+          "value": "Engravers MT",
+          "label": "Engravers MT"
+        },
+        {
+          "value": "Times New Roman",
+          "label": "Times New Roman"
+        }
+      ],
+      "default": "Roboto, sans-serif"
+    },
+    {
+      "type": "color",
+      "id": "events_header_cta_text_color",
+      "label": "Events Header CTA Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "events_header_cta_text_size_desktop",
+      "label": "Events Header CTA Text Size - Desktop",
+      "min": 18,
+      "max": 38,
+      "step": 1,
+      "unit": "px",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "events_header_cta_text_size_mobile",
+      "label": "Events Header CTA Text Size - Mobile",
+      "min": 11,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "events_header_cta_bg_color",
+      "label": "Events Header CTA BG Color",
+      "default": "#802629"
+    },
+    {
+      "type": "image_picker",
+      "id": "events_header_img",
+      "label": "Events Header Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Events Header",
+      "settings": {}
+    }
+  ],
+  "locales": {
+    "en": {
+      "title": "Events Header"
+    }
+  },
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  }
+}
+{% endschema %}

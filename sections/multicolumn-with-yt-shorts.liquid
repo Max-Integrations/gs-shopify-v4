@@ -1,0 +1,413 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/multicolumn-with-yt-shorts.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+<div class="multicolumn-yt-shorts-container {% unless section.settings.mutlicolumn_yts_full_width %}container-sm{% endunless %}">
+    {% if section.settings.multicolumn_yts_heading %}
+      <{{ section.settings.multicolumn_yts_heading_tag }}>{{ section.settings.multicolumn_yts_heading }}</{{ section.settings.multicolumn_yts_heading_tag }}>
+    {% endif %}
+  
+    {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+    <div class="yts-column-container">
+      {% if block.settings.yts_thumbnail_image %}
+      <div class="yts-img">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 12c0-4.969-4.031-9-9-9s-9 4.031-9 9 4.031 9 9 9 9-4.031 9-9Z"></path>
+          <path fill="currentColor" stroke="none" d="m10.14 15.676 5.365-3.241a.511.511 0 0 0 0-.872L10.14 8.322a.505.505 0 0 0-.765.436v6.481a.505.505 0 0 0 .765.437Z"></path>
+        </svg>
+  
+        {%- if block.settings.yts_thumbnail_image != blank -%}<img class="{{ '' }}" src="{{ block.settings.yts_thumbnail_image | image_url: width: 600 }}" srcset="{{ block.settings.yts_thumbnail_image | image_url: width: 300 }} 300w, {{ block.settings.yts_thumbnail_image | image_url: width: 600 }} 600w, {{ block.settings.yts_thumbnail_image | image_url: width: 900 }} 900w, {{ block.settings.yts_thumbnail_image | image_url: width: 1200 }} 1200w, {{ block.settings.yts_thumbnail_image | image_url: width: 1500 }} 1500w, {{ block.settings.yts_thumbnail_image | image_url: width: 2000 }} 2000w" sizes="(max-width: 600px) 300px, (max-width: 900px) 600px, (max-width: 1200px) 900px, (max-width: 1500px) 1200px, 100vw" width="{{ block.settings.yts_thumbnail_image.width }}" height="{{ block.settings.yts_thumbnail_image.height }}" alt="{{ block.settings.yts_thumbnail_image.alt | escape }}" loading="lazy" style="object-position: {{ block.settings.yts_thumbnail_image.presentation.focal_point | default: 'center' }}">{%- endif -%}
+      </div>
+      {% endif %}
+  
+      <div class="yts-description">
+        {{ block.settings.yts_description }}
+      </div>
+  
+      {% if block.settings.enable_cta_link %}
+      <div class="yts-href {{ block.settings.yts_cta_link_type }}">
+        <a href="{{ block.settings.yts_cta_link_url }}"{% if block.settings.yts_cta_link_external_url %}target="_blank"{% endif %}>{{ block.settings.yts_cta_link_text }}</a>
+      </div>
+      {% endif %}
+  
+      <div class="yts-modal-container">
+        <div class="yts-close-full-width"></div>
+  
+        <div class="yts-modal-dialog">
+          <div class="yts-modal-content">
+            <div class="yts-modal-close">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="m17.25 6.75-10.5 10.5"></path>
+                <path d="m6.75 6.75 10.5 10.5"></path>
+              </svg>
+            </div>
+  
+            <iframe src="https://www.youtube.com/embed/{{ block.settings.yts_video_url.id }}?rel=0" {% if block.settings.yts_video_title %}title="{{ block.settings.yts_video_title }}"{% endif %} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+  
+  <style>
+    #shopify-section-{{ section.id }} { padding-top: {{ section.settings.mutlicolumn_yts_top_space_desktop }}px; padding-bottom: {{ section.settings.mutlicolumn_yts_bottom_space_desktop }}px; background-color: {{ section.settings.multicolumn_yts_background_color }}; }
+    
+    .multicolumn-yt-shorts-container { display: flex; flex-wrap: wrap; gap: 1em; text-align: {{ section.settings.mutlicolumn_yts_content_alignment }}; }
+  
+    .multicolumn-yt-shorts-container > {{ section.settings.multicolumn_yts_heading_tag }} { width: 100%; color: {{ section.settings.multicolumn_yts_text_color }}; font-size: var(--{{ section.settings.multicolumn_yts_heading_size }}); text-align: {{ section.settings.multicolumn_yts_heading_alignment }}; text-transform: uppercase; {% if section.settings.multicolumn_yts_heading_bold %}font-weight: bold;{% endif %} }
+    
+    .yts-column-container { width: calc((100% - 2em) / {{ section.settings.multicolumn_yts_column_count_desktop }}); color: {{ section.settings.multicolumn_yts_text_color }}; }
+    
+    .yts-img { position: relative; cursor: pointer; }
+    
+    .yts-img:hover svg { color: #802629bf; }
+    
+    .yts-img svg { max-width: 100px; max-height: 100px; color: #ffffffbf; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: color .25s; }
+    
+    .yts-img img { width: 100%; }
+  
+    .yts-href { text-transform: uppercase; }
+  
+    .yts-href.cta a { margin-top: .5em; padding: 1em; background-color: {{ section.settings.multicolumn_yts_cta_background_color }}; color: {{ section.settings.multicolumn_yts_cta_text_color }}; display: inline-block; }
+  
+    .yts-href.link a { color: {{ section.settings.multicolumn_yts_link_text_color }} !important; text-decoration: underline; }
+    
+    .yts-modal-container { width: 100%; height: 100%; background-color: #00000080; backdrop-filter: blur(20px); position: fixed; top: 0; left: 0; opacity: 0; visibility: hidden; z-index: 999; transition: all .25s; }
+    
+    .yts-visible { opacity: 1; visibility: visible; }
+    
+    .yts-close-full-width { width: 100%; height: 100%; cursor: pointer; position: absolute; top: 0; left: 0; }
+    
+    .yts-modal-dialog { margin: 0 auto; padding: 1em; width: 100%; max-width: max-content; height: 100%; position: relative; opacity: 0; top: 25%; transition: opacity .5s, top .5s; transition-delay: .25s; }
+    
+    .yts-modal-container.yts-visible .yts-modal-dialog { opacity: 1; top: 0; }
+    
+    .yts-modal-content { width: 100%; height: 100%; padding: 1em; background-color: #fff; aspect-ratio: 9/16; display: flex; flex-direction: column; }
+    
+    .yts-modal-close { color: #802629; text-align: right; cursor: pointer; }
+    
+    .yts-modal-content iframe { width: 100%; height: 100%; }
+    
+    @media screen and (max-width: 768px) {
+      #shopify-section-{{ section.id }} { padding-top: {{ section.settings.mutlicolumn_yts_top_space_mobile }}px; padding-bottom: {{ section.settings.mutlicolumn_yts_bottom_space_mobile }}px; }
+      
+      .yts-column-container { width: calc((100% - 2em) / {{ section.settings.multicolumn_yts_column_count_mobile }}); }
+    }
+  
+  </style>
+  
+  <script>
+    let ytc = document.querySelectorAll('.yts-column-container');
+  
+    ytc.forEach(c => {
+      let yti = c.querySelector('.yts-img'),
+          ytm = c.querySelector('.yts-modal-container'),
+          ytcfw = c.querySelector('.yts-close-full-width'),
+        ytcm = c.querySelector('.yts-modal-close'),
+        tyi = c.querySelector('.yts-modal-content iframe');
+      
+      yti.addEventListener('click', () => {
+        ytm.classList.add('yts-visible');
+      });
+    
+      [ytcfw, ytcm].forEach(close => {
+        close.addEventListener('click', () => {
+          ytm.classList.remove('yts-visible');
+    
+          let src = tyi.src;
+          tyi.src = src;
+        });
+      });
+    })
+  </script>
+
+{% schema %}
+{
+  "name": "Multicolumn YT Shorts",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "checkbox",
+      "id": "mutlicolumn_yts_full_width",
+      "label": "Make section full width",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "mutlicolumn_yts_top_space_desktop",
+      "label": "Top spacing (desktop)",
+      "default": 75,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "mutlicolumn_yts_bottom_space_desktop",
+      "label": "Bottom spacing (desktop)",
+      "default": 75,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "mutlicolumn_yts_top_space_mobile",
+      "label": "Top spacing (mobile)",
+      "default": 25,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "mutlicolumn_yts_bottom_space_mobile",
+      "label": "Bottom spacing (mobile)",
+      "default": 25,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "text_alignment",
+      "id": "mutlicolumn_yts_content_alignment",
+      "label": "Content alignment",
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "multicolumn_yts_heading",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "multicolumn_yts_heading_size",
+      "label": "Heading size",
+      "default": "h1",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "multicolumn_yts_heading_tag",
+      "label": "Heading tag",
+      "info": "Specify heading code types for SEO and search engines for crawling purposes.",
+      "default": "h2",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "multicolumn_yts_heading_bold",
+      "label": "Bold heading",
+      "default": false
+    },
+    {
+      "type": "text_alignment",
+      "id": "multicolumn_yts_heading_alignment",
+      "label": "Heading alignment",
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Columns"
+    },
+    {
+      "type": "range",
+      "id": "multicolumn_yts_column_count_desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "label": "Desktop column count"
+    },
+    {
+      "type": "radio",
+      "id": "multicolumn_yts_column_count_mobile",
+      "label": "Mobile column count",
+      "default": "2",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "multicolumn_yts_background_color",
+      "label": "Background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "multicolumn_yts_text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "multicolumn_yts_link_text_color",
+      "label": "Link text color",
+      "default": "#802629"
+    },
+    {
+      "type": "color",
+      "id": "multicolumn_yts_cta_background_color",
+      "label": "CTA background color",
+      "default": "#802629"
+    },
+    {
+      "type": "color",
+      "id": "multicolumn_yts_cta_text_color",
+      "label": "CTA text color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "yt_short",
+      "name": "YouTube Short",
+      "settings": [
+        {
+          "type": "video_url",
+          "id": "yts_video_url",
+          "label": "YouTube Video URL",
+          "info": "For YouTube Shorts, copy/paste video ID to https://www.youtube.com/watch?v=",
+          "accept": [
+            "youtube"
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "yts_thumbnail_image",
+          "label": "Video thumbnail image"
+        },
+        {
+          "type": "text",
+          "id": "yts_video_title",
+          "label": "Video title",
+          "info": "Used for title attribute in YouTube video iframe"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "yts_description",
+          "label": "Video description"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_cta_link",
+          "label": "Enable CTA/link",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "yts_cta_link_type",
+          "label": "Display as CTA button or link?",
+          "options": [
+            {
+              "value": "cta",
+              "label": "CTA"
+            },
+            {
+              "value": "link",
+              "label": "Link"
+            }
+          ],
+          "default": "link"
+        },
+        {
+          "type": "text",
+          "id": "yts_cta_link_text",
+          "label": "CTA/link text"
+        },
+        {
+          "type": "url",
+          "id": "yts_cta_link_url",
+          "label": "CTA/link URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "yts_cta_link_new_window",
+          "label": "Open link in a new window/tab?",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Multicolumn YT Shorts",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

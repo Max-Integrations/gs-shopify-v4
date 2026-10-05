@@ -1,0 +1,84 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/events-image-grid.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+<style type="text/css">
+    #events-image-grid-{{section.id}} { margin: 25px 0; }
+    .events-image-grid {
+        display: flex;
+        justify-content: center;
+        column-gap: 20px;
+        flex-wrap: wrap;
+        row-gap: 25px;
+    }
+    .event-image { display: block; width: calc(25% - 15px); }
+    .event-image img { cursor: pointer; display: block; -webkit-filter: grayscale(100%); filter: grayscale(100%); height: auto; transition: all .25s linear; width: 100%; }
+    .event-image img:focus, .event-image img:hover { filter: grayscale(0); -webkit-filter: grayscale(0); }
+
+    @media screen and (max-width:989px){
+        .event-image { width: calc(50% - 15px); }
+        .event-image img { filter: grayscale(0); -webkit-filter: grayscale(0); }
+    }
+</style>
+<div id="events-image-grid-{{section.id}}">
+    <div class="page-width">
+        <div class="events-image-grid">
+        {% for block in section.blocks %}
+            <div class="event-image">
+                {{ block.settings.image | image_url: width: 800 | image_tag: class: 'img', loading: 'lazy' }}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Events Image Grid",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "UGC Image(s) Grid"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 50,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Name of Image",
+          "info": "Optional - but easier management while editing"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "UGC Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Events Image Grid",
+      "settings": {}
+    }
+  ],
+  "locales": {
+    "en": {
+      "title": "Events Image Grid"
+    }
+  },
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  }
+}
+{% endschema %}

@@ -1,0 +1,490 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/related-posts.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+{{ 'blog-posts.css' | asset_url | stylesheet_tag }}
+{%- liquid
+    assign related_posts = ''
+    assign count = 0
+    assign currentArticle = article.handle
+    assign Colorscheme = section.settings.color_scheme
+
+    assign gridImageSize = section.settings.grid_image_size
+ 
+    if gridImageSize == 'landscape'
+      assign postImageRatio = '70%'
+    elsif gridImageSize == 'square'
+      assign postImageRatio = '100%'
+    elsif gridImageSize == 'portrait'
+      assign postImageRatio = '130%'
+    endif
+  -%}
+      {%- for newArticle in blog.articles limit: 5 -%}
+        {%- unless newArticle.handle == currentArticle -%}
+            {%- assign count = count | plus: 1 -%}
+          {%- capture post -%}
+
+          {% liquid 
+            if gridImageSize == 'auto'
+              if newArticle.image != blank
+                assign postImageRatio = 1 | divided_by: newArticle.image.aspect_ratio | times: 100 | append: '%'
+              else
+                assign postImageRatio = 100 | append: '%'
+              endif
+            endif
+          %}
+          {%- assign placeholder_image_index = forloop.index0 | modulo: 3 | plus: 1 -%}
+                     {%- assign placeholder_image = 'blog-apparel-' | append: placeholder_image_index -%}
+      {%- comment -%}v3 snippets/post-grid.liquid, inlined (article = newArticle){%- endcomment -%}
+
+
+<div class="blog-list-item blog-item"  >
+  {% if newArticle.image or article_image %}
+    <a
+      {% if newArticle != blank %}
+        href="{{ newArticle.url }}"
+      {% endif -%}
+      class="blog-item-image-container img-zoom"
+      
+    >
+    <div class="cut-edge-blog">
+        <svg width="139" height="139" viewBox="0 0 139 139" fill="none">
+        <g clip-path="url(#clip0_464_133)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M100 100C121.539 100 139 117.461 139 139L139 100L139 0L39 4.37114e-06L-6.07588e-06 6.07588e-06C21.539 5.13438e-06 39 17.461 39 39L39 76C39 89.2549 49.7451 100 63 100L100 100Z" fill="currentColor"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_464_133">
+        <rect width="139" height="139" fill="currentColor" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 139 139)"/>
+        </clipPath>
+        </defs>
+        </svg>
+    </div>
+      <div class="media" Style="--imageRatio:{{ postImageRatio }}">
+        {% if newArticle.image %}
+          <img src="{{ newArticle.image | image_url: width: 600 }}" srcset="{{ newArticle.image | image_url: width: 300 }} 300w, {{ newArticle.image | image_url: width: 600 }} 600w, {{ newArticle.image | image_url: width: 900 }} 900w" sizes="(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw" width="{{ newArticle.image.width }}" height="{{ newArticle.image.height }}" alt="{{ newArticle.image.alt | escape }}" loading="lazy">
+        {% else %}
+          {{ placeholder_image | placeholder_svg_tag: 'blog-placeholder-svg' }}
+        {% endif %}
+      </div>
+      {% if newArticle.comments_count > 0 and blog.comments_enabled? and section.settings.show_comment_count %}
+        <div class="newArticle-comments">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v11H8l-4 4V5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          {{ newArticle.comments_count | prepend: '0' | slice: -2, 2 }}
+        </div>
+      {% endif %}
+      
+      <div class="blog-image-overlay">
+        <span>
+            {{ 'templates.search.read_more' | t }}
+          </span>
+      </div>
+      <div class="blog-thumbnail-arrow">
+        <svg viewBox="0 0 249.91 285.16">
+          <g><path d="m123.43,285.16c6.18,0,11.2-5.02,11.2-11.2V36.73s96.15,96.15,96.15,96.15c2.19,2.18,5.05,3.28,7.92,3.28s5.73-1.09,7.93-3.28c4.38-4.38,4.38-11.46,0-15.84L132.88,3.28c-4.38-4.38-11.46-4.38-15.84,0L3.28,117.03c-4.38,4.38-4.38,11.46,0,15.84,4.38,4.38,11.46,4.38,15.84,0L112.23,39.76v234.2c0,6.18,5.02,11.2,11.2,11.2h0Z"></path></g>
+        </svg>
+
+      </div>
+    </a>
+  {% else %}
+    <a class="blog-item-image-container img-zoom">
+      <div class="media" Style="--imageRatio:{{ postImageRatio }}">
+        {{ placeholder_image | placeholder_svg_tag: 'blog-placeholder-svg' }}
+      </div>
+    </a>
+  {% endif %}
+  <div class="blog-item-content">
+    {% capture postContent %}
+      {% unless  section.settings.show_author == blank and section.settings.show_date == blank %} 
+        {% if newArticle != blank or search_show_author or search_show_date and section.settings.show_author or section.settings.show_date %}
+          <div class="blog-excerpt-meta">
+            {% if search_show_author or newArticle != blank and section.settings.show_author %}
+              <span class="blog-excerpt-meta-item publisher-name">{{ newArticle.author }}</span>
+            {% endif %}
+            {% if section.settings.show_date or search_show_date %}
+              {% if newArticle != blank %}
+                <span class="blog-excerpt-meta-item date">{{ newArticle.published_at | date: "%B %d, %Y" }}</span>
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endunless %}
+      {% endcapture %}
+    {{ postContent }}
+    <a
+      class="blog-item-heading heading-font h6"
+      {% if newArticle != blank %}
+        href="{{ newArticle.url }}"
+      {% else %}
+        role="link"aria-disabled="true"
+      {% endif %}
+    >
+      {% if newArticle != blank %}{{ newArticle.title }}{% else %}{{ 'Blog post' }}{% endif %}
+    </a>
+    {% if section.settings.show_excerpt %}
+      <p class="blog-item-desc">
+        {% liquid
+          if newArticle != blank
+            echo newArticle.excerpt_or_content | strip_html | truncatewords: 8
+          else
+            echo 'Give your customers a summary of your blog post'
+          endif
+        %}
+      </p>
+    {% endif %}
+    {% if section.settings.show_tags and newArticle.tags.size > 0 %}
+      <ul class="list-unstyled post-tags">
+        {% for tag in newArticle.tags %}
+          <li>
+            <a class="unstyled-link" href="{{ blog.url }}/tagged/{{tag}}">{{ tag }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</div>
+
+      {%- endcapture -%}
+      {%- assign related_posts = related_posts | append: post -%}
+    {%- endunless -%}
+    {% if count == 4 %}
+      {% break %}
+    {% endif %}
+  {%- endfor -%}
+  
+  {% if count > 0 %}
+  <div class="color-{{ Colorscheme }} section-padding {% if section.settings.enable_gradient %} gradiant{% endif %}">
+    <div class="container-sm">
+       {% if section.settings.heading != blank %}
+          {%- capture highlightPrefix -%}
+          <span class="line-marker {% if section.settings.highlight_style == 'background' %}highlight-background {% if section.settings.bg__color == 'gradient' %}highlight-background-gradient{% else %}highlight-background-solid{% endif %}{% endif %}">
+             {%- endcapture -%}
+             {%- capture highlightSuffix -%}
+             {% if section.settings.highlight_style != 'background' %}
+              {% case section.settings.highlight_style %}
+    {% when 'underline' %}
+        <svg class="marker-svg marker-svg-syle-1" viewBox="0 0 296 4" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0 2H295.21" stroke="currentColor" stroke-width="4" />
+         </svg>
+            
+    {% when 'shape_2' %}
+        <svg class="marker-svg marker-svg-syle-2"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 294.98 18.53" fill="none" preserveAspectRatio="none">
+              <path class="cls-1" d="M.61,16.63C16.91,11.37,46.89,2.71,56.75,2.05c9.86-.67,7.88,6.17,3.12,10.69-1.21,2.31,2.38,5.16,26.41-1.97l17.08-5.05c1.96-.59,6.11-.99,7,2.16,1.11,3.94,8.09,7.32,29.2,6.83,21.11-.48,51.69-6.97,72.81-8.66,21.13-1.69,39.15-3.31,82.47-.03"  stroke="currentColor" stroke-width="4px"/>
+          </svg>
+
+    {% when 'shape_3' %}
+        <svg  class="marker-svg marker-svg-syle-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.26 12.96" fill="none" preserveAspectRatio="none">
+              <path class="cls-1" d="M.96,11.2S30.88-5.22,295.18,5.81"  stroke="currentColor" stroke-width="4px"/>
+          </svg>
+
+    {% when 'shape_4' %}
+        <svg class="marker-svg marker-svg-syle-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.85 17.13" fill="none" preserveAspectRatio="none">
+              <path class="cls-1" d="M.33,15.15S94.86-.8,222.47,2.43c1.13.03,1.36,1.61.29,1.96l-23.04,6.62c-1.16.38-.77,2.1.44,1.95,20-2.56,32.17-7.48,95.38,2.19" stroke="currentColor" stroke-width="4px"/>
+        </svg>
+    {% when 'shape_5' %}
+        <svg class="marker-svg marker-svg-syle-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 297.8 16.66" fill="none" preserveAspectRatio="none">
+            <path class="cls-1" d="M.7,8.33s38.2-14.25,160.22,0c122.02,14.25,135.42,0,135.42,0" stroke="currentColor" stroke-width="4px"/>
+        </svg>
+    {% when 'shape_6' %}
+        <svg class="marker-svg marker-svg-syle-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.84 21.07" fill="none" preserveAspectRatio="none">
+          <path class="cls-1" d="M.51,8.31C5.44,7.01,38.25-.62,75.7,2.94c0,0,45.95,4.74-10.73,15.39-20.04,3.77-18.53-7.76,28.18-14.01,0,0,21.75-5.5,202.57,4.84" stroke="currentColor" stroke-width="4px"/>
+        </svg>
+        
+{% endcase %}
+
+
+
+           {% endif %}
+   
+          </span>
+          {%- endcapture -%}
+          <div class="section-title {{ section.settings.heading_alignment }}">
+             <{{ section.settings.seo_heading }} class="{{ section.settings.heading_size }}">
+             {{ section.settings.heading | replace:"[", highlightPrefix | replace:"]",highlightSuffix }}
+             </{{ section.settings.seo_heading }}>
+          </div>
+       {% endif %}
+       <div class="blog-articles blog-post-wrapper">
+       {{- related_posts -}}
+    </div>
+ </div>
+</div>
+{% endif %}
+
+<style>
+    #shopify-section-{{ section.id }}{
+    --padding-top: {{ section.settings.top_space_desktop}}px;
+    --padding-bottom: {{ section.settings.bottom_space_desktop}}px;
+    } 
+    @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}{
+    --padding-top: {{ section.settings.top_space_mobile }}px !important;
+    --padding-bottom: {{ section.settings.bottom_space_mobile }}px !important;
+    }
+    }
+ </style>
+
+{% schema %}
+{
+  "name": "Related posts",
+  "class": "related-posts-section",
+  "tag": "section",
+  "templates": [
+    "article"
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "Show article date"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "Show author",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "default": true,
+      "label": "Show article excerpts"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Wrap your text between [ ] to add the markers. These [markers] will highlight the text. ",
+      "default": "Heading here"
+    },
+    {
+      "type": "select",
+      "id": "highlight_style",
+      "label": "Marker text highlight style",
+      "default": "underline",
+      "options": [
+        {
+          "value": "underline",
+          "label": "Shape 1"
+        },
+        {
+          "value": "shape_2",
+          "label": "Shape 2"
+        },
+        {
+          "value": "shape_3",
+          "label": "Shape 3"
+        },
+        {
+          "value": "shape_4",
+          "label": "Shape 4"
+        },
+        {
+          "value": "shape_5",
+          "label": "Shape 5"
+        },
+        {
+          "value": "shape_6",
+          "label": "Shape 6"
+        },
+        {
+          "value": "background",
+          "label": "Background"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "bg__color",
+      "label": "Highlight background",
+      "default": "gradient",
+      "options": [
+        {
+          "value": "gradient",
+          "label": "Gradient"
+        },
+        {
+          "value": "solid",
+          "label": "Solid"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h2",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "seo_heading",
+      "default": "h2",
+      "label": "Heading tag",
+      "info": "Specify heading code types for SEO and search engines for crawling purposes.",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "default": "text-left",
+      "options": [
+        {
+          "label": "Left",
+          "value": "text-left"
+        },
+        {
+          "label": "Center",
+          "value": "text-center"
+        },
+        {
+          "label": "Right",
+          "value": "text-right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "grid_image_size",
+      "label": "Grid image ratio",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Auto"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "primary",
+      "label": "Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gradient",
+      "label": "Enable gradient",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "Top spacing (desktop)",
+      "default": 70,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "Bottom spacing (desktop)",
+      "default": 70,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "Top spacing (mobile)",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "Bottom spacing (mobile)",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ],
+  "presets": [
+    {
+      "name": "Related posts"
+    }
+  ]
+}
+{% endschema %}

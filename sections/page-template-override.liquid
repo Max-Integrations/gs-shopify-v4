@@ -1,0 +1,28 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/page-template-override.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+<style type="text/css">
+  #MainContent { background-color: {{ section.settings.bg_color }}!important; }
+</style>
+
+{% schema %}
+{
+  "name": "Page Template Overrides",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Page BG Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page Template Overrides"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,219 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/two-column-media-highlight.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+<div class="page-width">
+  <div class="two-column-media-highlight bg-{{ section.id }}">
+    {% for block in section.blocks %}
+      <div class="media-highlight-blocks" id="highlight-block-{{ block.id }}">
+        <div
+          class="highlight-block"
+          id="{{ block.settings.title | handleize }}"
+          style="background-color:{{ block.settings.media_highlight_bg_color }}"
+        >
+          <div
+            class="highlight-text"
+            style="{% if block.settings.media_highlight_alignment == "left" %}order:2; padding-left:2rem;{% else %}order:1; padding-right:2rem;{% endif %}"
+          >
+            <h3 style="color:{{ block.settings.title_color }}">{{ block.settings.title }}</h3>
+            <div class="text-block">{{ block.settings.media_highlight_description }}</div>
+            {% unless block.settings.media_highlight_cta_text == blank %}
+              <div class="cta-block">
+                <a
+                  href="{{ block.settings.media_highlight_cta_url }}"
+                  {% if block.settings.new_window %}
+                    target="_blank"
+                  {% endif %}
+                >
+                  {{- block.settings.media_highlight_cta_text -}}
+                </a>
+              </div>
+              <style type="text/css">
+                #highlight-block-{{ block.id }} .cta-block a { margin-bottom: 15px; padding: .5em 3rem; color: {{ block.settings.media_highlight_cta_text_color }}; background-color: {{ block.settings.media_highlight_cta_background_color }}; display: block; font-size: 18px; letter-spacing: 1px; text-decoration: none; text-transform: uppercase; width: fit-content; }
+              </style>
+            {% endunless %}
+            <style type="text/css">
+              #highlight-block-{{ block.id }} .text-block p, highlight-block-{{ block.id }} .text-block >* { color: {{ block.settings.media_highlight_description_color }} }
+            </style>
+          </div>
+          <div
+            class="highlight-media"
+            style="order:{% if block.settings.media_highlight_alignment == "left" %}1{% else %}2{% endif %}"
+          >
+            {% if block.settings.media_highlight_image != blank %}
+              <img class="img-placeholder" alt="" src="{{ block.settings.media_highlight_image | img_url : 'master' }}">
+            {% else %}
+              <div class="video-contain">
+                <div class="video-wrapper">
+                  <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/{{block.settings.media_highlight_video.id}}"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<style type="text/css">
+  .two-column-media-highlight.bg-{{ section.id }} {
+    {% if section.settings.enable_bg_image and section.settings.section_bg_image %}
+    background: url({{ section.settings.section_bg_image | img_url : 'master' }}) no-repeat center bottom {{ section.settings.bg_image_color }};
+    background-size: cover;
+    padding: 1.5rem;
+    {% endif %}
+  }
+  .media-highlight-blocks { margin: 2rem 0 0; padding: 1rem 0; }
+  .highlight-block { display: flex; justify-content: space-between; flex-direction: row; flex-wrap: wrap; margin-bottom: 50px; padding: 2rem 4rem; }
+  .highlight-text { width: 65%; }
+  .highlight-media { display: flex; align-items: center; width: 35%; }
+  .highlight-media img { display: block; width: 100%; }
+  .highlight-text h3 { color: #005dff; display: block; font-size: 28px; font-weight: 700; padding: 0 0 10px; text-transform: uppercase; }
+  .text-block >* { font-size: 18px; line-height: 24px; }
+
+  @media screen and (max-width: 989px) {
+    .defined-header-contain { border-bottom: none; }
+    .highlight-block { flex-direction: column; }
+    .highlight-block .text-block { padding: 0 0 1rem; }
+    .highlight-text { order: 2!important; padding: 0 1em!important; width: 100%; }
+    .highlight-media { order: 1!important; padding-bottom: 2rem; width: 100%; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Two Column w/ Media",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_bg_image",
+      "label": "Enable Background Image",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "section_bg_image",
+      "label": "Section Background Image"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_image_color",
+      "label": "Section BG Image Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Media Highlight",
+      "type": "highlight",
+      "settings": [
+        {
+          "type": "color",
+          "id": "media_highlight_bg_color",
+          "label": "Block BG Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Media Highlight Title"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Font Color",
+          "default": "#000000"
+        },
+        {
+          "type": "select",
+          "id": "media_highlight_alignment",
+          "label": "Desktop Media Highlight Alignment",
+          "info": "On Mobile, Media Will Always Be On Top",
+          "options": [
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "left",
+              "label": "Left"
+            }
+          ],
+          "default": "right"
+        },
+        {
+          "type": "richtext",
+          "id": "media_highlight_description",
+          "label": "Media Highlight Description",
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>"
+        },
+        {
+          "type": "color",
+          "id": "media_highlight_description_color",
+          "label": "Description Font Color",
+          "default": "#000000"
+        },
+        {
+          "type": "text",
+          "id": "media_highlight_cta_text",
+          "label": "Media Highlight CTA Text",
+          "info": "This is optional - no CTA will appear if blank",
+          "default": "Check This Out"
+        },
+        {
+          "type": "url",
+          "id": "media_highlight_cta_url",
+          "label": "Media Highlight CTA Link"
+        },
+        {
+          "type": "color",
+          "id": "media_highlight_cta_text_color",
+          "label": "CTA Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "media_highlight_cta_background_color",
+          "label": "CTA Background Color",
+          "default": "#802629"
+        },
+        {
+          "type": "checkbox",
+          "id": "new_window",
+          "label": "Open Link In New Window",
+          "info": "IF CTa link has a link above",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "media_highlight_image",
+          "label": "Media Highlight Image (optional)"
+        },
+        {
+          "type": "video_url",
+          "id": "media_highlight_video",
+          "label": "Media Highlight Video Link (optional)",
+          "accept": [
+            "youtube"
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two Column w/ Media"
+    }
+  ]
+}
+{% endschema %}

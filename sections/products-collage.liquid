@@ -1,0 +1,793 @@
+{% comment %}
+  Ported from gs-shopify-v3 sections/products-collage.liquid by scripts/port-section.py
+  (2026-10 client review: "modules to carry over"). Schema labels are
+  literal strings, colour schemes are Dawn's, and the v3 snippets this
+  theme lacks are inlined so the section stays self-contained.
+{% endcomment %}
+{{ 'products-collage.css' | asset_url | stylesheet_tag }}
+{% liquid 
+  assign Colorscheme = section.settings.color_scheme
+  %}
+  {%- comment -%}
+    Two passes: odd-positioned products, then even-positioned, each
+    rendered with v3's collage-card-grid snippet inlined below. With no
+    products chosen, each pass shows three placeholders.
+  {%- endcomment -%}
+  {%- for pass in (1..2) -%}
+    {%- capture pass_html -%}
+      {%- for product in section.settings.product_list -%}
+        {%- assign collage_pos = forloop.index0 | modulo: 2 | plus: 1 -%}
+        {%- if collage_pos != pass -%}{%- continue -%}{%- endif -%}
+        {%- assign cardProduct = product -%}
+        {%- assign cycleIndex = forloop.index0 | modulo: 3 | plus: 1 -%}
+<div class="products-collage-item product-card product-background-enabled product-border-enabled{% if section.settings.enable_card_shadow %} product-shadow-enabled{% endif %}">
+  <div class="products-collage-image-wrapper">
+     <{% if cardProduct.url != blank %}a href="{{ cardProduct.url }}" title="{{cardProduct.title}}"  {%else %}div{% endif %}>
+    <div
+      class="media"
+      style="--imageRatio:{% if cardProduct.featured_media != blank %}{{ 1 | divided_by : cardProduct.featured_media.preview_image.aspect_ratio | times: 100 }}{% else %}100{% endif %}%"
+    >
+      {%- if cardProduct.featured_media != blank -%}
+        {%- assign collage_img = cardProduct.featured_media.preview_image -%}
+        <img class="product-img" src="{{ collage_img | image_url: width: 400 }}" srcset="{{ collage_img | image_url: width: 200 }} 200w, {{ collage_img | image_url: width: 400 }} 400w, {{ collage_img | image_url: width: 600 }} 600w" sizes="(min-width: 750px) 175px, 40vw" width="{{ collage_img.width }}" height="{{ collage_img.height }}" alt="{{ collage_img.alt | escape }}" loading="lazy">
+      {%- else -%}
+        {{ 'product-apparel-' | append: cycleIndex | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+  </{% if cardProduct.url != blank %}a{%else %}div{% endif %}>
+  </div>
+  <div class="products-collage-content {{ section.settings.text_alignment }}">
+    {% if cardProduct.url != blank %}
+    <a href="{{ cardProduct.url }}" class="product-title" aria-label="{{ cardProduct.title }}">{{ cardProduct.title }}</a>
+    {% else %}
+    <div class="product-title">{{ 'onboarding.product_title' | t }}</div>
+    {% endif %}
+    {% render 'gs-reviews', cardProduct: cardProduct %}
+    {% liquid
+      assign compare_at_price = cardProduct.compare_at_price
+      assign price = cardProduct.price | default: 1999
+      assign money_price = price | money
+    %}
+    <div class="product-price">
+      <span class="price-item actual-price" data-sl-attribute-p="{{ cardProduct.id }}">{{- money_price -}}</span>
+      {% if compare_at_price %}
+        <span class="price-item compare-price" data-sl-attribute-cap="{{ cardProduct.id }}">{{- compare_at_price | money -}}</span>
+      {% endif %}
+      <span class="hidden">{{ 'products.product.price.unit_price' | t }}</span>
+      <span
+        class="product-unit-price {% unless cardProduct.unit_price_measurement %} hidden{% endunless %}"
+        data-unit-price
+        data-sl-attribute-p="{{ cardProduct.id }}"
+      >
+        {{ cardProduct.unit_price | money }} /
+        {% if cardProduct.unit_price_measurement.reference_value != 1 -%}
+          {{- cardProduct.unit_price_measurement.reference_value -}}
+        {%- endif %}
+        {{ cardProduct.unit_price_measurement.reference_unit }}
+      </span>
+    </div>
+  </div>
+</div>
+
+      {%- else -%}
+        {%- for i in (1..3) -%}
+          {%- assign cardProduct = blank -%}
+          {%- assign cycleIndex = i -%}
+<div class="products-collage-item product-card product-background-enabled product-border-enabled{% if section.settings.enable_card_shadow %} product-shadow-enabled{% endif %}">
+  <div class="products-collage-image-wrapper">
+     <{% if cardProduct.url != blank %}a href="{{ cardProduct.url }}" title="{{cardProduct.title}}"  {%else %}div{% endif %}>
+    <div
+      class="media"
+      style="--imageRatio:{% if cardProduct.featured_media != blank %}{{ 1 | divided_by : cardProduct.featured_media.preview_image.aspect_ratio | times: 100 }}{% else %}100{% endif %}%"
+    >
+      {%- if cardProduct.featured_media != blank -%}
+        {%- assign collage_img = cardProduct.featured_media.preview_image -%}
+        <img class="product-img" src="{{ collage_img | image_url: width: 400 }}" srcset="{{ collage_img | image_url: width: 200 }} 200w, {{ collage_img | image_url: width: 400 }} 400w, {{ collage_img | image_url: width: 600 }} 600w" sizes="(min-width: 750px) 175px, 40vw" width="{{ collage_img.width }}" height="{{ collage_img.height }}" alt="{{ collage_img.alt | escape }}" loading="lazy">
+      {%- else -%}
+        {{ 'product-apparel-' | append: cycleIndex | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+  </{% if cardProduct.url != blank %}a{%else %}div{% endif %}>
+  </div>
+  <div class="products-collage-content {{ section.settings.text_alignment }}">
+    {% if cardProduct.url != blank %}
+    <a href="{{ cardProduct.url }}" class="product-title" aria-label="{{ cardProduct.title }}">{{ cardProduct.title }}</a>
+    {% else %}
+    <div class="product-title">{{ 'onboarding.product_title' | t }}</div>
+    {% endif %}
+    {% render 'gs-reviews', cardProduct: cardProduct %}
+    {% liquid
+      assign compare_at_price = cardProduct.compare_at_price
+      assign price = cardProduct.price | default: 1999
+      assign money_price = price | money
+    %}
+    <div class="product-price">
+      <span class="price-item actual-price" data-sl-attribute-p="{{ cardProduct.id }}">{{- money_price -}}</span>
+      {% if compare_at_price %}
+        <span class="price-item compare-price" data-sl-attribute-cap="{{ cardProduct.id }}">{{- compare_at_price | money -}}</span>
+      {% endif %}
+      <span class="hidden">{{ 'products.product.price.unit_price' | t }}</span>
+      <span
+        class="product-unit-price {% unless cardProduct.unit_price_measurement %} hidden{% endunless %}"
+        data-unit-price
+        data-sl-attribute-p="{{ cardProduct.id }}"
+      >
+        {{ cardProduct.unit_price | money }} /
+        {% if cardProduct.unit_price_measurement.reference_value != 1 -%}
+          {{- cardProduct.unit_price_measurement.reference_value -}}
+        {%- endif %}
+        {{ cardProduct.unit_price_measurement.reference_unit }}
+      </span>
+    </div>
+  </div>
+</div>
+
+        {%- endfor -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if pass == 1 -%}{%- assign oddProducts = pass_html -%}{%- else -%}{%- assign evenProducts = pass_html -%}{%- endif -%}
+  {%- endfor -%}
+  <div class="color-{{ Colorscheme }} section-padding{% if section.settings.enable_gradient %} gradiant{% endif %}">
+     <div class="container-sm">
+      {% if section.settings.heading != blank or section.settings.description != blank %}
+        <div class="section-title {{ section.settings.heading_alignment }}" >
+           {%- capture highlightPrefix -%}
+           <span class="line-marker {% if section.settings.highlight_style == 'background' %}highlight-background {% if section.settings.bg__color == 'gradient' %}highlight-background-gradient{% else %}highlight-background-solid{% endif %}{% endif %}">
+              {%- endcapture -%}
+              {%- capture highlightSuffix -%}
+              {% if section.settings.highlight_style != 'background' %}
+                {% case section.settings.highlight_style %}
+    {% when 'underline' %}
+        <svg class="marker-svg marker-svg-syle-1" viewBox="0 0 296 4" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0 2H295.21" stroke="currentColor" stroke-width="4" />
+         </svg>
+            
+    {% when 'shape_2' %}
+        <svg class="marker-svg marker-svg-syle-2"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 294.98 18.53" fill="none" preserveAspectRatio="none">
+              <path class="cls-1" d="M.61,16.63C16.91,11.37,46.89,2.71,56.75,2.05c9.86-.67,7.88,6.17,3.12,10.69-1.21,2.31,2.38,5.16,26.41-1.97l17.08-5.05c1.96-.59,6.11-.99,7,2.16,1.11,3.94,8.09,7.32,29.2,6.83,21.11-.48,51.69-6.97,72.81-8.66,21.13-1.69,39.15-3.31,82.47-.03"  stroke="currentColor" stroke-width="4px"/>
+          </svg>
+
+    {% when 'shape_3' %}
+        <svg  class="marker-svg marker-svg-syle-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.26 12.96" fill="none" preserveAspectRatio="none">
+              <path class="cls-1" d="M.96,11.2S30.88-5.22,295.18,5.81"  stroke="currentColor" stroke-width="4px"/>
+          </svg>
+
+    {% when 'shape_4' %}
+        <svg class="marker-svg marker-svg-syle-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.85 17.13" fill="none" preserveAspectRatio="none">
+              <path class="cls-1" d="M.33,15.15S94.86-.8,222.47,2.43c1.13.03,1.36,1.61.29,1.96l-23.04,6.62c-1.16.38-.77,2.1.44,1.95,20-2.56,32.17-7.48,95.38,2.19" stroke="currentColor" stroke-width="4px"/>
+        </svg>
+    {% when 'shape_5' %}
+        <svg class="marker-svg marker-svg-syle-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 297.8 16.66" fill="none" preserveAspectRatio="none">
+            <path class="cls-1" d="M.7,8.33s38.2-14.25,160.22,0c122.02,14.25,135.42,0,135.42,0" stroke="currentColor" stroke-width="4px"/>
+        </svg>
+    {% when 'shape_6' %}
+        <svg class="marker-svg marker-svg-syle-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.84 21.07" fill="none" preserveAspectRatio="none">
+          <path class="cls-1" d="M.51,8.31C5.44,7.01,38.25-.62,75.7,2.94c0,0,45.95,4.74-10.73,15.39-20.04,3.77-18.53-7.76,28.18-14.01,0,0,21.75-5.5,202.57,4.84" stroke="currentColor" stroke-width="4px"/>
+        </svg>
+        
+{% endcase %}
+
+
+
+              {% endif %}
+           </span>
+           {%- endcapture -%}
+           {% if section.settings.heading != blank or section.settings.description != blank %}
+           <{{ section.settings.seo_heading }} class="{{ section.settings.heading_size }} section-heading">
+           {{ section.settings.heading | replace:"[", highlightPrefix | replace:"]",highlightSuffix}}
+           </{{ section.settings.seo_heading }}>
+          {% endif %}
+           {% if section.settings.description != blank %}
+           <p class="section-description">{{ section.settings.description }}</p>
+           {% endif %}
+        </div>
+        {% endif %}
+        <div class="products-collage-wrapper">
+           <div class="products-collage-items desktop-view{% if section.settings.product_list != blank  and section.settings.product_list.count <= 2 %} block-1{% endif %}">
+              {{ oddProducts }}
+           </div>
+           <div class="products-collage-items-main">
+              <div class="products-collage-item">
+                 <div class="products-collage-image-wrapper">
+                    <div class="media" style="--imageRatio:{% if section.settings.main_image != blank %}{{ 1 | divided_by : section.settings.main_image.aspect_ratio | times: 100 }}{% else %}100{% endif %}%" >
+                      {% if section.settings.main_image != blank%}
+                       {%- if section.settings.main_image != blank -%}<img class="{{ '' }}" src="{{ section.settings.main_image | image_url: width: 600 }}" srcset="{{ section.settings.main_image | image_url: width: 300 }} 300w, {{ section.settings.main_image | image_url: width: 600 }} 600w, {{ section.settings.main_image | image_url: width: 900 }} 900w, {{ section.settings.main_image | image_url: width: 1200 }} 1200w, {{ section.settings.main_image | image_url: width: 1500 }} 1500w, {{ section.settings.main_image | image_url: width: 2000 }} 2000w" sizes="(max-width: 600px) 300px, (max-width: 900px) 600px, (max-width: 1200px) 900px, (max-width: 1500px) 1200px, 100vw" width="{{ section.settings.main_image.width }}" height="{{ section.settings.main_image.height }}" alt="{{ section.settings.main_image.alt | escape }}" loading="lazy" style="object-position: {{ section.settings.main_image.presentation.focal_point | default: 'center' }}">{%- endif -%}
+                       {% else %}
+                       {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+                    </div>
+                 </div>
+              </div>
+              {% if section.settings.btn_link != blank and section.settings.btn_text != blank %}
+                <div class="products-collage-button text-{{ section.settings.button_alignment }}">
+                   <a href="{{ section.settings.btn_link }}" class="{% if section.settings.button_as_link %}hyperlink {% else %} button {{ section.settings.button_size }}-btn{% if false %} button-shadow{% endif %}{% endif %} " tabindex="-1" aria-label="{{ section.settings.btn_text }} " title="{{ section.settings.btn_text }}">{{section.settings.btn_text}}</a>
+                </div> 
+                {% endif %}
+           </div>
+           <div class="products-collage-items desktop-view {% if section.settings.product_list != blank  and section.settings.product_list.count <= 2 %} block-1{% endif %}">
+              {{ evenProducts }}
+           </div>
+           <div class="products-collage-items mobile-view">
+            {{ oddProducts }}
+            {{ evenProducts }}
+         </div>
+        </div>
+       {%- comment -%}v3 snippets/product-collage-social-icons.liquid, inlined{%- endcomment -%}
+<div class="product-social-overlay {% if section.settings.hide_mob_icons %}hide-icons-on-mobile{% endif %}">
+    <ul class="product-social-overlay-inner">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'social_icons' %}
+            <li id="overlay-list-{{ block.id }}" class="product-social-overlay-list" {{ block.shopify_attributes }}>
+              <a {% if block.settings.social_link != blank %}href="{{ block.settings.social_link }}"{% endif %}>
+                {% if block.settings.icons_list == 'facebook' %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                        <path d="M16.7819 0.579102C7.77431 0.579102 0.472656 7.88076 0.472656 16.8884C0.472656 25.896 7.77431 33.1976 16.7819 33.1976C25.7895 33.1976 33.0912 25.896 33.0912 16.8884C33.0912 7.88076 25.7895 0.579102 16.7819 0.579102Z" fill="url(#paint0_linear_218_270)"/>
+                        <path d="M18.9882 21.2112H23.2091L23.872 16.9235H18.9882V14.5798C18.9882 12.7988 19.5705 11.2193 21.2365 11.2193H23.9136V7.47795C23.4431 7.41434 22.4482 7.27571 20.5686 7.27571C16.643 7.27571 14.3417 9.34862 14.3417 14.0718V16.9243H10.306V21.212H14.3409V32.9971C15.1401 33.1161 15.9498 33.1977 16.7808 33.1977C17.5318 33.1977 18.2649 33.1292 18.9882 33.0313V21.2112Z" fill="white"/>
+                        <defs>
+                        <linearGradient id="paint0_linear_218_270" x1="5.35973" y1="5.46618" x2="30.3309" y2="30.4373" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#2AA4F4"/>
+                        <stop offset="1" stop-color="#007AD9"/>
+                        </linearGradient>
+                        </defs>
+                      </svg>
+                {% elsif block.settings.icons_list == 'twitter' %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="21" viewBox="0 0 26 21" fill="none">
+                    <path d="M25.5595 2.62015C24.6318 3.03108 23.6339 3.30527 22.5813 3.435C23.6514 2.79967 24.4747 1.78637 24.8611 0.589341C23.8597 1.17628 22.7503 1.60755 21.5701 1.83476C20.6276 0.835479 19.2833 0.215576 17.7939 0.215576C14.9328 0.215576 12.6138 2.51426 12.6138 5.34871C12.6138 5.74982 12.6608 6.14041 12.7491 6.51979C8.44486 6.3038 4.62727 4.25757 2.07333 1.15244C1.62453 1.91119 1.37208 2.79967 1.37208 3.73724C1.37208 5.51911 2.28441 7.0878 3.67568 8.01204C2.82647 7.9861 2.02705 7.74978 1.3272 7.3711C1.3272 7.38653 1.3272 7.40967 1.3272 7.43141C1.3272 9.92154 3.11328 11.9951 5.48069 12.4671C5.04802 12.5856 4.59081 12.6515 4.11957 12.6515C3.78508 12.6515 3.459 12.6136 3.14344 12.5568C3.80261 14.5918 5.71491 16.0792 7.98064 16.1234C6.20788 17.4978 3.97511 18.3211 1.5474 18.3211C1.12805 18.3211 0.717821 18.2972 0.3125 18.2481C2.60628 19.7004 5.32992 20.5517 8.25342 20.5517C17.7799 20.5517 22.9915 12.7286 22.9915 5.94196C22.9915 5.71967 22.9845 5.49807 22.974 5.27928C23.9908 4.56121 24.8674 3.65519 25.5595 2.62015Z" fill="#03A9F4"/>
+                  </svg>
+                {% elsif block.settings.icons_list == 'instagram' %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="29" viewBox="0 0 30 29" fill="none">
+                    <path d="M23.3868 28.9446H7.12262C3.68213 28.9446 0.867188 26.1297 0.867188 22.6892V6.42505C0.867188 2.98456 3.68213 0.169617 7.12262 0.169617H23.3868C26.8272 0.169617 29.6422 2.98456 29.6422 6.42505V22.6892C29.6422 26.1297 26.8272 28.9446 23.3868 28.9446Z" fill="url(#paint0_radial_218_284)"/>
+                    <path d="M15.2553 5.79948C18.1328 5.79948 18.4456 5.79948 19.5716 5.86204C20.635 5.92459 21.198 6.11225 21.5733 6.23736C22.0738 6.42503 22.4491 6.67524 22.8244 7.05057C23.1997 7.42589 23.4499 7.80122 23.6376 8.30165C23.7627 8.67698 23.9504 9.23997 24.0129 10.3034C24.0129 11.3668 24.0129 11.6796 24.0129 14.5571C24.0129 17.4346 24.0129 17.7474 23.9504 18.8733C23.8878 19.9368 23.7002 20.4998 23.5751 20.8751C23.3874 21.3755 23.1372 21.7508 22.7619 22.1262C22.3865 22.5015 22.0112 22.7517 21.5108 22.9394C21.1354 23.0645 20.5724 23.2521 19.509 23.3147C18.4456 23.3147 18.1328 23.3147 15.2553 23.3147C12.3778 23.3147 12.0651 23.3147 10.9391 23.2521C9.87566 23.1896 9.31267 23.0019 8.93734 22.8768C8.43691 22.6892 8.06158 22.4389 7.68626 22.0636C7.31093 21.6883 7.06071 21.313 6.87305 20.8125C6.74794 20.4372 6.56028 19.8742 6.49772 18.8108C6.49772 17.7474 6.49772 17.4346 6.49772 14.5571C6.49772 11.6796 6.49772 11.3668 6.56028 10.2408C6.62283 9.17742 6.8105 8.61443 6.9356 8.2391C7.12327 7.73867 7.37348 7.36334 7.74881 6.98801C8.12414 6.61269 8.49946 6.36247 8.9999 6.17481C9.37522 6.0497 9.93821 5.86204 11.0016 5.79948C12.0651 5.79948 12.3778 5.79948 15.2553 5.79948ZM15.2553 3.92285C12.3778 3.92285 12.0025 3.92285 10.8765 3.98541C9.75055 4.04796 8.9999 4.23562 8.3118 4.48584C7.6237 4.73606 6.99816 5.11138 6.43517 5.73693C5.87218 6.36247 5.49685 6.92546 5.18408 7.61356C4.93387 8.30165 4.7462 9.05231 4.68365 10.1783C4.62109 11.3043 4.62109 11.6796 4.62109 14.5571C4.62109 17.4346 4.62109 17.8099 4.68365 18.9359C4.7462 20.0619 4.93387 20.8125 5.18408 21.5006C5.4343 22.1887 5.80963 22.8143 6.43517 23.3772C6.99816 23.9402 7.6237 24.3156 8.3118 24.6283C8.9999 24.8786 9.75055 25.0662 10.8765 25.1288C12.0025 25.1913 12.3778 25.1913 15.2553 25.1913C18.1328 25.1913 18.5082 25.1913 19.6341 25.1288C20.7601 25.0662 21.5108 24.8786 22.1989 24.6283C22.887 24.3781 23.5125 24.0028 24.0755 23.3772C24.6385 22.8143 25.0138 22.1887 25.3266 21.5006C25.5768 20.8125 25.7645 20.0619 25.827 18.9359C25.8896 17.8099 25.8896 17.4346 25.8896 14.5571C25.8896 11.6796 25.8896 11.3043 25.827 10.1783C25.7645 9.05231 25.5768 8.30165 25.3266 7.61356C25.0764 6.92546 24.701 6.29992 24.0755 5.73693C23.4499 5.17394 22.887 4.79861 22.1989 4.48584C21.5108 4.23562 20.7601 4.04796 19.6341 3.98541C18.5082 3.92285 18.1328 3.92285 15.2553 3.92285Z" fill="white"/>
+                    <path d="M15.2549 8.92719C12.1272 8.92719 9.625 11.4294 9.625 14.5571C9.625 17.6848 12.1272 20.187 15.2549 20.187C18.3826 20.187 20.8848 17.6848 20.8848 14.5571C20.8848 11.4294 18.3826 8.92719 15.2549 8.92719ZM15.2549 18.3103C13.1906 18.3103 11.5016 16.6214 11.5016 14.5571C11.5016 12.4928 13.1906 10.8038 15.2549 10.8038C17.3192 10.8038 19.0082 12.4928 19.0082 14.5571C19.0082 16.6214 17.3192 18.3103 15.2549 18.3103Z" fill="white"/>
+                    <path d="M20.88 10.1784C21.5709 10.1784 22.1311 9.61831 22.1311 8.92736C22.1311 8.2364 21.5709 7.67627 20.88 7.67627C20.189 7.67627 19.6289 8.2364 19.6289 8.92736C19.6289 9.61831 20.189 10.1784 20.88 10.1784Z" fill="white"/>
+                    <defs>
+                        <radialGradient id="paint0_radial_218_284" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(6.81543 34.7594) rotate(-49.945) scale(43.5663 28.7792)">
+                        <stop offset="0.073" stop-color="#EACC7B"/>
+                        <stop offset="0.184" stop-color="#ECAA59"/>
+                        <stop offset="0.307" stop-color="#EF802E"/>
+                        <stop offset="0.358" stop-color="#EF6D3A"/>
+                        <stop offset="0.46" stop-color="#F04B50"/>
+                        <stop offset="0.516" stop-color="#F03E58"/>
+                        <stop offset="0.689" stop-color="#DB359E"/>
+                        <stop offset="0.724" stop-color="#CE37A4"/>
+                        <stop offset="0.789" stop-color="#AC3CB4"/>
+                        <stop offset="0.877" stop-color="#7544CF"/>
+                        <stop offset="0.98" stop-color="#2B4FF2"/>
+                        </radialGradient>
+                    </defs>
+                  </svg>
+                {% elsif block.settings.icons_list == 'pinterest' %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+                    <g clip-path="url(#clip0_228_369)">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.368 0.383667C6.6366 0.383667 0.367188 6.65143 0.367188 14.3845C0.367188 20.1155 3.81472 25.0415 8.74892 27.2065C8.70941 26.2302 8.74233 25.0547 8.99094 23.9911C9.26094 22.8551 10.7921 16.3634 10.7921 16.3634C10.7921 16.3634 10.3459 15.4695 10.3459 14.1474C10.3459 12.073 11.5494 10.5237 13.046 10.5237C14.3186 10.5237 14.9344 11.4803 14.9344 12.6262C14.9344 13.9054 14.1178 15.8201 13.6979 17.5933C13.3473 19.08 14.4421 20.2901 15.9074 20.2901C18.5597 20.2901 20.346 16.8837 20.346 12.8468C20.346 9.77957 18.2798 7.48286 14.5211 7.48286C10.2751 7.48286 7.62937 10.6489 7.62937 14.1853C7.62937 15.4069 7.98829 16.2663 8.55135 16.9314C8.81148 17.2393 8.84606 17.3612 8.75221 17.7135C8.68636 17.9687 8.53159 18.591 8.46738 18.8363C8.37354 19.1903 8.08707 19.3187 7.76768 19.187C5.81013 18.3885 4.89968 16.2466 4.89968 13.8379C4.89968 9.86189 8.25336 5.09067 14.9047 5.09067C20.2505 5.09067 23.7688 8.96132 23.7688 13.1118C23.7688 18.6042 20.7165 22.7069 16.2136 22.7069C14.7039 22.7069 13.2814 21.8903 12.7941 20.9634C12.7941 20.9634 11.9808 24.1887 11.8095 24.811C11.5132 25.8894 10.932 26.9694 10.4002 27.8091C11.6597 28.1812 12.99 28.3837 14.368 28.3837C22.0994 28.3837 28.3672 22.1159 28.3672 14.3845C28.3672 6.65143 22.0994 0.383667 14.368 0.383667Z" fill="#CC2127"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_228_369">
+                        <rect width="28" height="28" fill="white" transform="translate(0.367188 0.383667)"/>
+                        </clipPath>
+                    </defs>
+                  </svg>
+                {% elsif block.settings.icons_list == 'snapchat' %}
+                <svg width="18" height="17" viewBox="0 0 18 17" fill="none" >
+                    <path d="M17.0996 12.8406C17.2324 12.575 17.0664 12.3425 16.8672 12.3093C14.543 11.9441 13.5137 9.55347 13.4473 9.45386C13.3145 9.18823 13.3145 8.98901 13.3809 8.823C13.5137 8.52417 14.0117 8.35815 14.3105 8.25854C14.4102 8.22534 14.5098 8.19214 14.5762 8.15894C15.1406 7.92651 15.4395 7.66089 15.4395 7.32886C15.4062 7.09644 15.2402 6.86401 14.9082 6.7312C14.709 6.66479 14.4434 6.66479 14.2441 6.7312C13.9453 6.86401 13.7129 6.93042 13.4805 6.96362C13.3477 6.93042 13.248 6.89722 13.2148 6.86401C13.2812 5.6687 13.4473 3.97534 13.0156 3.01245C12.2188 1.21948 10.5586 0.322998 8.79883 0.322998C8.76562 0.322998 8.5 0.322998 8.4668 0.322998C7.76953 0.322998 5.41211 0.522217 4.2832 3.04565C3.85156 3.97534 4.01758 5.7019 4.08398 6.86401C4.01758 6.89722 3.91797 6.96362 3.75195 6.96362C3.51953 6.96362 3.28711 6.89722 2.98828 6.7312C2.58984 6.56519 1.95898 6.83081 1.89258 7.26245C1.82617 7.49487 1.95898 7.86011 2.72266 8.15894C3.02148 8.29175 3.75195 8.42456 3.91797 8.823C3.98438 8.98901 3.98438 9.18823 3.85156 9.45386C3.78516 9.55347 2.75586 11.9441 0.431641 12.3093C0.265625 12.3425 0.132812 12.5085 0.132812 12.6746H0.166016C0.199219 13.3718 1.72656 13.6375 2.42383 13.7703C2.49023 13.8367 2.55664 14.2351 2.65625 14.5671C2.68945 14.7 2.78906 14.866 3.05469 14.866C3.32031 14.866 3.71875 14.7 4.34961 14.7C5.21289 14.7 5.51172 14.8992 6.20898 15.3972C6.70703 15.7292 7.57031 16.3601 8.63281 16.2937C9.66211 16.3269 10.3594 15.8953 11.0898 15.3972C11.7871 14.8992 12.0859 14.7 12.9492 14.7C13.6133 14.7 13.9453 14.8328 14.2441 14.8328C14.4766 14.8328 14.6094 14.7332 14.6426 14.5339C14.7422 14.2351 14.8086 13.8367 14.875 13.7371C16.2031 13.5378 16.9336 13.239 17.0996 12.8406Z" fill="currentColor"/>
+                    </svg>
+                {% elsif block.settings.icons_list == 'linkedin' %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                    <path d="M16.7528 0.828369C12.3532 0.828369 8.13376 2.5761 5.02278 5.68708C1.91179 8.79807 0.164063 13.0175 0.164062 17.4171C0.164063 21.8167 1.91179 26.0361 5.02278 29.147C8.13376 32.258 12.3532 34.0057 16.7528 34.0057C21.1523 34.0057 25.3717 32.258 28.4827 29.147C31.5937 26.0361 33.3414 21.8167 33.3414 17.4171C33.3414 13.0175 31.5937 8.79807 28.4827 5.68708C25.3717 2.5761 21.1523 0.828369 16.7528 0.828369Z" fill="#0288D1"/>
+                    <path d="M8.46094 13.2698H11.7787V25.7113H8.46094V13.2698ZM10.1099 11.611H10.0916C9.10126 11.611 8.46094 10.8728 8.46094 9.95125C8.46094 9.00984 9.12117 8.29321 10.1289 8.29321C11.1384 8.29321 11.7596 9.00984 11.7787 9.95125C11.7787 10.8728 11.1384 11.611 10.1099 11.611ZM25.8791 17.8317C25.8791 15.3119 23.837 13.2698 21.3172 13.2698C19.7728 13.2698 18.41 14.0395 17.5847 15.214V13.2698H14.267V25.7113H17.5847V19.0759C17.5847 17.7015 18.6986 16.5876 20.073 16.5876C21.4474 16.5876 22.5613 17.7015 22.5613 19.0759V25.7113H25.8791C25.8791 25.7113 25.8791 18.1809 25.8791 17.8317Z" fill="white"/>
+                  </svg>
+                {% elsif block.settings.icons_list == 'tiktok' %}
+                <svg width="26" height="30" viewBox="0 0 26 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.4341 0.423902C15.0061 0.399902 16.5661 0.411902 18.1261 0.399902C18.2221 2.2359 18.8821 4.1079 20.2261 5.4039C21.5701 6.7359 23.4661 7.3479 25.3141 7.5519V12.3879C23.5861 12.3279 21.8461 11.9679 20.2741 11.2239C19.5901 10.9119 18.9541 10.5159 18.3301 10.1079C18.3181 13.6119 18.3421 17.1159 18.3061 20.6079C18.2101 22.2879 17.6581 23.9559 16.6861 25.3359C15.1141 27.6399 12.3901 29.1399 9.59405 29.1879C7.87805 29.2839 6.16205 28.8159 4.69805 27.9519C2.27405 26.5239 0.570051 23.9079 0.318051 21.0999C0.294051 20.4999 0.282051 19.8999 0.306051 19.3119C0.522051 17.0319 1.65005 14.8479 3.40205 13.3599C5.39405 11.6319 8.17805 10.8039 10.7821 11.2959C10.8061 13.0719 10.7341 14.8479 10.7341 16.6239C9.54605 16.2399 8.15405 16.3479 7.11005 17.0679C6.35405 17.5599 5.77805 18.3159 5.47805 19.1679C5.22605 19.7799 5.29805 20.4519 5.31005 21.0999C5.59805 23.0679 7.49405 24.7239 9.51005 24.5439C10.8541 24.5319 12.1381 23.7519 12.8341 22.6119C13.0621 22.2159 13.3141 21.8079 13.3261 21.3399C13.4461 19.1919 13.3981 17.0559 13.4101 14.9079C13.4221 10.0719 13.3981 5.2479 13.4341 0.423902V0.423902Z" fill="currentColor"></path>
+                </svg>
+                {% elsif block.settings.icons_list == 'youtube' %}
+                <svg width="29" height="21" viewBox="0 0 29 21" fill="none">
+                    <path d="M28.3953 3.24598C28.2284 2.64809 27.9102 2.10336 27.4712 1.66444C27.0323 1.22551 26.4876 0.907238 25.8897 0.740377C23.6457 0.139177 14.6145 0.139177 14.6145 0.139177C14.6145 0.139177 5.60609 0.127177 3.33929 0.740377C2.74141 0.907238 2.19667 1.22551 1.75775 1.66444C1.31883 2.10336 1.00055 2.64809 0.83369 3.24598C0.408315 5.54339 0.198603 7.87553 0.20729 10.212C0.200245 12.5396 0.409951 14.8628 0.83369 17.1516C1.00055 17.7495 1.31883 18.2942 1.75775 18.7331C2.19667 19.172 2.74141 19.4903 3.33929 19.6572C5.58089 20.2596 14.6145 20.2596 14.6145 20.2596C14.6145 20.2596 23.6217 20.2596 25.8897 19.6572C26.4876 19.4903 27.0323 19.172 27.4712 18.7331C27.9102 18.2942 28.2284 17.7495 28.3953 17.1516C28.8102 14.862 29.011 12.5388 28.9953 10.212C29.0127 7.87636 28.8118 5.54422 28.3953 3.24598ZM11.7321 14.5212V5.88958L19.2489 10.212L11.7321 14.5212Z" fill="currentColor"></path>
+                </svg>
+                {% elsif block.settings.icons_list == 'google' %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M23.1022 11.8265C23.1022 11.0175 23.0252 10.2214 22.8968 9.46381H12.0078V13.9452H18.2227C18.0924 14.6513 17.8205 15.3236 17.4232 15.9217C17.026 16.5198 16.5117 17.0312 15.9114 17.4251V20.3271H19.6609C20.7965 19.2319 21.6895 17.9105 22.2823 16.4484C22.8751 14.9864 23.1544 13.4162 23.1022 11.8393V11.8265Z" fill="#4285F4"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0115 23.1263C14.8261 23.203 17.5637 22.2016 19.6646 20.327L15.9279 17.425C15.0356 18.0052 14.0219 18.3727 12.9651 18.499C11.9082 18.6252 10.8365 18.507 9.83263 18.1533C8.82874 17.7997 7.91954 17.2201 7.17521 16.4593C6.43088 15.6984 5.87132 14.7768 5.53973 13.7654H1.6875V16.7573C2.64904 18.6714 4.12363 20.2806 5.94667 21.4052C7.76971 22.5299 9.86944 23.1258 12.0115 23.1263Z" fill="#34A853"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.53513 13.7654C5.06027 12.3401 5.06027 10.7992 5.53513 9.37386V6.38196H1.6829C0.874256 7.9917 0.453125 9.76819 0.453125 11.5696C0.453125 13.3711 0.874256 15.1476 1.6829 16.7573L5.53513 13.7654Z" fill="#FBBC05"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0115 4.60994C13.7065 4.60994 15.2217 5.18777 16.4287 6.34344L19.7416 3.03052C18.4235 1.84 16.8487 0.969335 15.1394 0.486141C13.4302 0.00294685 11.6327 -0.0797713 9.8863 0.24441C8.13994 0.568592 6.49181 1.29095 5.0699 2.35538C3.64798 3.41981 2.49055 4.79768 1.6875 6.38196L5.53973 9.37386C5.98791 8.00676 6.85323 6.81447 8.01406 5.96457C9.17488 5.11468 10.5729 4.64992 12.0115 4.63562V4.60994Z" fill="#EA4335"/>
+                  </svg>
+                {% endif %} 
+                  </a>
+                  </li>
+        {% endcase %}
+      {% endfor %}
+    </ul>
+  </div>  
+     </div>
+  </div>
+<style>
+
+    #shopify-section-{{ section.id }}{
+         --padding-top: {{ section.settings.top_space_desktop}}px;
+         --padding-bottom: {{ section.settings.bottom_space_desktop}}px;
+       } 
+       {% for block in section.blocks %}
+          #overlay-list-{{ block.id }}{
+            --verticalPosition: {{ block.settings.vertical_pos }}%;
+            --horizontalposition: {{ block.settings.horizontal_pos }}%;
+          }
+        {% endfor %}
+       @media only screen and (max-width:767px) {
+         #shopify-section-{{ section.id }}{
+           --padding-top: {{ section.settings.top_space_mobile }}px !important;
+           --padding-bottom: {{ section.settings.bottom_space_mobile }}px !important;
+         }
+         {% if section.settings.hide_mob_icons == false %}
+         {% for block in section.blocks %}
+          #overlay-list-{{ block.id }}{
+            --verticalPosition: {{ block.settings.mob_vertical_pos }}%;
+            --horizontalposition: {{ block.settings.mob_horizontal_pos }}%;
+            /*animation: blinking 1s infinite;*/
+          }
+        {% endfor %}
+      {% endif %}
+       }
+       {% if section.settings.section_visibility == 'large' %}
+        @media (max-width: 767px) {
+          #shopify-section-{{ section.id }}{
+            display: none !important;
+          }
+        }
+      {% elsif section.settings.section_visibility == 'small' %}
+        @media (min-width: 768px) {
+          #shopify-section-{{ section.id }}{
+            display: none !important;
+          }
+        }
+    {% endif %}
+</style>
+
+{% schema %}
+{
+  "name": "Products collage",
+  "tag": "section",
+  "class": "products-collage-section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "Section visibility",
+      "default": "always",
+      "options": [
+        {
+          "label": "Always",
+          "value": "always"
+        },
+        {
+          "label": "Small devices only",
+          "value": "small"
+        },
+        {
+          "label": "Large devices only",
+          "value": "large"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_mob_icons",
+      "default": false,
+      "label": "Hide social icons on mobile "
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Choose products",
+      "limit": 6
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Wrap your text between [ ] to add the markers. These [markers] will highlight the text. ",
+      "default": "Products collage"
+    },
+    {
+      "type": "select",
+      "id": "highlight_style",
+      "label": "Marker text highlight style",
+      "default": "underline",
+      "options": [
+        {
+          "value": "underline",
+          "label": "Shape 1"
+        },
+        {
+          "value": "shape_2",
+          "label": "Shape 2"
+        },
+        {
+          "value": "shape_3",
+          "label": "Shape 3"
+        },
+        {
+          "value": "shape_4",
+          "label": "Shape 4"
+        },
+        {
+          "value": "shape_5",
+          "label": "Shape 5"
+        },
+        {
+          "value": "shape_6",
+          "label": "Shape 6"
+        },
+        {
+          "value": "background",
+          "label": "Background"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "bg__color",
+      "label": "Highlight background",
+      "default": "gradient",
+      "options": [
+        {
+          "value": "gradient",
+          "label": "Gradient"
+        },
+        {
+          "value": "solid",
+          "label": "Solid"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h3",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "seo_heading",
+      "label": "Heading tag",
+      "info": "Specify heading code types for SEO and search engines for crawling purposes.",
+      "default": "h2",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "default": "text-center",
+      "options": [
+        {
+          "label": "Left",
+          "value": "text-left"
+        },
+        {
+          "label": "Center",
+          "value": "text-center"
+        },
+        {
+          "label": "Right",
+          "value": "text-right"
+        }
+      ]
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "Add short description for this section"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Text",
+      "default": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_as_link",
+      "label": "Show button as link",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "button_size",
+      "label": "Size",
+      "default": "large",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "extra-large",
+          "label": "Extra large"
+        }
+      ]
+    },
+    {
+      "type": "text_alignment",
+      "id": "button_alignment",
+      "label": "Alignment",
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Media "
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "default": "text-left",
+      "options": [
+        {
+          "label": "Left",
+          "value": "text-left"
+        },
+        {
+          "label": "Center",
+          "value": "text-center"
+        },
+        {
+          "label": "Right",
+          "value": "text-right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "primary",
+      "label": "Color scheme"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gradient",
+      "label": "Enable gradient",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "Top spacing (desktop)",
+      "default": 40,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "Bottom spacing (desktop)",
+      "default": 40,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "Top spacing (mobile)",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "Bottom spacing (mobile)",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "social_icons",
+      "name": "Social icons",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icons_list",
+          "label": "Choose icons",
+          "default": "facebook",
+          "options": [
+            {
+              "label": "Facebook",
+              "value": "facebook"
+            },
+            {
+              "label": "Twitter",
+              "value": "twitter"
+            },
+            {
+              "label": "Instagram",
+              "value": "instagram"
+            },
+            {
+              "label": "Pinterest",
+              "value": "pinterest"
+            },
+            {
+              "label": "Snapchat",
+              "value": "snapchat"
+            },
+            {
+              "label": "Linkedin",
+              "value": "linkedin"
+            },
+            {
+              "label": "Tiktok",
+              "value": "tiktok"
+            },
+            {
+              "label": "Youtube",
+              "value": "youtube"
+            },
+            {
+              "label": "Google",
+              "value": "google"
+            }
+          ]
+        },
+        {
+          "type": "url",
+          "id": "social_link",
+          "label": "Link"
+        },
+        {
+          "type": "header",
+          "content": "Desktop"
+        },
+        {
+          "type": "range",
+          "id": "horizontal_pos",
+          "min": 0,
+          "max": 90,
+          "step": 1,
+          "unit": "%",
+          "label": "Horizontal position",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "vertical_pos",
+          "min": 0,
+          "max": 90,
+          "step": 1,
+          "unit": "%",
+          "label": "Vertical position",
+          "default": 30
+        },
+        {
+          "type": "header",
+          "content": "Mobile"
+        },
+        {
+          "type": "range",
+          "id": "mob_horizontal_pos",
+          "min": 0,
+          "max": 90,
+          "step": 1,
+          "unit": "%",
+          "label": "Horizontal position",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "mob_vertical_pos",
+          "min": 0,
+          "max": 90,
+          "step": 1,
+          "unit": "%",
+          "label": "Vertical position",
+          "default": 30
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Products collage"
+    }
+  ]
+}
+{% endschema %}
