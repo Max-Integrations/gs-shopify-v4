@@ -261,6 +261,39 @@
   font: inherit;
 }
 
+/* accessiBe restyles any .acsb-trigger once it initialises (hides it,
+   fixes it to the viewport). v3 overrode that in custom-theme-styles.css;
+   this is the same override for our header button. */
+.gs-header__icons .gs-header__icon.acsb-trigger,
+.gs-header__icons .gs-header__icon.acsb-trigger.acsb-ready {
+  display: inline-flex !important;
+  position: relative !important;
+  inset: auto !important;
+  width: 36px !important;
+  height: 36px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  z-index: auto !important;
+  color: var(--gs-header-icon, #ffffff) !important;
+}
+
+.gs-header__icons .gs-header__icon--desktop.acsb-trigger {
+  display: none !important;
+}
+
+@media screen and (min-width: 990px) {
+  .gs-header__icons .gs-header__icon--desktop.acsb-trigger {
+    display: inline-flex !important;
+  }
+}
+
 /* App blocks (Swym's wishlist launcher) inherit the icon colour and size. */
 .gs-header__icon--app > * {
   color: inherit;

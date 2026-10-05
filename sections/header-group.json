@@ -27,11 +27,7 @@
           }
         }
       },
-      "block_order": [
-        "announcement_Fki3r7",
-        "announcement_gj83d9",
-        "announcement_6iBFBA"
-      ],
+      "block_order": ["announcement_Fki3r7", "announcement_gj83d9", "announcement_6iBFBA"],
       "settings": {
         "auto_rotate": true,
         "change_slides_speed": 7,
@@ -108,28 +104,34 @@
             "nav_label": ""
           }
         },
-        "util_rewards": {
+        "util_accessibility": {
           "type": "utility_link",
           "settings": {
-            "icon": "star",
-            "label": "Rewards",
-            "link": "shopify://pages/club-grunt-style"
+            "icon": "accessibility",
+            "behaviour": "accessibility",
+            "label": "Accessibility",
+            "link": "",
+            "show_on_mobile": true
           }
         },
         "util_help": {
           "type": "utility_link",
           "settings": {
-            "icon": "help",
-            "label": "Help",
-            "link": "shopify://pages/contact-us"
+            "icon": "headset",
+            "behaviour": "link",
+            "label": "Customer service",
+            "link": "shopify://pages/contact-grunt-style",
+            "show_on_mobile": false
           }
         },
         "util_stores": {
           "type": "utility_link",
           "settings": {
             "icon": "pin",
+            "behaviour": "link",
             "label": "Retail stores",
-            "link": "shopify://pages/retail-stores"
+            "link": "shopify://pages/grunt-style-retail-stores",
+            "show_on_mobile": false
           }
         }
       },
@@ -141,7 +143,7 @@
         "nav_menu_img_last_chance",
         "nav_menu_img_club",
         "nav_menu_img_tcwBha",
-        "util_rewards",
+        "util_accessibility",
         "util_help",
         "util_stores"
       ],
@@ -170,8 +172,5 @@
       }
     }
   },
-  "order": [
-    "announcement",
-    "header"
-  ]
+  "order": ["announcement", "header"]
 }
