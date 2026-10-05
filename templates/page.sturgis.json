@@ -1,0 +1,247 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      },
+      "disabled": true
+    },
+    "full_width_image_with_text_v2_x3FEaz": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "right",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/CPB_D_1440x300_Sturgis_2026.jpg",
+        "background_image_mobile": "shopify://shop_images/CPB_M_980x600_Sturgis_2026.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "name": "Full Width Image/Text_v2"
+    },
+    "full_width_image_with_text_TnNJLr": {
+      "type": "full-width-image-with-text",
+      "settings": {
+        "full_width_image_desktop": "shopify://shop_images/CPB_D_1440x300_Club_store_-_hero_image_v2_-min.jpg",
+        "full_width_image_mobile": "shopify://shop_images/CPB_M_980x600_Club_2cb1cf55-8bab-4667-b048-814200d84a97.jpg",
+        "full_width_image_link": "",
+        "full_width_image_overlay": 60,
+        "full_width_header_text": "<h1><strong>CLUB STURGIS</strong></h1>",
+        "full_width_header_font": "Roboto, sans-serif",
+        "full_width_header_text_color": "#ffffff",
+        "full_width_header_text_size_desktop": 64,
+        "full_width_header_text_size_mobile": 32,
+        "full_width_header_text_alignment": "center",
+        "full_width_subcopy": "<p><strong>Backed By Freedom, Built For Patriots</strong></p>",
+        "full_width_subcopy_text_font": "Roboto, sans-serif",
+        "full_width_subcopy_text_color": "#ffffff",
+        "full_width_subcopy_desktop_text_size": 22,
+        "full_width_subcopy_mobile_text_size": 18,
+        "full_width_subcopy_text_alignment": "center",
+        "full_width_cta_text": "",
+        "full_width_cta_text_font": "Roboto, sans-serif",
+        "full_width_cta_background_color": "#ffffff",
+        "full_width_cta_border_style": "none",
+        "full_width_cta_text_color": "#000000",
+        "full_width_cta_text_size": 18,
+        "full_width_cta_alignment": "left",
+        "full_width_link_new_window": false,
+        "full_width_terms": "",
+        "full_width_terms_text_font": "Roboto, sans-serif",
+        "full_width_terms_text_color": "#ffffff",
+        "full_width_terms_desktop_text_size": 22,
+        "full_width_terms_mobile_text_size": 18,
+        "full_width_terms_text_alignment": "left"
+      },
+      "disabled": true
+    },
+    "split_banner_YhKTpx": {
+      "type": "image-with-text",
+      "settings": {
+        "section_visibility": "always",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "show_chevrons": false,
+        "full_width": false,
+        "content_background": "",
+        "padding_top": 4,
+        "padding_bottom": 4,
+        "image": "shopify://shop_images/Blog_Post_1250x1250_Sturgis_2026.jpg"
+      },
+      "blocks": {
+        "b1": {
+          "type": "block--heading",
+          "settings": {
+            "text": "",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "b2": {
+          "type": "block--custom-liquid",
+          "settings": {
+            "custom_liquid": "<powr-form-builder u=\"ab6a8a9a_1781117482\"></powr-form-builder><script src=\"https://view.powr.io/assets/loader.js\"></script>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ],
+      "disabled": true,
+      "name": "t:sections.split-banner.presets.name"
+    },
+    "rich_text_rVpWPM": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_Uy7ABE": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>LEGAL BULL DETAILS</strong>",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_3hDMRH": {
+          "type": "block--text",
+          "settings": {
+            "text": "",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_Uy7ABE",
+        "text_3hDMRH"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.name"
+    },
+    "featured_collections_WaibJT": {
+      "type": "featured-collections",
+      "settings": {
+        "section_heading": "Featured Collection",
+        "heading_text_align": "center",
+        "collection_type": "tabs",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "lg",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 30,
+        "number_products_per_view_desktop": "5",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-4",
+        "heading_size_desktop": 29,
+        "heading_size_mobile": 42,
+        "navigation_title_size_desktop": 26,
+        "navigation_title_size_mobile": 23,
+        "cta_title_size_desktop": 26,
+        "cta_title_size_mobile": 23,
+        "section_spacing_top_desktop": 10,
+        "section_spacing_top_mobile": 10,
+        "section_spacing_bottom_desktop": 10,
+        "section_spacing_bottom_mobile": 10,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#ffffff",
+        "cta_background_color": "#ffffff",
+        "cta_background_color_hover": "#000000",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#ffffff"
+      },
+      "blocks": {
+        "collection_block_tLxVpz": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "",
+            "collection": "need-for-speed",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_tLxVpz"
+      ],
+      "name": "Featured Collections"
+    }
+  },
+  "order": [
+    "main-page",
+    "full_width_image_with_text_v2_x3FEaz",
+    "full_width_image_with_text_TnNJLr",
+    "split_banner_YhKTpx",
+    "rich_text_rVpWPM",
+    "featured_collections_WaibJT"
+  ]
+}

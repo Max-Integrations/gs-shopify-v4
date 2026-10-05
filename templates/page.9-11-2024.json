@@ -1,0 +1,841 @@
+{
+  "sections": {
+    "full_width_image_with_text_v2_yEMCag": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/HPC_D_-_Tall_1920x700_911.jpg",
+        "background_image_mobile": "shopify://shop_images/HPC_M_828x600_911.jpg",
+        "image_height_auto": false,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "name": "Full Width Image/Text_v2"
+    },
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      },
+      "disabled": true
+    },
+    "hero_banner_secondary_Hm4DLN": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/Home_Page_Carousel_1302x370-911.jpg",
+        "background_image_mobile": "shopify://shop_images/Home_Page_Carousel_Mobile_980x600-911.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "disabled": true
+    },
+    "rich_text_HLBrYx": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_gnteJM": {
+          "type": "block--heading",
+          "settings": {
+            "text": "NEVER FORGET",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_jBjWJD": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>September 11, 2001 changed America forever. </p><p>For a moment, differences took a back seat, neighbors became family, and a nation stood together.</p><p>For Grunt Style, 9/11 isn’t a hashtag. It isn’t content. It’s a promise: <strong>Never Forget</strong> means never stop telling the truth about what happened, what it cost, and who stood up when America was on her knees.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_gnteJM",
+        "text_jBjWJD"
+      ],
+      "disabled": true
+    },
+    "rich_text_gTFPV8": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_zLi4Rn": {
+          "type": "block--heading",
+          "settings": {
+            "text": "NEVER FORGET",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_DWrRx3": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Twenty-five years ago, America changed forever.<br/>For many of us, September 11 wasn't just a moment in history. It became a calling.<br/>It was a time when unity wasn't a slogan. It wasn't something we searched for. It was simply who we were.<br/>In the days that followed, thousands answered the call to serve. Some wore a uniform. Some ran toward danger. Others found countless ways to serve their communities. Every one of them carried the weight of that day.<br/>Grunt Style exists because of that generation.<br/>Before this was a brand, it was our life.<br/>Today, we remember the lives that were lost, honor those who answered the call, and stand with the families forever changed by that day. Twenty-five years later, our promise remains the same:<br/>To remember.<br/>To honor.<br/>To never forget.<br/><br/></p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_zLi4Rn",
+        "text_DWrRx3"
+      ]
+    },
+    "video_banner_qpYJjB": {
+      "type": "video-banner",
+      "settings": {
+        "section_visibility": "always",
+        "video_full_width": true,
+        "autoplay": false,
+        "video_height": "550px",
+        "mobile_video_height": "adapt_image",
+        "cover_image": "shopify://shop_images/9.11.png",
+        "video_url": "https://youtu.be/F0k7ZE0govY",
+        "heading": "",
+        "heading_size": "h1",
+        "seo_heading": "h2",
+        "description": "",
+        "play_btn_text": "Play now",
+        "content_width": "medium",
+        "content_position": "center",
+        "content_alignment": "flex-start_left",
+        "heading_marquee": false,
+        "direction": "rtl",
+        "scrolling_speed": 15,
+        "scrolling_speed_mobile": 20,
+        "desktop_heading_size": 20,
+        "mobile_heading_size": 20,
+        "color_scheme": "scheme-4",
+        "text": "#ffffff",
+        "button": "#000000",
+        "btn_shadow_color": "#ececec",
+        "button_text": "#ffffff",
+        "button_hover": "#000000",
+        "button_hover_text": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 6,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 5,
+        "bottom_space_mobile": 5
+      },
+      "name": "t:sections.video_banner.name"
+    },
+    "countdown_ULRGjt": {
+      "type": "countdown",
+      "settings": {
+        "section_visibility": "always",
+        "layout": "center",
+        "countdown_bg_image": "",
+        "bg__color": "solid",
+        "gradient_color": "linear-gradient(320deg, rgba(56, 78, 197, 0.56) 16%, rgba(203, 68, 194, 0.6) 52%, rgba(255, 201, 104, 0.95) 87%)",
+        "solid_color": "#ffffff",
+        "enable_innner_background": true,
+        "text_color": "#ab192d",
+        "highlight_text_color": "#ab192d",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 0
+      },
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "<strong>FROM ASHES, UNITY</strong>",
+            "size": "h3"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "The From Ashes T- Shirt honors the strength we found in each other when America faced its darkest day. We remember. We honor."
+          }
+        },
+        "timer": {
+          "type": "timer",
+          "settings": {
+            "end": "2026-09-15 23:59"
+          }
+        },
+        "products": {
+          "type": "products",
+          "settings": {
+            "product_list": [
+              "from-ashes-t-shirt-black",
+              "womens-from-ashes-slim-fit-t-shirt-black",
+              "from-ashes-full-zip-hoodie-black",
+              "from-ashes-sticker"
+            ],
+            "grid_image_size": "square",
+            "grid_image_fit": "cover"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "timer",
+        "products"
+      ],
+      "custom_css": [
+        "h2 {padding: 0.5em 0.5em; align-content: center; padding: 2px; letter-spacing: 2.5px; font-size: 18px; background: #ab192d; color: #fff;}",
+        "div.scheme-inverse.section-padding {background-color: #000000;}"
+      ],
+      "name": "t:sections.countdown.presets.name"
+    },
+    "text_scroller_v2_UeDtYP": {
+      "type": "text-scroller-v2",
+      "settings": {
+        "text_scroller_heading": "",
+        "header_text_color": "#ffffff",
+        "header_font_size": 38,
+        "header_font_weight": "600"
+      },
+      "blocks": {
+        "text_scroller_ryNFpc": {
+          "type": "text_scroller",
+          "settings": {
+            "title": "HONOR THE FALLEN",
+            "block_text_color": "#ffffff",
+            "block_font_size": 11,
+            "block_font_weight": "400",
+            "data-source": "google-sheets",
+            "data_source_url": "https://docs.google.com/spreadsheets/d/1cedp1c0KVL4mivnn74vQ3qHcS-C9VhPiaT9oz54Las0/edit?usp=sharing",
+            "scroller_content": "",
+            "is_auto_scroll": true,
+            "scroll_speed": 100
+          }
+        }
+      },
+      "block_order": [
+        "text_scroller_ryNFpc"
+      ],
+      "name": "Text Scroller V2"
+    },
+    "video_banner_YUKJmE": {
+      "type": "video-banner",
+      "settings": {
+        "section_visibility": "always",
+        "video_full_width": false,
+        "autoplay": false,
+        "video_height": "650px",
+        "mobile_video_height": "adapt_image",
+        "cover_image": "shopify://shop_images/9-11_Name_reading_thumb_1.jpg",
+        "video_url": "https://youtu.be/tOvzAPMXAVU",
+        "heading": "",
+        "heading_size": "h1",
+        "seo_heading": "h2",
+        "description": "",
+        "play_btn_text": "Play now",
+        "content_width": "large",
+        "content_position": "center",
+        "content_alignment": "center_center",
+        "heading_marquee": false,
+        "direction": "rtl",
+        "scrolling_speed": 15,
+        "scrolling_speed_mobile": 20,
+        "desktop_heading_size": 20,
+        "mobile_heading_size": 20,
+        "color_scheme": "scheme-4",
+        "text": "#ffffff",
+        "button": "#000000",
+        "btn_shadow_color": "#ececec",
+        "button_text": "#ffffff",
+        "button_hover": "#000000",
+        "button_hover_text": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 40,
+        "top_space_desktop": 15,
+        "bottom_space_desktop": 15,
+        "top_space_mobile": 15,
+        "bottom_space_mobile": 15
+      },
+      "custom_css": [
+        ".scheme-primary {background: ##0e1011 !important;}",
+        ".video-play-button {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); bottom: auto; right: auto;}",
+        "a {padding: 5px 15px; font-size: medium; font-weight: bold;}"
+      ]
+    },
+    "featured_collections_x48cHV": {
+      "type": "featured-collections",
+      "settings": {
+        "section_heading": "SUPPORT THOSE WHO SERVE",
+        "heading_text_align": "center",
+        "collection_type": "tabs",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "lg",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 30,
+        "number_products_per_view_desktop": "5",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-4",
+        "heading_size_desktop": 33,
+        "heading_size_mobile": 22,
+        "navigation_title_size_desktop": 22,
+        "navigation_title_size_mobile": 15,
+        "cta_title_size_desktop": 26,
+        "cta_title_size_mobile": 23,
+        "section_spacing_top_desktop": 35,
+        "section_spacing_top_mobile": 15,
+        "section_spacing_bottom_desktop": 30,
+        "section_spacing_bottom_mobile": 15,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 20,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 0,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 5,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#ffffff",
+        "cta_background_color": "#ffffff",
+        "cta_background_color_hover": "#000000",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#ffffff"
+      },
+      "blocks": {
+        "collection_block_ybjFwK": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "9.11",
+            "collection": "9-11-remembrance",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        },
+        "collection_block_fBTYKN": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "RED LINE",
+            "collection": "red-line-first-responders",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        },
+        "collection_block_gKhPBc": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "BLUE LINE",
+            "collection": "back-the-blue",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        },
+        "collection_block_kX7bmj": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "WHITE LINE",
+            "collection": "white-line-warriors",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        },
+        "collection_block_CMcqbm": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "9.11",
+            "collection": "9-11-remembrance",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        },
+        "collection_block_QtVERL": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "R.E.D",
+            "collection": "r-e-d-franchise",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_ybjFwK",
+        "collection_block_fBTYKN",
+        "collection_block_gKhPBc",
+        "collection_block_kX7bmj",
+        "collection_block_CMcqbm",
+        "collection_block_QtVERL"
+      ],
+      "name": "Featured Collections"
+    },
+    "product_highlight_G8krjx": {
+      "type": "product-highlight",
+      "settings": {
+        "reverse_desktop": false,
+        "reverse_mobile": true,
+        "product_highlight_text_content_bg_color": "#dddad6",
+        "product_highlight_text_content_heading": "SUPPORT THOSE WHO SERVE",
+        "product_highlight_text_content_heading_color": "#000000",
+        "product_highlight_text_content_heading_font_size_desktop": 32,
+        "product_highlight_text_content_heading_font_size_mobile": 24,
+        "product_highlight_text_content_paragraph": "<p>Step up and show your support for those who answer the call—day or night. The First Responder Collection honors the unwavering dedication of EMS, Firefighters, and Police Officers who are always first in and last out. Wear it with pride and stand with the heroes who never hesitate to serve.</p>",
+        "product_highlight_text_content_paragraph_color": "#000000",
+        "product_highlight_text_content_paragraph_font_size_desktop": 22,
+        "product_highlight_text_content_paragraph_font_size_mobile": 14,
+        "link_cta_style": "button",
+        "link_cta_1_text": "SHOP COLLECTION",
+        "link_cta_1_link": "shopify://collections/first-responders",
+        "link_cta_2_text": "GRAB THE TEE",
+        "link_cta_2_link": "shopify://products/first-in-last-out-t-shirt-black",
+        "link_cta_layout": "side-by-side",
+        "product_highlight_text_content_link_cta_color": "#000000",
+        "product_highlight_text_content_cta_bg_color": "rgba(0,0,0,0)",
+        "product_highlight_text_content_cta_border_color": "#000000",
+        "product_highlight_text_content_cta_border_width": 2,
+        "product_highlight_text_content_link_cta_text_font_size_desktop": 18,
+        "product_highlight_text_content_link_cta_text_font_size_mobile": 12,
+        "product_highlight_text_link_cta_gap_desktop": 25,
+        "product_highlight_text_link_cta_gap_mobile": 15,
+        "product_highlight_text_content_spacing_desktop": 30,
+        "product_highlight_text_content_spacing_mobile": 25,
+        "product_highlight_text_content_gap_desktop": 5,
+        "product_highlight_text_content_gap_mobile": 10,
+        "enable_product_highlight_text_content_arrows": true,
+        "product_highlight_text_content_arrows_display": "solid",
+        "product_highlight_text_content_arrows_color": "#ab192d",
+        "product_highlight_text_content_arrows_size_desktop": 80,
+        "product_highlight_text_content_arrows_size_mobile": 64,
+        "product_highlight_text_arrows_gap_between_desktop": 30,
+        "product_highlight_text_arrows_gap_between_mobile": 30,
+        "product_highlight_image_heading": "",
+        "product_highlight_image_heading_font_size_desktop": 38,
+        "product_highlight_image_heading_font_size_mobile": 36,
+        "product_highlight_image_heading_color": "#9a723f",
+        "image": "shopify://shop_images/Split_Banner_D_980x610_FW26_First_Responder_Collection.jpg",
+        "image_mobile": "shopify://shop_images/Split_Banner_M_750x750_FW26_First_Responder_Collection.jpg",
+        "enable_product_highlight_image_arrows": true,
+        "product_highlight_image_arrows_display": "outline",
+        "product_highlight_image_arrows_color": "#ffffff",
+        "product_highlight_image_arrows_size_desktop": 78,
+        "product_highlight_image_arrows_size_mobile": 54,
+        "product_highlight_image_arrows_gap_between_desktop": 20,
+        "product_highlight_image_arrows_gap_between_mobile": 25,
+        "product_highlight_image_spacing_desktop": 30,
+        "product_highlight_image_spacing_mobile": 15,
+        "product_highlight_heading_arrows_gap_desktop": 10,
+        "product_highlight_heading_arrows_gap_mobile": 0
+      },
+      "name": "Product Highlight"
+    },
+    "multicolumn_with_yt_shorts_aPbrFP": {
+      "type": "multicolumn-with-yt-shorts",
+      "settings": {
+        "mutlicolumn_yts_full_width": false,
+        "mutlicolumn_yts_top_space_desktop": 50,
+        "mutlicolumn_yts_bottom_space_desktop": 50,
+        "mutlicolumn_yts_top_space_mobile": 30,
+        "mutlicolumn_yts_bottom_space_mobile": 30,
+        "mutlicolumn_yts_content_alignment": "center",
+        "multicolumn_yts_heading": "minutes of service",
+        "multicolumn_yts_heading_size": "h2",
+        "multicolumn_yts_heading_tag": "h2",
+        "multicolumn_yts_heading_bold": false,
+        "multicolumn_yts_heading_alignment": "center",
+        "multicolumn_yts_column_count_desktop": 3,
+        "multicolumn_yts_column_count_mobile": "1",
+        "multicolumn_yts_background_color": "#0e1011",
+        "multicolumn_yts_text_color": "#ffffff",
+        "multicolumn_yts_link_text_color": "#802629",
+        "multicolumn_yts_cta_background_color": "#802629",
+        "multicolumn_yts_cta_text_color": "#ffffff"
+      },
+      "blocks": {
+        "yt_short_7kKCrd": {
+          "type": "yt_short",
+          "settings": {
+            "yts_video_url": "https://youtu.be/fjbYZJyO7Zo",
+            "yts_thumbnail_image": "shopify://shop_images/MOS_Chris_Lopez_1.jpg",
+            "yts_video_title": "Chris Lopez",
+            "yts_description": "Meet Fire Marshall Chris Lopez and his 42 years of service to his community",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "link",
+            "yts_cta_link_text": "",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_kbgY6h": {
+          "type": "yt_short",
+          "settings": {
+            "yts_video_url": "https://youtu.be/p1grrrTBbVM",
+            "yts_thumbnail_image": "shopify://shop_images/MOS_Nick_Abbott_1.jpg",
+            "yts_video_title": "",
+            "yts_description": "Meet Special Operations firefighter Nick Abbott.",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "link",
+            "yts_cta_link_text": "",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_iCeBmV": {
+          "type": "yt_short",
+          "settings": {
+            "yts_video_url": "https://www.youtube.com/watch?v=7V-1bf6ObAk",
+            "yts_thumbnail_image": "shopify://shop_images/MOS_Alan_Chaisson_1.jpg",
+            "yts_video_title": "https://youtu.be/7V-1bf6ObAk",
+            "yts_description": "Meet Firefighter/Paramedic Alan C. w/ the Houston Community Fire Department.",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "link",
+            "yts_cta_link_text": "",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        }
+      },
+      "block_order": [
+        "yt_short_7kKCrd",
+        "yt_short_kbgY6h",
+        "yt_short_iCeBmV"
+      ],
+      "name": "Multicolumn YT Shorts"
+    },
+    "split_banner_Naa4Rc": {
+      "type": "image-with-text",
+      "settings": {
+        "section_visibility": "always",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "show_chevrons": false,
+        "full_width": false,
+        "content_background": "",
+        "padding_top": 20,
+        "padding_bottom": 56,
+        "image": "shopify://shop_images/Image20250905162659.png"
+      },
+      "blocks": {
+        "b1": {
+          "type": "block--heading",
+          "settings": {
+            "text": "WEAR YOUR SHIRTS WITH PRIDE",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "b2": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Our fearless firefighters are the epitome of bravery and selflessness, running towards danger when other flee. We stand by your side, honoring your unwavering commitment to protecting lives and property, and we will always support your tireless efforts to keep our communities sage.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        },
+        "b3": {
+          "type": "block--button",
+          "settings": {
+            "label": "SHOP RED LINE",
+            "link": "shopify://collections/red-line-first-responders",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "",
+            "text_color": "",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "disabled": true,
+      "name": "t:sections.split-banner.presets.name"
+    },
+    "full_width_image_with_text_v2_hDzD6G": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "right",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/Untitled_design_83.png",
+        "background_image_mobile": "shopify://shop_images/GS_american_grit-828x600.png",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "disabled": true,
+      "name": "Full Width Image/Text_v2"
+    },
+    "multicolumn_with_image_QM6CCA": {
+      "type": "multicolumn",
+      "settings": {
+        "title": "THE HOME FOR AMERICA'S PATRIOTIC CONTENT",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "image_with_text_KXNDrC": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Cries_of_Heroes_Lost_-min_a1d34774-7108-400c-af1f-b8604174ff58.jpg",
+            "title": "Cries of Heroes Lost: Firefighters Packs on 9/11",
+            "text": "",
+            "link_label": "Click Here",
+            "link": "https://www.americangrit.com/post/cries-of-heroes-lost-firefighter-packs-on-9-11"
+          }
+        },
+        "image_with_text_6yKcF7": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Remembering_September_11th_-min_3939e063-b68a-43ec-84f1-c5d8404a1e13.jpg",
+            "title": "Remembering September 11th Traditions of the GWOT Age",
+            "text": "",
+            "link_label": "Click Here",
+            "link": "https://www.americangrit.com/post/remembering-september-11th-traditions-of-the-gwot-age"
+          }
+        },
+        "image_with_text_g6xH8p": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Tower_Climbs_on_9_11-min_53cfcc0f-1adf-411c-9fe9-7fd5c65b7d9f.jpg",
+            "title": "The Ultimate Guide to Firefighter Workouts",
+            "text": "",
+            "link_label": "Click Here",
+            "link": "https://www.americangrit.com/post/the-ultimate-guide-to-firefighter-workouts"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_KXNDrC",
+        "image_with_text_6yKcF7",
+        "image_with_text_g6xH8p"
+      ],
+      "disabled": true,
+      "name": "Multicolumn IMG and Text"
+    },
+    "full_width_image_with_text_v2_j9DJEN": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "right",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/Desktop_1440px_x_300px_Four_Toast_Salute-min_4dd96a01-a139-472e-b65c-9859b06a6cad.jpg",
+        "background_image_mobile": "shopify://shop_images/Mobile_700x450__Four_Toast_Salute-min.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "name": "Full Width Image/Text_v2"
+    },
+    "collection_tab_taiFwK": {
+      "type": "featured-collections",
+      "settings": {
+        "section_heading": "SUPPORT THOSE WHO SERVE",
+        "heading_text_align": "left",
+        "collection_type": "tabs",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "lg",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 5,
+        "number_products_per_view_desktop": "4",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-1",
+        "heading_size_desktop": 28,
+        "heading_size_mobile": 24,
+        "navigation_title_size_desktop": 26,
+        "navigation_title_size_mobile": 23,
+        "cta_title_size_desktop": 26,
+        "cta_title_size_mobile": 23,
+        "section_spacing_top_desktop": 50,
+        "section_spacing_top_mobile": 30,
+        "section_spacing_bottom_desktop": 50,
+        "section_spacing_bottom_mobile": 30,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#ffffff",
+        "cta_background_color": "#ffffff",
+        "cta_background_color_hover": "#000000",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#000000"
+      },
+      "blocks": {
+        "collection_LrD4qN": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "Red Line",
+            "collection": "red-line-first-responders",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_LrD4qN"
+      ],
+      "disabled": true,
+      "name": "t:sections.collection-tab.presets.name"
+    }
+  },
+  "order": [
+    "full_width_image_with_text_v2_yEMCag",
+    "main-page",
+    "hero_banner_secondary_Hm4DLN",
+    "rich_text_HLBrYx",
+    "rich_text_gTFPV8",
+    "video_banner_qpYJjB",
+    "countdown_ULRGjt",
+    "text_scroller_v2_UeDtYP",
+    "video_banner_YUKJmE",
+    "featured_collections_x48cHV",
+    "product_highlight_G8krjx",
+    "multicolumn_with_yt_shorts_aPbrFP",
+    "split_banner_Naa4Rc",
+    "full_width_image_with_text_v2_hDzD6G",
+    "multicolumn_with_image_QM6CCA",
+    "full_width_image_with_text_v2_j9DJEN",
+    "collection_tab_taiFwK"
+  ]
+}

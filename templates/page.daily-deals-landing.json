@@ -1,0 +1,1325 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "rgba(0,0,0,0)",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      },
+      "disabled": true
+    },
+    "full_width_image_with_text_v2_FjBYrD": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "right",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/GS-Content_GGH-1440x300_CPB.png",
+        "background_image_mobile": "shopify://shop_images/GS-CPB-980x600.png",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "name": "Full Width Image/Text_v2"
+    },
+    "rich_text_qVtXRe": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 0
+      },
+      "blocks": {
+        "text_zNCfAr": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Unwrap the savings, Christmas in July is here! Score up to 60% off best-sellers and fan favorites. Shop now, treat yourself, and get a jump on your holiday list before these deals melt away!</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_zNCfAr"
+      ],
+      "name": "t:sections.rich-text.name"
+    },
+    "media_grid_q4CtJj": {
+      "type": "section--media-grid",
+      "settings": {
+        "layout": "grid",
+        "columns_desktop": 4,
+        "columns_mobile": 1,
+        "tile_ratio": "fixed",
+        "desktop_row_height": 400,
+        "mobile_row_height": 160,
+        "tile_width": "full",
+        "desktop_grid_gap": 4,
+        "mobile_grid_gap": 4,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "overlay",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "",
+        "heading_size": "h3",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "grid_kRXLkC": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8117_DeathToTyrantsT-Shirt.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>MEN</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_hp99Dy": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V11_GS7125_FeralAFMomBoyfriend.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>WOMEN</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_8pYzaM": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V13_GS7781_Polo-TropicalDeathHarbor.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>TOPS</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_giNnpY": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Custom_610x775_GS6774_GS6778_GS6795_Toast_To_Freedom_Pattern.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>BOTTOMS</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_HJ3JXA": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_1__GS6675BulletBeerMug24oz.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>ACCESSORIES</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_bJJbqx": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V3_GS7154_RedBloodBlueCollar_Hat_1.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>HEADWEAR</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        }
+      },
+      "block_order": [
+        "grid_kRXLkC",
+        "grid_hp99Dy",
+        "grid_8pYzaM",
+        "grid_giNnpY",
+        "grid_HJ3JXA",
+        "grid_bJJbqx"
+      ],
+      "name": "t:sections.media-grid.name"
+    },
+    "media_grid_WwgrRp": {
+      "type": "section--media-grid",
+      "settings": {
+        "layout": "grid",
+        "columns_desktop": 4,
+        "columns_mobile": 1,
+        "tile_ratio": "fixed",
+        "desktop_row_height": 260,
+        "mobile_row_height": 160,
+        "tile_width": "full",
+        "desktop_grid_gap": 10,
+        "mobile_grid_gap": 4,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "overlay",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "<strong>SHOP BY PRICE</strong>",
+        "heading_size": "h3",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "grid_3fN3fy": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Blank_Poster_2000x2000_V2_Gift_Guide_STICKER_CLUB.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>$2.99</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_haMBJp": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Him-Hats-BlankPoster_2000x2000_copyGS5033-GSEmbroideredAmericanFlagHat-min.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>$9.99</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_HbKPqb": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS7640StillStanding-White.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>$14.99</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_fxL3zd": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V7_GS7465_DangerousFreedomT-Shirt-Black.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "$19.99",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_HLwHM3": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V3_GS7610_HeavyweightPocketT-Shirt-MilGreen.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>$24.99</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_8fEYTM": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_GS5580GSTrainingShortsMen_s-Black-3.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>$29.99</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_qM8FDw": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS6715_GrinchGrowsHoodie.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>$34.99</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_WxwVc4": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS7601_GreetingsFromTheGulfofAmericaHoodie.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>$39.99</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        }
+      },
+      "block_order": [
+        "grid_3fN3fy",
+        "grid_haMBJp",
+        "grid_HbKPqb",
+        "grid_fxL3zd",
+        "grid_HLwHM3",
+        "grid_8fEYTM",
+        "grid_qM8FDw",
+        "grid_WxwVc4"
+      ],
+      "name": "t:sections.media-grid.name"
+    },
+    "media_grid_waDwgr": {
+      "type": "section--media-grid",
+      "settings": {
+        "layout": "grid",
+        "columns_desktop": 4,
+        "columns_mobile": 1,
+        "tile_ratio": "fixed",
+        "desktop_row_height": 250,
+        "mobile_row_height": 180,
+        "tile_width": "full",
+        "desktop_grid_gap": 4,
+        "mobile_grid_gap": 4,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "overlay",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "<strong>SHOP BY PRODUCT TYPE</strong>",
+        "heading_size": "h3",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "grid_naqHHR": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8117_DeathToTyrantsT-Shirt.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>TEES & TANKS</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_YGdJ7j": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS7685_RedBloodBlueCollar_Full-Zip-Navy.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>HOODIES & LONG SLEEVES</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_fR8wxq": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Custom_610x775_GS6774_GS6778_GS6795_Toast_To_Freedom_Pattern.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>OTHER TOPS & BOTTOMS</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_bpLDdf": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V3_GS7154_RedBloodBlueCollar_Hat_1.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>ACCESSORIES</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        }
+      },
+      "block_order": [
+        "grid_naqHHR",
+        "grid_YGdJ7j",
+        "grid_fR8wxq",
+        "grid_bpLDdf"
+      ],
+      "name": "t:sections.media-grid.name"
+    },
+    "single_cta_button_DqmpFw": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 20,
+        "padding_bottom": 20
+      },
+      "blocks": {
+        "cta": {
+          "type": "block--button",
+          "settings": {
+            "label": "SHOP ALL",
+            "link": "",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "#a31f2b",
+            "text_color": "#ffffff",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "cta"
+      ],
+      "name": "Single CTA Button"
+    }
+  },
+  "order": [
+    "main-page",
+    "full_width_image_with_text_v2_FjBYrD",
+    "rich_text_qVtXRe",
+    "media_grid_q4CtJj",
+    "media_grid_WwgrRp",
+    "media_grid_waDwgr",
+    "single_cta_button_DqmpFw"
+  ]
+}

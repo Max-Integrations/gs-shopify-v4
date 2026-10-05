@@ -1,0 +1,1180 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "rgba(0,0,0,0)",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      },
+      "disabled": true
+    },
+    "full_width_image_with_text_HpY4mB": {
+      "type": "full-width-image-with-text",
+      "settings": {
+        "full_width_image_desktop": "shopify://shop_images/GS-2A_1440x350-cpb.png",
+        "full_width_image_mobile": "shopify://shop_images/GS-2A_750x460-cpb.png",
+        "full_width_image_link": "",
+        "full_width_image_overlay": 35,
+        "full_width_header_text": "<h1><strong>WELCOME TO GRUNT STYLE</strong></h1>",
+        "full_width_header_font": "Roboto, sans-serif",
+        "full_width_header_text_color": "#ffffff",
+        "full_width_header_text_size_desktop": 50,
+        "full_width_header_text_size_mobile": 22,
+        "full_width_header_text_alignment": "center",
+        "full_width_subcopy": "<p>You do not have to be a veteran to wear Grunt Style, but you do have to love freedom, bacon, and whiskey.</p>",
+        "full_width_subcopy_text_font": "Roboto, sans-serif",
+        "full_width_subcopy_text_color": "#ffffff",
+        "full_width_subcopy_desktop_text_size": 19,
+        "full_width_subcopy_mobile_text_size": 12,
+        "full_width_subcopy_text_alignment": "center",
+        "full_width_cta_text": "",
+        "full_width_cta_text_font": "Roboto, sans-serif",
+        "full_width_cta_background_color": "#ffffff",
+        "full_width_cta_border_style": "none",
+        "full_width_cta_text_color": "#000000",
+        "full_width_cta_text_size": 18,
+        "full_width_cta_alignment": "left",
+        "full_width_link_new_window": false,
+        "full_width_terms": "",
+        "full_width_terms_text_font": "Roboto, sans-serif",
+        "full_width_terms_text_color": "#ffffff",
+        "full_width_terms_desktop_text_size": 22,
+        "full_width_terms_mobile_text_size": 18,
+        "full_width_terms_text_alignment": "left"
+      },
+      "custom_css": [
+        "h1 {background-color: #5e5c39; letter-spacing: 2.5px; padding: 4px;}",
+        ".content {align-items: center !important; flex-direction: column; text-align: center !important; max-width: 750px;}",
+        ".full-width-image-with-text .heading {display: flex; flex-direction: column; max-width: 800px; width: 100%;}"
+      ]
+    },
+    "blocks_HQygEM": {
+      "type": "_blocks",
+      "settings": {},
+      "blocks": {
+        "ai_gen_block_0bc93d4_Vqn9tq": {
+          "type": "ai_gen_block_0bc93d4",
+          "settings": {
+            "product_list": [
+              "1776-flag",
+              "id-smoke-that-mesh-hat",
+              "range-day-t-shirt-black",
+              "grunt-style-ranger-panties-usa-flag",
+              "usa-rope-hat-white",
+              "death-dealer-full-zip-hoodie-black",
+              "bad-example-t-shirt-black",
+              "250th-commemorative-t-shirt-midnight-navy",
+              "defy-t-shirt-white"
+            ],
+            "days_filter": 14,
+            "show_product_image": false,
+            "image_size": 50,
+            "image_border_radius": 4,
+            "show_label": true,
+            "label_text": "HOT PRODUCTS:",
+            "label_font_size": 16,
+            "label_bg_color": "#000000",
+            "label_text_color": "#ffffff",
+            "icon_style": "star",
+            "icon_size": 20,
+            "icon_color": "#ab192d",
+            "font_size": 16,
+            "text_color": "#ffffff",
+            "separator_color": "#cccccc",
+            "item_spacing": 40,
+            "animation_speed": 50,
+            "pause_on_hover": true,
+            "background_color": "#000000",
+            "padding_vertical": 16
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_0bc93d4_Vqn9tq"
+      ],
+      "name": "Trending Products"
+    },
+    "multi_column_7PkBHa": {
+      "type": "multicolumn",
+      "settings": {
+        "title": "MISSION CONTROL PERKS",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-4",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 44
+      },
+      "blocks": {
+        "icon_with_text_zEHhXr": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/WEB_ICONS_100X100_SHOPPING_BAG.png",
+            "title": "",
+            "text": "<p>FREE SHIPPING ON $75+</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_iG9gXA": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/HeadSet_White_Icon_100x100_80399192-c0be-4aec-a2dc-ae66f889a853.svg",
+            "title": "",
+            "text": "<p><a href=\"/pages/contact-grunt-style\" title=\"Contact Grunt Style\">ACCESSIBLE CUSTOMER SERVICE</a></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_pXnMqQ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GS-Content_-mini_perks-icon.png",
+            "title": "",
+            "text": "<p><a href=\"/pages/govx-discount\" title=\"GRUNT STYLE IS PROUD TO PARTNER WITH GOVX\">MILITARY & FIRST RESPONDERS DISCOUNTS</a></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_4Uhpw9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/WEB_ICONS_100X100_BUNDLES_2.png",
+            "title": "",
+            "text": "<p><a href=\"/pages/club-grunt-style\" title=\"Club Grunt Style\">EXCLUSIVE TEE CLUB</a></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_with_text_zEHhXr",
+        "icon_with_text_iG9gXA",
+        "icon_with_text_pXnMqQ",
+        "icon_with_text_4Uhpw9"
+      ],
+      "name": "t:sections.multicolumns.name"
+    },
+    "images_grid_TQbQkV": {
+      "type": "section--media-grid",
+      "settings": {
+        "layout": "carousel",
+        "columns_desktop": 5,
+        "columns_mobile": 1,
+        "tile_ratio": "square",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 12,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "<strong>EXPLORE COLLECTION THEMES</strong>",
+        "heading_size": "h3",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 32
+      },
+      "blocks": {
+        "image_URJj6b": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/GS-SB-750X750-RED.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>Veteran & Military</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/proud-veteran",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "image_nY8Atp": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V9_GS7868AmericanVintage-White.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>Patriotic</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/patriotic-apparel-and-gear",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "image_PUNAgw": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Visual_Merchandising_Block_367x597_Blue_Collar_Tees_Funny_-min.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>Blue Collar</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/blue-collar-clothing",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "image_X8FqLz": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V12_GS787_LivedArmedT-Shirt-Black.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>2nd Amendment</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/2nd-amendment-collection",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "image_UhQYyY": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V5_GS6841_Sh-tShowSupervisorTank.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>Unfiltered</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/loud-and-proud-graphics",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "image_VMHciz": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Blank_Poster_2000x2000_V2_GS7813_Strength_Through_Suffering_-_Future_Dusk.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>Fitness</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/fitness",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "image_3FqTmH": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V10_GS8139SaltyRims.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>Drinking Inspired</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/freedom-on-tap",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        }
+      },
+      "block_order": [
+        "image_URJj6b",
+        "image_nY8Atp",
+        "image_PUNAgw",
+        "image_X8FqLz",
+        "image_UhQYyY",
+        "image_VMHciz",
+        "image_3FqTmH"
+      ],
+      "name": "t:sections.images-grid.presets.name"
+    },
+    "featured_content_XJLVpk": {
+      "type": "featured-content",
+      "settings": {
+        "section_visibility": "always",
+        "text": "",
+        "heading": "Behind The Threads: Freedom-Fueled Drops",
+        "highlight_style": "underline",
+        "bg__color": "gradient",
+        "heading_size": "h1",
+        "seo_heading": "h3",
+        "description": "<p>Learn about all the newness, exclusivity, and step into the world of Grunt Style and snag some seriously badass gear.</p>",
+        "btn_text": "SUBSCRIBE TO INTEL",
+        "btn_link": "shopify://pages/subscribe",
+        "button_size": "small",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 30,
+        "bottom_space_desktop": 35,
+        "top_space_mobile": 30,
+        "bottom_space_mobile": 35
+      },
+      "blocks": {
+        "media_pkTe4p": {
+          "type": "media",
+          "settings": {
+            "subheading": "",
+            "heading": "250 Years: Still Standing",
+            "heading_size": "h3",
+            "seo_heading": "h4",
+            "block_tags": "[Featured Collection][USA 250]",
+            "description": "<p>Unmatched legacy, since day one, freedom without compromise. A bi-sesquicentennial event: America's 250th birthday & we're making battle plans to gear you with new patriotic products for this special event.</p><p>This we'll defend. </p>",
+            "video": "shopify://files/videos/250 Hype Mobile.mp4",
+            "heading_text": "",
+            "end_date": "",
+            "btn_text": "SHOP COLLECTION",
+            "btn_link": "shopify://collections/250-years-of-freedom",
+            "button_as_link": false
+          }
+        },
+        "media_gGihyA": {
+          "type": "media",
+          "settings": {
+            "subheading": "CLUB GRUNT STYLE",
+            "heading": "COMMUNITY",
+            "heading_size": "h3",
+            "seo_heading": "h4",
+            "block_tags": "[Club Grunt Style][Subscriber-Only Tees]",
+            "description": "<p>Rally with fellow patriots in the Club Member’s exclusive Facebook group — your frontline for insider intel on secret drops and members-only deals. Only the Club gets classified access to our rarest, most sought-after designs. Gear up, stand out, and claim the perks that set you apart from the ranks.<br/></p>",
+            "image": "shopify://shop_images/CGS0823-750X750-M.png",
+            "heading_text": "",
+            "end_date": "",
+            "btn_text": "JOIN TODAY",
+            "btn_link": "shopify://pages/club-grunt-style",
+            "button_as_link": false
+          }
+        },
+        "media_hek7fW": {
+          "type": "media",
+          "disabled": true,
+          "settings": {
+            "subheading": "",
+            "heading": "COME & TAKE IT",
+            "heading_size": "h3",
+            "seo_heading": "h4",
+            "block_tags": "[2A Collection] [Featured Collection]",
+            "description": "<p>At Grunt Style, we believe in honoring that legacy, which is why we’re proud to introduce our brand-new 2A Collection of t-shirts, designed for patriots, defenders, and anyone who stands tall for the right to bear arms.</p>",
+            "video": "shopify://files/videos/2A_Collection_30 Second_1x1.mp4",
+            "heading_text": "",
+            "end_date": "",
+            "btn_text": "SHOP COLLECTION",
+            "btn_link": "shopify://collections/2nd-amendment-collection",
+            "button_as_link": false
+          }
+        }
+      },
+      "block_order": [
+        "media_pkTe4p",
+        "media_gGihyA",
+        "media_hek7fW"
+      ],
+      "name": "t:sections.featured_content.presets.name"
+    },
+    "product_short_videos_z3CHgP": {
+      "type": "product-short-videos",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_height": 500,
+        "mobile_height": 500,
+        "show_view_count": false,
+        "heading": "<strong>GRUNT STYLE IN ACTION</strong>",
+        "highlight_style": "underline",
+        "bg__color": "gradient",
+        "heading_size": "h3",
+        "seo_heading": "h3",
+        "heading_alignment": "text-center",
+        "description": "",
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "top_space_desktop": 30,
+        "bottom_space_desktop": 35,
+        "top_space_mobile": 30,
+        "bottom_space_mobile": 35
+      },
+      "blocks": {
+        "video_3fBpH8": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/USMC & Patriot till death.mp4"
+          }
+        },
+        "video_HaBiXP": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/I fix shit.mp4"
+          }
+        },
+        "video_4dA4yQ": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/tiktok_travelingginga_7642350858704833805_d35f7134-b6ee-485c-ad1e-7131e11893ad.mp4"
+          }
+        },
+        "video_xxaf8m": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/tiktok_gravy316_actual_7643266594264698125.mp4"
+          }
+        },
+        "video_z7gXHR": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Grumpy Vet.mp4"
+          }
+        },
+        "video_FGUMnF": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/MEATSWEATS-GRILLING.mp4"
+          }
+        },
+        "video_AH9aXW": {
+          "type": "video",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/GruntStyle_ThisWellDefend_15_CTV_4X5V1.mp4"
+          }
+        },
+        "video_erV9wy": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/AQMPVKjXoPWZ3_VgGhfeVWqaOEHrQFKKvWpkwV7dekqB35fOE5KjUrvC6svUqrCY604HQHzRHX5Hib5r3m76YYtY9xuT83DSLjh8bVI.mp4"
+          }
+        },
+        "video_bJrxb7": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/2A_Collection_30 second_9x16.mp4"
+          }
+        },
+        "video_4TbrgD": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Harley The Brit.mp4"
+          }
+        },
+        "video_npM6JN": {
+          "type": "video",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/tiktok_igurticus_7623877586401119502.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "video_3fBpH8",
+        "video_HaBiXP",
+        "video_4dA4yQ",
+        "video_xxaf8m",
+        "video_z7gXHR",
+        "video_FGUMnF",
+        "video_AH9aXW",
+        "video_erV9wy",
+        "video_bJrxb7",
+        "video_4TbrgD",
+        "video_npM6JN"
+      ],
+      "custom_css": [
+        ".section-padding {background: #000;}",
+        ".h3 {color: #fff;}"
+      ],
+      "name": "t:sections.product-short-videos.presets.name"
+    },
+    "featured_collections_aER4BK": {
+      "type": "featured-collections",
+      "settings": {
+        "section_heading": "Shop FEATURED",
+        "heading_text_align": "center",
+        "collection_type": "tabs",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "sm",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 5,
+        "number_products_per_view_desktop": "4",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-4",
+        "heading_size_desktop": 28,
+        "heading_size_mobile": 23,
+        "navigation_title_size_desktop": 20,
+        "navigation_title_size_mobile": 15,
+        "cta_title_size_desktop": 18,
+        "cta_title_size_mobile": 17,
+        "section_spacing_top_desktop": 30,
+        "section_spacing_top_mobile": 20,
+        "section_spacing_bottom_desktop": 30,
+        "section_spacing_bottom_mobile": 25,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#000000",
+        "cta_background_color": "#ffffff",
+        "cta_background_color_hover": "#ffffff",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#000000"
+      },
+      "blocks": {
+        "collection_block_wQdVKj": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "NEW ARRIVALS",
+            "collection": "new",
+            "cta_label": "SHOP NEW ARRIVALS",
+            "cta_link": "shopify://collections/new"
+          }
+        },
+        "collection_block_LmgkDQ": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "BACK IN STOCK",
+            "collection": "back-in-stock",
+            "cta_label": "SHOP COLLECTION",
+            "cta_link": "shopify://collections/back-in-stock"
+          }
+        },
+        "collection_block_mTxHEc": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "BEST SELLERS",
+            "collection": "best-sellers",
+            "cta_label": "SHOP BEST SELLERS",
+            "cta_link": "shopify://collections/best-sellers"
+          }
+        },
+        "collection_block_CBxL7W": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "USA 250",
+            "collection": "250-years-of-freedom",
+            "cta_label": "SHOP USA 250",
+            "cta_link": "shopify://collections/250-years-of-freedom"
+          }
+        },
+        "collection_block_z9bhpR": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "2ND AMENDMENT",
+            "collection": "2nd-amendment-collection",
+            "cta_label": "SHOP ALL 2A",
+            "cta_link": "shopify://collections/2nd-amendment-collection"
+          }
+        },
+        "collection_block_bTmRik": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "BASICS",
+            "collection": "basics-franchise",
+            "cta_label": "SHOP BASIC PACKS & SINGLES",
+            "cta_link": "shopify://collections/basics-franchise"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_wQdVKj",
+        "collection_block_LmgkDQ",
+        "collection_block_mTxHEc",
+        "collection_block_CBxL7W",
+        "collection_block_z9bhpR",
+        "collection_block_bTmRik"
+      ],
+      "name": "Featured collections"
+    },
+    "media_grid_deals_33p7tU": {
+      "type": "media-grid-deals",
+      "settings": {
+        "section_width": false,
+        "section_visibility": "always",
+        "mobile_columns_layout": "two-column",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "desktop_grid_gap": 10,
+        "mobile_grid_gap": 10,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_bg_color": "#000000",
+        "heading_desktop_layout": "stacked",
+        "heading": "<strong>ALTERNATIVE SHOPPING OPTIONS</strong>",
+        "heading_font_color": "#ffffff",
+        "heading_font_family": "roboto_condensed_n4",
+        "heading_font_size_desktop": 28,
+        "heading_font_size_mobile": 20,
+        "highlight_style": "underline",
+        "bg__color": "gradient",
+        "heading_alignment": "text-center",
+        "subcopy": "",
+        "subcopy_font_color": "#000000",
+        "subcopy_font_family": "roboto_condensed_n4",
+        "subcopy_font_size_desktop": 18,
+        "subcopy_font_size_mobile": 13,
+        "subcopy_alignment": "text-center",
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 20,
+        "bottom_space_desktop": 20,
+        "top_space_mobile": 15,
+        "bottom_space_mobile": 15
+      },
+      "blocks": {
+        "grid_ektKn3": {
+          "type": "grid",
+          "settings": {
+            "media_image": "shopify://shop_images/Highlight_D_610x775_GS_Retail_2.png",
+            "media_bg_color": "",
+            "column": 4,
+            "row": 1,
+            "heading": "<strong>Grunt Style Retail</strong>",
+            "heading_size": "h2",
+            "seo_heading": "h2",
+            "description": "",
+            "content_position": "bottom-center",
+            "content_alignment": "center",
+            "content_width": "large",
+            "btn_text": "FIND A STORE",
+            "btn_link": "shopify://pages/grunt-style-retail-stores",
+            "button_as_link": false,
+            "burst_color": "#8b0001",
+            "burst_top_text": "",
+            "burst_top_text_font_size_desktop": 14,
+            "burst_top_text_font_size_mobile": 13,
+            "burst_bottom_text": "",
+            "burst_bottom_text_font_size_desktop": 14,
+            "burst_bottom_text_font_size_mobile": 13,
+            "burst_text_color": "#ffffff",
+            "burst_font_family": "roboto_condensed_n4",
+            "burst_position": "bottom-right",
+            "burst_visibility": false,
+            "heading_color": "#ffffff",
+            "text_color": "#ffffff",
+            "btn_bg_color": "#ffffff",
+            "btn_shadow_color": "#000000",
+            "btn_text_color": "#000000",
+            "btn_border_color": "#ffffff",
+            "btn_hover_color": "#000000",
+            "btn_hover_text_color": "#ffffff",
+            "btn_hover_border_color": "#000000",
+            "background_color": "#000000",
+            "background_opacity": 0
+          }
+        },
+        "grid_cgJq6n": {
+          "type": "grid",
+          "settings": {
+            "media_image": "shopify://shop_images/Custom_Asset_1250x1250_GC__2024_Holiday_Gift_Guide_Landing_Page-min_3a8d462e-49d2-41fe-881d-cdc4f41f2973.jpg",
+            "media_bg_color": "",
+            "column": 4,
+            "row": 1,
+            "heading": "<strong>E-Gift Cards</strong>",
+            "heading_size": "h2",
+            "seo_heading": "h2",
+            "description": "",
+            "content_position": "bottom-center",
+            "content_alignment": "center",
+            "content_width": "medium",
+            "btn_text": "BUY A GIFT CARD",
+            "btn_link": "shopify://collections/all",
+            "button_as_link": false,
+            "burst_color": "#8b0001",
+            "burst_top_text": "",
+            "burst_top_text_font_size_desktop": 14,
+            "burst_top_text_font_size_mobile": 13,
+            "burst_bottom_text": "",
+            "burst_bottom_text_font_size_desktop": 14,
+            "burst_bottom_text_font_size_mobile": 13,
+            "burst_text_color": "#ffffff",
+            "burst_font_family": "roboto_condensed_n4",
+            "burst_position": "bottom-right",
+            "burst_visibility": false,
+            "heading_color": "#ffffff",
+            "text_color": "#ffffff",
+            "btn_bg_color": "#ffffff",
+            "btn_shadow_color": "#000000",
+            "btn_text_color": "#000000",
+            "btn_border_color": "#ffffff",
+            "btn_hover_color": "#000000",
+            "btn_hover_text_color": "#ffffff",
+            "btn_hover_border_color": "#000000",
+            "background_color": "#000000",
+            "background_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "grid_ektKn3",
+        "grid_cgJq6n"
+      ]
+    },
+    "trending_products_ticker_rWTYxK": {
+      "type": "trending-products-ticker",
+      "settings": {
+        "product_list": [
+          "250th-commemorative-t-shirt-midnight-navy",
+          "250-freedom-rider-t-shirt-white",
+          "defy-tank-white",
+          "born-defiant-t-shirt-military-green",
+          "freedom-gadsden-t-shirt-black",
+          "grunt-style-logo-mesh-hat-stars",
+          "grumpy-old-biker-t-shirt-black",
+          "bang-bear-sticker",
+          "bang-bear-t-shirt-sand",
+          "mag-dump-t-shirt-military-green",
+          "mens-commander-button-down-eagle-gun-magenta",
+          "old-habits-die-hard-t-shirt-black",
+          "womens-bang-bear-flowy-tank-stonewash-denim",
+          "womens-old-habits-die-hard-flowy-tank-black",
+          "usa-rope-lightweight-performance-hat-gray"
+        ],
+        "recent_products_count": 15,
+        "item_spacing": 20,
+        "animation_speed": 50,
+        "pause_on_hover": true,
+        "background_color": "#000000",
+        "padding_vertical": 16,
+        "item_background_color": "#ffffff",
+        "item_background_color_hover": "#dddad6",
+        "item_animate_hover": "float-up",
+        "item_padding_y": 8,
+        "item_padding_x": 16,
+        "item_border_radius": 4,
+        "show_item_border": true,
+        "item_border_width": 1,
+        "item_border_color": "#2a2a2a",
+        "item_gap": 4,
+        "show_label": true,
+        "label_text": "TRENDING NOW",
+        "label_font_size": 22,
+        "label_background_color": "#000000",
+        "label_text_color": "#ffffff",
+        "show_image": true,
+        "item_image_size": 50,
+        "item_image_radius": 4,
+        "title_text_color": "#000000",
+        "title_font_size": 15,
+        "title_font_weight": "600",
+        "price_text_color": "#ab192d",
+        "price_font_size": 13,
+        "price_font_weight": "700"
+      },
+      "name": "Enhanced Trending products ticker"
+    },
+    "single_cta_button_AjpLTJ": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 20,
+        "padding_bottom": 20
+      },
+      "blocks": {
+        "cta": {
+          "type": "block--button",
+          "settings": {
+            "label": "SUBSCRIBE TO INTEL",
+            "link": "shopify://pages/subscribe",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "#ab192d",
+            "text_color": "#ffffff",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "cta"
+      ],
+      "name": "Single CTA Button"
+    },
+    "shapes_3TEME3": {
+      "type": "shapes",
+      "settings": {
+        "select_shape": "shape9",
+        "image_fit": "contain",
+        "svg_code": "",
+        "enable_marquee": false,
+        "marquee_direction": "rtl",
+        "fullwidth": true,
+        "flip_shape": false,
+        "enable_overlaped": false,
+        "overlay_position": "bottom",
+        "color_scheme": "scheme-4",
+        "enable_gradiant": false,
+        "svg_color": "#dddad6",
+        "svg_stroke": "#dddad6",
+        "shape_ratio": "fixed",
+        "desktop_height": 20,
+        "mobile_height": 20
+      },
+      "name": "t:sections.shapes.presets.name"
+    }
+  },
+  "order": [
+    "main-page",
+    "full_width_image_with_text_HpY4mB",
+    "blocks_HQygEM",
+    "multi_column_7PkBHa",
+    "images_grid_TQbQkV",
+    "featured_content_XJLVpk",
+    "product_short_videos_z3CHgP",
+    "featured_collections_aER4BK",
+    "media_grid_deals_33p7tU",
+    "trending_products_ticker_rWTYxK",
+    "single_cta_button_AjpLTJ",
+    "shapes_3TEME3"
+  ]
+}

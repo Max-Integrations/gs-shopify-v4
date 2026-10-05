@@ -1,0 +1,820 @@
+{
+  "sections": {
+    "full_width_image_with_text_v2_fDLJw7": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "right",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/HP_Promo_Block_D_CTA_1440x120_Club_Exclusive_Teaser_1_Version_1_Lifestyle.jpg",
+        "background_image_mobile": "shopify://shop_images/HP_Promo_Block_M_CTA_750x200_Club_Exclusive_Teaser_1_Version_1_Lifestyle.jpg",
+        "image_height_auto": true,
+        "banner_link": "shopify://collections/club-limited-edition",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "disabled": true,
+      "name": "Full Width Image/Text_v2"
+    },
+    "full_width_image_with_text_v2_zCpW4f": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/CPB_D_1440x300_Club_store_-_hero_image_v2_-min.jpg",
+        "background_image_mobile": "shopify://shop_images/CPB_M_980x600_Club.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      }
+    },
+    "countdown_banner_DHd7bG": {
+      "type": "countdown-banner",
+      "settings": {
+        "countdown_banner_full_width": false,
+        "countdown_banner_style": "multicolumn",
+        "countdown_timer_style": "blocks",
+        "countdown_timer_numbers_font": "Roboto, sans-serif",
+        "countdown_banner_promo_copy_header": "NEXT DROP COMING SOON",
+        "countdown_banner_promo_copy_header_font_size": "h2",
+        "countdown_banner_promo_subcopy": "★ ONE HUNDRED SERIES ★",
+        "countdown_banner_countdown_subcopy": "",
+        "countdown_banner_timer_end": "02/05/2026,12:00",
+        "countdown_banner_terms": "",
+        "countdown_banner_background_style": "solid",
+        "countdown_banner_bg_color_solid": "#ffca10",
+        "countdown_banner_bg_color_gradient": "linear-gradient(320deg, rgba(0, 0, 0, 1), rgba(128, 38, 41, 1) 75%)",
+        "countdown_banner_top_space_desktop": 5,
+        "countdown_banner_bottom_space_desktop": 5,
+        "countdown_banner_top_space_mobile": 5,
+        "countdown_banner_bottom_space_mobile": 5,
+        "countdown_banner_header_color": "#000000",
+        "countdown_banner_subcopy_color": "#000000",
+        "countdown_banner_countdown_subcopy_color": "#ffffff",
+        "countdown_banner_countdown_timer_color": "#000000",
+        "countdown_banner_countdown_blocks_bg_color": "#ffffff",
+        "countdown_banner_countdown_blocks_border_color": "#ffffff",
+        "countdown_banner_terms_text_color": "#ffffff",
+        "countdown_banner_terms_link_color": "#ffffff"
+      },
+      "custom_css": [
+        ".promo-copy h4 {font-size: 26px; font-weight: bold;}",
+        ".promo-copy h2 {font-size: 22px;}",
+        "div.timer-blocks,p {min-height: 60px; min-width: 60px; display: flow; align-items: center; text-align: center; justify-content: center; border-radius: 0px; padding-block: 0.75em;}"
+      ],
+      "disabled": true,
+      "name": "Countdown Banner"
+    },
+    "collection_carousel_FmLwX4": {
+      "type": "collection-carousel",
+      "settings": {
+        "section_visibility": "always",
+        "collection_source": "manual",
+        "carousel_type": "carousel",
+        "scrolling_speed": 15,
+        "scrolling_speed_mobile": 15,
+        "direction": "ltr",
+        "heading": "",
+        "highlight_style": "underline",
+        "bg__color": "gradient",
+        "heading_size": "h3",
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "enable_border": true,
+        "shape": "sharp",
+        "customshapes": "shape1",
+        "image_fit": "cover",
+        "image_style": "adapt",
+        "title_on_hover": false,
+        "product_count": false,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0
+      },
+      "blocks": {
+        "collection_JtzMKd": {
+          "type": "collection",
+          "settings": {
+            "collection": "club-limited-edition",
+            "image": "shopify://shop_images/image_3dd1e647-7275-41da-a5eb-daced6c9d786.jpg",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#FFFFFF",
+            "background_gradient": ""
+          }
+        },
+        "collection_CjEHaL": {
+          "type": "collection",
+          "settings": {
+            "collection": "club-new-releases",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#FFFFFF",
+            "background_gradient": ""
+          }
+        },
+        "collection_qxFd6c": {
+          "type": "collection",
+          "settings": {
+            "collection": "vintage-club-tees",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#FFFFFF",
+            "background_gradient": ""
+          }
+        },
+        "collection_YWac3b": {
+          "type": "collection",
+          "settings": {
+            "collection": "club-seasonal",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#FFFFFF",
+            "background_gradient": ""
+          }
+        },
+        "collection_n7Ha3k": {
+          "type": "collection",
+          "settings": {
+            "collection": "club-grunt-style-on-sale",
+            "image": "shopify://shop_images/CGS0823-750X750-M.png",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#FFFFFF",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_JtzMKd",
+        "collection_CjEHaL",
+        "collection_qxFd6c",
+        "collection_YWac3b",
+        "collection_n7Ha3k"
+      ],
+      "custom_css": [
+        ".collection-carousel-item {align-items: center;}"
+      ],
+      "disabled": true,
+      "name": "t:sections.collection-carousel.presets.name"
+    },
+    "images_grid_AN7YrB": {
+      "type": "section--media-grid",
+      "settings": {
+        "layout": "carousel",
+        "columns_desktop": 5,
+        "columns_mobile": 2,
+        "tile_ratio": "square",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 12,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "",
+        "heading_size": "h3",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 4,
+        "padding_bottom": 0
+      },
+      "blocks": {
+        "image_74DAy7": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/image_3dd1e647-7275-41da-a5eb-daced6c9d786.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/club-limited-edition",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>LIMITED EDITION</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_hxdYHe": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V6_CGS0524LestWeForget_1.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/club-memorial-day",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>MEMORIAL DAY</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_Cxgx4b": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/VMB_365x597_3.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/club-new-releases",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>NEW RELEASES</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_xDEYhY": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Blank_Poster_2000x2000_-09Q3_Creative_CGS0824.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/club-patriotic",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>CLUB PATRIOTIC</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_JJwh8Y": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/VMB_365x597_4.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/vintage-club-tees",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>THROWBACKS</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_MLCJPk": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/CGS046-365x597.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/club-grunt-style-basics",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>BASICS</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_CLwnX6": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Blank_Poster_2000x2000_CGS1224_Suck_It_V3_9712e94e-bba4-4620-aa4f-fdbb4e2a752b.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/club-seasonal",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>SEASONAL</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_XkDyHd": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/CGS0823-750X750-M.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/club-grunt-style-on-sale",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>CLUB SALE</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_Ww3ygY": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/VMB_365x597_6.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/club-last-chance",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>LAST CHANCE</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_QrVcQR": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/VMB_365x597_5.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/club-stickers",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>STICKERS</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        }
+      },
+      "block_order": [
+        "image_74DAy7",
+        "image_hxdYHe",
+        "image_Cxgx4b",
+        "image_xDEYhY",
+        "image_JJwh8Y",
+        "image_MLCJPk",
+        "image_CLwnX6",
+        "image_XkDyHd",
+        "image_Ww3ygY",
+        "image_QrVcQR"
+      ],
+      "name": "t:sections.images-grid.presets.name"
+    },
+    "collection_tab_mbqaNJ": {
+      "type": "featured-collections",
+      "settings": {
+        "section_heading": "CHECK OUR MONTHLY DROPS",
+        "heading_text_align": "center",
+        "collection_type": "tabs",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "lg",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 10,
+        "number_products_per_view_desktop": "4",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-1",
+        "heading_size_desktop": 28,
+        "heading_size_mobile": 24,
+        "navigation_title_size_desktop": 26,
+        "navigation_title_size_mobile": 23,
+        "cta_title_size_desktop": 26,
+        "cta_title_size_mobile": 23,
+        "section_spacing_top_desktop": 20,
+        "section_spacing_top_mobile": 30,
+        "section_spacing_bottom_desktop": 20,
+        "section_spacing_bottom_mobile": 30,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#ffffff",
+        "cta_background_color": "#ffffff",
+        "cta_background_color_hover": "#000000",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#000000"
+      },
+      "blocks": {
+        "collection_J8AcUC": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "NEW",
+            "collection": "club-new-releases",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_J8AcUC"
+      ],
+      "disabled": true,
+      "name": "t:sections.collection-tab.presets.name"
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "settings": {
+        "overlay_content_position": "text-center",
+        "overlay_text": false,
+        "heading_size": "h1",
+        "tag": "h1",
+        "show_header": false,
+        "show_description": false,
+        "description_position": "below_products",
+        "collection_image": false,
+        "banner_height_desktop": "200px",
+        "banner_height_mobile": "100px",
+        "products_per_page": 28,
+        "grid_image_size": "square",
+        "load_type": "page_number",
+        "enable_filtering": true,
+        "open_filtering": false,
+        "open_all_filtering": false,
+        "enable_sorting": true,
+        "color_scheme": "scheme-2",
+        "enable_gradient": false,
+        "background_color": "#e7e7e7",
+        "text_color": "#000000",
+        "background_opacity_color": "#515253",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 10,
+        "bottom_space_mobile": 15
+      },
+      "blocks": {
+        "product-grid": {
+          "type": "product-grid",
+          "settings": {
+            "columns_desktop": "4",
+            "columns_mobile": "2",
+            "product_card_bg_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "product-grid"
+      ]
+    },
+    "images_grid_FQBTa9": {
+      "type": "section--media-grid",
+      "settings": {
+        "layout": "carousel",
+        "columns_desktop": 5,
+        "columns_mobile": 2,
+        "tile_ratio": "square",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 12,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "<em><strong>CLUB MEMBER PERKS</strong></em>",
+        "heading_size": "h3",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 20,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "image_yfx9g6": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/COMMUNITY_Gold_Club_Icons.png",
+            "video": "",
+            "collection": "",
+            "link": "https://www.facebook.com/groups/clubgruntstyle",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          }
+        },
+        "image_CkY9Br": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/FIRST_DIBS_Gold_Club_Icon_95e4a268-75a7-46ce-9ddf-c06b06ec27eb.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          }
+        },
+        "image_f87Lfp": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/EASY_CANCEL_Gold_Club_Icons.png",
+            "video": "",
+            "collection": "",
+            "link": "https://www.gruntstyle.com/a/account/subscriptions",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          }
+        },
+        "image_r6tzN6": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/FREE_SHIPPING_Gold_Club_Icon_c7f29b7a-6732-4231-9956-32ceae60936e.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          }
+        },
+        "image_q67fiD": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/EXTRA_SAVINGS_Gold_Club_Icon_99ef8ec3-fe86-4fc8-9a08-f998d9309fa8.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          }
+        },
+        "image_YijeKf": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/MEMBER_STORE_Gold_Club_Icon_f5229a6d-a707-47c9-89c3-658698b71777.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/club-grunt-style",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          }
+        }
+      },
+      "block_order": [
+        "image_yfx9g6",
+        "image_CkY9Br",
+        "image_f87Lfp",
+        "image_r6tzN6",
+        "image_q67fiD",
+        "image_YijeKf"
+      ]
+    },
+    "17279042122b4f99c9": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      },
+      "blocks": {},
+      "block_order": [],
+      "disabled": true
+    }
+  },
+  "order": [
+    "full_width_image_with_text_v2_fDLJw7",
+    "full_width_image_with_text_v2_zCpW4f",
+    "countdown_banner_DHd7bG",
+    "collection_carousel_FmLwX4",
+    "images_grid_AN7YrB",
+    "collection_tab_mbqaNJ",
+    "main-collection",
+    "images_grid_FQBTa9",
+    "17279042122b4f99c9"
+  ]
+}

@@ -1,0 +1,429 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "rgba(0,0,0,0)",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      },
+      "disabled": true
+    },
+    "media_grid_LCDNeE": {
+      "type": "section--media-grid",
+      "settings": {
+        "layout": "grid",
+        "columns_desktop": 4,
+        "columns_mobile": 1,
+        "tile_ratio": "fixed",
+        "desktop_row_height": 360,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 20,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "overlay",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "<strong>SHOP STATE SPECIFIC</strong>",
+        "heading_size": "h1",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-4",
+        "padding_top": 20,
+        "padding_bottom": 0
+      },
+      "blocks": {
+        "grid_MmpRPy": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS7983_TexasDefinedOpenCarryHoodie-Black.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": true,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>ALL STATE DEFINED</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "EXPLORE MORE",
+                "link": "shopify://collections/state-defined",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_6AWKj7": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8438_ArizonaDefinedT-Shirt-Black.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/arizona",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>ARIZONA</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/arizona",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_pJ3Pba": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8039_FloridaDefinedT-Shirt-Black.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/florida",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>FLORIDA</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/florida",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_XbdcAm": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8038_TennesseeDefinedT-Shirt-Black.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/tennessee",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "rgba(0,0,0,0)",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>TENNESSEE</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/tennessee",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_CG6Rza": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS7983_TexasDefinedOpenCarryHoodie-Black.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/texas-pride",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>TEXAS</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/texas-pride",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_dRqXRm": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8437_VirginiaDefinedT-Shirt-Black.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/virginia",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>VIRGINIA</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/virginia",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        }
+      },
+      "block_order": [
+        "grid_MmpRPy",
+        "grid_6AWKj7",
+        "grid_pJ3Pba",
+        "grid_XbdcAm",
+        "grid_CG6Rza",
+        "grid_dRqXRm"
+      ],
+      "name": "t:sections.media-grid.name"
+    }
+  },
+  "order": [
+    "main-page",
+    "media_grid_LCDNeE"
+  ]
+}

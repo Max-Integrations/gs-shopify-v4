@@ -1,0 +1,229 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "rgba(0,0,0,0)",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      },
+      "disabled": true
+    },
+    "wonderment_faq_E6aq3r": {
+      "type": "wonderment-faq",
+      "settings": {
+        "show_answers": false,
+        "text_size": 100,
+        "alignment": "center",
+        "text_color": "#000000",
+        "background_color": "linear-gradient(184deg, rgba(255, 255, 255, 1) 7%, rgba(255, 255, 255, 1) 94%)",
+        "border_color": "#dddad6",
+        "base_width": 65,
+        "max_width": "",
+        "inner_padding": 50,
+        "outer_margin": 0,
+        "custom_css": "",
+        "mobile_custom_css": "",
+        "override_theme_font": false,
+        "heading_font": "roboto_n4",
+        "main_font": "roboto_condensed_n4"
+      },
+      "blocks": {
+        "section_heading_7rYFM6": {
+          "type": "section_heading",
+          "settings": {
+            "title": "GRUNT STYLE GENERAL FAQs"
+          }
+        },
+        "question_BnTft3": {
+          "type": "question",
+          "settings": {
+            "title": "How can I contact Customer Service?",
+            "text": "<p>Phone: 877-554-7868 (Mon–Fri, 9 AM–5 PM CST)</p><p>Email: CustomerService@GruntStyle.com</p><p>Chat: Mon–Fri, 9 AM–5 PM CST</p><p>Visit: <a href=\"https://www.gruntstyle.com/pages/grunt-style-retail-stores\" target=\"_blank\">Retail Locations</a></p>"
+          }
+        },
+        "question_U9grzM": {
+          "type": "question",
+          "settings": {
+            "title": "What's your return policy?",
+            "text": "<p>Grunt Style will accept your return of unworn, unwashed, like new condition (per Grunt Style discretion) and defective merchandise by mail for a full refund of the purchase price (excluding shipping costs) if the merchandise is returned within 60 days of receipt.</p><p>Eligible refunds made within 60 days after receipt will be credited for the item's purchase price in the original form of payment.</p><p>Any other return/exchange will fall under the policy for merchandise credit or merchandise swap.</p><p>Purchases of third-party brands like EGO Cases, Grill Your Ass Off, Soledier Socks, or others are not eligible for coverage under our Beer Guarantee policy.</p><p>Full details can be found here: <a href=\"https://www.gruntstyle.com/pages/returns\">https://www.gruntstyle.com/pages/returns </a></p>"
+          }
+        },
+        "question_6cCqDk": {
+          "type": "question",
+          "settings": {
+            "title": "How does Free Shipping work?",
+            "text": "<p>All customers receive free shipping on orders having a subtotal of $75 of more!<br/></p><p>If you’re a Club Subscription Member, a Silver Rewards Member, or a Gold Rewards Member, you receive free shipping on all orders. Make sure you’re signed in and it automatically applies.</p>"
+          }
+        },
+        "question_GhpCJt": {
+          "type": "question",
+          "settings": {
+            "title": "How does Grunt Style Rewards work?",
+            "text": "<p>Earn 5-20% in Credit on spend, Birthday Credit, and other perks depending on your membership tier!</p><p>Members must be signed in to earn or redeem credits instantly online. At a retail store, share your email for perks to apply.</p><p>No minimum spend required to earn or redeem credits.</p><p>Credits are valid for 90 days. Use them before they disappear.</p><p><a href=\"https://www.gruntstyle.com/community/membership\">Click here</a> to see each tier's perks!</p>"
+          }
+        },
+        "question_8hryD8": {
+          "type": "question",
+          "settings": {
+            "title": "Do you ship internationally?",
+            "text": "<p>Would a statue of George Washington astride a bald eagle look epic on top of the white house? Yes. If you have trouble navigating the checkout process for international shipments, contact Customer Service.<br/><br/>For APO/FPO addresses, please ensure that your shipping information is properly formatted to fight against errors in our shipping systems. Here is an example of a properly formatted address:<br/><br/>NAME: JOHN DOE<br/>COMPANY (FPO ONLY): USS Grunt Style<br/>STREET 1: UNIT/PSC 1234<br/>STREET 2: BOX 1234<br/>CITY: APO/FPO<br/>STATE: ARMED FORCES PACIFIC<br/>COUNTRY: UNITED STATES<br/>ZIP: 00000-0000<br/><br/></p>"
+          }
+        },
+        "question_6xibbt": {
+          "type": "question",
+          "settings": {
+            "title": "Where’s my return?",
+            "text": "<p>Likely still shipping to us. We’ll contact you via email as soon as we receive the item and are processing it.</p>"
+          }
+        },
+        "question_NxHnQ4": {
+          "type": "question",
+          "settings": {
+            "title": "What about Shipping and Handling policy?",
+            "text": "<p><a href=\"https://www.gruntstyle.com/pages/shipping-handling\" target=\"_blank\" title=\"Shipping and Handling\">Visit our Shipping and Handling page for more details.</a></p>"
+          }
+        },
+        "section_heading_xhXDmn": {
+          "type": "section_heading",
+          "settings": {
+            "title": "Products"
+          }
+        },
+        "question_bgTdEW": {
+          "type": "question",
+          "disabled": true,
+          "settings": {
+            "title": "Why is a product labeled preorder and why is it less expensive?",
+            "text": "<p>We offer a significant preorder discount on products that have been approved to produce but are not yet in stock. Generally, a preorder product will be available to ship within a few weeks as it makes its way through the production cycle. To compensate customers’, wait time, we offer the preorder discount.</p>"
+          }
+        },
+        "question_9F4LfT": {
+          "type": "question",
+          "settings": {
+            "title": "What does it mean when a product is labeled Made To Order?",
+            "text": "<p>This item is not yet in stock or at our warehouse. This product will be available to ship within a few business days as it is being produced on demand.</p>"
+          }
+        },
+        "question_kW8ncY": {
+          "type": "question",
+          "settings": {
+            "title": "How do your shirts fit?",
+            "text": "<p>Most Men's t-shirts fit true to size. Women's T-shirts come in different fits, which may run small or oversized.</p><p>Learn more about <a href=\"https://www.gruntstyle.com/pages/sizechart\" title=\"how to measure\">how to measure for Grunt Style Apparel</a>.</p>"
+          }
+        },
+        "question_GTcXEN": {
+          "type": "question",
+          "settings": {
+            "title": "When will you be getting something back in stock?",
+            "text": "<p>We release new products all the time; sometimes that means that older designs are recycled to make room for our newest designs. Any items no longer on the site are out of production. Sometimes you will find that your size is currently sold out. Don't worry we got you covered! If we plan on restocking that size, just click the button below the size selection that says \"Email when available\", once we get that size back in stock you will be the first to know!</p>"
+          }
+        },
+        "question_chtpgc": {
+          "type": "question",
+          "settings": {
+            "title": "The item I wanted is out of stock. What do I do?",
+            "text": "<p>Wipe your single manly tear from your beard, and keep an eye on our website. If the listing is still there, we will likely reproduce it.<br/><br/>Click the button below the size selection that says \"Email when available\", once we get that size back in stock you will be the first to know!</p>"
+          }
+        },
+        "question_jbEfGV": {
+          "type": "question",
+          "settings": {
+            "title": "Are Grunt Style items made in the U.S.?",
+            "text": "<p>Some shirts are 100% made in America, and all use 100% American-grown cotton. Some shirts are assembled outside of the U.S. to keep costs down (they are assembled in the Americas). All are printed, packaged and shipped from our Chicago warehouse by veterans and patriots.</p>"
+          }
+        },
+        "question_BpNRzt": {
+          "type": "question",
+          "settings": {
+            "title": "Can I use Grunt Style Rewards and Discount Codes on anything?",
+            "text": "<p>That would be a no. Coupons and discounts are good on mostly everything though! Standard Exclusions include Subscriptions, Mystery products, Grunt Style Foundation, Sale items, Donation products, Licensed products, Custom Apparel, Basic Bundles, other types of bundles, and select third-party items. Please note that exclusions are subject to change at any time.&nbsp;</p>"
+          }
+        },
+        "section_heading_XnyqUL": {
+          "type": "section_heading",
+          "settings": {
+            "title": "Orders"
+          }
+        },
+        "question_gj7BFf": {
+          "type": "question",
+          "settings": {
+            "title": "Can I use more than one coupon on my order?",
+            "text": "<p>It depends on the discount code or offer. Our systems only allow one order discount coupon per purchase. Sometimes product discounts can be stacked with member credit, club member discounts or other offers and promotions.</p>"
+          }
+        },
+        "question_A3nx8d": {
+          "type": "question",
+          "settings": {
+            "title": "My Store Credit/Gift Card Code is not working. What do I do?",
+            "text": "<p>Please allow 24 to 72 hours for processing after your email has been received. If it has been some time, please contact customer service to verify it is valid.</p>"
+          }
+        },
+        "question_Q3AxXG": {
+          "type": "question",
+          "settings": {
+            "title": "My Member benefits aren’t working. Why?",
+            "text": "<p>Make sure you’re signed into your Grunt Style account. Your perks only activate when you’re logged in. If you're in-store, provide your account email or phone number!</p><p>Note: Gift Cards, donations made to Grunt Style Foundation, third-party vendors, and package protection costs are not eligible for credit redemption. </p>"
+          }
+        },
+        "question_BMNeLt": {
+          "type": "question",
+          "settings": {
+            "title": "My order says “pending.” What does that mean?",
+            "text": "<p>Your gear has been processed and we’re getting it out the door just as fast as we can (it’s going to be a shorter wait than the VA, so don’t complain).</p>"
+          }
+        },
+        "question_JEMEp4": {
+          "type": "question",
+          "settings": {
+            "title": "What happens if my order contained preorder, made to order or limited time design?",
+            "text": "<p>If your order contains a preorder, made to order, or Grunt Style limited item <strong>your entire order will ship when that item becomes available</strong>. Once available it will ship in the method purchased. If you would like to split the order please contact Customer Service for further assistance.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "section_heading_7rYFM6",
+        "question_BnTft3",
+        "question_U9grzM",
+        "question_6cCqDk",
+        "question_GhpCJt",
+        "question_8hryD8",
+        "question_6xibbt",
+        "question_NxHnQ4",
+        "section_heading_xhXDmn",
+        "question_bgTdEW",
+        "question_9F4LfT",
+        "question_kW8ncY",
+        "question_GTcXEN",
+        "question_chtpgc",
+        "question_jbEfGV",
+        "question_BpNRzt",
+        "section_heading_XnyqUL",
+        "question_gj7BFf",
+        "question_A3nx8d",
+        "question_Q3AxXG",
+        "question_BMNeLt",
+        "question_JEMEp4"
+      ],
+      "name": "📦 FAQ"
+    }
+  },
+  "order": [
+    "main-page",
+    "wonderment_faq_E6aq3r"
+  ]
+}

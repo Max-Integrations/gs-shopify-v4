@@ -1,0 +1,451 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      },
+      "disabled": true
+    },
+    "hero_banner_secondary_E8iL63": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/CPB_D_1440x300_Support_Those_Who_Serve_-min.jpg",
+        "background_image_mobile": "shopify://shop_images/CPB_M_980x600_Support_Those_Who_Serve_-min.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      }
+    },
+    "rich_text_7BGNAC": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_XQdyQR": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>TELL CONGRESS TO PASS WRITTEN INFORMED CONSENT & EXPAND SAFER PTSD TREATMENT OPTIONS!</strong>",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        }
+      },
+      "block_order": [
+        "heading_XQdyQR"
+      ]
+    },
+    "video_banner_RxBkgK": {
+      "type": "video-banner",
+      "settings": {
+        "section_visibility": "always",
+        "video_full_width": false,
+        "autoplay": false,
+        "video_height": "550px",
+        "mobile_video_height": "adapt_image",
+        "cover_image": "shopify://shop_images/Derek_Blumke_thumb_w__playbutton.jpg",
+        "video_url": "https://youtu.be/YZ_xcEdwhGM",
+        "heading": "",
+        "heading_size": "h2",
+        "seo_heading": "h2",
+        "description": "",
+        "play_btn_text": "WATCH NOW",
+        "content_width": "small",
+        "content_position": "center",
+        "content_alignment": "center_center",
+        "heading_marquee": false,
+        "direction": "rtl",
+        "scrolling_speed": 15,
+        "scrolling_speed_mobile": 20,
+        "desktop_heading_size": 20,
+        "mobile_heading_size": 20,
+        "color_scheme": "scheme-1",
+        "text": "#ffffff",
+        "button": "#000000",
+        "btn_shadow_color": "#ececec",
+        "button_text": "#ffffff",
+        "button_hover": "#000000",
+        "button_hover_text": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0
+      },
+      "custom_css": [
+        ".scheme-primary {background: #000 !important;}",
+        ".video-play-button {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); bottom: auto; right: auto;}",
+        "a {padding: 5px 15px; font-size: medium; font-weight: bold;}"
+      ]
+    },
+    "single_cta_button_gTrDpp": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 20,
+        "padding_bottom": 20
+      },
+      "blocks": {
+        "cta": {
+          "type": "block--button",
+          "settings": {
+            "label": "TAKE ACTION",
+            "link": "https://www.votervoice.net/VFW/Campaigns/131895/Respond",
+            "open_in_new_tab": true,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "#ffffff",
+            "text_color": "#000000",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "cta"
+      ],
+      "name": "Single CTA Button"
+    },
+    "rich_text_6YUxGq": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "text_efPDHD": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Derek’s journey, from a 12-year Air Force and Michigan Air National Guard veteran with multiple deployments to Uzbekistan and Afghanistan, to a national advocate for mental health accountability, is a powerful example of what service looks like beyond the battlefield. In this episode, Derek breaks down what he’s uncovered over the last two years while leading the fight against the veteran overprescribing crisis: the VA’s heavy reliance on psychiatric drugs, resistance to reform, and the push for informed consent and safer treatment practices. He also shares how WarCry for Change summits have brought together families, lawmakers, and medical experts to confront the realities behind veteran suicides and demand change.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_efPDHD"
+      ]
+    },
+    "full_width_image_with_text_v2_dj8gaq": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "right",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/CPB_D_1440x300_Foundation_Giving_Tuesday_7b8ad7e7-bc75-446d-98cb-b4a4efabb39c.jpg",
+        "background_image_mobile": "shopify://shop_images/GS-Content_-10-750x940__GSF.png",
+        "image_height_auto": true,
+        "banner_link": "shopify://collections/grunt-style-foundation",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "name": "FWB-BrandHPC1"
+    },
+    "rich_text_caRzzY": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 0
+      },
+      "blocks": {
+        "heading_cViqNY": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>SHOP GRUNT STYLE FOUNDATION</strong>",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        }
+      },
+      "block_order": [
+        "heading_cViqNY"
+      ]
+    },
+    "featured_collections_p8kHNX": {
+      "type": "featured-collections",
+      "settings": {
+        "section_heading": "",
+        "heading_text_align": "center",
+        "collection_type": "tabs",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "sm",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 15,
+        "number_products_per_view_desktop": "4",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-1",
+        "heading_size_desktop": 45,
+        "heading_size_mobile": 42,
+        "navigation_title_size_desktop": 26,
+        "navigation_title_size_mobile": 23,
+        "cta_title_size_desktop": 18,
+        "cta_title_size_mobile": 16,
+        "section_spacing_top_desktop": 10,
+        "section_spacing_top_mobile": 10,
+        "section_spacing_bottom_desktop": 10,
+        "section_spacing_bottom_mobile": 10,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#000000",
+        "cta_background_color": "#ffffff",
+        "cta_background_color_hover": "#ffffff",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#000000"
+      },
+      "blocks": {
+        "collection_block_UGmJDm": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "",
+            "collection": "grunt-style-foundation",
+            "cta_label": "SHOP GIVEBACK TEES",
+            "cta_link": "shopify://collections/grunt-style-foundation"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_UGmJDm"
+      ],
+      "name": "Featured Collections"
+    },
+    "rich_text_4eXMBJ": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 32,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_gFC4Fq": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>A WAR CRY FOR CHANGE: THE REVOLUTION TO RECLAIM VETERAN MENTAL HEALTH</strong>",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_Fy6J8C": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Grunt Style Foundation aims to address this issue head-on through the launch of its latest initiative: The War Cry for Change: A Revolution to Reclaim Veteran Mental Health. In partnership, Mad in America and Grunt Style Foundation have launched the Veteran Storytelling Campaign as part of GSF’s War Cry for Change and MIA’s Veteran and Military Family Initiative. Our goal is to help veterans, military families, and survivors share their experiences within the American mental health system and their encounters with being prescribed psychotropic medications.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_gFC4Fq",
+        "text_Fy6J8C"
+      ]
+    },
+    "multicolumn_with_image_eXBXeV": {
+      "type": "multicolumn",
+      "settings": {
+        "title": "GRUNT STYLE FOUNDATION",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 16,
+        "padding_bottom": 16
+      },
+      "blocks": {
+        "image_with_text_ahj9hW": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Perscribing___play_button.jpg",
+            "title": "",
+            "text": "<p>The Grunt Style Foundation aims to shine light on the issue of overprescribing psychotropic medications to our nation's veterans, which have been linked to veteran suicides.</p>",
+            "link_label": "Watch Now",
+            "link": "https://youtu.be/cdD7ACDT0M4"
+          }
+        },
+        "image_with_text_X8VEqn": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GS_War_Cry_For_change-min.jpg",
+            "title": "",
+            "text": "<p>War Cry For Change: Veterans Launch Campaign for Informed Consent and Safe Deprescribing at the VA</p>",
+            "link_label": "Read Now",
+            "link": "https://www.madinamerica.com/2024/06/war-cry-for-change-u-s-veterans-launch-campaign-for-informed-consent-in-psychiatry/"
+          }
+        },
+        "image_with_text_dx3L9n": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Dan_West_w__play_button.jpg",
+            "title": "",
+            "text": "<p>Host Tim Jensen sits down with Dan to delve into his impactful journey from the battlefields of Operation Desert Storm to his influential role at the VFW.  Discover how Dan's dedication to service has shaped his life and continues to benefit communities nationwide with current initiatives that affect veterans today.</p>",
+            "link_label": "WATCH NOW",
+            "link": "https://youtu.be/xC4fTX9CAgg"
+          },
+          "disabled": true
+        },
+        "image_with_text_mnPTDd": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DC_conference.jpg",
+            "title": "",
+            "text": "<p>Veterans Harm Reduction Press Conference at the U.S. Capitol hosted by Grunt Style Foundation’s \"War Cry For Change To End Veteran Overprescribing.\" June 5, 2025.</p>",
+            "link_label": "WATCH NOW",
+            "link": "https://www.youtube.com/watch?v=GvtovJyC04I&t=2395s"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_ahj9hW",
+        "image_with_text_X8VEqn",
+        "image_with_text_dx3L9n",
+        "image_with_text_mnPTDd"
+      ]
+    },
+    "hero_banner_secondary_FyL3yR": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/Desktop_1440px_x_300px_Four_Toast_Salute-min_4dd96a01-a139-472e-b65c-9859b06a6cad.jpg",
+        "background_image_mobile": "shopify://shop_images/Mobile_700x450__Four_Toast_Salute-min.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      }
+    }
+  },
+  "order": [
+    "main-page",
+    "hero_banner_secondary_E8iL63",
+    "rich_text_7BGNAC",
+    "video_banner_RxBkgK",
+    "single_cta_button_gTrDpp",
+    "rich_text_6YUxGq",
+    "full_width_image_with_text_v2_dj8gaq",
+    "rich_text_caRzzY",
+    "featured_collections_p8kHNX",
+    "rich_text_4eXMBJ",
+    "multicolumn_with_image_eXBXeV",
+    "hero_banner_secondary_FyL3yR"
+  ]
+}

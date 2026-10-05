@@ -1,0 +1,167 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "rgba(0,0,0,0)",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 5,
+        "top_space_mobile": 5,
+        "bottom_space_mobile": 5
+      },
+      "disabled": true
+    },
+    "full_width_image_with_text_v2_EjzPmN": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "left",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/CPB_D_1440x300_USMC_TWD.jpg",
+        "background_image_mobile": "shopify://shop_images/CPB_M_980x600_USMC_TWD.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "name": "Full Width Image/Text_v2"
+    },
+    "multi_column_with_rich_text_qUh9rc": {
+      "type": "multicolumn",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 16,
+        "padding_bottom": 0
+      },
+      "blocks": {
+        "icon_with_text_QG9xj8": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "COMPANY",
+            "text": "<ul><li><a href=\"/pages/about\" title=\"About Grunt Style\">ABOUT US</a></li><li><a href=\"/pages/contact-grunt-style\" title=\"Contact Grunt Style\">CONTACT</a></li><li><a href=\"https://www.gruntstyle.com/community/membership\" title=\"https://www.gruntstyle.com/community/membership\">REWARDS</a></li><li><a href=\"/pages/careers\" title=\"Careers\">CAREERS</a></li><li><a href=\"/pages/grunt-style-retail-stores\" title=\"Grunt Style Retail Stores\">RETAIL LOCATIONS</a></li><li><a href=\"/pages/club-grunt-style\" title=\"Club Grunt Style\">CLUB GRUNT STYLE</a></li><li><a href=\"/pages/grunt-style-foundation\" title=\"Grunt Style Foundation\">GRUNT STYLE FOUNDATION</a></li></ul>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_gRhTwj": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "COMMUNITY",
+            "text": "<ul><li><a href=\"/blogs/pride-service\" title=\"Pride in Service\">RECENT BLOG POSTS</a></li><li><a href=\"https://www.facebook.com/groups/clubgruntstyle\" title=\"https://www.facebook.com/groups/clubgruntstyle\">CLUB FACEBOOK GROUP</a></li><li><a href=\"https://www.facebook.com/groups/1813877149193867\" title=\"https://www.facebook.com/groups/1813877149193867\">REWARDS MEMBER GROUP</a></li><li><a href=\"https://www.americangrit.com/series/american-grit-podcast\" title=\"American Grit Podcast\">AMERICAN GRIT PODCAST</a></li><li><a href=\"/pages/bedtime-stories\" title=\"Violent But True Bedtime Stories\">VIOLENT BUT TRUE VIDEOS</a></li><li><a href=\"/pages/honor-the-fallen\" title=\"Honor The Fallen\">HONOR THE FALLEN</a></li><li><a href=\"/pages/support-those-who-serve\" title=\"Support Those Who Serve™\">SUPPORT THOSE WHO SERVE</a></li><li><a href=\"/pages/govx-discount\" title=\"GRUNT STYLE IS PROUD TO PARTNER WITH GOVX\">MILITARY & FIRST RESPONDER DISCOUNT</a></li></ul>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_LbaKbn": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "MEN'S COLLECTION",
+            "text": "<ul><li><a href=\"/collections/new-arrivals-for-men\" title=\"New Arrivals For Men\">NEW ARRIVALS</a></li><li><a href=\"/collections/mens-best-sellers\" title=\"Men's Best Sellers\">BEST SELLERS</a></li><li><a href=\"/collections/mens-basics\" title=\"Men's Basics\">BASICS</a></li><li><a href=\"/collections/mens-graphic-tees-and-tanks\" title=\"Men's Graphic T-Shirts and Tanks\">GRAPHIC TEES & TANKS</a></li><li><a href=\"/collections/long-sleeves-for-men\" title=\"Long Sleeves for Men\">LONG SLEEVES</a></li><li><a href=\"/collections/mens-hoodies-and-sweatshirts\" title=\"Men's Hoodies and Sweatshirts\">HOODIES & FULL ZIPS</a></li><li><a href=\"/collections/mens-outerwear\" title=\"Men's Outerwear\">OUTERWEAR</a></li><li><a href=\"/collections/button-downs-polos\" title=\"Button Downs & Polos\">BUTTON DOWNS & POLOS</a></li><li><a href=\"/collections/mens-fitness\" title=\"Men's Fitness\">FITNESS</a></li><li><a href=\"/collections/mens-bottoms\" title=\"Men's Bottoms\">BOTTOMS</a></li><li><a href=\"/collections/base-command-briefs\" title=\"Base Command Boxer Briefs\">BOXER BRIEFS</a></li><li><a href=\"/collections/gifts-for-him\" title=\"Gifts for Him\">GIFTS FOR HIM</a></li><li><a href=\"/collections/86d-collection-for-him\" title=\"Last Chance for Him\">LAST CHANCE</a></li><li><a href=\"/collections/men\" title=\"Men's Collection\">ALL MEN'S</a></li></ul>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_48eLw4": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "WOMEN'S COLLECTION",
+            "text": "<ul><li><a href=\"/collections/new-arrivals-for-women\" title=\"New Arrivals for Women\">NEW ARRIVALS</a></li><li><a href=\"/collections/womens-best-sellers\" title=\"Women's Best Sellers\">BEST SELLERS</a></li><li><a href=\"/collections/womens-basics\" title=\"Women's Basic T-Shirts\">BASICS</a></li><li><a href=\"/collections/womens-graphic-tees-and-tanks\" title=\"Women's T-Shirts and Tanks\">GRAPHIC TEES & TANKS</a></li><li><a href=\"/collections/long-sleeves-for-women\" title=\"Long Sleeves for Women\">LONG SLEEVES</a></li><li><a href=\"/collections/womens-hoodies-and-sweatshirts\" title=\"Women's Hoodies and Sweatshirts\">HOODIES & FULL ZIPS</a></li><li><a href=\"/collections/womens-outerwear\" title=\"Women's Outerwear\">OUTERWEAR</a></li><li><a href=\"/collections/womens-more-tops\" title=\"Women's More Tops\">OTHER TOPS</a></li><li><a href=\"/collections/womens-fitness\" title=\"Women's Fitness\">FITNESS</a></li><li><a href=\"/collections/womens-bottoms\" title=\"Women's Bottoms\">BOTTOMS</a></li><li><a href=\"/collections/sports-bras\" title=\"Sports Bras\">SPORTS BRAS</a></li><li><a href=\"/collections/gifts-for-her\" title=\"Gifts for Her\">GIFTS FOR HER</a></li><li><a href=\"/collections/86d-collection-for-her\" title=\"Last Chance for Her\">LAST CHANCE</a></li><li><a href=\"/collections/women\" title=\"Women's Collection\">ALL WOMEN'S</a></li></ul>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_TLmQfn": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "HELP DESK",
+            "text": "<ul><li><a href=\"/pages/contact-grunt-style\" title=\"Contact Grunt Style\">CUSTOMER SERVICE</a></li><li><a href=\"https://www.gruntstyle.com/account/login\" title=\"My Account\">MY STORE ACCOUNT</a></li><li><a href=\"/pages/tracking\" title=\"Track your order\">ORDER STATUS</a></li><li><a href=\"/pages/sizechart\" title=\"Size Charts\">SIZE CHARTS</a></li><li><a href=\"/pages/check-gift-card-balance\" title=\"Check Gift Card Balance\">CHECK GIFT CARD BALANCE</a></li><li><a href=\"/pages/faq\" title=\"FAQ\">FAQs</a></li><li><a href=\"/pages/club-faq\" title=\"CLUB GRUNT STYLE INFORMATION AND FAQS\">CLUB FAQ</a></li><li><a href=\"/pages/rewardsfaq\" title=\"GRUNT STYLE REWARDS – FAQ\">REWARDS FAQ</a></li><li><a href=\"/policies/privacy-policy\" title=\"Privacy Policy\">PRIVACY POLICY</a></li><li><a href=\"/pages/returns\" title=\"Return Policy\">RETURN POLICY</a></li><li><a href=\"https://returns.gruntstyle.com/\" title=\"Grunt Style Returns\">START A RETURN</a></li><li><a href=\"/pages/terms-of-service\" title=\"Terms of Service\">TERMS OF SERVICE</a></li><li><a href=\"/pages/club-grunt-style-terms-of-service\" title=\"Club Grunt Style Terms Of Service\">CLUB TERMS OF SERVICE</a></li><li><a href=\"/pages/grunt-style-rewards-terms-and-conditions\" title=\"Grunt Style Rewards Program Terms & Conditions\">REWARDS TERMS OF SERVICE</a></li><li><a href=\"https://resolution.seel.com/\" title=\"Start Grunt Style Claim\">CLAIM FOR PACKAGE ISSUES</a></li></ul>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_AxgDhT": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "SHOP BY COLLECTION",
+            "text": "<ul><li><a href=\"/collections/new\" title=\"New Arrivals\">NEW ARRIVALS</a></li><li><a href=\"/collections/best-sellers\" title=\"Best Sellers\">BEST SELLERS</a></li><li><a href=\"/collections/basics-franchise\" title=\"Basic T-Shirts, Hoodies & Packs\">BASICS COLLECTION</a></li><li><a href=\"/collections/blue-collar-american-graphics-and-apparel\" title=\"Blue Collar American Graphics\">BLUE COLLAR AMERICAN</a></li><li><a href=\"/collections/patriotic-apparel-and-gear\" title=\"Patriotic Apparel\">PATRIOTIC APPAREL</a></li><li><a href=\"/collections/2nd-amendment-collection\" title=\"2nd Amendment Collection\">2ND AMENDMENT</a></li><li><a href=\"/collections/loud-and-proud-graphics-and-gear\" title=\"Loud Graphics\">LOUD & PROUD</a></li><li><a href=\"/collections/freedom-on-tap\" title=\"Freedom On Tap\">DRINKING INSPIRED</a></li><li><a href=\"/collections/fitness\" title=\"Fitness\">TRAINING & FITNESS</a></li><li><a href=\"/collections/grunt-style-foundation\" title=\"Grunt Style Foundation Collection\">GRUNT STYLE FOUNDATION</a></li><li><a href=\"/collections/veteran-clothing-and-gear\" title=\"Veteran Inspired Apparel\">VETERAN INSPIRED</a></li><li><a href=\"/collections/military-branches\" title=\"Military Branches\">LICENSED MILITARY</a></li><li><a href=\"/collections/military-first-responders\" title=\"Military & First Responders\">MILITARY & FIRST RESPONDERS</a></li><li><a href=\"/collections/red-line-first-responders\" title=\"Red Line First Responders\">RED LINE APPAREL</a></li><li><a href=\"/collections/back-the-blue\" title=\"Back the Blue\">BLUE LINE APPAREL</a></li><li><a href=\"/collections/nurse-defined\" title=\"Nurse Defined\">HEALTHCARE HEROS</a></li><li><a href=\"/collections/woobie-franchise\" title=\"Woobie Collection\">WOOBIE HOODIES & BLANKETS</a></li><li><a href=\"/collections/holiday-graphics\" title=\"Holiday Themed Graphics\">HOLIDAY THEMES</a></li><li><a href=\"/collections/accessories\" title=\"Accessories\">ACCESSORIES</a></li><li><a href=\"/collections/headwear\" title=\"Headwear\">HEADWEAR</a></li><li><a href=\"/collections/86d-collection\" title=\"Last Chance\">LAST CHANCE SALE</a></li><li><a href=\"/collections/club-grunt-style\" title=\"Club Grunt Style\">CLUB GRUNT STYLE</a></li></ul>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_8yJpxi": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/art-pc-ui-svgrepo-com.svg",
+            "title": "SHOP BY DESIGN",
+            "text": "<ul><li><a href=\"/collections/1776-flag-franchise\" title=\"1776 Flag\">1776 FLAG</a></li><li><a href=\"/collections/76-we-the-people-franchise\" title=\"76 We The People\">76 WE THE PEOPLE</a></li><li><a href=\"/collections/bar-flag\" title=\"Bar Flag\">BAR FLAG</a></li><li><a href=\"/collections/betsy-ross-franchise\" title=\"Betsy Ross Franchise\">BETSY ROSS COLLECTION</a></li><li><a href=\"/collections/beautiful-badass-franchise\" title=\"Beautiful Badass Franchise\">BEAUTIFUL BADASS</a></li><li><a href=\"/collections/gs-defined-franchise\" title=\"Grunt Style Defined\">DEFINED SERIES</a></li><li><a href=\"/collections/fafo-shirts\" title=\"FAFO Collection\">FAFO</a></li><li><a href=\"/collections/grumpy-old-vet-franchise\" title=\"Grumpy Old Vet\">GRUMPY OLD VET</a></li><li><a href=\"/collections/rifle-flag-franchise\" title=\"Rifle Flag\">RIFLE FLAG</a></li><li><a href=\"/collections/r-e-d-franchise\" title=\"R.E.D. Collection\">R.E.D</a></li><li><a href=\"/collections/red-blood-blue-collar-franchise\" title=\"Red Blood Blue Collar™ Franchise\">RED BLOOD BLUE COLLAR</a></li><li><a href=\"/collections/realtree\" title=\"Realtree Camo\">REALTREE CAMO</a></li><li><a href=\"/collections/strength-through-suffering-franchise\" title=\"Strength Through Suffering\">STRENGTH THROUGH SUFFERING</a></li><li><a href=\"/collections/still-standing-franchise\" title=\"Still Standing Franchise\">STILL STANDING</a></li><li><a href=\"/collections/shit-show-supervisor-franchise\" title=\"Shit Show Supervisor Franchise\">SHIT SHOW SUPERVISOR</a></li><li><a href=\"/collections/shenanigans-supervisor\" title=\"Shenanigans Supervisor\">SHENANIGANS SUPERVISOR</a></li><li><a href=\"/collections/swearing-helps\" title=\"Swearing Helps\">SWEARING HELPS</a></li><li><a href=\"/collections/true-colors-franchise\" title=\"True Colors Franchise\">TRUE COLORS</a></li><li><a href=\"/collections/vintage-american-franchise\" title=\"Vintage American\">VINTAGE AMERICAN</a></li><li><a href=\"/collections/whiskey-helps-franchise\" title=\"Whiskey Helps\">WHISKEY HELPS</a></li><li><a href=\"/collections/usmc\" title=\"Grunt Style x U.S. Marine Corps Apparel\">USMC</a></li><li><a href=\"/collections/army\" title=\"Grunt Style x U.S. Army Apparel\">ARMY</a></li><li><a href=\"/collections/navy\" title=\"Grunt Style x U.S. Navy Apparel\">NAVY</a></li><li><a href=\"/collections/air-force\" title=\"Grunt Style x U.S. Air Force Apparel\">AIR FORCE</a></li><li><a href=\"/collections/uscg\" title=\"Grunt Style x Coast Guard Apparel\">COAST GUARD</a></li><li><a href=\"/collections/space-force\" title=\"Grunt Style x U.S. Space Force Apparel\">SPACE FORCE</a></li></ul>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_XxC3Mz": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/shirt-svgrepo-com.svg",
+            "title": "SHOP BY PRODUCT",
+            "text": "<ul><li><a href=\"/collections/basic-bundles\" title=\"Basic Bundles\">BUNDLES</a></li><li><a href=\"/collections/basic-tees\" title=\"Basic Tees\">BASIC T-SHIRTS</a></li><li><a href=\"/collections/basic-long-sleeves\" title=\"Basic Long Sleeves\">BASIC LONG SLEEVES</a></li><li><a href=\"/collections/basic-hoodies-collection\" title=\"Basic Hoodie & Full Zips\">BASIC HOODIES</a></li><li><a href=\"/collections/basic-bottoms\" title=\"Basic Bottoms\">BASIC BOTTOMS</a></li><li><a href=\"/collections/graphic-tops\" title=\"Graphic Tops\">GRAPHIC TOPS</a></li><li><a href=\"/collections/button-downs\" title=\"Button Downs\">BUTTON DOWNS</a></li><li><a href=\"/collections/polos\" title=\"Polos\">POLOS</a></li><li><a href=\"/collections/hoodies-and-sweatshirts\" title=\"Hoodies and Sweatshirts\">HOODIES & FULL ZIPS</a></li><li><a href=\"/collections/long-sleeves\" title=\"Long Sleeved T-Shirts\">LONG SLEEVES</a></li><li><a href=\"/collections/flannels-and-henleys\" title=\"Flannels and Henleys\">FLANNELS & HENLEYS</a></li><li><a href=\"/collections/jackets\" title=\"Jackets\">JACKETS</a></li><li><a href=\"/collections/outerwear\" title=\"Outerwear\">OUTERWEAR</a></li><li><a href=\"/collections/bottoms\" title=\"Bottoms\">BOTTOMS</a></li><li><a href=\"/collections/beanies\" title=\"Beanies\">BEANIES</a></li><li><a href=\"/collections/hats\" title=\"Hats\">HATS</a></li><li><a href=\"/collections/ranger-panties\" title=\"Ranger Panties\">RANGER PANTIES</a></li><li><a href=\"/collections/base-command-briefs\" title=\"Base Command Boxer Briefs\">BOXER BRIEFS</a></li><li><a href=\"/collections/sports-bras\" title=\"Sports Bras\">SPORTS BRAS</a></li><li><a href=\"/collections/drinkware\" title=\"Drinkware\">DRINKWARE</a></li><li><a href=\"/collections/flags\" title=\"Flags\">FLAGS</a></li><li><a href=\"/collections/patches\" title=\"Patches\">PATCHES</a></li><li><a href=\"/collections/stickers\" title=\"Stickers\">STICKERS</a></li><li><a href=\"/collections/window-decals\" title=\"Window Decals\">DECALS</a></li><li><a href=\"/collections/blankets\" title=\"Blankets\">BLANKETS</a></li><li><a href=\"/collections/violent-but-true-books\" title=\"Violent But True Books\">BOOKS</a></li><li><a href=\"/collections/gift-cards\" title=\"Gift Cards\">GIFT CARDS</a></li></ul>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_with_text_QG9xj8",
+        "icon_with_text_gRhTwj",
+        "icon_with_text_LbaKbn",
+        "icon_with_text_48eLw4",
+        "icon_with_text_TLmQfn",
+        "icon_with_text_AxgDhT",
+        "icon_with_text_8yJpxi",
+        "icon_with_text_XxC3Mz"
+      ],
+      "name": "Multicolumn Rich Text"
+    }
+  },
+  "order": [
+    "main-page",
+    "full_width_image_with_text_v2_EjzPmN",
+    "multi_column_with_rich_text_qUh9rc"
+  ]
+}

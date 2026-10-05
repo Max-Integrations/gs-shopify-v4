@@ -1,0 +1,76 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "rgba(0,0,0,0)",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      },
+      "disabled": true
+    },
+    "rich_text_hYhRTx": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_yqfqmz": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>ALL REVIEWS</strong>",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        }
+      },
+      "block_order": [
+        "heading_yqfqmz"
+      ],
+      "name": "t:sections.rich-text.name"
+    },
+    "1783008986e5c7a3ee": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      },
+      "blocks": {
+        "klaviyo_reviews_all_reviews_qbMrL3": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/all-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "klaviyo_reviews_all_reviews_qbMrL3"
+      ]
+    }
+  },
+  "order": [
+    "main-page",
+    "rich_text_hYhRTx",
+    "1783008986e5c7a3ee"
+  ]
+}

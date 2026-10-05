@@ -1,0 +1,182 @@
+{
+  "sections": {
+    "full_width_image_with_text_v2_Bkx38M": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "small",
+        "layout_preset": "right",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/CPB_D_1440x300_General_HUB_-_Father_s_Day_Gift_Guide_-_2025.jpg",
+        "background_image_mobile": "shopify://shop_images/CPB_M_980x600_General_HUB_-_Father_s_Day_Gift_Guide_-_2025.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "disabled": true
+    },
+    "rich_text_ntkwgD": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_RytHed": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>{{ collection.title }}</strong>",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_46iwbX": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>{{ collection.metafields.custom.seo_header.value }}</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_RytHed",
+        "text_46iwbX"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.name"
+    },
+    "countdown_banner_nk8eYy": {
+      "type": "countdown-banner",
+      "settings": {
+        "countdown_banner_full_width": true,
+        "countdown_banner_style": "basic",
+        "countdown_timer_style": "text",
+        "countdown_timer_numbers_font": "Roboto, sans-serif",
+        "countdown_banner_promo_copy_header": "FIRST ACCESS: MEMBERS ONLY",
+        "countdown_banner_promo_copy_header_font_size": "h2",
+        "countdown_banner_promo_subcopy": "",
+        "countdown_banner_countdown_subcopy": "",
+        "countdown_banner_timer_end": "2026-09-31 23:59",
+        "countdown_banner_terms": "MUST BE A MEMBER TO BUY - SIGN IN or <a href=\"https://www.gruntstyle.com/community/membership\" title=\"https://www.gruntstyle.com/community/membership\">JOIN NOW!</a>",
+        "countdown_banner_background_style": "solid",
+        "countdown_banner_bg_color_solid": "#000000",
+        "countdown_banner_bg_color_gradient": "linear-gradient(320deg, rgba(0, 0, 0, 1), rgba(128, 38, 41, 1) 75%)",
+        "countdown_banner_top_space_desktop": 0,
+        "countdown_banner_bottom_space_desktop": 0,
+        "countdown_banner_top_space_mobile": 0,
+        "countdown_banner_bottom_space_mobile": 0,
+        "countdown_banner_header_color": "#ffffff",
+        "countdown_banner_subcopy_color": "#ffffff",
+        "countdown_banner_countdown_subcopy_color": "#ffffff",
+        "countdown_banner_countdown_timer_color": "#748891",
+        "countdown_banner_countdown_blocks_bg_color": "#000000",
+        "countdown_banner_countdown_blocks_border_color": "#ffffff",
+        "countdown_banner_terms_text_color": "#ffffff",
+        "countdown_banner_terms_link_color": "#ffffff"
+      },
+      "custom_css": [
+        "h2 {background-color: #748891; letter-spacing: 2.5px; padding: 4px; font-size: 30px;}"
+      ],
+      "name": "Countdown Banner"
+    },
+    "full_width_image_with_text_v2_tCTA4t": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/HP_Promo_Block_D_NO_CTA_1440x120_FW26_20_-Off-GOVX.jpg",
+        "background_image_mobile": "shopify://shop_images/HP_Promo_Block_M_NO_CTA_750x200_FW26_20_-Off-GOVX.jpg",
+        "image_height_auto": true,
+        "banner_link": "https://www.gruntstyle.com/community/membership",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "disabled": true
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "settings": {
+        "overlay_content_position": "text-center",
+        "overlay_text": false,
+        "heading_size": "h1",
+        "tag": "h1",
+        "show_header": false,
+        "show_description": true,
+        "description_position": "below_products",
+        "collection_image": false,
+        "banner_height_desktop": "200px",
+        "banner_height_mobile": "100px",
+        "products_per_page": 28,
+        "grid_image_size": "square",
+        "load_type": "page_number",
+        "enable_filtering": true,
+        "open_filtering": false,
+        "open_all_filtering": false,
+        "enable_sorting": true,
+        "color_scheme": "scheme-2",
+        "enable_gradient": false,
+        "background_color": "#e7e7e7",
+        "text_color": "#000000",
+        "background_opacity_color": "#515253",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0
+      },
+      "blocks": {
+        "product-grid": {
+          "type": "product-grid",
+          "settings": {
+            "columns_desktop": "4",
+            "columns_mobile": "2",
+            "product_card_bg_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "product-grid"
+      ],
+      "custom_css": [
+        ".product-quickview-button {display: none;}"
+      ]
+    }
+  },
+  "order": [
+    "full_width_image_with_text_v2_Bkx38M",
+    "rich_text_ntkwgD",
+    "countdown_banner_nk8eYy",
+    "full_width_image_with_text_v2_tCTA4t",
+    "main-collection"
+  ]
+}

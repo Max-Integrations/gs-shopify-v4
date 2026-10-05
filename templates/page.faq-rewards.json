@@ -1,0 +1,158 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "rgba(0,0,0,0)",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      },
+      "disabled": true
+    },
+    "wonderment_faq_E6aq3r": {
+      "type": "wonderment-faq",
+      "settings": {
+        "show_answers": false,
+        "text_size": 100,
+        "alignment": "center",
+        "text_color": "#000000",
+        "background_color": "linear-gradient(184deg, rgba(255, 255, 255, 1) 7%, rgba(255, 255, 255, 1) 94%)",
+        "border_color": "#dddad6",
+        "base_width": 65,
+        "max_width": "",
+        "inner_padding": 50,
+        "outer_margin": 0,
+        "custom_css": "",
+        "mobile_custom_css": "",
+        "override_theme_font": false,
+        "heading_font": "roboto_n4",
+        "main_font": "roboto_condensed_n4"
+      },
+      "blocks": {
+        "section_heading_7rYFM6": {
+          "type": "section_heading",
+          "settings": {
+            "title": "GRUNT STYLE REWARDS FAQs"
+          }
+        },
+        "question_U9grzM": {
+          "type": "question",
+          "settings": {
+            "title": "How do I become a member?",
+            "text": "<p><a href=\"https://www.gruntstyle.com/community/membership\">Click Here to Sign Up</a></p><p>Select the membership option you want!</p><p>Free tier will have a pop-up to confirm or create an account! Silver and Gold will add the product to your cart.</p>"
+          }
+        },
+        "question_bgTdEW": {
+          "type": "question",
+          "settings": {
+            "title": "Do I need to have an account with Grunt Style Rewards?",
+            "text": "<p>Yes. You need a Grunt Style account to start earning rewards. When you join, we’ll prompt you to sign in or create one. No account = no perks.</p>"
+          }
+        },
+        "question_GhpCJt": {
+          "type": "question",
+          "settings": {
+            "title": "How does Grunt Style Rewards work?",
+            "text": "<p>Members must be signed in for perks to apply instantly online. At a retail store, share your email for perks to apply.</p><p>No minimum spend required.</p><p>Credits are valid for 90 days. Use them before they disappear.</p><p>Earn 5-20% in Credit on spend, Birthday Credit, and other perks!</p><p><a href=\"https://www.gruntstyle.com/community/membership\">Click here</a> to see each tiers' perks!</p>"
+          }
+        },
+        "question_6cCqDk": {
+          "type": "question",
+          "settings": {
+            "title": "How does Free Shipping work?",
+            "text": "<p>If you’re a Silver or Gold member, you receive free shipping! Make sure you’re signed in and it automatically applies.</p><p>If you are part of the Member tier, you must have a subtotal of $75 to receive free shipping!</p>"
+          }
+        },
+        "question_9F4LfT": {
+          "type": "question",
+          "settings": {
+            "title": "How does the reward credit work?",
+            "text": "<p>After you sign in, you earn credits from every purchase!</p><p>* 5% for Members<br/>* 20% for Gold</p><p>Don't forget, credits can be used online or in-store. <strong>They expire 90 days after earning.</strong></p>"
+          }
+        },
+        "question_kW8ncY": {
+          "type": "question",
+          "settings": {
+            "title": "What purchases qualify for store credit?",
+            "text": "<p>You will earn store credit on most purchases. However, the following items are excluded and do not earn store credit:</p><p>- Donations made to the Grunt Style Foundation<br/>- Gift card purchases<br/>- Subscription or loyalty membership fees<br/>- Custom products<br/>- Package protection costs</p><p>Store credit is automatically applied to qualifying purchases and will be reflected in your account once your order is processed.</p>"
+          }
+        },
+        "question_NxHnQ4": {
+          "type": "question",
+          "settings": {
+            "title": "Is everything eligible for credit redemption?",
+            "text": "<p>No. Gift Cards, donations made to Grunt Style Foundation, third-party vendors, and package protection costs are not eligible for credit redemption.</p>"
+          }
+        },
+        "question_GTcXEN": {
+          "type": "question",
+          "settings": {
+            "title": "What kind of special access do I get?",
+            "text": "<p>Gold and Silver Tiers receive access to member events, special pricing offers, early access to new products, and a <a href=\"https://www.facebook.com/groups/1813877149193867\">members-only community! </a>Member Tier receives access to member events, but if you want more, you need to upgrade!</p>"
+          }
+        },
+        "question_BpNRzt": {
+          "type": "question",
+          "settings": {
+            "title": "Is the membership fee a recurring charge?",
+            "text": "<p>Yes, if you signed up for the Gold tier! You are charged yearly! Upgrade your experience to Gold is $50!</p><p>If you need to cancel, then you will need to do so before your next charge date!</p>"
+          }
+        },
+        "question_gj7BFf": {
+          "type": "question",
+          "settings": {
+            "title": "How can I cancel my membership?",
+            "text": "<p>Cancel anytime by logging into your Member Portal or reaching out to our Customer Service team!</p><p>There are no cancellation fees, and cancelling your membership does not provide you with a refund, nor does it stop a pending charge. Your cancellation will go into effect for the following billing cycle.</p><p>Note: cancellation requests will go into effect at the end of the annual term. Annual Memberships are non-refundable.</p>"
+          }
+        },
+        "question_Q3AxXG": {
+          "type": "question",
+          "settings": {
+            "title": "My benefits aren’t working. Why?",
+            "text": "<p>Make sure you’re signed into your Grunt Style account. Your perks only activate when you’re logged in. If you're in-store, provide your account email or phone number!</p><p>Note: Gift Cards, donations made to Grunt Style Foundation, third-party vendors, and package protection costs are not eligible for credit redemption. </p>"
+          }
+        },
+        "question_BnTft3": {
+          "type": "question",
+          "settings": {
+            "title": "How can I contact Customer Service?",
+            "text": "<p>Phone: 877-554-7868 (Mon–Fri, 9 AM–5 PM CST)</p><p>Email: CustomerService@GruntStyle.com</p><p>Chat: Mon–Fri, 9 AM–5 PM CST</p><p>Visit: <a href=\"https://www.gruntstyle.com/pages/grunt-style-retail-stores\" target=\"_blank\">Retail Locations</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "section_heading_7rYFM6",
+        "question_U9grzM",
+        "question_bgTdEW",
+        "question_GhpCJt",
+        "question_6cCqDk",
+        "question_9F4LfT",
+        "question_kW8ncY",
+        "question_NxHnQ4",
+        "question_GTcXEN",
+        "question_BpNRzt",
+        "question_gj7BFf",
+        "question_Q3AxXG",
+        "question_BnTft3"
+      ],
+      "name": "📦 FAQ"
+    }
+  },
+  "order": [
+    "main-page",
+    "wonderment_faq_E6aq3r"
+  ]
+}

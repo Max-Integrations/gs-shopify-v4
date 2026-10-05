@@ -1,0 +1,233 @@
+{
+  "sections": {
+    "custom_liquid_RyJptb": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 32,
+        "padding_bottom": 32
+      },
+      "name": "t:sections.custom-liquid.presets.name"
+    },
+    "track_your_order_heading": {
+      "type": "wonderment-custom-html",
+      "settings": {
+        "show_when": "always",
+        "width": "regular"
+      },
+      "blocks": {
+        "track_your_order": {
+          "type": "html",
+          "settings": {
+            "section_html": "<style>\n  .wndr-sx--heading {\n    font-size: 2.5rem;\n    text-align: center;\n  }\n  .wonderment-ab-container > div > form {\n     margin-top: 20px;\n  }\n  .tp-form-header.tp-search-header {\n    display: none !important;\n  }\n</style>\n<h2 class=\"wndr-sx--heading\">Track your order</h2>"
+          }
+        }
+      },
+      "block_order": [
+        "track_your_order"
+      ]
+    },
+    "main": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      },
+      "blocks": {
+        "wonderment": {
+          "type": "shopify://apps/wonderment/blocks/wonderBlock/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "wonderment"
+      ]
+    },
+    "1762461744d0fa9a28": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "faq": {
+      "type": "wonderment-faq",
+      "settings": {
+        "show_answers": false,
+        "text_size": 100,
+        "alignment": "center",
+        "text_color": "#121212",
+        "background_color": "linear-gradient(184deg, rgba(255, 255, 255, 1) 7%, rgbargba(255, 255, 255, 1) 94%)",
+        "border_color": "#121212",
+        "base_width": 80,
+        "max_width": "",
+        "inner_padding": 100,
+        "outer_margin": 0,
+        "custom_css": "",
+        "mobile_custom_css": "",
+        "override_theme_font": false,
+        "heading_font": "serif",
+        "main_font": "system_ui_n4"
+      },
+      "blocks": {
+        "faq-getting-started": {
+          "type": "section_heading",
+          "settings": {
+            "title": "Getting started"
+          }
+        },
+        "product-where-made-question": {
+          "type": "question",
+          "settings": {
+            "title": "Where are your products manufactured?",
+            "text": "<p>We are a local company and all merchandise is made with love here in Toronto, Canada.</p>"
+          }
+        },
+        "sizes-question": {
+          "type": "question",
+          "settings": {
+            "title": "How do your sizes work?",
+            "text": "<p>Please take a look at our size chart for more information and how to take accurate measurements.</p>"
+          }
+        },
+        "shipping-heading": {
+          "type": "section_heading",
+          "settings": {
+            "title": "Shipping"
+          }
+        },
+        "when-shipping-question": {
+          "type": "question",
+          "settings": {
+            "title": "When will my order ship?",
+            "text": "<p>Usually in 1-2 business days</p>"
+          }
+        },
+        "when-arriving-question": {
+          "type": "question",
+          "settings": {
+            "title": "When will my order arrive?",
+            "text": "<p>Usually in 3-10 business days</p>"
+          }
+        },
+        "ship-international-question": {
+          "type": "question",
+          "settings": {
+            "title": "Do you ship internationally?",
+            "text": "<p>Currently we are only shipping to USA and Canada.</p>"
+          }
+        },
+        "shipping-cost-question": {
+          "type": "question",
+          "settings": {
+            "title": "How much is shipping?",
+            "text": "<p>If you spend over $100, shipping is always free. For any other purchases, shipping will be calculated at checkout.</p>"
+          }
+        },
+        "return-policy-question": {
+          "type": "question",
+          "settings": {
+            "title": "What is your return policy?",
+            "text": "<p>Merchandise that is unworn and in the original packaging can be returned within 30 days with the packing slip included with the product.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq-getting-started",
+        "product-where-made-question",
+        "sizes-question",
+        "shipping-heading",
+        "when-shipping-question",
+        "when-arriving-question",
+        "ship-international-question",
+        "shipping-cost-question",
+        "return-policy-question"
+      ],
+      "disabled": true
+    },
+    "custom_liquid_bpX4bX": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 16
+      },
+      "name": "t:sections.custom-liquid.presets.name"
+    },
+    "featured_collections_QVEFbW": {
+      "type": "featured-collections",
+      "settings": {
+        "section_heading": "YOU MAY ALSO LIKE",
+        "heading_text_align": "left",
+        "collection_type": "tabs",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "sm",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 15,
+        "number_products_per_view_desktop": "4",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-1",
+        "heading_size_desktop": 38,
+        "heading_size_mobile": 36,
+        "navigation_title_size_desktop": 26,
+        "navigation_title_size_mobile": 23,
+        "cta_title_size_desktop": 18,
+        "cta_title_size_mobile": 16,
+        "section_spacing_top_desktop": 10,
+        "section_spacing_top_mobile": 10,
+        "section_spacing_bottom_desktop": 10,
+        "section_spacing_bottom_mobile": 10,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#000000",
+        "cta_background_color": "#ffffff",
+        "cta_background_color_hover": "#ffffff",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#000000"
+      },
+      "blocks": {
+        "collection_block_yL6yiX": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "",
+            "collection": "best-sellers",
+            "cta_label": "SHOP BEST SELLERS",
+            "cta_link": "shopify://collections/best-sellers"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_yL6yiX"
+      ],
+      "name": "Featured Collections"
+    }
+  },
+  "order": [
+    "custom_liquid_RyJptb",
+    "track_your_order_heading",
+    "main",
+    "1762461744d0fa9a28",
+    "faq",
+    "custom_liquid_bpX4bX",
+    "featured_collections_QVEFbW"
+  ]
+}

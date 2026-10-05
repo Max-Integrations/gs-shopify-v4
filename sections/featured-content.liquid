@@ -159,7 +159,7 @@
                                                     </div>
                                                     <noscript>
                                                         <a
-                                                            href="{{ block.settings.video | external_video_url }}"
+                                                            href="{{ block.settings.video.sources.first.url }}"
                                                             target="_blank"
                                                             class="unstyled-link"
                                                             aria-label="{{ block.settings.video.alt | default: product.title | strip_html }}"

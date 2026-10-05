@@ -1,0 +1,565 @@
+{
+  "sections": {
+    "page_template_override_HACEgc": {
+      "type": "page-template-override",
+      "settings": {
+        "bg_color": "#000000"
+      }
+    },
+    "full_width_image_with_text_v2_J7eRJE": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "right",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/CPB_D_IMAGE_1440x300_V1_YTD_SS26_Campaign_Memorial_Day.jpg",
+        "background_image_mobile": "shopify://shop_images/CPB_M_IMAGE_750x460_V1_YTD_SS26_Campaign_Memorial_Day.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "name": "Full Width Image/Text_v2"
+    },
+    "rich_text_aXGA4D": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 0
+      },
+      "blocks": {
+        "text_LWnkEd": {
+          "type": "block--text",
+          "settings": {
+            "text": "<h6>Memorial Day is more than a day off—it’s a sacred moment to honor those who made the ultimate sacrifice for our freedom. This day stands as a heartfelt reminder that while we honor those we've lost, we must also advocate for our veterans who continue to fight battles at home. </h6>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_LWnkEd"
+      ]
+    },
+    "shapes_EMew4J": {
+      "type": "shapes",
+      "settings": {
+        "select_shape": "shape9",
+        "image_fit": "contain",
+        "svg_code": "",
+        "enable_marquee": false,
+        "marquee_direction": "rtl",
+        "fullwidth": false,
+        "flip_shape": true,
+        "enable_overlaped": false,
+        "overlay_position": "bottom",
+        "color_scheme": "scheme-4",
+        "enable_gradiant": false,
+        "svg_color": "#e7e7e7",
+        "svg_stroke": "#000000",
+        "shape_ratio": "fixed",
+        "desktop_height": 30,
+        "mobile_height": 20
+      },
+      "custom_css": [
+        "div {background-color: #000;}"
+      ],
+      "name": "t:sections.shapes.presets.name"
+    },
+    "full_width_image_with_text_v2_qeiXwH": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "right",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/CPB_D_IMAGE_1440x300_V2_YTD_SS26_Campaign_Memorial_Day.jpg",
+        "background_image_mobile": "shopify://shop_images/CPB_M_IMAGE_750x460_V2_YTD_SS26_Campaign_Memorial_Day.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "name": "Full Width Image/Text_v2"
+    },
+    "rich_text_rfwwQL": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_CKqWBL": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>THIS MEMORIAL DAY, WE'RE NOT RUNNING A SALE, WE'RE RUNNING A MISSION.</strong>",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_GNpYAY": {
+          "type": "block--text",
+          "settings": {
+            "text": "<h6>This year, we're taking action. Every purchase of our Memorial Day t-shirts will contribute $5 directly to the Children of Fallen Patriots Foundation - a mission to provide financial support for families of service members who have fallen.</h6><h6></h6><h6>While we honor the fallen, we stand for those still in the fight - those battling invisible wounds long after their service ends.</h6>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_CKqWBL",
+        "text_GNpYAY"
+      ],
+      "name": "t:sections.rich-text.name"
+    },
+    "countdown_MRhRqU": {
+      "type": "countdown",
+      "settings": {
+        "section_visibility": "always",
+        "layout": "center",
+        "countdown_bg_image": "shopify://shop_images/GS-1250x600_memorial_day.png",
+        "bg__color": "solid",
+        "gradient_color": "linear-gradient(320deg, rgba(56, 78, 197, 0.56) 16%, rgba(203, 68, 194, 0.6) 52%, rgba(255, 201, 104, 0.95) 87%)",
+        "solid_color": "#000000",
+        "enable_innner_background": false,
+        "text_color": "#ffffff",
+        "highlight_text_color": "#ffffff",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "<strong>HELP MAKE AN IMPACT</strong>",
+            "size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Memorial Day Giveback Ends:"
+          }
+        },
+        "timer": {
+          "type": "timer",
+          "settings": {
+            "end": "2026-05-31 23:59"
+          }
+        },
+        "products": {
+          "type": "products",
+          "settings": {
+            "product_list": [
+              "honor-outlives-t-shirt-black",
+              "womens-honor-outlives-slim-fit-t-shirt-military-green"
+            ],
+            "grid_image_size": "square",
+            "grid_image_fit": "contain"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "timer",
+        "products"
+      ],
+      "custom_css": [
+        ".scheme-inverse.section-padding {background-color: #000;}"
+      ],
+      "disabled": true,
+      "name": "t:sections.countdown.presets.name"
+    },
+    "multicolumn_with_yt_shorts_iMdbrY": {
+      "type": "multicolumn-with-yt-shorts",
+      "settings": {
+        "mutlicolumn_yts_full_width": false,
+        "mutlicolumn_yts_top_space_desktop": 10,
+        "mutlicolumn_yts_bottom_space_desktop": 10,
+        "mutlicolumn_yts_top_space_mobile": 10,
+        "mutlicolumn_yts_bottom_space_mobile": 10,
+        "mutlicolumn_yts_content_alignment": "center",
+        "multicolumn_yts_heading": "TESTIMONIALS FROM CHILDREN OF THE FALLEN PATRIOTS",
+        "multicolumn_yts_heading_size": "h3",
+        "multicolumn_yts_heading_tag": "h3",
+        "multicolumn_yts_heading_bold": true,
+        "multicolumn_yts_heading_alignment": "center",
+        "multicolumn_yts_column_count_desktop": 2,
+        "multicolumn_yts_column_count_mobile": "1",
+        "multicolumn_yts_background_color": "#000000",
+        "multicolumn_yts_text_color": "#ffffff",
+        "multicolumn_yts_link_text_color": "#802629",
+        "multicolumn_yts_cta_background_color": "#802629",
+        "multicolumn_yts_cta_text_color": "#ffffff"
+      },
+      "blocks": {
+        "yt_short_R7gYPb": {
+          "type": "yt_short",
+          "settings": {
+            "yts_video_url": "https://youtu.be/Lk1jdZ7idOk",
+            "yts_thumbnail_image": "shopify://shop_images/GS_Memorial_Day-CoFP-1280x720.png",
+            "yts_video_title": "Kayla Martins",
+            "yts_description": "<strong>KAYLA MARTINS – Daughter of SSG Christopher Hawes, U.S. Army - </strong>Kayla lost her father, SSG Christopher Hawes, in service—but she never lost sight of his legacy. With support from Children of Fallen Patriots, she pursued her education with purpose and continues to honor him in everything she does.",
+            "enable_cta_link": false,
+            "yts_cta_link_type": "link",
+            "yts_cta_link_text": "",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_M3w3wP": {
+          "type": "yt_short",
+          "settings": {
+            "yts_video_url": "https://youtu.be/m6NkEGLe3OY",
+            "yts_thumbnail_image": "shopify://shop_images/GS_Memorial_Day-CoFP2-1280x720.png",
+            "yts_video_title": "Rebekah Hawes",
+            "yts_description": "<strong>REBEKAH HAWES – Wife of SSG Christopher Hawes, U.S. Army - </strong>Rebekah lost her husband, SSG Christopher Hawes—but not his memory. Now, she’s raising their children with strength, love, and the support of Children of Fallen Patriots, ensuring his legacy lives on through their future.",
+            "enable_cta_link": false,
+            "yts_cta_link_type": "link",
+            "yts_cta_link_text": "",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_eyfLaR": {
+          "type": "yt_short",
+          "disabled": true,
+          "settings": {
+            "yts_video_url": "https://www.youtube.com/watch?v=XIHKnqdU0Xs",
+            "yts_thumbnail_image": "shopify://shop_images/stephanie-memorial_day_828x600_3e9a5ad8-70cd-4203-be30-05a68ea34b0a.png",
+            "yts_video_title": "Stephanie",
+            "yts_description": "Stephani Gannon shares her story of how CFP supported her through college and counseling after losing her father U.S. Army Lieutenant Marshal Gutierrez.",
+            "enable_cta_link": false,
+            "yts_cta_link_type": "link",
+            "yts_cta_link_text": "",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_CaBMYB": {
+          "type": "yt_short",
+          "disabled": true,
+          "settings": {
+            "yts_video_url": "https://www.youtube.com/watch?v=W-8wqzSA9D0",
+            "yts_thumbnail_image": "shopify://shop_images/1200x680-memorial_day_dee_and_denise.png",
+            "yts_video_title": "Dee & Denise",
+            "yts_description": "Meet sisters Dee Hauschel and Denise Zevala, daughter of U.S Army Specialist Dennis Hauschel. Dee and Denise share their story how the Children of Fallen Patriots provided crucial resources to military children who have lost a parent in the line of duty.",
+            "enable_cta_link": false,
+            "yts_cta_link_type": "link",
+            "yts_cta_link_text": "",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        }
+      },
+      "block_order": [
+        "yt_short_R7gYPb",
+        "yt_short_M3w3wP",
+        "yt_short_eyfLaR",
+        "yt_short_CaBMYB"
+      ],
+      "name": "Multicolumn YT Shorts"
+    },
+    "anchor_tag_3pUqCx": {
+      "type": "anchor-tag",
+      "settings": {
+        "anchor_tag": "memorialnamereading"
+      },
+      "name": "Anchor Tag"
+    },
+    "rich_text_XJQ8ff": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 24
+      },
+      "blocks": {
+        "heading_KTF8F8": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>MEMORIAL DAY NAME READING</strong>",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_kXBfJt": {
+          "type": "block--text",
+          "settings": {
+            "text": "<h3><strong>HONOR THE FALLEN</strong></h3>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        },
+        "text_YCVAeV": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>At Grunt Style, we hold a deep reverence for the sacrifice of our fallen heroes and the families who have lost loved ones in service to our country. That is why, every Memorial Day, we gather to honor their memory and read aloud the names of those who gave their lives in service to our nation.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_KTF8F8",
+        "text_kXBfJt",
+        "text_YCVAeV"
+      ]
+    },
+    "video_banner_XD4AxT": {
+      "type": "video-banner",
+      "settings": {
+        "section_visibility": "always",
+        "video_full_width": false,
+        "autoplay": false,
+        "video_height": "650px",
+        "mobile_video_height": "350px",
+        "cover_image": "shopify://shop_images/Memorial_Name_reading_Cover.png",
+        "video_url": "",
+        "heading": "",
+        "heading_size": "h2",
+        "seo_heading": "h2",
+        "description": "",
+        "play_btn_text": "Play now",
+        "content_width": "small",
+        "content_position": "center",
+        "content_alignment": "center_center",
+        "heading_marquee": false,
+        "direction": "rtl",
+        "scrolling_speed": 15,
+        "scrolling_speed_mobile": 20,
+        "desktop_heading_size": 20,
+        "mobile_heading_size": 20,
+        "color_scheme": "scheme-4",
+        "text": "#ffffff",
+        "button": "#000000",
+        "btn_shadow_color": "#ececec",
+        "button_text": "#ffffff",
+        "button_hover": "#802629",
+        "button_hover_text": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 40,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 5,
+        "bottom_space_mobile": 5
+      },
+      "custom_css": [
+        "div {background-color: #000000;}"
+      ],
+      "disabled": true,
+      "name": "t:sections.video_banner.name"
+    },
+    "text_scroller_GaJjjz": {
+      "type": "text-scroller",
+      "settings": {
+        "text_scroller_heading": ""
+      },
+      "blocks": {
+        "text_scroller_UXAK7m": {
+          "type": "text_scroller",
+          "settings": {
+            "title": "OEF",
+            "in_memory_of_list": true,
+            "scroller_content": "",
+            "names_list": "https://docs.google.com/spreadsheets/d/1ln-3Z-U9oL_FCEW_9Ml2oIEHstIbQLZr/edit?gid=914891335#gid=914891335",
+            "is_auto_scroll": true
+          }
+        },
+        "text_scroller_JUDhUJ": {
+          "type": "text_scroller",
+          "settings": {
+            "title": "OIF",
+            "in_memory_of_list": true,
+            "scroller_content": "",
+            "names_list": "https://docs.google.com/spreadsheets/d/1f8pxFCuaLNnHsguEvZbIihd-IMTKpqts/edit?gid=1760631070#gid=1760631070",
+            "is_auto_scroll": true
+          }
+        },
+        "text_scroller_hzzYkn": {
+          "type": "text_scroller",
+          "settings": {
+            "title": "OND",
+            "in_memory_of_list": true,
+            "scroller_content": "",
+            "names_list": "https://docs.google.com/spreadsheets/d/10_ND5-leZdn6cgo_3nHMUlnvzeOWGkFX/edit?gid=1554655122#gid=1554655122",
+            "is_auto_scroll": true
+          }
+        }
+      },
+      "block_order": [
+        "text_scroller_UXAK7m",
+        "text_scroller_JUDhUJ",
+        "text_scroller_hzzYkn"
+      ]
+    },
+    "full_width_image_with_text_v2_dj6Vyh": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/GS-1440x350_memorial_day.png",
+        "background_image_mobile": "shopify://shop_images/GS-750x460_memorial_day.png",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "disabled": true
+    },
+    "shapes_mGCrwC": {
+      "type": "shapes",
+      "settings": {
+        "select_shape": "shape9",
+        "image_fit": "contain",
+        "svg_code": "",
+        "enable_marquee": false,
+        "marquee_direction": "rtl",
+        "fullwidth": false,
+        "flip_shape": true,
+        "enable_overlaped": false,
+        "overlay_position": "bottom",
+        "color_scheme": "scheme-4",
+        "enable_gradiant": false,
+        "svg_color": "#e7e7e7",
+        "svg_stroke": "#000000",
+        "shape_ratio": "fixed",
+        "desktop_height": 30,
+        "mobile_height": 20
+      },
+      "custom_css": [
+        "div {background-color: #000;}"
+      ],
+      "name": "t:sections.shapes.presets.name"
+    },
+    "multicolumn_with_image_8rkgpP": {
+      "type": "multicolumn",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "image_with_text_q9VQce": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Blank_Poster_2000x2000_10_Memorial_Day_Landing_Page-min_23454d3e-bdd7-47d1-b31e-d041b60459d4.jpg",
+            "title": "THE FOUR TOAST SALUTE",
+            "text": "<p>Since the very beginning, we at Grunt Style have always stood for Honoring our Country and Military. Early on we came up with the 'Four Toast Salute,' a toast made by Veterans to honor what they stand for. This is a private, internal tradition we perform every Friday before going home to our families.</p>",
+            "link_label": "Learn More",
+            "link": "https://americangrit.com/post/4-toast-salute"
+          }
+        },
+        "image_with_text_xTdby7": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Blank_Poster_2000x2000_9_Memorial_Day_Landing_Page-min.jpg",
+            "title": "THE HISTORY OF THE BATTLEFIELD",
+            "text": "<p>The Battlefield Cross is a symbolic replacement of a cross on the battlefield or at the base camp for a soldier who has been killed. In this article we explain how the cross is made up of the soldier's helmet, bayonet, and boots, placed on top of a symbolic representation of the fallen soldier's rifle.</p>",
+            "link_label": "Learn More",
+            "link": "https://americangrit.com/post/significance-of-the-battlefield-cross"
+          }
+        },
+        "image_with_text_NX4ki6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Blank_Poster_2000x2000_12_Memorial_Day_Landing_Page-min.jpg",
+            "title": "CHILDREN OF FALLEN PATRIOTS",
+            "text": "<p>Their mission is to provide college scholarships and educational counseling to military children who have lost a parent in the line of duty. Read more how you can help the children of our fallen patriots.</p>",
+            "link_label": "Learn More",
+            "link": "https://americangrit.com/post/honoring-our-heroes-legacy-college-scholarships-for-military-children"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_q9VQce",
+        "image_with_text_xTdby7",
+        "image_with_text_NX4ki6"
+      ],
+      "name": "Multicolumn IMG and Text"
+    }
+  },
+  "order": [
+    "page_template_override_HACEgc",
+    "full_width_image_with_text_v2_J7eRJE",
+    "rich_text_aXGA4D",
+    "shapes_EMew4J",
+    "full_width_image_with_text_v2_qeiXwH",
+    "rich_text_rfwwQL",
+    "countdown_MRhRqU",
+    "multicolumn_with_yt_shorts_iMdbrY",
+    "anchor_tag_3pUqCx",
+    "rich_text_XJQ8ff",
+    "video_banner_XD4AxT",
+    "text_scroller_GaJjjz",
+    "full_width_image_with_text_v2_dj6Vyh",
+    "shapes_mGCrwC",
+    "multicolumn_with_image_8rkgpP"
+  ]
+}

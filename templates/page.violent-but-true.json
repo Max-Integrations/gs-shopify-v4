@@ -1,0 +1,735 @@
+{
+  "sections": {
+    "1757097970507351fc": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "banner_background_color": "#121212",
+        "text_color": "rgba(0,0,0,0)",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      },
+      "custom_css": [
+        "DIV {background-color: #121212;}"
+      ],
+      "disabled": true
+    },
+    "full_width_image_with_text_v2_Qq7rU9": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "right",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/GS-Content_-VBT-1920x700.png",
+        "background_image_mobile": "shopify://shop_images/GS-Content_-750x940-VBT.png",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "name": "Full Width Image/Text_v2"
+    },
+    "rich_text_B3kFtU": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_FbRiRM": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>WELCOME BACK YOU BLOOD THIRSTY SWEETHEARTS</strong>",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_McUexW": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>You work around a bunch of f*ckwits, you live around a bunch of soyboys, and you've always wondered if anyone has ever bayoneted thirty people in one day. The solution? Give the people the mental testosterone injection they didn't know they needed. So, Kick back, grab a cold one, and enjoy the gift of violence with your friends and loved ones as we add new stories of graphic violence to our VBT Hall of Fame!</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_FbRiRM",
+        "text_McUexW"
+      ],
+      "name": "t:sections.rich-text.name"
+    },
+    "shapes_Tfcna9": {
+      "type": "shapes",
+      "settings": {
+        "select_shape": "shape9",
+        "image_fit": "contain",
+        "svg_code": "",
+        "enable_marquee": false,
+        "marquee_direction": "rtl",
+        "fullwidth": true,
+        "flip_shape": true,
+        "enable_overlaped": false,
+        "overlay_position": "bottom",
+        "color_scheme": "scheme-4",
+        "enable_gradiant": false,
+        "svg_color": "#e7e7e7",
+        "svg_stroke": "#000000",
+        "shape_ratio": "fixed",
+        "desktop_height": 50,
+        "mobile_height": 20
+      },
+      "custom_css": [
+        "div {background-color: #121212;}"
+      ],
+      "name": "t:sections.shapes.presets.name"
+    },
+    "featured_collections_zfdkMH": {
+      "type": "featured-collections",
+      "settings": {
+        "section_heading": "CRAFTED FOR THE BODYSTACKER",
+        "heading_text_align": "left",
+        "collection_type": "tabs",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "lg",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 15,
+        "number_products_per_view_desktop": "5",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-4",
+        "heading_size_desktop": 36,
+        "heading_size_mobile": 34,
+        "navigation_title_size_desktop": 26,
+        "navigation_title_size_mobile": 23,
+        "cta_title_size_desktop": 26,
+        "cta_title_size_mobile": 23,
+        "section_spacing_top_desktop": 10,
+        "section_spacing_top_mobile": 10,
+        "section_spacing_bottom_desktop": 10,
+        "section_spacing_bottom_mobile": 10,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#FFFFFF",
+        "cta_background_color": "#FFFFFF",
+        "cta_background_color_hover": "#000000",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#FFFFFF"
+      },
+      "blocks": {
+        "collection_block_E7848e": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "",
+            "collection": "handpicked-for-violence",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_E7848e"
+      ],
+      "name": "Featured Collections"
+    },
+    "shapes_Y3hLRC": {
+      "type": "shapes",
+      "settings": {
+        "select_shape": "shape9",
+        "image_fit": "contain",
+        "svg_code": "",
+        "enable_marquee": false,
+        "marquee_direction": "rtl",
+        "fullwidth": true,
+        "flip_shape": true,
+        "enable_overlaped": false,
+        "overlay_position": "bottom",
+        "color_scheme": "scheme-4",
+        "enable_gradiant": false,
+        "svg_color": "#e7e7e7",
+        "svg_stroke": "#000000",
+        "shape_ratio": "fixed",
+        "desktop_height": 50,
+        "mobile_height": 20
+      },
+      "name": "t:sections.shapes.presets.name"
+    },
+    "two_column_media_highlight_MFNzwc": {
+      "type": "two-column-media-highlight",
+      "settings": {
+        "enable_bg_image": true,
+        "section_bg_image": "shopify://shop_images/GS-Content_-VBT-BK-1920x700.png",
+        "section_bg_image_color": "#121212"
+      },
+      "blocks": {
+        "highlight_3TrRMy": {
+          "type": "highlight",
+          "settings": {
+            "media_highlight_bg_color": "#121212",
+            "title": "THE LATEST EPISODE OF SEASON 8",
+            "title_color": "#ffffff",
+            "media_highlight_alignment": "left",
+            "media_highlight_description": "<p>Violent But True is back with a story about grit, violence, and sheer stubbornness, forget Hollywood. The real blockbuster went down in Afghanistan, October 2009. The Battle of Kamdesh wasn’t supposed to be survivable. But it was. Because Romesha was there. </p><h4><strong>Violent But True Season 8 Bastards of War: Forgotten Front</strong></h4><p>The Global War on Terror made legends. But not all of them made it home or onto History Channel. They don’t write songs about these service members. So we tell their stories in the dark... where they belong.</p>",
+            "media_highlight_description_color": "#ffffff",
+            "media_highlight_cta_text": "PLAY THE VIOLENCE",
+            "media_highlight_cta_url": "https://www.youtube.com/watch?v=rcO3YT1vAmo",
+            "media_highlight_cta_text_color": "#ffffff",
+            "media_highlight_cta_background_color": "#802629",
+            "new_window": true,
+            "media_highlight_image": "shopify://shop_images/Thumbnail_1920x1080_EP9_VBT_-_S8_Play_button.jpg",
+            "media_highlight_video": "https://www.youtube.com/watch?v=rcO3YT1vAmo"
+          }
+        }
+      },
+      "block_order": [
+        "highlight_3TrRMy"
+      ],
+      "custom_css": [
+        "H4 {color: #ab192d;}",
+        ".media-highlight-blocks {margin: 0 auto !important; width: 90%;}",
+        ".highlight-block {padding: 2rem 1rem !important;}",
+        "p {padding: 5px; font-size: medium;}",
+        "a {font-weight: bold; font-size: medium !important;}",
+        ".cta-block {align-content: center !important;}"
+      ],
+      "name": "Two Column w/ Media"
+    },
+    "two_column_media_highlight_3yFVck": {
+      "type": "two-column-media-highlight",
+      "settings": {
+        "enable_bg_image": true,
+        "section_bg_image": "shopify://shop_images/GS-Content_-VBT-BK-1920x700.png",
+        "section_bg_image_color": "#121212"
+      },
+      "blocks": {
+        "highlight_PdNAq8": {
+          "type": "highlight",
+          "settings": {
+            "media_highlight_bg_color": "#121212",
+            "title": "THE LATEST EPISODE OF SEASON 8",
+            "title_color": "#ffffff",
+            "media_highlight_alignment": "right",
+            "media_highlight_description": "<h3>Violent But True: The Route of Ghost Irish</h3><p>The Global War on Terror made legends. But not all of them made it home or onto History Channel. They don’t write songs about these service members. So we tell their stories in the dark... where they belong.</p>",
+            "media_highlight_description_color": "#ffffff",
+            "media_highlight_cta_text": "",
+            "media_highlight_cta_url": "",
+            "media_highlight_cta_text_color": "#ffffff",
+            "media_highlight_cta_background_color": "#802629",
+            "new_window": true,
+            "media_highlight_image": "shopify://shop_images/Thumbnail_1920x1080_EP5_VBT_Season_8.jpg",
+            "media_highlight_video": "https://youtu.be/65D4rug2bF0"
+          }
+        }
+      },
+      "block_order": [
+        "highlight_PdNAq8"
+      ],
+      "custom_css": [
+        "H3 {color: #ab192d;}"
+      ],
+      "disabled": true,
+      "name": "Two Column w/ Media"
+    },
+    "apps_Nzw34g": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "shapes_q8LkRD": {
+      "type": "shapes",
+      "settings": {
+        "select_shape": "shape9",
+        "image_fit": "contain",
+        "svg_code": "",
+        "enable_marquee": false,
+        "marquee_direction": "rtl",
+        "fullwidth": true,
+        "flip_shape": true,
+        "enable_overlaped": false,
+        "overlay_position": "bottom",
+        "color_scheme": "scheme-4",
+        "enable_gradiant": false,
+        "svg_color": "#e7e7e7",
+        "svg_stroke": "#000000",
+        "shape_ratio": "fixed",
+        "desktop_height": 50,
+        "mobile_height": 20
+      },
+      "name": "t:sections.shapes.presets.name"
+    },
+    "rich_text_MdTTMw": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 24,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_6TgV9C": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>VBT UNDERSTANDS YOUR NEEDS</strong>",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_teMkMm": {
+          "type": "block--text",
+          "settings": {
+            "text": "",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        },
+        "text_mDRUwk": {
+          "type": "block--text",
+          "settings": {
+            "text": "<h5>Receive a discount for your next order of violence, use <span><strong>VIOLENT20</strong></span><strong> </strong>at checkout.</h5><p><em>Valid for First Time Customers Only. May Not Be Combined With Other Discounts.</em></p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_6TgV9C",
+        "text_teMkMm",
+        "text_mDRUwk"
+      ],
+      "name": "t:sections.rich-text.name"
+    },
+    "multicolumn_with_yt_shorts_UPtBXY": {
+      "type": "multicolumn-with-yt-shorts",
+      "settings": {
+        "mutlicolumn_yts_full_width": false,
+        "mutlicolumn_yts_top_space_desktop": 30,
+        "mutlicolumn_yts_bottom_space_desktop": 30,
+        "mutlicolumn_yts_top_space_mobile": 25,
+        "mutlicolumn_yts_bottom_space_mobile": 25,
+        "mutlicolumn_yts_content_alignment": "center",
+        "multicolumn_yts_heading": "POPULAR BLOOD BATHS OF SEASON 8",
+        "multicolumn_yts_heading_size": "h3",
+        "multicolumn_yts_heading_tag": "h3",
+        "multicolumn_yts_heading_bold": true,
+        "multicolumn_yts_heading_alignment": "center",
+        "multicolumn_yts_column_count_desktop": 3,
+        "multicolumn_yts_column_count_mobile": "1",
+        "multicolumn_yts_background_color": "#121212",
+        "multicolumn_yts_text_color": "#ffffff",
+        "multicolumn_yts_link_text_color": "#802629",
+        "multicolumn_yts_cta_background_color": "#802629",
+        "multicolumn_yts_cta_text_color": "#ffffff"
+      },
+      "blocks": {
+        "yt_short_XRJqda": {
+          "type": "yt_short",
+          "disabled": true,
+          "settings": {
+            "yts_video_url": "https://www.youtube.com/watch?v=rcO3YT1vAmo",
+            "yts_thumbnail_image": "shopify://shop_images/Thumbnail_1920x1080_EP9_VBT_-_S8_Play_button.jpg",
+            "yts_video_title": "",
+            "yts_description": "<strong>Episode 9: </strong>Violent But True is back with a story about grit, violence, and sheer stubbornness, forget Hollywood. The real blockbuster went down in Afghanistan, October 2009. The Battle of Kamdesh wasn’t supposed to be survivable. But it was. Because Romesha was there.",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "link",
+            "yts_cta_link_text": "",
+            "yts_cta_link_url": "https://www.youtube.com/watch?v=rcO3YT1vAmo",
+            "yts_cta_link_new_window": true
+          }
+        },
+        "yt_short_FRTKUA": {
+          "type": "yt_short",
+          "settings": {
+            "yts_video_url": "https://youtu.be/R0oWzY-vp_4",
+            "yts_thumbnail_image": "shopify://shop_images/Thumbnail_1920x1080_EP8_VBT_-_S8_Play_button.jpg",
+            "yts_video_title": "",
+            "yts_description": "<strong>Episode 8: </strong>Violent But True is back with a tale so insane it belongs in the damn Avengers. Medal of Honor Recipient Sgt. 1st Class LeRoy Petry wasn’t born with superpowers… but Some war stories sound like Marvel comics until you realize they actually happened.",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "link",
+            "yts_cta_link_text": "",
+            "yts_cta_link_url": "https://youtu.be/R0oWzY-vp_4",
+            "yts_cta_link_new_window": true
+          }
+        },
+        "yt_short_dPqaTb": {
+          "type": "yt_short",
+          "settings": {
+            "yts_video_url": "https://youtu.be/JMOOeUr7LYM",
+            "yts_thumbnail_image": "shopify://shop_images/Thumbnail_1920x1080_EP7_VBT_-_S8_Play_button.jpg",
+            "yts_video_title": "",
+            "yts_description": "<strong>Episode 7: </strong>Do you have any idea how much of a badass you have to be to be a Force Recon legend?  Violent But True features Major James Capers, a true icon of the U.S. Marine Corps and a true body stacker. I mean they don’t just hand out battlefield commissions every day, and this guy was LITERALLY on the recruiting posters.",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "link",
+            "yts_cta_link_text": "",
+            "yts_cta_link_url": "https://youtu.be/JMOOeUr7LYM",
+            "yts_cta_link_new_window": true
+          }
+        },
+        "yt_short_3gEwCJ": {
+          "type": "yt_short",
+          "settings": {
+            "yts_video_url": "https://youtu.be/mPrzfG_o-n0",
+            "yts_thumbnail_image": "shopify://shop_images/Thumbnail_1920x1080_EP6_VBT_-_S8_Play_button.jpg",
+            "yts_video_title": "Episode 6 John chapman",
+            "yts_description": "<strong>Episode 6: </strong>John Chapman proved you can be an actual hero, do heroic sh*t, get killed in the process and it all comes down to paperwork in the end.",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "link",
+            "yts_cta_link_text": "",
+            "yts_cta_link_url": "https://youtu.be/mPrzfG_o-n0",
+            "yts_cta_link_new_window": true
+          }
+        },
+        "yt_short_Xpc3zP": {
+          "type": "yt_short",
+          "disabled": true,
+          "settings": {
+            "yts_video_url": "https://youtu.be/65D4rug2bF0",
+            "yts_thumbnail_image": "shopify://shop_images/Thumbnail_1920x1080_EP5_VBT_Season_8.jpg",
+            "yts_video_title": "Violent But True: The Route of Ghost Irish",
+            "yts_description": "<strong>Episode 5:</strong> The tale of The Ghost of Route Irish. Who knew driving down a road named after the Irish could be such a nightmarish ass whooping?",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "link",
+            "yts_cta_link_text": "",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_UMNkLJ": {
+          "type": "yt_short",
+          "disabled": true,
+          "settings": {
+            "yts_video_url": "https://youtu.be/0F5vHO_NFPA",
+            "yts_thumbnail_image": "shopify://shop_images/Thumbnail_1920x1080_EP4_VBT_Season_8.jpg",
+            "yts_video_title": "EPISODE 4: The Last Line At OP",
+            "yts_description": "<strong>EPISODE 4: </strong>The Global War on Terror made legends. There’s sh*t days and there’s SH*T days. Our recommendation? Scan your lane, and remember that ultra violence isn’t a real thing.",
+            "enable_cta_link": false,
+            "yts_cta_link_type": "cta",
+            "yts_cta_link_text": "EPISODE 4: The Last Line At OP",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_CEE8fc": {
+          "type": "yt_short",
+          "disabled": true,
+          "settings": {
+            "yts_video_url": "https://youtu.be/Xt3bBNWk1-c",
+            "yts_thumbnail_image": "shopify://shop_images/Thumbnail_1920x1080_EP3_VBT_Season_8.jpg",
+            "yts_video_title": "EPISODE 3: The Angel of Anbar",
+            "yts_description": "<strong>EPISODE 3: </strong>The Angel of Anbar, because war can’t always be about taking bunkers and planting flags. Sometimes it’s a five foot two chick dragging some cornfed Marine out of a burning humvee.",
+            "enable_cta_link": false,
+            "yts_cta_link_type": "cta",
+            "yts_cta_link_text": "EPISODE 3: The Angel of Anbar",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_N7gaji": {
+          "type": "yt_short",
+          "disabled": true,
+          "settings": {
+            "yts_video_url": "https://youtu.be/uqYN2Gw_Emg",
+            "yts_thumbnail_image": "shopify://shop_images/Thumbnail_1920x1080_EP2_VBT_Season_8.jpg",
+            "yts_video_title": "EPISODE 2: The E4 Mafia",
+            "yts_description": "<strong>EPISODE 2: </strong>In the armed forces nothing moves from left to right without, to front and center without the blessing of the E4/LCPL mafia.",
+            "enable_cta_link": false,
+            "yts_cta_link_type": "cta",
+            "yts_cta_link_text": "EPISODE 2: The E4 Mafia",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_PRRNFe": {
+          "type": "yt_short",
+          "disabled": true,
+          "settings": {
+            "yts_video_url": "https://youtu.be/KvTJJCO5Ex8",
+            "yts_thumbnail_image": "shopify://shop_images/Thumbnail_1920x1080_EP1_VBT_Season_8.jpg",
+            "yts_video_title": "Violent But True: The Undead Marine",
+            "yts_description": "The Undead Marine: proving blowing up is a mental game. If you don’t acknowledge the explosion, you literally can’t explode. That’s grunt science.",
+            "enable_cta_link": false,
+            "yts_cta_link_type": "cta",
+            "yts_cta_link_text": "EPISODE 1: The Undead Marine",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        }
+      },
+      "block_order": [
+        "yt_short_XRJqda",
+        "yt_short_FRTKUA",
+        "yt_short_dPqaTb",
+        "yt_short_3gEwCJ",
+        "yt_short_Xpc3zP",
+        "yt_short_UMNkLJ",
+        "yt_short_CEE8fc",
+        "yt_short_N7gaji",
+        "yt_short_PRRNFe"
+      ],
+      "name": "Multicolumn YT Shorts"
+    },
+    "multicolumn_with_yt_shorts_j9xkRG": {
+      "type": "multicolumn-with-yt-shorts",
+      "settings": {
+        "mutlicolumn_yts_full_width": true,
+        "mutlicolumn_yts_top_space_desktop": 30,
+        "mutlicolumn_yts_bottom_space_desktop": 20,
+        "mutlicolumn_yts_top_space_mobile": 15,
+        "mutlicolumn_yts_bottom_space_mobile": 15,
+        "mutlicolumn_yts_content_alignment": "center",
+        "multicolumn_yts_heading": "TOP THREE BLOOD BATHS",
+        "multicolumn_yts_heading_size": "h2",
+        "multicolumn_yts_heading_tag": "h2",
+        "multicolumn_yts_heading_bold": true,
+        "multicolumn_yts_heading_alignment": "center",
+        "multicolumn_yts_column_count_desktop": 3,
+        "multicolumn_yts_column_count_mobile": "1",
+        "multicolumn_yts_background_color": "#000000",
+        "multicolumn_yts_text_color": "#ffffff",
+        "multicolumn_yts_link_text_color": "#802629",
+        "multicolumn_yts_cta_background_color": "#802629",
+        "multicolumn_yts_cta_text_color": "#ffffff"
+      },
+      "blocks": {
+        "yt_short_KYX3gj": {
+          "type": "yt_short",
+          "settings": {
+            "yts_video_url": "https://youtu.be/4hgC0dXaJjU",
+            "yts_thumbnail_image": "shopify://shop_images/HPC_Mobile_980X600_VBT_V1.jpg",
+            "yts_video_title": "Violent But True: John F. Kennedy",
+            "yts_description": "Before the Oval Office, this Navy Lieutenant saved his crew by dragging them through shark-infested waters — JFK earned his stripes and his spot in the VBT Hall of Fame.",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "cta",
+            "yts_cta_link_text": "Violent But True: John F. Kennedy",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_kbEakD": {
+          "type": "yt_short",
+          "settings": {
+            "yts_video_url": "https://youtu.be/UCvK3M-tadw",
+            "yts_thumbnail_image": "shopify://shop_images/HPC_Mobile_980X600_VBT_V1.jpg",
+            "yts_video_title": "Violent But True: Jason Voorhees",
+            "yts_description": "Not a soldier, but if Camp Crystal Lake had a draft, Jason would be the entire special forces — horror's most violent icon earns his place in the Hall on sheer kill count alone.",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "cta",
+            "yts_cta_link_text": "Violent But True: Jason Voorhees",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_TEaJWr": {
+          "type": "yt_short",
+          "settings": {
+            "yts_video_url": "https://youtu.be/T7GKXnRkdW8",
+            "yts_thumbnail_image": "shopify://shop_images/HPC_Mobile_980X600_VBT_V1.jpg",
+            "yts_video_title": "Violent But True: Audie Murphy",
+            "yts_description": "This Army legend held off tanks solo, racked up over 33 medals, and then played himself in the movie — Audie Murphy is the gold standard of American badassery.",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "cta",
+            "yts_cta_link_text": "Violent But True: Audie Murphy",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_Dapgtn": {
+          "type": "yt_short",
+          "disabled": true,
+          "settings": {
+            "yts_video_url": "https://youtu.be/63Q5yQZPdHs",
+            "yts_thumbnail_image": "shopify://shop_images/HPC_Mobile_980X600_VBT_V1.jpg",
+            "yts_video_title": "Violent But True: Lewis \"Chesty\" Puller part 2",
+            "yts_description": "Five Navy Crosses and a legacy carved in blood — Chesty didn’t just fight, he collected body counts like trading cards. <em>There’s always room in the VBT Hall for the Chesty-est of legends.</em>",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "cta",
+            "yts_cta_link_text": "Violent But True: Lewis \"Chesty\" Puller",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_qnRp39": {
+          "type": "yt_short",
+          "disabled": true,
+          "settings": {
+            "yts_video_url": "https://youtu.be/Px6i4_c7WXw",
+            "yts_thumbnail_image": "shopify://shop_images/HPC_Mobile_980X600_VBT_V1.jpg",
+            "yts_video_title": "Violent But True: Hugh Glass",
+            "yts_description": "Not military, but this fur trapper's crawl across 200 miles of enemy territory after a bear attack makes most combat vets look twice —  Glass is VBT folklore, born of rage and survival.",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "cta",
+            "yts_cta_link_text": "Violent But True: Hugh Glass",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_exqx98": {
+          "type": "yt_short",
+          "disabled": true,
+          "settings": {
+            "yts_video_url": "https://youtu.be/1iJ39pPvocQ",
+            "yts_thumbnail_image": "shopify://shop_images/HPC_Mobile_980X600_VBT_V1.jpg",
+            "yts_video_title": "Violent But True: John Basilone",
+            "yts_description": "This Marine gunned down waves of Japanese soldiers at Guadalcanal, earned the Medal of Honor, and went back for more — Basilone earned a one-way ticket into VBT immortality.",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "cta",
+            "yts_cta_link_text": "Violent But True: John Basilone",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_qh3XR9": {
+          "type": "yt_short",
+          "disabled": true,
+          "settings": {
+            "yts_video_url": "https://youtu.be/NB4OX2unJ7s",
+            "yts_thumbnail_image": "shopify://shop_images/HPC_Mobile_980X600_VBT_V1.jpg",
+            "yts_video_title": "VIOLENT BUT TRUE: ROBERT HOWARD",
+            "yts_description": "Over 200 firefights, countless bodies dropped, and more shrapnel than skin — this Green Beret was the kind of warrior myths are afraid of. <em>Triple Medal of Honor nominee. Certified VBT savage.</em>",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "cta",
+            "yts_cta_link_text": "VIOLENT BUT TRUE: ROBERT HOWARD",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_tYy4Wp": {
+          "type": "yt_short",
+          "disabled": true,
+          "settings": {
+            "yts_video_url": "https://youtu.be/Jjcmt_0oWnw",
+            "yts_thumbnail_image": "shopify://shop_images/HPC_Mobile_980X600_VBT_V1.jpg",
+            "yts_video_title": "VIOLENT BUT TRUE: BATTLEFIELD: LA DRANG",
+            "yts_description": "They were surrounded and outgunned, but the U.S. Army stood tall, stacked bodies, and sent the NVA packing — Ia Drang wasn’t a battle, it was a baptism by fire for the VBT Hall of Fame.",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "cta",
+            "yts_cta_link_text": "VIOLENT BUT TRUE: BATTLEFIELD: LA DRANG",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_6fndpB": {
+          "type": "yt_short",
+          "disabled": true,
+          "settings": {
+            "yts_video_url": "https://youtu.be/yUb7sbjhUfM",
+            "yts_thumbnail_image": "shopify://shop_images/HPC_Mobile_980X600_VBT_V1.jpg",
+            "yts_video_title": "Violent But True: Joe Medicine Crow",
+            "yts_description": "Would you steal a horse from a group of guys who'd skin you alive on a good day? How about stealing fifty horses from the SS? Joe Medicine Crow was the owner of zero f*cks to give.",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "cta",
+            "yts_cta_link_text": "Violent But True: Joe Medicine Crow",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        },
+        "yt_short_kJhpGY": {
+          "type": "yt_short",
+          "disabled": true,
+          "settings": {
+            "yts_video_url": "https://youtu.be/f1Rj6hzfw3s",
+            "yts_thumbnail_image": "shopify://shop_images/HPC_Mobile_980X600_VBT_V1.jpg",
+            "yts_video_title": "Violent But True: Dan Daly",
+            "yts_description": "Two-time Medal of Honor Marine who yelled, “Come on, you sons of bitches, do you want to live forever?” — Dan Daly didn’t fear death — death feared Dan Daly. <em>Body stacker, morale maker, Hall of Famer.</em>",
+            "enable_cta_link": true,
+            "yts_cta_link_type": "cta",
+            "yts_cta_link_text": "Violent But True: Dan Daly",
+            "yts_cta_link_url": "",
+            "yts_cta_link_new_window": false
+          }
+        }
+      },
+      "block_order": [
+        "yt_short_KYX3gj",
+        "yt_short_kbEakD",
+        "yt_short_TEaJWr",
+        "yt_short_Dapgtn",
+        "yt_short_qnRp39",
+        "yt_short_exqx98",
+        "yt_short_qh3XR9",
+        "yt_short_tYy4Wp",
+        "yt_short_6fndpB",
+        "yt_short_kJhpGY"
+      ],
+      "disabled": true,
+      "name": "Multicolumn YT Shorts"
+    }
+  },
+  "order": [
+    "1757097970507351fc",
+    "main-page",
+    "full_width_image_with_text_v2_Qq7rU9",
+    "rich_text_B3kFtU",
+    "shapes_Tfcna9",
+    "featured_collections_zfdkMH",
+    "shapes_Y3hLRC",
+    "two_column_media_highlight_MFNzwc",
+    "two_column_media_highlight_3yFVck",
+    "apps_Nzw34g",
+    "shapes_q8LkRD",
+    "rich_text_MdTTMw",
+    "multicolumn_with_yt_shorts_UPtBXY",
+    "multicolumn_with_yt_shorts_j9xkRG"
+  ]
+}

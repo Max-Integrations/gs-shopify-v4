@@ -1,0 +1,236 @@
+{
+  "sections": {
+    "split_banner_69ddzw": {
+      "type": "image-with-text",
+      "settings": {
+        "section_visibility": "always",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "show_chevrons": false,
+        "full_width": false,
+        "content_background": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "image": ""
+      },
+      "blocks": {
+        "b1": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>THANK YOU FOR YOUR INTEREST</strong>",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "b2": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>At this time, we are temporarily pausing new custom projects as we work on exciting updates to enhance our services.\n\nWe appreciate your support and can’t wait to bring you an even better experience in the near future. Be sure to check back often for updates, as we look forward to opening up new projects again soon!\n\nFor any questions, feel free to reach out to our team.\n\nThe Grunt Style Custom Team\nCustom@gruntstyle.com</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ],
+      "disabled": true
+    },
+    "full_width_image_with_text_v2_6rqcqW": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/CPB_D_1440x300_Live_V2__1.jpg",
+        "background_image_mobile": "shopify://shop_images/CPB_M_980x600_Live_V2__1.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "name": "Full Width Image/Text_v2"
+    },
+    "1784650798bd2c0236": {
+      "type": "_blocks",
+      "settings": {},
+      "blocks": {
+        "ai_gen_block_97fe1f7_q89MiF": {
+          "type": "ai_gen_block_97fe1f7",
+          "settings": {
+            "column_1_title": "THANK YOU FOR YOUR INTEREST",
+            "column_1_subcopy": "<p>You don’t blend in — so why should your gear? Whether you’re repping your crew, your company, your cause, or just making a statement, <strong>Grunt Style Custom</strong> is where bold ideas meet battle-ready apparel.<br/><br/>We’re not here to make soft, forgettable shirts that end up in the bottom of the drawer. We’re here to bring your vision to life on the same badass gear that’s been worn by patriots, first responders, and fighters of every kind.<br/><br/><strong>You bring the mission — we’ll bring the muscle.</strong><br/><br/>Complete the form below to get started. For any questions, feel free to reach out to our team.</p>",
+            "column_1_embed": "",
+            "column_2_title": "",
+            "column_2_subcopy": "",
+            "column_2_embed": "<powr-form-builder u=\"cf6761a8_1551455753\"></powr-form-builder><script src=\"https://view.powr.io/assets/loader.js\"></script>",
+            "columns_mobile": "1",
+            "column_gap": 30,
+            "column_gap_mobile": 20,
+            "content_gap": 15,
+            "desktop_width_percent": 100,
+            "section_padding_top": 20,
+            "section_padding_bottom": 0,
+            "section_padding_horizontal": 5,
+            "section_padding_top_mobile": 30,
+            "section_padding_bottom_mobile": 30,
+            "section_padding_horizontal_mobile": 15,
+            "background_color": "#ffffff",
+            "title_color": "#000000",
+            "subcopy_color": "#000000",
+            "title_size": 30,
+            "title_size_mobile": 24,
+            "subcopy_size": 16,
+            "subcopy_size_mobile": 14
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_97fe1f7_q89MiF"
+      ]
+    },
+    "split_banner_WGRaFA": {
+      "type": "image-with-text",
+      "settings": {
+        "section_visibility": "always",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "show_chevrons": false,
+        "full_width": false,
+        "content_background": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "image": ""
+      },
+      "blocks": {
+        "b1": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>THANK YOU FOR YOUR INTEREST</strong>",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "b2": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>You don’t blend in — so why should your gear? Whether you’re repping your crew, your company, your cause, or just making a statement, <b>Grunt Style Custom</b> is where bold ideas meet battle-ready apparel.\n\nWe’re not here to make soft, forgettable shirts that end up in the bottom of the drawer. We’re here to bring your vision to life on the same badass gear that’s been worn by patriots, first responders, and fighters of every kind.\n\n<b>You bring the mission — we’ll bring the muscle.</b>\n\nComplete the form below to get started. For any questions, feel free to reach out to our team.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ],
+      "disabled": true
+    },
+    "custom_liquid_we7iHA": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<powr-form-builder u=\"cf6761a8_1551455753\"></powr-form-builder><script src=\"https://view.powr.io/assets/loader.js\"></script>",
+        "color_scheme": "scheme-1",
+        "padding_top": 4,
+        "padding_bottom": 4
+      },
+      "disabled": true,
+      "name": "t:sections.custom-liquid.presets.name"
+    },
+    "split_banner_B4RT6Y": {
+      "type": "image-with-text",
+      "settings": {
+        "section_visibility": "always",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "show_chevrons": false,
+        "full_width": false,
+        "content_background": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "image": ""
+      },
+      "blocks": {
+        "b1": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>CUSTOM ORDERS ARE UNAVAILABLE</strong>",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "b2": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>We’re pressing pause on new custom orders while we retool and improve the program.\n\nDuring this time, we will not be accepting new submissions. But, we’re already making plans to bring custom gear back soon.\n\nIf you have an existing order, our team is processing it as usual. For questions, please reach out to Customer Service.\n\nThank you for your patience and continued support! We can’t wait to roll out what’s next.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ],
+      "disabled": true
+    }
+  },
+  "order": [
+    "split_banner_69ddzw",
+    "full_width_image_with_text_v2_6rqcqW",
+    "1784650798bd2c0236",
+    "split_banner_WGRaFA",
+    "custom_liquid_we7iHA",
+    "split_banner_B4RT6Y"
+  ]
+}

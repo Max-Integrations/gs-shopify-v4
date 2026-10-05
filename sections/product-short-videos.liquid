@@ -92,8 +92,12 @@
                       {%- if media.preview_image != blank -%}<img class="{{ '' }}" src="{{ media.preview_image | image_url: width: 600 }}" srcset="{{ media.preview_image | image_url: width: 300 }} 300w, {{ media.preview_image | image_url: width: 600 }} 600w, {{ media.preview_image | image_url: width: 900 }} 900w, {{ media.preview_image | image_url: width: 1200 }} 1200w, {{ media.preview_image | image_url: width: 1500 }} 1500w, {{ media.preview_image | image_url: width: 2000 }} 2000w" sizes="(max-width: 600px) 300px, (max-width: 900px) 600px, (max-width: 1200px) 900px, (max-width: 1500px) 1200px, 100vw" width="{{ media.preview_image.width }}" height="{{ media.preview_image.height }}" alt="{{ media.preview_image.alt | escape }}" loading="lazy" style="object-position: {{ media.preview_image.presentation.focal_point | default: 'center' }}">{%- endif -%}
                     </div>
                     <noscript>
+                      {%- comment -%}
+                        v3 used external_video_url here, which throws for
+                        Shopify-hosted videos (every one on the live site).
+                      {%- endcomment -%}
                       <a
-                        href="{{ media | external_video_url }}"
+                        href="{{ media.sources.first.url }}"
                         target="_blank"
                         class="unstyled-link"
                         aria-label="{{ media.alt | default: product.title | strip_html }}"
@@ -196,7 +200,7 @@
                 </div>
              <noscript>
                         <a
-                          href="{{ media | external_video_url }}"
+                          href="{{ media.sources.first.url }}"
                           target="_blank"
                           class="unstyled-link"
                           aria-label="{{ media.alt | default: product.title | strip_html }}"

@@ -1,0 +1,198 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "rgba(0,0,0,0)",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      },
+      "disabled": true
+    },
+    "wonderment_faq_E6aq3r": {
+      "type": "wonderment-faq",
+      "settings": {
+        "show_answers": false,
+        "text_size": 100,
+        "alignment": "center",
+        "text_color": "#000000",
+        "background_color": "linear-gradient(184deg, rgba(255, 255, 255, 1) 7%, rgba(255, 255, 255, 1) 94%)",
+        "border_color": "#dddad6",
+        "base_width": 65,
+        "max_width": "",
+        "inner_padding": 50,
+        "outer_margin": 0,
+        "custom_css": "",
+        "mobile_custom_css": "",
+        "override_theme_font": false,
+        "heading_font": "roboto_n4",
+        "main_font": "roboto_condensed_n4"
+      },
+      "blocks": {
+        "section_heading_7rYFM6": {
+          "type": "section_heading",
+          "settings": {
+            "title": "GRUNT STYLE CLUB FAQs"
+          }
+        },
+        "question_U9grzM": {
+          "type": "question",
+          "settings": {
+            "title": "How do I become a member?",
+            "text": "<p><strong>Choose between a monthly membership or a one-time annual payment. </strong>Monthly memberships are billed <strong>on the same date each month </strong>after sign-up. Annual memberships are a <strong>one-time payment for one year</strong>. <em>Pricing may vary during promotions.</em></p><p><a href=\"https://www.gruntstyle.com/pages/club-grunt-style\" title=\"Club Grunt Style\"><strong>Club Enrollment Page</strong></a></p><p>1) Choose Plan<br/>2) Choose Gender & Size<br/>3) Add to cart and checkout</p><p>Get Badass Exclusive Shirts sent directly to your door, along with other perks!</p>"
+          }
+        },
+        "question_6ATKHP": {
+          "type": "question",
+          "settings": {
+            "title": "What is the difference between a Monthly and Annual membership?",
+            "text": "<p>A Monthly Member will be charged on the 1st of every month for the length of their membership, while Annual Members pay in full for the whole year. Club members are automatically entered into all giveaways.</p>"
+          }
+        },
+        "question_bgTdEW": {
+          "type": "question",
+          "settings": {
+            "title": "What are the perks?",
+            "text": "<p>- Free Shipping on all domestic orders shipped within the US.<br/>- Monthly shirt that is unique and made specifically for the Club Members.<br/>- Drawings and contest access when they arise.<br/>- Club Grunt Style Members receive extra offers, early access, or special discounts throughout the year!<br/>- Free returns for monthly club shirts within 60 days. </p>"
+          }
+        },
+        "question_GhpCJt": {
+          "type": "question",
+          "settings": {
+            "title": "How does billing work?",
+            "text": "<p>Charged on the 1st each month. Annual plans are a one time charge, or prepaid for 12 months. Make changes by the 8th to affect the current cycle.</p>"
+          }
+        },
+        "question_6cCqDk": {
+          "type": "question",
+          "settings": {
+            "title": "Can I skip, cancel, or upgrade?",
+            "text": "<p>Yes! Skip a month, upgrade to annual, or cancel anytime. <em>Please note: cancellation requests will go into effect at the end of the annual term. Annual Memberships are non-refundable.</em></p><p>Manage via your account or contact us: <strong>clubgruntstyle@gruntstyle.com </strong></p><p><strong>1-877-55-GRUNT</strong></p>"
+          }
+        },
+        "question_9F4LfT": {
+          "type": "question",
+          "settings": {
+            "title": "Does my membership expire?",
+            "text": "<p>Nope. It keeps going unless you pause or cancel.</p>"
+          }
+        },
+        "question_kW8ncY": {
+          "type": "question",
+          "settings": {
+            "title": "Can I gift a membership?",
+            "text": "<p>Of course! Just purchase a gift card.</p><p><a href=\"https://www.gruntstyle.com/products/e-gift-card\">Click Here</a></p>"
+          }
+        },
+        "question_NxHnQ4": {
+          "type": "question",
+          "settings": {
+            "title": "When do shirts ship?",
+            "text": "<p>Grunt Style's goal is to begin shipping all Club Member shirts beginning on the 10th of every month. New subscription orders past the 10th of each month will begin shipping out once all previous orders have been completed. Our club shirts are paid a month in advance, which allows us to ensure that we have every club member covered each month.</p><p><span>Example: Join in May? You’ll get June’s shirt.</span></p>"
+          }
+        },
+        "question_GTcXEN": {
+          "type": "question",
+          "settings": {
+            "title": "Can I choose the design?",
+            "text": "<p>Nope—one monthly shirt is made just for Club Members in advance. Sometimes we hold polls on the Facebook group and page regarding design ideas.</p>"
+          }
+        },
+        "question_BpNRzt": {
+          "type": "question",
+          "settings": {
+            "title": "Are the designs really exclusive?",
+            "text": "<p>Yes, 100% Club-Member only. Not sold anywhere else. You must be an active Club subscriber to receive or purchase from the store.</p>"
+          }
+        },
+        "question_gj7BFf": {
+          "type": "question",
+          "settings": {
+            "title": "What if I don’t like a shirt?",
+            "text": "<p>Exchanges and Returns are accepted via <a href=\"https://returns.gruntstyle.com/#/\" target=\"_blank\">Loop Returns Portal </a>within 60 Days. </p><p>We display the upcoming design on the join page, if you wish to skip/pause your membership you can do so in the member portal.</p>"
+          }
+        },
+        "question_Q3AxXG": {
+          "type": "question",
+          "settings": {
+            "title": "Do I get Free Shipping?",
+            "text": "<p>Yes—free U.S. shipping on all orders for active members. No cart threshold to meet. Every order. Every time.</p>"
+          }
+        },
+        "question_jPYitR": {
+          "type": "question",
+          "settings": {
+            "title": "Can I use my Club Discount on anything?",
+            "text": "<p>That would be a no. The auto discounts are good on mostly everything though! Exclusions include Subscriptions, Mystery products, Sale items, Donation products, Licensed products, Custom Apparel, Basic Bundles, other types of Bundles, and select third-party items. Please note that exclusions are subject to change at any time. </p>"
+          }
+        },
+        "question_wi7AGw": {
+          "type": "question",
+          "settings": {
+            "title": "How do I update size, address, or payment info?",
+            "text": "<p>Log into the member portal to “Manage Subscription” or contact us and we can take care of that</p><p>Email: clubgruntstyle@gruntstyle.com </p><p>Phone: 1-877-55-GRUNT</p><h4>Using Shop Pay?</h4><p>Log into Shop Pay → Active Orders → Update subscription info.</p>"
+          }
+        },
+        "question_4HBpKL": {
+          "type": "question",
+          "settings": {
+            "title": "Why does my order say “unfulfilled”?",
+            "text": "<p>That’s normal—Club shirts are paid in advance and show as “unfulfilled” until they actually leave our facility.</p>"
+          }
+        },
+        "question_iwJ7MX": {
+          "type": "question",
+          "settings": {
+            "title": "How do giveaways work?",
+            "text": "<p>You’re auto-entered—no action needed.</p>"
+          }
+        },
+        "question_BnTft3": {
+          "type": "question",
+          "settings": {
+            "title": "How can I contact Customer Service?",
+            "text": "<p>Email: clubgruntstyle@gruntstyle.com<br/>Phone: 1-877-55-GRUNT — ask for Club Customer Service<br/>Chat: Mon–Fri, 9 AM–5 PM CST</p>"
+          }
+        }
+      },
+      "block_order": [
+        "section_heading_7rYFM6",
+        "question_U9grzM",
+        "question_6ATKHP",
+        "question_bgTdEW",
+        "question_GhpCJt",
+        "question_6cCqDk",
+        "question_9F4LfT",
+        "question_kW8ncY",
+        "question_NxHnQ4",
+        "question_GTcXEN",
+        "question_BpNRzt",
+        "question_gj7BFf",
+        "question_Q3AxXG",
+        "question_jPYitR",
+        "question_wi7AGw",
+        "question_4HBpKL",
+        "question_iwJ7MX",
+        "question_BnTft3"
+      ],
+      "name": "📦 FAQ"
+    }
+  },
+  "order": [
+    "main-page",
+    "wonderment_faq_E6aq3r"
+  ]
+}

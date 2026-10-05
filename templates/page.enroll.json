@@ -1,0 +1,268 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": false,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 5,
+        "bottom_space_mobile": 5
+      },
+      "disabled": true
+    },
+    "marquee_GgrbNC": {
+      "type": "marquee",
+      "settings": {
+        "section_visibility": "always",
+        "direction": "rtl",
+        "scrolling_speed": 20,
+        "scrolling_speed_mobile": 20,
+        "heading_size": 32,
+        "mobile_heading_size": 22,
+        "image_size": 58,
+        "mobile_image_size": 40,
+        "color_scheme": "scheme-1",
+        "bg_color": "",
+        "enable_gradient": false,
+        "top_space_desktop": 40,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 25,
+        "bottom_space_mobile": 25
+      },
+      "blocks": {
+        "icon_N7T8Tj": {
+          "type": "icon",
+          "settings": {
+            "custom_icon": "",
+            "icon_color": "",
+            "default_color": false,
+            "image": "shopify://shop_images/icon-text-updates.webp",
+            "text_icon_gap": 15
+          }
+        },
+        "text_UXCLtn": {
+          "type": "text",
+          "settings": {
+            "heading": "<strong>Special Intel</strong>",
+            "font_family": "body",
+            "text_style": "solid",
+            "outline_thickness": "1px",
+            "color": "",
+            "highlight_color": "",
+            "text_gradient": "",
+            "text_icon_gap": 10
+          }
+        },
+        "icon_RtAbew": {
+          "type": "icon",
+          "settings": {
+            "custom_icon": "",
+            "icon_color": "",
+            "default_color": false,
+            "image": "shopify://shop_images/Free_Shipping_Icon-min.png",
+            "text_icon_gap": 10
+          }
+        },
+        "text_fCNTWW": {
+          "type": "text",
+          "settings": {
+            "heading": "<strong>Free Shipping</strong>",
+            "font_family": "body",
+            "text_style": "solid",
+            "outline_thickness": "1px",
+            "color": "",
+            "highlight_color": "",
+            "text_gradient": "",
+            "text_icon_gap": 10
+          }
+        },
+        "icon_AaghR7": {
+          "type": "icon",
+          "settings": {
+            "custom_icon": "",
+            "icon_color": "",
+            "default_color": false,
+            "image": "shopify://shop_images/GS-Content_-rewards_icon_99d0496c-8fe2-4ed3-a8a1-d682c74fae93.png",
+            "text_icon_gap": 15
+          }
+        },
+        "text_zB6a7N": {
+          "type": "text",
+          "settings": {
+            "heading": "<strong>Rewards</strong>",
+            "font_family": "body",
+            "text_style": "solid",
+            "outline_thickness": "1px",
+            "color": "",
+            "highlight_color": "",
+            "text_gradient": "",
+            "text_icon_gap": 10
+          }
+        },
+        "icon_LjRPAj": {
+          "type": "icon",
+          "settings": {
+            "custom_icon": "",
+            "icon_color": "",
+            "default_color": false,
+            "image": "shopify://shop_images/perks-discount-icon_300x300_a84326da-d174-4ea5-920e-a818739c4cdc.png",
+            "text_icon_gap": 15
+          }
+        },
+        "text_JE4EPF": {
+          "type": "text",
+          "settings": {
+            "heading": "<strong>Discounts</strong>",
+            "font_family": "body",
+            "text_style": "solid",
+            "outline_thickness": "1px",
+            "color": "",
+            "highlight_color": "",
+            "text_gradient": "",
+            "text_icon_gap": 9
+          }
+        }
+      },
+      "block_order": [
+        "icon_N7T8Tj",
+        "text_UXCLtn",
+        "icon_RtAbew",
+        "text_fCNTWW",
+        "icon_AaghR7",
+        "text_zB6a7N",
+        "icon_LjRPAj",
+        "text_JE4EPF"
+      ],
+      "name": "t:sections.marquee.name"
+    },
+    "rich_text_GG8g7h": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_4jRJby": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>Enroll to gain more insight with Grunt Style on new drops!</strong>",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_efFKbc": {
+          "type": "block--text",
+          "settings": {
+            "text": "<h6>Be the first to hear about new product drops & promotions. So, how does this work, you ask? <br/><br/>Just sign up for our alerts, and voilà! You’ll be the first to know about new arrivals, special promotions. </h6>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        },
+        "text_4AxFhU": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Remember, life is too short for boring clothes. Let’s make it fun, fabulous, and full of flair—one text at a time!</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_4jRJby",
+        "text_efFKbc",
+        "text_4AxFhU"
+      ]
+    },
+    "17761968799ea5b15a": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      },
+      "blocks": {
+        "klaviyo_email_marketing_sms_form_embed_block_dTPYYQ": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "Tq2Xm7"
+          }
+        }
+      },
+      "block_order": [
+        "klaviyo_email_marketing_sms_form_embed_block_dTPYYQ"
+      ]
+    },
+    "rich_text_fMJwq3": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "text_dMkKHd": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Life’s too short for boring gear. Suit up with attitude, grit, and all-American flair—one text or email at a time.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_dMkKHd"
+      ]
+    },
+    "17417936508cb8ee1d": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      },
+      "blocks": {
+        "klaviyo_email_marketing_sms_form_embed_block_k7HNaH": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "UsNjRr"
+          }
+        }
+      },
+      "block_order": [
+        "klaviyo_email_marketing_sms_form_embed_block_k7HNaH"
+      ]
+    }
+  },
+  "order": [
+    "main-page",
+    "marquee_GgrbNC",
+    "rich_text_GG8g7h",
+    "17761968799ea5b15a",
+    "rich_text_fMJwq3",
+    "17417936508cb8ee1d"
+  ]
+}

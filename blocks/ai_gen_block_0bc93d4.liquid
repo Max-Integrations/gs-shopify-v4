@@ -1,0 +1,494 @@
+{% doc %}
+  @prompt
+    can you provide a module that would show us the titles of trending products being sold for the last 30 days like a stock tracker of what is hot and being ordered?, can you add a toggle to show an image with associated product and option to change the timeline of recent products to be shown
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-trending-ticker-{{ ai_gen_id }} {
+    width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding_vertical }}px 0;
+    overflow: hidden;
+    position: relative;
+    display: block;
+  }
+
+  .ai-trending-ticker__label-{{ ai_gen_id }} {
+    background-color: {{ block.settings.label_bg_color }};
+    color: {{ block.settings.label_text_color }};
+    padding: {{ block.settings.padding_vertical }}px 20px;
+    font-weight: 600;
+    font-size: {{ block.settings.label_font_size }}px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    white-space: nowrap;
+  }
+
+  .ai-trending-ticker__track-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: {{ block.settings.item_spacing }}px;
+    width: max-content;
+    animation: ai-trending-ticker-scroll-{{ ai_gen_id }} {{ block.settings.animation_speed }}s linear infinite;
+    padding-left: {% if block.settings.show_label %}200px{% else %}20px{% endif %};
+  }
+
+  .ai-trending-ticker__item-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.font_size }}px;
+  }
+
+  .ai-trending-ticker__image-{{ ai_gen_id }} {
+    width: {{ block.settings.image_size }}px;
+    height: {{ block.settings.image_size }}px;
+    flex-shrink: 0;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    overflow: hidden;
+    background-color: #f4f4f4;
+  }
+
+  .ai-trending-ticker__image-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-trending-ticker__icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    flex-shrink: 0;
+  }
+
+  .ai-trending-ticker__icon-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    fill: {{ block.settings.icon_color }};
+  }
+
+  .ai-trending-ticker__product-{{ ai_gen_id }} {
+    font-weight: 500;
+  }
+
+  .ai-trending-ticker__separator-{{ ai_gen_id }} {
+    width: 4px;
+    height: 4px;
+    background-color: {{ block.settings.separator_color }};
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  @keyframes ai-trending-ticker-scroll-{{ ai_gen_id }} {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .ai-trending-ticker__track-{{ ai_gen_id }}:hover {
+    animation-play-state: {% if block.settings.pause_on_hover %}paused{% else %}running{% endif %};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-trending-ticker__label-{{ ai_gen_id }} {
+      font-size: {{ block.settings.label_font_size | times: 0.85 }}px;
+      padding: {{ block.settings.padding_vertical }}px 15px;
+    }
+
+    .ai-trending-ticker__item-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size | times: 0.85 }}px;
+    }
+
+    .ai-trending-ticker__track-{{ ai_gen_id }} {
+      padding-left: {% if block.settings.show_label %}150px{% else %}15px{% endif %};
+    }
+
+    .ai-trending-ticker__image-{{ ai_gen_id }} {
+      width: {{ block.settings.image_size | times: 0.8 }}px;
+      height: {{ block.settings.image_size | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<trending-products-ticker-{{ ai_gen_id }}
+  class="ai-trending-ticker-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  {% if block.settings.show_label %}
+    <div class="ai-trending-ticker__label-{{ ai_gen_id }}">
+      {{ block.settings.label_text }}
+    </div>
+  {% endif %}
+
+  <div class="ai-trending-ticker__track-{{ ai_gen_id }}">
+    {% liquid
+      assign products_to_show = block.settings.product_list
+      
+      if products_to_show.size == 0
+        assign days_filter = block.settings.days_filter | times: 86400
+        assign cutoff_date = 'now' | date: '%s' | minus: days_filter
+        assign all_products = collections.all.products
+        assign filtered_products = ''
+        
+        for product in all_products
+          assign product_date = product.created_at | date: '%s'
+          if product_date >= cutoff_date
+            if filtered_products == ''
+              assign filtered_products = product.id | append: ','
+            else
+              assign filtered_products = filtered_products | append: product.id | append: ','
+            endif
+          endif
+        endfor
+        
+        assign products_to_show = all_products | slice: 0, 10
+      endif
+    %}
+
+    {% for product in products_to_show %}
+      <div class="ai-trending-ticker__item-{{ ai_gen_id }}">
+        {% if block.settings.show_product_image %}
+          <div class="ai-trending-ticker__image-{{ ai_gen_id }}">
+            {% if product.featured_image %}
+              <img
+                src="{{ product.featured_image | image_url: width: 100 }}"
+                alt="{{ product.featured_image.alt | escape }}"
+                width="100"
+                height="100"
+                loading="lazy"
+              >
+            {% endif %}
+          </div>
+        {% else %}
+          <div class="ai-trending-ticker__icon-{{ ai_gen_id }}">
+            {% if block.settings.icon_style == 'fire' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 23C7.03 23 3 18.97 3 14c0-3.09 1.53-5.88 3.88-7.58.39-.28.93-.16 1.21.23.28.39.16.93-.23 1.21C5.85 9.36 5 11.6 5 14c0 3.86 3.14 7 7 7s7-3.14 7-7c0-1.89-.76-3.63-2.14-4.9-.37-.34-.4-.91-.06-1.28.34-.37.91-.4 1.28-.06C19.82 9.36 21 11.57 21 14c0 4.97-4.03 9-9 9zm-1-9.5V7c0-.55.45-1 1-1s1 .45 1 1v6.5c0 .55-.45 1-1 1s-1-.45-1-1z"/>
+              </svg>
+            {% elsif block.settings.icon_style == 'trending' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z"/>
+              </svg>
+            {% elsif block.settings.icon_style == 'star' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+              </svg>
+            {% elsif block.settings.icon_style == 'arrow' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M7 10l5 5 5-5z"/>
+              </svg>
+            {% endif %}
+          </div>
+        {% endif %}
+        <span class="ai-trending-ticker__product-{{ ai_gen_id }}">{{ product.title }}</span>
+      </div>
+      <div class="ai-trending-ticker__separator-{{ ai_gen_id }}"></div>
+    {% endfor %}
+
+    {% for product in products_to_show %}
+      <div class="ai-trending-ticker__item-{{ ai_gen_id }}">
+        {% if block.settings.show_product_image %}
+          <div class="ai-trending-ticker__image-{{ ai_gen_id }}">
+            {% if product.featured_image %}
+              <img
+                src="{{ product.featured_image | image_url: width: 100 }}"
+                alt="{{ product.featured_image.alt | escape }}"
+                width="100"
+                height="100"
+                loading="lazy"
+              >
+            {% endif %}
+          </div>
+        {% else %}
+          <div class="ai-trending-ticker__icon-{{ ai_gen_id }}">
+            {% if block.settings.icon_style == 'fire' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 23C7.03 23 3 18.97 3 14c0-3.09 1.53-5.88 3.88-7.58.39-.28.93-.16 1.21.23.28.39.16.93-.23 1.21C5.85 9.36 5 11.6 5 14c0 3.86 3.14 7 7 7s7-3.14 7-7c0-1.89-.76-3.63-2.14-4.9-.37-.34-.4-.91-.06-1.28.34-.37.91-.4 1.28-.06C19.82 9.36 21 11.57 21 14c0 4.97-4.03 9-9 9zm-1-9.5V7c0-.55.45-1 1-1s1 .45 1 1v6.5c0 .55-.45 1-1 1s-1-.45-1-1z"/>
+              </svg>
+            {% elsif block.settings.icon_style == 'trending' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z"/>
+              </svg>
+            {% elsif block.settings.icon_style == 'star' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+              </svg>
+            {% elsif block.settings.icon_style == 'arrow' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M7 10l5 5 5-5z"/>
+              </svg>
+            {% endif %}
+          </div>
+        {% endif %}
+        <span class="ai-trending-ticker__product-{{ ai_gen_id }}">{{ product.title }}</span>
+      </div>
+      <div class="ai-trending-ticker__separator-{{ ai_gen_id }}"></div>
+    {% endfor %}
+  </div>
+</trending-products-ticker-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class TrendingProductsTicker{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.track = this.querySelector('.ai-trending-ticker__track-{{ ai_gen_id }}');
+        this.adjustAnimation();
+      }
+
+      adjustAnimation() {
+        if (!this.track) return;
+        
+        const trackWidth = this.track.scrollWidth / 2;
+        const containerWidth = this.offsetWidth;
+        
+        if (trackWidth < containerWidth) {
+          this.track.style.animation = 'none';
+        }
+      }
+    }
+
+    customElements.define('trending-products-ticker-{{ ai_gen_id }}', TrendingProductsTicker{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Trending products ticker",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Trending products",
+      "limit": 20,
+      "info": "Select your top selling products. If empty, shows recent products based on timeline below."
+    },
+    {
+      "type": "range",
+      "id": "days_filter",
+      "label": "Show products from last",
+      "min": 7,
+      "max": 90,
+      "step": 1,
+      "unit": "d",
+      "default": 30,
+      "info": "Days - only applies when product list is empty"
+    },
+    {
+      "type": "header",
+      "content": "Product display"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_image",
+      "label": "Show product images",
+      "default": false,
+      "info": "Show product images instead of icons"
+    },
+    {
+      "type": "range",
+      "id": "image_size",
+      "label": "Image size",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_label",
+      "label": "Show label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "label_text",
+      "label": "Label text",
+      "default": "TRENDING NOW"
+    },
+    {
+      "type": "range",
+      "id": "label_font_size",
+      "label": "Label font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "label_bg_color",
+      "label": "Label background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "label_text_color",
+      "label": "Label text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Icon style"
+    },
+    {
+      "type": "select",
+      "id": "icon_style",
+      "label": "Icon style",
+      "options": [
+        {
+          "value": "fire",
+          "label": "Fire"
+        },
+        {
+          "value": "trending",
+          "label": "Trending arrow"
+        },
+        {
+          "value": "star",
+          "label": "Star"
+        },
+        {
+          "value": "arrow",
+          "label": "Arrow"
+        }
+      ],
+      "default": "fire",
+      "info": "Only shown when product images are disabled"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#FF4500"
+    },
+    {
+      "type": "header",
+      "content": "Text style"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "separator_color",
+      "label": "Separator color",
+      "default": "#CCCCCC"
+    },
+    {
+      "type": "range",
+      "id": "item_spacing",
+      "label": "Item spacing",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "label": "Animation speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "default": 30,
+      "info": "Lower is faster"
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on hover",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Vertical padding",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trending products ticker - LEGACY"
+    }
+  ]
+}
+{% endschema %}

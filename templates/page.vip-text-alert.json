@@ -1,0 +1,181 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": false,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 5,
+        "bottom_space_mobile": 5
+      }
+    },
+    "rich_text_UmyALW": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_JpM3kX": {
+          "type": "block--heading",
+          "settings": {
+            "text": "VIP! Yes, You. ",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_HkWPb8": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Hey there, you fabulous human! Are you tired of missing out on the latest and greatest from the land of Grunt Style? (You know, the place where patriotic apparel meets pure awesomeness?) Well, fret no more! We've got a little secret to share that’ll make you feel like the VIP you truly are!</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        },
+        "text_hCJW6r": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Introducing our VIP Text Message Alerts! (Cue the confetti and jazz hands!) This is your golden ticket to stay in the know about all things Grunt Style. Imagine receiving exclusive updates, sneak peeks, and maybe even a few surprises right in your pocket. It’s like having a personal assistant, but way cooler and without the awkward small talk at the water cooler.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_JpM3kX",
+        "text_HkWPb8",
+        "text_hCJW6r"
+      ]
+    },
+    "17761968799ea5b15a": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      },
+      "blocks": {
+        "klaviyo_email_marketing_sms_form_embed_block_dTPYYQ": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "Tq2Xm7"
+          }
+        }
+      },
+      "block_order": [
+        "klaviyo_email_marketing_sms_form_embed_block_dTPYYQ"
+      ]
+    },
+    "17417936508cb8ee1d": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      },
+      "blocks": {
+        "klaviyo_email_marketing_sms_form_embed_block_k7HNaH": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "UsNjRr"
+          }
+        }
+      },
+      "block_order": [
+        "klaviyo_email_marketing_sms_form_embed_block_k7HNaH"
+      ]
+    },
+    "rich_text_GG8g7h": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "text_efFKbc": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>So, how does this work, you ask? Well, it’s as easy as pie (and who doesn’t love pie?). Just sign up for our text alerts, and voilà! You’ll be the first to know about new arrivals, special promotions, and maybe even a dad joke or two (because who doesn’t love a good pun?).</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        },
+        "text_iW88G8": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>But wait, there’s more! (And no, this isn’t an infomercial, I promise.) By joining our Grunt Style VIP club, you’ll also be part of a community that celebrates American pride and supports our brave service members. It’s like being part of a secret society, but with way less secrecy and way more t-shirts!</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        },
+        "text_yttq86": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Now, let’s talk about the Grunt Style perks. Not only from Text enrollment but downloading our Mobile App can get early access to sales, which means you can snag those sweet threads before anyone else even knows they exist. It’s like being the first kid on the block with the latest toy—except this toy is a super comfy t-shirt that shows off your love for the red, white, and blue!</p><p>And if you’re worried about spam (who isn’t?), fear not! We promise to only send you the good stuff. No random cat memes or unsolicited advice on how to fold a fitted sheet (seriously, who can do that?). Just the juicy details you crave, straight to your phone. Details on unenrollment in our Text can be found <a href=\"https://www.gruntstyle.com/pages/terms-of-service\" target=\"_blank\">here on our Terms of Service page</a>.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        },
+        "text_DcUKer": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>So, what are you waiting for? Don’t let FOMO (Fear Of Missing Out) get the best of you! Sign up for our VIP Text Message Alerts today and join the ranks of the coolest Grunt Style fans around. Trust us, your wardrobe will thank you, and so will your fellow patriots!</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        },
+        "text_4AxFhU": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Remember, life is too short for boring clothes. Let’s make it fun, fabulous, and full of flair—one text at a time!</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_efFKbc",
+        "text_iW88G8",
+        "text_yttq86",
+        "text_DcUKer",
+        "text_4AxFhU"
+      ]
+    }
+  },
+  "order": [
+    "main-page",
+    "rich_text_UmyALW",
+    "17761968799ea5b15a",
+    "17417936508cb8ee1d",
+    "rich_text_GG8g7h"
+  ]
+}

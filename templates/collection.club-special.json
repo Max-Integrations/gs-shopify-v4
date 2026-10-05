@@ -1,0 +1,203 @@
+{
+  "sections": {
+    "main-collection": {
+      "type": "main-collection",
+      "settings": {
+        "overlay_content_position": "text-center",
+        "overlay_text": false,
+        "heading_size": "h1",
+        "tag": "h1",
+        "show_header": true,
+        "show_description": true,
+        "description_position": "below_products",
+        "collection_image": false,
+        "banner_height_desktop": "200px",
+        "banner_height_mobile": "100px",
+        "products_per_page": 28,
+        "grid_image_size": "auto",
+        "load_type": "page_number",
+        "enable_filtering": true,
+        "open_filtering": false,
+        "open_all_filtering": false,
+        "enable_sorting": true,
+        "color_scheme": "scheme-2",
+        "enable_gradient": false,
+        "background_color": "#e7e7e7",
+        "text_color": "#000000",
+        "background_opacity_color": "#515253",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0
+      },
+      "blocks": {
+        "promotion_rE4dcw": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "custom_content_position": 10,
+            "custom_content_page": 1,
+            "content_width_desktop": "1",
+            "content_width_mobile": "1",
+            "custom_image": "shopify://shop_images/Disruptor_Image_400x600_Club_August_Campaign.jpg",
+            "link": "shopify://pages/club-grunt-style",
+            "background_color": "#b3b3b3",
+            "background_opacity": 0,
+            "heading": "",
+            "heading_alignment": "text-left",
+            "heading_color": "#ffffff",
+            "heading_font_family": "poppins_n6",
+            "heading_font_weight": "400",
+            "heading_font_size_desktop": 32,
+            "heading_font_size_mobile": 22,
+            "description": "",
+            "desc_font_family": "figtree_n4",
+            "desc_color": "#ffffff",
+            "desc_font_weight": "400",
+            "desc_font_size_desktop": 16,
+            "desc_font_size_mobile": 14
+          }
+        },
+        "promotion_RJLKVq": {
+          "type": "promotion",
+          "settings": {
+            "custom_content_position": 7,
+            "custom_content_page": 1,
+            "content_width_desktop": "1",
+            "content_width_mobile": "1",
+            "custom_image": "shopify://shop_images/Disruptor_Image_400x600_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
+            "link": "shopify://pages/club-grunt-style",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "heading": "<strong>JOIN CLUB GRUNT STYLE</strong>",
+            "heading_alignment": "text-center",
+            "heading_color": "#ffffff",
+            "heading_font_family": "roboto_condensed_n4",
+            "heading_font_weight": "400",
+            "heading_font_size_desktop": 22,
+            "heading_font_size_mobile": 17,
+            "description": "<em>SUBSCRIBE TO MONTHLY PERKS</em>",
+            "desc_font_family": "roboto_condensed_n4",
+            "desc_color": "#ffffff",
+            "desc_font_weight": "400",
+            "desc_font_size_desktop": 12,
+            "desc_font_size_mobile": 12
+          }
+        },
+        "promotion_G43czi": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "custom_content_position": 22,
+            "custom_content_page": 1,
+            "content_width_desktop": "2",
+            "content_width_mobile": "2",
+            "custom_image": "shopify://shop_images/Disruptor_Image_950x750_Club_August_2026_Acquisition__1.jpg",
+            "link": "shopify://pages/club-grunt-style",
+            "background_color": "#ffca10",
+            "background_opacity": 0,
+            "heading": "",
+            "heading_alignment": "text-center",
+            "heading_color": "#ffffff",
+            "heading_font_family": "poppins_n6",
+            "heading_font_weight": "400",
+            "heading_font_size_desktop": 32,
+            "heading_font_size_mobile": 22,
+            "description": "",
+            "desc_font_family": "figtree_n4",
+            "desc_color": "#ffffff",
+            "desc_font_weight": "400",
+            "desc_font_size_desktop": 16,
+            "desc_font_size_mobile": 14
+          }
+        },
+        "product-grid": {
+          "type": "product-grid",
+          "settings": {
+            "columns_desktop": "4",
+            "columns_mobile": "2",
+            "product_card_bg_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "promotion_rE4dcw",
+        "promotion_RJLKVq",
+        "promotion_G43czi",
+        "product-grid"
+      ]
+    },
+    "slideshow_bVjcka": {
+      "type": "slideshow",
+      "settings": {
+        "section_visibility": "always",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "slider_thumbnail": "only-arrow",
+        "slider_transition": "slide",
+        "desktop_height": "adapt_image",
+        "mobile_height": "adapt_image"
+      },
+      "blocks": {
+        "slide_DtbR9f": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/CPB_D_1440x300_GIFT_CLUB_Holiday_LC_Shopping.jpg",
+            "image_mobile": "shopify://shop_images/CPB_M_980x600_GIFT_CLUB_Holiday_LC_Shopping_39ff35c5-32b6-4c05-a230-f25c4344cb8a.jpg",
+            "heading": "CLUB GRUNT STYLE",
+            "heading_size": "h1",
+            "seo_heading": "h1",
+            "font_family": "heading",
+            "description": "EXCLUSIVE DESIGNS & FREE SHIPPING. \nEnlist & get a fresh, high-speed patriotic tees shipped straight to your tent every month. Don’t wait, join the ranks & stand out!",
+            "button_size": "medium",
+            "btn_text": "JOIN NOW",
+            "btn_link": "shopify://pages/club-grunt-style",
+            "slide_as_link": false,
+            "button_as_link": false,
+            "btn_text2": "SHOP COLLECTION",
+            "btn_link2": "shopify://collections/club-grunt-style",
+            "button_as_link2": false,
+            "content_width": "medium",
+            "desktop_content_position": "d-center-right",
+            "desktop_alignment": "d-text-right",
+            "mobile_content_position": "m-center",
+            "mobile_alignment": "m-text-center",
+            "content_overlay_color": "#000000",
+            "content_overlay_opacity": 0,
+            "overlay_color": "#000000",
+            "overlay_opacity": 41,
+            "text_color": "#ffffff",
+            "description_color": "#ffffff",
+            "btn_bg_color": "#ffca10",
+            "btn_shadow_color": "#ececec",
+            "btn_text_color": "#000000",
+            "btn_border_color": "#5c5b5b",
+            "btn_hover_color": "#0b0e0d",
+            "btn_hover_text_color": "#ffffff",
+            "btn_hover_border_color": "#5c5b5b",
+            "m_text_color": "#ffffff",
+            "m_description_color": "#ffffff",
+            "m_btn_bg_color": "#ffca10",
+            "m_btn_shadow_color": "#000000",
+            "m_btn_text_color": "#000000",
+            "m_btn_border_color": "#b3b3b3"
+          }
+        }
+      },
+      "block_order": [
+        "slide_DtbR9f"
+      ],
+      "custom_css": [
+        ".slideshow-desc {font-size: 24px;}",
+        ".slideshow-heading {margin-bottom: 5px; font-size: 38px;}",
+        "@media screen and (max-width: 668px) {.slideshow-button-box {padding-bottom: 2px; margin-top: 2px; } .slideshow-heading {margin-bottom: 5px; font-weight: 700; font-size: 23px; } .slideshow-desc {font-size: 15px; }}"
+      ],
+      "name": "t:sections.slideshow.name"
+    }
+  },
+  "order": [
+    "main-collection",
+    "slideshow_bVjcka"
+  ]
+}

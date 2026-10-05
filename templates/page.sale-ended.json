@@ -1,0 +1,315 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "#000000",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0
+      }
+    },
+    "featured_collections_xz6Rpj": {
+      "type": "featured-collections",
+      "settings": {
+        "section_heading": "Discover Popular Picks",
+        "heading_text_align": "left",
+        "collection_type": "tabs",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "lg",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 15,
+        "number_products_per_view_desktop": "4",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-1",
+        "heading_size_desktop": 38,
+        "heading_size_mobile": 36,
+        "navigation_title_size_desktop": 26,
+        "navigation_title_size_mobile": 23,
+        "cta_title_size_desktop": 18,
+        "cta_title_size_mobile": 12,
+        "section_spacing_top_desktop": 10,
+        "section_spacing_top_mobile": 10,
+        "section_spacing_bottom_desktop": 10,
+        "section_spacing_bottom_mobile": 10,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#000000",
+        "cta_background_color": "#ffffff",
+        "cta_background_color_hover": "#ffffff",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#000000"
+      },
+      "blocks": {
+        "collection_block_FHXWPJ": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "BASICS",
+            "collection": "basics-franchise",
+            "cta_label": "SHOP COLLECTION",
+            "cta_link": "shopify://collections/basics-franchise"
+          }
+        },
+        "collection_block_MfQRxz": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "NEW ARRIVALS",
+            "collection": "new",
+            "cta_label": "SHOP COLLECTIONS",
+            "cta_link": "shopify://collections/new"
+          }
+        },
+        "collection_block_PVt83c": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "Best Sellers",
+            "collection": "best-sellers",
+            "cta_label": "SHOP COLLECTIONS",
+            "cta_link": "shopify://collections/best-sellers"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_FHXWPJ",
+        "collection_block_MfQRxz",
+        "collection_block_PVt83c"
+      ],
+      "name": "Featured Collections"
+    },
+    "collection_tab_bc3k8d": {
+      "type": "featured-collections",
+      "settings": {
+        "section_heading": "DISCOVER POPULAR PICKS",
+        "heading_text_align": "left",
+        "collection_type": "tabs",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "lg",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 5,
+        "number_products_per_view_desktop": "4",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-1",
+        "heading_size_desktop": 28,
+        "heading_size_mobile": 24,
+        "navigation_title_size_desktop": 26,
+        "navigation_title_size_mobile": 23,
+        "cta_title_size_desktop": 26,
+        "cta_title_size_mobile": 23,
+        "section_spacing_top_desktop": 25,
+        "section_spacing_top_mobile": 30,
+        "section_spacing_bottom_desktop": 10,
+        "section_spacing_bottom_mobile": 30,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#ffffff",
+        "cta_background_color": "#ffffff",
+        "cta_background_color_hover": "#000000",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#000000"
+      },
+      "blocks": {
+        "collection_WNXXBd": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "BEST SELLERS",
+            "collection": "priority-selections",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        },
+        "collection_3G7Q68": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "NEW ARRIVALS",
+            "collection": "new",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        },
+        "collection_nwFDCA": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "BASICS",
+            "collection": "basics-franchise",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_WNXXBd",
+        "collection_3G7Q68",
+        "collection_nwFDCA"
+      ],
+      "disabled": true,
+      "name": "t:sections.collection-tab.presets.name"
+    },
+    "collection_carousel_ytmiQV": {
+      "type": "collection-carousel",
+      "settings": {
+        "section_visibility": "always",
+        "carousel_type": "carousel",
+        "scrolling_speed": 15,
+        "scrolling_speed_mobile": 15,
+        "direction": "ltr",
+        "heading": "WHAT ABOUT THIS?",
+        "highlight_style": "underline",
+        "bg__color": "gradient",
+        "heading_size": "h1",
+        "seo_heading": "h2",
+        "heading_alignment": "text-left",
+        "enable_border": false,
+        "shape": "sharp",
+        "customshapes": "shape1",
+        "image_fit": "cover",
+        "image_style": "square",
+        "title_on_hover": false,
+        "product_count": false,
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 20,
+        "bottom_space_desktop": 20,
+        "top_space_mobile": 20,
+        "bottom_space_mobile": 20
+      },
+      "blocks": {
+        "collection_bKztAw": {
+          "type": "collection",
+          "settings": {
+            "collection": "military-first-responders",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_tARLTV": {
+          "type": "collection",
+          "settings": {
+            "collection": "graphic-tops",
+            "image": "shopify://shop_images/BlankPoster_2000x2000_V11_GS7708BlackoutBetsyRifleFlag.jpg",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#000000",
+            "background_gradient": ""
+          }
+        },
+        "collection_ArCUkg": {
+          "type": "collection",
+          "settings": {
+            "collection": "new",
+            "image": "shopify://shop_images/BlankPoster_2000x2000_V15_GS7536_StripClubVeteranHoodie.jpg",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_mrfJwr": {
+          "type": "collection",
+          "settings": {
+            "collection": "best-sellers",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_p6FjKC": {
+          "type": "collection",
+          "settings": {
+            "collection": "basics-franchise",
+            "image": "shopify://shop_images/BlankPoster_2000x2000_V3_GS7610_HeavyweightPocketT-Shirt-MilGreen.jpg",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_D3JGY7": {
+          "type": "collection",
+          "settings": {
+            "collection": "loud-and-proud-graphics",
+            "collection_heading": "Loud & Proud",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_67gjYM": {
+          "type": "collection",
+          "settings": {
+            "collection": "2nd-amendment-collection",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_bKztAw",
+        "collection_tARLTV",
+        "collection_ArCUkg",
+        "collection_mrfJwr",
+        "collection_p6FjKC",
+        "collection_D3JGY7",
+        "collection_67gjYM"
+      ],
+      "disabled": true,
+      "name": "t:sections.collection-carousel.presets.name"
+    }
+  },
+  "order": [
+    "main-page",
+    "featured_collections_xz6Rpj",
+    "collection_tab_bc3k8d",
+    "collection_carousel_ytmiQV"
+  ]
+}

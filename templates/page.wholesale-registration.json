@@ -1,0 +1,271 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "300px",
+        "mobile_height": "200px",
+        "heading_size": "h1",
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      },
+      "disabled": true
+    },
+    "full_width_image_with_text_v2_7B9chj": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/GS-Content_-11-1920x700_WS.png",
+        "background_image_mobile": "shopify://shop_images/GS-Content_-10-750x940_WS.png",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "name": "Full Width Image/Text_v2"
+    },
+    "multi_column_with_rich_text_MfbxRY": {
+      "type": "multicolumn",
+      "settings": {
+        "title": "HOW IT WORKS?",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 20,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "icon_with_text_cGidQB": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Icon_2000x2000_Loyalty-min_896e35f1-6884-457b-883c-1abf283eba94.png",
+            "title": "Register Your Gear",
+            "text": "<p>Fill out the 60-second form below & upload your receipt.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_mGhgpc": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GS-Content_-14-icon-perks.png",
+            "title": "Beer Guarantee Activated",
+            "text": "<p>Check your inbox for your Beer Guarantee confirmation, you're covered for life. Rips, tears, war stories? We got you covered.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_LRW8cU": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GS-Content_-12-icon-perks.png",
+            "title": "What's Next?",
+            "text": "<p>Your gear is registered. Your guarantee is locked. Your gift is on the way.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_with_text_cGidQB",
+        "icon_with_text_mGhgpc",
+        "icon_with_text_LRW8cU"
+      ],
+      "name": "Multicolumn Rich Text"
+    },
+    "rich_text_nEz7iV": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_XkL3RA": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>Activate The Beer Guarantee in 1 Minute. Get 20% Off.</strong>",
+            "size": "h3",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_JddqiK": {
+          "type": "block--text",
+          "settings": {
+            "text": "<h6>Register your product today to unlock <strong>exclusive rewards, insider perks, and our legendary Beer Guarantee</strong>. Your gear is covered for life. Plus, get <strong>a welcome gift</strong> for joining the fight.</h6>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_XkL3RA",
+        "text_JddqiK"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.name"
+    },
+    "split_banner_reGixa": {
+      "type": "image-with-text",
+      "settings": {
+        "section_visibility": "always",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "show_chevrons": false,
+        "full_width": false,
+        "content_background": "",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "image": "shopify://shop_images/GS-Content_-13-980x600_WS.png"
+      },
+      "blocks": {
+        "b1": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>Enjoy The Perks!</strong>",
+            "size": "h3",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "b2": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Shop our best sellers, earn up to 20% back with Grunt Style rewards, and join our community of Patriots on social media.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        },
+        "b3": {
+          "type": "block--button",
+          "settings": {
+            "label": "Learn more about our Beer Guarantee process through our FAQs.",
+            "link": "shopify://pages/beerguarantee",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "",
+            "text_color": "",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "name": "t:sections.split-banner.presets.name"
+    },
+    "anchor_tag_cwBFFM": {
+      "type": "anchor-tag",
+      "settings": {
+        "anchor_tag": "BG_Receipt_Upload"
+      },
+      "name": "Anchor Tag"
+    },
+    "beer_guarantee_receipt_upload_mEi6F6": {
+      "type": "beer-guarantee-receipt-upload",
+      "settings": {},
+      "custom_css": [
+        "div {padding: 5px;}"
+      ]
+    },
+    "full_width_image_with_text_v2_4m4xDq": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "left",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/GS-Content_-16-1440x350_2.png",
+        "background_image_mobile": "shopify://shop_images/GS-Content_-WS-750x940.png",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": true,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "name": "Full Width Image/Text_v2"
+    }
+  },
+  "order": [
+    "main",
+    "full_width_image_with_text_v2_7B9chj",
+    "multi_column_with_rich_text_MfbxRY",
+    "rich_text_nEz7iV",
+    "split_banner_reGixa",
+    "anchor_tag_cwBFFM",
+    "beer_guarantee_receipt_upload_mEi6F6",
+    "full_width_image_with_text_v2_4m4xDq"
+  ]
+}

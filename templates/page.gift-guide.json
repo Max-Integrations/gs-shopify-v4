@@ -1,0 +1,1816 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      },
+      "disabled": true
+    },
+    "full_width_image_with_text_Ph8mKt": {
+      "type": "full-width-image-with-text",
+      "settings": {
+        "full_width_image_desktop": "shopify://shop_images/CPB_D_1440x300_Gift_Guide_HUB.jpg",
+        "full_width_image_mobile": "shopify://shop_images/CPB_M_980x600_Gift_Guide_HUB.jpg",
+        "full_width_image_link": "shopify://collections",
+        "full_width_image_overlay": 0,
+        "full_width_header_text": "",
+        "full_width_header_font": "Roboto, sans-serif",
+        "full_width_header_text_color": "#ffffff",
+        "full_width_header_text_size_desktop": 50,
+        "full_width_header_text_size_mobile": 24,
+        "full_width_header_text_alignment": "center",
+        "full_width_subcopy": "",
+        "full_width_subcopy_text_font": "Roboto, sans-serif",
+        "full_width_subcopy_text_color": "#ffffff",
+        "full_width_subcopy_desktop_text_size": 22,
+        "full_width_subcopy_mobile_text_size": 18,
+        "full_width_subcopy_text_alignment": "center",
+        "full_width_cta_text": "",
+        "full_width_cta_text_font": "Roboto, sans-serif",
+        "full_width_cta_background_color": "#ffffff",
+        "full_width_cta_border_style": "none",
+        "full_width_cta_text_color": "#000000",
+        "full_width_cta_text_size": 18,
+        "full_width_cta_alignment": "left",
+        "full_width_link_new_window": false,
+        "full_width_terms": "",
+        "full_width_terms_text_font": "Roboto, sans-serif",
+        "full_width_terms_text_color": "#ffffff",
+        "full_width_terms_desktop_text_size": 22,
+        "full_width_terms_mobile_text_size": 18,
+        "full_width_terms_text_alignment": "left"
+      }
+    },
+    "rich_text_AiehyR": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 24,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_JykrFV": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>THE PATRIOTS GUIDE TO THE HOLIDAYS</strong>",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_VCgFUF": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Gift with a Bang: Elevate your gifting game to legendary status. Grunt Style's Gift Guides are your secret weapon, ensuring you hit the bullseye with each present, and making your gift the highlight of the festivities.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_JykrFV",
+        "text_VCgFUF"
+      ]
+    },
+    "countdown_Ayf9D7": {
+      "type": "countdown",
+      "settings": {
+        "section_visibility": "always",
+        "layout": "center",
+        "countdown_bg_image": "",
+        "bg__color": "gradient",
+        "gradient_color": "linear-gradient(120deg, rgba(136, 3, 3, 0.9) 16%, rgba(0, 0, 0, 1) 100%, rgba(255, 255, 255, 1) 100%, rgba(255, 255, 255, 1) 100%)",
+        "solid_color": "#5d5c39",
+        "enable_innner_background": false,
+        "text_color": "#e5e5e5",
+        "highlight_text_color": "#ffffff",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "<em>LIMITED TIME OFFER</em>",
+            "size": "h2"
+          }
+        },
+        "subheading": {
+          "type": "subheading",
+          "settings": {
+            "text": "BLACK FRIDAY DOORBUSTER",
+            "size": "small-case"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<em>May not be combined with other discounts.</em>"
+          }
+        },
+        "products": {
+          "type": "products",
+          "settings": {
+            "product_list": [
+              "3-pack-basic-t-shirts-black",
+              "5-pack-basic-t-shirts-black",
+              "3-pack-basic-t-shirts-military-green",
+              "3-pack-basic-t-shirts-navy",
+              "3-pack-basic-t-shirts-white",
+              "5-pack-basic-t-shirts-white",
+              "standard-issue-core-3-pack-basic-t-shirts",
+              "standard-issue-patriot-3-pack-basic-t-shirts"
+            ],
+            "grid_image_size": "portrait",
+            "grid_image_fit": "cover"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "subheading",
+        "text",
+        "products"
+      ],
+      "custom_css": [
+        ".countdown-timer-wrapper .countdown-timer div {background: #fff;}"
+      ],
+      "disabled": true
+    },
+    "media_grid_VgFVte": {
+      "type": "section--media-grid",
+      "settings": {
+        "layout": "grid",
+        "columns_desktop": 4,
+        "columns_mobile": 1,
+        "tile_ratio": "fixed",
+        "desktop_row_height": 270,
+        "mobile_row_height": 150,
+        "tile_width": "full",
+        "desktop_grid_gap": 4,
+        "mobile_grid_gap": 4,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "overlay",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "<strong>SHOP BY PRODUCT TYPE</strong>",
+        "heading_size": "h3",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-4",
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "grid_9gT8E8": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V6_GS8232_BasicStackedLogoT-Shirt-Tan_d9b7117e-946b-4512-97f2-ddf52059f2f3.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/basic-bundles",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>BASIC BUNDLES</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "grid_LiyfB4": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Split_Banner_D_980x610__GS8399_Lifestyle_Additional_Father_s_Day_Graphics.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/graphic-tees-and-tanks",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>T-SHIRTS & TANKS</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "grid_BjpyTz": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS7684_StillStandingFull-ZipHoodie-Black.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/hoodies-and-sweatshirts",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>HOODIES & LONG SLEEVE</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "grid_AdpGnX": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V13_GS5579_Polo-Black.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/button-downs-polos",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>BUTTON DOWNS & POLOS</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "grid_7wWanY": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS7308_GS7310_GS7311_GS7313_WoobieCollection-FallforFreedom.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/outerwear",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>OUTERWEAR</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "grid_FKjfBR": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V9_GS7784_GruntShort5-SkyBlue.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/bottoms",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>BOTTOMS</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "grid_qfrrPb": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Him-Hats-BlankPoster_2000x2000_copyGS5033-GSEmbroideredAmericanFlagHat-min_197472bc-2efc-4d4e-8db9-4b8f9faae934.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/headwear",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>HEADWEAR</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "grid_PAJ6JH": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8339_DeathDealerFlag_1.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/accessories",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>ACCESSORIES</strong>",
+                "size": "h4",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        }
+      },
+      "block_order": [
+        "grid_9gT8E8",
+        "grid_LiyfB4",
+        "grid_BjpyTz",
+        "grid_AdpGnX",
+        "grid_7wWanY",
+        "grid_FKjfBR",
+        "grid_qfrrPb",
+        "grid_PAJ6JH"
+      ],
+      "name": "t:sections.media-grid.name"
+    },
+    "images_grid_WBTJkD": {
+      "type": "section--media-grid",
+      "settings": {
+        "layout": "carousel",
+        "columns_desktop": 5,
+        "columns_mobile": 1,
+        "tile_ratio": "square",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 12,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "<strong>IDEAS FOR EVERYONE ON YOUR LIST</strong>",
+        "heading_size": "h2",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 32
+      },
+      "blocks": {
+        "image_4Yk834": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GSMC0118_USMC-FirstToFightT-Shirt-Black.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/military-branches",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>LICENSED MILITARY</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_XTtK7N": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS7409_StillStandingRedLine.jpg",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/first-responders",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>FIRST RESPONDER</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_M688WU": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Basics-BlankPoster_2000x2000_copy2_2.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/basics-franchise",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>EVERYDAY ESSENTIALS</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_wiJhcr": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Blank_Poster_2000x2000_-02_GS6603_Seasoned_Veteran_Hoodie.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/veteran-clothing-and-gear",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>VETERANS</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_CkrTT7": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Blank_Poster_2000x2000__copy_11_GS4767_-_1776_Flag_Hoodie.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/patriotic-apparel-and-gear",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>PATRIOTIC</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_edHTPX": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/D_600x400-6_1.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/loud-and-proud-graphics",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>UNFILTERED</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_HpDagH": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_v3_GS6763Sh-tShowSupervisorLongSleeve-SafetyGreen.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/blue-collar-clothing",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>BLUE COLLAR</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_KWMMKq": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_10__GS6550Don_tLookBackFull-ZipHoodie.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/fitness",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>GYM RAT</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_WXyCTA": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_copy6GS4932-SecondAmendment2.0Hoodie.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/2nd-amendment-collection",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>PISTOL PACKIN</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        },
+        "image_TFTn4p": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_GS5933BulletShotGlass_657bd122-887e-49f2-bab6-747542f92e38.png",
+            "video": "",
+            "collection": "",
+            "link": "shopify://collections/freedom-on-tap",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>BREW CREW</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1"
+          ]
+        }
+      },
+      "block_order": [
+        "image_4Yk834",
+        "image_XTtK7N",
+        "image_M688WU",
+        "image_wiJhcr",
+        "image_CkrTT7",
+        "image_edHTPX",
+        "image_HpDagH",
+        "image_KWMMKq",
+        "image_WXyCTA",
+        "image_TFTn4p"
+      ]
+    },
+    "images_grid_6hjGhr": {
+      "type": "section--media-grid",
+      "settings": {
+        "layout": "grid",
+        "columns_desktop": 3,
+        "columns_mobile": 1,
+        "tile_ratio": "square",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 12,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "<strong>GIFT GUIDES</strong>",
+        "heading_size": "h2",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "image_x3hgAd": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8200_GameSizeMattersT-Shirt-Black.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>GIFT GUIDE IDEAS</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "EXPLORE MORE",
+                "link": "shopify://pages/gift-giving-ideas",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "image_PtzhNk": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8192_WarMachineT-Shirt-Sand.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>GIFTS FOR HIM</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/gifts-for-him",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "image_wdKTg4": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V3_GS8456_Women_sBornDefiantSlimFitT-Shirt-MilitaryGreen.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>GIFTS FOR HER</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "shopify://collections/gifts-for-her",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        }
+      },
+      "block_order": [
+        "image_x3hgAd",
+        "image_PtzhNk",
+        "image_wdKTg4"
+      ],
+      "name": "Gift Guides"
+    },
+    "media_grid_JyFhYW": {
+      "type": "section--media-grid",
+      "settings": {
+        "layout": "grid",
+        "columns_desktop": 4,
+        "columns_mobile": 1,
+        "tile_ratio": "fixed",
+        "desktop_row_height": 200,
+        "mobile_row_height": 160,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 4,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "overlay",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "<strong>SHOP BY PRICE</strong>",
+        "heading_size": "h3",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-4",
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "grid_z4rAEU": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Blank_Poster_2000x2000_V2_Gift_Guide_STICKER_CLUB.jpg",
+            "video": "",
+            "collection": "",
+            "link": "https://www.gruntstyle.com/collections/all?sort_by=manual&filter.v.price.gte=&filter.v.price.lte=3",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>$2.99</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "https://www.gruntstyle.com/collections/all?sort_by=manual&filter.v.price.gte=&filter.v.price.lte=3",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ],
+          "disabled": true
+        },
+        "grid_8ifm3y": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Him-Hats-BlankPoster_2000x2000_copyGS5033-GSEmbroideredAmericanFlagHat-min.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>$9.99</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "https://www.gruntstyle.com/collections/all?sort_by=manual&filter.v.price.gte=3&filter.v.price.lte=10",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_YaxJaa": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS7640StillStanding-White.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>$14.99</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "https://www.gruntstyle.com/collections/all?sort_by=manual&filter.v.price.gte=10&filter.v.price.lte=15",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ],
+          "disabled": true
+        },
+        "grid_A9c9Fp": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V7_GS7465_DangerousFreedomT-Shirt-Black.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "$19.99",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "https://www.gruntstyle.com/collections/all?sort_by=manual&filter.v.price.gte=9&filter.v.price.lte=20",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_DXJWNK": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V3_GS7610_HeavyweightPocketT-Shirt-MilGreen.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>$24.99</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "https://www.gruntstyle.com/collections/all?sort_by=manual&filter.v.price.gte=20&filter.v.price.lte=25",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ],
+          "disabled": true
+        },
+        "grid_qUNteg": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_GS5580GSTrainingShortsMen_s-Black-3.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>$29.99</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "https://www.gruntstyle.com/collections/all?sort_by=manual&filter.v.price.gte=20&filter.v.price.lte=30",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_BcWXPG": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS6715_GrinchGrowsHoodie.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>$34.99</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "https://www.gruntstyle.com/collections/all?sort_by=manual&filter.v.price.gte=30&filter.v.price.lte=35",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ],
+          "disabled": true
+        },
+        "grid_VqJyXb": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS7601_GreetingsFromTheGulfofAmericaHoodie.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>$39.99 +</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "https://www.gruntstyle.com/collections/all?sort_by=manual&filter.v.price.gte=39&filter.v.price.lte=",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        }
+      },
+      "block_order": [
+        "grid_z4rAEU",
+        "grid_8ifm3y",
+        "grid_YaxJaa",
+        "grid_A9c9Fp",
+        "grid_DXJWNK",
+        "grid_qUNteg",
+        "grid_BcWXPG",
+        "grid_VqJyXb"
+      ],
+      "name": "Price Points"
+    },
+    "media_grid_Q4zBCA": {
+      "type": "section--media-grid",
+      "settings": {
+        "layout": "grid",
+        "columns_desktop": 4,
+        "columns_mobile": 1,
+        "tile_ratio": "fixed",
+        "desktop_row_height": 200,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 4,
+        "mobile_grid_gap": 4,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "overlay",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "<strong>WANT EVEN MORE GRUNT STYLE?</strong>",
+        "heading_size": "h2",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-4",
+        "padding_top": 16,
+        "padding_bottom": 24
+      },
+      "blocks": {
+        "grid_eLzbVX": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Highlight_D_610x775_Club_Grunt_Style.png",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": true,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>MONTHLY T-SHIRT CLUB</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--text",
+              "settings": {
+                "text": "<p>CLUB GRUNT STYLE</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              }
+            },
+            "c3": {
+              "type": "block--button",
+              "settings": {
+                "label": "JOIN NOW",
+                "link": "shopify://pages/club-grunt-style",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        "grid_P97gFy": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Blank_Poster_2000x2000_Lifestyle_1__2024_Holiday_Gift_Guide_Landing_Page-min.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>GRUNT STYLE RETAIL STORES</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "FIND A STORE NEAR YOU",
+                "link": "shopify://pages/grunt-style-retail-stores",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_8B86nB": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Custom_Asset_1250x1250_GC__2024_Holiday_Gift_Guide_Landing_Page-min.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>E-GIFT CARD</strong>",
+                "size": "h2",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "MAKE IT EASY",
+                "link": "shopify://products/e-gift-card",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        }
+      },
+      "block_order": [
+        "grid_eLzbVX",
+        "grid_P97gFy",
+        "grid_8B86nB"
+      ],
+      "name": "Alternative Options"
+    }
+  },
+  "order": [
+    "main-page",
+    "full_width_image_with_text_Ph8mKt",
+    "rich_text_AiehyR",
+    "countdown_Ayf9D7",
+    "media_grid_VgFVte",
+    "images_grid_WBTJkD",
+    "images_grid_6hjGhr",
+    "media_grid_JyFhYW",
+    "media_grid_Q4zBCA"
+  ]
+}

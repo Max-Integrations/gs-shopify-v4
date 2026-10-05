@@ -1,0 +1,409 @@
+{
+  "sections": {
+    "full_width_image_with_text_v2_9KYG7M": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "right",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/HPC_D_-_Tall_1920x700_Live_20__Off_GovX_Verification.jpg",
+        "background_image_mobile": "shopify://shop_images/HPC_M_-_Tall_828x600_Live_20__Off_GovX_Verification.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "name": "Full Width Image/Text_v2"
+    },
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "rgba(0,0,0,0)",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "featured_collections_kMXf4e": {
+      "type": "featured-collections",
+      "settings": {
+        "section_heading": "Shop a Collection",
+        "heading_text_align": "center",
+        "collection_type": "tabs",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "lg",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 20,
+        "number_products_per_view_desktop": "5",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-1",
+        "heading_size_desktop": 30,
+        "heading_size_mobile": 29,
+        "navigation_title_size_desktop": 25,
+        "navigation_title_size_mobile": 18,
+        "cta_title_size_desktop": 20,
+        "cta_title_size_mobile": 18,
+        "section_spacing_top_desktop": 10,
+        "section_spacing_top_mobile": 10,
+        "section_spacing_bottom_desktop": 10,
+        "section_spacing_bottom_mobile": 10,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#FFFFFF",
+        "cta_background_color": "#FFFFFF",
+        "cta_background_color_hover": "#000000",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#FFFFFF"
+      },
+      "blocks": {
+        "collection_block_Vrf6Ei": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "MILITARY & VETERAN",
+            "collection": "proud-veteran",
+            "cta_label": "SHOP COLLECTION",
+            "cta_link": "shopify://collections/proud-veteran"
+          }
+        },
+        "collection_block_DAqNam": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "FIRST RESPONDERS",
+            "collection": "first-responders",
+            "cta_label": "SHOP COLLECTION",
+            "cta_link": "shopify://collections/first-responders"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_Vrf6Ei",
+        "collection_block_DAqNam"
+      ],
+      "name": "Featured Collections"
+    },
+    "media_grid_iJnDjx": {
+      "type": "section--media-grid",
+      "settings": {
+        "layout": "grid",
+        "columns_desktop": 4,
+        "columns_mobile": 1,
+        "tile_ratio": "fixed",
+        "desktop_row_height": 400,
+        "mobile_row_height": 250,
+        "tile_width": "full",
+        "desktop_grid_gap": 4,
+        "mobile_grid_gap": 4,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "overlay",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "<strong>SHOP A COLLECTION</strong>",
+        "heading_size": "h3",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 4,
+        "padding_bottom": 4
+      },
+      "blocks": {
+        "grid_nme9DD": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Blog_Post_1250x1250_The_Dad_We_Salute_-_Father_s_Day_Gift_Guide_-_2025.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>Military & Veteran</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "EXPLORE MORE",
+                "link": "shopify://collections/proud-veteran",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_W9UtCd": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_GS5718RedLineFlagBasic-MidnightNavy-5.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>First Responders</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "EXPLORE MORE",
+                "link": "shopify://collections/first-responders",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_UXreYx": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_1__GS6438REDFridayHoodie-RedGROUP.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>Remember Everyone Deployed</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "EXPLORE MORE",
+                "link": "shopify://collections/r-e-d-franchise",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        },
+        "grid_dCbmAL": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Blank_Poster_2000x2000_V5_GS6974_GS6973_GS6975_Nurse_-_The_Healer_Collection_Group.jpg",
+            "video": "",
+            "collection": "",
+            "link": "",
+            "span_two_columns": true,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "c1": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>Healthcare Heroes</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              }
+            },
+            "c2": {
+              "type": "block--button",
+              "settings": {
+                "label": "EXPLORE MORE",
+                "link": "shopify://collections/nurse-defined",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 0,
+                "padding_y": 12,
+                "padding_x": 28,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": false,
+                "color_scheme": "scheme-1",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              }
+            }
+          },
+          "block_order": [
+            "c1",
+            "c2"
+          ]
+        }
+      },
+      "block_order": [
+        "grid_nme9DD",
+        "grid_W9UtCd",
+        "grid_UXreYx",
+        "grid_dCbmAL"
+      ],
+      "disabled": true,
+      "name": "t:sections.media-grid.name"
+    }
+  },
+  "order": [
+    "full_width_image_with_text_v2_9KYG7M",
+    "main-page",
+    "featured_collections_kMXf4e",
+    "media_grid_iJnDjx"
+  ]
+}

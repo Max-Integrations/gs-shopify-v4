@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "desktop_height": "200px",
+        "mobile_height": "100px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "rgba(0,0,0,0)",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      },
+      "disabled": true
+    },
+    "custom_liquid_8LEVyK": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<powr-form-builder u=\"45b0eba8_1780669771\"></powr-form-builder><script src=\"https://view.powr.io/assets/loader.js\"></script>",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "name": "t:sections.custom-liquid.presets.name"
+    }
+  },
+  "order": [
+    "main-page",
+    "custom_liquid_8LEVyK"
+  ]
+}

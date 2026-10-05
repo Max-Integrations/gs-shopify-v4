@@ -1,0 +1,187 @@
+{
+  "sections": {
+    "full_width_image_with_text_v2_nJ6qfr": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/CPB_D_NO_CTA_1440x300_National_Cancer_Survivor_Month_Activation.jpg",
+        "background_image_mobile": "shopify://shop_images/CPB_M_NO_CTA_750x460_National_Cancer_Survivor_Month_Activation.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      }
+    },
+    "rich_text_e7GpBr": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_MHHDRT": {
+          "type": "block--heading",
+          "settings": {
+            "text": "PURCHASE & HONOR",
+            "size": "h2",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_qN8kHA": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Purchase a Grunt Style Cancer item from the online store (website) and honor a warrior for Cancer Awareness by submitting their name through the form that appears on your order confirmation page.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_MHHDRT",
+        "text_qN8kHA"
+      ],
+      "name": "t:sections.rich-text.name"
+    },
+    "full_width_image_with_text_v2_TzcRtg": {
+      "type": "section--full-width-image_text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/CPB_D_IMAGE_1440x300_Born_of_Rebellion_Branch_Collection.jpg",
+        "background_image_mobile": "shopify://shop_images/CPB_M_IMAGE_750x460_Born_of_Rebellion_Branch_Collection.jpg",
+        "image_height_auto": true,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 8,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 8,
+        "button_gap": 8
+      },
+      "disabled": true
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "settings": {
+        "overlay_content_position": "text-center",
+        "overlay_text": false,
+        "heading_size": "h1",
+        "tag": "h1",
+        "show_header": false,
+        "show_description": false,
+        "description_position": "below_products",
+        "collection_image": false,
+        "banner_height_desktop": "200px",
+        "banner_height_mobile": "100px",
+        "products_per_page": 28,
+        "grid_image_size": "square",
+        "load_type": "page_number",
+        "enable_filtering": true,
+        "open_filtering": false,
+        "open_all_filtering": false,
+        "enable_sorting": true,
+        "color_scheme": "scheme-2",
+        "enable_gradient": false,
+        "background_color": "#e7e7e7",
+        "text_color": "#000000",
+        "background_opacity_color": "#515253",
+        "background_opacity": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0
+      },
+      "blocks": {
+        "product-grid": {
+          "type": "product-grid",
+          "settings": {
+            "columns_desktop": "4",
+            "columns_mobile": "2",
+            "product_card_bg_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "product-grid"
+      ]
+    },
+    "text_scroller_v2_eBFXd9": {
+      "type": "text-scroller-v2",
+      "settings": {
+        "text_scroller_heading": "Honoring Our Community",
+        "header_text_color": "#ffffff",
+        "header_font_size": 32,
+        "header_font_weight": "700"
+      },
+      "blocks": {
+        "text_scroller_nMJgXE": {
+          "type": "text_scroller",
+          "settings": {
+            "title": "IN LOVING MEMORY",
+            "block_text_color": "#ffffff",
+            "block_font_size": 12,
+            "block_font_weight": "400",
+            "data-source": "google-sheets",
+            "data_source_url": "https://docs.google.com/spreadsheets/d/1XcU3PN9krP-3h2Q4nP91JE5qHIDvRX3v/edit?usp=sharing&ouid=103904563448239187309&rtpof=true&sd=true",
+            "scroller_content": "",
+            "is_auto_scroll": true,
+            "scroll_speed": 100
+          }
+        },
+        "text_scroller_hdnAWq": {
+          "type": "text_scroller",
+          "settings": {
+            "title": "SURVIVOR",
+            "block_text_color": "#ffffff",
+            "block_font_size": 12,
+            "block_font_weight": "400",
+            "data-source": "google-sheets",
+            "data_source_url": "https://docs.google.com/spreadsheets/d/1oGL3-HBtip1NioVGoFFNJmqp8CkZxr-B/edit?usp=sharing&ouid=103904563448239187309&rtpof=true&sd=true",
+            "scroller_content": "",
+            "is_auto_scroll": true,
+            "scroll_speed": 100
+          }
+        }
+      },
+      "block_order": [
+        "text_scroller_nMJgXE",
+        "text_scroller_hdnAWq"
+      ],
+      "name": "Text Scroller V2"
+    }
+  },
+  "order": [
+    "full_width_image_with_text_v2_nJ6qfr",
+    "rich_text_e7GpBr",
+    "full_width_image_with_text_v2_TzcRtg",
+    "main-collection",
+    "text_scroller_v2_eBFXd9"
+  ]
+}

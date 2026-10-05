@@ -1,0 +1,270 @@
+{
+  "sections": {
+    "collection_carousel_qpf88E": {
+      "type": "collection-carousel",
+      "settings": {
+        "section_visibility": "always",
+        "collection_source": "manual",
+        "carousel_type": "carousel",
+        "scrolling_speed": 15,
+        "scrolling_speed_mobile": 15,
+        "direction": "ltr",
+        "heading": "<strong>FEATURED COLLECTIONS</strong>",
+        "highlight_style": "underline",
+        "bg__color": "gradient",
+        "heading_size": "h3",
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "enable_border": false,
+        "shape": "sharp",
+        "customshapes": "shape1",
+        "image_fit": "cover",
+        "image_style": "square",
+        "title_on_hover": false,
+        "product_count": false,
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 20,
+        "bottom_space_desktop": 15,
+        "top_space_mobile": 20,
+        "bottom_space_mobile": 15
+      },
+      "blocks": {
+        "collection_dmzfiW": {
+          "type": "collection",
+          "settings": {
+            "collection": "offend",
+            "image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8258_TriggeredT-Shirt-Black.jpg",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_TJTfDp": {
+          "type": "collection",
+          "settings": {
+            "collection": "handpicked-for-violence",
+            "image": "shopify://shop_images/Split_Banner_M_750x750_GS8251__FW26_Violence_Campaign.jpg",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_bUMbNy": {
+          "type": "collection",
+          "settings": {
+            "collection": "halloween",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_mbMF6E": {
+          "type": "collection",
+          "settings": {
+            "collection": "freedom-fighters",
+            "image": "shopify://shop_images/BlankPoster_2000x2000_V2_FW26_FreedomFighterCollection.jpg",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_r8JnWJ": {
+          "type": "collection",
+          "settings": {
+            "collection": "tailgating-gear",
+            "image": "shopify://shop_images/Blog_Post_1250x1250_GS8541_General_FW26_Campaign_-_Drinking-Pregaming.jpg",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_3BXnKe": {
+          "type": "collection",
+          "settings": {
+            "collection": "goon-squad",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_VniKz9": {
+          "type": "collection",
+          "settings": {
+            "collection": "gwot",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_mptKPy": {
+          "type": "collection",
+          "settings": {
+            "collection": "motorsports",
+            "image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8183_TorqueMattersT-Shirt-MidnightNavy.jpg",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_QbhaR8": {
+          "type": "collection",
+          "settings": {
+            "collection": "warriors-legacy",
+            "image": "shopify://shop_images/Split_Banner_M_750x750__V2_Warriors_Legacy.jpg",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_WgHwfG": {
+          "type": "collection",
+          "settings": {
+            "collection": "psyop-division",
+            "image": "shopify://shop_images/Custom_Lifestyle_IMAGE_ONLY_1250x1250_V2_SS26_Activation_-_PSYOP.jpg",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_whPwag": {
+          "type": "collection",
+          "settings": {
+            "collection": "hunting-season",
+            "image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8200_GameSizeMattersT-Shirt-Black.jpg",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
+        "collection_MFQRdf": {
+          "type": "collection",
+          "settings": {
+            "collection": "f-ck-cancer-franchise",
+            "image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8389_Women_sUnkillableV-Neck-Black.jpg",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_dmzfiW",
+        "collection_TJTfDp",
+        "collection_bUMbNy",
+        "collection_mbMF6E",
+        "collection_r8JnWJ",
+        "collection_3BXnKe",
+        "collection_VniKz9",
+        "collection_mptKPy",
+        "collection_QbhaR8",
+        "collection_WgHwfG",
+        "collection_whPwag",
+        "collection_MFQRdf"
+      ],
+      "name": "t:sections.collection-carousel.presets.name"
+    },
+    "rich_text_GNq69f": {
+      "type": "rich-text",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 8
+      },
+      "blocks": {
+        "heading_R3thaA": {
+          "type": "block--heading",
+          "settings": {
+            "text": "{{ collection.title }}",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          }
+        },
+        "text_dUbrCC": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>{{ collection.metafields.custom.seo_header.value }}</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_R3thaA",
+        "text_dUbrCC"
+      ],
+      "name": "t:sections.rich-text.name"
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "settings": {
+        "overlay_content_position": "text-center",
+        "overlay_text": false,
+        "heading_size": "h1",
+        "tag": "h1",
+        "show_header": false,
+        "show_description": true,
+        "description_position": "below_products",
+        "collection_image": false,
+        "banner_height_desktop": "200px",
+        "banner_height_mobile": "100px",
+        "products_per_page": 28,
+        "grid_image_size": "square",
+        "load_type": "page_number",
+        "enable_filtering": true,
+        "open_filtering": false,
+        "open_all_filtering": false,
+        "enable_sorting": true,
+        "color_scheme": "scheme-2",
+        "enable_gradient": false,
+        "background_color": "#e7e7e7",
+        "text_color": "#000000",
+        "background_opacity_color": "rgba(0,0,0,0)",
+        "background_opacity": 0,
+        "top_space_desktop": 5,
+        "bottom_space_desktop": 5,
+        "top_space_mobile": 5,
+        "bottom_space_mobile": 5
+      },
+      "blocks": {
+        "product-grid": {
+          "type": "product-grid",
+          "settings": {
+            "columns_desktop": "4",
+            "columns_mobile": "2",
+            "product_card_bg_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "product-grid"
+      ]
+    }
+  },
+  "order": [
+    "collection_carousel_qpf88E",
+    "rich_text_GNq69f",
+    "main-collection"
+  ]
+}

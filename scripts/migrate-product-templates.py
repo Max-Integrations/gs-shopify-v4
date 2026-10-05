@@ -335,51 +335,58 @@ def featured_collections(sec):
     return out
 
 # ---------------------------------------------------------------- run
-written = []
-# The default template is included too, but its main/features/recommendations
-# are the hand-built reference this script reads its buy box from, so those
-# three are kept as they are and only the trailing bands are converted.
-for path in sorted(glob.glob(os.path.join(V3, 'templates', 'product.*.json'))) + [os.path.join(V3, 'templates', 'product.json')]:
-    name = os.path.basename(path)
-    suffix = 'default' if name == 'product.json' else name[len('product.'):-5]
-    if 'test' in suffix: continue
-    v3 = load(path); sections = {}; order = []
-    for k in v3['order']:
-        sec = v3['sections'][k]; t = sec['type']; s = sec.get('settings', {})
-        if sec.get('disabled'): continue
-        if t == 'breadcrumb': continue
-        if t == 'main-product': key, new = 'main', main_section(sec, suffix)
-        elif t == 'features-benefits': key, new = 'features', features(s)
-        elif t == 'custom-split-section': key, new = k, custom_split(s)
-        # Restored verbatim on 2026-10-05 (the client's "Product Feature"
-        # module); v3's product templates switched to it on 2026-10-01.
-        elif t == 'product-highlight': key, new = k, {'type': 'product-highlight', 'settings': s, **({'custom_css': sec['custom_css']} if sec.get('custom_css') else {})}
-        elif t == 'split-banner': key, new = k, split_banner(sec)
-        elif t == 'products-collage': key, new = k, products_collage(s, suffix)
-        elif t == 'images-grid': key, new = k, images_grid(sec)
-        elif t == 'product-short-videos': key, new = k, short_videos(sec, suffix)
-        elif t == 'full-width-image-with-text-v2': key, new = k, full_width(s)
-        elif t == 'hero-banner-secondary': key, new = k, full_width(s, ('full_width_hero_desktop', 'full_width_hero_mobile'), 'full_width_hero_link', None)
-        elif t == 'video-banner': key, new = k, video_banner(s)
-        elif t == 'collection-tab': key, new = k, collection_tab(sec)
-        elif t == 'related-products': key, new = 'recommendations', related(s)
-        elif t == 'featured-collections': key, new = 'recommendations' if s.get('collection_type') == 'recommendations' else k, featured_collections(sec)
-        elif t == 'rich-text': key, new = k, rich_text(sec)
-        elif t == 'product-image-grid-metafields': key, new = k, metafield_grid(s)
-        elif t == 'product-secondary-content': key, new = k, secondary_content(sec)
-        elif t == 'multi-column': key, new = k, multi_column(sec)
-        elif t == 'apps': key, new = k, apps(sec)
-        elif t == 'custom-liquid': key, new = k, custom_liquid(s)
-        else:
-            dropped.append((suffix, 'section', t)); continue
-        i = 2; kk = key
-        while kk in sections: kk = f'{key}_{i}'; i += 1
-        sections[kk] = new; order.append(kk)
-    if suffix == 'default':
-        for k in ('main', 'features', 'recommendations'):
-            if k in sections and k in base['sections']:
-                sections[k] = copy.deepcopy(base['sections'][k])
-    out = {'sections': sections, 'order': order}
-    save(os.path.join('templates', name), out); written.append(name)
-print('written:', written)
-for d in dropped: print('dropped:', d)
+def main():
+    """Rewrite every v3 product template. Guarded so scripts/migrate-templates.py
+    can import the converters above without running this."""
+    written = []
+    # The default template is included too, but its main/features/recommendations
+    # are the hand-built reference this script reads its buy box from, so those
+    # three are kept as they are and only the trailing bands are converted.
+    for path in sorted(glob.glob(os.path.join(V3, 'templates', 'product.*.json'))) + [os.path.join(V3, 'templates', 'product.json')]:
+        name = os.path.basename(path)
+        suffix = 'default' if name == 'product.json' else name[len('product.'):-5]
+        if 'test' in suffix or suffix.startswith('sl-'): continue
+        v3 = load(path); sections = {}; order = []
+        for k in v3['order']:
+            sec = v3['sections'][k]; t = sec['type']; s = sec.get('settings', {})
+            if sec.get('disabled'): continue
+            if t == 'breadcrumb': continue
+            if t == 'main-product': key, new = 'main', main_section(sec, suffix)
+            elif t == 'features-benefits': key, new = 'features', features(s)
+            elif t == 'custom-split-section': key, new = k, custom_split(s)
+            # Restored verbatim on 2026-10-05 (the client's "Product Feature"
+            # module); v3's product templates switched to it on 2026-10-01.
+            elif t == 'product-highlight': key, new = k, {'type': 'product-highlight', 'settings': s, **({'custom_css': sec['custom_css']} if sec.get('custom_css') else {})}
+            elif t == 'split-banner': key, new = k, split_banner(sec)
+            # products-collage is a v4 section again (2026-10-05); verbatim.
+            elif t == 'products-collage': key, new = k, {'type': 'products-collage', 'settings': s, **({'blocks': sec['blocks'], 'block_order': sec['block_order']} if sec.get('blocks') else {})}
+            elif t == 'images-grid': key, new = k, images_grid(sec)
+            elif t == 'product-short-videos': key, new = k, short_videos(sec, suffix)
+            elif t == 'full-width-image-with-text-v2': key, new = k, full_width(s)
+            elif t == 'hero-banner-secondary': key, new = k, full_width(s, ('full_width_hero_desktop', 'full_width_hero_mobile'), 'full_width_hero_link', None)
+            elif t == 'video-banner': key, new = k, video_banner(s)
+            elif t == 'collection-tab': key, new = k, collection_tab(sec)
+            elif t == 'related-products': key, new = 'recommendations', related(s)
+            elif t == 'featured-collections': key, new = 'recommendations' if s.get('collection_type') == 'recommendations' else k, featured_collections(sec)
+            elif t == 'rich-text': key, new = k, rich_text(sec)
+            elif t == 'product-image-grid-metafields': key, new = k, metafield_grid(s)
+            elif t == 'product-secondary-content': key, new = k, secondary_content(sec)
+            elif t == 'multi-column': key, new = k, multi_column(sec)
+            elif t == 'apps': key, new = k, apps(sec)
+            elif t == 'custom-liquid': key, new = k, custom_liquid(s)
+            else:
+                dropped.append((suffix, 'section', t)); continue
+            i = 2; kk = key
+            while kk in sections: kk = f'{key}_{i}'; i += 1
+            sections[kk] = new; order.append(kk)
+        if suffix == 'default':
+            for k in ('main', 'features', 'recommendations'):
+                if k in sections and k in base['sections']:
+                    sections[k] = copy.deepcopy(base['sections'][k])
+        out = {'sections': sections, 'order': order}
+        save(os.path.join('templates', name), out); written.append(name)
+    print('written:', written)
+    for d in dropped: print('dropped:', d)
+
+if __name__ == '__main__':
+    main()
