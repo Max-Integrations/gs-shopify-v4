@@ -335,7 +335,10 @@
           "compare_money": {{ v.compare_at_price | default: 0 | money | json }},
           "saving_money": {{ v.compare_at_price | default: 0 | minus: v.price | money | json }},
           "media": {{ v.featured_media.id | default: 0 }},
-          "sku": {{ v.sku | default: '' | json }}
+          "sku": {{ v.sku | default: '' | json }},
+          "inventory_quantity": {{ v.inventory_quantity | default: 0 }},
+          "inventory_policy": {{ v.inventory_policy | default: 'deny' | json }},
+          "tracked": {% if v.inventory_management == blank %}false{% else %}true{% endif %}
         }{% unless forloop.last %},{% endunless %}
       {%- endfor -%}
     ]
@@ -366,6 +369,9 @@
     { "type": "block--product-store-locator" },
     { "type": "block--product-complementary" },
     { "type": "block--product-countdown" },
+    { "type": "block--product-inventory" },
+    { "type": "block--product-icon-text" },
+    { "type": "block--product-fomo" },
     { "type": "block--custom-liquid" },
     { "type": "block--heading" },
     { "type": "block--text" },

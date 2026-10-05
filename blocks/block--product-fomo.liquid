@@ -1,0 +1,118 @@
+{% comment %}
+  BLOCK: PRODUCT FOMO MESSAGE
+  ==================================================================
+  The review's "FOMO message block, similar to what we had in Nosto".
+  Nosto supplied live numbers; the theme has no such source, so this
+  block says something it can stand behind: a message that appears
+  when the SELECTED variant's stock is at or under a threshold, with
+  [stock] in the text replaced by the real count, e.g.
+    "Only [stock] left. Grab it before it's gone."
+  A threshold of 0 shows the message on every available variant (then
+  [stock] is simply omitted), which is how to use it as a plain urgency
+  line. Follows the variant picker through the section's variant JSON.
+  Live "X people are viewing" numbers would need an app.
+  ==================================================================
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign p = closest.product | default: product
+  assign v = p.selected_or_first_available_variant
+  assign qty = v.inventory_quantity | default: 0
+  assign threshold = s.threshold | default: 0
+
+  assign show = false
+  if v.available
+    if threshold == 0
+      assign show = true
+    elsif v.inventory_management != blank and qty > 0 and qty <= threshold
+      assign show = true
+    endif
+  endif
+  assign message = s.text | replace: '[stock]', qty
+-%}
+
+{%- if p != blank and s.text != blank -%}
+  <div
+    class="gs-product__fomo"
+    data-gs-fomo
+    data-threshold="{{ threshold }}"
+    data-template="{{ s.text | escape }}"
+    style="
+      {%- if s.bg != blank and s.bg != 'rgba(0,0,0,0)' %} --gs-fomo-bg: {{ s.bg }};{% endif -%}
+      {%- if s.text_color != blank and s.text_color != 'rgba(0,0,0,0)' %} --gs-fomo-color: {{ s.text_color }};{% endif -%}
+    "
+    {% unless show %}hidden{% endunless %}
+    {{ block.shopify_attributes }}
+  >
+    {%- if s.icon != blank -%}
+      {{ s.icon | image_url: width: 80 | image_tag: loading: 'lazy', class: 'gs-product__fomo-icon', alt: '' }}
+    {%- elsif s.show_flame -%}
+      <svg class="gs-product__fomo-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M12 2c1 4 5 5.5 5 11a5 5 0 0 1-10 0c0-2 1-3.5 2-4.5 0 2 1 3 2 3 0-3 1-5.5 1-9.5z" fill="currentColor"/></svg>
+    {%- endif -%}
+    <span class="gs-product__fomo-text" data-gs-fomo-text>{{ message }}</span>
+  </div>
+
+  <script>
+    (function () {
+      if (window.gsFomoBound) return;
+      window.gsFomoBound = true;
+      document.addEventListener('change', function (evt) {
+        if (!evt.target.classList || !evt.target.classList.contains('gs-product__option-input')) return;
+        var root = evt.target.closest('.gs-product-section') || document;
+        var dataEl = root.querySelector('[data-gs-variants]');
+        var el = root.querySelector('[data-gs-fomo]');
+        if (!dataEl || !el) return;
+        var variants;
+        try { variants = JSON.parse(dataEl.textContent); } catch (e) { return; }
+        var key = Array.prototype.map.call(root.querySelectorAll('.gs-product__option-input:checked'), function (i) { return i.value; }).join('~~');
+        var v = null;
+        for (var i = 0; i < variants.length; i++) if (variants[i].options.join('~~') === key) { v = variants[i]; break; }
+        if (!v) return;
+        var threshold = parseInt(el.getAttribute('data-threshold'), 10) || 0;
+        var show = v.available && (threshold === 0 || (v.tracked && v.inventory_quantity > 0 && v.inventory_quantity <= threshold));
+        el.hidden = !show;
+        var out = el.querySelector('[data-gs-fomo-text]');
+        if (out) out.textContent = (el.getAttribute('data-template') || '').replace('[stock]', v.inventory_quantity);
+      });
+    })();
+  </script>
+{%- endif -%}
+
+{% stylesheet %}
+  .gs-product__fomo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1rem;
+    background-color: var(--gs-fomo-bg, rgba(171, 25, 45, 0.08));
+    color: var(--gs-fomo-color, #ab192d);
+    font-size: var(--smallText, 1.4rem);
+    font-weight: 700;
+  }
+
+  .gs-product__fomo[hidden] {
+    display: none;
+  }
+
+  .gs-product__fomo-icon {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "FOMO message",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Message", "info": "[stock] is replaced by the selected variant's stock.", "default": "Only [stock] left. Grab it before it's gone." },
+    { "type": "range", "id": "threshold", "label": "Show when stock is at or below", "info": "0 shows it on every available variant.", "min": 0, "max": 100, "step": 1, "default": 10 },
+    { "type": "checkbox", "id": "show_flame", "label": "Show the flame icon", "default": true },
+    { "type": "image_picker", "id": "icon", "label": "Custom icon", "info": "Replaces the flame." },
+    { "type": "color", "id": "bg", "label": "Background" },
+    { "type": "color", "id": "text_color", "label": "Text color" }
+  ],
+  "presets": [{ "name": "FOMO message" }]
+}
+{% endschema %}

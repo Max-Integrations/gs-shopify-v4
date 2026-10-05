@@ -1,0 +1,111 @@
+{% comment %}
+  BLOCK: PRODUCT ICON WITH TEXT
+  ==================================================================
+  v3's icon-with-text buy-box block, and the review's "Made to Order"
+  badging: an icon (image) beside rich text, on an optional highlight
+  colour, optionally only for products carrying given tags (all must
+  match, case ignored). A plain block with no tags shows always.
+  ==================================================================
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign p = closest.product | default: product
+
+  assign matched = true
+  if s.product_tags != blank
+    assign hay = p.tags | join: '|' | downcase | prepend: '|' | append: '|'
+    assign req = s.product_tags | split: ','
+    for t in req
+      assign needle = t | strip | downcase | prepend: '|' | append: '|'
+      if needle == '||'
+        continue
+      endif
+      unless hay contains needle
+        assign matched = false
+      endunless
+    endfor
+  endif
+-%}
+
+{%- if matched and s.text != blank -%}
+  <div
+    class="gs-product__icon-text gs-product__icon-text--{{ s.layout | default: 'row' }}{% if s.bg != blank and s.bg != 'rgba(0,0,0,0)' %} gs-product__icon-text--boxed{% endif %}"
+    style="
+      {%- if s.bg != blank and s.bg != 'rgba(0,0,0,0)' %} --gs-it-bg: {{ s.bg }};{% endif -%}
+      {%- if s.text_color != blank and s.text_color != 'rgba(0,0,0,0)' %} --gs-it-color: {{ s.text_color }};{% endif -%}
+      --gs-it-icon: {{ s.icon_size | default: 32 }}px;
+      --gs-it-radius: {{ s.radius | default: 0 }}px;
+    "
+    {{ block.shopify_attributes }}
+  >
+    {%- if s.icon != blank -%}
+      {{ s.icon | image_url: width: 160 | image_tag: loading: 'lazy', class: 'gs-product__icon-text-icon', alt: s.icon.alt, widths: '80, 160' }}
+    {%- endif -%}
+    <div class="gs-product__icon-text-body rte">{{ s.text }}</div>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .gs-product__icon-text {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    color: var(--gs-it-color, inherit);
+  }
+
+  .gs-product__icon-text--column {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .gs-product__icon-text--boxed {
+    padding: 1.2rem 1.6rem;
+    border-radius: var(--gs-it-radius, 0);
+    background-color: var(--gs-it-bg);
+  }
+
+  .gs-product__icon-text-icon {
+    flex: 0 0 auto;
+    width: var(--gs-it-icon, 32px);
+    height: var(--gs-it-icon, 32px);
+    object-fit: contain;
+  }
+
+  .gs-product__icon-text-body p {
+    margin: 0;
+    color: inherit;
+  }
+
+  .gs-product__icon-text-body p + p {
+    margin-top: 0.4em;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Icon with text",
+  "settings": [
+    { "type": "image_picker", "id": "icon", "label": "Icon" },
+    { "type": "range", "id": "icon_size", "label": "Icon size", "min": 16, "max": 96, "step": 4, "unit": "px", "default": 32 },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p><strong>MADE TO ORDER</strong> Ships in 5-7 business days.</p>" },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "default": "row",
+      "options": [
+        { "value": "row", "label": "Icon beside text" },
+        { "value": "column", "label": "Icon above text" }
+      ]
+    },
+    { "type": "header", "content": "Highlight" },
+    { "type": "color", "id": "bg", "label": "Background", "info": "Empty for none." },
+    { "type": "color", "id": "text_color", "label": "Text color" },
+    { "type": "range", "id": "radius", "label": "Corner radius", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 0 },
+    { "type": "header", "content": "Show only for" },
+    { "type": "text", "id": "product_tags", "label": "Product tags", "info": "Comma-separated; the product must carry all of them. Empty shows always." }
+  ],
+  "presets": [{ "name": "Icon with text" }]
+}
+{% endschema %}

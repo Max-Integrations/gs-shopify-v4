@@ -96,7 +96,7 @@
                 </div>
                  <noscript>
                         <a
-                          href="{{ block.settings.slider_video | external_video_url }}"
+                          href="{{ block.settings.slider_video.sources.first.url }}"
                           target="_blank"
                           class="unstyled-link"
                           aria-label="{{ block.settings.slider_video.alt | default: product.title | strip_html }}"

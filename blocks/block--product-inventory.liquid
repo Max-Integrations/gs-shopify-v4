@@ -1,0 +1,143 @@
+{% comment %}
+  BLOCK: PRODUCT INVENTORY STATUS
+  ==================================================================
+  v3's inventory-status block (snippets/product-blocks.liquid): a
+  coloured dot and "Available Now" / "Low Stock, Grab It Now" / "Out of
+  Stock" / "Made To Order" for the SELECTED variant, with an optional
+  "only N left" count. The texts, colours and low threshold come from
+  Theme settings > Product cards (the same ones the cards use) unless
+  overridden here.
+
+  Follows the variant picker: the block's own script reads the
+  section's [data-gs-variants] JSON (which carries inventory fields)
+  and updates on change, so gs-product.js is untouched.
+  ==================================================================
+{% endcomment %}
+{%- liquid
+  assign s = block.settings
+  assign p = closest.product | default: product
+  assign v = p.selected_or_first_available_variant
+
+  assign low = s.low_threshold
+  if low == blank or low == 0
+    assign low = settings.low_inventory | default: 10
+  endif
+  assign in_text = settings.card_in_stock_text | default: 'Available Now'
+  assign low_text = settings.card_low_stock_text | default: 'Low Stock, Grab It Now'
+  assign out_text = settings.card_out_of_stock_text | default: 'Out of Stock'
+  assign mto_text = settings.card_made_to_order_text | default: 'Made To Order'
+  assign in_color = settings.product_in_stock_color | default: '#002F6E'
+  assign low_color = settings.product_low_stock_color | default: '#AB192D'
+  assign out_color = settings.product_no_stock_color | default: '#777777'
+  assign mto_color = settings.product_made_to_sell_color | default: '#2C7E3F'
+
+  assign qty = v.inventory_quantity | default: 0
+  if v.available == false
+    assign state = 'out'
+  elsif v.inventory_management == blank
+    assign state = 'in'
+  elsif qty <= 0 and v.inventory_policy == 'continue'
+    assign state = 'mto'
+  elsif qty > 0 and qty <= low
+    assign state = 'low'
+  else
+    assign state = 'in'
+  endif
+-%}
+
+{%- if p != blank -%}
+  <div
+    class="gs-product__inventory"
+    data-gs-inventory
+    data-low="{{ low }}"
+    data-show-count="{{ s.show_count }}"
+    data-text-in="{{ in_text | escape }}"
+    data-text-low="{{ low_text | escape }}"
+    data-text-out="{{ out_text | escape }}"
+    data-text-mto="{{ mto_text | escape }}"
+    data-color-in="{{ in_color }}"
+    data-color-low="{{ low_color }}"
+    data-color-out="{{ out_color }}"
+    data-color-mto="{{ mto_color }}"
+    data-state="{{ state }}"
+    style="--gs-inv-color: {% case state %}{% when 'low' %}{{ low_color }}{% when 'out' %}{{ out_color }}{% when 'mto' %}{{ mto_color }}{% else %}{{ in_color }}{% endcase %};"
+    {{ block.shopify_attributes }}
+  >
+    <span class="gs-product__inventory-dot" aria-hidden="true"></span>
+    <span class="gs-product__inventory-text" data-gs-inventory-text>
+      {%- case state -%}
+        {%- when 'low' -%}{{ low_text }}{% if s.show_count %} ({{ qty }} left){% endif %}
+        {%- when 'out' -%}{{ out_text }}
+        {%- when 'mto' -%}{{ mto_text }}
+        {%- else -%}{{ in_text }}
+      {%- endcase -%}
+    </span>
+  </div>
+
+  <script>
+    (function () {
+      if (window.gsInventoryBound) return;
+      window.gsInventoryBound = true;
+      function state(v, low) {
+        if (!v.available) return 'out';
+        if (!v.tracked) return 'in';
+        if (v.inventory_quantity <= 0 && v.inventory_policy === 'continue') return 'mto';
+        if (v.inventory_quantity > 0 && v.inventory_quantity <= low) return 'low';
+        return 'in';
+      }
+      document.addEventListener('change', function (evt) {
+        if (!evt.target.classList || !evt.target.classList.contains('gs-product__option-input')) return;
+        var root = evt.target.closest('.gs-product-section') || document;
+        var dataEl = root.querySelector('[data-gs-variants]');
+        var el = root.querySelector('[data-gs-inventory]');
+        if (!dataEl || !el) return;
+        var variants;
+        try { variants = JSON.parse(dataEl.textContent); } catch (e) { return; }
+        var key = Array.prototype.map.call(root.querySelectorAll('.gs-product__option-input:checked'), function (i) { return i.value; }).join('~~');
+        var v = null;
+        for (var i = 0; i < variants.length; i++) if (variants[i].options.join('~~') === key) { v = variants[i]; break; }
+        if (!v) return;
+        var st = state(v, parseInt(el.getAttribute('data-low'), 10) || 10);
+        var text = el.getAttribute('data-text-' + st) || '';
+        if (st === 'low' && el.getAttribute('data-show-count') === 'true') text += ' (' + v.inventory_quantity + ' left)';
+        el.setAttribute('data-state', st);
+        el.style.setProperty('--gs-inv-color', el.getAttribute('data-color-' + st));
+        var out = el.querySelector('[data-gs-inventory-text]');
+        if (out) out.textContent = text;
+      });
+    })();
+  </script>
+{%- endif -%}
+
+{% stylesheet %}
+  .gs-product__inventory {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    color: var(--gs-inv-color, inherit);
+    font-size: var(--smallText, 1.4rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .gs-product__inventory-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--gs-inv-color, currentColor);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "tag": null,
+  "name": "Inventory status",
+  "settings": [
+    { "type": "paragraph", "content": "Texts and colours come from Theme settings > Product cards > Inventory status." },
+    { "type": "range", "id": "low_threshold", "label": "Low stock threshold for this block", "info": "0 uses the theme setting.", "min": 0, "max": 100, "step": 1, "default": 0 },
+    { "type": "checkbox", "id": "show_count", "label": "Show how many are left when low", "default": true }
+  ],
+  "presets": [{ "name": "Inventory status" }]
+}
+{% endschema %}

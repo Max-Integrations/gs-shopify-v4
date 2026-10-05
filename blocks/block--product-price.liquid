@@ -21,7 +21,7 @@
   endif
 -%}
 {%- if p != blank -%}
-  <div class="gs-product__price" data-gs-price data-savings-style="{{ s.savings_style | default: 'percent' }}" {{ block.shopify_attributes }}>
+  <div class="gs-product__price{% if s.inline_rating %} gs-product__price--inline-rating{% endif %}" data-gs-price data-savings-style="{{ s.savings_style | default: 'percent' }}" {{ block.shopify_attributes }}>
     <span class="gs-product__price-current{% if on_sale %} is-sale{% endif %}" data-gs-price-current style="color: {{ s.message_color | default: '#ab192d' }};">
       {{ price | money }}
     </span>
@@ -39,6 +39,17 @@
         {%- else -%}
           Save <span data-gs-saving-value>{% if on_sale %}{{ compare | minus: price | money }}{% endif %}</span>
         {%- endif -%}
+      </span>
+    {%- endif -%}
+
+    {%- if s.inline_rating -%}
+      {%- comment -%}
+        Stars and count on the price line (the review's "reviews, price
+        and conditional price all in one line"). Reads the standard
+        reviews.rating metafields the review app writes, as the cards do.
+      {%- endcomment -%}
+      <span class="gs-product__price-rating">
+        {%- render 'gs-reviews', cardProduct: p, showCount: true -%}
       </span>
     {%- endif -%}
 
@@ -72,6 +83,7 @@
       "default": "percent"
     },
     { "type": "checkbox", "id": "show_tax_line", "label": "Show the tax and shipping line", "default": false },
+    { "type": "checkbox", "id": "inline_rating", "label": "Show the review stars on the price line", "info": "The app's own rating block can then be removed from the template.", "default": false },
     { "type": "header", "content": "Conditional message" },
     { "type": "richtext", "id": "conditional_message", "label": "Message", "info": "Accepts Liquid, e.g. a metafield." },
     { "type": "color", "id": "message_color", "label": "Message color", "default": "#ab192d" }

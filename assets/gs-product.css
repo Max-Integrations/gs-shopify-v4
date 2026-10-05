@@ -453,6 +453,39 @@
   gap: 8px;
 }
 
+/* "Beside the button" (the buy-buttons block's quantity_position):
+   the review's nice-to-have, quantity box and add to cart on one row. */
+.gs-product__buy-row--inline {
+  flex-direction: row;
+  align-items: stretch;
+  gap: 1.2rem;
+}
+
+.gs-product__buy-row--inline .gs-product__quantity {
+  align-self: stretch;
+  flex: 0 0 auto;
+}
+
+.gs-product__buy-row--inline .gs-product__submit {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Price block with the stars on the same line (inline_rating). */
+.gs-product__price--inline-rating .gs-product__price-rating {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.4em;
+}
+
+.gs-product__price--inline-rating .gs-product__price-rating .product-reviews-badge {
+  margin: 0;
+}
+
+.gs-product__price--inline-rating .gs-product__price-message {
+  flex-basis: 100%;
+}
+
 .gs-product__qty-btn {
   width: 40px;
   border: 0;

@@ -43,7 +43,7 @@
         full-width add to cart. The wishlist button the live page shows
         underneath is the Wishlist app's block, placed in the editor.
       {%- endcomment -%}
-      <div class="gs-product__buy-row gs-product__gated">
+      <div class="gs-product__buy-row gs-product__gated{% if s.quantity_position == 'inline' %} gs-product__buy-row--inline{% endif %}">
         {%- if s.show_quantity -%}
           <div class="gs-product__quantity">
             <label class="visually-hidden" for="GsQty-{{ p.id }}">{{ 'products.product.quantity.label' | t }}</label>
@@ -105,6 +105,16 @@
   "name": "Buy buttons",
   "settings": [
     { "type": "checkbox", "id": "show_quantity", "label": "Show quantity selector", "default": true },
+    {
+      "type": "select",
+      "id": "quantity_position",
+      "label": "Quantity position",
+      "default": "stacked",
+      "options": [
+        { "value": "stacked", "label": "Own row above the button" },
+        { "value": "inline", "label": "Beside the button" }
+      ]
+    },
     { "type": "text", "id": "add_label", "label": "Add to cart label", "default": "Add to cart" },
     { "type": "text", "id": "sold_out_label", "label": "Sold out label", "default": "Sold out - email when available" },
     { "type": "checkbox", "id": "sold_out_disables", "label": "Disable the button when sold out", "info": "Off keeps it clickable for the back-in-stock app.", "default": false },
