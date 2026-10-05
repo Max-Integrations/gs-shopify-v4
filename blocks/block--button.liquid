@@ -58,10 +58,20 @@
   --buttons-radius-outset: {{ s.border_radius | default: 0 }}px;
   {%- if s.font_size > 0 %} --gs-btn-font-size: {{ s.font_size }}px;{% endif -%}
   {%- if s.custom_scheme and scheme.settings.button != blank %}
+    {%- liquid
+      assign gs_link = scheme.settings.link
+      if gs_link == blank or gs_link.alpha == 0
+        assign gs_link = scheme.settings.secondary_button_label
+      endif
+      assign gs_button_hover = scheme.settings.button_hover | default: scheme.settings.button_label
+      assign gs_button_label_hover = scheme.settings.button_label_hover | default: scheme.settings.button
+    -%}
     --color-button: {{ scheme.settings.button.red }},{{ scheme.settings.button.green }},{{ scheme.settings.button.blue }};
     --color-button-text: {{ scheme.settings.button_label.red }},{{ scheme.settings.button_label.green }},{{ scheme.settings.button_label.blue }};
+    --color-button-hover: {{ gs_button_hover.red }},{{ gs_button_hover.green }},{{ gs_button_hover.blue }};
+    --color-button-text-hover: {{ gs_button_label_hover.red }},{{ gs_button_label_hover.green }},{{ gs_button_label_hover.blue }};
     --color-secondary-button-text: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
-    --color-link: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
+    --color-link: {{ gs_link.red }},{{ gs_link.green }},{{ gs_link.blue }};
   {%- endif -%}
   {%- if s.bg != blank and s.bg != 'rgba(0,0,0,0)' %} --gs-btn-bg: {{ s.bg }};{% endif -%}
   {%- if s.text_color != blank and s.text_color != 'rgba(0,0,0,0)' %} --gs-btn-text: {{ s.text_color }};{% endif -%}

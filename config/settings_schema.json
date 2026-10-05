@@ -81,6 +81,95 @@
             "id": "shadow",
             "label": "t:settings_schema.colors.settings.shadow.label",
             "default": "#121212"
+          },
+          {
+            "type": "header",
+            "content": "Grunt Style colors",
+            "info": "Carried over from the v3 schemes. Leave a color empty to fall back to the Dawn color above it."
+          },
+          {
+            "type": "color",
+            "id": "heading",
+            "label": "Heading",
+            "info": "Empty: same as Text."
+          },
+          {
+            "type": "color",
+            "id": "link",
+            "label": "Link",
+            "info": "Empty: same as Secondary button label."
+          },
+          {
+            "type": "color",
+            "id": "button_hover",
+            "label": "Button background on hover",
+            "default": "#8A1424"
+          },
+          {
+            "type": "color",
+            "id": "button_label_hover",
+            "label": "Button label on hover",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button",
+            "label": "Secondary button background",
+            "info": "Empty: same as Background."
+          },
+          {
+            "type": "color",
+            "id": "secondary_button_hover",
+            "label": "Secondary button background on hover",
+            "default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button_label_hover",
+            "label": "Secondary button label on hover",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color",
+            "id": "input_background",
+            "label": "Input background",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color",
+            "id": "input_text",
+            "label": "Input text",
+            "default": "#121212"
+          },
+          {
+            "type": "color",
+            "id": "input_border",
+            "label": "Input border",
+            "default": "#E7E7E7"
+          },
+          {
+            "type": "color",
+            "id": "divider",
+            "label": "Dividers and product borders",
+            "default": "#E5E5E5"
+          },
+          {
+            "type": "color",
+            "id": "rating",
+            "label": "Review stars",
+            "default": "#9A723F"
+          },
+          {
+            "type": "color",
+            "id": "arrow_background",
+            "label": "Slider arrow background",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "color",
+            "id": "arrow",
+            "label": "Slider arrow",
+            "default": "#121212"
           }
         ],
         "role": {

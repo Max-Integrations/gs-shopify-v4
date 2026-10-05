@@ -95,39 +95,41 @@
       --textColor: var(--color-foreground);
       --linkColor: var(--color-link);
 
-      /* Dawn has no separate heading colour. v3 did. */
-      --headingColor: var(--color-foreground);
+      /* The scheme's own heading field (layout/theme.liquid derives it,
+         falling back to the text colour when the field is empty). */
+      --headingColor: var(--color-heading);
 
       --buttonBackground: var(--color-button);
       --buttonColor: var(--color-button-text);
       --buttonBorder: var(--color-button);
 
-      /* Dawn has no hover scheme colours. v3 primary hover was #8a1424,
-         a darker red. Inverted default here; override per scheme if the
-         visual diff shows it matters. */
-      --buttonBackgroundHover: var(--color-button-text);
-      --buttonColorHover: var(--color-button);
-      --buttonBorderHover: var(--color-button);
+      /* Hover colours are scheme fields again, as they were in v3. */
+      --buttonBackgroundHover: var(--color-button-hover);
+      --buttonColorHover: var(--color-button-text-hover);
+      --buttonBorderHover: var(--color-button-hover);
 
       --alternateButtonBackground: var(--color-secondary-button);
       --alternateButtonColor: var(--color-secondary-button-text);
       /* FIXED: v3 had "25,,255,255" here - double comma, invalid. */
       --alternateButtonBorder: var(--color-secondary-button-text);
-      --alternateButtonBackgroundHover: var(--color-secondary-button-text);
-      --alternateButtonColorHover: var(--color-secondary-button);
-      --alternateButtonBorderHover: var(--color-secondary-button-text);
+      --alternateButtonBackgroundHover: var(--color-secondary-button-hover);
+      --alternateButtonColorHover: var(--color-secondary-button-text-hover);
+      --alternateButtonBorderHover: var(--color-secondary-button-hover);
 
-      --inputBackground: var(--color-background);
-      --inputColor: var(--color-foreground);
-      --inputBorder: var(--color-foreground);
+      --inputBackground: var(--color-input-background);
+      --inputColor: var(--color-input-text);
+      --inputBorder: var(--color-input-border);
 
       --cardBackground: var(--color-background);
-      --productBorder: var(--color-foreground);
-      --borderColor: var(--color-foreground);
+      --productBorder: var(--color-divider);
+      --borderColor: var(--color-divider);
       --shadowColor: var(--color-shadow);
 
-      --sliderArrowBackground: var(--color-foreground);
-      --sliderArrowColor: var(--color-background);
+      --sliderArrowBackground: var(--color-arrow-background);
+      --sliderArrowColor: var(--color-arrow);
+
+      /* v3 rating_color, #9a723f bronze in every scheme; now a scheme field. */
+      --ratingStarColor: var(--color-rating);
 
       --highlightTextColor: rgb(var(--color-foreground));
       --highlightGradientBackground: var(--gradient-background);
@@ -232,9 +234,6 @@
     --customBadgeColor: #ffffff;
     --discount-background: #ab192d;
     --discount-color: #ffffff;
-
-    /* v3 rating_color #9a723f - bronze, not the usual gold. */
-    --ratingStarColor: 154,114,63;
 
     /* Stock status - v3 product_in_stock_color / product_low_stock_color.
        In-stock is navy #002F6E, NOT green. */
