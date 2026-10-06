@@ -500,6 +500,78 @@
     "media_grid_EHBURP": {
       "type": "section--media-grid",
       "blocks": {
+        "grid_DNCaHx": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Custom_1250x1250_GS8599_Release_The_Hounds_T-Shirt_-_Military_Green.jpg",
+            "collection": "",
+            "link": "shopify://collections/usmc",
+            "span_two_columns": false,
+            "span_two_rows": true,
+            "content_position": "bottom-center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.2,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "block_text_xeMBFP": {
+              "type": "block--text",
+              "name": "Text",
+              "settings": {
+                "text": "<p>OFFICIALLY LICENSED</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              },
+              "blocks": {}
+            },
+            "heading": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>USMC GEAR</strong>",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
+            },
+            "block_button_P43Gpy": {
+              "type": "block--button",
+              "settings": {
+                "label": "SHOP NOW",
+                "link": "",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 14,
+                "padding_y": 12,
+                "padding_x": 20,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": true,
+                "color_scheme": "scheme-5",
+                "bg": "",
+                "text_color": "",
+                "border_color": "",
+                "hover_bg": "",
+                "hover_text_color": ""
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_text_xeMBFP",
+            "heading",
+            "block_button_P43Gpy"
+          ]
+        },
         "grid_DYVM8z": {
           "type": "block--media-tile",
           "settings": {
@@ -507,12 +579,12 @@
             "collection": "",
             "link": "shopify://collections/navy",
             "span_two_columns": false,
-            "span_two_rows": true,
+            "span_two_rows": false,
             "content_position": "bottom-center",
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0,
+            "background_opacity": 0.3,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -572,86 +644,12 @@
             "button"
           ]
         },
-        "grid_DNCaHx": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "shopify://shop_images/GS-1250x1250-new_arrivals.png",
-            "collection": "",
-            "link": "shopify://collections/outerwear",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "bottom-center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0.4,
-            "hover_overlay": "keep"
-          },
-          "blocks": {
-            "heading": {
-              "type": "block--heading",
-              "settings": {
-                "text": "<strong>OUTERWEAR</strong>",
-                "size": "h2",
-                "tag": "h2",
-                "alignment": "inherit",
-                "color": "",
-                "font_size_desktop": 0,
-                "font_size_mobile": 0
-              },
-              "blocks": {}
-            },
-            "block_heading_U389rp": {
-              "type": "block--heading",
-              "settings": {
-                "text": "BACK IN STOCK",
-                "size": "h3",
-                "tag": "h3",
-                "alignment": "inherit",
-                "color": "",
-                "font_size_desktop": 0,
-                "font_size_mobile": 0
-              },
-              "blocks": {}
-            },
-            "block_button_P43Gpy": {
-              "type": "block--button",
-              "settings": {
-                "label": "SHOP NOW",
-                "link": "",
-                "open_in_new_tab": false,
-                "style": "button",
-                "width": "auto",
-                "font_size": 14,
-                "padding_y": 12,
-                "padding_x": 20,
-                "margin_y": 0,
-                "margin_x": 0,
-                "border_width": 1,
-                "border_radius": 0,
-                "custom_scheme": true,
-                "color_scheme": "scheme-5",
-                "bg": "",
-                "text_color": "",
-                "border_color": "",
-                "hover_bg": "",
-                "hover_text_color": ""
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "heading",
-            "block_heading_U389rp",
-            "block_button_P43Gpy"
-          ]
-        },
         "grid_PFPLjN": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/Custom_1250x1250_Goon_Squad.jpg",
+            "media_image": "shopify://shop_images/Custom_1250x1250_V3_FW26_Army_vs_Navy.jpg",
             "collection": "",
-            "link": "shopify://collections/goon-squad",
+            "link": "shopify://collections/army",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "bottom-center",
@@ -662,10 +660,21 @@
             "hover_overlay": "keep"
           },
           "blocks": {
+            "block_text_qWcfjG": {
+              "type": "block--text",
+              "name": "Text",
+              "settings": {
+                "text": "<p>OFFICIALLY LICENSED</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              },
+              "blocks": {}
+            },
             "heading": {
               "type": "block--heading",
               "settings": {
-                "text": "<strong>GOON SQUAD</strong>",
+                "text": "<strong>ARMY GEAR</strong>",
                 "size": "h2",
                 "tag": "h2",
                 "alignment": "inherit",
@@ -702,14 +711,15 @@
             }
           },
           "block_order": [
+            "block_text_qWcfjG",
             "heading",
             "block_button_MxeTBh"
           ]
         }
       },
       "block_order": [
-        "grid_DYVM8z",
         "grid_DNCaHx",
+        "grid_DYVM8z",
         "grid_PFPLjN"
       ],
       "name": "Media grid",
