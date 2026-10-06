@@ -574,8 +574,12 @@
     ]
   },
   {
-    "name": "t:settings_schema.cards.name",
+    "name": "Dawn product cards (not the Grunt Style cards)",
     "settings": [
+      {
+        "type": "paragraph",
+        "content": "Dawn's stock card styling. The Grunt Style product cards on collections, search and featured collections ignore these; use \"Grunt Style product cards\" instead. These still style Dawn's own card in the empty cart drawer and multicolumn."
+      },
       {
         "type": "select",
         "id": "card_style",
@@ -1761,7 +1765,7 @@
     ]
   },
   {
-    "name": "Product cards",
+    "name": "Grunt Style product cards",
     "settings": [
       {
         "type": "paragraph",
