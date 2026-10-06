@@ -629,6 +629,42 @@
         "cta_border_color_hover": "#000000"
       }
     },
+    "multirow_tKpqcT": {
+      "type": "multirow",
+      "blocks": {
+        "row_QHMT4w": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/Split_Banner_D_980x610_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
+            "caption": "T-SHIRT SUBSCRIPTION",
+            "heading": "<strong>CLUB GRUNT STYLE</strong>",
+            "text": "<p>Unlock this exclusive tee, made just for Club Grunt Style members! Don’t miss your shot, join now before the month ends and claim yours. Delivered straight to your door.</p>",
+            "button_label": "JOIN NOW",
+            "button_link": "shopify://pages/club-grunt-style"
+          }
+        }
+      },
+      "block_order": [
+        "row_QHMT4w"
+      ],
+      "name": "t:sections.multirow.presets.name",
+      "settings": {
+        "stack_on_scroll": false,
+        "image_height": "small",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-left",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "row_color_scheme": "scheme-6",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "17908076236b71adb8": {
       "type": "apps",
       "blocks": {
@@ -668,42 +704,6 @@
       ],
       "settings": {
         "include_margins": true
-      }
-    },
-    "multirow_tKpqcT": {
-      "type": "multirow",
-      "blocks": {
-        "row_QHMT4w": {
-          "type": "row",
-          "settings": {
-            "image": "shopify://shop_images/Split_Banner_D_980x610_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
-            "caption": "T-SHIRT SUBSCRIPTION",
-            "heading": "<strong>CLUB GRUNT STYLE</strong>",
-            "text": "<p>Unlock this exclusive tee, made just for Club Grunt Style members! Don’t miss your shot, join now before the month ends and claim yours. Delivered straight to your door.</p>",
-            "button_label": "JOIN NOW",
-            "button_link": "shopify://pages/club-grunt-style"
-          }
-        }
-      },
-      "block_order": [
-        "row_QHMT4w"
-      ],
-      "name": "t:sections.multirow.presets.name",
-      "settings": {
-        "stack_on_scroll": false,
-        "image_height": "small",
-        "desktop_image_width": "medium",
-        "image_layout": "alternate-left",
-        "heading_size": "h1",
-        "text_style": "body",
-        "button_style": "secondary",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "center",
-        "mobile_content_alignment": "center",
-        "section_color_scheme": "",
-        "row_color_scheme": "scheme-6",
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "custom_split_section_UJzhJF": {
@@ -856,8 +856,8 @@
     "main",
     "features",
     "recommendations",
-    "17908076236b71adb8",
     "multirow_tKpqcT",
+    "17908076236b71adb8",
     "custom_split_section_UJzhJF",
     "1713538328bea72ad4",
     "custom_liquid_9fRRfL"
