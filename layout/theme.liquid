@@ -343,6 +343,11 @@
     {%- endcomment -%}
     {{ 'gs-quick-view.css' | asset_url | stylesheet_tag }}
     {{ 'gs-carousel.css' | asset_url | stylesheet_tag }}
+    {%- comment -%}
+      v3's base layout rules (.media box, containers, section padding)
+      that the sections ported from v3 depend on.
+    {%- endcomment -%}
+    {{ 'gs-v3-base.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}

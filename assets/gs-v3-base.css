@@ -1,0 +1,150 @@
+/*
+  v3 base rules the ported sections depend on.
+
+  gs-shopify-v3 loaded a global base.css/style.css that defined the
+  layout primitives its sections use: the .media box (padding-bottom
+  from --imageRatio with the image absolutely positioned inside), the
+  .container-* widths, .section-padding (reads --padding-top/bottom the
+  section sets inline), .section-title, .img-zoom and the small button.
+  This theme never loaded those, so a ported section's images collapsed
+  to zero height. Copied verbatim from v3 assets/base.css and style.css,
+  scoped as v3 had them. Loaded from layout/theme.liquid.
+*/
+
+/* ---- media box (style.css 260-306) ---- */
+.media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.media-fixed {
+  height: var(--media-height);
+}
+
+.media:before {
+  content: "";
+  height: 0;
+  display: block;
+  padding-top: var(--imageRatio);
+}
+
+.media-fixed:before {
+  padding-top: 0;
+  height: 100%;
+}
+
+.media img,
+.media .placeholder-svg,
+.media video,
+.media iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+  object-position: center;
+}
+
+.media img {
+  object-fit: var(--image-fit, cover);
+}
+
+.img-zoom {
+  overflow: hidden;
+}
+
+.img-zoom img,
+.img-zoom video {
+  transition: 1s ease;
+}
+
+.img-zoom:hover img,
+.img-zoom:hover video {
+  transform: scale(1.1);
+}
+
+/* ---- containers (base.css 595-606, 1058-1073, 1298-1326) ---- */
+.container,
+.container-fluid,
+.container-sm,
+.container-xs,
+.container-md {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .container,
+  .container-fluid,
+  .container-sm,
+  .container-xs,
+  .container-md {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .container,
+  .container-sm,
+  .container-xs,
+  .container-md {
+    max-width: 94%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-xs {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1441px) {
+  .container {
+    max-width: 1680px;
+  }
+
+  .container-sm {
+    max-width: 1400px;
+  }
+
+  .container-md {
+    max-width: 1550px;
+  }
+}
+
+@media (min-width: 1700px) {
+  .container {
+    max-width: 1830px;
+  }
+}
+
+/* ---- section commons (style.css 884-896) ---- */
+.section-title {
+  padding-bottom: 20px;
+}
+
+.section-description {
+  padding-top: 10px;
+  color: rgb(var(--textColor));
+}
+
+.section-padding {
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom);
+}
+
+/* ---- small button (style.css 801-808) ---- */
+.button.small-btn {
+  min-width: 120px;
+  min-height: 28px;
+  font-size: 12px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
