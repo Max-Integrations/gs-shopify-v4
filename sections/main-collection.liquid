@@ -115,13 +115,26 @@
   assign columns_desktop = grid_block.settings.columns_desktop | default: 4
   assign columns_mobile = grid_block.settings.columns_mobile | default: 2
 
-  assign show_swatches = false
-  if swatch_block != blank
-    assign show_swatches = true
+  # Block presence toggles swatches and quick view only when a template
+  # carries card blocks at all. v3 never gated on them (it passed
+  # quickViewtrue: true to every card), and most v3 collection templates
+  # have just a product-grid block, so a template with no card blocks
+  # shows everything, as it did on the live site.
+  assign has_card_blocks = false
+  if title_block != blank or price_block != blank or swatch_block != blank or qv_block != blank
+    assign has_card_blocks = true
   endif
-  assign show_quickview = false
-  if qv_block != blank
-    assign show_quickview = true
+  assign show_swatches = true
+  assign show_quickview = true
+  if has_card_blocks
+    assign show_swatches = false
+    if swatch_block != blank
+      assign show_swatches = true
+    endif
+    assign show_quickview = false
+    if qv_block != blank
+      assign show_quickview = true
+    endif
   endif
 
   # Quick view (dialog) or quick add (sizes in the card). A template's
