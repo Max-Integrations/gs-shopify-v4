@@ -317,7 +317,7 @@
         "columns_desktop": 4,
         "columns_mobile": 2,
         "tile_ratio": "fixed",
-        "desktop_row_height": 400,
+        "desktop_row_height": 300,
         "mobile_row_height": 200,
         "tile_width": "full",
         "desktop_grid_gap": 5,
@@ -340,8 +340,8 @@
         "btn_hover_color": "#000000",
         "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-1",
-        "padding_top": 16,
-        "padding_bottom": 16
+        "padding_top": 8,
+        "padding_bottom": 8
       }
     },
     "featured_collections_ABnVhm": {
@@ -426,75 +426,6 @@
         "cta_background_color_hover": "#000000",
         "cta_border_color": "#000000",
         "cta_border_color_hover": "#000000"
-      }
-    },
-    "countdown_KMeVVm": {
-      "type": "countdown",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "text": "<strong>FROM ASHES, UNITY</strong>",
-            "size": "h3"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<a href=\"/pages/never-forget\" title=\"Never Forget\">SEE HOW GRUNT STYLE HONORS </a>In honor of this collection launch, Grunt Style will be making a donation to Tunnel to Towers Foundation."
-          }
-        },
-        "timer": {
-          "type": "timer",
-          "settings": {
-            "end": "2026-09-15 23:59"
-          }
-        },
-        "products": {
-          "type": "products",
-          "settings": {
-            "product_list": [
-              "from-ashes-t-shirt-black",
-              "womens-from-ashes-slim-fit-t-shirt-black",
-              "from-ashes-full-zip-hoodie-black",
-              "from-ashes-sticker"
-            ],
-            "grid_image_size": "square",
-            "grid_image_fit": "contain"
-          }
-        },
-        "donation": {
-          "type": "donation",
-          "disabled": true,
-          "settings": {
-            "per_unit": 5,
-            "label": "Raised To Date For",
-            "year": "",
-            "color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "timer",
-        "products",
-        "donation"
-      ],
-      "disabled": true,
-      "name": "Countdown",
-      "settings": {
-        "section_visibility": "always",
-        "layout": "center",
-        "bg__color": "solid",
-        "gradient_color": "linear-gradient(320deg, rgba(56, 78, 197, 0.56) 16%, rgba(203, 68, 194, 0.6) 52%, rgba(255, 201, 104, 0.95) 87%)",
-        "solid_color": "#ffffff",
-        "enable_innner_background": true,
-        "text_color": "#ab192d",
-        "highlight_text_color": "#ab192d",
-        "color_scheme": "scheme-1",
-        "padding_top": 12,
-        "padding_bottom": 0
       }
     },
     "media_grid_EHBURP": {
@@ -750,7 +681,7 @@
         "btn_text_color": "#000000",
         "btn_hover_color": "#000000",
         "btn_hover_text_color": "#ffffff",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
         "padding_top": 8,
         "padding_bottom": 8
       }
@@ -1518,7 +1449,6 @@
     "value_props_c3pXEG",
     "media_grid_4zxLjX",
     "featured_collections_ABnVhm",
-    "countdown_KMeVVm",
     "media_grid_EHBURP",
     "featured_collections_RaEPWA",
     "product_highlight_tpQcaj",
