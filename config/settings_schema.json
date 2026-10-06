@@ -2016,6 +2016,135 @@
       },
       {
         "type": "header",
+        "content": "Custom tag badges",
+        "info": "Up to two show per card. A badge appears when the product carries the tag (comma-separate several tags). Defaults are the live site's."
+      },
+      {
+        "type": "text",
+        "id": "custom_tag",
+        "label": "Badge 1 product tag",
+        "default": "USA 250"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_label",
+        "label": "Badge 1 text",
+        "default": "USA 250"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_1",
+        "label": "Badge 2 product tag",
+        "default": "Limited Edition"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_label_1",
+        "label": "Badge 2 text",
+        "default": "LIMITED EDITION"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_2",
+        "label": "Badge 3 product tag",
+        "default": "Club Exclusive"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_label_2",
+        "label": "Badge 3 text",
+        "default": "CLUB EXCLUSIVE"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_3",
+        "label": "Badge 4 product tag",
+        "default": "ClubEA"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_label_3",
+        "label": "Badge 4 text",
+        "default": "CLUB EARLY ACCESS"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_4",
+        "label": "Badge 5 product tag",
+        "default": "new"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_label_4",
+        "label": "Badge 5 text",
+        "default": "NEW"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_5",
+        "label": "Badge 6 product tag",
+        "default": "Ready To Ship"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_label_5",
+        "label": "Badge 6 text",
+        "default": "SHIPS NOW"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_6",
+        "label": "Badge 7 product tag",
+        "default": "Best Seller"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_label_6",
+        "label": "Badge 7 text",
+        "default": "BEST SELLER"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_7",
+        "label": "Badge 8 product tag",
+        "default": "USA Made"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_label_7",
+        "label": "Badge 8 text",
+        "default": "Made in USA"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_8",
+        "label": "Badge 9 product tag"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_label_8",
+        "label": "Badge 9 text"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_9",
+        "label": "Badge 10 product tag",
+        "default": "Mainline Sale"
+      },
+      {
+        "type": "text",
+        "id": "custom_tag_label_9",
+        "label": "Badge 10 text",
+        "default": "SALE"
+      },
+      {
+        "type": "checkbox",
+        "id": "custom_badge_pdp_qv",
+        "label": "Also show custom tag badges on the product page",
+        "default": true
+      },
+      {
+        "type": "header",
         "content": "Tag badge"
       },
       {

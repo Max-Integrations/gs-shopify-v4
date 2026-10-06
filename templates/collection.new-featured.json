@@ -94,10 +94,22 @@
             "background_gradient": ""
           }
         },
+        "collection_MFQRdf": {
+          "type": "collection",
+          "settings": {
+            "collection": "f-ck-cancer-franchise",
+            "image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8389_Women_sUnkillableV-Neck-Black.jpg",
+            "collection_heading": "",
+            "text_color": "#000000",
+            "background_color": "#ffffff",
+            "background_gradient": ""
+          }
+        },
         "collection_VniKz9": {
           "type": "collection",
           "settings": {
-            "collection": "gwot",
+            "collection": "limited-edition-blackout",
+            "image": "shopify://shop_images/Split_Banner_M_750x750_SHIRTS_ONLY_FW26_Campaign_-_Blackout_Collection.jpg",
             "collection_heading": "",
             "text_color": "#000000",
             "background_color": "#ffffff",
@@ -106,6 +118,7 @@
         },
         "collection_mptKPy": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "motorsports",
             "image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8183_TorqueMattersT-Shirt-MidnightNavy.jpg",
@@ -117,6 +130,7 @@
         },
         "collection_QbhaR8": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "warriors-legacy",
             "image": "shopify://shop_images/Split_Banner_M_750x750__V2_Warriors_Legacy.jpg",
@@ -128,6 +142,7 @@
         },
         "collection_WgHwfG": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "psyop-division",
             "image": "shopify://shop_images/Custom_Lifestyle_IMAGE_ONLY_1250x1250_V2_SS26_Activation_-_PSYOP.jpg",
@@ -139,20 +154,10 @@
         },
         "collection_whPwag": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "hunting-season",
             "image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8200_GameSizeMattersT-Shirt-Black.jpg",
-            "collection_heading": "",
-            "text_color": "#000000",
-            "background_color": "#ffffff",
-            "background_gradient": ""
-          }
-        },
-        "collection_MFQRdf": {
-          "type": "collection",
-          "settings": {
-            "collection": "f-ck-cancer-franchise",
-            "image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8389_Women_sUnkillableV-Neck-Black.jpg",
             "collection_heading": "",
             "text_color": "#000000",
             "background_color": "#ffffff",
@@ -167,12 +172,12 @@
         "collection_mbMF6E",
         "collection_r8JnWJ",
         "collection_3BXnKe",
+        "collection_MFQRdf",
         "collection_VniKz9",
         "collection_mptKPy",
         "collection_QbhaR8",
         "collection_WgHwfG",
-        "collection_whPwag",
-        "collection_MFQRdf"
+        "collection_whPwag"
       ],
       "name": "t:sections.collection-carousel.presets.name"
     },

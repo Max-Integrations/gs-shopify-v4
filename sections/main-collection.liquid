@@ -331,7 +331,10 @@
         endif
       -%}
       {%- if s.overlay_text == false or show_above_desc -%}
-        <div class="gs-collection__header page-width {{ s.overlay_content_position }}">
+        <div
+          class="gs-collection__header{% if s.header_style != 'plain' %} gs-collection__header--band{% endif %} page-width {{ s.overlay_content_position }}"
+          style="--gs-header-band-bg: {{ s.header_background | default: '#000000' }}; --gs-header-band-text: {{ s.header_text_color | default: '#ffffff' }};"
+        >
           {%- if s.overlay_text == false -%}
             <{{ s.tag }} class="{{ s.heading_size }} gs-collection__heading">{{ collection.title }}</{{ s.tag }}>
           {%- endif -%}
@@ -624,6 +627,19 @@
       ]
     },
     { "type": "checkbox", "id": "show_header", "label": "Show header above products", "default": true },
+    {
+      "type": "select",
+      "id": "header_style",
+      "label": "Header style",
+      "info": "Band: full-width black bar with the title in Engravers MT, as on the live site.",
+      "default": "band",
+      "options": [
+        { "value": "band", "label": "Band" },
+        { "value": "plain", "label": "Plain" }
+      ]
+    },
+    { "type": "color", "id": "header_background", "label": "Band background", "default": "#000000" },
+    { "type": "color", "id": "header_text_color", "label": "Band text", "default": "#FFFFFF" },
     { "type": "checkbox", "id": "show_description", "label": "Show collection description", "default": false },
     {
       "type": "select",

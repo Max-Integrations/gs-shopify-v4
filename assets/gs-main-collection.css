@@ -99,6 +99,39 @@
   padding-bottom: 1rem;
 }
 
+/* "Band" header (the section's header_style): the live site's full-width
+   black bar with the title in Engravers MT (v3 custom-theme-styles.css
+   .page-banner-content-box / h1.page-banner-title). Breaks out of
+   .page-width to run edge to edge. */
+.gs-collection__header--band {
+  max-width: none;
+  margin: 0;
+  padding: 3.5rem 2rem 4rem;
+  background-color: var(--gs-header-band-bg, #000000);
+  color: var(--gs-header-band-text, #ffffff);
+  text-align: center;
+}
+
+.gs-collection__header--band .gs-collection__heading {
+  font-family: "Engravers MT", var(--headingFont);
+  font-weight: 400;
+  font-size: clamp(2.8rem, 4vw, 5.6rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gs-header-band-text, #ffffff);
+}
+
+.gs-collection__header--band .gs-collection__description,
+.gs-collection__header--band .gs-collection__description p {
+  color: var(--gs-header-band-text, #ffffff);
+}
+
+@media screen and (max-width: 749px) {
+  .gs-collection__header--band {
+    padding: 2.4rem 1.5rem 2.8rem;
+  }
+}
+
 .gs-collection__header .gs-collection__heading {
   color: rgb(var(--headingColor, var(--textColor)));
 }

@@ -17,6 +17,23 @@
   style.css. Loaded from layout/theme.liquid.
 */
 
+/* ---- Engravers MT (v3 custom-theme-styles.css) ----
+   Global on purpose: the footer brand band and the collection header
+   band both use it. The files are theme assets copied from v3. */
+@font-face {
+  font-family: "Engravers MT";
+  src: url("EngraversMT.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Engravers MT";
+  src: url("EngraversMTBold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
 /* ---- media box (style.css 260-306) ---- */
 .gs-v3 .media {
   position: relative;

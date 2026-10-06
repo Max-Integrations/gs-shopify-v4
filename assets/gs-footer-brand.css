@@ -9,22 +9,7 @@
   `div { background-color: #000 }` rule buried in template JSON.
 */
 
-/* Engravers MT, as on the live site (v3 custom-theme-styles.css). The
-   files are theme assets (copied from v3), so the URLs resolve next to
-   this stylesheet. */
-@font-face {
-  font-family: "Engravers MT";
-  src: url("EngraversMT.ttf") format("truetype");
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Engravers MT";
-  src: url("EngraversMTBold.ttf") format("truetype");
-  font-weight: 700;
-  font-display: swap;
-}
+/* Engravers MT is declared once, globally, in gs-v3-base.css. */
 
 .gs-footer-brand {
   padding: var(--fb-pad-mobile, 25px) 0;

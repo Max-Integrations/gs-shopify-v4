@@ -153,8 +153,15 @@
   {%- endif -%}
 
   {%- liquid
-    assign label_key = 'custom_tag_label_' | append: i
-    assign tag_key = 'custom_tag_' | append: i
+    # v3 named the first pair custom_tag / custom_tag_label with no index,
+    # then custom_tag_1 .. custom_tag_9. i = 0 reads the unindexed pair.
+    if i == 0
+      assign label_key = 'custom_tag_label'
+      assign tag_key = 'custom_tag'
+    else
+      assign label_key = 'custom_tag_label_' | append: i
+      assign tag_key = 'custom_tag_' | append: i
+    endif
     assign label = settings[label_key]
     assign matched = false
   -%}

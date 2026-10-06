@@ -103,6 +103,7 @@
         "heading_7F6aJ8",
         "text_rfWL48"
       ],
+      "disabled": true,
       "name": "t:sections.rich-text.name"
     },
     "countdown_banner_6LFEVb": {
@@ -149,6 +150,7 @@
       "type": "collection-carousel",
       "settings": {
         "section_visibility": "always",
+        "collection_source": "manual",
         "carousel_type": "carousel",
         "scrolling_speed": 15,
         "scrolling_speed_mobile": 15,
@@ -261,6 +263,7 @@
         "collection_gNWLPL",
         "collection_jLT8eA"
       ],
+      "disabled": true,
       "name": "t:sections.collection-carousel.presets.name"
     },
     "main-collection": {
@@ -270,7 +273,7 @@
         "overlay_text": false,
         "heading_size": "h1",
         "tag": "h1",
-        "show_header": false,
+        "show_header": true,
         "show_description": true,
         "description_position": "below_products",
         "collection_image": false,
@@ -295,6 +298,162 @@
         "bottom_space_mobile": 0
       },
       "blocks": {
+        "promotion_RiPryU": {
+          "type": "promotion",
+          "settings": {
+            "custom_content_position": 15,
+            "custom_content_page": 1,
+            "content_width_desktop": "1",
+            "content_width_mobile": "1",
+            "custom_image": "shopify://shop_images/Disruptor_Image_400x600_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
+            "link": "shopify://pages/club-grunt-style",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "heading": "<strong>JOIN CLUB GRUNT STYLE</strong>",
+            "heading_alignment": "text-center",
+            "heading_color": "#ffffff",
+            "heading_font_family": "roboto_condensed_n4",
+            "heading_font_weight": "400",
+            "heading_font_size_desktop": 22,
+            "heading_font_size_mobile": 17,
+            "description": "<em>SUBSCRIBE TO MONTHLY PERKS</em>",
+            "desc_font_family": "roboto_condensed_n4",
+            "desc_color": "#ffffff",
+            "desc_font_weight": "400",
+            "desc_font_size_desktop": 12,
+            "desc_font_size_mobile": 12
+          }
+        },
+        "promotion_e4K7jA": {
+          "type": "promotion",
+          "settings": {
+            "custom_content_position": 2,
+            "custom_content_page": 3,
+            "content_width_desktop": "1",
+            "content_width_mobile": "1",
+            "custom_image": "shopify://shop_images/Disruptor_Image_400x600_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
+            "link": "shopify://pages/club-grunt-style",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "heading": "<strong>JOIN CLUB GRUNT STYLE</strong>",
+            "heading_alignment": "text-center",
+            "heading_color": "#ffffff",
+            "heading_font_family": "roboto_condensed_n4",
+            "heading_font_weight": "400",
+            "heading_font_size_desktop": 22,
+            "heading_font_size_mobile": 17,
+            "description": "<em>SUBSCRIBE TO MONTHLY PERKS</em>",
+            "desc_font_family": "roboto_condensed_n4",
+            "desc_color": "#ffffff",
+            "desc_font_weight": "400",
+            "desc_font_size_desktop": 12,
+            "desc_font_size_mobile": 12
+          }
+        },
+        "promotion_AprLNJ": {
+          "type": "promotion",
+          "settings": {
+            "custom_content_position": 7,
+            "custom_content_page": 2,
+            "content_width_desktop": "1",
+            "content_width_mobile": "1",
+            "custom_image": "shopify://shop_images/HPC_M_-_Tall_CTA_750x994_HOODIES_ONLY_FW26_Campaign_-_Blackout_Collection.jpg",
+            "link": "shopify://collections/limited-edition-blackout",
+            "background_color": "#b3b3b3",
+            "background_opacity": 0,
+            "heading": "",
+            "heading_alignment": "text-left",
+            "heading_color": "#ffffff",
+            "heading_font_family": "poppins_n6",
+            "heading_font_weight": "400",
+            "heading_font_size_desktop": 32,
+            "heading_font_size_mobile": 22,
+            "description": "",
+            "desc_font_family": "figtree_n4",
+            "desc_color": "#ffffff",
+            "desc_font_weight": "400",
+            "desc_font_size_desktop": 16,
+            "desc_font_size_mobile": 14
+          }
+        },
+        "promotion_xCJJqh": {
+          "type": "promotion",
+          "settings": {
+            "custom_content_position": 10,
+            "custom_content_page": 1,
+            "content_width_desktop": "1",
+            "content_width_mobile": "1",
+            "custom_image": "shopify://shop_images/HPC_M_-_Tall_CTA_750x994_SHIRTS_ONLY_FW26_Campaign_-_Blackout_Collection.jpg",
+            "link": "shopify://collections/limited-edition-blackout",
+            "background_color": "#b3b3b3",
+            "background_opacity": 0,
+            "heading": "",
+            "heading_alignment": "text-left",
+            "heading_color": "#ffffff",
+            "heading_font_family": "poppins_n6",
+            "heading_font_weight": "400",
+            "heading_font_size_desktop": 32,
+            "heading_font_size_mobile": 22,
+            "description": "",
+            "desc_font_family": "figtree_n4",
+            "desc_color": "#ffffff",
+            "desc_font_weight": "400",
+            "desc_font_size_desktop": 16,
+            "desc_font_size_mobile": 14
+          }
+        },
+        "promotion_irBXm3": {
+          "type": "promotion",
+          "settings": {
+            "custom_content_position": 4,
+            "custom_content_page": 1,
+            "content_width_desktop": "1",
+            "content_width_mobile": "1",
+            "custom_image": "shopify://shop_images/Disruptor_Image_400x600_FY26_PROMO_-_Brace_Yourself_for_the_Holidays.jpg",
+            "link": "",
+            "background_color": "#b3b3b3",
+            "background_opacity": 0,
+            "heading": "",
+            "heading_alignment": "text-left",
+            "heading_color": "#ffffff",
+            "heading_font_family": "poppins_n6",
+            "heading_font_weight": "400",
+            "heading_font_size_desktop": 32,
+            "heading_font_size_mobile": 22,
+            "description": "",
+            "desc_font_family": "figtree_n4",
+            "desc_color": "#ffffff",
+            "desc_font_weight": "400",
+            "desc_font_size_desktop": 16,
+            "desc_font_size_mobile": 14
+          }
+        },
+        "promotion_MJzapN": {
+          "type": "promotion",
+          "settings": {
+            "custom_content_position": 12,
+            "custom_content_page": 2,
+            "content_width_desktop": "1",
+            "content_width_mobile": "1",
+            "custom_image": "shopify://shop_images/Disruptor_Image_400x600_FY26_PROMO_-_Brace_Yourself_for_the_Holidays.jpg",
+            "link": "",
+            "background_color": "#b3b3b3",
+            "background_opacity": 0,
+            "heading": "",
+            "heading_alignment": "text-left",
+            "heading_color": "#ffffff",
+            "heading_font_family": "poppins_n6",
+            "heading_font_weight": "400",
+            "heading_font_size_desktop": 32,
+            "heading_font_size_mobile": 22,
+            "description": "",
+            "desc_font_family": "figtree_n4",
+            "desc_color": "#ffffff",
+            "desc_font_weight": "400",
+            "desc_font_size_desktop": 16,
+            "desc_font_size_mobile": 14
+          }
+        },
         "product-grid": {
           "type": "product-grid",
           "settings": {
@@ -305,6 +464,12 @@
         }
       },
       "block_order": [
+        "promotion_RiPryU",
+        "promotion_e4K7jA",
+        "promotion_AprLNJ",
+        "promotion_xCJJqh",
+        "promotion_irBXm3",
+        "promotion_MJzapN",
         "product-grid"
       ]
     },
