@@ -104,15 +104,22 @@
    .page-banner-content-box / h1.page-banner-title). Breaks out of
    .page-width to run edge to edge. */
 .gs-collection__header--band {
-  max-width: none;
-  margin: 0;
+  /* The header is a grid item inside the page-width wrapper; this runs
+     it edge to edge regardless (the usual 100vw / negative-margin
+     trick), as the live band does. */
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0 0 0 calc(50% - 50vw);
   padding: 3.5rem 2rem 4rem;
   background-color: var(--gs-header-band-bg, #000000);
   color: var(--gs-header-band-text, #ffffff);
   text-align: center;
 }
 
-.gs-collection__header--band .gs-collection__heading {
+/* Doubled class so these out-rank .gs-collection__header .gs-collection__heading
+   below, which otherwise paints the scheme's heading colour over the band's. */
+.gs-collection__header.gs-collection__header--band .gs-collection__heading {
   font-family: "Engravers MT", var(--headingFont);
   font-weight: 400;
   font-size: clamp(2.8rem, 4vw, 5.6rem);
@@ -121,8 +128,8 @@
   color: var(--gs-header-band-text, #ffffff);
 }
 
-.gs-collection__header--band .gs-collection__description,
-.gs-collection__header--band .gs-collection__description p {
+.gs-collection__header.gs-collection__header--band .gs-collection__description,
+.gs-collection__header.gs-collection__header--band .gs-collection__description p {
   color: var(--gs-header-band-text, #ffffff);
 }
 
