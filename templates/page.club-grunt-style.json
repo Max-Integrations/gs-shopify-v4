@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -22,6 +31,152 @@
         "bottom_space_mobile": 0
       }
     },
+    "images_grid_hdYKhF": {
+      "type": "section--media-grid",
+      "blocks": {
+        "image_76hmbm": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/MEMBER_STORE_Gold_Club_Icon_f5229a6d-a707-47c9-89c3-658698b71777.png",
+            "collection": "",
+            "link": "shopify://collections/club-grunt-style",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {}
+        },
+        "image_dXEUmj": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/COMMUNITY_Gold_Club_Icons.png",
+            "collection": "",
+            "link": "https://www.facebook.com/groups/clubgruntstyle",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {}
+        },
+        "image_hPzXTH": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/FIRST_DIBS_Gold_Club_Icon_95e4a268-75a7-46ce-9ddf-c06b06ec27eb.png",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {}
+        },
+        "image_QUzfeN": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/EASY_CANCEL_Gold_Club_Icons.png",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {}
+        },
+        "image_hV3hfj": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/FREE_SHIPPING_Gold_Club_Icon_c7f29b7a-6732-4231-9956-32ceae60936e.png",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {}
+        },
+        "image_yqdUap": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/EXTRA_SAVINGS_Gold_Club_Icon_99ef8ec3-fe86-4fc8-9a08-f998d9309fa8.png",
+            "collection": "",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "image_76hmbm",
+        "image_dXEUmj",
+        "image_hPzXTH",
+        "image_QUzfeN",
+        "image_hV3hfj",
+        "image_yqdUap"
+      ],
+      "settings": {
+        "layout": "carousel",
+        "columns_desktop": 5,
+        "columns_mobile": 1,
+        "tile_ratio": "fixed",
+        "desktop_row_height": 200,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 10,
+        "mobile_grid_gap": 20,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "<em><strong>WELCOME TO CLUB MEMBER PERKS</strong></em>",
+        "heading_size": "h3",
+        "heading_alignment": "text-center",
+        "heading_color": "#FFCA10",
+        "text_color": "#FFCA10",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#000000",
+        "btn_hover_color": "#000000",
+        "btn_hover_text_color": "#ffffff",
+        "color_scheme": "scheme-6",
+        "padding_top": 20,
+        "padding_bottom": 8
+      }
+    },
     "rich_text_RBF9Ew": {
       "type": "rich-text",
       "blocks": {
@@ -35,7 +190,8 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "text_yq3QCm": {
           "type": "block--text",
@@ -44,7 +200,8 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         },
         "button_pjGdb4": {
           "type": "block--button",
@@ -57,6 +214,8 @@
             "font_size": 0,
             "padding_y": 12,
             "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
             "border_width": 1,
             "border_radius": 0,
             "custom_scheme": false,
@@ -66,7 +225,8 @@
             "border_color": "",
             "hover_bg": "",
             "hover_text_color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -175,7 +335,8 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "text": {
           "type": "block--text",
@@ -184,7 +345,8 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         },
         "button": {
           "type": "block--button",
@@ -197,6 +359,8 @@
             "font_size": 0,
             "padding_y": 12,
             "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
             "border_width": 1,
             "border_radius": 0,
             "custom_scheme": false,
@@ -206,7 +370,8 @@
             "border_color": "",
             "hover_bg": "",
             "hover_text_color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -221,6 +386,8 @@
       "settings": {
         "section_visibility": "large",
         "image": "shopify://shop_images/Join_Page_Key_Image_600x600_Club_Monthly_Tee-_OCTOBER.jpg",
+        "full_width": false,
+        "content_background": "",
         "height": "medium",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -232,8 +399,23 @@
         "section_color_scheme": "scheme-1",
         "color_scheme": "scheme-1",
         "show_chevrons": false,
+        "chevron_stroke_width": 2,
         "chevron_color_text": "#ab192d",
+        "chevron_row_fill": "solid",
+        "chevron_row_size": 80,
+        "chevron_row_size_mobile": 64,
+        "chevron_row_gap": 30,
+        "chevron_row_gap_mobile": 30,
+        "chevron_row_space_above": 24,
+        "chevron_row_space_below": 0,
         "chevron_color_image": "#ffffff",
+        "chevron_col_fill": "outline",
+        "chevron_col_size": 78,
+        "chevron_col_size_mobile": 54,
+        "chevron_col_gap": 20,
+        "chevron_col_gap_mobile": 25,
+        "chevron_col_inset": 30,
+        "chevron_col_inset_mobile": 15,
         "padding_top": 12,
         "padding_bottom": 12
       }
@@ -328,7 +510,8 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "text_xnwf86": {
           "type": "block--text",
@@ -337,7 +520,8 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -1419,6 +1603,8 @@
             "font_size": 0,
             "padding_y": 12,
             "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
             "border_width": 1,
             "border_radius": 0,
             "custom_scheme": false,
@@ -1428,7 +1614,8 @@
             "border_color": "",
             "hover_bg": "",
             "hover_text_color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -1443,156 +1630,11 @@
         "padding_top": 16,
         "padding_bottom": 16
       }
-    },
-    "images_grid_hdYKhF": {
-      "type": "section--media-grid",
-      "blocks": {
-        "image_76hmbm": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "shopify://shop_images/MEMBER_STORE_Gold_Club_Icon_f5229a6d-a707-47c9-89c3-658698b71777.png",
-            "collection": "",
-            "link": "shopify://collections/club-grunt-style",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          },
-          "blocks": {}
-        },
-        "image_dXEUmj": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "shopify://shop_images/COMMUNITY_Gold_Club_Icons.png",
-            "collection": "",
-            "link": "https://www.facebook.com/groups/clubgruntstyle",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          },
-          "blocks": {}
-        },
-        "image_hPzXTH": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "shopify://shop_images/FIRST_DIBS_Gold_Club_Icon_95e4a268-75a7-46ce-9ddf-c06b06ec27eb.png",
-            "collection": "",
-            "link": "",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          },
-          "blocks": {}
-        },
-        "image_QUzfeN": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "shopify://shop_images/EASY_CANCEL_Gold_Club_Icons.png",
-            "collection": "",
-            "link": "",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          },
-          "blocks": {}
-        },
-        "image_hV3hfj": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "shopify://shop_images/FREE_SHIPPING_Gold_Club_Icon_c7f29b7a-6732-4231-9956-32ceae60936e.png",
-            "collection": "",
-            "link": "",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          },
-          "blocks": {}
-        },
-        "image_yqdUap": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "shopify://shop_images/EXTRA_SAVINGS_Gold_Club_Icon_99ef8ec3-fe86-4fc8-9a08-f998d9309fa8.png",
-            "collection": "",
-            "link": "",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "image_76hmbm",
-        "image_dXEUmj",
-        "image_hPzXTH",
-        "image_QUzfeN",
-        "image_hV3hfj",
-        "image_yqdUap"
-      ],
-      "settings": {
-        "layout": "carousel",
-        "columns_desktop": 5,
-        "columns_mobile": 1,
-        "tile_ratio": "square",
-        "desktop_row_height": 400,
-        "mobile_row_height": 200,
-        "tile_width": "full",
-        "desktop_grid_gap": 20,
-        "mobile_grid_gap": 20,
-        "section_width": false,
-        "section_visibility": "always",
-        "content_placement": "below",
-        "card_background": "",
-        "card_padding": 0,
-        "enable_shadow": false,
-        "enable_hover_content": false,
-        "heading_badge": false,
-        "heading": "<em><strong>CLUB MEMBER PERKS</strong></em>",
-        "heading_size": "h3",
-        "heading_alignment": "text-center",
-        "heading_color": "#ffffff",
-        "text_color": "#ffffff",
-        "btn_bg_color": "#ffffff",
-        "btn_text_color": "#000000",
-        "btn_hover_color": "#000000",
-        "btn_hover_text_color": "#ffffff",
-        "color_scheme": "scheme-4",
-        "padding_top": 20,
-        "padding_bottom": 8
-      }
     }
   },
   "order": [
     "main",
+    "images_grid_hdYKhF",
     "rich_text_RBF9Ew",
     "images_grid_EnffGY",
     "image_with_text_carousel_LEPPVj",
@@ -1601,7 +1643,6 @@
     "images_grid_tDVVmL",
     "join",
     "testimonials_Qa99ij",
-    "single_cta_button_rNH9Wc",
-    "images_grid_hdYKhF"
+    "single_cta_button_rNH9Wc"
   ]
 }

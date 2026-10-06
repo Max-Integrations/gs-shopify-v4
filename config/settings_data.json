@@ -358,10 +358,10 @@
         "settings": {
           "background": "#000000",
           "background_gradient": "",
-          "text": "#ffffff",
+          "text": "#FFCA10",
           "button": "#ffca10",
           "button_label": "#000000",
-          "secondary_button_label": "#FFCA10",
+          "secondary_button_label": "#ffca10",
           "shadow": "#121212"
         }
       },
