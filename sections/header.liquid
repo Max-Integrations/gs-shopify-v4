@@ -311,8 +311,15 @@
         {%- endif -%}
 
         {%- if shop.customer_accounts_enabled -%}
+          {%- comment -%}
+            .gs-header__account is the stable hook for Swym's wishlist
+            launcher selector (Theme settings > Swym Wishlist Launcher
+            Button: .gs-header__icons .gs-header__account). The href is
+            /customer_authentication/redirect with new customer accounts,
+            so an href-based selector does not work here.
+          {%- endcomment -%}
           <a
-            class="gs-header__icon"
+            class="gs-header__icon gs-header__account"
             href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
             aria-label="{%- if customer -%}{{ 'customer.account.title' | t }}{%- else -%}{{ 'customer.log_in' | t }}{%- endif -%}"
           >
