@@ -330,8 +330,8 @@
         "columns_desktop": 6,
         "columns_mobile": 2,
         "tile_ratio": "square",
-        "desktop_row_height": 400,
-        "mobile_row_height": 200,
+        "desktop_row_height": 215,
+        "mobile_row_height": 150,
         "tile_width": "full",
         "desktop_grid_gap": 20,
         "mobile_grid_gap": 20,
@@ -431,6 +431,14 @@
         "card_price",
         "card_swatches",
         "card_quick_view"
+      ],
+      "custom_css": [
+        ".product-percent-off {display: none;}",
+        ".compare-add-button {display: none;}",
+        ".product-quickview {padding-block: 12px; margin-top: -33px;}",
+        ".qa-size {font-size: 11px; min-width: 10px; min-height: 18px; font-family: roboto condensed; padding: 2px; line-height: 0.21px; font-weight: 500;}",
+        ".quick-add-variants {max-block-size: 150px;}",
+        ".gs-promo__content {position: absolute; bottom: 100px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6); line-height: 0.25;}"
       ],
       "settings": {
         "overlay_content_position": "text-center",
