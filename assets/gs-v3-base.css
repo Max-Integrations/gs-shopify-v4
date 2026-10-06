@@ -1,44 +1,50 @@
 /*
-  v3 base rules the ported sections depend on.
+  v3 base rules the ported sections depend on, scoped to them.
 
   gs-shopify-v3 loaded a global base.css/style.css that defined the
-  layout primitives its sections use: the .media box (padding-bottom
-  from --imageRatio with the image absolutely positioned inside), the
+  layout primitives its sections use: the .media box (height from
+  --imageRatio with the image absolutely positioned inside), the
   .container-* widths, .section-padding (reads --padding-top/bottom the
-  section sets inline), .section-title, .img-zoom and the small button.
-  This theme never loaded those, so a ported section's images collapsed
-  to zero height. Copied verbatim from v3 assets/base.css and style.css,
-  scoped as v3 had them. Loaded from layout/theme.liquid.
+  section sets inline), .section-title, .img-zoom, the caption placement
+  classes and the small button. This theme never loaded those, so a
+  ported section's images collapsed to zero height.
+
+  SCOPED to `.gs-v3`, which every ported section carries in its schema
+  "class". The first, global, version doubled the height of this theme's
+  own .media boxes (product cards size theirs with padding-bottom and
+  this adds a ::before spacer) and its .center collided with Dawn's
+  text-align class on rich-text. Copied from v3 assets/base.css and
+  style.css. Loaded from layout/theme.liquid.
 */
 
 /* ---- media box (style.css 260-306) ---- */
-.media {
+.gs-v3 .media {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
-.media-fixed {
+.gs-v3 .media-fixed {
   height: var(--media-height);
 }
 
-.media:before {
+.gs-v3 .media:before {
   content: "";
   height: 0;
   display: block;
   padding-top: var(--imageRatio);
 }
 
-.media-fixed:before {
+.gs-v3 .media-fixed:before {
   padding-top: 0;
   height: 100%;
 }
 
-.media img,
-.media .placeholder-svg,
-.media video,
-.media iframe {
+.gs-v3 .media img,
+.gs-v3 .media .placeholder-svg,
+.gs-v3 .media video,
+.gs-v3 .media iframe {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -48,30 +54,30 @@
   object-position: center;
 }
 
-.media img {
+.gs-v3 .media img {
   object-fit: var(--image-fit, cover);
 }
 
-.img-zoom {
+.gs-v3 .img-zoom {
   overflow: hidden;
 }
 
-.img-zoom img,
-.img-zoom video {
+.gs-v3 .img-zoom img,
+.gs-v3 .img-zoom video {
   transition: 1s ease;
 }
 
-.img-zoom:hover img,
-.img-zoom:hover video {
+.gs-v3 .img-zoom:hover img,
+.gs-v3 .img-zoom:hover video {
   transform: scale(1.1);
 }
 
 /* ---- containers (base.css 595-606, 1058-1073, 1298-1326) ---- */
-.container,
-.container-fluid,
-.container-sm,
-.container-xs,
-.container-md {
+.gs-v3 .container,
+.gs-v3 .container-fluid,
+.gs-v3 .container-sm,
+.gs-v3 .container-xs,
+.gs-v3 .container-md {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -80,88 +86,84 @@
 }
 
 @media (min-width: 768px) {
-  .container,
-  .container-fluid,
-  .container-sm,
-  .container-xs,
-  .container-md {
+  .gs-v3 .container,
+  .gs-v3 .container-fluid,
+  .gs-v3 .container-sm,
+  .gs-v3 .container-xs,
+  .gs-v3 .container-md {
     padding-right: 20px;
     padding-left: 20px;
   }
 
-  .container,
-  .container-sm,
-  .container-xs,
-  .container-md {
+  .gs-v3 .container,
+  .gs-v3 .container-sm,
+  .gs-v3 .container-xs,
+  .gs-v3 .container-md {
     max-width: 94%;
   }
 }
 
 @media (min-width: 1200px) {
-  .container-xs {
+  .gs-v3 .container-xs {
     max-width: 1200px;
   }
 }
 
 @media (min-width: 1441px) {
-  .container {
+  .gs-v3 .container {
     max-width: 1680px;
   }
 
-  .container-sm {
+  .gs-v3 .container-sm {
     max-width: 1400px;
   }
 
-  .container-md {
+  .gs-v3 .container-md {
     max-width: 1550px;
   }
 }
 
 @media (min-width: 1700px) {
-  .container {
+  .gs-v3 .container {
     max-width: 1830px;
   }
 }
 
-/* ---- content placement helpers (base.css 420-470) ----
+/* ---- caption placement (base.css 420-470) ----
    v3 sections put captions in an absolutely positioned box and pick the
    corner with these classes (media-grid-deals, featured-content,
    spotlight, slideshow). */
-/* Scoped to v3's caption boxes (class names ending in -content, e.g.
-   .media-content) and explicit .position-absolute elements. v3 had them
-   global, but Dawn uses .center for text-align on rich-text, and a global
-   translate(-50%) shifted that off the page. */
-[class*="-content"].top-left, .position-absolute.top-left { top: 15px; left: 30px; }
-[class*="-content"].top-center, .position-absolute.top-center { top: 15px; left: 50%; transform: translateX(-50%); }
-[class*="-content"].top-right, .position-absolute.top-right { top: 15px; right: 15px; }
-[class*="-content"].center-left, .position-absolute.center-left { top: 50%; left: 30px; transform: translateY(-50%); }
-[class*="-content"].center, .position-absolute.center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-[class*="-content"].center-right, .position-absolute.center-right { top: 50%; right: 15px; transform: translateY(-50%); }
-[class*="-content"].bottom-left, .position-absolute.bottom-left { bottom: 15px; left: 30px; }
-[class*="-content"].bottom-center, .position-absolute.bottom-center { bottom: 15px; left: 50%; transform: translateX(-50%); }
-[class*="-content"].bottom-right, .position-absolute.bottom-right { bottom: 15px; right: 15px; }
+.gs-v3 .top-left { top: 15px; left: 30px; }
+.gs-v3 .top-center { top: 15px; left: 50%; transform: translateX(-50%); }
+.gs-v3 .top-right { top: 15px; right: 15px; }
+.gs-v3 .center-left { top: 50%; left: 30px; transform: translateY(-50%); }
+.gs-v3 .center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.gs-v3 .center-right { top: 50%; right: 15px; transform: translateY(-50%); }
+.gs-v3 .bottom-left { bottom: 15px; left: 30px; }
+.gs-v3 .bottom-center { bottom: 15px; left: 50%; transform: translateX(-50%); }
+.gs-v3 .bottom-right { bottom: 15px; right: 15px; }
 
-.text-left { text-align: left; }
-.text-center { text-align: center; }
-.text-right { text-align: right; }
+.gs-v3 .text-left { text-align: left; }
+.gs-v3 .text-center { text-align: center; }
+.gs-v3 .text-right { text-align: right; }
 
 /* ---- section commons (style.css 884-896) ---- */
-.section-title {
+.gs-v3 .section-title {
   padding-bottom: 20px;
 }
 
-.section-description {
+.gs-v3 .section-description {
   padding-top: 10px;
   color: rgb(var(--textColor));
 }
 
-.section-padding {
+.gs-v3 .section-padding {
   padding-top: var(--padding-top);
   padding-bottom: var(--padding-bottom);
 }
 
 /* ---- small button (style.css 801-808) ---- */
-.button.small-btn {
+.gs-v3 .button.small-btn {
   min-width: 120px;
   min-height: 28px;
   font-size: 12px;
