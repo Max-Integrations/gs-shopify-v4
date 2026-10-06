@@ -503,23 +503,23 @@
         "grid_DYVM8z": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/Blog_Post_1250x1250_GS8541_General_FW26_Campaign_-_Drinking-Pregaming.jpg",
+            "media_image": "shopify://shop_images/Custom_1250x1250_V4_FW26_Army_vs_Navy.jpg",
             "collection": "",
-            "link": "shopify://collections/tailgating-gear",
+            "link": "shopify://collections/proud-veteran",
             "span_two_columns": false,
             "span_two_rows": true,
             "content_position": "bottom-center",
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.5,
+            "background_opacity": 0,
             "hover_overlay": "keep"
           },
           "blocks": {
             "heading": {
               "type": "block--heading",
               "settings": {
-                "text": "<strong>PREGAME SEASON</strong>",
+                "text": "<strong>NEW MILITARY STYLES</strong>",
                 "size": "h2",
                 "tag": "h3",
                 "alignment": "inherit",
