@@ -83,21 +83,18 @@
             "default": "#121212"
           },
           {
-            "type": "header",
-            "content": "Grunt Style colors",
-            "info": "Carried over from the v3 schemes. Leave a color empty to fall back to the Dawn color above it."
-          },
-          {
             "type": "color",
             "id": "heading",
             "label": "Heading",
-            "info": "Empty: same as Text."
+            "info": "Matches same as Text.",
+            "default": "#121212"
           },
           {
             "type": "color",
             "id": "link",
             "label": "Link",
-            "info": "Empty: same as Secondary button label."
+            "info": "Matches same as Secondary button label.",
+            "default": "#121212"
           },
           {
             "type": "color",
@@ -115,7 +112,8 @@
             "type": "color",
             "id": "secondary_button",
             "label": "Secondary button background",
-            "info": "Empty: same as Background."
+            "info": "Matches same as Background.",
+            "default": "#FFFFFF"
           },
           {
             "type": "color",
