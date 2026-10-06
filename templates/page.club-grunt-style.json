@@ -1420,7 +1420,7 @@
         "btn": {
           "type": "block--button",
           "settings": {
-            "label": "Join The Members-Only Community",
+            "label": "<strong>Join The Members-Only Community</strong>",
             "link": "https://www.facebook.com/groups/clubgruntstyle",
             "open_in_new_tab": true,
             "style": "button",
