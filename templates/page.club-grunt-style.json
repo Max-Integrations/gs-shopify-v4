@@ -34,23 +34,6 @@
     "images_grid_hdYKhF": {
       "type": "section--media-grid",
       "blocks": {
-        "image_76hmbm": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "shopify://shop_images/MEMBER_STORE_Gold_Club_Icon_f5229a6d-a707-47c9-89c3-658698b71777.png",
-            "collection": "",
-            "link": "shopify://collections/club-grunt-style",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          },
-          "blocks": {}
-        },
         "image_dXEUmj": {
           "type": "block--media-tile",
           "settings": {
@@ -68,10 +51,10 @@
           },
           "blocks": {}
         },
-        "image_hPzXTH": {
+        "image_yqdUap": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/FIRST_DIBS_Gold_Club_Icon_95e4a268-75a7-46ce-9ddf-c06b06ec27eb.png",
+            "media_image": "shopify://shop_images/EXTRA_SAVINGS_Gold_Club_Icon_99ef8ec3-fe86-4fc8-9a08-f998d9309fa8.png",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -85,10 +68,10 @@
           },
           "blocks": {}
         },
-        "image_QUzfeN": {
+        "image_hPzXTH": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/EASY_CANCEL_Gold_Club_Icons.png",
+            "media_image": "shopify://shop_images/FIRST_DIBS_Gold_Club_Icon_95e4a268-75a7-46ce-9ddf-c06b06ec27eb.png",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -119,10 +102,27 @@
           },
           "blocks": {}
         },
-        "image_yqdUap": {
+        "image_76hmbm": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/EXTRA_SAVINGS_Gold_Club_Icon_99ef8ec3-fe86-4fc8-9a08-f998d9309fa8.png",
+            "media_image": "shopify://shop_images/MEMBER_STORE_Gold_Club_Icon_f5229a6d-a707-47c9-89c3-658698b71777.png",
+            "collection": "",
+            "link": "shopify://collections/club-grunt-style",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0,
+            "hover_overlay": "keep"
+          },
+          "blocks": {}
+        },
+        "image_QUzfeN": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/EASY_CANCEL_Gold_Club_Icons.png",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -138,12 +138,12 @@
         }
       },
       "block_order": [
-        "image_76hmbm",
         "image_dXEUmj",
+        "image_yqdUap",
         "image_hPzXTH",
-        "image_QUzfeN",
         "image_hV3hfj",
-        "image_yqdUap"
+        "image_76hmbm",
+        "image_QUzfeN"
       ],
       "settings": {
         "layout": "carousel",
