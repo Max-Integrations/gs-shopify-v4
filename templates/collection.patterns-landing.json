@@ -6,10 +6,13 @@
         "section_visibility": "always",
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
         "full_width": true,
         "padding_top": 8,
-        "padding_bottom": 8
+        "padding_bottom": 8,
+        "bg_image_collection": true,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30
       },
       "blocks": {
         "heading_wnaRdG": {

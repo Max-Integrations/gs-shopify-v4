@@ -118,7 +118,20 @@ def keep_flags(src, dst):
     return dst
 
 def rich_text(sec, k):
-    return k, gs_pt.rich_text(sec)
+    new = gs_pt.rich_text(sec)
+    s = sec.get('settings', {})
+    # v3's background image (content_bg_image). The collection landing
+    # templates store the Liquid "{{ collection.image }}" there.
+    bg = str(s.get('content_bg_image') or '')
+    if bg:
+        if 'collection.image' in bg:
+            new['settings']['bg_image_collection'] = True
+        elif bg.startswith('shopify://'):
+            new['settings']['bg_image'] = bg
+        new['settings']['bg_overlay_color'] = s.get('bg_image_color_overlay') or '#000000'
+        new['settings']['bg_overlay_opacity'] = clamp(s.get('bg_image_color_overlay_opacity', 30), 0, 100, 10)
+        new['settings']['color_scheme'] = SCHEME.get(str(s.get('color_scheme', '')), 'scheme-1')
+    return k, new
 
 def full_width_v2(sec, k):
     return k, gs_pt.full_width(sec.get('settings', {}))

@@ -123,6 +123,24 @@
   }
 }
 
+/* ---- content placement helpers (base.css 420-470) ----
+   v3 sections put captions in an absolutely positioned box and pick the
+   corner with these classes (media-grid-deals, featured-content,
+   spotlight, slideshow). */
+.top-left { top: 15px; left: 30px; }
+.top-center { top: 15px; left: 50%; transform: translateX(-50%); }
+.top-right { top: 15px; right: 15px; }
+.center-left { top: 50%; left: 30px; transform: translateY(-50%); }
+.center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.center-right { top: 50%; right: 15px; transform: translateY(-50%); }
+.bottom-left { bottom: 15px; left: 30px; }
+.bottom-center { bottom: 15px; left: 50%; transform: translateX(-50%); }
+.bottom-right { bottom: 15px; right: 15px; }
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
 /* ---- section commons (style.css 884-896) ---- */
 .section-title {
   padding-bottom: 20px;

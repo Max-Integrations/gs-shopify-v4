@@ -13,11 +13,32 @@
 {{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
 {{ 'gs-rich-text.css' | asset_url | stylesheet_tag }}
 
+{%- liquid
+  # Background image, a v3 rich-text feature (content_bg_image). The
+  # collection landing templates use it with the collection's own image
+  # behind the title, so "use the collection image" is a switch here.
+  assign rt_bg = blank
+  if section.settings.bg_image_collection and collection.image != blank
+    assign rt_bg = collection.image
+  elsif section.settings.bg_image != blank
+    assign rt_bg = section.settings.bg_image
+  endif
+  assign rt_overlay = section.settings.bg_overlay_color | default: '#000000' | color_modify: 'alpha', section.settings.bg_overlay_opacity | default: 30 | divided_by: 100.0
+-%}
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
+
+  {%- if rt_bg != blank -%}
+    #shopify-section-{{ section.id }} .rich-text {
+      background:
+        linear-gradient({{ rt_overlay }}, {{ rt_overlay }}),
+        url('{{ rt_bg | image_url: width: 2000 }}') no-repeat center center / cover;
+    }
+  {%- endif -%}
 
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
@@ -68,6 +89,11 @@
       ],
       "default": "always"
     },
+    { "type": "header", "content": "Background image" },
+    { "type": "image_picker", "id": "bg_image", "label": "Image" },
+    { "type": "checkbox", "id": "bg_image_collection", "label": "Use the collection's image", "info": "On collection templates: the collection's own image, so one template serves every collection.", "default": false },
+    { "type": "color", "id": "bg_overlay_color", "label": "Overlay color", "default": "#000000" },
+    { "type": "range", "id": "bg_overlay_opacity", "label": "Overlay opacity", "min": 0, "max": 100, "step": 10, "unit": "%", "default": 30 },
     {
       "type": "select",
       "id": "desktop_content_position",
