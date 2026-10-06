@@ -127,15 +127,19 @@
    v3 sections put captions in an absolutely positioned box and pick the
    corner with these classes (media-grid-deals, featured-content,
    spotlight, slideshow). */
-.top-left { top: 15px; left: 30px; }
-.top-center { top: 15px; left: 50%; transform: translateX(-50%); }
-.top-right { top: 15px; right: 15px; }
-.center-left { top: 50%; left: 30px; transform: translateY(-50%); }
-.center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-.center-right { top: 50%; right: 15px; transform: translateY(-50%); }
-.bottom-left { bottom: 15px; left: 30px; }
-.bottom-center { bottom: 15px; left: 50%; transform: translateX(-50%); }
-.bottom-right { bottom: 15px; right: 15px; }
+/* Scoped to v3's caption boxes (class names ending in -content, e.g.
+   .media-content) and explicit .position-absolute elements. v3 had them
+   global, but Dawn uses .center for text-align on rich-text, and a global
+   translate(-50%) shifted that off the page. */
+[class*="-content"].top-left, .position-absolute.top-left { top: 15px; left: 30px; }
+[class*="-content"].top-center, .position-absolute.top-center { top: 15px; left: 50%; transform: translateX(-50%); }
+[class*="-content"].top-right, .position-absolute.top-right { top: 15px; right: 15px; }
+[class*="-content"].center-left, .position-absolute.center-left { top: 50%; left: 30px; transform: translateY(-50%); }
+[class*="-content"].center, .position-absolute.center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+[class*="-content"].center-right, .position-absolute.center-right { top: 50%; right: 15px; transform: translateY(-50%); }
+[class*="-content"].bottom-left, .position-absolute.bottom-left { bottom: 15px; left: 30px; }
+[class*="-content"].bottom-center, .position-absolute.bottom-center { bottom: 15px; left: 50%; transform: translateX(-50%); }
+[class*="-content"].bottom-right, .position-absolute.bottom-right { bottom: 15px; right: 15px; }
 
 .text-left { text-align: left; }
 .text-center { text-align: center; }

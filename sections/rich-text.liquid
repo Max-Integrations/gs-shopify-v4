@@ -23,7 +23,9 @@
   elsif section.settings.bg_image != blank
     assign rt_bg = section.settings.bg_image
   endif
-  assign rt_overlay = section.settings.bg_overlay_color | default: '#000000' | color_modify: 'alpha', section.settings.bg_overlay_opacity | default: 30 | divided_by: 100.0
+  assign rt_alpha = section.settings.bg_overlay_opacity | default: 30 | divided_by: 100.0
+  assign rt_overlay_base = section.settings.bg_overlay_color | default: '#000000'
+  assign rt_overlay = rt_overlay_base | color_modify: 'alpha', rt_alpha
 -%}
 
 {%- style -%}
