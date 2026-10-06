@@ -358,7 +358,7 @@
             "background_color": "#AB192D",
             "letter_spacing": 2,
             "padding_y": 0,
-            "padding_x": 30
+            "padding_x": 32
           },
           "blocks": {}
         },
@@ -387,7 +387,7 @@
             "background_color": "",
             "letter_spacing": 0,
             "padding_y": 0,
-            "padding_x": 8
+            "padding_x": 12
           },
           "blocks": {}
         },
@@ -436,9 +436,9 @@
         "padding_bottom_desktop": 16,
         "padding_horizontal_desktop": 8,
         "item_gap_desktop": 0,
-        "padding_top_mobile": 16,
+        "padding_top_mobile": 12,
         "padding_bottom_mobile": 16,
-        "padding_horizontal_mobile": 12,
+        "padding_horizontal_mobile": 16,
         "item_gap_mobile": 0,
         "button_gap": 12
       }
