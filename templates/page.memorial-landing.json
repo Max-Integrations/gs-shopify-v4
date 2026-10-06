@@ -18,15 +18,16 @@
         "image_height_auto": true,
         "banner_link": "",
         "open_in_new_tab": false,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_horizontal_desktop": 48,
+        "item_gap_desktop": 0,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_horizontal_mobile": 24,
+        "item_gap_mobile": 0,
+        "button_gap": 8,
+        "overlay_opacity": 0
       },
       "name": "Full Width Image/Text_v2"
     },
@@ -93,15 +94,16 @@
         "image_height_auto": true,
         "banner_link": "",
         "open_in_new_tab": false,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_horizontal_desktop": 48,
+        "item_gap_desktop": 0,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_horizontal_mobile": 24,
+        "item_gap_mobile": 0,
+        "button_gap": 8,
+        "overlay_opacity": 0
       },
       "name": "Full Width Image/Text_v2"
     },
@@ -450,16 +452,75 @@
         "image_height_auto": true,
         "banner_link": "",
         "open_in_new_tab": false,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "padding_top_desktop": 88,
+        "padding_bottom_desktop": 88,
+        "padding_horizontal_desktop": 48,
+        "item_gap_desktop": 4,
+        "padding_top_mobile": 4,
+        "padding_bottom_mobile": 4,
+        "padding_horizontal_mobile": 24,
+        "item_gap_mobile": 4,
+        "button_gap": 8,
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
       },
+      "blocks": {
+        "heading": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "EVERY SHIRT MAKES AN IMPACT",
+            "size_desktop": 36,
+            "size_mobile": 21,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "subcopy": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "Memorial Day shirts sold between 4/20 - 5/31 will help contribute to Children Of Fallen Patriots Foundation. The mission of Children of Fallen Patriots Foundation is to provide college scholarships and educational counseling to military children who have lost a parent in the line of duty.",
+            "size_desktop": 20,
+            "size_mobile": 14,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "cta": {
+          "type": "block--button",
+          "settings": {
+            "label": "SHOP COLLECTION",
+            "link": "shopify://collections/memorial-day-tees",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "#ab192d",
+            "text_color": "#ffffff",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "subcopy",
+        "cta"
+      ],
       "disabled": true
     },
     "shapes_mGCrwC": {

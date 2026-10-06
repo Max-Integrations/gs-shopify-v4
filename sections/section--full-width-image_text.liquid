@@ -101,6 +101,16 @@
         </picture>
     {% endif %}
 
+    {%- if section.settings.overlay_opacity > 0 and desktop_img != blank -%}
+        {%- comment -%}
+            v3's overlay (overlay_color / overlay_opacity): a tint between
+            the image and the copy so white text reads on a busy photo.
+        {%- endcomment -%}
+        {%- assign overlay_alpha = section.settings.overlay_opacity | divided_by: 100.0 -%}
+        {%- assign overlay_base = section.settings.overlay_color | default: '#000000' -%}
+        <div class="promo-overlay" style="background-color: {{ overlay_base | color_modify: 'alpha', overlay_alpha }};" aria-hidden="true"></div>
+    {%- endif -%}
+
     <div class="promo-content">
         {%- comment -%}
             Theme blocks render in the order the merchant placed them. The
@@ -182,6 +192,8 @@
             "default": true,
             "info": "On: the image runs edge to edge and sets the section height. Off: the height comes from the padding settings and the image is cover-cropped behind the content."
         },
+        { "type": "color", "id": "overlay_color", "label": "Image overlay color", "default": "#000000" },
+        { "type": "range", "id": "overlay_opacity", "label": "Image overlay opacity", "info": "A tint between the image and the text. 0 is off.", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 0 },
         {
             "type": "url",
             "id": "banner_link",

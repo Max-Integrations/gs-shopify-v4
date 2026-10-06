@@ -134,7 +134,51 @@ def rich_text(sec, k):
     return k, new
 
 def full_width_v2(sec, k):
-    return k, gs_pt.full_width(sec.get('settings', {}))
+    """v3 full-width-image-with-text-v2 -> section--full-width-image_text,
+    with the copy it carried: heading and subcopy as message lines, the CTA
+    as a button, terms as a small line, and v3's overlay."""
+    s = sec.get('settings', {})
+    new = gs_pt.full_width(s)
+    st = new['settings']
+    st['layout_preset'] = ALIGN.get(s.get('horizontal_content_alignment_desktop', 'center'), 'center')
+    st['padding_top_desktop'] = clamp(s.get('content_padding_top_bottom_desktop', 0), 0, 200, 4)
+    st['padding_bottom_desktop'] = clamp(s.get('content_padding_top_bottom_desktop', 0), 0, 200, 4)
+    st['padding_horizontal_desktop'] = clamp(s.get('content_padding_left_right_desktop', 0), 0, 200, 4)
+    st['padding_top_mobile'] = clamp(s.get('content_padding_top_bottom_mobile', 0), 0, 200, 4)
+    st['padding_bottom_mobile'] = clamp(s.get('content_padding_top_bottom_mobile', 0), 0, 200, 4)
+    st['padding_horizontal_mobile'] = clamp(s.get('content_padding_left_right_mobile', 0), 0, 200, 4)
+    st['item_gap_desktop'] = clamp(s.get('content_items_gap', 8), 0, 60, 2)
+    st['item_gap_mobile'] = clamp(s.get('content_items_gap', 8), 0, 60, 2)
+    if s.get('overlay_opacity_type') and s.get('overlay_opacity_type') != 'none':
+        st['overlay_color'] = s.get('overlay_color') or '#000000'
+        st['overlay_opacity'] = clamp(s.get('overlay_opacity', 50), 0, 100, 5)
+    else:
+        st['overlay_opacity'] = 0
+    blocks = {}
+    def line(key, html, size_d, size_m, color):
+        txt = strip_tags(html)
+        if not txt: return
+        blocks[key] = {'type': 'block--message-line', 'settings': {'text': txt, 'size_desktop': clamp(size_d, 10, 120, 1), 'size_mobile': clamp(size_m, 10, 120, 1), 'text_color': color or '#ffffff', 'background_color': '', 'letter_spacing': 0, 'padding_y': 0, 'padding_x': 0}}
+    line('heading', s.get('heading'), s.get('heading_size_desktop', 48), s.get('heading_size_mobile', 24), s.get('heading_color'))
+    line('subcopy', s.get('subcopy'), s.get('subcopy_size_desktop', 24), s.get('subcopy_size_mobile', 16), s.get('subcopy_color'))
+    if s.get('show_cta', True) and s.get('cta_link_text') and s.get('full_image_cta_url') and not s.get('full_image_link'):
+        b = button(strip_tags(s['cta_link_text']), s.get('full_image_cta_url'), 'link' if s.get('cta_link_type') == 'link' else 'button')
+        b['settings']['open_in_new_tab'] = bool(s.get('link_new_window'))
+        if s.get('cta_bg_color'): b['settings']['bg'] = s['cta_bg_color']
+        if s.get('cta_link_text_color'): b['settings']['text_color'] = s['cta_link_text_color']
+        blocks['cta'] = b
+    line('terms', s.get('terms_text'), s.get('terms_text_size_desktop', 14), s.get('terms_text_size_mobile', 10), s.get('terms_color'))
+    if blocks:
+        new['blocks'] = blocks; new['block_order'] = list(blocks)
+    return k, new
+
+def images_grid(sec, k):
+    """gs_pt.images_grid, plus the per-tile disabled flag it drops."""
+    new = gs_pt.images_grid(sec)
+    for bk, b in (sec.get('blocks') or {}).items():
+        if b.get('disabled') and bk in new.get('blocks', {}):
+            new['blocks'][bk]['disabled'] = True
+    return k, new
 
 def hero_banner(sec, k):
     return k, gs_pt.full_width(sec.get('settings', {}), ('full_width_hero_desktop', 'full_width_hero_mobile'), 'full_width_hero_link', None)
@@ -172,7 +216,6 @@ def media_grid(sec, k):
     if sec.get('custom_css'): dropped.append((k, 'custom_css dropped (media-grid -> section--media-grid)', sec['custom_css'][:80]))
     return k, prune(new, 'section--media-grid')
 
-def images_grid(sec, k): return k, gs_pt.images_grid(sec)
 def collection_tab(sec, k): return k, gs_pt.collection_tab(sec)
 def featured_collections(sec, k): return k, gs_pt.featured_collections(sec)
 def split_banner(sec, k): return k, gs_pt.split_banner(sec)

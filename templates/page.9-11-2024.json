@@ -12,16 +12,50 @@
         "image_height_auto": false,
         "banner_link": "",
         "open_in_new_tab": false,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_horizontal_desktop": 96,
+        "item_gap_desktop": 10,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_horizontal_mobile": 24,
+        "item_gap_mobile": 10,
+        "button_gap": 8,
+        "overlay_color": "#000000",
+        "overlay_opacity": 40
       },
+      "blocks": {
+        "heading": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "09.11.01",
+            "size_desktop": 55,
+            "size_mobile": 35,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "subcopy": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "ALWAYS REMEMBER",
+            "size_desktop": 30,
+            "size_mobile": 20,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "subcopy"
+      ],
       "name": "Full Width Image/Text_v2"
     },
     "main-page": {
@@ -661,12 +695,13 @@
         "padding_top_desktop": 0,
         "padding_bottom_desktop": 0,
         "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
+        "item_gap_desktop": 0,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0,
         "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "item_gap_mobile": 0,
+        "button_gap": 8,
+        "overlay_opacity": 0
       },
       "disabled": true,
       "name": "Full Width Image/Text_v2"
@@ -744,12 +779,13 @@
         "padding_top_desktop": 0,
         "padding_bottom_desktop": 0,
         "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
+        "item_gap_desktop": 0,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0,
         "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "item_gap_mobile": 0,
+        "button_gap": 8,
+        "overlay_opacity": 0
       },
       "name": "Full Width Image/Text_v2"
     },

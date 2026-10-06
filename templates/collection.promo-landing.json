@@ -12,16 +12,64 @@
         "image_height_auto": true,
         "banner_link": "",
         "open_in_new_tab": false,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
+        "padding_top_desktop": 16,
+        "padding_bottom_desktop": 16,
         "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "item_gap_desktop": 4,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24,
+        "padding_horizontal_mobile": 8,
+        "item_gap_mobile": 4,
+        "button_gap": 8,
+        "overlay_color": "#000000",
+        "overlay_opacity": 40
       },
+      "blocks": {
+        "heading": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "COASTAL FREEDOM. TACTICAL EDGE.",
+            "size_desktop": 23,
+            "size_mobile": 14,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "subcopy": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "PALM TREES & PLATE ARMOR★ ★ ★ ★ ★",
+            "size_desktop": 33,
+            "size_mobile": 24,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "terms": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "Your essentials built for days that start in the sun & end wherever the chaos leads.",
+            "size_desktop": 16,
+            "size_mobile": 10,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "subcopy",
+        "terms"
+      ],
       "disabled": true
     },
     "rich_text_9Nc8H8": {
@@ -485,16 +533,64 @@
         "image_height_auto": true,
         "banner_link": "",
         "open_in_new_tab": false,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_horizontal_desktop": 100,
+        "item_gap_desktop": 10,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_horizontal_mobile": 8,
+        "item_gap_mobile": 10,
+        "button_gap": 8,
+        "overlay_color": "#000000",
+        "overlay_opacity": 50
       },
+      "blocks": {
+        "heading": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "UNCLE SAM'SCHRISTMAS IN JULY",
+            "size_desktop": 33,
+            "size_mobile": 24,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "subcopy": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "UP TO 60% OFF",
+            "size_desktop": 48,
+            "size_mobile": 33,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "terms": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "SPEND $150 AND GET $20 OFF YOUR ORDER",
+            "size_desktop": 16,
+            "size_mobile": 15,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "subcopy",
+        "terms"
+      ],
       "disabled": true
     },
     "full_width_image_with_text_v2_KWcBVr": {
@@ -509,16 +605,49 @@
         "image_height_auto": true,
         "banner_link": "",
         "open_in_new_tab": false,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_horizontal_desktop": 100,
+        "item_gap_desktop": 10,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_horizontal_mobile": 8,
+        "item_gap_mobile": 10,
+        "button_gap": 8,
+        "overlay_opacity": 0
       },
+      "blocks": {
+        "heading": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "BOGO 50% OFF TEES & HOODIES",
+            "size_desktop": 55,
+            "size_mobile": 33,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "subcopy": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "BACK TO BASICS",
+            "size_desktop": 33,
+            "size_mobile": 24,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "subcopy"
+      ],
       "disabled": true
     },
     "full_width_image_with_text_v2_yX4feB": {
@@ -533,16 +662,50 @@
         "image_height_auto": true,
         "banner_link": "",
         "open_in_new_tab": false,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_horizontal_desktop": 100,
+        "item_gap_desktop": 10,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_horizontal_mobile": 8,
+        "item_gap_mobile": 10,
+        "button_gap": 8,
+        "overlay_color": "#000000",
+        "overlay_opacity": 50
       },
+      "blocks": {
+        "heading": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "4TH OF JULY SALE",
+            "size_desktop": 33,
+            "size_mobile": 24,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "subcopy": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "25 - 70% OFF EVERYTHING",
+            "size_desktop": 48,
+            "size_mobile": 33,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "subcopy"
+      ],
       "disabled": true
     },
     "full_width_image_with_text_v2_UQT8TJ": {
@@ -557,16 +720,64 @@
         "image_height_auto": true,
         "banner_link": "",
         "open_in_new_tab": false,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_horizontal_desktop": 100,
+        "item_gap_desktop": 10,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_horizontal_mobile": 8,
+        "item_gap_mobile": 10,
+        "button_gap": 8,
+        "overlay_color": "#000000",
+        "overlay_opacity": 50
       },
+      "blocks": {
+        "heading": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "25% OFF HOODIES",
+            "size_desktop": 48,
+            "size_mobile": 33,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "subcopy": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "COLD FRONT INBOUND",
+            "size_desktop": 33,
+            "size_mobile": 24,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "terms": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "May Not Be Combined With Other Discounts",
+            "size_desktop": 16,
+            "size_mobile": 10,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "subcopy",
+        "terms"
+      ],
       "disabled": true
     },
     "full_width_image_with_text_v2_xyGAA6": {
@@ -581,16 +792,50 @@
         "image_height_auto": true,
         "banner_link": "",
         "open_in_new_tab": false,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_horizontal_desktop": 100,
+        "item_gap_desktop": 10,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_horizontal_mobile": 8,
+        "item_gap_mobile": 10,
+        "button_gap": 8,
+        "overlay_color": "#000000",
+        "overlay_opacity": 50
       },
+      "blocks": {
+        "heading": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "FLASH SALE",
+            "size_desktop": 33,
+            "size_mobile": 22,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "subcopy": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "$29.99 3 PACKS$49.99 5 PACKS",
+            "size_desktop": 48,
+            "size_mobile": 24,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "subcopy"
+      ],
       "disabled": true
     }
   },

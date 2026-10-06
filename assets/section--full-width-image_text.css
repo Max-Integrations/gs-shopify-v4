@@ -66,6 +66,15 @@
   right: 0;
 }
 
+/* Tint between the image (z 0) and the content (z 1); the overlay
+   settings on the section. */
+.fwit-promo .promo-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
 /* Layout Container */
 .fwit-promo .promo-content {
   position: relative;

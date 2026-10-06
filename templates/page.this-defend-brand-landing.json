@@ -12,15 +12,16 @@
         "image_height_auto": true,
         "banner_link": "",
         "open_in_new_tab": false,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_horizontal_desktop": 48,
+        "item_gap_desktop": 0,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_horizontal_mobile": 24,
+        "item_gap_mobile": 0,
+        "button_gap": 8,
+        "overlay_opacity": 0
       },
       "name": "Full Width Image/Text_v2"
     },
@@ -322,16 +323,36 @@
         "image_height_auto": true,
         "banner_link": "",
         "open_in_new_tab": false,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_horizontal_desktop": 48,
+        "item_gap_desktop": 0,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_horizontal_mobile": 24,
+        "item_gap_mobile": 0,
+        "button_gap": 8,
+        "overlay_color": "#000000",
+        "overlay_opacity": 50
       },
+      "blocks": {
+        "heading": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "IMAGE PLACEHOLDER",
+            "size_desktop": 48,
+            "size_mobile": 33,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        }
+      },
+      "block_order": [
+        "heading"
+      ],
       "disabled": true,
       "name": "Full Width Image/Text_v2"
     },

@@ -34,16 +34,75 @@
         "image_height_auto": true,
         "banner_link": "",
         "open_in_new_tab": false,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_horizontal_desktop": 100,
+        "item_gap_desktop": 10,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_horizontal_mobile": 8,
+        "item_gap_mobile": 10,
+        "button_gap": 8,
+        "overlay_color": "#000000",
+        "overlay_opacity": 50
       },
+      "blocks": {
+        "heading": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "YOU MADE IT TO THE THUNDERDOME!",
+            "size_desktop": 48,
+            "size_mobile": 33,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "subcopy": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "Now Register Your Product For A Lifetime Guarantee.",
+            "size_desktop": 33,
+            "size_mobile": 24,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "cta": {
+          "type": "block--button",
+          "settings": {
+            "label": "REGISTER NOW",
+            "link": "#BG_Receipt_Upload",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "#ffffff",
+            "text_color": "#000000",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "subcopy",
+        "cta"
+      ],
       "name": "Full Width Image/Text_v2"
     },
     "multi_column_with_rich_text_MfbxRY": {
@@ -245,16 +304,75 @@
         "image_height_auto": true,
         "banner_link": "",
         "open_in_new_tab": true,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_horizontal_desktop": 0,
-        "item_gap_desktop": 8,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "padding_horizontal_mobile": 0,
-        "item_gap_mobile": 8,
-        "button_gap": 8
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_horizontal_desktop": 100,
+        "item_gap_desktop": 10,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "padding_horizontal_mobile": 8,
+        "item_gap_mobile": 10,
+        "button_gap": 8,
+        "overlay_color": "#000000",
+        "overlay_opacity": 50
       },
+      "blocks": {
+        "heading": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "THIS WE'LL DEFEND",
+            "size_desktop": 48,
+            "size_mobile": 33,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "subcopy": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "Unapologetic By Design. American By Blood. Rebels By Birth.",
+            "size_desktop": 33,
+            "size_mobile": 18,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          }
+        },
+        "cta": {
+          "type": "block--button",
+          "settings": {
+            "label": "About Us",
+            "link": "shopify://pages/about",
+            "open_in_new_tab": true,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 12,
+            "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "scheme-1",
+            "bg": "#ffffff",
+            "text_color": "#000000",
+            "border_color": "",
+            "hover_bg": "",
+            "hover_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "subcopy",
+        "cta"
+      ],
       "name": "Full Width Image/Text_v2"
     }
   },
