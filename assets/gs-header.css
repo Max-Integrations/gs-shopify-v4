@@ -298,10 +298,7 @@
    Button) is injected by the app before the element its selector names,
    with none of our classes. Give it the row's size and colour. Desktop
    selector: .gs-header__icons a[href*="/account"]. */
-.gs-header__icons .swym-advanced-header-icon,
-.gs-header__icons #swym-advanced-header-icon,
-.gs-header__icons #swym-advanced-header-icon-mobile {
-  display: inline-flex;
+.gs-header__icons .swym-advanced-header-icon {
   align-items: center;
   justify-content: center;
   width: 36px;
@@ -309,6 +306,27 @@
   position: relative;
   color: var(--gs-header-icon, #ffffff);
   text-decoration: none;
+}
+
+/* Swym builds one element from the desktop selector and one from the
+   mobile selector; only one may show per breakpoint, on this header's
+   own 990px break. */
+.gs-header__icons #swym-advanced-header-icon {
+  display: none !important;
+}
+
+.gs-header__icons #swym-advanced-header-icon-mobile {
+  display: inline-flex !important;
+}
+
+@media screen and (min-width: 990px) {
+  .gs-header__icons #swym-advanced-header-icon {
+    display: inline-flex !important;
+  }
+
+  .gs-header__icons #swym-advanced-header-icon-mobile {
+    display: none !important;
+  }
 }
 
 .gs-header__icons .swym-advanced-header-icon svg {
