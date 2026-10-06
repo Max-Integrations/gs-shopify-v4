@@ -128,10 +128,10 @@
           "type": "column",
           "settings": {
             "icon": "none",
-            "image": "shopify://shop_images/Icon_2000x2000_Loyalty-min_896e35f1-6884-457b-883c-1abf283eba94.jpg",
+            "image": "shopify://shop_images/REWARD_MEMBER_TIER.avif",
             "title": "<strong>MEMBER</strong>",
             "text": "<ul><li>5% Back Every Order</li><li>Birthday Ammo $5</li><li>Early Access&nbsp;Intel</li><li>Exclusive Discounts & Offers</li></ul>",
-            "link_label": "ENLIST NOW",
+            "link_label": "ENLIST NOW FREE",
             "link": "https://account.gruntstyle.com/"
           }
         },
@@ -139,10 +139,10 @@
           "type": "column",
           "settings": {
             "icon": "none",
-            "image": "shopify://shop_images/Icon_2000x2000_GiftGuides-min.jpg",
+            "image": "shopify://shop_images/Artboard_1.png",
             "title": "<strong>GOLD</strong>",
             "text": "<ul><li>20% Back Every Order</li><li>Birthday Ammo $20</li><li>Free Shipping on Every Order</li><li>Free Gift When You Enlist</li><li>Early Access Intel</li><li>Exclusive Discounts & Offers</li></ul>",
-            "link_label": "ENLIST NOW",
+            "link_label": "ENLIST NOW $50/YR",
             "link": "shopify://products/inveterate-subscription"
           }
         },
@@ -153,7 +153,7 @@
             "image": "shopify://shop_images/Join_Page_Key_Image_600x600_Club_Monthly_Tee-November.jpg",
             "title": "<strong>CLUB GRUNT STYLE</strong>",
             "text": "<ul><li>Exclusive Monthly T-Shirt + Sticker</li><li>10% Stackable Discount</li><li>Free Shipping on Every Order</li><li>Early Access Intel</li><li>Access to Members-Only Community</li><li>Access to Exclusive Club Only Product</li><li>10% Off Gold Membership</li></ul>",
-            "link_label": "ENLIST NOW",
+            "link_label": "ENLIST NOW $25/MTH",
             "link": "shopify://pages/club-grunt-style"
           }
         }
