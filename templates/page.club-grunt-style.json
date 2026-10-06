@@ -164,7 +164,7 @@
         "enable_hover_content": false,
         "heading_badge": false,
         "heading": "<em><strong>WELCOME TO CLUB MEMBER PERKS</strong></em>",
-        "heading_size": "h3",
+        "heading_size": "h1",
         "heading_alignment": "text-center",
         "heading_color": "#FFCA10",
         "text_color": "#FFCA10",
@@ -214,83 +214,6 @@
         "padding_bottom": 20
       }
     },
-    "multi_column_x3UMT8": {
-      "type": "multicolumn",
-      "blocks": {
-        "icon_with_text_CtahD3": {
-          "type": "column",
-          "settings": {
-            "icon": "none",
-            "image": "shopify://shop_images/Custom_Asset_2000x1499_Club_Dec_1_2024_Logo_Change_-_Evergreen_Assets-min.png",
-            "title": "<strong>JOIN THE CLUB</strong>",
-            "text": "<p>Join before the end of the month to get next month's shirt.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "icon_with_text_RtFzBt": {
-          "type": "column",
-          "settings": {
-            "icon": "none",
-            "image": "shopify://shop_images/gs-club-how-it-works-exclusive-shirt-white-silhouette-min.png",
-            "title": "<strong>GET YOUR GEAR</strong>",
-            "text": "<p>New exclusive tee ships monthly. Skip, pause, or cancel anytime.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "icon_with_text_QWFRnX": {
-          "type": "column",
-          "settings": {
-            "icon": "none",
-            "image": "shopify://shop_images/gs-club-how-it-works-killer-benefits-white-stars-min.png",
-            "title": "<strong>STACK YOUR PERKS</strong>",
-            "text": "<p>Enjoy free shipping, Club-only drops, and member-only deals.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "icon_with_text_VDMnEP": {
-          "type": "column",
-          "settings": {
-            "icon": "none",
-            "image": "shopify://shop_images/Icon_2000x2000_Loyalty-min_896e35f1-6884-457b-883c-1abf283eba94.png",
-            "title": "<strong>INSTANT REWARDS</strong>",
-            "text": "<p>Get 5% back in store credit on every order.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "icon_with_text_CtahD3",
-        "icon_with_text_RtFzBt",
-        "icon_with_text_QWFRnX",
-        "icon_with_text_VDMnEP"
-      ],
-      "custom_css": [
-        ".multicolumn-card__info h3 {color: #ffcc01; font-size: 20px; margin-bottom: 1rem;}",
-        ".multicolumn-card__image-wrapper img {object-fit: contain;}"
-      ],
-      "settings": {
-        "title": "<em><strong>HOW IT WORKS</strong></em>",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 4,
-        "column_alignment": "center",
-        "background_style": "none",
-        "image_position": "top",
-        "card_color_scheme": "scheme-4",
-        "color_scheme": "scheme-4",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "padding_top": 8,
-        "padding_bottom": 8
-      }
-    },
     "rich_text_fQFGNk": {
       "type": "rich-text",
       "blocks": {
@@ -311,9 +234,9 @@
           "type": "block--text",
           "settings": {
             "text": "<p>Experience exclusive member-only designs with Club Grunt Style Graphic Tees—crafted from a premium 60% cotton, 40% polyester blend for superior comfort and durability. Enjoy a tagless, ribbed finish for a sharp look, all designed in the USA. Easy-care and machine washable, these shirts deliver all-day wear you won’t find anywhere else.</p>",
-            "size": "body",
+            "size": "small",
             "alignment": "inherit",
-            "color": ""
+            "color": "#FFFFFF"
           },
           "blocks": {}
         }
@@ -326,9 +249,9 @@
         "section_visibility": "always",
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
         "full_width": true,
-        "padding_top": 32,
+        "padding_top": 4,
         "padding_bottom": 0
       }
     },
@@ -1218,7 +1141,7 @@
         "columns_desktop": 5,
         "columns_mobile": 1,
         "tile_ratio": "adapt",
-        "desktop_row_height": 400,
+        "desktop_row_height": 200,
         "mobile_row_height": 200,
         "tile_width": "full",
         "desktop_grid_gap": 20,
@@ -1240,9 +1163,117 @@
         "btn_text_color": "#000000",
         "btn_hover_color": "#000000",
         "btn_hover_text_color": "#ffffff",
-        "color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 32
+        "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
+        "padding_top": 4,
+        "padding_bottom": 12
+      }
+    },
+    "rich_text_aymgzE": {
+      "type": "rich-text",
+      "blocks": {
+        "block_heading_7LkK7A": {
+          "type": "block--heading",
+          "settings": {
+            "text": "&nbsp;<em><strong>HOW IT WORKS</strong></em>&nbsp;",
+            "size": "h1",
+            "tag": "h3",
+            "alignment": "center",
+            "color": "#FFCA10",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "block_heading_7LkK7A"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 28,
+        "padding_bottom": 12
+      }
+    },
+    "multi_column_x3UMT8": {
+      "type": "multicolumn",
+      "blocks": {
+        "icon_with_text_CtahD3": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/Custom_Asset_2000x1499_Club_Dec_1_2024_Logo_Change_-_Evergreen_Assets-min.png",
+            "title": "<strong>JOIN THE CLUB</strong>",
+            "text": "<p>Join before the end of the month to get next month's shirt.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_RtFzBt": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/gs-club-how-it-works-exclusive-shirt-white-silhouette-min.png",
+            "title": "<strong>GET YOUR GEAR</strong>",
+            "text": "<p>New exclusive tee ships monthly. Skip, pause, or cancel anytime.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_QWFRnX": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/gs-club-how-it-works-killer-benefits-white-stars-min.png",
+            "title": "<strong>STACK YOUR PERKS</strong>",
+            "text": "<p>Enjoy free shipping, Club-only drops, and member-only deals.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_VDMnEP": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/Icon_2000x2000_Loyalty-min_896e35f1-6884-457b-883c-1abf283eba94.png",
+            "title": "<strong>INSTANT REWARDS</strong>",
+            "text": "<p>Get 5% back in store credit on every order.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_with_text_CtahD3",
+        "icon_with_text_RtFzBt",
+        "icon_with_text_QWFRnX",
+        "icon_with_text_VDMnEP"
+      ],
+      "custom_css": [
+        ".multicolumn-card__info h3 {color: #ffcc01; font-size: 20px; margin-bottom: 1rem;}",
+        ".multicolumn-card__image-wrapper img {object-fit: contain;}"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "image_position": "top",
+        "card_color_scheme": "scheme-6",
+        "color_scheme": "scheme-4",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 8,
+        "padding_bottom": 8
       }
     },
     "join": {
@@ -1430,9 +1461,10 @@
     "main",
     "images_grid_hdYKhF",
     "multirow_Ni47d8",
-    "multi_column_x3UMT8",
     "rich_text_fQFGNk",
     "images_grid_tDVVmL",
+    "rich_text_aymgzE",
+    "multi_column_x3UMT8",
     "join",
     "testimonials_Qa99ij",
     "single_cta_button_rNH9Wc"
