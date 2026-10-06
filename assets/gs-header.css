@@ -294,6 +294,34 @@
   }
 }
 
+/* Swym's wishlist launcher (Theme settings > Swym Wishlist Launcher
+   Button) is injected by the app before the element its selector names,
+   with none of our classes. Give it the row's size and colour. Desktop
+   selector: .gs-header__icons a[href*="/account"]. */
+.gs-header__icons .swym-advanced-header-icon,
+.gs-header__icons #swym-advanced-header-icon,
+.gs-header__icons #swym-advanced-header-icon-mobile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  position: relative;
+  color: var(--gs-header-icon, #ffffff);
+  text-decoration: none;
+}
+
+.gs-header__icons .swym-advanced-header-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+}
+
+.gs-header__icons .swym-advanced-header-icon:hover {
+  color: var(--gs-header-hover, #e7e7e7);
+}
+
 /* App blocks (Swym's wishlist launcher) inherit the icon colour and size. */
 .gs-header__icon--app > * {
   color: inherit;
