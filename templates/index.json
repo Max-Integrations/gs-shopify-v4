@@ -879,126 +879,40 @@
         "cta_border_color_hover": "#000000"
       }
     },
-    "product_highlight_tpQcaj": {
-      "type": "image-with-text",
+    "multirow_98qFfM": {
+      "type": "multirow",
       "blocks": {
-        "heading": {
-          "type": "block--heading",
+        "row_DJNpdH": {
+          "type": "row",
           "settings": {
-            "text": "SUPPORT THOSE WHO SERVE",
-            "size": "h1",
-            "tag": "h2",
-            "alignment": "inherit",
-            "color": "",
-            "font_size_desktop": 0,
-            "font_size_mobile": 0
-          },
-          "blocks": {}
-        },
-        "text": {
-          "type": "block--text",
-          "settings": {
-            "text": "<p>Step up and show your support for those who answer the call—day or night. The First Responder Collection honors the unwavering dedication of EMS, Firefighters, and Police Officers who are always first in and last out. Wear it with pride and stand with the heroes who never hesitate to serve.</p>",
-            "size": "body",
-            "alignment": "inherit",
-            "color": ""
-          },
-          "blocks": {}
-        },
-        "button_1": {
-          "type": "block--button",
-          "settings": {
-            "label": "SHOP COLLECTION",
-            "link": "shopify://collections/first-responders",
-            "open_in_new_tab": false,
-            "style": "outline",
-            "width": "full",
-            "font_size": 0,
-            "padding_y": 12,
-            "padding_x": 28,
-            "margin_y": 0,
-            "margin_x": 0,
-            "border_width": 1,
-            "border_radius": 0,
-            "custom_scheme": false,
-            "color_scheme": "scheme-1",
-            "bg": "",
-            "text_color": "",
-            "border_color": "",
-            "hover_bg": "",
-            "hover_text_color": ""
-          },
-          "blocks": {}
-        },
-        "button_2": {
-          "type": "block--button",
-          "settings": {
-            "label": "GRAB THE TEE",
-            "link": "shopify://products/first-in-last-out-t-shirt-black",
-            "open_in_new_tab": false,
-            "style": "outline",
-            "width": "full",
-            "font_size": 0,
-            "padding_y": 12,
-            "padding_x": 28,
-            "margin_y": 12,
-            "margin_x": 0,
-            "border_width": 1,
-            "border_radius": 0,
-            "custom_scheme": false,
-            "color_scheme": "scheme-1",
-            "bg": "",
-            "text_color": "",
-            "border_color": "",
-            "hover_bg": "",
-            "hover_text_color": ""
-          },
-          "blocks": {}
+            "image": "shopify://shop_images/Split_Banner_D_980x610_V2_FW26_Army_vs_Navy.jpg",
+            "caption": "AMERICA’S FAVORITE FAMILY FEUD.",
+            "heading": "<strong>ARMY VS NAVY</strong>",
+            "text": "<p><strong>I JUST HOPE BOTH TEAMS HAVE FUN.</strong></p><p>Same country. Same team. Completely unnecessary levels of sh*t talking.<br/></p>",
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://collections/military-inspired-styles"
+          }
         }
       },
       "block_order": [
-        "heading",
-        "text",
-        "button_1",
-        "button_2"
+        "row_DJNpdH"
       ],
-      "disabled": true,
-      "name": "Image with text-D",
+      "name": "t:sections.multirow.presets.name",
       "settings": {
-        "section_visibility": "large",
-        "image": "shopify://shop_images/Split_Banner_D_980x610_FW26_Freedom_Fighter_Collection.jpg",
-        "full_width": true,
-        "content_background": "",
-        "height": "adapt",
+        "stack_on_scroll": false,
+        "image_height": "medium",
         "desktop_image_width": "medium",
-        "layout": "text_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
+        "image_layout": "alternate-left",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "primary",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "center",
         "mobile_content_alignment": "center",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-2",
-        "show_chevrons": true,
-        "chevron_stroke_width": 2,
-        "chevron_color_text": "#ab192d",
-        "chevron_row_fill": "solid",
-        "chevron_row_size": 80,
-        "chevron_row_size_mobile": 64,
-        "chevron_row_gap": 30,
-        "chevron_row_gap_mobile": 30,
-        "chevron_row_space_above": 24,
-        "chevron_row_space_below": 0,
-        "chevron_color_image": "#ffffff",
-        "chevron_col_fill": "outline",
-        "chevron_col_size": 78,
-        "chevron_col_size_mobile": 54,
-        "chevron_col_gap": 20,
-        "chevron_col_gap_mobile": 25,
-        "chevron_col_inset": 30,
-        "chevron_col_inset_mobile": 15,
-        "padding_top": 0,
-        "padding_bottom": 0
+        "section_color_scheme": "scheme-2",
+        "row_color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     },
     "image_with_text_NnJDxB": {
@@ -1551,7 +1465,7 @@
     "featured_collections_ABnVhm",
     "media_grid_EHBURP",
     "featured_collections_RaEPWA",
-    "product_highlight_tpQcaj",
+    "multirow_98qFfM",
     "image_with_text_NnJDxB",
     "custom_testimonials_itRkeM",
     "multicolumn_with_content_hover_rUQ9Qn"
