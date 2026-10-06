@@ -505,7 +505,7 @@
           "settings": {
             "media_image": "shopify://shop_images/Custom_1250x1250_V4_FW26_Army_vs_Navy.jpg",
             "collection": "",
-            "link": "shopify://collections/proud-veteran",
+            "link": "shopify://collections/navy",
             "span_two_columns": false,
             "span_two_rows": true,
             "content_position": "bottom-center",
@@ -516,10 +516,21 @@
             "hover_overlay": "keep"
           },
           "blocks": {
+            "block_text_RTQFdd": {
+              "type": "block--text",
+              "name": "Text",
+              "settings": {
+                "text": "<p>OFFICIALLY LICENSED</p>",
+                "size": "body",
+                "alignment": "inherit",
+                "color": ""
+              },
+              "blocks": {}
+            },
             "heading": {
               "type": "block--heading",
               "settings": {
-                "text": "<strong>NEW MILITARY STYLES</strong>",
+                "text": "<strong>NAVY GEAR</strong>",
                 "size": "h2",
                 "tag": "h3",
                 "alignment": "inherit",
@@ -556,6 +567,7 @@
             }
           },
           "block_order": [
+            "block_text_RTQFdd",
             "heading",
             "button"
           ]
