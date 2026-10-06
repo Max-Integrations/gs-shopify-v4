@@ -1282,7 +1282,7 @@
         "fit": {
           "type": "step_fit",
           "settings": {
-            "heading": "Join Club Grunt Style",
+            "heading": "Join Now",
             "progress_label": "Patriot",
             "eyebrow": "Patriotic",
             "mens_label": "Male",
@@ -1405,8 +1405,8 @@
         "change_slides_speed": 5,
         "enlargen_message_font_size": "h3",
         "image_position": "left",
-        "heading": "<em><strong>PATRIOTS LOVE GRUNT STYLE</strong></em>",
-        "heading_size": "h4",
+        "heading": "<strong>PATRIOTS LOVE GRUNT STYLE</strong>",
+        "heading_size": "h2",
         "description": "",
         "heading_alignment": "text-center",
         "color_scheme": "scheme-4",
