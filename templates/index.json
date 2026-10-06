@@ -344,6 +344,105 @@
         "padding_bottom": 8
       }
     },
+    "section_full_width_image_text_hLrKYd": {
+      "type": "section--full-width-image_text",
+      "blocks": {
+        "block_message_line_8MPtcU": {
+          "type": "block--message-line",
+          "name": "Message line",
+          "settings": {
+            "text": "&nbsp;<strong>HALLOWEEN</strong> SHIPPING CUTOFFS&nbsp;",
+            "size_desktop": 24,
+            "size_mobile": 24,
+            "text_color": "#FFFFFF",
+            "background_color": "#AB192D",
+            "letter_spacing": 2,
+            "padding_y": 0,
+            "padding_x": 30
+          },
+          "blocks": {}
+        },
+        "block_message_line_bh9WK7": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "&nbsp;<em>TO RECEIVE BY 10/30</em>&nbsp;",
+            "size_desktop": 24,
+            "size_mobile": 20,
+            "text_color": "#ffffff",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 8
+          },
+          "blocks": {}
+        },
+        "block_message_line_khpddF": {
+          "type": "block--message-line",
+          "name": "Message line",
+          "settings": {
+            "text": "<strong>STANDARD:</strong> 10/22 11:59 PM (CST) | &nbsp;<strong>RUSH:</strong> 10/26 11:59 PM (CST) &nbsp;",
+            "size_desktop": 20,
+            "size_mobile": 18,
+            "text_color": "#FFFFFF",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 8
+          },
+          "blocks": {}
+        },
+        "block_button_P7ymPe": {
+          "type": "block--button",
+          "settings": {
+            "label": "<strong>SHOP HALLOWEEN</strong>",
+            "link": "shopify://collections/halloween",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 0,
+            "padding_y": 10,
+            "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
+            "border_width": 0,
+            "border_radius": 0,
+            "custom_scheme": false,
+            "color_scheme": "",
+            "bg": "#FFFFFF",
+            "text_color": "#000000",
+            "border_color": "#FFFFFF",
+            "hover_bg": "#000000",
+            "hover_text_color": "#FFFFFF"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "block_message_line_8MPtcU",
+        "block_message_line_bh9WK7",
+        "block_message_line_khpddF",
+        "block_button_P7ymPe"
+      ],
+      "name": "Full Width Image & Text",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#000",
+        "image_height_auto": false,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 16,
+        "padding_bottom_desktop": 16,
+        "padding_horizontal_desktop": 8,
+        "item_gap_desktop": 0,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 16,
+        "padding_horizontal_mobile": 12,
+        "item_gap_mobile": 0,
+        "button_gap": 12
+      }
+    },
     "featured_collections_ABnVhm": {
       "type": "featured-collections",
       "blocks": {
@@ -1448,6 +1547,7 @@
     "section_sale_promo_message_4Qz89H",
     "value_props_c3pXEG",
     "media_grid_4zxLjX",
+    "section_full_width_image_text_hLrKYd",
     "featured_collections_ABnVhm",
     "media_grid_EHBURP",
     "featured_collections_RaEPWA",
