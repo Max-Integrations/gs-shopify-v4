@@ -177,153 +177,6 @@
         "padding_bottom": 8
       }
     },
-    "rich_text_RBF9Ew": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_KJiMjq": {
-          "type": "block--heading",
-          "settings": {
-            "text": "<em>Patriotic T-Shirt Subscription</em>",
-            "size": "h2",
-            "tag": "h2",
-            "alignment": "inherit",
-            "color": "",
-            "font_size_desktop": 0,
-            "font_size_mobile": 0
-          },
-          "blocks": {}
-        },
-        "text_yq3QCm": {
-          "type": "block--text",
-          "settings": {
-            "text": "<p>Join <strong>America’s #1 T-Shirt Club</strong> — where loyalty pays off.<br/></p><p><strong>Your Monthly Membership Includes:</strong></p><ul><li>One Exclusive Shirt & Sticker Delivered Monthly</li><li>Free Shipping</li><li>10% Off All Orders</li><li>Access to <a href=\"https://www.facebook.com/groups/clubgruntstyle\" target=\"_blank\" title=\"https://www.facebook.com/groups/clubgruntstyle\">Members-Only Community</a></li><li>Access to <a href=\"/collections/club-grunt-style\" target=\"_blank\" title=\"/collections/club-grunt-style\">Club-Only Products</a> & Content</li><li>Early Access to Sales & New Drops</li><li>Cancel, Skip, or Pause Anytime</li></ul><p><strong>Plus, You’re Auto-Enrolled in Rewards:</strong></p><ul><li>5% Store Credit Back on Every Purchase</li><li>Birthday Perks</li><li>One-Time Bonus: 10% Off a Silver or Gold Rewards Membership.</li></ul>",
-            "size": "body",
-            "alignment": "inherit",
-            "color": ""
-          },
-          "blocks": {}
-        },
-        "button_pjGdb4": {
-          "type": "block--button",
-          "settings": {
-            "label": "JOIN CLUB GRUNT STYLE",
-            "link": "/pages/club-grunt-style#club-grunt-join-now",
-            "open_in_new_tab": false,
-            "style": "button",
-            "width": "auto",
-            "font_size": 0,
-            "padding_y": 12,
-            "padding_x": 28,
-            "margin_y": 0,
-            "margin_x": 0,
-            "border_width": 1,
-            "border_radius": 0,
-            "custom_scheme": false,
-            "color_scheme": "scheme-1",
-            "bg": "",
-            "text_color": "",
-            "border_color": "",
-            "hover_bg": "",
-            "hover_text_color": ""
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "heading_KJiMjq",
-        "text_yq3QCm",
-        "button_pjGdb4"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".rich-text__blocks {max-width: 750px;}"
-      ],
-      "settings": {
-        "section_visibility": "small",
-        "desktop_content_position": "right",
-        "content_alignment": "left",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 12,
-        "padding_bottom": 12
-      }
-    },
-    "images_grid_EnffGY": {
-      "type": "section--media-grid",
-      "blocks": {
-        "image_gqj887": {
-          "type": "block--media-tile",
-          "disabled": true,
-          "settings": {
-            "media_image": "shopify://shop_images/Animated_Join-Page-Key-Image_600x600_V1_Acquisition_Version2.gif",
-            "collection": "",
-            "link": "",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "left",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          },
-          "blocks": {}
-        },
-        "image_NzbjVQ": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "shopify://shop_images/Join_Page_Key_Image_600x600_Club_Monthly_Tee-_OCTOBER.jpg",
-            "collection": "",
-            "link": "",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "left",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "image_gqj887",
-        "image_NzbjVQ"
-      ],
-      "disabled": true,
-      "settings": {
-        "layout": "grid",
-        "columns_desktop": 5,
-        "columns_mobile": 1,
-        "tile_ratio": "adapt",
-        "desktop_row_height": 400,
-        "mobile_row_height": 200,
-        "tile_width": "full",
-        "desktop_grid_gap": 20,
-        "mobile_grid_gap": 20,
-        "section_width": false,
-        "section_visibility": "small",
-        "content_placement": "below",
-        "card_background": "",
-        "card_padding": 0,
-        "enable_shadow": false,
-        "enable_hover_content": false,
-        "heading_badge": false,
-        "heading": "",
-        "heading_size": "h3",
-        "heading_alignment": "text-left",
-        "heading_color": "#ffffff",
-        "text_color": "#ffffff",
-        "btn_bg_color": "#ffffff",
-        "btn_text_color": "#000000",
-        "btn_hover_color": "#000000",
-        "btn_hover_text_color": "#ffffff",
-        "color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 60
-      }
-    },
     "multirow_Ni47d8": {
       "type": "multirow",
       "blocks": {
@@ -333,7 +186,7 @@
             "image": "shopify://shop_images/Split_Banner_D_980x610_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
             "caption": "T-SHIRT SUBSCRIPTION",
             "heading": "<strong>America’s #1 T-Shirt Club</strong> —",
-            "text": "<p><strong>Your Monthly Membership Includes:</strong></p><ul><li>One Exclusive Shirt & Sticker&nbsp;</li><li>Free Shipping</li><li>10% Stackable Discount</li><li>Access to <a href=\"https://www.facebook.com/groups/clubgruntstyle\" target=\"_blank\" title=\"https://www.facebook.com/groups/clubgruntstyle\">Members-Only Community</a></li><li>Access to <a href=\"/collections/club-grunt-style\" target=\"_blank\" title=\"/collections/club-grunt-style\">Club-Only Products</a>&nbsp;</li><li>Early Access to Sales & New Drops</li><li>Cancel, Skip, or Pause Anytime</li><li>One-Time Bonus: 10% Off Gold Rewards Membership</li></ul>",
+            "text": "<p><strong>Your Monthly Membership Includes:</strong></p><ul><li>One Exclusive Shirt & Sticker&nbsp;</li><li>Free Shipping</li><li>10% Stackable Discount</li><li>Access to <a href=\"https://www.facebook.com/groups/clubgruntstyle\" target=\"_blank\" title=\"https://www.facebook.com/groups/clubgruntstyle\">Members-Only Community</a></li><li>Access to <a href=\"/collections/club-grunt-style\" target=\"_blank\" title=\"/collections/club-grunt-style\">Club-Only Products</a>&nbsp;</li><li>Early Access to Sales & New Drops</li><li>Cancel, Skip, or Pause Anytime</li><li>10% Off Gold Rewards Membership</li></ul>",
             "button_label": "JOIN CLUB GRUNT STYLE",
             "button_link": "/pages/club-grunt-style#club-grunt-join-now"
           }
@@ -342,13 +195,14 @@
       "block_order": [
         "row_74YwHD"
       ],
+      "custom_css": [],
       "name": "t:sections.multirow.presets.name",
       "settings": {
         "stack_on_scroll": false,
-        "image_height": "small",
+        "image_height": "medium",
         "desktop_image_width": "medium",
         "image_layout": "alternate-left",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "text_style": "body",
         "button_style": "primary",
         "desktop_content_position": "middle",
@@ -356,8 +210,8 @@
         "mobile_content_alignment": "left",
         "section_color_scheme": "scheme-6",
         "row_color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 20,
+        "padding_bottom": 20
       }
     },
     "multi_column_x3UMT8": {
@@ -415,7 +269,7 @@
         "icon_with_text_VDMnEP"
       ],
       "custom_css": [
-        ".multicolumn-card__info h3 {color: #dac126; font-size: 20px; margin-bottom: 1rem;}",
+        ".multicolumn-card__info h3 {color: #ffcc01; font-size: 20px; margin-bottom: 1rem;}",
         ".multicolumn-card__image-wrapper img {object-fit: contain;}"
       ],
       "settings": {
@@ -431,10 +285,10 @@
         "image_position": "top",
         "card_color_scheme": "scheme-4",
         "color_scheme": "scheme-4",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 32,
-        "padding_bottom": 16
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 8,
+        "padding_bottom": 8
       }
     },
     "rich_text_fQFGNk": {
@@ -1575,8 +1429,6 @@
   "order": [
     "main",
     "images_grid_hdYKhF",
-    "rich_text_RBF9Ew",
-    "images_grid_EnffGY",
     "multirow_Ni47d8",
     "multi_column_x3UMT8",
     "rich_text_fQFGNk",
