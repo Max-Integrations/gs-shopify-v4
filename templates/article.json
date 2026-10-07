@@ -11,20 +11,20 @@
   "sections": {
     "main": {
       "type": "main-article",
-      "custom_css": [
-        ".gs-article__body {max-width: 120ch;}"
-      ],
+      "custom_css": [],
       "settings": {
         "show_image": false,
         "show_breadcrumb": true,
         "show_date": true,
         "show_author": false,
         "show_share": true,
+        "body_max_width": 120,
         "color_scheme": "scheme-4"
       }
     },
     "promoted": {
       "type": "featured-collections",
+      "disabled": true,
       "settings": {
         "section_heading": "Shop This Story",
         "heading_text_align": "center",
@@ -64,6 +64,9 @@
         "collection_cta_spacing_top_mobile": 10,
         "collection_cta_spacing_bottom_desktop": 10,
         "collection_cta_spacing_bottom_mobile": 10,
+        "heading_color": "",
+        "tab_color": "",
+        "tab_active_color": "",
         "cta_text_color": "#000000",
         "cta_text_color_hover": "#ffffff",
         "cta_background_color": "#ffffff",

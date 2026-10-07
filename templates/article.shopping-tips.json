@@ -1,62 +1,28 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-article",
       "settings": {
         "show_image": false,
+        "show_breadcrumb": true,
         "show_date": true,
         "show_author": false,
+        "show_share": true,
+        "body_max_width": 120,
         "color_scheme": "scheme-4"
       }
     },
     "featured_collections_wb6Bf6": {
       "type": "featured-collections",
-      "settings": {
-        "section_heading": "LEVEL UP YOUR LOCKER",
-        "heading_text_align": "left",
-        "collection_type": "tabs",
-        "collection_source": "manual",
-        "layout_style": "carousel",
-        "container_width": "sm",
-        "grid_image_size": "square",
-        "max_number_products_loaded": 20,
-        "number_products_per_view_desktop": "5",
-        "number_products_per_view_mobile": "2",
-        "enable_product_badges": true,
-        "enable_product_title": true,
-        "enable_product_price": true,
-        "enable_product_swatches": true,
-        "enable_product_quick_view": true,
-        "color_scheme": "scheme-4",
-        "heading_size_desktop": 30,
-        "heading_size_mobile": 28,
-        "navigation_title_size_desktop": 20,
-        "navigation_title_size_mobile": 18,
-        "cta_title_size_desktop": 18,
-        "cta_title_size_mobile": 16,
-        "section_spacing_top_desktop": 10,
-        "section_spacing_top_mobile": 10,
-        "section_spacing_bottom_desktop": 10,
-        "section_spacing_bottom_mobile": 10,
-        "heading_spacing_top_desktop": 10,
-        "heading_spacing_top_mobile": 10,
-        "heading_spacing_bottom_desktop": 10,
-        "heading_spacing_bottom_mobile": 10,
-        "collection_navigation_spacing_top_desktop": 10,
-        "collection_navigation_spacing_top_mobile": 10,
-        "collection_navigation_spacing_bottom_desktop": 10,
-        "collection_navigation_spacing_bottom_mobile": 10,
-        "collection_cta_spacing_top_desktop": 10,
-        "collection_cta_spacing_top_mobile": 10,
-        "collection_cta_spacing_bottom_desktop": 10,
-        "collection_cta_spacing_bottom_mobile": 10,
-        "cta_text_color": "#000000",
-        "cta_text_color_hover": "#000000",
-        "cta_background_color": "#ffffff",
-        "cta_background_color_hover": "#ffffff",
-        "cta_border_color": "#000000",
-        "cta_border_color_hover": "#000000"
-      },
       "blocks": {
         "collection_block_qyhMn6": {
           "type": "collection_block",
@@ -81,11 +47,59 @@
         "collection_block_qyhMn6",
         "collection_block_heUcBM"
       ],
-      "name": "Featured Collections"
+      "name": "Featured Collections",
+      "settings": {
+        "section_heading": "LEVEL UP YOUR LOCKER",
+        "heading_text_align": "left",
+        "collection_type": "tabs",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "sm",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 20,
+        "number_products_per_view_desktop": "5",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
+        "heading_size_desktop": 30,
+        "heading_size_mobile": 28,
+        "navigation_title_size_desktop": 20,
+        "navigation_title_size_mobile": 18,
+        "cta_title_size_desktop": 18,
+        "cta_title_size_mobile": 16,
+        "section_spacing_top_desktop": 10,
+        "section_spacing_top_mobile": 10,
+        "section_spacing_bottom_desktop": 10,
+        "section_spacing_bottom_mobile": 10,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "heading_color": "",
+        "tab_color": "",
+        "tab_active_color": "",
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#000000",
+        "cta_background_color": "#ffffff",
+        "cta_background_color_hover": "#ffffff",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#000000"
+      }
     },
     "blocks_rzzfrC": {
       "type": "_blocks",
-      "settings": {},
       "blocks": {
         "ai_gen_block_0bc93d4_jdxQdw": {
           "type": "ai_gen_block_0bc93d4",
@@ -129,12 +143,16 @@
       "block_order": [
         "ai_gen_block_0bc93d4_jdxQdw"
       ],
-      "name": "Trending products ticker"
+      "name": "Trending products ticker",
+      "settings": {}
     },
     "collection_carousel_dJLLLL": {
       "type": "collection-carousel",
+      "disabled": true,
+      "name": "t:sections.collection-carousel.presets.name",
       "settings": {
         "section_visibility": "always",
+        "collection_source": "manual",
         "carousel_type": "carousel",
         "scrolling_speed": 15,
         "scrolling_speed_mobile": 15,
@@ -158,9 +176,7 @@
         "bottom_space_desktop": 55,
         "top_space_mobile": 40,
         "bottom_space_mobile": 40
-      },
-      "disabled": true,
-      "name": "t:sections.collection-carousel.presets.name"
+      }
     },
     "related_posts": {
       "type": "related-posts",
@@ -185,6 +201,21 @@
     },
     "multi_column_with_rich_text_nwWGaF": {
       "type": "multicolumn",
+      "blocks": {
+        "icon_with_text_CU3GVU": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "title": "Return to Pride in Service",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_with_text_CU3GVU"
+      ],
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -195,27 +226,14 @@
         "columns_desktop": 4,
         "column_alignment": "left",
         "background_style": "none",
+        "image_position": "top",
+        "card_color_scheme": "scheme-4",
         "color_scheme": "scheme-4",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 0,
         "padding_bottom": 0
-      },
-      "blocks": {
-        "icon_with_text_CU3GVU": {
-          "type": "column",
-          "settings": {
-            "image": "",
-            "title": "Return to Pride in Service",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "icon_with_text_CU3GVU"
-      ]
+      }
     }
   },
   "order": [
