@@ -315,7 +315,7 @@
           "type": "text_scroller",
           "settings": {
             "title": "HONOR THE FALLEN",
-            "block_text_color": "#ffffff",
+            "block_text_color": "#FFFFFF",
             "block_font_size": 11,
             "block_font_weight": "400",
             "data-source": "google-sheets",
@@ -330,7 +330,7 @@
         "text_scroller_ryNFpc"
       ],
       "custom_css": [
-        ".text-scroller{background: #000;}"
+        ".text-scroller {background: #000;}"
       ],
       "name": "Text Scroller V2",
       "settings": {
