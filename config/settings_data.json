@@ -307,7 +307,21 @@
           "button": "#ab192d",
           "button_label": "#ffffff",
           "secondary_button_label": "#121212",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "heading": "#121212",
+          "link": "#121212",
+          "button_hover": "#8A1424",
+          "button_label_hover": "#FFFFFF",
+          "secondary_button": "#FFFFFF",
+          "secondary_button_hover": "#000000",
+          "secondary_button_label_hover": "#FFFFFF",
+          "input_background": "#FFFFFF",
+          "input_text": "#121212",
+          "input_border": "#E7E7E7",
+          "divider": "#E5E5E5",
+          "rating": "#9A723F",
+          "arrow_background": "#FFFFFF",
+          "arrow": "#121212"
         }
       },
       "scheme-2": {
@@ -318,7 +332,21 @@
           "button": "#121212",
           "button_label": "#ffffff",
           "secondary_button_label": "#121212",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "heading": "#121212",
+          "link": "#121212",
+          "button_hover": "#8A1424",
+          "button_label_hover": "#FFFFFF",
+          "secondary_button": "#FFFFFF",
+          "secondary_button_hover": "#000000",
+          "secondary_button_label_hover": "#FFFFFF",
+          "input_background": "#FFFFFF",
+          "input_text": "#121212",
+          "input_border": "#E7E7E7",
+          "divider": "#E5E5E5",
+          "rating": "#9A723F",
+          "arrow_background": "#FFFFFF",
+          "arrow": "#121212"
         }
       },
       "scheme-3": {
@@ -329,7 +357,21 @@
           "button": "#121212",
           "button_label": "#ffffff",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "heading": "#121212",
+          "link": "#121212",
+          "button_hover": "#8A1424",
+          "button_label_hover": "#FFFFFF",
+          "secondary_button": "#FFFFFF",
+          "secondary_button_hover": "#000000",
+          "secondary_button_label_hover": "#FFFFFF",
+          "input_background": "#FFFFFF",
+          "input_text": "#121212",
+          "input_border": "#E7E7E7",
+          "divider": "#E5E5E5",
+          "rating": "#9A723F",
+          "arrow_background": "#FFFFFF",
+          "arrow": "#121212"
         }
       },
       "scheme-4": {
@@ -340,7 +382,21 @@
           "button": "#ab192d",
           "button_label": "#ffffff",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "heading": "#121212",
+          "link": "#121212",
+          "button_hover": "#8A1424",
+          "button_label_hover": "#FFFFFF",
+          "secondary_button": "#FFFFFF",
+          "secondary_button_hover": "#000000",
+          "secondary_button_label_hover": "#FFFFFF",
+          "input_background": "#FFFFFF",
+          "input_text": "#121212",
+          "input_border": "#E7E7E7",
+          "divider": "#E5E5E5",
+          "rating": "#9A723F",
+          "arrow_background": "#FFFFFF",
+          "arrow": "#121212"
         }
       },
       "scheme-5": {
@@ -351,18 +407,46 @@
           "button": "#ffffff",
           "button_label": "#ab192d",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "heading": "#FFFFFF",
+          "link": "#121212",
+          "button_hover": "#8A1424",
+          "button_label_hover": "#FFFFFF",
+          "secondary_button": "#FFFFFF",
+          "secondary_button_hover": "#000000",
+          "secondary_button_label_hover": "#FFFFFF",
+          "input_background": "#FFFFFF",
+          "input_text": "#121212",
+          "input_border": "#E7E7E7",
+          "divider": "#E5E5E5",
+          "rating": "#9A723F",
+          "arrow_background": "#FFFFFF",
+          "arrow": "#121212"
         }
       },
       "scheme-6": {
         "settings": {
           "background": "#000000",
           "background_gradient": "",
-          "text": "#FFCA10",
+          "text": "#ffca10",
           "button": "#ffca10",
           "button_label": "#000000",
           "secondary_button_label": "#ffca10",
-          "shadow": "#121212"
+          "shadow": "#121212",
+          "heading": "#FFFFFF",
+          "link": "#FFCA10",
+          "button_hover": "#8A1424",
+          "button_label_hover": "#FFFFFF",
+          "secondary_button": "#FFFFFF",
+          "secondary_button_hover": "#000000",
+          "secondary_button_label_hover": "#FFFFFF",
+          "input_background": "#FFFFFF",
+          "input_text": "#121212",
+          "input_border": "#E7E7E7",
+          "divider": "#E5E5E5",
+          "rating": "#9A723F",
+          "arrow_background": "#FFFFFF",
+          "arrow": "#121212"
         }
       },
       "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1": {
@@ -373,7 +457,21 @@
           "button": "#000000",
           "button_label": "#ffffff",
           "secondary_button_label": "#121212",
-          "shadow": "rgba(0,0,0,0)"
+          "shadow": "rgba(0,0,0,0)",
+          "heading": "#121212",
+          "link": "#121212",
+          "button_hover": "#8A1424",
+          "button_label_hover": "#FFFFFF",
+          "secondary_button": "#FFFFFF",
+          "secondary_button_hover": "#000000",
+          "secondary_button_label_hover": "#FFFFFF",
+          "input_background": "#FFFFFF",
+          "input_text": "#121212",
+          "input_border": "#E7E7E7",
+          "divider": "#E5E5E5",
+          "rating": "#9A723F",
+          "arrow_background": "#FFFFFF",
+          "arrow": "#121212"
         }
       }
     }

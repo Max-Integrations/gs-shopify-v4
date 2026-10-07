@@ -121,24 +121,30 @@
           "type": "utility_link",
           "settings": {
             "icon": "star",
+            "behaviour": "link",
             "label": "Club Grunt Style",
-            "link": "shopify://pages/club-grunt-style"
+            "link": "shopify://pages/club-grunt-style",
+            "show_on_mobile": false
           }
         },
         "util_help": {
           "type": "utility_link",
           "settings": {
             "icon": "help",
+            "behaviour": "link",
             "label": "Help",
-            "link": "shopify://pages/contact-us"
+            "link": "shopify://pages/contact-us",
+            "show_on_mobile": false
           }
         },
         "util_stores": {
           "type": "utility_link",
           "settings": {
             "icon": "pin",
+            "behaviour": "link",
             "label": "Retail stores",
-            "link": "shopify://pages/grunt-style-retail-stores"
+            "link": "shopify://pages/grunt-style-retail-stores",
+            "show_on_mobile": false
           }
         }
       },
