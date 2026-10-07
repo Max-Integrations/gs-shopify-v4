@@ -1,34 +1,16 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "collection_carousel_qpf88E": {
       "type": "collection-carousel",
-      "settings": {
-        "section_visibility": "always",
-        "collection_source": "manual",
-        "carousel_type": "carousel",
-        "scrolling_speed": 15,
-        "scrolling_speed_mobile": 15,
-        "direction": "ltr",
-        "heading": "<strong>FEATURED COLLECTIONS</strong>",
-        "highlight_style": "underline",
-        "bg__color": "gradient",
-        "heading_size": "h3",
-        "seo_heading": "h2",
-        "heading_alignment": "text-center",
-        "enable_border": false,
-        "shape": "sharp",
-        "customshapes": "shape1",
-        "image_fit": "cover",
-        "image_style": "square",
-        "title_on_hover": false,
-        "product_count": false,
-        "color_scheme": "scheme-4",
-        "enable_gradient": false,
-        "top_space_desktop": 20,
-        "bottom_space_desktop": 15,
-        "top_space_mobile": 20,
-        "bottom_space_mobile": 15
-      },
       "blocks": {
         "collection_dmzfiW": {
           "type": "collection",
@@ -179,19 +161,37 @@
         "collection_WgHwfG",
         "collection_whPwag"
       ],
-      "name": "t:sections.collection-carousel.presets.name"
+      "name": "t:sections.collection-carousel.presets.name",
+      "settings": {
+        "section_visibility": "always",
+        "collection_source": "manual",
+        "carousel_type": "carousel",
+        "scrolling_speed": 15,
+        "scrolling_speed_mobile": 15,
+        "direction": "ltr",
+        "heading": "<strong>FEATURED COLLECTIONS</strong>",
+        "highlight_style": "underline",
+        "bg__color": "gradient",
+        "heading_size": "h3",
+        "seo_heading": "h2",
+        "heading_alignment": "text-center",
+        "enable_border": false,
+        "shape": "sharp",
+        "customshapes": "shape1",
+        "image_fit": "cover",
+        "image_style": "square",
+        "title_on_hover": false,
+        "product_count": false,
+        "color_scheme": "scheme-4",
+        "enable_gradient": false,
+        "top_space_desktop": 20,
+        "bottom_space_desktop": 15,
+        "top_space_mobile": 20,
+        "bottom_space_mobile": 15
+      }
     },
     "rich_text_GNq69f": {
       "type": "rich-text",
-      "settings": {
-        "section_visibility": "always",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 0,
-        "padding_bottom": 8
-      },
       "blocks": {
         "heading_R3thaA": {
           "type": "block--heading",
@@ -203,7 +203,8 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "text_dUbrCC": {
           "type": "block--text",
@@ -212,23 +213,55 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "heading_R3thaA",
         "text_dUbrCC"
       ],
-      "name": "t:sections.rich-text.name"
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 8
+      }
     },
     "main-collection": {
       "type": "main-collection",
+      "blocks": {
+        "product-grid": {
+          "type": "product-grid",
+          "settings": {
+            "columns_desktop": "4",
+            "columns_mobile": "2",
+            "product_card_bg_color": "#ffffff",
+            "card_content_gap": 2,
+            "card_content_height": 104,
+            "card_button_gap": 8
+          }
+        }
+      },
+      "block_order": [
+        "product-grid"
+      ],
       "settings": {
         "overlay_content_position": "text-center",
         "overlay_text": false,
         "heading_size": "h1",
         "tag": "h1",
         "show_header": false,
+        "header_style": "band",
+        "header_background": "#000000",
+        "header_text_color": "#ffffff",
         "show_description": true,
         "description_position": "below_products",
         "collection_image": false,
@@ -241,7 +274,7 @@
         "open_filtering": false,
         "open_all_filtering": false,
         "enable_sorting": true,
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
         "enable_gradient": false,
         "background_color": "#e7e7e7",
         "text_color": "#000000",
@@ -251,20 +284,7 @@
         "bottom_space_desktop": 5,
         "top_space_mobile": 5,
         "bottom_space_mobile": 5
-      },
-      "blocks": {
-        "product-grid": {
-          "type": "product-grid",
-          "settings": {
-            "columns_desktop": "4",
-            "columns_mobile": "2",
-            "product_card_bg_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "product-grid"
-      ]
+      }
     }
   },
   "order": [
