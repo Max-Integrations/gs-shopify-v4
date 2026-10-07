@@ -43,7 +43,10 @@
           "settings": {
             "columns_desktop": "4",
             "columns_mobile": "2",
-            "product_card_bg_color": "#ffffff"
+            "product_card_bg_color": "#ffffff",
+            "card_content_gap": 2,
+            "card_content_height": 104,
+            "card_button_gap": 8
           }
         },
         "card_title": {
@@ -59,7 +62,8 @@
         "card_price": {
           "type": "product-card-price",
           "settings": {
-            "product_card_price_color": "#000000"
+            "product_card_price_color": "#000000",
+            "show_percent_off": "theme"
           }
         },
         "card_swatches": {
@@ -69,9 +73,12 @@
         "card_quick_view": {
           "type": "product-card-quick-view",
           "settings": {
+            "style": "quick_view",
             "product_card_quick_view_button_text": "Quick Add",
-            "enable_quick_add": true,
-            "product_card_title_color": "#000000"
+            "button_bg": "",
+            "button_text": "",
+            "button_hover_bg": "",
+            "button_hover_text": ""
           }
         }
       },
@@ -87,10 +94,10 @@
       "custom_css": [
         ".product-percent-off {display: none;}",
         ".compare-add-button {display: none;}",
-        ".product-quickview {padding-block: 12px; margin-top: -33px;}",
+        ".product-quickview {padding-block: 12px; margin-top: -20px;}",
         ".qa-size {font-size: 11px; min-width: 10px; min-height: 18px; font-family: roboto condensed; padding: 2px; line-height: 0.21px; font-weight: 500;}",
         ".quick-add-variants {max-block-size: 150px;}",
-        ".gs-promo__content {position: absolute; bottom: 100px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6); line-height: .25;}"
+        ".gs-promo__content {position: absolute; bottom: 100px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6); line-height: 0.25;}"
       ],
       "settings": {
         "overlay_content_position": "text-center",
@@ -98,6 +105,9 @@
         "heading_size": "h1",
         "tag": "h1",
         "show_header": true,
+        "header_style": "band",
+        "header_background": "#000000",
+        "header_text_color": "#ffffff",
         "show_description": true,
         "description_position": "below_products",
         "collection_image": false,
