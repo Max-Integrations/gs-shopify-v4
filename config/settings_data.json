@@ -133,6 +133,7 @@
     "cart_color_scheme": "scheme-1",
     "customer_account_menu": "customer-account-main-menu",
     "swym_advanced_collections_wishlist_enabled": true,
+    "swym_advanced_collections_wishlist_icon_position": "bottom-right",
     "swym_header_icon_enabled": true,
     "sections": {
       "main-password-header": {
