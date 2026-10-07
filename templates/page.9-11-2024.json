@@ -168,11 +168,11 @@
         "heading_zLi4Rn": {
           "type": "block--heading",
           "settings": {
-            "text": "NEVER FORGET",
+            "text": "<strong>NEVER FORGET</strong>",
             "size": "h1",
             "tag": "h2",
             "alignment": "inherit",
-            "color": "",
+            "color": "#FFFFFF",
             "font_size_desktop": 0,
             "font_size_mobile": 0
           },
@@ -196,11 +196,11 @@
       "settings": {
         "section_visibility": "always",
         "bg_image_collection": false,
-        "bg_overlay_color": "#000000",
-        "bg_overlay_opacity": 30,
+        "bg_overlay_color": "#FFFFFF",
+        "bg_overlay_opacity": 0,
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
         "full_width": true,
         "padding_top": 8,
         "padding_bottom": 8
@@ -611,9 +611,10 @@
         "yt_short_kbgY6h",
         "yt_short_iCeBmV"
       ],
+      "disabled": true,
       "name": "Multicolumn YT Shorts",
       "settings": {
-        "mutlicolumn_yts_full_width": true,
+        "mutlicolumn_yts_full_width": false,
         "mutlicolumn_yts_top_space_desktop": 25,
         "mutlicolumn_yts_bottom_space_desktop": 50,
         "mutlicolumn_yts_top_space_mobile": 30,
