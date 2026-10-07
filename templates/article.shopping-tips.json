@@ -98,6 +98,53 @@
         "cta_border_color_hover": "#000000"
       }
     },
+    "multi_column_with_rich_text_nwWGaF": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_BLmXkG": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "icon_with_text_CU3GVU": {
+          "type": "column",
+          "settings": {
+            "icon": "pin",
+            "title": "<strong>Return to Pride in Service</strong>",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://blogs/pride-service"
+          }
+        }
+      },
+      "block_order": [
+        "column_BLmXkG",
+        "icon_with_text_CU3GVU"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "image_position": "left",
+        "card_color_scheme": "scheme-4",
+        "color_scheme": "scheme-4",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 8
+      }
+    },
     "blocks_rzzfrC": {
       "type": "_blocks",
       "blocks": {
@@ -105,16 +152,21 @@
           "type": "ai_gen_block_0bc93d4",
           "settings": {
             "product_list": [
-              "old-habits-die-hard-t-shirt-black",
-              "250th-commemorative-t-shirt-midnight-navy",
+              "blackout-death-dealer-t-shirt-black",
+              "grunt-style-blackout-flag-stretch-fit-hat",
+              "blackout-gadsden-t-shirt-black",
+              "defy-hat",
+              "strength-through-suffering-performance-hat-black",
+              "womens-blackout-beautiful-badass-v-neck-black",
+              "night-raid-before-christmas-t-shirt-black",
+              "trigger-treat-t-shirt-black",
+              "fear-the-reaper-t-shirt-dark-heather-gray",
+              "dead-men-tell-no-tales-t-shirt-black",
+              "always-say-kill-hat",
+              "always-say-kill-t-shirt-black",
               "chemical-warfare-t-shirt-black",
-              "grunt-style-ranger-panties-usa-flag",
-              "toxic-t-shirt-black",
-              "death-dealer-tank-black",
-              "steel-eagle-t-shirt-gold",
               "government-watchlists-t-shirt-midnight-navy",
-              "psy-op-t-shirt-black",
-              "womens-old-habits-die-hard-flowy-tank-black"
+              "patriot-til-death-t-shirt-black"
             ],
             "days_filter": 14,
             "show_product_image": true,
@@ -122,7 +174,7 @@
             "image_border_radius": 0,
             "show_label": true,
             "label_text": "TRENDING NOW",
-            "label_font_size": 14,
+            "label_font_size": 19,
             "label_bg_color": "#000000",
             "label_text_color": "#ffffff",
             "icon_style": "star",
@@ -198,50 +250,14 @@
         "top_space_mobile": 10,
         "bottom_space_mobile": 10
       }
-    },
-    "multi_column_with_rich_text_nwWGaF": {
-      "type": "multicolumn",
-      "blocks": {
-        "icon_with_text_CU3GVU": {
-          "type": "column",
-          "settings": {
-            "icon": "none",
-            "title": "Return to Pride in Service",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "icon_with_text_CU3GVU"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 4,
-        "column_alignment": "left",
-        "background_style": "none",
-        "image_position": "top",
-        "card_color_scheme": "scheme-4",
-        "color_scheme": "scheme-4",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
     }
   },
   "order": [
     "main",
     "featured_collections_wb6Bf6",
+    "multi_column_with_rich_text_nwWGaF",
     "blocks_rzzfrC",
     "collection_carousel_dJLLLL",
-    "related_posts",
-    "multi_column_with_rich_text_nwWGaF"
+    "related_posts"
   ]
 }
