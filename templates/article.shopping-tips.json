@@ -239,7 +239,7 @@
         "heading": "<strong>EXPLORE MORE</strong>",
         "highlight_style": "underline",
         "bg__color": "gradient",
-        "heading_size": "h3",
+        "heading_size": "h2",
         "seo_heading": "h3",
         "heading_alignment": "text-center",
         "grid_image_size": "auto",
@@ -256,8 +256,8 @@
     "main",
     "featured_collections_wb6Bf6",
     "multi_column_with_rich_text_nwWGaF",
+    "related_posts",
     "blocks_rzzfrC",
-    "collection_carousel_dJLLLL",
-    "related_posts"
+    "collection_carousel_dJLLLL"
   ]
 }
