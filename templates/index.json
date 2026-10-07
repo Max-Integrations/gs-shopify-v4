@@ -555,17 +555,6 @@
             "hover_overlay": "keep"
           },
           "blocks": {
-            "block_text_xeMBFP": {
-              "type": "block--text",
-              "name": "Text",
-              "settings": {
-                "text": "<p>OFFICIALLY LICENSED</p>",
-                "size": "body",
-                "alignment": "inherit",
-                "color": ""
-              },
-              "blocks": {}
-            },
             "heading": {
               "type": "block--heading",
               "settings": {
@@ -606,7 +595,6 @@
             }
           },
           "block_order": [
-            "block_text_xeMBFP",
             "heading",
             "block_button_GYhxW9"
           ]
@@ -627,17 +615,6 @@
             "hover_overlay": "keep"
           },
           "blocks": {
-            "block_text_RTQFdd": {
-              "type": "block--text",
-              "name": "Text",
-              "settings": {
-                "text": "<p>OFFICIALLY LICENSED</p>",
-                "size": "body",
-                "alignment": "inherit",
-                "color": ""
-              },
-              "blocks": {}
-            },
             "heading": {
               "type": "block--heading",
               "settings": {
@@ -678,7 +655,6 @@
             }
           },
           "block_order": [
-            "block_text_RTQFdd",
             "heading",
             "block_button_xcNigW"
           ]
@@ -699,17 +675,6 @@
             "hover_overlay": "keep"
           },
           "blocks": {
-            "block_text_qWcfjG": {
-              "type": "block--text",
-              "name": "Text",
-              "settings": {
-                "text": "<p>OFFICIALLY LICENSED</p>",
-                "size": "body",
-                "alignment": "inherit",
-                "color": ""
-              },
-              "blocks": {}
-            },
             "heading": {
               "type": "block--heading",
               "settings": {
@@ -750,7 +715,6 @@
             }
           },
           "block_order": [
-            "block_text_qWcfjG",
             "heading",
             "block_button_MxeTBh"
           ]
