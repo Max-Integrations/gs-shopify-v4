@@ -456,7 +456,7 @@
           "text": "#121212",
           "button": "#000000",
           "button_label": "#ffffff",
-          "secondary_button_label": "#121212",
+          "secondary_button_label": "#000000",
           "shadow": "rgba(0,0,0,0)",
           "heading": "#121212",
           "link": "#121212",
