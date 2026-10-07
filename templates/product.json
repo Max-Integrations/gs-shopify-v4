@@ -33,6 +33,7 @@
             "show_savings": true,
             "savings_style": "percent",
             "show_tax_line": false,
+            "inline_rating": false,
             "conditional_message": "<p>{{ product.metafields.custom.conditional_price_message.value }}</p>",
             "message_color": "#ab192d"
           },
@@ -234,6 +235,7 @@
           "type": "block--product-buy-buttons",
           "settings": {
             "show_quantity": true,
+            "quantity_position": "inline",
             "add_label": "Add to cart",
             "sold_out_label": "Sold out - email when available",
             "sold_out_disables": false,
@@ -357,6 +359,7 @@
         },
         "promo_banner": {
           "type": "block--product-message",
+          "disabled": true,
           "settings": {
             "text": "",
             "image": "shopify://shop_images/Promo_Menu_Banner_750x200_FW26_20_Off_GOVX.jpg",
@@ -580,7 +583,7 @@
       "custom_css": [
         ".product-percent-off {display: none;}",
         ".compare-add-button {display: none;}",
-        ".product-quickview {padding-block: 12px; margin-top: -33px;}"
+        ".product-quickview {padding-block: 12px; margin-top: -20px;}"
       ],
       "settings": {
         "section_heading": "You May Also Like",
@@ -621,9 +624,12 @@
         "collection_cta_spacing_top_mobile": 0,
         "collection_cta_spacing_bottom_desktop": 0,
         "collection_cta_spacing_bottom_mobile": 0,
+        "heading_color": "",
+        "tab_color": "",
+        "tab_active_color": "",
         "cta_text_color": "#000000",
         "cta_text_color_hover": "#ffffff",
-        "cta_background_color": "#ffffff",
+        "cta_background_color": "#AB192D",
         "cta_background_color_hover": "#000000",
         "cta_border_color": "#000000",
         "cta_border_color_hover": "#000000"
