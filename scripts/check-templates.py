@@ -32,7 +32,15 @@ def allowed(sname):
 def defs_of(sch):
     return {s['id']: s for s in sch.get('settings', []) if 'id' in s}
 
-SCHEMES = {'scheme-1', 'scheme-2', 'scheme-3', 'scheme-4', 'scheme-5', 'scheme-6'}
+def _schemes():
+    """Scheme ids defined in settings_data (the editor can add schemes with
+    generated ids), falling back to Dawn's six."""
+    try:
+        d = json.loads(re.sub(r'^\s*/\*.*?\*/\s*', '', open('config/settings_data.json').read(), flags=re.S))
+        return set(d['current']['color_schemes'].keys())
+    except Exception:
+        return {'scheme-1', 'scheme-2', 'scheme-3', 'scheme-4', 'scheme-5', 'scheme-6'}
+SCHEMES = _schemes()
 def check_settings(where, defs, settings, errs):
     for k, v in (settings or {}).items():
         d = defs.get(k)

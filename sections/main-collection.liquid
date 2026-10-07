@@ -139,8 +139,11 @@
 
   # Quick view (dialog) or quick add (sizes in the card). A template's
   # Quick View block chooses; the theme-wide default is the dialog.
+  # enable_quick_add is a value the client's collection templates carry
+  # from the GitHub-connected theme (not a setting in this schema); it
+  # means the same as style: quick_add, so it is honoured.
   assign enable_quick_add = false
-  if qv_block.settings.style == 'quick_add'
+  if qv_block.settings.style == 'quick_add' or qv_block.settings.enable_quick_add == true
     assign enable_quick_add = true
   endif
   assign quick_add_label = qv_block.settings.product_card_quick_view_button_text
