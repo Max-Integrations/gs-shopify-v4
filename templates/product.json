@@ -661,11 +661,11 @@
         "image_layout": "alternate-left",
         "heading_size": "h1",
         "text_style": "body",
-        "button_style": "secondary",
+        "button_style": "primary",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "center",
         "mobile_content_alignment": "center",
-        "section_color_scheme": "",
+        "section_color_scheme": "scheme-2",
         "row_color_scheme": "scheme-6",
         "padding_top": 36,
         "padding_bottom": 36
