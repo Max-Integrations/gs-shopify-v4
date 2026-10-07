@@ -549,8 +549,8 @@
         "badge_usa_made"
       ],
       "custom_css": [
-        ".gs-product__option-values {min-width: 20px; height: 30px;}",
-        ".gs-product__option-pill {width: 25px; height: 25px; font-size: 12px;}"
+        ".gs-product__option-values {min-width: 20px; height: 80px;}",
+        ".gs-product__option-pill {width: 30px; height: 30px; font-size: 12px;}"
       ],
       "settings": {
         "show_breadcrumb": true,
