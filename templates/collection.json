@@ -17,22 +17,22 @@
           "settings": {
             "custom_content_position": 5,
             "custom_content_page": 1,
-            "content_width_desktop": "2",
-            "content_width_mobile": "2",
-            "custom_image": "shopify://shop_images/Disruptor_Image_950x750_Club_August_Campaign.jpg",
-            "link": "",
+            "content_width_desktop": "1",
+            "content_width_mobile": "1",
+            "custom_image": "shopify://shop_images/Disruptor_Image_400x600_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
+            "link": "shopify://pages/club-grunt-style",
             "background_color": "#b3b3b3",
             "background_opacity": 0,
-            "heading": "",
-            "heading_alignment": "text-left",
+            "heading": "<strong>CLUB GRUNT STYLE</strong>",
+            "heading_alignment": "text-center",
             "heading_color": "#ffffff",
             "heading_font_family": "roboto_condensed_n7",
-            "heading_font_weight": "400",
-            "heading_font_size_desktop": 32,
-            "heading_font_size_mobile": 22,
-            "description": "",
+            "heading_font_weight": "500",
+            "heading_font_size_desktop": 18,
+            "heading_font_size_mobile": 18,
+            "description": "<em>Monthly Perks</em>",
             "desc_font_family": "roboto_condensed_n4",
-            "desc_color": "rgba(0,0,0,0)",
+            "desc_color": "#000000",
             "desc_font_weight": "400",
             "desc_font_size_desktop": 12,
             "desc_font_size_mobile": 10
@@ -70,6 +70,7 @@
           "type": "product-card-quick-view",
           "settings": {
             "product_card_quick_view_button_text": "Quick Add",
+            "enable_quick_add": true,
             "product_card_title_color": "#000000"
           }
         }
@@ -83,14 +84,22 @@
         "card_swatches",
         "card_quick_view"
       ],
+      "custom_css": [
+        ".product-percent-off {display: none;}",
+        ".compare-add-button {display: none;}",
+        ".product-quickview {padding-block: 12px; margin-top: -33px;}",
+        ".qa-size {font-size: 11px; min-width: 10px; min-height: 18px; font-family: roboto condensed; padding: 2px; line-height: 0.21px; font-weight: 500;}",
+        ".quick-add-variants {max-block-size: 150px;}",
+        ".gs-promo__content {position: absolute; bottom: 100px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6); line-height: .25;}"
+      ],
       "settings": {
         "overlay_content_position": "text-center",
-        "overlay_text": true,
+        "overlay_text": false,
         "heading_size": "h1",
         "tag": "h1",
         "show_header": true,
         "show_description": true,
-        "description_position": "on_overlay",
+        "description_position": "below_products",
         "collection_image": false,
         "banner_height_desktop": "200px",
         "banner_height_mobile": "100px",
@@ -101,16 +110,16 @@
         "open_filtering": false,
         "open_all_filtering": false,
         "enable_sorting": true,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
         "enable_gradient": false,
         "background_color": "#ffffff",
         "text_color": "#000000",
         "background_opacity_color": "#000000",
         "background_opacity": 0.4,
         "top_space_desktop": 0,
-        "bottom_space_desktop": 70,
+        "bottom_space_desktop": 5,
         "top_space_mobile": 0,
-        "bottom_space_mobile": 40
+        "bottom_space_mobile": 5
       }
     }
   },

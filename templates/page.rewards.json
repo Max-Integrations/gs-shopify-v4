@@ -1,0 +1,193 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "desktop_height": "300px",
+        "mobile_height": "200px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0.6,
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "multirow_hVc6Jz": {
+      "type": "multirow",
+      "blocks": {
+        "row_Uk8a9P": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/GS-rewards-750X750.png",
+            "caption": "Get 5-20% Back on Every Order.",
+            "heading": "Go GOLD for up to 20% back in store credit + free shipping on every order.&nbsp;",
+            "text": "<p>Smart patriots get rewarded every time.<br/>Spend $60? That’s $3–$12 back in rewards — not once, but every time you shop. Add free shipping, and it pays to stick with Grunt Style.</p>",
+            "button_label": "JOIN & EARN",
+            "button_link": "https://www.gruntstyle.com/community/membership"
+          }
+        }
+      },
+      "block_order": [
+        "row_Uk8a9P"
+      ],
+      "name": "t:sections.multirow.presets.name",
+      "settings": {
+        "stack_on_scroll": false,
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-left",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "primary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_qK4CNH": {
+      "type": "rich-text",
+      "blocks": {
+        "block_text_ywVraR": {
+          "type": "block--text",
+          "name": "Text",
+          "settings": {
+            "text": "<p><strong>Thousands of patriots are getting paid to shop. Why aren’t you?</strong></p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          },
+          "blocks": {}
+        },
+        "block_heading_4yKPzp": {
+          "type": "block--heading",
+          "settings": {
+            "text": "<strong>&nbsp;PICK YOUR TIER. STACK YOUR REWARDS.&nbsp;</strong>",
+            "size": "h1",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          },
+          "blocks": {}
+        },
+        "block_text_CzXyNi": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Start free. Upgrade anytime to get better perks, including more credits and free shipping.</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "block_text_ywVraR",
+        "block_heading_4yKPzp",
+        "block_text_CzXyNi"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 4,
+        "padding_bottom": 4
+      }
+    },
+    "multicolumn_APr66J": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_FPyyNj": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/REWARD_MEMBER_TIER.avif",
+            "title": "<strong>MEMBER</strong>",
+            "text": "<ul><li>5% Back Every Order</li><li>Birthday Ammo $5</li><li>Early Access&nbsp;Intel</li><li>Exclusive Discounts & Offers</li></ul>",
+            "link_label": "ENLIST NOW FREE",
+            "link": "https://account.gruntstyle.com/"
+          }
+        },
+        "column_W7imyd": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/Artboard_1.png",
+            "title": "<strong>GOLD</strong>",
+            "text": "<ul><li>20% Back Every Order</li><li>Birthday Ammo $20</li><li>Free Shipping on Every Order</li><li>Free Gift When You Enlist</li><li>Early Access Intel</li><li>Exclusive Discounts & Offers</li></ul>",
+            "link_label": "ENLIST NOW $50/YR",
+            "link": "shopify://products/inveterate-subscription"
+          }
+        },
+        "column_wFzyRh": {
+          "type": "column",
+          "settings": {
+            "icon": "truck",
+            "image": "shopify://shop_images/Join_Page_Key_Image_600x600_Club_Monthly_Tee-November.jpg",
+            "title": "<strong>CLUB GRUNT STYLE</strong>",
+            "text": "<ul><li>10% Stackable Discount</li><li>Exclusive Monthly T-Shirt + Sticker</li><li>Free Shipping on Every Order</li><li>Early Access Intel</li><li>Access to Members-Only Community</li><li>Access to Exclusive Club Only Product</li><li>10% Off Gold Membership</li></ul>",
+            "link_label": "ENLIST NOW $25/MTH",
+            "link": "shopify://pages/club-grunt-style"
+          }
+        }
+      },
+      "block_order": [
+        "column_FPyyNj",
+        "column_W7imyd",
+        "column_wFzyRh"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "image_position": "top",
+        "card_color_scheme": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "multirow_hVc6Jz",
+    "rich_text_qK4CNH",
+    "multicolumn_APr66J"
+  ]
+}

@@ -381,6 +381,7 @@
           "type": "product-card-quick-view",
           "settings": {
             "product_card_quick_view_button_text": "Quick Add",
+            "enable_quick_add": true,
             "product_card_title_color": "#000000"
           }
         }
@@ -394,14 +395,22 @@
         "card_swatches",
         "card_quick_view"
       ],
+      "custom_css": [
+        ".product-percent-off {display: none;}",
+        ".compare-add-button {display: none;}",
+        ".product-quickview {padding-block: 12px; margin-top: -33px;}",
+        ".qa-size {font-size: 11px; min-width: 10px; min-height: 18px; font-family: roboto condensed; padding: 2px; line-height: 0.21px; font-weight: 500;}",
+        ".quick-add-variants {max-block-size: 150px;}",
+        ".gs-promo__content {position: absolute; bottom: 100px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6); line-height: 0.25;}"
+      ],
       "settings": {
         "overlay_content_position": "text-center",
-        "overlay_text": true,
+        "overlay_text": false,
         "heading_size": "h1",
         "tag": "h1",
         "show_header": true,
         "show_description": true,
-        "description_position": "on_overlay",
+        "description_position": "below_products",
         "collection_image": false,
         "banner_height_desktop": "200px",
         "banner_height_mobile": "100px",

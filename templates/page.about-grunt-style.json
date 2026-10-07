@@ -1,16 +1,42 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-page",
       "disabled": true,
-      "settings": {}
+      "settings": {
+        "desktop_height": "300px",
+        "mobile_height": "200px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0.6,
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
     },
     "hero_banner_secondary_gWCzbB": {
       "type": "image-banner",
       "settings": {
         "image": "shopify://shop_images/Main_Hero.jpg",
         "image_overlay_opacity": 0,
-        "image_height": "adapt",
+        "image_height": "small",
         "image_behavior": "none",
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
@@ -31,16 +57,17 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "text_VpE4G3"
       ],
       "custom_css": [
-        ".rich-text__blocks { max-width: 100%; }",
-        ".gs-block-text { border-left: 8px solid #5f5e3b; padding-left: 20px; padding-top: 20px; }",
-        ".gs-block-text p { color: #ffffff; font-size: 22px; }"
+        ".rich-text__blocks {max-width: 100%;}",
+        ".gs-block-text {border-left: 8px solid #5f5e3b; padding-left: 20px; padding-top: 20px;}",
+        ".gs-block-text p {color: #ffffff; font-size: 22px;}"
       ],
       "settings": {
         "section_visibility": "always",
@@ -58,6 +85,7 @@
         "icon_with_text_cDnEn4": {
           "type": "column",
           "settings": {
+            "icon": "none",
             "image": "shopify://shop_images/Mission_1.png",
             "title": "Mission",
             "text": "<p>To be the leader instilling Pride in SELF, in our MILITARY, and in our COUNTRY.</p>",
@@ -68,6 +96,7 @@
         "icon_with_text_NWFymX": {
           "type": "column",
           "settings": {
+            "icon": "none",
             "image": "shopify://shop_images/Vission_1.png",
             "title": "Vision",
             "text": "<p>Every home in America will KNOW, CELEBRATE, and DEFEND the freedoms that we have as Americans for the next generation.</p>",
@@ -78,6 +107,7 @@
         "icon_with_text_iUgzn7": {
           "type": "column",
           "settings": {
+            "icon": "none",
             "image": "shopify://shop_images/Values_1.png",
             "title": "Values",
             "text": "<p>MISSION first, be a TEAM, and have a great ATTITUDE to win.</p>",
@@ -92,9 +122,9 @@
         "icon_with_text_iUgzn7"
       ],
       "custom_css": [
-        ".multicolumn { background: linear-gradient(180deg, #000000 40%, #ffffff 40%); }",
-        ".multicolumn-card__image-wrapper { max-width: 90%; margin: 0 auto; }",
-        ".multicolumn-card__info h3 { font-size: calc(var(--font-heading-scale) * 2.4rem); }"
+        ".multicolumn {background: linear-gradient(180deg, #000000 40%, #ffffff 40%);}",
+        ".multicolumn-card__image-wrapper {max-width: 90%; margin: 0 auto;}",
+        ".multicolumn-card__info h3 {font-size: calc(var(--font-heading-scale) * 2.4rem);}"
       ],
       "settings": {
         "title": "",
@@ -106,6 +136,8 @@
         "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "none",
+        "image_position": "top",
+        "card_color_scheme": "",
         "color_scheme": "scheme-1",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
@@ -123,17 +155,18 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "text_8Dj8WR"
       ],
       "custom_css": [
-        ".rich-text { background: #5e5c39; }",
-        ".rich-text__blocks { max-width: 100%; }",
-        ".gs-block-text { padding: 20px 0 0 20px; }",
-        ".gs-block-text p { color: #ffffff; font-size: 22px; }"
+        ".rich-text {background: #5e5c39;}",
+        ".rich-text__blocks {max-width: 100%;}",
+        ".gs-block-text {padding: 20px 0 0 20px;}",
+        ".gs-block-text p {color: #ffffff; font-size: 22px;}"
       ],
       "settings": {
         "section_visibility": "always",
@@ -188,9 +221,9 @@
         "image_with_text_b7LYKk"
       ],
       "custom_css": [
-        ".image-with-text__heading { color: #5f5e3b; }",
-        ".image-with-text__media img { object-fit: contain; }",
-        ".button { --color-button: 95, 94, 59; --color-button-text: 255, 255, 255; }"
+        ".image-with-text__heading {color: #5f5e3b;}",
+        ".image-with-text__media img {object-fit: contain;}",
+        ".button {--color-button: 95, 94, 59; --color-button-text: 255, 255, 255;}"
       ],
       "settings": {
         "stack_on_scroll": true,
@@ -238,7 +271,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -271,7 +305,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -304,7 +339,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -337,7 +373,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -370,7 +407,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -403,7 +441,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -436,7 +475,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -469,7 +509,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -502,7 +543,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -535,7 +577,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -568,7 +611,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -601,7 +645,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -634,7 +679,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -699,17 +745,18 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "text_9Wb0UT"
       ],
       "custom_css": [
-        ".rich-text { background: #5e5c39; }",
-        ".rich-text__blocks { max-width: 100%; }",
-        ".gs-block-text { padding: 20px 0 0 20px; }",
-        ".gs-block-text p { color: #ffffff; font-size: 22px; }"
+        ".rich-text {background: #5e5c39;}",
+        ".rich-text__blocks {max-width: 100%;}",
+        ".gs-block-text {padding: 20px 0 0 20px;}",
+        ".gs-block-text p {color: #ffffff; font-size: 22px;}"
       ],
       "settings": {
         "section_visibility": "always",
@@ -752,8 +799,8 @@
         "image_with_text_kr8aca"
       ],
       "custom_css": [
-        ".image-with-text__media img { object-fit: contain; }",
-        ".button { --color-button: 255, 255, 255; --color-button-text: 0, 0, 0; }"
+        ".image-with-text__media img {object-fit: contain;}",
+        ".button {--color-button: 255, 255, 255; --color-button-text: 0, 0, 0;}"
       ],
       "settings": {
         "stack_on_scroll": true,
@@ -779,7 +826,6 @@
           "type": "column",
           "settings": {
             "icon": "none",
-            "image": "",
             "title": "RETAIL",
             "text": "<p>We are THE destinations that represents the power of the Grunt Style Brand; bringing to life the Mission, Vision, Values with authentic and genuine experiences.</p><p><strong>VISIT OUR LOCATIONS</strong></p><p><a href=\"/pages/outlet-shoppes-at-atlanta-retail-store\">Atlanta, GA</a> &middot; <a href=\"/pages/branson-tanger-outlet-retail-store\">Branson, MO</a> &middot; <a href=\"/pages/grunt-style-broadway-retail-store\">Broadway, San Antonio, TX</a> &middot; <a href=\"/pages/phoenix-premium-outlets-retail-store\">Chandler, AZ</a> &middot; <a href=\"/pages/destin-commons-retail-store\">Destin, FL</a> &middot; <a href=\"/pages/outlet-shoppes-at-el-paso-retail-store\">El Paso, TX</a> &middot; <a href=\"/pages/las-vegas-south-premium-outlets-retail-store\">Las Vegas, NV</a> &middot; <a href=\"/pages/tampa-premium-outlet-retail-store\">Lutz, FL</a> &middot; <a href=\"/pages/myrtle-beach-retail-store\">Myrtle Beach, SC</a> &middot; <a href=\"/pages/opry-mills-retail-store\">Nashville, TN</a> &middot; <a href=\"/pages/grunt-style-norfolk-retail-store\">Norfolk, VA</a> &middot; <a href=\"/pages/grunt-style-sevierville-store\">Sevierville, TN</a> &middot; <a href=\"/pages/tulsa-premium-outlet-retail-store\">Tulsa, OK</a></p>",
             "link_label": "",
@@ -801,7 +847,6 @@
           "type": "column",
           "settings": {
             "icon": "none",
-            "image": "",
             "title": "GRUNT STYLE REWARDS",
             "text": "<p><em>5-20% BACK ON EVERY ORDER.</em></p><p>Smart patriots get rewarded every time. Spend $60? That's up to $12 back in rewards, not once, but every time you shop. Add free shipping, birthday perks, and it pays to stick with Grunt Style.</p>",
             "link_label": "JOIN REWARDS NOW",
@@ -832,129 +877,6 @@
         "padding_top": 48,
         "padding_bottom": 48
       }
-    },
-    "logo_list_kDiWJU": {
-      "type": "section--media-grid",
-      "blocks": {
-        "logo_QMCtw9": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "shopify://shop_images/about-us-social-content-american-grit.png",
-            "collection": "",
-            "link": "https://americangrit.com/",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          }
-        },
-        "logo_pkjzf8": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "shopify://shop_images/about-us-social-content-full-gruntle.png",
-            "collection": "",
-            "link": "https://open.spotify.com/show/5pW9rjWSXGvdrihzhjLbnB",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          }
-        },
-        "logo_rUYJwg": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "shopify://shop_images/about-us-social-content-youtube-white-full.jpg",
-            "collection": "",
-            "link": "https://www.youtube.com/c/GruntStyle1776",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          }
-        },
-        "logo_PwTw87": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "shopify://shop_images/about-us-social-content-tik-tok-full.png",
-            "collection": "",
-            "link": "https://www.tiktok.com/@gruntstyle_official?lang=en",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          }
-        },
-        "logo_GeBQTX": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "shopify://shop_images/about-us-social-content-twitch-full.jpg",
-            "collection": "",
-            "link": "https://www.twitch.tv/gruntstyle_official",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          }
-        }
-      },
-      "block_order": [
-        "logo_QMCtw9",
-        "logo_pkjzf8",
-        "logo_rUYJwg",
-        "logo_PwTw87",
-        "logo_GeBQTX"
-      ],
-      "settings": {
-        "layout": "grid",
-        "columns_desktop": 5,
-        "columns_mobile": 2,
-        "tile_ratio": "square",
-        "desktop_row_height": 400,
-        "mobile_row_height": 200,
-        "tile_width": "half",
-        "desktop_grid_gap": 20,
-        "mobile_grid_gap": 20,
-        "section_width": false,
-        "section_visibility": "always",
-        "content_placement": "below",
-        "card_background": "#000000",
-        "card_padding": 10,
-        "enable_shadow": true,
-        "enable_hover_content": false,
-        "heading_badge": false,
-        "heading": "Check Out Our Content!",
-        "heading_size": "h1",
-        "heading_alignment": "text-center",
-        "heading_color": "#ffffff",
-        "text_color": "#ffffff",
-        "btn_bg_color": "#ffffff",
-        "btn_text_color": "#000000",
-        "btn_hover_color": "#000000",
-        "btn_hover_text_color": "#ffffff",
-        "color_scheme": "scheme-1",
-        "padding_top": 32,
-        "padding_bottom": 32
-      }
     }
   },
   "order": [
@@ -967,7 +889,6 @@
     "stories_single_image_QGbgQJ",
     "rich_text_aYe2m7",
     "image_with_text_carousel_aEx8NA",
-    "about-section-5",
-    "logo_list_kDiWJU"
+    "about-section-5"
   ]
 }
