@@ -274,7 +274,7 @@
           "type": "block--custom-liquid",
           "name": "Custom Liquid",
           "settings": {
-            "custom_liquid": "{%- assign cashback_percent = 0.20 -%}\n{%- assign cashback_per_unit = product.price | times: cashback_percent -%}\n{%- assign formatted_cashback = cashback_per_unit | money -%}\n\n<p id=\"cashback-display\"\n   data-cashback-percent=\"{{ cashback_percent}}\"\n   style=\"color: #002F6E; font-weight: bold; font-size: 0.89em; margin-top: 3px;\">\n  Rewards Members Can Earn Up To {{ formatted_cashback}} For Their Next Purchase! <a href='https://www.gruntstyle.com/community/membership' style=\"text-decoration: underline;\"> | Join Now </a>\n</p>"
+            "custom_liquid": "{%- assign cashback_percent = 0.20 -%}\n{%- assign cashback_per_unit = product.price | times: cashback_percent -%}\n{%- assign formatted_cashback = cashback_per_unit | money -%}\n\n<p id=\"cashback-display\"\n   data-cashback-percent=\"{{ cashback_percent}}\"\n   style=\"color: #002F6E; font-weight: bold; font-size: 11px; margin-top: 3px;\">\n  Rewards Members Can Earn Up To {{ formatted_cashback}} For Their Next Purchase! <a href='https://www.gruntstyle.com/community/membership' style=\"text-decoration: underline; color: #AB192D\">|Join Now </a>\n</p>"
           },
           "blocks": {}
         },
@@ -629,7 +629,7 @@
         "tab_active_color": "",
         "cta_text_color": "#000000",
         "cta_text_color_hover": "#ffffff",
-        "cta_background_color": "#AB192D",
+        "cta_background_color": "#ab192d",
         "cta_background_color_hover": "#000000",
         "cta_border_color": "#000000",
         "cta_border_color_hover": "#000000"
