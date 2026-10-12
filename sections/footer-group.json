@@ -40,7 +40,7 @@
           "type": "newsletter",
           "settings": {
             "enable_newsletter": true,
-            "heading": "Subscribe To Our Emails",
+            "heading": "",
             "placeholder_text": "Enter email"
           }
         },
