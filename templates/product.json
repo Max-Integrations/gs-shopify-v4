@@ -594,7 +594,7 @@
         "collection_source": "manual",
         "layout_style": "carousel",
         "container_width": "md",
-        "grid_image_size": "square",
+        "grid_image_size": "auto",
         "max_number_products_loaded": 10,
         "number_products_per_view_desktop": "4",
         "number_products_per_view_mobile": "2",
