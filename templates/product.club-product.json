@@ -67,8 +67,9 @@
         },
         "richtext_1": {
           "type": "block--product-message",
+          "name": "Preorder Message",
           "settings": {
-            "text": "<p>{{ product.metafields.custom.limited_custom_product_message.value }}</p>",
+            "text": "<p><strong>{{ product.metafields.custom.limited_custom_product_message.value }}</strong></p>",
             "image_link": "",
             "product_tags": "",
             "exclude_tags": "",
