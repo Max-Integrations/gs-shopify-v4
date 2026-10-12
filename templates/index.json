@@ -163,6 +163,9 @@
         "value_pLh3cY",
         "value_eUNfAc"
       ],
+      "custom_css": [
+        "@media screen and (max-width: 768px) {.gs-value-props__list {display: inline; padding-block: 2px; }}"
+      ],
       "name": "Value props",
       "settings": {
         "bg_color": "#000000",
@@ -732,7 +735,7 @@
         "columns_mobile": 1,
         "tile_ratio": "fixed",
         "desktop_row_height": 350,
-        "mobile_row_height": 250,
+        "mobile_row_height": 200,
         "tile_width": "full",
         "desktop_grid_gap": 5,
         "mobile_grid_gap": 5,
@@ -912,7 +915,7 @@
         "image": "shopify://shop_images/Split_Banner_D_980x610_V2_FW26_Army_vs_Navy.jpg",
         "image_mobile": "shopify://shop_images/Split_Banner_M_750x750_V2_FW26_Army_vs_Navy.jpg",
         "product_highlight_image_heading": "ARMY VS NAVY",
-        "product_highlight_image_heading_color": "#FFFFFF",
+        "product_highlight_image_heading_color": "#ffffff",
         "product_highlight_image_heading_font_size_desktop": 38,
         "product_highlight_image_heading_font_size_mobile": 28,
         "product_highlight_image_spacing_desktop": 20,
