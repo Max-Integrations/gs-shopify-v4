@@ -161,7 +161,7 @@
           "settings": {
             "heading": "IMPORTANT REMINDERS",
             "source": "text",
-            "text": "",
+            "text": "<p><strong>Important things to note for your Mystery Tee so you're not TOO surprised:</strong></p><ul><li>This item is not eligible for discounts.</li><li>There are a limited number of designs in the mystery bin at any given time. If you order two or more, you may receive duplicates.</li><li><em><strong>Your shirts may be a discontinued design or a unique, one of a kind, shirt that just barely missed our high standards due to the FNG</strong></em></li><li>You can receive anything we've ever made, including holiday-themed tees, discontinued tees, or never released graphics. There is no guarantee of what you are going to be receiving. The exception is when you buy our basics mystery tee, this is no graphic and just a basic tee with our logo in possibly discontinued colors.</li><li>WARNING: Due to this shirt being a mystery, the material is unknown. IF you have any allergies to certain fabrics do not purchase this shirt.&nbsp;</li><li><span style=\"text-decoration:underline\">At this cheap price, no other discounts will apply.&nbsp;</span>We have to keep the lights on!</li></ul><p><em><strong>Shop the&nbsp;</strong></em><a href=\"https://www.gruntstyle.com/collections/mystery-collection\" title=\"Mystery Item Collection\"><em><strong>Full Mystery Collection</strong></em></a><em><strong>&nbsp;Now!</strong></em></p>",
             "page": "",
             "features_heading": "",
             "video_url": "",
@@ -319,8 +319,6 @@
         "badge_usa_made"
       ],
       "custom_css": [
-        ".gs-product__option-values {min-width: 10px; height: 55px;}",
-        ".gs-product__option-pill {width: 10px; height: 25px; font-size: 12px;}",
         ".gs-product__option-values {display: flex; flex-wrap: wrap; gap: 4px;}",
         ".gs-product__title {margin-bottom: -10px;}",
         ".klaviyo-star-rating-widget {margin-top: -8px; margin-bottom: -10px;}",
