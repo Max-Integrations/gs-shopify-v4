@@ -12,6 +12,9 @@
 
   Native <dialog> gives focus trapping, Escape to close, an inert
   background and correct semantics for free. v3 hand-built its modal.
+  Once the content lands, focus moves to the dialog body (tabindex -1),
+  not to the first link: focusing the title link drew a focus box around
+  the title on open.
 
   Load once, globally.
   ==================================================================
@@ -65,6 +68,7 @@
     var body = document.createElement('div');
     body.className = 'gs-qv-dialog__body';
     body.setAttribute('data-qv-body', '');
+    body.setAttribute('tabindex', '-1');
 
     dialog.appendChild(closeBtn);
     dialog.appendChild(body);
@@ -118,8 +122,7 @@
         body.innerHTML = '';
         body.appendChild(content);
 
-        var focusable = body.querySelector('a, button, input');
-        if (focusable) focusable.focus();
+        body.focus({ preventScroll: true });
       })
       .catch(function (err) {
         console.error('[gs-quick-view] ' + err.message);

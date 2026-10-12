@@ -85,26 +85,39 @@
   padding: 1.5rem;
 }
 
-.gs-qv__vendor {
-  margin: 0;
-  font-size: var(--xsmallText);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  opacity: 0.6;
-}
-
+/* Title. Sized down on phones so most names fit the 390px dialog on one
+   line; long ones wrap tight. The link never shows a focus ring: the
+   dialog used to focus it on open, which drew Dawn's focus-visible box
+   around the title (the "title in a square" client note). */
 .gs-qv__title {
   margin: 0;
   font-family: var(--headingFont);
-  font-size: var(--largeText);
+  font-size: var(--mediumText);
   font-weight: 700;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   line-height: 1.15;
+  overflow-wrap: anywhere;
 }
 
 .gs-qv__title a {
   color: inherit;
   text-decoration: none;
+}
+
+.gs-qv__title a:focus,
+.gs-qv-dialog__body:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+/* Shipping line: PreOrder Message metafield or the theme fallback. */
+.gs-qv__shipping {
+  margin: 0;
+  font-size: var(--smallText);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.3;
 }
 
 .gs-qv__title a:hover {
@@ -233,6 +246,10 @@
 }
 
 @media screen and (min-width: 750px) {
+  .gs-qv__title {
+    font-size: var(--largeText);
+  }
+
   .gs-qv {
     grid-template-columns: 45% 55%;
   }

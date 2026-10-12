@@ -128,6 +128,28 @@
   pointer-events: none;
 }
 
+/* Rotating badges (theme settings > Badges > "Rotate badges one at a
+   time"). gs-badge-rotator.js adds .is-rotating once it has counted two
+   or more badges: every badge then shares one grid cell and only the
+   .is-active one is visible, so the outgoing badge fades out while the
+   incoming one fades in. A single badge, no JS, or a reduced-motion
+   preference keeps the flex row above. */
+.product-card-badges.is-rotating {
+  display: grid;
+  justify-content: start;
+}
+
+.product-card-badges.is-rotating > .product-badge {
+  grid-area: 1 / 1;
+  justify-self: start;
+  opacity: 0;
+  transition: opacity var(--gs-badge-fade, 400ms) ease;
+}
+
+.product-card-badges.is-rotating > .product-badge.is-active {
+  opacity: 1;
+}
+
 .product-holiday-badge {
   position: absolute;
   top: 10px;

@@ -77,14 +77,18 @@
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* ---- Row 1 ---- */
+/* ---- Row 1 ----
+   Only the vertical padding is set here so .page-width keeps supplying
+   the side gutters on mobile; `padding: 10px 0` used to zero them, which
+   put the cart icon flush against the screen edge and clipped its count
+   bubble. Desktop (990px+) sets its own padding below. */
 .gs-header__main-inner {
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-areas: 'burger logo icons';
   align-items: center;
   gap: 12px;
-  padding: 10px 0;
+  padding-block: 10px;
 }
 
 .gs-header__burger {
@@ -236,6 +240,13 @@
   position: relative;
 }
 
+/* Glyph size matches the live v3 header (custom-theme-styles.css sizes
+   the ada / contact / retail / account / cart glyphs at 26px). */
+.gs-header__icon > svg {
+  width: 26px;
+  height: 26px;
+}
+
 .gs-header__icon:hover {
   color: var(--gs-header-hover, #e7e7e7);
 }
@@ -284,8 +295,15 @@
   color: var(--gs-header-icon, #ffffff) !important;
 }
 
-.gs-header__icons .gs-header__icon--desktop.acsb-trigger {
-  display: none !important;
+/* The accessiBe override above forces display: inline-flex, which would
+   also show a desktop-only accessibility button on phones. Hide that
+   combination on mobile ONLY. This rule used to be unconditional, so
+   turning off "Show on mobile" on the block removed the icon at every
+   width (the 990px rule below can't beat an !important). */
+@media screen and (max-width: 989px) {
+  .gs-header__icons .gs-header__icon--desktop.acsb-trigger {
+    display: none !important;
+  }
 }
 
 @media screen and (min-width: 990px) {
@@ -370,17 +388,21 @@
   }
 }
 
+/* Cart count: same geometry as live v3 (.cart-count 16px circle, 11px
+   semibold, pulled up to the icon's top-right corner, brand red). The
+   colour comes from the header section's "Cart count background". */
 .gs-header__cart-count {
   position: absolute;
-  top: 2px;
-  right: 2px;
+  top: -2px;
+  right: -3px;
   min-width: 16px;
   height: 16px;
   padding: 0 4px;
   border-radius: 8px;
-  background-color: var(--gs-cart-count-bg, #5c5c5c);
+  background-color: var(--gs-cart-count-bg, #ab192d);
   color: var(--gs-cart-count-text, #ffffff);
-  font-size: 10px;
+  font-size: 11px;
+  font-weight: 600;
   line-height: 16px;
   text-align: center;
 }

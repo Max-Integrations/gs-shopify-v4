@@ -122,6 +122,9 @@
         if (typeof window.gsSwatchScrollerRefresh === 'function') {
           window.gsSwatchScrollerRefresh();
         }
+        if (typeof window.gsBadgeRotatorRefresh === 'function') {
+          window.gsBadgeRotatorRefresh();
+        }
       })
       .catch(function (err) {
         // Navigate rather than leave stale results on screen.
@@ -302,6 +305,9 @@
 
         if (typeof window.gsSwatchScrollerRefresh === 'function') {
           window.gsSwatchScrollerRefresh();
+        }
+        if (typeof window.gsBadgeRotatorRefresh === 'function') {
+          window.gsBadgeRotatorRefresh();
         }
       })
       .catch(function (err) {

@@ -500,6 +500,14 @@
     <script src="{{ 'gs-slideshow.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'gs-marquee.js' | asset_url }}" defer="defer"></script>
 
+    {% comment %}
+      Rotates product-card badges one at a time (theme settings > Badges).
+      Loaded here, not from gs-card-product, for the de-dup reason above.
+    {% endcomment %}
+    {%- if settings.badge_rotate -%}
+      <script src="{{ 'gs-badge-rotator.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
     {%- if settings.enable_accessibe -%}
       {%- comment -%}
         accessiBe, as on the live site (v3 theme.js loadAccessibe). The

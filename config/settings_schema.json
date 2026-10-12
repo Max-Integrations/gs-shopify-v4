@@ -1836,6 +1836,13 @@
         ]
       },
       {
+        "type": "text",
+        "id": "quickview_shipping_fallback",
+        "label": "Quick add shipping line (fallback)",
+        "info": "Shown in the quick add dialog when the product has no PreOrder Message metafield (custom.limited_custom_product_message). Leave empty to show nothing.",
+        "default": "Ships in 5-7 business days"
+      },
+      {
         "type": "color",
         "id": "card_button_bg",
         "label": "Button background",
@@ -1961,6 +1968,33 @@
       {
         "type": "header",
         "content": "Badges"
+      },
+      {
+        "type": "checkbox",
+        "id": "badge_rotate",
+        "label": "Rotate badges one at a time",
+        "info": "When a card has more than one badge, show them one at a time with a cross-fade. Off shows them side by side. Visitors who prefer reduced motion always see them side by side.",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "badge_rotate_interval",
+        "label": "Time each badge stays visible",
+        "min": 2,
+        "max": 10,
+        "step": 0.5,
+        "unit": "s",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "badge_rotate_fade",
+        "label": "Fade duration",
+        "min": 100,
+        "max": 1000,
+        "step": 50,
+        "unit": "ms",
+        "default": 400
       },
       {
         "type": "checkbox",

@@ -62,10 +62,11 @@
   </div>
 
   <div class="gs-qv__info">
-    {%- if product.vendor != blank -%}
-      <p class="gs-qv__vendor">{{ product.vendor }}</p>
-    {%- endif -%}
-
+    {%- comment -%}
+      No vendor line: on this store the vendor field holds internal
+      groupings ("presale", "Womens Tees") that mean nothing to the
+      customer (2026-10 client review).
+    {%- endcomment -%}
     <h2 class="gs-qv__title">
       <a href="{{ product.url }}">{{ product.title }}</a>
     </h2>
@@ -84,9 +85,50 @@
               {{ option.name }}
               <span data-qv-selected="{{ option.position }}">{{ option.selected_value }}</span>
             </legend>
+            {%- liquid
+              # Size pills show letter codes (S, M, L, XL, 2XL...) with the
+              # full value kept on the radio, the legend and the title
+              # attribute. Any value not in the map ("One Size", "32x30")
+              # and any non-size option print unchanged.
+              assign option_name_lc = option.name | downcase
+              assign is_size_option = false
+              if option_name_lc contains 'size'
+                assign is_size_option = true
+              endif
+            -%}
             <div class="gs-qv__option-values">
               {%- for value in option.values -%}
                 {%- assign input_id = 'GsQvOption-' | append: product.id | append: '-' | append: option.position | append: '-' | append: forloop.index -%}
+                {%- liquid
+                  assign short_value = value
+                  if is_size_option
+                    assign size_key = value | downcase | remove: ' ' | remove: '-' | remove: '_'
+                    case size_key
+                      when 'xxsmall', '2xsmall', 'xxs', '2xs'
+                        assign short_value = '2XS'
+                      when 'xsmall', 'extrasmall', 'xs'
+                        assign short_value = 'XS'
+                      when 'small', 's'
+                        assign short_value = 'S'
+                      when 'medium', 'm'
+                        assign short_value = 'M'
+                      when 'large', 'l'
+                        assign short_value = 'L'
+                      when 'xlarge', 'extralarge', 'xl'
+                        assign short_value = 'XL'
+                      when 'xxlarge', '2xlarge', 'xxl', '2xl'
+                        assign short_value = '2XL'
+                      when 'xxxlarge', '3xlarge', 'xxxl', '3xl'
+                        assign short_value = '3XL'
+                      when 'xxxxlarge', '4xlarge', 'xxxxl', '4xl'
+                        assign short_value = '4XL'
+                      when '5xlarge', '5xl'
+                        assign short_value = '5XL'
+                      when '6xlarge', '6xl'
+                        assign short_value = '6XL'
+                    endcase
+                  endif
+                -%}
                 <input
                   type="radio"
                   class="gs-qv__option-input"
@@ -99,8 +141,9 @@
                 <label
                   class="gs-qv__option-label{% unless value.available %} is-unavailable{% endunless %}"
                   for="{{ input_id }}"
+                  title="{{ value | escape }}"
                 >
-                  {{- value -}}
+                  {{- short_value -}}
                 </label>
               {%- endfor -%}
             </div>
@@ -108,6 +151,23 @@
         {%- endfor -%}
       </div>
     {%- endunless -%}
+
+    {%- comment -%}
+      Shipping line: the product-level PreOrder Message metafield the PDP
+      shows ("This Item is Ready To Ship."), or the theme-setting fallback
+      when the product has none. The delivery-date estimate on the PDP is
+      the Track by Loop app block, which cannot render in a standalone
+      section, so it is not repeated here.
+    {%- endcomment -%}
+    {%- liquid
+      assign ship_msg = product.metafields.custom.limited_custom_product_message.value | strip_html | strip
+      if ship_msg == blank
+        assign ship_msg = settings.quickview_shipping_fallback | strip
+      endif
+    -%}
+    {%- if ship_msg != blank -%}
+      <p class="gs-qv__shipping" data-qv-shipping>{{ ship_msg | escape }}</p>
+    {%- endif -%}
 
     {%- form 'product', product, id: form_id, class: 'gs-qv__form', novalidate: 'novalidate' -%}
       <input type="hidden" name="id" value="{{ current.id }}" data-qv-variant-id>

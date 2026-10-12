@@ -278,7 +278,20 @@
       </a>
 
       {%- if cardProduct != blank and complementary != true and hideBadges != true -%}
-        <div class="product-card-badges">
+        {%- comment -%}
+          data-badge-rotate hands the Badges theme settings to
+          gs-badge-rotator.js, which fades badges in one at a time when a
+          card has two or more. Without it (setting off, no JS, reduced
+          motion) the badges sit side by side.
+        {%- endcomment -%}
+        <div
+          class="product-card-badges"
+          {%- if settings.badge_rotate %}
+            data-badge-rotate
+            data-badge-interval="{{ settings.badge_rotate_interval | default: 3 | times: 1000 | round }}"
+            data-badge-fade="{{ settings.badge_rotate_fade | default: 400 }}"
+          {%- endif %}
+        >
           {%- render 'gs-product-badge', cardProduct: cardProduct -%}
         </div>
       {%- endif -%}

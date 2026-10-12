@@ -67,11 +67,14 @@
 }
 
 /* Tint between the image (z 0) and the content (z 1); the overlay
-   settings on the section. */
+   settings on the section. display: block is required: the div has no
+   content and Dawn's base.css hides every `div:empty`, which made the
+   opacity setting look like it did nothing. */
 .fwit-promo .promo-overlay {
   position: absolute;
   inset: 0;
   z-index: 0;
+  display: block;
   pointer-events: none;
 }
 
