@@ -119,14 +119,14 @@
         "enable_sorting": true,
         "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
         "enable_gradient": false,
-        "background_color": "#ffffff",
-        "text_color": "#000000",
+        "background_color": "#000000",
+        "text_color": "#FFFFFF",
         "background_opacity_color": "#000000",
         "background_opacity": 0.4,
         "top_space_desktop": 0,
-        "bottom_space_desktop": 5,
-        "top_space_mobile": 5,
-        "bottom_space_mobile": 5
+        "bottom_space_desktop": 10,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 10
       }
     }
   },
