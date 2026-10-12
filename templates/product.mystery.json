@@ -67,176 +67,6 @@
           },
           "blocks": {}
         },
-        "gate_wont_show": {
-          "type": "block--product-message",
-          "settings": {
-            "text": "<p>This product is not available for individual purchase</p>",
-            "image_link": "",
-            "product_tags": "wont-show",
-            "exclude_tags": "",
-            "customer_rule": "any",
-            "customer_tags": "",
-            "hide_buy_controls": true,
-            "boxed": true,
-            "alignment": "left",
-            "text_color": "",
-            "bg": ""
-          },
-          "blocks": {}
-        },
-        "gate_club": {
-          "type": "block--product-message",
-          "settings": {
-            "text": "<p><strong>Heads Up! You Must Be a Club Member To Purchase This Product.</strong></p><p>Please be advised there is no guarantee all sizes are in stock on this product. Although it may say 'Gone for Good' we may or may not re-release these products for pre-order in the future.</p><p>Already a Member? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/products/join-now\">Join today!</a></p>",
-            "image_link": "",
-            "product_tags": "club product",
-            "exclude_tags": "collection: Sticker Club Vault, wont-show",
-            "customer_rule": "missing_all",
-            "customer_tags": "Active Subscriber, Active Club Subscription",
-            "hide_buy_controls": true,
-            "boxed": true,
-            "alignment": "left",
-            "text_color": "",
-            "bg": ""
-          },
-          "blocks": {}
-        },
-        "gate_sticker_vault": {
-          "type": "block--product-message",
-          "settings": {
-            "text": "<p><strong>Heads Up! You Must Be a Sticker Club Member To Purchase This Product.</strong></p><p>Already a Member? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/products/sticker-club-monthly\">Join today!</a></p>",
-            "image_link": "",
-            "product_tags": "club product, collection: Sticker Club Vault",
-            "exclude_tags": "wont-show",
-            "customer_rule": "missing_all",
-            "customer_tags": "Active Sticker Subscription, Active Club Subscription",
-            "hide_buy_controls": true,
-            "boxed": true,
-            "alignment": "left",
-            "text_color": "",
-            "bg": ""
-          },
-          "blocks": {}
-        },
-        "gate_rewards_early": {
-          "type": "block--product-message",
-          "settings": {
-            "text": "<p><strong>Heads Up! You Must Be a Grunt Style Rewards Member To Purchase This Product Early.</strong></p><p>Already a Member of Grunt Style Rewards? <a href=\"/account/login\">Sign In!</a></p><p>Want to become a Member? <a href=\"/community/membership\">Join today!</a></p>",
-            "image_link": "",
-            "product_tags": "rewards early access",
-            "exclude_tags": "club product, wont-show",
-            "customer_rule": "missing_all",
-            "customer_tags": "inveterate-subscriber, Active Sticker Subscription, Active Club Subscription",
-            "hide_buy_controls": true,
-            "boxed": true,
-            "alignment": "left",
-            "text_color": "",
-            "bg": ""
-          },
-          "blocks": {}
-        },
-        "notice_usn": {
-          "type": "block--product-message",
-          "settings": {
-            "text": "<p>*Officially licensed Navy products are only sold and shipped within the United States*</p>",
-            "image_link": "",
-            "product_tags": "USN",
-            "exclude_tags": "club product, rewards early access, wont-show",
-            "customer_rule": "any",
-            "customer_tags": "",
-            "hide_buy_controls": false,
-            "boxed": true,
-            "alignment": "left",
-            "text_color": "",
-            "bg": ""
-          },
-          "blocks": {}
-        },
-        "notice_army": {
-          "type": "block--product-message",
-          "settings": {
-            "text": "<p>*Officially licensed Army products are only sold and shipped within the United States*</p>",
-            "image_link": "",
-            "product_tags": "Army",
-            "exclude_tags": "club product, rewards early access, wont-show",
-            "customer_rule": "any",
-            "customer_tags": "",
-            "hide_buy_controls": false,
-            "boxed": true,
-            "alignment": "left",
-            "text_color": "",
-            "bg": ""
-          },
-          "blocks": {}
-        },
-        "notice_usmc": {
-          "type": "block--product-message",
-          "settings": {
-            "text": "<p>*Officially licensed Marine Corps products are only sold and shipped within the United States*</p>",
-            "image_link": "",
-            "product_tags": "USMC",
-            "exclude_tags": "club product, rewards early access, wont-show",
-            "customer_rule": "any",
-            "customer_tags": "",
-            "hide_buy_controls": false,
-            "boxed": true,
-            "alignment": "left",
-            "text_color": "",
-            "bg": ""
-          },
-          "blocks": {}
-        },
-        "notice_usaf": {
-          "type": "block--product-message",
-          "settings": {
-            "text": "<p>*Officially licensed Air Force products are only sold and shipped within the United States*</p>",
-            "image_link": "",
-            "product_tags": "USAF",
-            "exclude_tags": "club product, rewards early access, wont-show",
-            "customer_rule": "any",
-            "customer_tags": "",
-            "hide_buy_controls": false,
-            "boxed": true,
-            "alignment": "left",
-            "text_color": "",
-            "bg": ""
-          },
-          "blocks": {}
-        },
-        "notice_ussf": {
-          "type": "block--product-message",
-          "settings": {
-            "text": "<p>*Officially licensed Space Force products are only sold and shipped within the United States*</p>",
-            "image_link": "",
-            "product_tags": "USSF",
-            "exclude_tags": "club product, rewards early access, wont-show",
-            "customer_rule": "any",
-            "customer_tags": "",
-            "hide_buy_controls": false,
-            "boxed": true,
-            "alignment": "left",
-            "text_color": "",
-            "bg": ""
-          },
-          "blocks": {}
-        },
-        "notice_starbucks": {
-          "type": "block--product-message",
-          "settings": {
-            "text": "<p>This product is only available to Starbucks members</p><p>Please <a href=\"/account/login\">sign in</a> or <a href=\"/account/register\">register</a> with your starbucks.com email to purchase.</p>",
-            "image_link": "",
-            "product_tags": "Starbucks",
-            "exclude_tags": "club product, rewards early access, wont-show",
-            "customer_rule": "missing_all",
-            "customer_tags": "starbucks",
-            "hide_buy_controls": false,
-            "boxed": true,
-            "alignment": "left",
-            "text_color": "",
-            "bg": ""
-          },
-          "blocks": {}
-        },
         "buy_buttons": {
           "type": "block--product-buy-buttons",
           "settings": {
@@ -330,7 +160,7 @@
           "type": "block--product-accordion",
           "settings": {
             "heading": "IMPORTANT REMINDERS",
-            "source": "features",
+            "source": "text",
             "text": "",
             "page": "",
             "features_heading": "",
@@ -468,16 +298,6 @@
         "price",
         "richtext_1",
         "swatches",
-        "gate_wont_show",
-        "gate_club",
-        "gate_sticker_vault",
-        "gate_rewards_early",
-        "notice_usn",
-        "notice_army",
-        "notice_usmc",
-        "notice_usaf",
-        "notice_ussf",
-        "notice_starbucks",
         "buy_buttons",
         "app_wishlist-plus",
         "richtext_2",
@@ -534,6 +354,10 @@
     },
     "recommendations": {
       "type": "featured-collections",
+      "custom_css": [
+        ".product-quickview {margin-top: -155px;}",
+        "@media screen and (max-width: 768px) {.product-quickview {margin-top: -99px; } .product-card-item {max-height: 420px; }}"
+      ],
       "settings": {
         "section_heading": "YOU MAY ALSO LIKE",
         "heading_text_align": "left",
@@ -584,65 +408,40 @@
         "cta_border_color_hover": "#ffffff"
       }
     },
-    "product_highlight_BaXhDc": {
-      "type": "product-highlight",
-      "custom_css": [
-        ".custom-cta {background-color: #ffcc01;}"
+    "multirow_dgb7F7": {
+      "type": "multirow",
+      "blocks": {
+        "row_QRc9qg": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/Split_Banner_D_980x610_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
+            "caption": "T-SHIRT SUBSCRIPTION",
+            "heading": "<strong>CLUB GRUNT STYLE</strong>",
+            "text": "<p>Unlock this exclusive tee, made just for Club Grunt Style members! Don’t miss your shot, join now before the month ends and claim yours. Delivered straight to your door.</p>",
+            "button_label": "JOIN NOW",
+            "button_link": "shopify://pages/club-grunt-style"
+          }
+        }
+      },
+      "block_order": [
+        "row_QRc9qg"
       ],
+      "name": "t:sections.multirow.presets.name",
       "settings": {
-        "reverse_desktop": true,
-        "reverse_mobile": true,
-        "product_highlight_text_content_bg_color": "#dddad6",
-        "product_highlight_text_content_heading": "CLUB GRUNT STYLE",
-        "product_highlight_text_content_heading_color": "#000000",
-        "product_highlight_text_content_heading_font_size_desktop": 32,
-        "product_highlight_text_content_heading_font_size_mobile": 24,
-        "product_highlight_text_content_paragraph": "<p>Unlock this exclusive tee, made just for Club Grunt Style members! Don’t miss your shot, join now before the month ends and claim yours. Delivered straight to your door.</p>",
-        "product_highlight_text_content_paragraph_color": "#000000",
-        "product_highlight_text_content_paragraph_font_size_desktop": 22,
-        "product_highlight_text_content_paragraph_font_size_mobile": 16,
-        "link_cta_style": "button",
-        "link_cta_1_text": "JOIN CLUB NOW",
-        "link_cta_1_link": "shopify://pages/club-grunt-style",
-        "link_cta_2_text": "SHOP THE EXCLUSIVES",
-        "link_cta_2_link": "shopify://collections/club-grunt-style",
-        "link_cta_layout": "side-by-side",
-        "product_highlight_text_content_link_cta_color": "#000000",
-        "product_highlight_text_content_cta_bg_color": "#000000",
-        "product_highlight_text_content_cta_border_color": "#000000",
-        "product_highlight_text_content_cta_border_width": 2,
-        "product_highlight_text_content_link_cta_text_font_size_desktop": 18,
-        "product_highlight_text_content_link_cta_text_font_size_mobile": 14,
-        "product_highlight_text_link_cta_gap_desktop": 25,
-        "product_highlight_text_link_cta_gap_mobile": 5,
-        "product_highlight_text_content_spacing_desktop": 60,
-        "product_highlight_text_content_spacing_mobile": 35,
-        "product_highlight_text_content_gap_desktop": 5,
-        "product_highlight_text_content_gap_mobile": 10,
-        "enable_product_highlight_text_content_arrows": true,
-        "product_highlight_text_content_arrows_display": "solid",
-        "product_highlight_text_content_arrows_color": "#000000",
-        "product_highlight_text_content_arrows_size_desktop": 80,
-        "product_highlight_text_content_arrows_size_mobile": 64,
-        "product_highlight_text_arrows_gap_between_desktop": 30,
-        "product_highlight_text_arrows_gap_between_mobile": 30,
-        "image": "shopify://shop_images/Split_Banner_D_980x610_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
-        "image_mobile": "shopify://shop_images/Split_Banner_M_750x750_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
-        "product_highlight_image_heading": "",
-        "product_highlight_image_heading_color": "#9a723f",
-        "product_highlight_image_heading_font_size_desktop": 38,
-        "product_highlight_image_heading_font_size_mobile": 36,
-        "product_highlight_image_spacing_desktop": 30,
-        "product_highlight_image_spacing_mobile": 15,
-        "enable_product_highlight_image_arrows": false,
-        "product_highlight_image_arrows_display": "solid",
-        "product_highlight_image_arrows_color": "#ffcc01",
-        "product_highlight_image_arrows_size_desktop": 78,
-        "product_highlight_image_arrows_size_mobile": 54,
-        "product_highlight_image_arrows_gap_between_desktop": 25,
-        "product_highlight_image_arrows_gap_between_mobile": 25,
-        "product_highlight_heading_arrows_gap_desktop": 10,
-        "product_highlight_heading_arrows_gap_mobile": 0
+        "stack_on_scroll": false,
+        "image_height": "small",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-left",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "primary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-2",
+        "row_color_scheme": "scheme-6",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "1713538328bea72ad4": {
@@ -674,7 +473,7 @@
     "main",
     "features",
     "recommendations",
-    "product_highlight_BaXhDc",
+    "multirow_dgb7F7",
     "1713538328bea72ad4",
     "custom_liquid_9fRRfL"
   ]
