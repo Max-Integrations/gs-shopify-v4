@@ -92,13 +92,9 @@
         "card_quick_view"
       ],
       "custom_css": [
-        ".product-percent-off {display: none;}",
-        ".compare-add-button {display: none;}",
         ".product-quickview {padding-block: 12px; margin-top: -20px;}",
-        ".qa-size {font-size: 11px; min-width: 10px; min-height: 18px; font-family: roboto condensed; padding: 2px; line-height: 0.21px; font-weight: 500;}",
-        ".quick-add-variants {max-block-size: 150px;}",
         ".gs-promo__content {position: absolute; bottom: 100px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6); line-height: 0.25;}",
-        ".gs-swatch-scroller{display: inline-block;}"
+        ".gs-swatch-scroller {display: inline-block;}"
       ],
       "settings": {
         "overlay_content_position": "text-center",
