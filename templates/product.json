@@ -61,7 +61,7 @@
           "settings": {
             "style": "pattern",
             "shape": "circle",
-            "size": 22,
+            "size": 38,
             "show_label": true,
             "label": "Color"
           },
@@ -251,7 +251,7 @@
             "swym_atw_icon_thickness": 1.7,
             "swym_atw_display_btn_text": false,
             "swym_button_position": "product_title_right",
-            "swym_atw_button_vertical_offset": -2,
+            "swym_atw_button_vertical_offset": 8,
             "swym_atw_full_width": true,
             "swym_atw_button_alignment": "center",
             "swym_add_to_wishlist_color": "#ffffff",
@@ -274,7 +274,7 @@
           "type": "block--custom-liquid",
           "name": "Custom Liquid",
           "settings": {
-            "custom_liquid": "{%- assign cashback_percent = 0.20 -%}\n{%- assign cashback_per_unit = product.price | times: cashback_percent -%}\n{%- assign formatted_cashback = cashback_per_unit | money -%}\n\n<p id=\"cashback-display\"\n   data-cashback-percent=\"{{ cashback_percent}}\"\n   style=\"color: #002F6E; font-weight: bold; font-size: 0.89em; margin-top: 3px;\">\n  Rewards Members Can Earn Up To {{ formatted_cashback}} For Their Next Purchase! <a href='https://www.gruntstyle.com/community/membership' style=\"text-decoration: underline;\"> | Join Now </a>\n</p>"
+            "custom_liquid": "{%- assign cashback_percent = 0.20 -%}\n{%- assign cashback_per_unit = product.price | times: cashback_percent -%}\n{%- assign formatted_cashback = cashback_per_unit | money -%}\n\n<p id=\"cashback-display\"\n   data-cashback-percent=\"{{ cashback_percent}}\"\n   style=\"color: #002F6E; font-weight: bold; font-size: 11px; margin-top: 3px;\">\n  Rewards Members Can Earn Up To {{ formatted_cashback}} For Their Next Purchase! <a href='https://www.gruntstyle.com/community/membership' style=\"text-decoration: underline; color: #AB192D\">|Join Now </a>\n</p>"
           },
           "blocks": {}
         },
@@ -299,8 +299,8 @@
         "wonderment_eta": {
           "type": "shopify://apps/track-by-loop/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
           "settings": {
-            "eta_text_font_size": 16,
-            "hint_text_font_size": 12,
+            "eta_text_font_size": 12,
+            "hint_text_font_size": 10,
             "custom_css": "#wonderment-pdp-eta {\nmargin-top: 25px;\nmargin-bottom: 15px;\n}\n@media screen and (min-width:768px) {\n#wonderment-pdp-eta {\nmargin-top: 0px;\nmargin-bottom: 5px;\n}\n}"
           }
         },
@@ -549,8 +549,12 @@
         "badge_usa_made"
       ],
       "custom_css": [
-        ".gs-product__option-values {min-width: 20px; height: 80px;}",
-        ".gs-product__option-pill {width: 30px; height: 30px; font-size: 12px;}"
+        ".gs-product__option-values {min-width: 10px; height: 55px;}",
+        ".gs-product__option-pill {width: 10px; height: 25px; font-size: 12px;}",
+        ".gs-product__option-values {display: flex; flex-wrap: wrap; gap: 4px;}",
+        ".gs-product__title {margin-bottom: -10px;}",
+        ".klaviyo-star-rating-widget {margin-top: -8px; margin-bottom: -10px;}",
+        ".gs-product__price {margin-top: -10px; margin-bottom: -10px;}"
       ],
       "settings": {
         "show_breadcrumb": true,
@@ -581,9 +585,7 @@
     "recommendations": {
       "type": "featured-collections",
       "custom_css": [
-        ".product-percent-off {display: none;}",
-        ".compare-add-button {display: none;}",
-        ".product-quickview {padding-block: 12px; margin-top: -20px;}"
+        "@media screen and (max-width: 600px) {.product-quickview {margin-top: -55px; }}"
       ],
       "settings": {
         "section_heading": "You May Also Like",
@@ -591,8 +593,8 @@
         "collection_type": "recommendations",
         "collection_source": "manual",
         "layout_style": "carousel",
-        "container_width": "lg",
-        "grid_image_size": "square",
+        "container_width": "md",
+        "grid_image_size": "auto",
         "max_number_products_loaded": 10,
         "number_products_per_view_desktop": "4",
         "number_products_per_view_mobile": "2",
@@ -629,7 +631,7 @@
         "tab_active_color": "",
         "cta_text_color": "#000000",
         "cta_text_color_hover": "#ffffff",
-        "cta_background_color": "#AB192D",
+        "cta_background_color": "#ab192d",
         "cta_background_color_hover": "#000000",
         "cta_border_color": "#000000",
         "cta_border_color_hover": "#000000"

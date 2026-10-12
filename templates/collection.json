@@ -75,10 +75,10 @@
           "settings": {
             "style": "quick_view",
             "product_card_quick_view_button_text": "Quick Add",
-            "button_bg": "",
-            "button_text": "",
-            "button_hover_bg": "",
-            "button_hover_text": ""
+            "button_bg": "#000000",
+            "button_text": "#ffffff",
+            "button_hover_bg": "#AB192D",
+            "button_hover_text": "#ffffff"
           }
         }
       },
@@ -92,12 +92,11 @@
         "card_quick_view"
       ],
       "custom_css": [
-        ".product-percent-off {display: none;}",
-        ".compare-add-button {display: none;}",
-        ".product-quickview {padding-block: 12px; margin-top: -20px; }",
-        ".qa-size {font-size: 11px; min-width: 10px; min-height: 18px; font-family: roboto condensed; padding: 2px; line-height: 0.21px; font-weight: 500;}",
-        ".quick-add-variants {max-block-size: 150px;}",
-        ".gs-promo__content {position: absolute; bottom: 100px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6); line-height: 0.25;}"
+        ".product-quickview {padding-block: 12px; margin-top: -20px;}",
+        ".gs-promo__content {position: absolute; bottom: 100px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6); line-height: 0.25;}",
+        ".gs-swatch-scroller {display: inline-block;}",
+        ".gs-collection__description {background: #000; color: #fff; text-align: center;}",
+        ".gs-collection__description h2 {background: #000; color: #fff; text-align: center;}"
       ],
       "settings": {
         "overlay_content_position": "text-center",
@@ -122,14 +121,14 @@
         "enable_sorting": true,
         "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
         "enable_gradient": false,
-        "background_color": "#ffffff",
-        "text_color": "#000000",
+        "background_color": "#000000",
+        "text_color": "#FFFFFF",
         "background_opacity_color": "#000000",
         "background_opacity": 0.4,
         "top_space_desktop": 0,
-        "bottom_space_desktop": 5,
+        "bottom_space_desktop": 10,
         "top_space_mobile": 0,
-        "bottom_space_mobile": 5
+        "bottom_space_mobile": 10
       }
     }
   },

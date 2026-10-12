@@ -163,6 +163,9 @@
         "value_pLh3cY",
         "value_eUNfAc"
       ],
+      "custom_css": [
+        "@media screen and (max-width: 768px) {.gs-value-props__list {display: inline; padding-block: 2px; }}"
+      ],
       "name": "Value props",
       "settings": {
         "bg_color": "#000000",
@@ -175,7 +178,7 @@
         "grid_yYV4YL": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/Custom_1250x1250_GS8214_FW26_Halloween_Collection.jpg",
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8641_NightRiderHoodie-Black.jpg",
             "collection": "",
             "link": "shopify://collections/halloween",
             "span_two_columns": false,
@@ -209,9 +212,9 @@
         "grid_TTWhpz": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V3_GS7608_HeavyweightPocketT-Shirt-Black.jpg",
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8410_OnlyViolenceFollowsHat_1.jpg",
             "collection": "",
-            "link": "shopify://collections/basics-franchise",
+            "link": "shopify://collections/handpicked-for-violence",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
@@ -225,7 +228,7 @@
             "heading": {
               "type": "block--heading",
               "settings": {
-                "text": "<strong>BASICS</strong>",
+                "text": "<strong>VIOLENCE</strong>",
                 "size": "h2",
                 "tag": "h2",
                 "alignment": "inherit",
@@ -243,7 +246,7 @@
         "grid_j3FnQz": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8540_ProfessionalSh-tTalkerT-Shirt-Black.jpg",
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GSMC0120_USMC-FirstToFightHoodie-Black.jpg",
             "collection": "",
             "link": "shopify://collections/men",
             "span_two_columns": false,
@@ -277,7 +280,7 @@
         "grid_qJFUr9": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V3_GS8456_Women_sBornDefiantSlimFitT-Shirt-MilitaryGreen.jpg",
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8593_Women_sBlackoutBeautifulBadassV-Neck-Black.jpg",
             "collection": "",
             "link": "shopify://collections/women",
             "span_two_columns": false,
@@ -321,7 +324,7 @@
         "columns_desktop": 4,
         "columns_mobile": 2,
         "tile_ratio": "fixed",
-        "desktop_row_height": 300,
+        "desktop_row_height": 380,
         "mobile_row_height": 200,
         "tile_width": "full",
         "desktop_grid_gap": 5,
@@ -410,8 +413,8 @@
             "margin_x": 0,
             "border_width": 0,
             "border_radius": 0,
-            "custom_scheme": false,
-            "color_scheme": "",
+            "custom_scheme": true,
+            "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
             "bg": "#ffffff",
             "text_color": "#000000",
             "border_color": "#ffffff",
@@ -732,7 +735,7 @@
         "columns_mobile": 1,
         "tile_ratio": "fixed",
         "desktop_row_height": 350,
-        "mobile_row_height": 250,
+        "mobile_row_height": 200,
         "tile_width": "full",
         "desktop_grid_gap": 5,
         "mobile_grid_gap": 5,
@@ -761,6 +764,15 @@
     "featured_collections_RaEPWA": {
       "type": "featured-collections",
       "blocks": {
+        "collection_block_fJNP4g": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "G.W.O.T",
+            "collection": "gwot",
+            "cta_label": "SHOP COLLECTION",
+            "cta_link": "shopify://collections/gwot"
+          }
+        },
         "collection_block_JdXg6Y": {
           "type": "collection_block",
           "settings": {
@@ -768,15 +780,6 @@
             "collection": "veteran-clothing-and-gear",
             "cta_label": "SHOP COLLECTION",
             "cta_link": "shopify://collections/veteran-clothing-and-gear"
-          }
-        },
-        "collection_block_MmLLUF": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "MILITARY & FIRST RESPONDERS",
-            "collection": "military-first-responders",
-            "cta_label": "SHOP COLLECTION",
-            "cta_link": "shopify://collections/military-first-responders"
           }
         },
         "collection_block_GPGBM4": {
@@ -788,8 +791,18 @@
             "cta_link": "shopify://collections/r-e-d-franchise"
           }
         },
+        "collection_block_MmLLUF": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "MILITARY & FIRST RESPONDERS",
+            "collection": "military-first-responders",
+            "cta_label": "SHOP COLLECTION",
+            "cta_link": "shopify://collections/military-first-responders"
+          }
+        },
         "collection_block_aajarn": {
           "type": "collection_block",
+          "disabled": true,
           "settings": {
             "custom_title": "2ND AMENDMENT",
             "collection": "2nd-amendment-collection",
@@ -799,9 +812,10 @@
         }
       },
       "block_order": [
+        "collection_block_fJNP4g",
         "collection_block_JdXg6Y",
-        "collection_block_MmLLUF",
         "collection_block_GPGBM4",
+        "collection_block_MmLLUF",
         "collection_block_aajarn"
       ],
       "name": "Featured collections",
@@ -855,6 +869,131 @@
         "cta_border_color_hover": "#000000"
       }
     },
+    "product_highlight_gXtgGb": {
+      "type": "product-highlight",
+      "custom_css": [
+        ".gs-ph__image-heading {background: #5e5c39;}"
+      ],
+      "name": "Product Highlight",
+      "settings": {
+        "reverse_desktop": false,
+        "reverse_mobile": true,
+        "product_highlight_text_content_bg_color": "#dddad6",
+        "product_highlight_text_content_heading": "AMERICA'S FAVORITE FAMILY FEUD",
+        "product_highlight_text_content_heading_color": "#000000",
+        "product_highlight_text_content_heading_font_size_desktop": 32,
+        "product_highlight_text_content_heading_font_size_mobile": 20,
+        "product_highlight_text_content_paragraph": "<p><strong>I JUST HOPE BOTH TEAMS HAVE FUN.</strong></p><p>Same country. Same team. Completely unnecessary levels of sh*t talking.</p>",
+        "product_highlight_text_content_paragraph_color": "#000000",
+        "product_highlight_text_content_paragraph_font_size_desktop": 16,
+        "product_highlight_text_content_paragraph_font_size_mobile": 14,
+        "link_cta_style": "button",
+        "link_cta_1_text": "GO NAVY",
+        "link_cta_1_link": "",
+        "link_cta_2_text": "GO ARMY",
+        "link_cta_2_link": "",
+        "link_cta_layout": "side-by-side",
+        "product_highlight_text_content_link_cta_color": "#000000",
+        "product_highlight_text_content_cta_bg_color": "rgba(0,0,0,0)",
+        "product_highlight_text_content_cta_border_color": "#000000",
+        "product_highlight_text_content_cta_border_width": 2,
+        "product_highlight_text_content_link_cta_text_font_size_desktop": 18,
+        "product_highlight_text_content_link_cta_text_font_size_mobile": 12,
+        "product_highlight_text_link_cta_gap_desktop": 25,
+        "product_highlight_text_link_cta_gap_mobile": 15,
+        "product_highlight_text_content_spacing_desktop": 25,
+        "product_highlight_text_content_spacing_mobile": 25,
+        "product_highlight_text_content_gap_desktop": 15,
+        "product_highlight_text_content_gap_mobile": 10,
+        "enable_product_highlight_text_content_arrows": true,
+        "product_highlight_text_content_arrows_display": "solid",
+        "product_highlight_text_content_arrows_color": "#002f6e",
+        "product_highlight_text_content_arrows_size_desktop": 62,
+        "product_highlight_text_content_arrows_size_mobile": 62,
+        "product_highlight_text_arrows_gap_between_desktop": 30,
+        "product_highlight_text_arrows_gap_between_mobile": 30,
+        "image": "shopify://shop_images/Split_Banner_D_980x610_V2_FW26_Army_vs_Navy.jpg",
+        "image_mobile": "shopify://shop_images/Split_Banner_M_750x750_V2_FW26_Army_vs_Navy.jpg",
+        "product_highlight_image_heading": "ARMY VS NAVY",
+        "product_highlight_image_heading_color": "#ffffff",
+        "product_highlight_image_heading_font_size_desktop": 38,
+        "product_highlight_image_heading_font_size_mobile": 28,
+        "product_highlight_image_spacing_desktop": 20,
+        "product_highlight_image_spacing_mobile": 15,
+        "enable_product_highlight_image_arrows": true,
+        "product_highlight_image_arrows_display": "outline",
+        "product_highlight_image_arrows_color": "#ffcc01",
+        "product_highlight_image_arrows_size_desktop": 66,
+        "product_highlight_image_arrows_size_mobile": 54,
+        "product_highlight_image_arrows_gap_between_desktop": 20,
+        "product_highlight_image_arrows_gap_between_mobile": 25,
+        "product_highlight_heading_arrows_gap_desktop": 10,
+        "product_highlight_heading_arrows_gap_mobile": 10
+      }
+    },
+    "product_highlight_qi4Eyg": {
+      "type": "product-highlight",
+      "disabled": true,
+      "custom_css": [
+        ".product-highlight-image-content .product-highlight-image-heading {background-color: #474648;}"
+      ],
+      "name": "Product Highlight",
+      "settings": {
+        "reverse_desktop": false,
+        "reverse_mobile": true,
+        "product_highlight_text_content_bg_color": "#000000",
+        "product_highlight_text_content_heading": "BLACKOUT COLLECTION",
+        "product_highlight_text_content_heading_color": "#ffffff",
+        "product_highlight_text_content_heading_font_size_desktop": 32,
+        "product_highlight_text_content_heading_font_size_mobile": 24,
+        "product_highlight_text_content_paragraph": "<p>Your favorite designs are going dark. For a limited time, grab bold classics reimagined in ghost mode—blacked-out, stealthy, and unapologetically fierce. Don’t miss your chance to own these limited-edition looks before they disappear into the night.</p>",
+        "product_highlight_text_content_paragraph_color": "#ffffff",
+        "product_highlight_text_content_paragraph_font_size_desktop": 22,
+        "product_highlight_text_content_paragraph_font_size_mobile": 14,
+        "link_cta_style": "button",
+        "link_cta_1_text": "SHOP COLLECTION",
+        "link_cta_1_link": "shopify://collections/limited-edition-blackout",
+        "link_cta_2_text": "",
+        "link_cta_2_link": "",
+        "link_cta_layout": "side-by-side",
+        "product_highlight_text_content_link_cta_color": "#ffffff",
+        "product_highlight_text_content_cta_bg_color": "rgba(0,0,0,0)",
+        "product_highlight_text_content_cta_border_color": "#ffffff",
+        "product_highlight_text_content_cta_border_width": 2,
+        "product_highlight_text_content_link_cta_text_font_size_desktop": 18,
+        "product_highlight_text_content_link_cta_text_font_size_mobile": 12,
+        "product_highlight_text_link_cta_gap_desktop": 25,
+        "product_highlight_text_link_cta_gap_mobile": 15,
+        "product_highlight_text_content_spacing_desktop": 70,
+        "product_highlight_text_content_spacing_mobile": 25,
+        "product_highlight_text_content_gap_desktop": 5,
+        "product_highlight_text_content_gap_mobile": 10,
+        "enable_product_highlight_text_content_arrows": true,
+        "product_highlight_text_content_arrows_display": "solid",
+        "product_highlight_text_content_arrows_color": "#474648",
+        "product_highlight_text_content_arrows_size_desktop": 80,
+        "product_highlight_text_content_arrows_size_mobile": 64,
+        "product_highlight_text_arrows_gap_between_desktop": 30,
+        "product_highlight_text_arrows_gap_between_mobile": 30,
+        "image": "shopify://shop_images/Split_Banner_D_980x610_SHIRTS_ONLY_FW26_Campaign_-_Blackout_Collection__1.jpg",
+        "image_mobile": "shopify://shop_images/Split_Banner_M_750x750_SHIRTS_ONLY_FW26_Campaign_-_Blackout_Collection.jpg",
+        "product_highlight_image_heading": "Same Designs. Darker Bite.",
+        "product_highlight_image_heading_color": "#000000",
+        "product_highlight_image_heading_font_size_desktop": 38,
+        "product_highlight_image_heading_font_size_mobile": 26,
+        "product_highlight_image_spacing_desktop": 20,
+        "product_highlight_image_spacing_mobile": 25,
+        "enable_product_highlight_image_arrows": true,
+        "product_highlight_image_arrows_display": "outline",
+        "product_highlight_image_arrows_color": "#474648",
+        "product_highlight_image_arrows_size_desktop": 62,
+        "product_highlight_image_arrows_size_mobile": 54,
+        "product_highlight_image_arrows_gap_between_desktop": 20,
+        "product_highlight_image_arrows_gap_between_mobile": 25,
+        "product_highlight_heading_arrows_gap_desktop": 10,
+        "product_highlight_heading_arrows_gap_mobile": 0
+      }
+    },
     "multirow_98qFfM": {
       "type": "multirow",
       "blocks": {
@@ -873,6 +1012,7 @@
       "block_order": [
         "row_DJNpdH"
       ],
+      "disabled": true,
       "name": "t:sections.multirow.presets.name",
       "settings": {
         "stack_on_scroll": false,
@@ -889,128 +1029,6 @@
         "row_color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
         "padding_top": 16,
         "padding_bottom": 16
-      }
-    },
-    "image_with_text_NnJDxB": {
-      "type": "image-with-text",
-      "blocks": {
-        "block_heading_V8EQPy": {
-          "type": "block--heading",
-          "settings": {
-            "text": "SUPPORT THOSE WHO SERVE",
-            "size": "h1",
-            "tag": "h2",
-            "alignment": "inherit",
-            "color": "",
-            "font_size_desktop": 0,
-            "font_size_mobile": 0
-          },
-          "blocks": {}
-        },
-        "block_text_AGzFAc": {
-          "type": "block--text",
-          "settings": {
-            "text": "<p>Step up and show your support for those who answer the call—day or night. The First Responder Collection honors the unwavering dedication of EMS, Firefighters, and Police Officers who are always first in and last out. Wear it with pride and stand with the heroes who never hesitate to serve.</p>",
-            "size": "body",
-            "alignment": "inherit",
-            "color": ""
-          },
-          "blocks": {}
-        },
-        "block_button_xdfeEa": {
-          "type": "block--button",
-          "settings": {
-            "label": "SHOP COLLECTION",
-            "link": "shopify://collections/first-responders",
-            "open_in_new_tab": false,
-            "style": "outline",
-            "width": "full",
-            "font_size": 0,
-            "padding_y": 12,
-            "padding_x": 28,
-            "margin_y": 0,
-            "margin_x": 0,
-            "border_width": 1,
-            "border_radius": 0,
-            "custom_scheme": false,
-            "color_scheme": "scheme-1",
-            "bg": "",
-            "text_color": "",
-            "border_color": "",
-            "hover_bg": "",
-            "hover_text_color": ""
-          },
-          "blocks": {}
-        },
-        "block_button_Ny4TzW": {
-          "type": "block--button",
-          "settings": {
-            "label": "GRAB THE TEE",
-            "link": "shopify://products/first-in-last-out-t-shirt-black",
-            "open_in_new_tab": false,
-            "style": "outline",
-            "width": "full",
-            "font_size": 0,
-            "padding_y": 12,
-            "padding_x": 28,
-            "margin_y": 12,
-            "margin_x": 0,
-            "border_width": 1,
-            "border_radius": 0,
-            "custom_scheme": false,
-            "color_scheme": "scheme-1",
-            "bg": "",
-            "text_color": "",
-            "border_color": "",
-            "hover_bg": "",
-            "hover_text_color": ""
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "block_heading_V8EQPy",
-        "block_text_AGzFAc",
-        "block_button_xdfeEa",
-        "block_button_Ny4TzW"
-      ],
-      "disabled": true,
-      "name": "Image with text-M",
-      "settings": {
-        "section_visibility": "small",
-        "image": "shopify://shop_images/Split_Banner_M_750x750_FW26_Freedom_Fighter_Collection.jpg",
-        "full_width": true,
-        "content_background": "",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "center",
-        "mobile_content_alignment": "center",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-1",
-        "show_chevrons": true,
-        "chevron_stroke_width": 4,
-        "chevron_color_text": "#ab192d",
-        "chevron_row_fill": "solid",
-        "chevron_row_size": 80,
-        "chevron_row_size_mobile": 38,
-        "chevron_row_gap": 23,
-        "chevron_row_gap_mobile": 19,
-        "chevron_row_space_above": 0,
-        "chevron_row_space_below": 0,
-        "chevron_color_image": "#ffffff",
-        "chevron_col_fill": "outline",
-        "chevron_col_size": 48,
-        "chevron_col_size_mobile": 44,
-        "chevron_col_gap": 20,
-        "chevron_col_gap_mobile": 38,
-        "chevron_col_inset": 60,
-        "chevron_col_inset_mobile": 67,
-        "padding_top": 0,
-        "padding_bottom": 0
       }
     },
     "custom_testimonials_itRkeM": {
@@ -1083,7 +1101,8 @@
         ".testimonial-text {font-size: 14px; font-weight: 400;}",
         ".testimonial-title {font-weight: 700; font-size: 20px;}",
         ".testimonial-item-inner.card-border-enabled {border-color: #000; border: 2px solid; align-content: center; text-align: center;}",
-        ".testimonial-star-rating {display: inline;}"
+        ".testimonial-star-rating {display: inline;}",
+        ".testimonial-item {max-height: 420px;}"
       ],
       "settings": {
         "section_visibility": "always",
@@ -1259,7 +1278,7 @@
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
-            "hover_text": "<p>Grunt Style Foundation is a 501(c)(3) nonprofit dedicated to providing life-changing resources and experiences that help Service Members, Veterans, First Responders, and their families thrive. Focused on mental health, wellness and advocacy, the Foundation ensures those who have served—and continue to serve—receive the recognition, honor, and support they deserve.</p>",
+            "hover_text": "<p>Grunt Style Foundation is a 501(c)(3) nonprofit dedicated to providing life-changing resources and experiences that help Service Members, Veterans, First Responders, and their families thrive.&nbsp;</p>",
             "background_color": "#000000",
             "background_opacity": 0.8,
             "hover_overlay": "show"
@@ -1403,9 +1422,9 @@
         "layout": "carousel",
         "columns_desktop": 3,
         "columns_mobile": 1,
-        "tile_ratio": "square",
+        "tile_ratio": "portrait",
         "desktop_row_height": 400,
-        "mobile_row_height": 200,
+        "mobile_row_height": 300,
         "tile_width": "full",
         "desktop_grid_gap": 10,
         "mobile_grid_gap": 16,
@@ -1441,8 +1460,9 @@
     "featured_collections_ABnVhm",
     "media_grid_EHBURP",
     "featured_collections_RaEPWA",
+    "product_highlight_gXtgGb",
+    "product_highlight_qi4Eyg",
     "multirow_98qFfM",
-    "image_with_text_NnJDxB",
     "custom_testimonials_itRkeM",
     "multicolumn_with_content_hover_rUQ9Qn"
   ]
