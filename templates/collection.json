@@ -75,10 +75,10 @@
           "settings": {
             "style": "quick_view",
             "product_card_quick_view_button_text": "Quick Add",
-            "button_bg": "",
-            "button_text": "",
-            "button_hover_bg": "",
-            "button_hover_text": ""
+            "button_bg": "#ab192d",
+            "button_text": "#ffffff",
+            "button_hover_bg": "#000000",
+            "button_hover_text": "#ffffff"
           }
         }
       },
@@ -94,10 +94,11 @@
       "custom_css": [
         ".product-percent-off {display: none;}",
         ".compare-add-button {display: none;}",
-        ".product-quickview {padding-block: 12px; margin-top: -20px; }",
+        ".product-quickview {padding-block: 12px; margin-top: -20px;}",
         ".qa-size {font-size: 11px; min-width: 10px; min-height: 18px; font-family: roboto condensed; padding: 2px; line-height: 0.21px; font-weight: 500;}",
         ".quick-add-variants {max-block-size: 150px;}",
-        ".gs-promo__content {position: absolute; bottom: 100px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6); line-height: 0.25;}"
+        ".gs-promo__content {position: absolute; bottom: 100px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6); line-height: 0.25;}",
+        ".gs-swatch-scroller{display: inline-block;}"
       ],
       "settings": {
         "overlay_content_position": "text-center",
