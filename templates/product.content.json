@@ -554,13 +554,16 @@
     },
     "recommendations": {
       "type": "featured-collections",
+      "custom_css": [
+        ".product-quickview {margin-top: -155px;}"
+      ],
       "settings": {
         "section_heading": "YOU MAY ALSO LIKE",
         "heading_text_align": "left",
         "collection_type": "recommendations",
         "collection_source": "manual",
         "layout_style": "carousel",
-        "container_width": "sm",
+        "container_width": "md",
         "grid_image_size": "square",
         "max_number_products_loaded": 15,
         "number_products_per_view_desktop": "4",
@@ -604,65 +607,40 @@
         "cta_border_color_hover": "#ffffff"
       }
     },
-    "product_highlight_hpFLY3": {
-      "type": "product-highlight",
-      "custom_css": [
-        ".custom-cta {background-color: #ffcc01;}"
+    "multirow_tMWPDM": {
+      "type": "multirow",
+      "blocks": {
+        "row_frdVhG": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/Split_Banner_D_980x610_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
+            "caption": "T-SHIRT SUBSCRIPTION",
+            "heading": "<strong>CLUB GRUNT STYLE</strong>",
+            "text": "<p>Unlock this exclusive tee, made just for Club Grunt Style members! Don’t miss your shot, join now before the month ends and claim yours. Delivered straight to your door.</p>",
+            "button_label": "JOIN NOW",
+            "button_link": "shopify://pages/club-grunt-style"
+          }
+        }
+      },
+      "block_order": [
+        "row_frdVhG"
       ],
+      "name": "t:sections.multirow.presets.name",
       "settings": {
-        "reverse_desktop": true,
-        "reverse_mobile": true,
-        "product_highlight_text_content_bg_color": "#dddad6",
-        "product_highlight_text_content_heading": "CLUB GRUNT STYLE",
-        "product_highlight_text_content_heading_color": "#000000",
-        "product_highlight_text_content_heading_font_size_desktop": 32,
-        "product_highlight_text_content_heading_font_size_mobile": 24,
-        "product_highlight_text_content_paragraph": "<p>Unlock this exclusive tee, made just for Club Grunt Style members! Don’t miss your shot, join now before the month ends and claim yours. Delivered straight to your door.</p>",
-        "product_highlight_text_content_paragraph_color": "#000000",
-        "product_highlight_text_content_paragraph_font_size_desktop": 22,
-        "product_highlight_text_content_paragraph_font_size_mobile": 16,
-        "link_cta_style": "button",
-        "link_cta_1_text": "JOIN CLUB NOW",
-        "link_cta_1_link": "shopify://pages/club-grunt-style",
-        "link_cta_2_text": "SHOP THE EXCLUSIVES",
-        "link_cta_2_link": "shopify://collections/club-grunt-style",
-        "link_cta_layout": "side-by-side",
-        "product_highlight_text_content_link_cta_color": "#000000",
-        "product_highlight_text_content_cta_bg_color": "#000000",
-        "product_highlight_text_content_cta_border_color": "#000000",
-        "product_highlight_text_content_cta_border_width": 2,
-        "product_highlight_text_content_link_cta_text_font_size_desktop": 18,
-        "product_highlight_text_content_link_cta_text_font_size_mobile": 14,
-        "product_highlight_text_link_cta_gap_desktop": 25,
-        "product_highlight_text_link_cta_gap_mobile": 5,
-        "product_highlight_text_content_spacing_desktop": 60,
-        "product_highlight_text_content_spacing_mobile": 35,
-        "product_highlight_text_content_gap_desktop": 5,
-        "product_highlight_text_content_gap_mobile": 10,
-        "enable_product_highlight_text_content_arrows": true,
-        "product_highlight_text_content_arrows_display": "solid",
-        "product_highlight_text_content_arrows_color": "#000000",
-        "product_highlight_text_content_arrows_size_desktop": 80,
-        "product_highlight_text_content_arrows_size_mobile": 64,
-        "product_highlight_text_arrows_gap_between_desktop": 30,
-        "product_highlight_text_arrows_gap_between_mobile": 30,
-        "image": "shopify://shop_images/Split_Banner_D_980x610_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
-        "image_mobile": "shopify://shop_images/Split_Banner_M_750x750_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
-        "product_highlight_image_heading": "",
-        "product_highlight_image_heading_color": "#9a723f",
-        "product_highlight_image_heading_font_size_desktop": 38,
-        "product_highlight_image_heading_font_size_mobile": 36,
-        "product_highlight_image_spacing_desktop": 30,
-        "product_highlight_image_spacing_mobile": 15,
-        "enable_product_highlight_image_arrows": false,
-        "product_highlight_image_arrows_display": "solid",
-        "product_highlight_image_arrows_color": "#ffcc01",
-        "product_highlight_image_arrows_size_desktop": 78,
-        "product_highlight_image_arrows_size_mobile": 54,
-        "product_highlight_image_arrows_gap_between_desktop": 25,
-        "product_highlight_image_arrows_gap_between_mobile": 25,
-        "product_highlight_heading_arrows_gap_desktop": 10,
-        "product_highlight_heading_arrows_gap_mobile": 0
+        "stack_on_scroll": false,
+        "image_height": "small",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-left",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "primary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-2",
+        "row_color_scheme": "scheme-6",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "1713538328bea72ad4": {
@@ -694,7 +672,7 @@
     "main",
     "features",
     "recommendations",
-    "product_highlight_hpFLY3",
+    "multirow_tMWPDM",
     "1713538328bea72ad4",
     "custom_liquid_9fRRfL"
   ]
