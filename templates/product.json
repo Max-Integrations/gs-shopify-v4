@@ -61,7 +61,7 @@
           "settings": {
             "style": "pattern",
             "shape": "circle",
-            "size": 34,
+            "size": 38,
             "show_label": true,
             "label": "Color"
           },
