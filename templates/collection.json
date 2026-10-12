@@ -125,7 +125,7 @@
         "background_opacity": 0.4,
         "top_space_desktop": 0,
         "bottom_space_desktop": 5,
-        "top_space_mobile": 0,
+        "top_space_mobile": 5,
         "bottom_space_mobile": 5
       }
     }
