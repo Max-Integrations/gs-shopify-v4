@@ -555,7 +555,8 @@
     "recommendations": {
       "type": "featured-collections",
       "custom_css": [
-        ".product-quickview {margin-top: -155px;}",
+        ".product-quickview {margin-top: -55px;}",
+        ".product-card-item {max-height: 520px;}",
         "@media screen and (max-width: 768px) {.product-quickview {margin-top: -99px; } .product-card-item {max-height: 420px; }}"
       ],
       "settings": {
