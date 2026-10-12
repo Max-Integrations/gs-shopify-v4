@@ -555,7 +555,8 @@
     "recommendations": {
       "type": "featured-collections",
       "custom_css": [
-        ".product-quickview {margin-top: -155px;}"
+        ".product-quickview {margin-top: -155px;}",
+        "@media screen and (max-width: 768px) {.product-quickview {margin-top: -99px; } .product-card-item {max-height: 420px; }}"
       ],
       "settings": {
         "section_heading": "YOU MAY ALSO LIKE",
@@ -582,8 +583,8 @@
         "cta_title_size_mobile": 23,
         "section_spacing_top_desktop": 10,
         "section_spacing_top_mobile": 10,
-        "section_spacing_bottom_desktop": 10,
-        "section_spacing_bottom_mobile": 10,
+        "section_spacing_bottom_desktop": 0,
+        "section_spacing_bottom_mobile": 0,
         "heading_spacing_top_desktop": 10,
         "heading_spacing_top_mobile": 10,
         "heading_spacing_bottom_desktop": 10,
