@@ -868,6 +868,9 @@
     },
     "product_highlight_gXtgGb": {
       "type": "product-highlight",
+      "custom_css": [
+        ".gs-ph__image-heading {background: #5e5c39;}"
+      ],
       "name": "Product Highlight",
       "settings": {
         "reverse_desktop": false,
@@ -912,7 +915,7 @@
         "product_highlight_image_heading_color": "#FFFFFF",
         "product_highlight_image_heading_font_size_desktop": 38,
         "product_highlight_image_heading_font_size_mobile": 36,
-        "product_highlight_image_spacing_desktop": 30,
+        "product_highlight_image_spacing_desktop": 20,
         "product_highlight_image_spacing_mobile": 15,
         "enable_product_highlight_image_arrows": true,
         "product_highlight_image_arrows_display": "outline",
