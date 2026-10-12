@@ -179,8 +179,8 @@
         "header_text": "#ffffff",
         "header_text_hover": "#e7e7e7",
         "header_icon": "#ffffff",
-        "cart_count_background": "#ffffff",
-        "cart_count_text": "#ab192d",
+        "cart_count_background": "#AB192D",
+        "cart_count_text": "#FFFFFF",
         "mega_background": "#ffffff",
         "mega_text": "#121212"
       }
