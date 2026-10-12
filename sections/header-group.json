@@ -120,24 +120,34 @@
             "nav_label": ""
           }
         },
+        "utility_link_Dj4F6W": {
+          "type": "utility_link",
+          "settings": {
+            "icon": "accessibility",
+            "behaviour": "accessibility",
+            "label": "Accessibility",
+            "link": "",
+            "show_on_mobile": false
+          }
+        },
         "util_rewards": {
           "type": "utility_link",
           "settings": {
             "icon": "star",
             "behaviour": "link",
-            "label": "Club Grunt Style",
-            "link": "shopify://pages/club-grunt-style",
-            "show_on_mobile": false
+            "label": "My Wishlist",
+            "link": "shopify://pages/my-wishlist",
+            "show_on_mobile": true
           }
         },
         "util_help": {
           "type": "utility_link",
           "settings": {
-            "icon": "help",
+            "icon": "headset",
             "behaviour": "link",
             "label": "Help",
-            "link": "shopify://pages/contact-us",
-            "show_on_mobile": false
+            "link": "shopify://pages/contact-grunt-style",
+            "show_on_mobile": true
           }
         },
         "util_stores": {
@@ -159,6 +169,7 @@
         "nav_menu_img_last_chance",
         "nav_menu_img_club",
         "nav_menu_img_tcwBha",
+        "utility_link_Dj4F6W",
         "util_rewards",
         "util_help",
         "util_stores"
