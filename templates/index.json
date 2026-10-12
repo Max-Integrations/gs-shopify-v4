@@ -761,6 +761,15 @@
     "featured_collections_RaEPWA": {
       "type": "featured-collections",
       "blocks": {
+        "collection_block_fJNP4g": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "G.W.O.T",
+            "collection": "gwot",
+            "cta_label": "SHOP COLLECTION",
+            "cta_link": "shopify://collections/gwot"
+          }
+        },
         "collection_block_JdXg6Y": {
           "type": "collection_block",
           "settings": {
@@ -768,15 +777,6 @@
             "collection": "veteran-clothing-and-gear",
             "cta_label": "SHOP COLLECTION",
             "cta_link": "shopify://collections/veteran-clothing-and-gear"
-          }
-        },
-        "collection_block_MmLLUF": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "MILITARY & FIRST RESPONDERS",
-            "collection": "military-first-responders",
-            "cta_label": "SHOP COLLECTION",
-            "cta_link": "shopify://collections/military-first-responders"
           }
         },
         "collection_block_GPGBM4": {
@@ -788,8 +788,18 @@
             "cta_link": "shopify://collections/r-e-d-franchise"
           }
         },
+        "collection_block_MmLLUF": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "MILITARY & FIRST RESPONDERS",
+            "collection": "military-first-responders",
+            "cta_label": "SHOP COLLECTION",
+            "cta_link": "shopify://collections/military-first-responders"
+          }
+        },
         "collection_block_aajarn": {
           "type": "collection_block",
+          "disabled": true,
           "settings": {
             "custom_title": "2ND AMENDMENT",
             "collection": "2nd-amendment-collection",
@@ -799,9 +809,10 @@
         }
       },
       "block_order": [
+        "collection_block_fJNP4g",
         "collection_block_JdXg6Y",
-        "collection_block_MmLLUF",
         "collection_block_GPGBM4",
+        "collection_block_MmLLUF",
         "collection_block_aajarn"
       ],
       "name": "Featured collections",
