@@ -585,9 +585,7 @@
     "recommendations": {
       "type": "featured-collections",
       "custom_css": [
-        ".product-percent-off {display: none;}",
-        ".compare-add-button {display: none;}",
-        ".product-quickview {padding-block: 12px; margin-top: -20px;}"
+        ".product-quickview {padding-block: 12px; margin-top: -65px;}"
       ],
       "settings": {
         "section_heading": "You May Also Like",
@@ -595,7 +593,7 @@
         "collection_type": "recommendations",
         "collection_source": "manual",
         "layout_style": "carousel",
-        "container_width": "lg",
+        "container_width": "md",
         "grid_image_size": "square",
         "max_number_products_loaded": 10,
         "number_products_per_view_desktop": "4",
