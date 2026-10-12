@@ -1101,7 +1101,8 @@
         ".testimonial-text {font-size: 14px; font-weight: 400;}",
         ".testimonial-title {font-weight: 700; font-size: 20px;}",
         ".testimonial-item-inner.card-border-enabled {border-color: #000; border: 2px solid; align-content: center; text-align: center;}",
-        ".testimonial-star-rating {display: inline;}"
+        ".testimonial-star-rating {display: inline;}",
+        ".testimonial-item {max-height: 420px;}"
       ],
       "settings": {
         "section_visibility": "always",
