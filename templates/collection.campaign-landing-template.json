@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "full_width_image_with_text_v2_nJ6qfr": {
@@ -10,6 +19,8 @@
         "background_image_desktop": "shopify://shop_images/CPB_D_NO_CTA_1440x300_National_Cancer_Survivor_Month_Activation.jpg",
         "background_image_mobile": "shopify://shop_images/CPB_M_NO_CTA_750x460_National_Cancer_Survivor_Month_Activation.jpg",
         "image_height_auto": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
         "banner_link": "",
         "open_in_new_tab": false,
         "padding_top_desktop": 20,
@@ -20,22 +31,11 @@
         "padding_bottom_mobile": 36,
         "padding_horizontal_mobile": 24,
         "item_gap_mobile": 10,
-        "button_gap": 8,
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "button_gap": 8
       }
     },
     "rich_text_e7GpBr": {
       "type": "rich-text",
-      "settings": {
-        "section_visibility": "always",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 8,
-        "padding_bottom": 8
-      },
       "blocks": {
         "heading_MHHDRT": {
           "type": "block--heading",
@@ -47,7 +47,8 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "text_qN8kHA": {
           "type": "block--text",
@@ -56,39 +57,30 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "heading_MHHDRT",
         "text_qN8kHA"
       ],
-      "name": "t:sections.rich-text.name"
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
     },
     "full_width_image_with_text_v2_TzcRtg": {
       "type": "section--full-width-image_text",
-      "settings": {
-        "visibility": "always",
-        "layout_preset": "center",
-        "alignment_preset": "center",
-        "background_color": "#ffffff",
-        "background_image_desktop": "shopify://shop_images/CPB_D_IMAGE_1440x300_Born_of_Rebellion_Branch_Collection.jpg",
-        "background_image_mobile": "shopify://shop_images/CPB_M_IMAGE_750x460_Born_of_Rebellion_Branch_Collection.jpg",
-        "image_height_auto": true,
-        "banner_link": "",
-        "open_in_new_tab": false,
-        "padding_top_desktop": 32,
-        "padding_bottom_desktop": 32,
-        "padding_horizontal_desktop": 36,
-        "item_gap_desktop": 10,
-        "padding_top_mobile": 32,
-        "padding_bottom_mobile": 32,
-        "padding_horizontal_mobile": 24,
-        "item_gap_mobile": 10,
-        "button_gap": 8,
-        "overlay_color": "#000000",
-        "overlay_opacity": 10
-      },
       "blocks": {
         "subcopy": {
           "type": "block--message-line",
@@ -101,22 +93,83 @@
             "letter_spacing": 0,
             "padding_y": 0,
             "padding_x": 0
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "subcopy"
       ],
-      "disabled": true
+      "disabled": true,
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/CPB_D_IMAGE_1440x300_Born_of_Rebellion_Branch_Collection.jpg",
+        "background_image_mobile": "shopify://shop_images/CPB_M_IMAGE_750x460_Born_of_Rebellion_Branch_Collection.jpg",
+        "image_height_auto": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 10,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 32,
+        "padding_bottom_desktop": 32,
+        "padding_horizontal_desktop": 36,
+        "item_gap_desktop": 10,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "padding_horizontal_mobile": 24,
+        "item_gap_mobile": 10,
+        "button_gap": 8
+      }
     },
     "main-collection": {
       "type": "main-collection",
+      "blocks": {
+        "product_card_quick_view_cHrfTD": {
+          "type": "product-card-quick-view",
+          "settings": {
+            "style": "quick_view",
+            "product_card_quick_view_button_text": "Quick Add",
+            "button_bg": "#000000",
+            "button_text": "#FFFFFF",
+            "button_hover_bg": "#AB192D",
+            "button_hover_text": "#FFFFFF"
+          }
+        },
+        "product-grid": {
+          "type": "product-grid",
+          "settings": {
+            "columns_desktop": "4",
+            "columns_mobile": "2",
+            "product_card_bg_color": "#ffffff",
+            "card_content_gap": 2,
+            "card_content_height": 104,
+            "card_button_gap": 8
+          }
+        }
+      },
+      "block_order": [
+        "product_card_quick_view_cHrfTD",
+        "product-grid"
+      ],
+      "custom_css": [
+        ".product-quickview {padding-block: 12px; margin-top: -20px;}",
+        ".gs-promo__content {position: absolute; bottom: 100px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6); line-height: 0.25;}",
+        ".gs-swatch-scroller {display: inline-block;}",
+        ".gs-collection__description {background: #000; color: #fff; text-align: center;}",
+        ".gs-collection__description h2 {background: #000; color: #fff; text-align: center;}"
+      ],
       "settings": {
         "overlay_content_position": "text-center",
         "overlay_text": false,
         "heading_size": "h1",
         "tag": "h1",
         "show_header": false,
+        "header_style": "band",
+        "header_background": "#000000",
+        "header_text_color": "#ffffff",
         "show_description": false,
         "description_position": "below_products",
         "collection_image": false,
@@ -139,29 +192,10 @@
         "bottom_space_desktop": 0,
         "top_space_mobile": 0,
         "bottom_space_mobile": 0
-      },
-      "blocks": {
-        "product-grid": {
-          "type": "product-grid",
-          "settings": {
-            "columns_desktop": "4",
-            "columns_mobile": "2",
-            "product_card_bg_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "product-grid"
-      ]
+      }
     },
     "text_scroller_v2_eBFXd9": {
       "type": "text-scroller-v2",
-      "settings": {
-        "text_scroller_heading": "Honoring Our Community",
-        "header_text_color": "#ffffff",
-        "header_font_size": 32,
-        "header_font_weight": "700"
-      },
       "blocks": {
         "text_scroller_nMJgXE": {
           "type": "text_scroller",
@@ -196,7 +230,16 @@
         "text_scroller_nMJgXE",
         "text_scroller_hdnAWq"
       ],
-      "name": "Text Scroller V2"
+      "custom_css": [
+        "div {background: #000;}"
+      ],
+      "name": "Text Scroller V2",
+      "settings": {
+        "text_scroller_heading": "Honoring Our Community",
+        "header_text_color": "#ffffff",
+        "header_font_size": 32,
+        "header_font_weight": "700"
+      }
     }
   },
   "order": [
