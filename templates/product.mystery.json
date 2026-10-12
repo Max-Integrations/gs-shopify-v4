@@ -355,7 +355,8 @@
     "recommendations": {
       "type": "featured-collections",
       "custom_css": [
-        ".product-quickview {margin-top: -155px;}",
+        ".product-quickview {margin-top: -5px;}",
+        ".product-card-item {max-height: 520px;}",
         "@media screen and (max-width: 768px) {.product-quickview {margin-top: -99px; } .product-card-item {max-height: 420px; }}"
       ],
       "settings": {
@@ -364,7 +365,7 @@
         "collection_type": "recommendations",
         "collection_source": "manual",
         "layout_style": "carousel",
-        "container_width": "sm",
+        "container_width": "md",
         "grid_image_size": "square",
         "max_number_products_loaded": 15,
         "number_products_per_view_desktop": "4",
