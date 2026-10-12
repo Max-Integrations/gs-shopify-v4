@@ -175,7 +175,7 @@
         "grid_yYV4YL": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/Custom_1250x1250_GS8214_FW26_Halloween_Collection.jpg",
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8641_NightRiderHoodie-Black.jpg",
             "collection": "",
             "link": "shopify://collections/halloween",
             "span_two_columns": false,
@@ -209,9 +209,9 @@
         "grid_TTWhpz": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V3_GS7608_HeavyweightPocketT-Shirt-Black.jpg",
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8410_OnlyViolenceFollowsHat_1.jpg",
             "collection": "",
-            "link": "shopify://collections/basics-franchise",
+            "link": "shopify://collections/handpicked-for-violence",
             "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
@@ -225,7 +225,7 @@
             "heading": {
               "type": "block--heading",
               "settings": {
-                "text": "<strong>BASICS</strong>",
+                "text": "<strong>VIOLENCE</strong>",
                 "size": "h2",
                 "tag": "h2",
                 "alignment": "inherit",
@@ -243,7 +243,7 @@
         "grid_j3FnQz": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8540_ProfessionalSh-tTalkerT-Shirt-Black.jpg",
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GSMC0120_USMC-FirstToFightHoodie-Black.jpg",
             "collection": "",
             "link": "shopify://collections/men",
             "span_two_columns": false,
@@ -277,7 +277,7 @@
         "grid_qJFUr9": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V3_GS8456_Women_sBornDefiantSlimFitT-Shirt-MilitaryGreen.jpg",
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8593_Women_sBlackoutBeautifulBadassV-Neck-Black.jpg",
             "collection": "",
             "link": "shopify://collections/women",
             "span_two_columns": false,
@@ -321,7 +321,7 @@
         "columns_desktop": 4,
         "columns_mobile": 2,
         "tile_ratio": "fixed",
-        "desktop_row_height": 300,
+        "desktop_row_height": 380,
         "mobile_row_height": 200,
         "tile_width": "full",
         "desktop_grid_gap": 5,
@@ -410,8 +410,8 @@
             "margin_x": 0,
             "border_width": 0,
             "border_radius": 0,
-            "custom_scheme": false,
-            "color_scheme": "",
+            "custom_scheme": true,
+            "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
             "bg": "#ffffff",
             "text_color": "#000000",
             "border_color": "#ffffff",
