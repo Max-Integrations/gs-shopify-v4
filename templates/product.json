@@ -251,7 +251,7 @@
             "swym_atw_icon_thickness": 1.7,
             "swym_atw_display_btn_text": false,
             "swym_button_position": "product_title_right",
-            "swym_atw_button_vertical_offset": -2,
+            "swym_atw_button_vertical_offset": 8,
             "swym_atw_full_width": true,
             "swym_atw_button_alignment": "center",
             "swym_add_to_wishlist_color": "#ffffff",
@@ -551,7 +551,10 @@
       "custom_css": [
         ".gs-product__option-values {min-width: 10px; height: 50px;}",
         ".gs-product__option-pill {width: 10px; height: 25px; font-size: 12px;}",
-        ".gs-product__option-values {display: flex; flex-wrap: wrap; gap: 4px;}"
+        ".gs-product__option-values {display: flex; flex-wrap: wrap; gap: 4px;}",
+        ".gs-product__title {margin: -10px; margin-bottom: -30px;}",
+        ".klaviyo-star-rating-widget {margin: -10px; margin-top: -10px;}",
+        ".gs-product__price {margin: -10px;}"
       ],
       "settings": {
         "show_breadcrumb": true,
