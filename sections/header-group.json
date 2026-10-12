@@ -167,7 +167,7 @@
         "menu": "main-menu",
         "sticky_header": true,
         "sticky_header_type": "on_scroll",
-        "highlight_enable": true,
+        "highlight_enable": false,
         "highlight_text": "BOGO 50%",
         "highlight_background": "#ab192d",
         "highlight_text_color": "#ffffff",
@@ -179,8 +179,8 @@
         "header_text": "#ffffff",
         "header_text_hover": "#e7e7e7",
         "header_icon": "#ffffff",
-        "cart_count_background": "#5c5c5c",
-        "cart_count_text": "#ffffff",
+        "cart_count_background": "#FFFFFF",
+        "cart_count_text": "#AB192D",
         "mega_background": "#ffffff",
         "mega_text": "#121212"
       }
