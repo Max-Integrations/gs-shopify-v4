@@ -318,11 +318,7 @@
         "badge_dnr",
         "badge_usa_made"
       ],
-      "custom_css": [
-        ".gs-product__title {margin-bottom: -10px;}",
-        ".klaviyo-star-rating-widget {margin-top: -8px; margin-bottom: -10px;}",
-        ".gs-product__price {margin-top: -10px; margin-bottom: -10px;}"
-      ],
+      "custom_css": [],
       "settings": {
         "show_breadcrumb": true,
         "sticky_media": false,
