@@ -77,7 +77,7 @@
             "product_card_quick_view_button_text": "Quick Add",
             "button_bg": "#000000",
             "button_text": "#ffffff",
-            "button_hover_bg": "#000000",
+            "button_hover_bg": "#AB192D",
             "button_hover_text": "#ffffff"
           }
         }
