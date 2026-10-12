@@ -879,7 +879,7 @@
         "product_highlight_text_content_heading": "AMERICA'S FAVORITE FAMILY FEUD",
         "product_highlight_text_content_heading_color": "#000000",
         "product_highlight_text_content_heading_font_size_desktop": 32,
-        "product_highlight_text_content_heading_font_size_mobile": 28,
+        "product_highlight_text_content_heading_font_size_mobile": 20,
         "product_highlight_text_content_paragraph": "<p><strong>I JUST HOPE BOTH TEAMS HAVE FUN.</strong></p><p>Same country. Same team. Completely unnecessary levels of sh*t talking.</p>",
         "product_highlight_text_content_paragraph_color": "#000000",
         "product_highlight_text_content_paragraph_font_size_desktop": 16,
@@ -914,7 +914,7 @@
         "product_highlight_image_heading": "ARMY VS NAVY",
         "product_highlight_image_heading_color": "#FFFFFF",
         "product_highlight_image_heading_font_size_desktop": 38,
-        "product_highlight_image_heading_font_size_mobile": 36,
+        "product_highlight_image_heading_font_size_mobile": 28,
         "product_highlight_image_spacing_desktop": 20,
         "product_highlight_image_spacing_mobile": 15,
         "enable_product_highlight_image_arrows": true,
@@ -925,7 +925,7 @@
         "product_highlight_image_arrows_gap_between_desktop": 20,
         "product_highlight_image_arrows_gap_between_mobile": 25,
         "product_highlight_heading_arrows_gap_desktop": 10,
-        "product_highlight_heading_arrows_gap_mobile": 0
+        "product_highlight_heading_arrows_gap_mobile": 10
       }
     },
     "product_highlight_qi4Eyg": {
