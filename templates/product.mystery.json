@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -24,6 +33,7 @@
             "show_savings": true,
             "savings_style": "percent",
             "show_tax_line": false,
+            "inline_rating": false,
             "conditional_message": "<p>{{ product.metafields.custom.conditional_price_message.value }}</p>",
             "message_color": "#ab192d"
           },
@@ -33,7 +43,6 @@
           "type": "block--product-message",
           "settings": {
             "text": "<p>{{ product.metafields.custom.promo_exclusions | metafield_tag }}</p>",
-            "image": "",
             "image_link": "",
             "product_tags": "",
             "exclude_tags": "",
@@ -44,7 +53,8 @@
             "alignment": "left",
             "text_color": "#ab192d",
             "bg": ""
-          }
+          },
+          "blocks": {}
         },
         "swatches": {
           "type": "block--product-swatches",
@@ -230,7 +240,8 @@
         "buy_buttons": {
           "type": "block--product-buy-buttons",
           "settings": {
-            "show_quantity": true,
+            "show_quantity": false,
+            "quantity_position": "inline",
             "add_label": "Add to cart",
             "sold_out_label": "Sold out - email when available",
             "sold_out_disables": false,
@@ -249,10 +260,10 @@
             "swym_atw_button_vertical_offset": -8,
             "swym_atw_full_width": true,
             "swym_atw_button_alignment": "center",
-            "swym_add_to_wishlist_color": "#FFFFFF",
-            "swym_added_to_wishlist_color": "#AB192D",
+            "swym_add_to_wishlist_color": "#ffffff",
+            "swym_added_to_wishlist_color": "#ab192d",
             "swym_button_text_color": "#000000",
-            "swym_atw_border_color": "#FFFFFF",
+            "swym_atw_border_color": "#ffffff",
             "swym_atw_border_thickness": 0,
             "swym_atw_button_border_radius": 0,
             "swym_enable_hover_customization": false,
@@ -269,7 +280,6 @@
           "type": "block--product-message",
           "settings": {
             "text": "<p><em><strong>{{ product.metafields.custom.limited_custom_product_message.value }}</strong></em></p>",
-            "image": "",
             "image_link": "",
             "product_tags": "",
             "exclude_tags": "",
@@ -280,7 +290,8 @@
             "alignment": "center",
             "text_color": "",
             "bg": ""
-          }
+          },
+          "blocks": {}
         },
         "wonderment_pdp_etas_QjinAi": {
           "type": "shopify://apps/track-by-loop/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
@@ -292,6 +303,7 @@
         },
         "store_locator": {
           "type": "block--product-store-locator",
+          "disabled": true,
           "settings": {
             "label": "Find a store near you",
             "radius": 50,
@@ -306,11 +318,13 @@
             "heading": "Product Description",
             "source": "text",
             "text": "{{ product.description }}",
+            "page": "",
             "features_heading": "",
             "video_url": "",
             "open_default": true,
             "visibility": "always"
-          }
+          },
+          "blocks": {}
         },
         "accordion_2": {
           "type": "block--product-accordion",
@@ -318,11 +332,13 @@
             "heading": "IMPORTANT REMINDERS",
             "source": "features",
             "text": "",
+            "page": "",
             "features_heading": "",
             "video_url": "",
             "open_default": false,
             "visibility": "always"
-          }
+          },
+          "blocks": {}
         },
         "accordion_3": {
           "type": "block--product-accordion",
@@ -330,11 +346,13 @@
             "heading": "Material Description",
             "source": "text",
             "text": "<p>{{ product.metafields.custom.size_fit.value }}</p>{{ product.metafields.custom.material_description | metafield_tag }}<p><a href=\"/pages/womens-size-chart\" title=\"Women's Size Chart\"> Women's Size Guide</a> | <a href=\"/pages/men-size-chart\" title=\"Men's Size Chart\">Men's Size Guide </a></p>",
+            "page": "",
             "features_heading": "",
             "video_url": "",
             "open_default": false,
             "visibility": "always"
-          }
+          },
+          "blocks": {}
         },
         "complementary": {
           "type": "block--product-complementary",
@@ -359,7 +377,8 @@
             "alignment": "left",
             "text_color": "",
             "bg": ""
-          }
+          },
+          "blocks": {}
         },
         "badge_usa_250": {
           "type": "block--product-badge",
@@ -367,7 +386,8 @@
             "tag": "USA 250",
             "image": "shopify://shop_images/USA_250_Badge_Primary.svg",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_100_series": {
           "type": "block--product-badge",
@@ -375,7 +395,8 @@
             "tag": "100 Series",
             "image": "shopify://shop_images/PDP_Badge_100x100_Club_1_of_100_CGS081.svg",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_clubea": {
           "type": "block--product-badge",
@@ -383,7 +404,8 @@
             "tag": "ClubEA",
             "image": "shopify://shop_images/PDP_BADGES_Club_Early_Access.png",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_club_exclusive": {
           "type": "block--product-badge",
@@ -391,7 +413,8 @@
             "tag": "Club Exclusive",
             "image": "shopify://shop_images/PDP_BADGES_Club_Exclusive.png",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_limited_edition": {
           "type": "block--product-badge",
@@ -399,7 +422,8 @@
             "tag": "Limited Edition",
             "image": "shopify://shop_images/PDP_BADGES_Limited_Edition.png",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_new": {
           "type": "block--product-badge",
@@ -407,7 +431,8 @@
             "tag": "new",
             "image": "shopify://shop_images/PDP_BADGES_New.png",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_best_seller": {
           "type": "block--product-badge",
@@ -415,7 +440,8 @@
             "tag": "Best Seller",
             "image": "shopify://shop_images/PDP_BADGES_Best_Sellers.png",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_dnr": {
           "type": "block--product-badge",
@@ -423,7 +449,8 @@
             "tag": "DNR",
             "image": "shopify://shop_images/PDP_BADGES_Last_Chance.png",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         },
         "badge_usa_made": {
           "type": "block--product-badge",
@@ -431,7 +458,8 @@
             "tag": "USA Made",
             "image": "shopify://shop_images/PDP_BADGES_Made_in_the_USA.png",
             "position": "top-right"
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -469,6 +497,14 @@
         "badge_best_seller",
         "badge_dnr",
         "badge_usa_made"
+      ],
+      "custom_css": [
+        ".gs-product__option-values {min-width: 10px; height: 55px;}",
+        ".gs-product__option-pill {width: 10px; height: 25px; font-size: 12px;}",
+        ".gs-product__option-values {display: flex; flex-wrap: wrap; gap: 4px;}",
+        ".gs-product__title {margin-bottom: -10px;}",
+        ".klaviyo-star-rating-widget {margin-top: -8px; margin-bottom: -10px;}",
+        ".gs-product__price {margin-top: -10px; margin-bottom: -10px;}"
       ],
       "settings": {
         "show_breadcrumb": true,
@@ -537,6 +573,9 @@
         "collection_cta_spacing_top_mobile": 10,
         "collection_cta_spacing_bottom_desktop": 10,
         "collection_cta_spacing_bottom_mobile": 10,
+        "heading_color": "",
+        "tab_color": "",
+        "tab_active_color": "",
         "cta_text_color": "#000000",
         "cta_text_color_hover": "#ffffff",
         "cta_background_color": "#ffffff",
@@ -547,6 +586,9 @@
     },
     "product_highlight_BaXhDc": {
       "type": "product-highlight",
+      "custom_css": [
+        ".custom-cta {background-color: #ffcc01;}"
+      ],
       "settings": {
         "reverse_desktop": true,
         "reverse_mobile": true,
@@ -584,33 +626,27 @@
         "product_highlight_text_content_arrows_size_mobile": 64,
         "product_highlight_text_arrows_gap_between_desktop": 30,
         "product_highlight_text_arrows_gap_between_mobile": 30,
-        "product_highlight_image_heading": "",
-        "product_highlight_image_heading_font_size_desktop": 38,
-        "product_highlight_image_heading_font_size_mobile": 36,
-        "product_highlight_image_heading_color": "#9a723f",
         "image": "shopify://shop_images/Split_Banner_D_980x610_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
         "image_mobile": "shopify://shop_images/Split_Banner_M_750x750_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
+        "product_highlight_image_heading": "",
+        "product_highlight_image_heading_color": "#9a723f",
+        "product_highlight_image_heading_font_size_desktop": 38,
+        "product_highlight_image_heading_font_size_mobile": 36,
+        "product_highlight_image_spacing_desktop": 30,
+        "product_highlight_image_spacing_mobile": 15,
         "enable_product_highlight_image_arrows": false,
         "product_highlight_image_arrows_display": "solid",
-        "product_highlight_image_arrows_color": "#FFCC01",
+        "product_highlight_image_arrows_color": "#ffcc01",
         "product_highlight_image_arrows_size_desktop": 78,
         "product_highlight_image_arrows_size_mobile": 54,
         "product_highlight_image_arrows_gap_between_desktop": 25,
         "product_highlight_image_arrows_gap_between_mobile": 25,
-        "product_highlight_image_spacing_desktop": 30,
-        "product_highlight_image_spacing_mobile": 15,
         "product_highlight_heading_arrows_gap_desktop": 10,
         "product_highlight_heading_arrows_gap_mobile": 0
-      },
-      "custom_css": [
-        ".custom-cta {background-color: #ffcc01;}"
-      ]
+      }
     },
     "1713538328bea72ad4": {
       "type": "apps",
-      "settings": {
-        "include_margins": true
-      },
       "blocks": {
         "klaviyo_reviews_product_reviews_t9Jg48": {
           "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
@@ -619,7 +655,10 @@
       },
       "block_order": [
         "klaviyo_reviews_product_reviews_t9Jg48"
-      ]
+      ],
+      "settings": {
+        "include_margins": true
+      }
     },
     "custom_liquid_9fRRfL": {
       "type": "custom-liquid",
