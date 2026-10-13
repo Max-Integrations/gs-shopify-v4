@@ -585,6 +585,7 @@
     "recommendations": {
       "type": "featured-collections",
       "custom_css": [
+        ".gs-swatch-scroller {display: inline-block;}",
         "@media screen and (max-width: 600px) {.product-quickview {margin-top: -35px; }}"
       ],
       "settings": {
