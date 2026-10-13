@@ -1,28 +1,16 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "full_width_image_with_text_v2_Bkx38M": {
       "type": "section--full-width-image_text",
-      "settings": {
-        "visibility": "small",
-        "layout_preset": "right",
-        "alignment_preset": "center",
-        "background_color": "#ffffff",
-        "background_image_desktop": "shopify://shop_images/CPB_D_1440x300_General_HUB_-_Father_s_Day_Gift_Guide_-_2025.jpg",
-        "background_image_mobile": "shopify://shop_images/CPB_M_980x600_General_HUB_-_Father_s_Day_Gift_Guide_-_2025.jpg",
-        "image_height_auto": true,
-        "banner_link": "",
-        "open_in_new_tab": false,
-        "padding_top_desktop": 60,
-        "padding_bottom_desktop": 60,
-        "padding_horizontal_desktop": 48,
-        "item_gap_desktop": 10,
-        "padding_top_mobile": 48,
-        "padding_bottom_mobile": 48,
-        "padding_horizontal_mobile": 24,
-        "item_gap_mobile": 10,
-        "button_gap": 8,
-        "overlay_opacity": 0
-      },
       "blocks": {
         "heading": {
           "type": "block--message-line",
@@ -35,25 +23,39 @@
             "letter_spacing": 0,
             "padding_y": 0,
             "padding_x": 0
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "heading"
       ],
-      "disabled": true
+      "disabled": true,
+      "settings": {
+        "visibility": "small",
+        "layout_preset": "right",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/CPB_D_1440x300_General_HUB_-_Father_s_Day_Gift_Guide_-_2025.jpg",
+        "background_image_mobile": "shopify://shop_images/CPB_M_980x600_General_HUB_-_Father_s_Day_Gift_Guide_-_2025.jpg",
+        "image_height_auto": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_horizontal_desktop": 48,
+        "item_gap_desktop": 10,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_horizontal_mobile": 24,
+        "item_gap_mobile": 10,
+        "button_gap": 8
+      }
     },
     "rich_text_ntkwgD": {
       "type": "rich-text",
-      "settings": {
-        "section_visibility": "always",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 8,
-        "padding_bottom": 8
-      },
       "blocks": {
         "heading_RytHed": {
           "type": "block--heading",
@@ -65,7 +67,8 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "text_46iwbX": {
           "type": "block--text",
@@ -74,7 +77,8 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -82,10 +86,26 @@
         "text_46iwbX"
       ],
       "disabled": true,
-      "name": "t:sections.rich-text.name"
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
     },
     "countdown_banner_nk8eYy": {
       "type": "countdown-banner",
+      "custom_css": [
+        "h2 {background-color: #748891; letter-spacing: 2.5px; padding: 4px; font-size: 30px;}"
+      ],
+      "name": "Countdown Banner",
       "settings": {
         "countdown_banner_full_width": true,
         "countdown_banner_style": "basic",
@@ -95,7 +115,7 @@
         "countdown_banner_promo_copy_header_font_size": "h2",
         "countdown_banner_promo_subcopy": "",
         "countdown_banner_countdown_subcopy": "",
-        "countdown_banner_timer_end": "2026-09-31 23:59",
+        "countdown_banner_timer_end": "2026-10-20 23:59",
         "countdown_banner_terms": "MUST BE A MEMBER TO BUY - SIGN IN or <a href=\"https://www.gruntstyle.com/community/membership\" title=\"https://www.gruntstyle.com/community/membership\">JOIN NOW!</a>",
         "countdown_banner_background_style": "solid",
         "countdown_banner_bg_color_solid": "#000000",
@@ -112,36 +132,10 @@
         "countdown_banner_countdown_blocks_border_color": "#ffffff",
         "countdown_banner_terms_text_color": "#ffffff",
         "countdown_banner_terms_link_color": "#ffffff"
-      },
-      "custom_css": [
-        "h2 {background-color: #748891; letter-spacing: 2.5px; padding: 4px; font-size: 30px;}"
-      ],
-      "name": "Countdown Banner"
+      }
     },
     "full_width_image_with_text_v2_tCTA4t": {
       "type": "section--full-width-image_text",
-      "settings": {
-        "visibility": "always",
-        "layout_preset": "center",
-        "alignment_preset": "center",
-        "background_color": "#ffffff",
-        "background_image_desktop": "shopify://shop_images/HP_Promo_Block_D_NO_CTA_1440x120_FW26_20_-Off-GOVX.jpg",
-        "background_image_mobile": "shopify://shop_images/HP_Promo_Block_M_NO_CTA_750x200_FW26_20_-Off-GOVX.jpg",
-        "image_height_auto": true,
-        "banner_link": "https://www.gruntstyle.com/community/membership",
-        "open_in_new_tab": false,
-        "padding_top_desktop": 60,
-        "padding_bottom_desktop": 60,
-        "padding_horizontal_desktop": 48,
-        "item_gap_desktop": 6,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20,
-        "padding_horizontal_mobile": 24,
-        "item_gap_mobile": 6,
-        "button_gap": 8,
-        "overlay_color": "#000000",
-        "overlay_opacity": 60
-      },
       "blocks": {
         "heading": {
           "type": "block--message-line",
@@ -154,22 +148,67 @@
             "letter_spacing": 0,
             "padding_y": 0,
             "padding_x": 0
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "heading"
       ],
-      "disabled": true
+      "disabled": true,
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/HP_Promo_Block_D_NO_CTA_1440x120_FW26_20_-Off-GOVX.jpg",
+        "background_image_mobile": "shopify://shop_images/HP_Promo_Block_M_NO_CTA_750x200_FW26_20_-Off-GOVX.jpg",
+        "image_height_auto": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 60,
+        "banner_link": "https://www.gruntstyle.com/community/membership",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_horizontal_desktop": 48,
+        "item_gap_desktop": 6,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 24,
+        "item_gap_mobile": 6,
+        "button_gap": 8
+      }
     },
     "main-collection": {
       "type": "main-collection",
+      "blocks": {
+        "product-grid": {
+          "type": "product-grid",
+          "settings": {
+            "columns_desktop": "4",
+            "columns_mobile": "2",
+            "product_card_bg_color": "#ffffff",
+            "card_content_gap": 2,
+            "card_content_height": 104,
+            "card_button_gap": 8
+          }
+        }
+      },
+      "block_order": [
+        "product-grid"
+      ],
+      "custom_css": [
+        ".product-quickview-button {display: none;}"
+      ],
       "settings": {
         "overlay_content_position": "text-center",
         "overlay_text": false,
         "heading_size": "h1",
         "tag": "h1",
         "show_header": false,
+        "header_style": "band",
+        "header_background": "#000000",
+        "header_text_color": "#ffffff",
         "show_description": true,
         "description_position": "below_products",
         "collection_image": false,
@@ -192,23 +231,7 @@
         "bottom_space_desktop": 0,
         "top_space_mobile": 0,
         "bottom_space_mobile": 0
-      },
-      "blocks": {
-        "product-grid": {
-          "type": "product-grid",
-          "settings": {
-            "columns_desktop": "4",
-            "columns_mobile": "2",
-            "product_card_bg_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "product-grid"
-      ],
-      "custom_css": [
-        ".product-quickview-button {display: none;}"
-      ]
+      }
     }
   },
   "order": [
