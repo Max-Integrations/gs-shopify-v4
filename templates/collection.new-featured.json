@@ -221,6 +221,7 @@
         "heading_R3thaA",
         "text_dUbrCC"
       ],
+      "disabled": true,
       "name": "t:sections.rich-text.name",
       "settings": {
         "section_visibility": "always",
@@ -238,6 +239,17 @@
     "main-collection": {
       "type": "main-collection",
       "blocks": {
+        "product_card_quick_view_AFUW9n": {
+          "type": "product-card-quick-view",
+          "settings": {
+            "style": "quick_view",
+            "product_card_quick_view_button_text": "+ Quick Add",
+            "button_bg": "#000000",
+            "button_text": "#FFFFFF",
+            "button_hover_bg": "#AB192D",
+            "button_hover_text": "#FFFFFF"
+          }
+        },
         "product-grid": {
           "type": "product-grid",
           "settings": {
@@ -251,14 +263,22 @@
         }
       },
       "block_order": [
+        "product_card_quick_view_AFUW9n",
         "product-grid"
+      ],
+      "custom_css": [
+        ".product-quickview {padding-block: 12px; margin-top: -20px;}",
+        ".gs-promo__content {position: absolute; bottom: 100px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6); line-height: 0.25;}",
+        ".gs-swatch-scroller {display: inline-block;}",
+        ".gs-collection__description {background: #000; color: #fff; text-align: center;}",
+        ".gs-collection__description h2 {background: #000; color: #fff; text-align: center;}"
       ],
       "settings": {
         "overlay_content_position": "text-center",
         "overlay_text": false,
         "heading_size": "h1",
         "tag": "h1",
-        "show_header": false,
+        "show_header": true,
         "header_style": "band",
         "header_background": "#000000",
         "header_text_color": "#ffffff",
@@ -280,9 +300,9 @@
         "text_color": "#000000",
         "background_opacity_color": "rgba(0,0,0,0)",
         "background_opacity": 0,
-        "top_space_desktop": 5,
+        "top_space_desktop": 0,
         "bottom_space_desktop": 5,
-        "top_space_mobile": 5,
+        "top_space_mobile": 0,
         "bottom_space_mobile": 5
       }
     }
