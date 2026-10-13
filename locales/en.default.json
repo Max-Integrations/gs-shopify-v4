@@ -37,7 +37,7 @@
         "tiktok": "TikTok"
       }
     },
-    "continue_shopping": "Continue shopping",
+    "continue_shopping": "Continue Shopping",
     "countdown": {
       "days": "Days",
       "hours": "Hrs",
@@ -45,29 +45,29 @@
       "seconds": "Sec"
     },
     "accessibility": {
-      "load_more": "Load more products",
-      "show_more": "Show more information"
+      "load_more": "Load More Products",
+      "show_more": "Show More Information"
     },
     "pagination": {
       "label": "Pagination",
       "page": "Page {{ number }}",
-      "next": "Next page",
-      "previous": "Previous page"
+      "next": "Next Page",
+      "previous": "Previous Page"
     },
     "search": {
       "search": "Search",
-      "reset": "Clear search term"
+      "reset": "Clear Search Term"
     },
     "cart": {
-      "view": "View cart ({{ count }})",
-      "view_empty_cart": "View cart",
-      "item_added": "Item added to your cart"
+      "view": "View Cart ({{ count }})",
+      "view_empty_cart": "View Cart",
+      "item_added": "Item Added"
     },
     "share": {
-      "close": "Close share",
-      "copy_to_clipboard": "Copy link",
+      "close": "Close Share",
+      "copy_to_clipboard": "Copy Link",
       "share_url": "Link",
-      "success_message": "Link copied to clipboard"
+      "success_message": "Link Copied"
     },
     "slider": {
       "of": "of",
@@ -374,7 +374,7 @@
       "filter_title": "Filter",
       "filter_by_label": "Filter by",
       "sort_by_label": "Sort by",
-      "show_results": "Show results",
+      "show_results": "Show Results",
       "clear_all": "Clear all",
       "from": "From",
       "to": "To",
