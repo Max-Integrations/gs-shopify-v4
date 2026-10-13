@@ -133,10 +133,10 @@
       "description": "Description",
       "inventory_in_stock": "In stock",
       "inventory_in_stock_show_count": "{{ quantity }} in stock",
-      "inventory_low_stock": "Low stock",
-      "inventory_low_stock_show_count": "Low stock: {{ quantity }} left",
-      "inventory_out_of_stock": "Out of stock",
-      "inventory_out_of_stock_continue_selling": "In stock",
+      "inventory_low_stock": "Low Stock",
+      "inventory_low_stock_show_count": "Low Stock: {{ quantity }} left",
+      "inventory_out_of_stock": "Out of Stock",
+      "inventory_out_of_stock_continue_selling": "In Stock",
       "sku": "SKU",
       "on_sale": "Sale",
       "product_variants": "Product variants",
@@ -144,15 +144,15 @@
         "new": "New",
         "sale": "Sale",
         "preorder": "Pre-order",
-        "soldout": "Sold out",
+        "soldout": "Sold Out",
         "off": "Off"
       },
       "out_of_5_stars": "out of 5 stars",
-      "review": "review",
-      "reviews": "reviews",
-      "color_options": "Colour options",
+      "review": "Review",
+      "reviews": "Reviews",
+      "color_options": "Color options",
       "pick_a_size": "Select Size",
-      "quick_add": "Quick Add",
+      "quick_add": "+ Quick Add",
       "media": {
         "gallery_viewer": "Gallery Viewer",
         "load_image": "Load image {{ index }} in gallery view",
@@ -196,12 +196,12 @@
       },
       "price": {
         "from_price_html": "{{ price }}",
-        "regular_price": "Regular price",
-        "sale_price": "Sale price",
-        "unit_price": "Unit price"
+        "regular_price": "Regular Price",
+        "sale_price": "Sale Price",
+        "unit_price": "Unit Price"
       },
-      "share": "Share this product",
-      "sold_out": "Sold out",
+      "share": "Share this Product",
+      "sold_out": "Sold Out",
       "unavailable": "Unavailable",
       "vendor": "Vendor",
       "value_unavailable": "{{ option_value }} - Unavailable",
@@ -222,9 +222,9 @@
       "filter_and_operator_subtitle": "Match all",
       "apply": "Apply",
       "clear": "Clear",
-      "clear_all": "Remove all",
+      "clear_all": "Remove All",
       "from": "From",
-      "filter_and_sort": "Filter and sort",
+      "filter_and_sort": "Filter and Sort",
       "filter_by_label": "Filter:",
       "filter_button": "Filter",
       "filters_selected": {
@@ -232,8 +232,8 @@
         "other": "{{ count }} selected"
       },
       "filter_selected_accessibility": "{{ type }} ({{ count }} filters selected)",
-      "show_more": "Show more",
-      "show_less": "Show less",
+      "show_more": "Show More",
+      "show_less": "Show Less",
       "max_price": "The highest price is {{ price }}",
       "product_count": {
         "one": "{{ product_count }} of {{ count }} product",
@@ -245,9 +245,9 @@
       },
       "reset": "Reset",
       "sort_button": "Sort",
-      "sort_by_label": "Sort by:",
+      "sort_by_label": "Sort By:",
       "to": "To",
-      "clear_filter": "Remove filter"
+      "clear_filter": "Remove Filter"
     }
   },
   "templates": {
