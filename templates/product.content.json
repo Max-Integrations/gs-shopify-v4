@@ -657,6 +657,9 @@
       "block_order": [
         "klaviyo_reviews_product_reviews_t9Jg48"
       ],
+      "custom_css": [
+        "H2 {font-size: 28px;}"
+      ],
       "settings": {
         "include_margins": true
       }
