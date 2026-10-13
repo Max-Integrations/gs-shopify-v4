@@ -585,7 +585,7 @@
     "recommendations": {
       "type": "featured-collections",
       "custom_css": [
-        "@media screen and (max-width: 600px) {.product-quickview {margin-top: -55px; }}"
+        "@media screen and (max-width: 600px) {.product-quickview {margin-top: -35px; }}"
       ],
       "settings": {
         "section_heading": "You May Also Like",
@@ -845,6 +845,9 @@
       },
       "block_order": [
         "klaviyo_reviews_product_reviews_t9Jg48"
+      ],
+      "custom_css": [
+        "H2 {font-size: 28px;}"
       ],
       "settings": {
         "include_margins": true
