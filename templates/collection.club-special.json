@@ -158,9 +158,9 @@
         "background_opacity_color": "#515253",
         "background_opacity": 0,
         "top_space_desktop": 0,
-        "bottom_space_desktop": 0,
+        "bottom_space_desktop": 5,
         "top_space_mobile": 0,
-        "bottom_space_mobile": 0
+        "bottom_space_mobile": 5
       }
     },
     "section_full_width_image_text_AGFgXj": {
@@ -277,16 +277,16 @@
         "background_color": "#5D5D39",
         "background_image_desktop": "shopify://shop_images/CPB_D_1440x300_GIFT_CLUB_Holiday_LC_Shopping.jpg",
         "background_image_mobile": "shopify://shop_images/CPB_M_980x600_GIFT_CLUB_Holiday_LC_Shopping_39ff35c5-32b6-4c05-a230-f25c4344cb8a.jpg",
-        "image_height_auto": true,
+        "image_height_auto": false,
         "overlay_color": "#000000",
         "overlay_opacity": 20,
         "banner_link": "",
         "open_in_new_tab": false,
-        "padding_top_desktop": 12,
-        "padding_bottom_desktop": 52,
+        "padding_top_desktop": 28,
+        "padding_bottom_desktop": 24,
         "padding_horizontal_desktop": 24,
         "item_gap_desktop": 4,
-        "padding_top_mobile": 4,
+        "padding_top_mobile": 12,
         "padding_bottom_mobile": 8,
         "padding_horizontal_mobile": 0,
         "item_gap_mobile": 2,
