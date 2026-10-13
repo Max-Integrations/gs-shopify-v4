@@ -61,7 +61,7 @@
           "type": "nav_menu_img",
           "settings": {
             "menu_title": "New & Featured",
-            "nav_image": "shopify://shop_images/Nav_Spotlight_IMAGE_700x450_FW26_Campaign_Veteran_-_GWOT_Collection.jpg",
+            "nav_image": "shopify://shop_images/Split_Banner_M_750x750_V2_FW26_Army_vs_Navy.jpg",
             "nav_link": "shopify://collections/new",
             "nav_label": ""
           }
@@ -70,7 +70,7 @@
           "type": "nav_menu_img",
           "settings": {
             "menu_title": "Men",
-            "nav_image": "shopify://shop_images/Split_Banner_D_980x610_FW26_Campaign_Summer_2A.jpg",
+            "nav_image": "shopify://shop_images/Blank_Poster_2000x2000_V1_GSAR0060_Army_-_We_Are_One_Hoodie_-_Black.jpg",
             "nav_link": "shopify://collections/men",
             "nav_label": ""
           }
@@ -79,7 +79,7 @@
           "type": "nav_menu_img",
           "settings": {
             "menu_title": "Women",
-            "nav_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8359_Women_sQueenOfWarSlimFitT-Shirt-Black.jpg",
+            "nav_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8593_Women_sBlackoutBeautifulBadassV-Neck-Black.jpg",
             "nav_link": "shopify://collections/women",
             "nav_label": ""
           }
@@ -88,7 +88,7 @@
           "type": "nav_menu_img",
           "settings": {
             "menu_title": "★ USA 250 ★",
-            "nav_image": "shopify://shop_images/Split_Banner_D_980x610_250_Collection_Highlight_June.jpg",
+            "nav_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GSMC0120_USMC-FirstToFightHoodie-Black.jpg",
             "nav_link": "shopify://collections/250-years-of-freedom",
             "nav_label": ""
           }
@@ -115,7 +115,7 @@
           "type": "nav_menu_img",
           "settings": {
             "menu_title": "About",
-            "nav_image": "shopify://shop_images/GS-logo-700x450-NAV.png",
+            "nav_image": "shopify://shop_images/GS-logo-1024x1024.png",
             "nav_link": "shopify://pages/about",
             "nav_label": ""
           }
@@ -142,6 +142,7 @@
         },
         "util_help": {
           "type": "utility_link",
+          "disabled": true,
           "settings": {
             "icon": "headset",
             "behaviour": "link",
@@ -152,6 +153,7 @@
         },
         "util_stores": {
           "type": "utility_link",
+          "disabled": true,
           "settings": {
             "icon": "pin",
             "behaviour": "link",
@@ -193,8 +195,8 @@
         "header_text": "#ffffff",
         "header_text_hover": "#e7e7e7",
         "header_icon": "#ffffff",
-        "cart_count_background": "#AB192D",
-        "cart_count_text": "#FFFFFF",
+        "cart_count_background": "#ab192d",
+        "cart_count_text": "#ffffff",
         "mega_background": "#ffffff",
         "mega_text": "#121212"
       }
