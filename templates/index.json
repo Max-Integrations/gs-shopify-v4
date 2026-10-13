@@ -183,11 +183,11 @@
             "link": "shopify://collections/halloween",
             "span_two_columns": false,
             "span_two_rows": false,
-            "content_position": "center",
+            "content_position": "bottom-center",
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.5,
+            "background_opacity": 0.1,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -209,26 +209,26 @@
             "heading"
           ]
         },
-        "grid_TTWhpz": {
+        "block_media_tile_bGAER7": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8410_OnlyViolenceFollowsHat_1.jpg",
+            "media_image": "shopify://shop_images/Custom_1250x1250_FW26_250_Years_of_Rebellion.jpg",
             "collection": "",
-            "link": "shopify://collections/handpicked-for-violence",
+            "link": "shopify://collections/army",
             "span_two_columns": false,
             "span_two_rows": false,
-            "content_position": "center",
+            "content_position": "bottom-center",
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.5,
+            "background_opacity": 0.1,
             "hover_overlay": "keep"
           },
           "blocks": {
-            "heading": {
+            "block_heading_96PGEa": {
               "type": "block--heading",
               "settings": {
-                "text": "<strong>VIOLENCE</strong>",
+                "text": "★ <strong>USA 250</strong> ★",
                 "size": "h2",
                 "tag": "h2",
                 "alignment": "inherit",
@@ -240,7 +240,7 @@
             }
           },
           "block_order": [
-            "heading"
+            "block_heading_96PGEa"
           ]
         },
         "grid_j3FnQz": {
@@ -251,11 +251,11 @@
             "link": "shopify://collections/men",
             "span_two_columns": false,
             "span_two_rows": false,
-            "content_position": "center",
+            "content_position": "bottom-center",
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.5,
+            "background_opacity": 0.1,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -285,11 +285,11 @@
             "link": "shopify://collections/women",
             "span_two_columns": false,
             "span_two_rows": false,
-            "content_position": "center",
+            "content_position": "bottom-center",
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.5,
+            "background_opacity": 0.2,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -314,7 +314,7 @@
       },
       "block_order": [
         "grid_yYV4YL",
-        "grid_TTWhpz",
+        "block_media_tile_bGAER7",
         "grid_j3FnQz",
         "grid_qJFUr9"
       ],
@@ -329,7 +329,7 @@
         "tile_width": "full",
         "desktop_grid_gap": 5,
         "mobile_grid_gap": 5,
-        "section_width": false,
+        "section_width": true,
         "section_visibility": "always",
         "content_placement": "overlay",
         "card_background": "",
@@ -602,8 +602,43 @@
             "block_button_GYhxW9"
           ]
         },
+        "block_media_tile_tbkgQn": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8410_OnlyViolenceFollowsHat_1.jpg",
+            "collection": "",
+            "link": "shopify://collections/handpicked-for-violence",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.5,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "heading": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>VIOLENCE</strong>",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading"
+          ]
+        },
         "grid_DYVM8z": {
           "type": "block--media-tile",
+          "disabled": true,
           "settings": {
             "media_image": "shopify://shop_images/Split_Banner_M_750x750_SHIRTS_ONLY_FW26_Campaign_-_Blackout_Collection.jpg",
             "collection": "",
@@ -749,6 +784,7 @@
       },
       "block_order": [
         "grid_DNCaHx",
+        "block_media_tile_tbkgQn",
         "grid_DYVM8z",
         "grid_PFPLjN"
       ],
