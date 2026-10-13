@@ -328,19 +328,19 @@
           "settings": {
             "custom_content_position": 5,
             "custom_content_page": 1,
-            "content_width_desktop": "2",
+            "content_width_desktop": "1",
             "content_width_mobile": "2",
-            "custom_image": "shopify://shop_images/Disruptor_Image_950x750_Club_August_Campaign.jpg",
-            "link": "",
+            "custom_image": "shopify://shop_images/HeroHighlightBanner_750X1050_NOCTA_FW26_Promo_BasicsBundles_General_1.jpg",
+            "link": "shopify://products/mix-match-bundle",
             "background_color": "#b3b3b3",
             "background_opacity": 0,
-            "heading": "",
-            "heading_alignment": "text-left",
+            "heading": "MIX & MATCH YOUR OWN BUNDLE",
+            "heading_alignment": "text-center",
             "heading_color": "#ffffff",
             "heading_font_family": "roboto_condensed_n7",
             "heading_font_weight": "400",
-            "heading_font_size_desktop": 32,
-            "heading_font_size_mobile": 22,
+            "heading_font_size_desktop": 22,
+            "heading_font_size_mobile": 20,
             "description": "",
             "desc_font_family": "roboto_condensed_n4",
             "desc_color": "rgba(0,0,0,0)",
@@ -354,7 +354,10 @@
           "settings": {
             "columns_desktop": "4",
             "columns_mobile": "2",
-            "product_card_bg_color": "#ffffff"
+            "product_card_bg_color": "#ffffff",
+            "card_content_gap": 2,
+            "card_content_height": 104,
+            "card_button_gap": 8
           }
         },
         "card_title": {
@@ -370,7 +373,8 @@
         "card_price": {
           "type": "product-card-price",
           "settings": {
-            "product_card_price_color": "#000000"
+            "product_card_price_color": "#000000",
+            "show_percent_off": "theme"
           }
         },
         "card_swatches": {
@@ -380,9 +384,12 @@
         "card_quick_view": {
           "type": "product-card-quick-view",
           "settings": {
-            "product_card_quick_view_button_text": "Quick Add",
-            "enable_quick_add": true,
-            "product_card_title_color": "#000000"
+            "style": "quick_view",
+            "product_card_quick_view_button_text": "+ Quick Add",
+            "button_bg": "#000000",
+            "button_text": "#FFFFFF",
+            "button_hover_bg": "#AB192D",
+            "button_hover_text": "#FFFFFF"
           }
         }
       },
@@ -396,12 +403,12 @@
         "card_quick_view"
       ],
       "custom_css": [
-        ".product-percent-off {display: none;}",
-        ".compare-add-button {display: none;}",
-        ".product-quickview {padding-block: 12px; margin-top: -33px;}",
-        ".qa-size {font-size: 11px; min-width: 10px; min-height: 18px; font-family: roboto condensed; padding: 2px; line-height: 0.21px; font-weight: 500;}",
-        ".quick-add-variants {max-block-size: 150px;}",
-        ".gs-promo__content {position: absolute; bottom: 100px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6); line-height: 0.25;}"
+        ".product-quickview {padding-block: 12px; margin-top: -20px;}",
+        ".gs-promo__content {position: absolute; bottom: 30px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.9);}",
+        ".gs-promo__desc {font-size: 12px;}",
+        ".gs-swatch-scroller {display: inline-block;}",
+        ".gs-collection__description {background: #000; color: #fff; text-align: center;}",
+        ".gs-collection__description h2 {background: #000; color: #fff; text-align: center;}"
       ],
       "settings": {
         "overlay_content_position": "text-center",
@@ -409,6 +416,9 @@
         "heading_size": "h1",
         "tag": "h1",
         "show_header": true,
+        "header_style": "band",
+        "header_background": "#000000",
+        "header_text_color": "#ffffff",
         "show_description": true,
         "description_position": "below_products",
         "collection_image": false,
@@ -421,7 +431,7 @@
         "open_filtering": false,
         "open_all_filtering": false,
         "enable_sorting": true,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
         "enable_gradient": false,
         "background_color": "#ffffff",
         "text_color": "#000000",
