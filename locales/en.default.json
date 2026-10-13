@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "password_page": {
@@ -266,7 +275,7 @@
         "one": "{{ count }} result found for “{{ terms }}”",
         "other": "{{ count }} results found for “{{ terms }}”"
       },
-      "title": "Search results",
+      "title": "Search Results",
       "search_for": "Search for “{{ terms }}”",
       "suggestions": "Suggestions",
       "pages": "Pages"
@@ -420,6 +429,12 @@
       "collection": "Collection name",
       "items": "items",
       "item": "item"
+    },
+    "events-header": {
+      "title": "Events Header"
+    },
+    "events-image-grid": {
+      "title": "Events Image Grid"
     }
   },
   "localization": {
