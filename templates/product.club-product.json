@@ -571,6 +571,7 @@
     },
     "recommendations": {
       "type": "featured-collections",
+      "disabled": true,
       "custom_css": [
         "@media screen and (max-width: 600px) {.product-quickview {margin-top: -25px; }}"
       ],
@@ -646,7 +647,7 @@
         "link_cta_2_link": "shopify://collections/club-grunt-style",
         "link_cta_layout": "side-by-side",
         "product_highlight_text_content_link_cta_color": "#000000",
-        "product_highlight_text_content_cta_bg_color": "#FFCA10",
+        "product_highlight_text_content_cta_bg_color": "#ffca10",
         "product_highlight_text_content_cta_border_color": "#000000",
         "product_highlight_text_content_cta_border_width": 2,
         "product_highlight_text_content_link_cta_text_font_size_desktop": 18,
