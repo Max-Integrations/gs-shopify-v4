@@ -59,6 +59,7 @@
         },
         "product_card_quick_view_C4KfK7": {
           "type": "product-card-quick-view",
+          "disabled": true,
           "settings": {
             "style": "quick_view",
             "product_card_quick_view_button_text": "+ Quick Add",
@@ -74,7 +75,7 @@
         "product_card_quick_view_C4KfK7"
       ],
       "custom_css": [
-        ".product-quickview-button {display: none;}"
+        ".product-quickview {display: none;}"
       ],
       "settings": {
         "overlay_content_position": "text-center",
