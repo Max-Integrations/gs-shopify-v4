@@ -622,7 +622,7 @@
               "type": "block--text",
               "name": "Text",
               "settings": {
-                "text": "<p><em>Warnings Aren't Suggestions.</em></p>",
+                "text": "<p><em>Warnings Aren't Suggestions</em></p>",
                 "size": "small",
                 "alignment": "inherit",
                 "color": ""
