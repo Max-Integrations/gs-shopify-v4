@@ -1,19 +1,16 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "rich_text_LkWcGD": {
       "type": "rich-text",
-      "settings": {
-        "section_visibility": "always",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-4",
-        "full_width": true,
-        "padding_top": 8,
-        "padding_bottom": 8,
-        "bg_image_collection": true,
-        "bg_overlay_color": "#000000",
-        "bg_overlay_opacity": 30
-      },
       "blocks": {
         "heading_wnaRdG": {
           "type": "block--heading",
@@ -25,7 +22,8 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "text_ixkMGp": {
           "type": "block--text",
@@ -34,50 +32,30 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "heading_wnaRdG",
         "text_ixkMGp"
       ],
-      "name": "t:sections.rich-text.name"
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "section_visibility": "always",
+        "bg_image_collection": true,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
     },
     "media_grid_deals_W3yxpP": {
       "type": "media-grid-deals",
-      "settings": {
-        "section_width": false,
-        "section_visibility": "always",
-        "mobile_columns_layout": "two-column",
-        "desktop_row_height": 250,
-        "mobile_row_height": 150,
-        "desktop_grid_gap": 5,
-        "mobile_grid_gap": 5,
-        "enable_shadow": false,
-        "enable_hover_content": false,
-        "heading_bg_color": "#ffffff",
-        "heading_desktop_layout": "stacked",
-        "heading": "",
-        "heading_font_color": "#000000",
-        "heading_font_family": "roboto_condensed_n4",
-        "heading_font_size_desktop": 32,
-        "heading_font_size_mobile": 24,
-        "highlight_style": "underline",
-        "bg__color": "gradient",
-        "heading_alignment": "text-center",
-        "subcopy": "",
-        "subcopy_font_color": "#000000",
-        "subcopy_font_family": "roboto_condensed_n4",
-        "subcopy_font_size_desktop": 18,
-        "subcopy_font_size_mobile": 13,
-        "subcopy_alignment": "text-center",
-        "color_scheme": "scheme-1",
-        "enable_gradient": false,
-        "top_space_desktop": 5,
-        "bottom_space_desktop": 5,
-        "top_space_mobile": 5,
-        "bottom_space_mobile": 5
-      },
       "blocks": {
         "grid_DYKq3M": {
           "type": "grid",
@@ -89,10 +67,10 @@
             "heading": "<strong>COMMANDER BUTTON DOWNS</strong>",
             "heading_size": "h3",
             "seo_heading": "h2",
-            "description": "<p> </p>",
+            "description": "<p>&nbsp;</p>",
             "content_position": "bottom-center",
             "content_alignment": "center",
-            "content_width": "large",
+            "content_width": "small",
             "btn_text": "SHOP NOW",
             "btn_link": "shopify://collections/commander-button-downs",
             "button_as_link": false,
@@ -117,7 +95,7 @@
             "btn_hover_text_color": "#ffffff",
             "btn_hover_border_color": "#000000",
             "background_color": "#000000",
-            "background_opacity": 0
+            "background_opacity": 0.1
           }
         },
         "grid_8CjTp7": {
@@ -130,10 +108,10 @@
             "heading": "<strong>POLOS</strong>",
             "heading_size": "h3",
             "seo_heading": "h2",
-            "description": "<p> </p>",
+            "description": "<p>&nbsp;</p>",
             "content_position": "bottom-center",
             "content_alignment": "center",
-            "content_width": "large",
+            "content_width": "small",
             "btn_text": "SHOP NOW",
             "btn_link": "shopify://collections/polos",
             "button_as_link": false,
@@ -158,7 +136,7 @@
             "btn_hover_text_color": "#ffffff",
             "btn_hover_border_color": "#000000",
             "background_color": "#000000",
-            "background_opacity": 0
+            "background_opacity": 0.1
           }
         },
         "grid_9A9AtJ": {
@@ -171,7 +149,7 @@
             "heading": "<strong>7\" GRUNT SHORTS</strong>",
             "heading_size": "h3",
             "seo_heading": "h2",
-            "description": "<p> </p>",
+            "description": "<p>&nbsp;</p>",
             "content_position": "bottom-center",
             "content_alignment": "center",
             "content_width": "large",
@@ -199,7 +177,7 @@
             "btn_hover_text_color": "#ffffff",
             "btn_hover_border_color": "#000000",
             "background_color": "#000000",
-            "background_opacity": 0
+            "background_opacity": 0.1
           }
         },
         "grid_78BN3g": {
@@ -212,7 +190,7 @@
             "heading": "<strong>5\" GRUNT SHORTS</strong>",
             "heading_size": "h3",
             "seo_heading": "h2",
-            "description": "<p> </p>",
+            "description": "<p>&nbsp;</p>",
             "content_position": "bottom-center",
             "content_alignment": "center",
             "content_width": "large",
@@ -240,7 +218,7 @@
             "btn_hover_text_color": "#ffffff",
             "btn_hover_border_color": "#000000",
             "background_color": "#000000",
-            "background_opacity": 0
+            "background_opacity": 0.1
           }
         }
       },
@@ -250,16 +228,88 @@
         "grid_9A9AtJ",
         "grid_78BN3g"
       ],
-      "name": "Media Grid Deals"
+      "name": "Media Grid Deals",
+      "settings": {
+        "section_width": false,
+        "section_visibility": "always",
+        "mobile_columns_layout": "two-column",
+        "desktop_row_height": 250,
+        "mobile_row_height": 150,
+        "desktop_grid_gap": 5,
+        "mobile_grid_gap": 5,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_bg_color": "#ffffff",
+        "heading_desktop_layout": "stacked",
+        "heading": "",
+        "heading_font_color": "#000000",
+        "heading_font_family": "roboto_condensed_n4",
+        "heading_font_size_desktop": 32,
+        "heading_font_size_mobile": 24,
+        "highlight_style": "underline",
+        "bg__color": "gradient",
+        "heading_alignment": "text-center",
+        "subcopy": "",
+        "subcopy_font_color": "#000000",
+        "subcopy_font_family": "roboto_condensed_n4",
+        "subcopy_font_size_desktop": 18,
+        "subcopy_font_size_mobile": 13,
+        "subcopy_alignment": "text-center",
+        "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
+        "enable_gradient": false,
+        "top_space_desktop": 5,
+        "bottom_space_desktop": 5,
+        "top_space_mobile": 5,
+        "bottom_space_mobile": 5
+      }
     },
     "main-collection": {
       "type": "main-collection",
+      "blocks": {
+        "product_card_quick_view_pNEjbA": {
+          "type": "product-card-quick-view",
+          "settings": {
+            "style": "quick_view",
+            "product_card_quick_view_button_text": "+ Quick Add",
+            "button_bg": "#000000",
+            "button_text": "#FFFFFF",
+            "button_hover_bg": "#AB192D",
+            "button_hover_text": "#FFFFFF"
+          }
+        },
+        "product-grid": {
+          "type": "product-grid",
+          "settings": {
+            "columns_desktop": "4",
+            "columns_mobile": "2",
+            "product_card_bg_color": "#ffffff",
+            "card_content_gap": 2,
+            "card_content_height": 104,
+            "card_button_gap": 8
+          }
+        }
+      },
+      "block_order": [
+        "product_card_quick_view_pNEjbA",
+        "product-grid"
+      ],
+      "custom_css": [
+        ".product-quickview {padding-block: 12px; margin-top: -20px;}",
+        ".gs-promo__content {position: absolute; bottom: 30px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.9);}",
+        ".gs-promo__desc {font-size: 12px;}",
+        ".gs-swatch-scroller {display: inline-block;}",
+        ".gs-collection__description {background: #000; color: #fff; text-align: center;}",
+        ".gs-collection__description h2 {background: #000; color: #fff; text-align: center;}"
+      ],
       "settings": {
         "overlay_content_position": "text-center",
         "overlay_text": false,
         "heading_size": "h1",
         "tag": "h1",
         "show_header": false,
+        "header_style": "band",
+        "header_background": "#000000",
+        "header_text_color": "#ffffff",
         "show_description": false,
         "description_position": "below_products",
         "collection_image": false,
@@ -272,7 +322,7 @@
         "open_filtering": false,
         "open_all_filtering": false,
         "enable_sorting": true,
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
         "enable_gradient": false,
         "background_color": "#e7e7e7",
         "text_color": "#000000",
@@ -282,252 +332,12 @@
         "bottom_space_desktop": 0,
         "top_space_mobile": 0,
         "bottom_space_mobile": 0
-      },
-      "blocks": {
-        "product-grid": {
-          "type": "product-grid",
-          "settings": {
-            "columns_desktop": "4",
-            "columns_mobile": "2",
-            "product_card_bg_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "product-grid"
-      ]
-    },
-    "spotlight_9zdzwb": {
-      "type": "spotlight",
-      "settings": {
-        "section_visibility": "always",
-        "open_bydefault": true,
-        "heading": "",
-        "highlight_style": "shape_4",
-        "bg__color": "gradient",
-        "heading_size": "h2",
-        "seo_heading": "h2",
-        "heading_alignment": "text-left",
-        "color_scheme": "scheme-1",
-        "enable_gradient": false,
-        "top_space_desktop": 10,
-        "bottom_space_desktop": 0,
-        "top_space_mobile": 10,
-        "bottom_space_mobile": 0
-      },
-      "blocks": {
-        "text_WLjXTJ": {
-          "type": "text",
-          "settings": {
-            "image_id": "shopify://shop_images/GS-sets-980x500.png",
-            "enable_1": true,
-            "product1": "mens-commander-button-down-eagle-gun-magenta",
-            "horizontal_pos1": 24,
-            "vertical_pos1": 41,
-            "color_id1": "#e7e7e7",
-            "border_color_id1": "#ffffff",
-            "enable_2": true,
-            "product2": "grunt-short-5-inseam-eagle-gun-magenta",
-            "horizontal_pos2": 13,
-            "vertical_pos2": 70,
-            "color_id2": "#e7e7e7",
-            "border_color_id2": "#ffffff",
-            "enable_3": true,
-            "product3": "mens-commander-button-down-lfg",
-            "horizontal_pos3": 76,
-            "vertical_pos3": 47,
-            "color_id3": "#e7e7e7",
-            "border_color_id3": "#ffffff"
-          }
-        },
-        "text_AQ9dUf": {
-          "type": "text",
-          "settings": {
-            "image_id": "shopify://shop_images/GS-Content_980x500_38b9cd23-73de-49c6-9c93-508a22882321.png",
-            "enable_1": true,
-            "product1": "grunt-short-inseam-mini-guns",
-            "horizontal_pos1": 35,
-            "vertical_pos1": 30,
-            "color_id1": "#000000",
-            "border_color_id1": "#ffffff",
-            "enable_2": false,
-            "product2": "",
-            "horizontal_pos2": 20,
-            "vertical_pos2": 40,
-            "color_id2": "#000000",
-            "border_color_id2": "#ffffff",
-            "enable_3": false,
-            "product3": "",
-            "horizontal_pos3": 30,
-            "vertical_pos3": 50,
-            "color_id3": "#000000",
-            "border_color_id3": "#ffffff"
-          }
-        },
-        "text_9GbLWt": {
-          "type": "text",
-          "settings": {
-            "image_id": "shopify://shop_images/GS-980x500-tropical.png",
-            "enable_1": true,
-            "product1": "mens-commander-button-down-tropical-death-harbor",
-            "horizontal_pos1": 39,
-            "vertical_pos1": 40,
-            "color_id1": "#e7e7e7",
-            "border_color_id1": "#ffffff",
-            "enable_2": true,
-            "product2": "grunt-short-5-inseam-tropical-death-harbor",
-            "horizontal_pos2": 60,
-            "vertical_pos2": 76,
-            "color_id2": "#e7e7e7",
-            "border_color_id2": "#ffffff",
-            "enable_3": false,
-            "product3": "",
-            "horizontal_pos3": 30,
-            "vertical_pos3": 50,
-            "color_id3": "#000000",
-            "border_color_id3": "#ffffff"
-          }
-        },
-        "text_8WVX87": {
-          "type": "text",
-          "settings": {
-            "image_id": "shopify://shop_images/GS-980x500-patterns.png",
-            "enable_1": true,
-            "product1": "grunt-short-inseam-sky-blue",
-            "horizontal_pos1": 52,
-            "vertical_pos1": 30,
-            "color_id1": "#000000",
-            "border_color_id1": "#ffffff",
-            "enable_2": true,
-            "product2": "mens-commander-button-down-lfg",
-            "horizontal_pos2": 64,
-            "vertical_pos2": 6,
-            "color_id2": "#ffffff",
-            "border_color_id2": "#ffffff",
-            "enable_3": false,
-            "product3": "",
-            "horizontal_pos3": 30,
-            "vertical_pos3": 50,
-            "color_id3": "#000000",
-            "border_color_id3": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "text_WLjXTJ",
-        "text_AQ9dUf",
-        "text_9GbLWt",
-        "text_8WVX87"
-      ],
-      "disabled": true,
-      "name": "t:sections.spotlight.name"
-    },
-    "spotlight_JbPHtX": {
-      "type": "spotlight",
-      "settings": {
-        "section_visibility": "always",
-        "open_bydefault": false,
-        "heading": "<strong>SHOP THE LOOK</strong>",
-        "highlight_style": "underline",
-        "bg__color": "gradient",
-        "heading_size": "h2",
-        "seo_heading": "h2",
-        "heading_alignment": "text-center",
-        "color_scheme": "scheme-1",
-        "enable_gradient": false,
-        "top_space_desktop": 10,
-        "bottom_space_desktop": 0,
-        "top_space_mobile": 10,
-        "bottom_space_mobile": 0
-      },
-      "blocks": {
-        "text_jLYXNV": {
-          "type": "text",
-          "settings": {
-            "image_id": "shopify://shop_images/GS-1250x628-tropical_death_harbor.png",
-            "enable_1": true,
-            "product1": "mens-commander-button-down-tropical-death-harbor",
-            "horizontal_pos1": 30,
-            "vertical_pos1": 30,
-            "color_id1": "#e7e7e7",
-            "border_color_id1": "#ffffff",
-            "enable_2": true,
-            "product2": "mens-polo-tropical-death-harbor",
-            "horizontal_pos2": 70,
-            "vertical_pos2": 37,
-            "color_id2": "#e7e7e7",
-            "border_color_id2": "#ffffff",
-            "enable_3": false,
-            "product3": "",
-            "horizontal_pos3": 30,
-            "vertical_pos3": 50,
-            "color_id3": "#000000",
-            "border_color_id3": "#ffffff"
-          }
-        },
-        "text_ibhTDB": {
-          "type": "text",
-          "settings": {
-            "image_id": "shopify://shop_images/Blog_Post_1250x628_Commander_Button_Downs_PTPA.jpg",
-            "enable_1": true,
-            "product1": "mens-commander-button-down-eagle-gun-magenta",
-            "horizontal_pos1": 17,
-            "vertical_pos1": 41,
-            "color_id1": "#e7e7e7",
-            "border_color_id1": "#ffffff",
-            "enable_2": true,
-            "product2": "grunt-short-5-inseam-tropical-death-harbor",
-            "horizontal_pos2": 49,
-            "vertical_pos2": 49,
-            "color_id2": "#e7e7e7",
-            "border_color_id2": "#ffffff",
-            "enable_3": true,
-            "product3": "mens-commander-button-down-lfg",
-            "horizontal_pos3": 76,
-            "vertical_pos3": 47,
-            "color_id3": "#e7e7e7",
-            "border_color_id3": "#ffffff"
-          }
-        },
-        "text_Erj6yt": {
-          "type": "text",
-          "settings": {
-            "image_id": "shopify://shop_images/GS-1250x628.png",
-            "enable_1": true,
-            "product1": "mens-commander-button-down-american-flag",
-            "horizontal_pos1": 24,
-            "vertical_pos1": 43,
-            "color_id1": "#e7e7e7",
-            "border_color_id1": "#ffffff",
-            "enable_2": true,
-            "product2": "grunt-short-inseam-american-flag",
-            "horizontal_pos2": 27,
-            "vertical_pos2": 77,
-            "color_id2": "#e7e7e7",
-            "border_color_id2": "#ffffff",
-            "enable_3": true,
-            "product3": "grunt-style-ranger-panties-usa-flag",
-            "horizontal_pos3": 70,
-            "vertical_pos3": 61,
-            "color_id3": "#e7e7e7",
-            "border_color_id3": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "text_jLYXNV",
-        "text_ibhTDB",
-        "text_Erj6yt"
-      ],
-      "disabled": true,
-      "name": "t:sections.spotlight.name"
+      }
     }
   },
   "order": [
     "rich_text_LkWcGD",
     "media_grid_deals_W3yxpP",
-    "main-collection",
-    "spotlight_9zdzwb",
-    "spotlight_JbPHtX"
+    "main-collection"
   ]
 }
