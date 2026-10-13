@@ -16,11 +16,11 @@
           "type": "product-card-quick-view",
           "settings": {
             "style": "quick_view",
-            "product_card_quick_view_button_text": "Quick Add",
+            "product_card_quick_view_button_text": "+ Quick Add",
             "button_bg": "#000000",
-            "button_text": "#FFFFFF",
-            "button_hover_bg": "#AB192D",
-            "button_hover_text": "#FFFFFF"
+            "button_text": "#ffffff",
+            "button_hover_bg": "#ab192d",
+            "button_hover_text": "#ffffff"
           }
         },
         "promotion_rE4dcw": {
@@ -66,7 +66,7 @@
             "heading_color": "#ffffff",
             "heading_font_family": "roboto_condensed_n4",
             "heading_font_weight": "400",
-            "heading_font_size_desktop": 22,
+            "heading_font_size_desktop": 18,
             "heading_font_size_mobile": 17,
             "description": "<em>SUBSCRIBE TO MONTHLY PERKS</em>",
             "desc_font_family": "roboto_condensed_n4",
@@ -124,7 +124,7 @@
       ],
       "custom_css": [
         ".product-quickview {padding-block: 12px; margin-top: -20px;}",
-        ".gs-promo__content {position: absolute; bottom: 100px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6); line-height: 0.25;}",
+        ".gs-promo__content {position: absolute; bottom: 30px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6);}",
         ".gs-swatch-scroller {display: inline-block;}",
         ".gs-collection__description {background: #000; color: #fff; text-align: center;}",
         ".gs-collection__description h2 {background: #000; color: #fff; text-align: center;}"
@@ -184,7 +184,7 @@
             "btn_link2": "shopify://collections/club-grunt-style",
             "button_as_link2": false,
             "content_width": "medium",
-            "desktop_content_position": "d-center-right",
+            "desktop_content_position": "d-bottom-right",
             "desktop_alignment": "d-text-right",
             "mobile_content_position": "m-center",
             "mobile_alignment": "m-text-center",
