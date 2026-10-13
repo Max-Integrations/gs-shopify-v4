@@ -9,195 +9,14 @@
  */
 {
   "sections": {
-    "collection_carousel_qpf88E": {
-      "type": "collection-carousel",
-      "blocks": {
-        "collection_dmzfiW": {
-          "type": "collection",
-          "settings": {
-            "collection": "offend",
-            "image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8258_TriggeredT-Shirt-Black.jpg",
-            "collection_heading": "",
-            "text_color": "#000000",
-            "background_color": "#ffffff",
-            "background_gradient": ""
-          }
-        },
-        "collection_TJTfDp": {
-          "type": "collection",
-          "settings": {
-            "collection": "handpicked-for-violence",
-            "image": "shopify://shop_images/Split_Banner_M_750x750_GS8251__FW26_Violence_Campaign.jpg",
-            "collection_heading": "",
-            "text_color": "#000000",
-            "background_color": "#ffffff",
-            "background_gradient": ""
-          }
-        },
-        "collection_bUMbNy": {
-          "type": "collection",
-          "settings": {
-            "collection": "halloween",
-            "collection_heading": "",
-            "text_color": "#000000",
-            "background_color": "#ffffff",
-            "background_gradient": ""
-          }
-        },
-        "collection_mbMF6E": {
-          "type": "collection",
-          "settings": {
-            "collection": "freedom-fighters",
-            "image": "shopify://shop_images/BlankPoster_2000x2000_V2_FW26_FreedomFighterCollection.jpg",
-            "collection_heading": "",
-            "text_color": "#000000",
-            "background_color": "#ffffff",
-            "background_gradient": ""
-          }
-        },
-        "collection_r8JnWJ": {
-          "type": "collection",
-          "settings": {
-            "collection": "tailgating-gear",
-            "image": "shopify://shop_images/Blog_Post_1250x1250_GS8541_General_FW26_Campaign_-_Drinking-Pregaming.jpg",
-            "collection_heading": "",
-            "text_color": "#000000",
-            "background_color": "#ffffff",
-            "background_gradient": ""
-          }
-        },
-        "collection_3BXnKe": {
-          "type": "collection",
-          "settings": {
-            "collection": "goon-squad",
-            "collection_heading": "",
-            "text_color": "#000000",
-            "background_color": "#ffffff",
-            "background_gradient": ""
-          }
-        },
-        "collection_MFQRdf": {
-          "type": "collection",
-          "settings": {
-            "collection": "f-ck-cancer-franchise",
-            "image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8389_Women_sUnkillableV-Neck-Black.jpg",
-            "collection_heading": "",
-            "text_color": "#000000",
-            "background_color": "#ffffff",
-            "background_gradient": ""
-          }
-        },
-        "collection_VniKz9": {
-          "type": "collection",
-          "settings": {
-            "collection": "limited-edition-blackout",
-            "image": "shopify://shop_images/Split_Banner_M_750x750_SHIRTS_ONLY_FW26_Campaign_-_Blackout_Collection.jpg",
-            "collection_heading": "",
-            "text_color": "#000000",
-            "background_color": "#ffffff",
-            "background_gradient": ""
-          }
-        },
-        "collection_mptKPy": {
-          "type": "collection",
-          "disabled": true,
-          "settings": {
-            "collection": "motorsports",
-            "image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8183_TorqueMattersT-Shirt-MidnightNavy.jpg",
-            "collection_heading": "",
-            "text_color": "#000000",
-            "background_color": "#ffffff",
-            "background_gradient": ""
-          }
-        },
-        "collection_QbhaR8": {
-          "type": "collection",
-          "disabled": true,
-          "settings": {
-            "collection": "warriors-legacy",
-            "image": "shopify://shop_images/Split_Banner_M_750x750__V2_Warriors_Legacy.jpg",
-            "collection_heading": "",
-            "text_color": "#000000",
-            "background_color": "#ffffff",
-            "background_gradient": ""
-          }
-        },
-        "collection_WgHwfG": {
-          "type": "collection",
-          "disabled": true,
-          "settings": {
-            "collection": "psyop-division",
-            "image": "shopify://shop_images/Custom_Lifestyle_IMAGE_ONLY_1250x1250_V2_SS26_Activation_-_PSYOP.jpg",
-            "collection_heading": "",
-            "text_color": "#000000",
-            "background_color": "#ffffff",
-            "background_gradient": ""
-          }
-        },
-        "collection_whPwag": {
-          "type": "collection",
-          "disabled": true,
-          "settings": {
-            "collection": "hunting-season",
-            "image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8200_GameSizeMattersT-Shirt-Black.jpg",
-            "collection_heading": "",
-            "text_color": "#000000",
-            "background_color": "#ffffff",
-            "background_gradient": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection_dmzfiW",
-        "collection_TJTfDp",
-        "collection_bUMbNy",
-        "collection_mbMF6E",
-        "collection_r8JnWJ",
-        "collection_3BXnKe",
-        "collection_MFQRdf",
-        "collection_VniKz9",
-        "collection_mptKPy",
-        "collection_QbhaR8",
-        "collection_WgHwfG",
-        "collection_whPwag"
-      ],
-      "name": "t:sections.collection-carousel.presets.name",
-      "settings": {
-        "section_visibility": "always",
-        "collection_source": "manual",
-        "carousel_type": "carousel",
-        "scrolling_speed": 15,
-        "scrolling_speed_mobile": 15,
-        "direction": "ltr",
-        "heading": "<strong>FEATURED COLLECTIONS</strong>",
-        "highlight_style": "underline",
-        "bg__color": "gradient",
-        "heading_size": "h3",
-        "seo_heading": "h2",
-        "heading_alignment": "text-center",
-        "enable_border": false,
-        "shape": "sharp",
-        "customshapes": "shape1",
-        "image_fit": "cover",
-        "image_style": "square",
-        "title_on_hover": false,
-        "product_count": false,
-        "color_scheme": "scheme-4",
-        "enable_gradient": false,
-        "top_space_desktop": 20,
-        "bottom_space_desktop": 15,
-        "top_space_mobile": 20,
-        "bottom_space_mobile": 15
-      }
-    },
     "section_media_grid_qCn9px": {
       "type": "section--media-grid",
       "blocks": {
-        "block_media_tile_HN38MK": {
+        "block_media_tile_AJim4A": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8410_OnlyViolenceFollowsHat_1.jpg",
-            "collection": "handpicked-for-violence",
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8596_NotServiceConnectedT-Shirt-Black.jpg",
+            "collection": "proud-veteran",
             "link": "",
             "span_two_columns": false,
             "span_two_rows": false,
@@ -209,10 +28,10 @@
             "hover_overlay": "keep"
           },
           "blocks": {
-            "block_heading_CBhUcf": {
+            "block_heading_EWJik3": {
               "type": "block--heading",
               "settings": {
-                "text": "<strong>VIOLENCE</strong>",
+                "text": "<strong>VETERAN & MILITARY</strong>",
                 "size": "h3",
                 "tag": "h3",
                 "alignment": "inherit",
@@ -224,7 +43,7 @@
             }
           },
           "block_order": [
-            "block_heading_CBhUcf"
+            "block_heading_EWJik3"
           ]
         },
         "block_media_tile_iPrexa": {
@@ -260,11 +79,291 @@
           "block_order": [
             "block_heading_czYF9w"
           ]
+        },
+        "block_media_tile_tzPbLm": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V4_FW26_FreedomFighterCollection.jpg",
+            "collection": "grunt-style-arcade",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.3,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "block_heading_F66yTC": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>ARCADE</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_heading_F66yTC"
+          ]
+        },
+        "block_media_tile_HN38MK": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8410_OnlyViolenceFollowsHat_1.jpg",
+            "collection": "handpicked-for-violence",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.3,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "block_heading_CBhUcf": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>VIOLENCE</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_heading_CBhUcf"
+          ]
+        },
+        "block_media_tile_h9erqB": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8583_RootedInFreedomT-Shirt-MilitaryGreen.jpg",
+            "collection": "250-years-of-freedom",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.3,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "block_heading_WbWChU": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>USA 250</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_heading_WbWChU"
+          ]
+        },
+        "block_media_tile_tGgCEG": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/mh2felvheb2b36iwtxes.jpg",
+            "collection": "halloween",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.3,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "block_heading_G8zXYj": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>HALLOWEEN</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_heading_G8zXYj"
+          ]
+        },
+        "block_media_tile_F4tPBJ": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Blog_Post_1250x1250_GS8541_General_FW26_Campaign_-_Drinking-Pregaming.jpg",
+            "collection": "tailgating-gear",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.3,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "block_heading_TqBrjy": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>PREGAME</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_heading_TqBrjy"
+          ]
+        },
+        "block_media_tile_pbTiG8": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Split_Banner_M_750x750_Lifestyle_National_Cancer_Survivor_Month_Activation.jpg",
+            "collection": "f-ck-cancer-franchise",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.3,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "block_heading_C7K3pD": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>F*CK CANCER</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_heading_C7K3pD"
+          ]
+        },
+        "block_media_tile_wfK63e": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Custom_1250x1250_FW26_Offend_Collection.jpg",
+            "collection": "offend",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.3,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "block_heading_k3jPyY": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>OFFEND</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_heading_k3jPyY"
+          ]
+        },
+        "block_media_tile_BdtaU6": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/Custom_1250x1250_Goon_Squad.jpg",
+            "collection": "goon-squad",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.3,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "block_heading_PUV6xV": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>GOON SQUAD</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_heading_PUV6xV"
+          ]
         }
       },
       "block_order": [
+        "block_media_tile_AJim4A",
+        "block_media_tile_iPrexa",
+        "block_media_tile_tzPbLm",
         "block_media_tile_HN38MK",
-        "block_media_tile_iPrexa"
+        "block_media_tile_h9erqB",
+        "block_media_tile_tGgCEG",
+        "block_media_tile_F4tPBJ",
+        "block_media_tile_pbTiG8",
+        "block_media_tile_wfK63e",
+        "block_media_tile_BdtaU6"
       ],
       "name": "Media grid",
       "settings": {
@@ -372,7 +471,6 @@
     }
   },
   "order": [
-    "collection_carousel_qpf88E",
     "section_media_grid_qCn9px",
     "main-collection"
   ]
