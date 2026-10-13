@@ -190,6 +190,115 @@
         "bottom_space_mobile": 15
       }
     },
+    "section_media_grid_qCn9px": {
+      "type": "section--media-grid",
+      "blocks": {
+        "block_media_tile_HN38MK": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8410_OnlyViolenceFollowsHat_1.jpg",
+            "collection": "handpicked-for-violence",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.3,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "block_heading_CBhUcf": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>VIOLENCE</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_heading_CBhUcf"
+          ]
+        },
+        "block_media_tile_iPrexa": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8589_BlackoutGadsdenT-Shirt-Black.jpg",
+            "collection": "limited-edition-blackout",
+            "link": "",
+            "span_two_columns": false,
+            "span_two_rows": false,
+            "content_position": "center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.3,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "block_heading_czYF9w": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>BLACKOUT</strong>",
+                "size": "h3",
+                "tag": "h3",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_heading_czYF9w"
+          ]
+        }
+      },
+      "block_order": [
+        "block_media_tile_HN38MK",
+        "block_media_tile_iPrexa"
+      ],
+      "name": "Media grid",
+      "settings": {
+        "layout": "carousel",
+        "columns_desktop": 5,
+        "columns_mobile": 1,
+        "tile_ratio": "square",
+        "desktop_row_height": 320,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 5,
+        "mobile_grid_gap": 5,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "overlay",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "heading": "<strong>FEATURED COLLECTIONS</strong>",
+        "heading_size": "h3",
+        "heading_alignment": "text-center",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#000000",
+        "btn_hover_color": "#000000",
+        "btn_hover_text_color": "#ffffff",
+        "color_scheme": "scheme-4",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "main-collection": {
       "type": "main-collection",
       "blocks": {
@@ -223,7 +332,7 @@
       "custom_css": [
         ".product-quickview {padding-block: 12px; margin-top: -20px;}",
         ".gs-promo__content {position: absolute; bottom: 30px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.9);}",
-        ".gs-promo__desc {FONT-SIZE: 12PX;}",
+        ".gs-promo__desc {font-size: 12px;}",
         ".gs-swatch-scroller {display: inline-block;}",
         ".gs-collection__description {background: #000; color: #fff; text-align: center;}",
         ".gs-collection__description h2 {background: #000; color: #fff; text-align: center;}"
@@ -264,6 +373,7 @@
   },
   "order": [
     "collection_carousel_qpf88E",
+    "section_media_grid_qCn9px",
     "main-collection"
   ]
 }
