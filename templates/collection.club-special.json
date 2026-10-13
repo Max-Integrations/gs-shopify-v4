@@ -124,7 +124,8 @@
       ],
       "custom_css": [
         ".product-quickview {padding-block: 12px; margin-top: -20px;}",
-        ".gs-promo__content {position: absolute; bottom: 30px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6);}",
+        ".gs-promo__content {position: absolute; bottom: 30px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.9);}",
+        ".gs-promo__desc {FONT-SIZE: 12PX;}",
         ".gs-swatch-scroller {display: inline-block;}",
         ".gs-collection__description {background: #000; color: #fff; text-align: center;}",
         ".gs-collection__description h2 {background: #000; color: #fff; text-align: center;}"
