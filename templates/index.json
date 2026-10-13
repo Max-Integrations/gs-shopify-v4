@@ -610,14 +610,25 @@
             "link": "shopify://collections/handpicked-for-violence",
             "span_two_columns": false,
             "span_two_rows": false,
-            "content_position": "center",
+            "content_position": "bottom-center",
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.5,
+            "background_opacity": 0.1,
             "hover_overlay": "keep"
           },
           "blocks": {
+            "block_text_D7Yr3j": {
+              "type": "block--text",
+              "name": "Text",
+              "settings": {
+                "text": "<p><em>Warnings Aren't Suggestions.</em></p>",
+                "size": "small",
+                "alignment": "inherit",
+                "color": ""
+              },
+              "blocks": {}
+            },
             "heading": {
               "type": "block--heading",
               "settings": {
@@ -630,10 +641,37 @@
                 "font_size_mobile": 0
               },
               "blocks": {}
+            },
+            "block_button_wjFyna": {
+              "type": "block--button",
+              "settings": {
+                "label": "<strong>SHOP NOW</strong>",
+                "link": "",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 14,
+                "padding_y": 12,
+                "padding_x": 20,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": true,
+                "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
+                "bg": "#ffffff",
+                "text_color": "#000000",
+                "border_color": "#000000",
+                "hover_bg": "#000000",
+                "hover_text_color": "#ffffff"
+              },
+              "blocks": {}
             }
           },
           "block_order": [
-            "heading"
+            "block_text_D7Yr3j",
+            "heading",
+            "block_button_wjFyna"
           ]
         },
         "grid_DYVM8z": {
