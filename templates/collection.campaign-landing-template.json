@@ -133,9 +133,9 @@
             "style": "quick_view",
             "product_card_quick_view_button_text": "Quick Add",
             "button_bg": "#000000",
-            "button_text": "#FFFFFF",
-            "button_hover_bg": "#AB192D",
-            "button_hover_text": "#FFFFFF"
+            "button_text": "#ffffff",
+            "button_hover_bg": "#ab192d",
+            "button_hover_text": "#ffffff"
           }
         },
         "product-grid": {
@@ -182,7 +182,7 @@
         "open_filtering": false,
         "open_all_filtering": false,
         "enable_sorting": true,
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
         "enable_gradient": false,
         "background_color": "#e7e7e7",
         "text_color": "#000000",

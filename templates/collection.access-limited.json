@@ -9,97 +9,6 @@
  */
 {
   "sections": {
-    "full_width_image_with_text_v2_Bkx38M": {
-      "type": "section--full-width-image_text",
-      "blocks": {
-        "heading": {
-          "type": "block--message-line",
-          "settings": {
-            "text": "FATHER'S DAY GIFT GUIDES",
-            "size_desktop": 48,
-            "size_mobile": 33,
-            "text_color": "#ffffff",
-            "background_color": "",
-            "letter_spacing": 0,
-            "padding_y": 0,
-            "padding_x": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "heading"
-      ],
-      "disabled": true,
-      "settings": {
-        "visibility": "small",
-        "layout_preset": "right",
-        "alignment_preset": "center",
-        "background_color": "#ffffff",
-        "background_image_desktop": "shopify://shop_images/CPB_D_1440x300_General_HUB_-_Father_s_Day_Gift_Guide_-_2025.jpg",
-        "background_image_mobile": "shopify://shop_images/CPB_M_980x600_General_HUB_-_Father_s_Day_Gift_Guide_-_2025.jpg",
-        "image_height_auto": true,
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "banner_link": "",
-        "open_in_new_tab": false,
-        "padding_top_desktop": 60,
-        "padding_bottom_desktop": 60,
-        "padding_horizontal_desktop": 48,
-        "item_gap_desktop": 10,
-        "padding_top_mobile": 48,
-        "padding_bottom_mobile": 48,
-        "padding_horizontal_mobile": 24,
-        "item_gap_mobile": 10,
-        "button_gap": 8
-      }
-    },
-    "rich_text_ntkwgD": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_RytHed": {
-          "type": "block--heading",
-          "settings": {
-            "text": "<strong>{{ collection.title }}</strong>",
-            "size": "h1",
-            "tag": "h2",
-            "alignment": "inherit",
-            "color": "",
-            "font_size_desktop": 0,
-            "font_size_mobile": 0
-          },
-          "blocks": {}
-        },
-        "text_46iwbX": {
-          "type": "block--text",
-          "settings": {
-            "text": "<p>{{ collection.metafields.custom.seo_header.value }}</p>",
-            "size": "body",
-            "alignment": "inherit",
-            "color": ""
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "heading_RytHed",
-        "text_46iwbX"
-      ],
-      "disabled": true,
-      "name": "t:sections.rich-text.name",
-      "settings": {
-        "section_visibility": "always",
-        "bg_image_collection": false,
-        "bg_overlay_color": "#000000",
-        "bg_overlay_opacity": 30,
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 8,
-        "padding_bottom": 8
-      }
-    },
     "countdown_banner_nk8eYy": {
       "type": "countdown-banner",
       "custom_css": [
@@ -134,51 +43,6 @@
         "countdown_banner_terms_link_color": "#ffffff"
       }
     },
-    "full_width_image_with_text_v2_tCTA4t": {
-      "type": "section--full-width-image_text",
-      "blocks": {
-        "heading": {
-          "type": "block--message-line",
-          "settings": {
-            "text": "FIRST ACCESS: MEMBERS ONLY",
-            "size_desktop": 48,
-            "size_mobile": 18,
-            "text_color": "#ffffff",
-            "background_color": "",
-            "letter_spacing": 0,
-            "padding_y": 0,
-            "padding_x": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "heading"
-      ],
-      "disabled": true,
-      "settings": {
-        "visibility": "always",
-        "layout_preset": "center",
-        "alignment_preset": "center",
-        "background_color": "#ffffff",
-        "background_image_desktop": "shopify://shop_images/HP_Promo_Block_D_NO_CTA_1440x120_FW26_20_-Off-GOVX.jpg",
-        "background_image_mobile": "shopify://shop_images/HP_Promo_Block_M_NO_CTA_750x200_FW26_20_-Off-GOVX.jpg",
-        "image_height_auto": true,
-        "overlay_color": "#000000",
-        "overlay_opacity": 60,
-        "banner_link": "https://www.gruntstyle.com/community/membership",
-        "open_in_new_tab": false,
-        "padding_top_desktop": 60,
-        "padding_bottom_desktop": 60,
-        "padding_horizontal_desktop": 48,
-        "item_gap_desktop": 6,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20,
-        "padding_horizontal_mobile": 24,
-        "item_gap_mobile": 6,
-        "button_gap": 8
-      }
-    },
     "main-collection": {
       "type": "main-collection",
       "blocks": {
@@ -192,10 +56,22 @@
             "card_content_height": 104,
             "card_button_gap": 8
           }
+        },
+        "product_card_quick_view_C4KfK7": {
+          "type": "product-card-quick-view",
+          "settings": {
+            "style": "quick_view",
+            "product_card_quick_view_button_text": "+ Quick Add",
+            "button_bg": "#000000",
+            "button_text": "#ffffff",
+            "button_hover_bg": "#ab192d",
+            "button_hover_text": "#ffffff"
+          }
         }
       },
       "block_order": [
-        "product-grid"
+        "product-grid",
+        "product_card_quick_view_C4KfK7"
       ],
       "custom_css": [
         ".product-quickview-button {display: none;}"
@@ -221,7 +97,7 @@
         "open_filtering": false,
         "open_all_filtering": false,
         "enable_sorting": true,
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
         "enable_gradient": false,
         "background_color": "#e7e7e7",
         "text_color": "#000000",
@@ -235,10 +111,7 @@
     }
   },
   "order": [
-    "full_width_image_with_text_v2_Bkx38M",
-    "rich_text_ntkwgD",
     "countdown_banner_nk8eYy",
-    "full_width_image_with_text_v2_tCTA4t",
     "main-collection"
   ]
 }
