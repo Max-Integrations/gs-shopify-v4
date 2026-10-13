@@ -190,52 +190,6 @@
         "bottom_space_mobile": 15
       }
     },
-    "rich_text_GNq69f": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_R3thaA": {
-          "type": "block--heading",
-          "settings": {
-            "text": "{{ collection.title }}",
-            "size": "h1",
-            "tag": "h2",
-            "alignment": "inherit",
-            "color": "",
-            "font_size_desktop": 0,
-            "font_size_mobile": 0
-          },
-          "blocks": {}
-        },
-        "text_dUbrCC": {
-          "type": "block--text",
-          "settings": {
-            "text": "<p>{{ collection.metafields.custom.seo_header.value }}</p>",
-            "size": "body",
-            "alignment": "inherit",
-            "color": ""
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "heading_R3thaA",
-        "text_dUbrCC"
-      ],
-      "disabled": true,
-      "name": "t:sections.rich-text.name",
-      "settings": {
-        "section_visibility": "always",
-        "bg_image_collection": false,
-        "bg_overlay_color": "#000000",
-        "bg_overlay_opacity": 30,
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 0,
-        "padding_bottom": 8
-      }
-    },
     "main-collection": {
       "type": "main-collection",
       "blocks": {
@@ -268,7 +222,8 @@
       ],
       "custom_css": [
         ".product-quickview {padding-block: 12px; margin-top: -20px;}",
-        ".gs-promo__content {position: absolute; bottom: 100px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.6); line-height: 0.25;}",
+        ".gs-promo__content {position: absolute; bottom: 30px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.9);}",
+        ".gs-promo__desc {FONT-SIZE: 12PX;}",
         ".gs-swatch-scroller {display: inline-block;}",
         ".gs-collection__description {background: #000; color: #fff; text-align: center;}",
         ".gs-collection__description h2 {background: #000; color: #fff; text-align: center;}"
@@ -309,7 +264,6 @@
   },
   "order": [
     "collection_carousel_qpf88E",
-    "rich_text_GNq69f",
     "main-collection"
   ]
 }
