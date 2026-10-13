@@ -125,7 +125,7 @@
       "custom_css": [
         ".product-quickview {padding-block: 12px; margin-top: -20px;}",
         ".gs-promo__content {position: absolute; bottom: 30px; width: 100%; right: 0; left: 0; max-height: 100%; background-color: rgba(0, 0, 0, 0.9);}",
-        ".gs-promo__desc {FONT-SIZE: 12PX;}",
+        ".gs-promo__desc {font-size: 12px;}",
         ".gs-swatch-scroller {display: inline-block;}",
         ".gs-collection__description {background: #000; color: #fff; text-align: center;}",
         ".gs-collection__description h2 {background: #000; color: #fff; text-align: center;}"
@@ -163,76 +163,139 @@
         "bottom_space_mobile": 0
       }
     },
-    "slideshow_bVjcka": {
-      "type": "slideshow",
+    "section_full_width_image_text_AGFgXj": {
+      "type": "section--full-width-image_text",
       "blocks": {
-        "slide_DtbR9f": {
-          "type": "slide",
+        "block_message_line_PgkrzC": {
+          "type": "block--message-line",
+          "name": "Message line",
           "settings": {
-            "image_desktop": "shopify://shop_images/CPB_D_1440x300_GIFT_CLUB_Holiday_LC_Shopping.jpg",
-            "image_mobile": "shopify://shop_images/CPB_M_980x600_GIFT_CLUB_Holiday_LC_Shopping_39ff35c5-32b6-4c05-a230-f25c4344cb8a.jpg",
-            "heading": "CLUB GRUNT STYLE",
-            "heading_size": "h1",
-            "seo_heading": "h1",
-            "font_family": "heading",
-            "description": "EXCLUSIVE DESIGNS & FREE SHIPPING. \nEnlist & get a fresh, high-speed patriotic tees shipped straight to your tent every month. Don’t wait, join the ranks & stand out!",
-            "button_size": "medium",
-            "btn_text": "JOIN NOW",
-            "btn_link": "shopify://pages/club-grunt-style",
-            "slide_as_link": false,
-            "button_as_link": false,
-            "btn_text2": "SHOP COLLECTION",
-            "btn_link2": "shopify://collections/club-grunt-style",
-            "button_as_link2": false,
-            "content_width": "medium",
-            "desktop_content_position": "d-bottom-right",
-            "desktop_alignment": "d-text-right",
-            "mobile_content_position": "m-center",
-            "mobile_alignment": "m-text-center",
-            "content_overlay_color": "#000000",
-            "content_overlay_opacity": 0,
-            "overlay_color": "#000000",
-            "overlay_opacity": 41,
+            "text": "<em>&nbsp;EXCLUSIVE DESIGNS & FREE SHIPPING. &nbsp;</em>",
+            "size_desktop": 12,
+            "size_mobile": 12,
+            "text_color": "#000000",
+            "background_color": "#FFCA10",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 34
+          },
+          "blocks": {}
+        },
+        "block_message_line_rxkeNb": {
+          "type": "block--message-line",
+          "name": "Message line",
+          "settings": {
+            "text": "<strong>&nbsp;CLUB GRUNT STYLE&nbsp;</strong>",
+            "size_desktop": 28,
+            "size_mobile": 18,
+            "text_color": "#FFFFFF",
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 0
+          },
+          "blocks": {}
+        },
+        "block_message_line_PrHELJ": {
+          "type": "block--message-line",
+          "settings": {
+            "text": "Enlist & get a fresh, high-speed patriotic tees shipped straight to your tent every month. Don’t wait, join the ranks & stand out!",
+            "size_desktop": 18,
+            "size_mobile": 12,
             "text_color": "#ffffff",
-            "description_color": "#ffffff",
-            "btn_bg_color": "#ffca10",
-            "btn_shadow_color": "#ececec",
-            "btn_text_color": "#000000",
-            "btn_border_color": "#5c5b5b",
-            "btn_hover_color": "#0b0e0d",
-            "btn_hover_text_color": "#ffffff",
-            "btn_hover_border_color": "#5c5b5b",
-            "m_text_color": "#ffffff",
-            "m_description_color": "#ffffff",
-            "m_btn_bg_color": "#ffca10",
-            "m_btn_shadow_color": "#000000",
-            "m_btn_text_color": "#000000",
-            "m_btn_border_color": "#b3b3b3"
-          }
+            "background_color": "",
+            "letter_spacing": 0,
+            "padding_y": 0,
+            "padding_x": 60
+          },
+          "blocks": {}
+        },
+        "block_button_h9FUax": {
+          "type": "block--button",
+          "name": "Button",
+          "settings": {
+            "label": "<strong>JOIN NOW</strong>",
+            "link": "shopify://pages/club-grunt-style",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 12,
+            "padding_y": 12,
+            "padding_x": 39,
+            "margin_y": 6,
+            "margin_x": 0,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": true,
+            "color_scheme": "scheme-6",
+            "bg": "#FFCA10",
+            "text_color": "#000000",
+            "border_color": "#000000",
+            "hover_bg": "#000000",
+            "hover_text_color": "#FFFFFF"
+          },
+          "blocks": {}
+        },
+        "block_button_d9Dt8i": {
+          "type": "block--button",
+          "settings": {
+            "label": "<strong>SHOP COLLECTION</strong>",
+            "link": "shopify://collections/club-grunt-style",
+            "open_in_new_tab": false,
+            "style": "button",
+            "width": "auto",
+            "font_size": 12,
+            "padding_y": 12,
+            "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
+            "border_width": 1,
+            "border_radius": 0,
+            "custom_scheme": true,
+            "color_scheme": "scheme-6",
+            "bg": "#FFCA10",
+            "text_color": "#000000",
+            "border_color": "#000000",
+            "hover_bg": "#000000",
+            "hover_text_color": "#FFFFFF"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "slide_DtbR9f"
+        "block_message_line_PgkrzC",
+        "block_message_line_rxkeNb",
+        "block_message_line_PrHELJ",
+        "block_button_h9FUax",
+        "block_button_d9Dt8i"
       ],
-      "custom_css": [
-        ".slideshow-desc {font-size: 24px;}",
-        ".slideshow-heading {margin-bottom: 5px; font-size: 38px;}",
-        "@media screen and (max-width: 668px) {.slideshow-button-box {padding-bottom: 2px; margin-top: 2px; } .slideshow-heading {margin-bottom: 5px; font-weight: 700; font-size: 23px; } .slideshow-desc {font-size: 15px; }}"
-      ],
-      "name": "t:sections.slideshow.name",
+      "name": "Full Width Image & Text",
       "settings": {
-        "section_visibility": "always",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "slider_thumbnail": "only-arrow",
-        "slider_transition": "slide",
-        "desktop_height": "adapt_image",
-        "mobile_height": "adapt_image"
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "background_color": "#5D5D39",
+        "background_image_desktop": "shopify://shop_images/CPB_D_1440x300_GIFT_CLUB_Holiday_LC_Shopping.jpg",
+        "background_image_mobile": "shopify://shop_images/CPB_M_980x600_GIFT_CLUB_Holiday_LC_Shopping_39ff35c5-32b6-4c05-a230-f25c4344cb8a.jpg",
+        "image_height_auto": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 20,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 12,
+        "padding_bottom_desktop": 52,
+        "padding_horizontal_desktop": 24,
+        "item_gap_desktop": 4,
+        "padding_top_mobile": 4,
+        "padding_bottom_mobile": 8,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 2,
+        "button_gap": 4
       }
     }
   },
   "order": [
     "main-collection",
-    "slideshow_bVjcka"
+    "section_full_width_image_text_AGFgXj"
   ]
 }
