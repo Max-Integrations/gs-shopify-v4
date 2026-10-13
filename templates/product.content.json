@@ -281,7 +281,7 @@
         "wonderment_pdp_etas_QjinAi": {
           "type": "shopify://apps/track-by-loop/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
           "settings": {
-            "eta_text_font_size": 12,
+            "eta_text_font_size": 15,
             "hint_text_font_size": 12,
             "custom_css": "#wonderment-pdp-eta {\nmargin-top: 25px;\nmargin-bottom: 15px;\n}\n@media screen and (min-width:768px) {\n#wonderment-pdp-eta {\nmargin-top: 0px;\nmargin-bottom: 5px;\n}\n}"
           }
@@ -554,6 +554,7 @@
     },
     "recommendations": {
       "type": "featured-collections",
+      "disabled": true,
       "custom_css": [
         ".product-quickview {margin-top: -55px;}",
         ".product-card-item {max-height: 520px;}",
