@@ -71,6 +71,9 @@
       ],
       "settings": {
         "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
         "desktop_content_position": "left",
         "content_alignment": "left",
         "color_scheme": "scheme-4",
@@ -170,6 +173,9 @@
       ],
       "settings": {
         "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-1",
@@ -227,7 +233,7 @@
       ],
       "settings": {
         "stack_on_scroll": true,
-        "image_height": "large",
+        "image_height": "small",
         "desktop_image_width": "small",
         "image_layout": "align-left",
         "heading_size": "h2",
@@ -760,6 +766,9 @@
       ],
       "settings": {
         "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-1",
@@ -804,7 +813,7 @@
       ],
       "settings": {
         "stack_on_scroll": true,
-        "image_height": "large",
+        "image_height": "small",
         "desktop_image_width": "small",
         "image_layout": "alternate-left",
         "heading_size": "h2",
