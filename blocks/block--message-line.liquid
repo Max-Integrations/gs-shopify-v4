@@ -6,11 +6,15 @@
   background, letter spacing and padding. Replaces that section's local
   `message_line` block so the section can also take block--button.
 
-  Emits the same custom properties the section's stylesheet already
-  reads on `.promo-message` (--color, --background-color,
+  Emits custom properties (--color, --background-color,
   --font-size-desktop / -mobile, --letter-spacing, --padding-x / -y per
-  breakpoint), so the section's CSS did not change. Sizes are pixels
+  breakpoint) that this block's own stylesheet reads. Sizes are pixels
   where the old block picked from a rem scale (1rem = 10px here).
+
+  2026-10-13: text moved into an inner span that carries the background
+  and padding, so the outer `.promo-message` can be a full-width row in
+  the section (needed for side-by-side buttons) without the background
+  stretching across the banner.
   ==================================================================
 {% endcomment %}
 
@@ -34,22 +38,34 @@
     "
     {{ block.shopify_attributes }}
   >
-    {{- s.text | default: 'Message' -}}
+    <span class="gs-block-message-line__text">{{- s.text | default: 'Message' -}}</span>
   </div>
 {%- endif -%}
 
 {% stylesheet %}
+  /* The outer div is the layout item (it can be a full-width flex row
+     in the section so buttons can share the next row). Background and
+     padding live on the inner span so a coloured line still hugs its
+     text instead of painting the whole row. */
   .gs-block-message-line {
     color: var(--color, inherit);
-    background-color: var(--background-color, transparent);
     font-size: var(--font-size-mobile, 16px);
     letter-spacing: var(--letter-spacing, 0);
+  }
+
+  .gs-block-message-line__text {
+    display: inline-block;
+    max-width: 100%;
+    background-color: var(--background-color, transparent);
     padding: var(--padding-y-mobile, 8px) var(--padding-x-mobile, 8px);
   }
 
   @media screen and (min-width: 769px) {
     .gs-block-message-line {
       font-size: var(--font-size-desktop, 16px);
+    }
+
+    .gs-block-message-line__text {
       padding: var(--padding-y-desktop, 8px) var(--padding-x-desktop, 8px);
     }
   }

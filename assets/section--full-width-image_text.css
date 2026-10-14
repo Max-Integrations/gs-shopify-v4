@@ -82,51 +82,16 @@
 .fwit-promo .promo-content {
   position: relative;
   z-index: 1;
-  display: flex;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--padding-x);
-  align-items: var(--content-align, center);
-  /* DX Fix: Natively handles the gap between messages and buttons across all layouts */
-  gap: var(--item-gap-desktop);
 }
 
-/* Desktop Alignment Logic. Content is theme blocks in merchant order:
-   block--message-line (.promo-message) and block--button
-   (.gs-block-button-wrap). Stacked layouts are a flex column; the row
-   layouts are a two-column grid with every message line in one column
-   and every button in the other, which replaces the group wrappers the
-   old local blocks needed. */
-.fwit-promo.layout-center .promo-content {
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-.fwit-promo.layout-left .promo-content,
-.fwit-promo.layout-right .promo-content {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  column-gap: var(--item-gap-desktop);
-  row-gap: var(--item-gap-desktop);
-}
-
-.fwit-promo.layout-left .promo-content { text-align: left; }
-.fwit-promo.layout-right .promo-content { text-align: right; grid-template-columns: auto 1fr; }
-
-.fwit-promo.layout-left .promo-message { grid-column: 1; justify-self: start; }
-.fwit-promo.layout-left .gs-block-button-wrap { grid-column: 2; justify-self: end; }
-.fwit-promo.layout-right .promo-message { grid-column: 2; justify-self: end; }
-.fwit-promo.layout-right .gs-block-button-wrap { grid-column: 1; justify-self: start; }
-
+/* Colour, size and padding are the message-line block's own stylesheet
+   (.gs-block-message-line / __text). */
 .fwit-promo .promo-message {
-  color: var(--color);
-  background-color: var(--background-color);
-  font-size: var(--font-size-desktop);
-  letter-spacing: var(--letter-spacing);
-  padding: var(--padding-y-desktop) var(--padding-x-desktop);
+  max-width: 100%;
 }
 
 .fwit-promo .gs-block-button-wrap {
@@ -141,7 +106,107 @@
   z-index: 5;
 }
 
-/* Mobile Flex Override */
+/* Layouts. Content is theme blocks in merchant order:
+   block--message-line (.promo-message) and block--button
+   (.gs-block-button-wrap), with no wrappers, so the grouping is done
+   here. Desktop and mobile each pick their own layout position
+   (layout-desktop-* / layout-mobile-*) and button mode
+   (buttons-desktop-* / buttons-mobile-*); the two media blocks below
+   are the same rules with the breakpoint's own classes and variables. */
+@media (min-width: 769px) {
+  /* STACKED: wrapping flex row; message lines take a full row each,
+     consecutive buttons share one (or take a row each when stacked). */
+  .fwit-promo.layout-desktop-center .promo-content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: var(--content-align, center);
+    align-items: center;
+    gap: var(--item-gap-desktop) var(--button-gap, 12px);
+    text-align: var(--content-align, center);
+  }
+
+  .fwit-promo.layout-desktop-center .promo-message {
+    flex: 0 0 100%;
+  }
+
+  .fwit-promo.layout-desktop-center.buttons-desktop-stacked .gs-block-button-wrap {
+    flex: 0 0 100%;
+  }
+
+  /* TEXT LEFT / RIGHT: column-flow grid, one `1fr` text column and eight
+     spare `auto` columns the buttons flow into (unused ones are zero
+     width; theme blocks cannot be counted from the section). Buttons
+     span every row so the group is centred on the copy. Gaps are
+     sibling margins so the empty tracks add no space. */
+  .fwit-promo.layout-desktop-left .promo-content,
+  .fwit-promo.layout-desktop-right .promo-content {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(12, auto);
+    align-items: center;
+    gap: 0;
+  }
+
+  .fwit-promo.layout-desktop-left .promo-content {
+    grid-template-columns: minmax(0, 1fr) repeat(8, auto);
+    text-align: left;
+  }
+
+  .fwit-promo.layout-desktop-right .promo-content {
+    grid-template-columns: repeat(8, auto) minmax(0, 1fr);
+    text-align: right;
+  }
+
+  .fwit-promo.layout-desktop-left .promo-message {
+    grid-column: 1;
+    justify-self: start;
+    margin: 0 var(--item-gap-desktop) 0 0;
+  }
+
+  .fwit-promo.layout-desktop-right .promo-message {
+    grid-column: -2;
+    justify-self: end;
+    margin: 0 0 0 var(--item-gap-desktop);
+  }
+
+  .fwit-promo.layout-desktop-left .promo-message + .promo-message,
+  .fwit-promo.layout-desktop-right .promo-message + .promo-message {
+    margin-top: var(--item-gap-desktop);
+  }
+
+  .fwit-promo.layout-desktop-left .gs-block-button-wrap,
+  .fwit-promo.layout-desktop-right .gs-block-button-wrap {
+    grid-row: 1 / -1;
+    margin: 0;
+  }
+
+  .fwit-promo.layout-desktop-left .gs-block-button-wrap { justify-self: end; }
+  .fwit-promo.layout-desktop-right .gs-block-button-wrap { justify-self: start; }
+
+  .fwit-promo.layout-desktop-left .gs-block-button-wrap + .gs-block-button-wrap,
+  .fwit-promo.layout-desktop-right .gs-block-button-wrap + .gs-block-button-wrap {
+    margin-left: var(--button-gap, 12px);
+  }
+
+  /* Stacked buttons in the row layouts: one button column, a button per
+     row. */
+  .fwit-promo.layout-desktop-left.buttons-desktop-stacked .gs-block-button-wrap {
+    grid-row: auto;
+    grid-column: 2;
+  }
+
+  .fwit-promo.layout-desktop-right.buttons-desktop-stacked .gs-block-button-wrap {
+    grid-row: auto;
+    grid-column: 1;
+  }
+
+  .fwit-promo.layout-desktop-left.buttons-desktop-stacked .gs-block-button-wrap + .gs-block-button-wrap,
+  .fwit-promo.layout-desktop-right.buttons-desktop-stacked .gs-block-button-wrap + .gs-block-button-wrap {
+    margin-left: 0;
+    margin-top: var(--item-gap-desktop);
+  }
+}
+
 @media (max-width: 768px) {
   .fwit-promo {
     --padding-top: var(--section-padding-top-mobile);
@@ -149,18 +214,95 @@
     --padding-x: var(--section-padding-x-mobile);
   }
 
-  .fwit-promo .promo-content {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center;
-    text-align: center;
+  /* STACKED: wrapping flex row; message lines take a full row each,
+     consecutive buttons share one (or take a row each when stacked). */
+  .fwit-promo.layout-mobile-center .promo-content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: var(--content-align-mobile, center);
     align-items: center;
-    gap: var(--item-gap-mobile);
+    gap: var(--item-gap-mobile) var(--button-gap, 12px);
+    text-align: var(--content-align-mobile, center);
   }
 
-  .fwit-promo .promo-message {
-    padding: var(--padding-y-mobile) var(--padding-x-mobile);
-    font-size: var(--font-size-mobile);
+  .fwit-promo.layout-mobile-center .promo-message {
+    flex: 0 0 100%;
   }
 
+  .fwit-promo.layout-mobile-center.buttons-mobile-stacked .gs-block-button-wrap {
+    flex: 0 0 100%;
+  }
+
+  /* TEXT LEFT / RIGHT: column-flow grid, one `1fr` text column and eight
+     spare `auto` columns the buttons flow into (unused ones are zero
+     width; theme blocks cannot be counted from the section). Buttons
+     span every row so the group is centred on the copy. Gaps are
+     sibling margins so the empty tracks add no space. */
+  .fwit-promo.layout-mobile-left .promo-content,
+  .fwit-promo.layout-mobile-right .promo-content {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(12, auto);
+    align-items: center;
+    gap: 0;
+  }
+
+  .fwit-promo.layout-mobile-left .promo-content {
+    grid-template-columns: minmax(0, 1fr) repeat(8, auto);
+    text-align: left;
+  }
+
+  .fwit-promo.layout-mobile-right .promo-content {
+    grid-template-columns: repeat(8, auto) minmax(0, 1fr);
+    text-align: right;
+  }
+
+  .fwit-promo.layout-mobile-left .promo-message {
+    grid-column: 1;
+    justify-self: start;
+    margin: 0 var(--item-gap-mobile) 0 0;
+  }
+
+  .fwit-promo.layout-mobile-right .promo-message {
+    grid-column: -2;
+    justify-self: end;
+    margin: 0 0 0 var(--item-gap-mobile);
+  }
+
+  .fwit-promo.layout-mobile-left .promo-message + .promo-message,
+  .fwit-promo.layout-mobile-right .promo-message + .promo-message {
+    margin-top: var(--item-gap-mobile);
+  }
+
+  .fwit-promo.layout-mobile-left .gs-block-button-wrap,
+  .fwit-promo.layout-mobile-right .gs-block-button-wrap {
+    grid-row: 1 / -1;
+    margin: 0;
+  }
+
+  .fwit-promo.layout-mobile-left .gs-block-button-wrap { justify-self: end; }
+  .fwit-promo.layout-mobile-right .gs-block-button-wrap { justify-self: start; }
+
+  .fwit-promo.layout-mobile-left .gs-block-button-wrap + .gs-block-button-wrap,
+  .fwit-promo.layout-mobile-right .gs-block-button-wrap + .gs-block-button-wrap {
+    margin-left: var(--button-gap, 12px);
+  }
+
+  /* Stacked buttons in the row layouts: one button column, a button per
+     row. */
+  .fwit-promo.layout-mobile-left.buttons-mobile-stacked .gs-block-button-wrap {
+    grid-row: auto;
+    grid-column: 2;
+  }
+
+  .fwit-promo.layout-mobile-right.buttons-mobile-stacked .gs-block-button-wrap {
+    grid-row: auto;
+    grid-column: 1;
+  }
+
+  .fwit-promo.layout-mobile-left.buttons-mobile-stacked .gs-block-button-wrap + .gs-block-button-wrap,
+  .fwit-promo.layout-mobile-right.buttons-mobile-stacked .gs-block-button-wrap + .gs-block-button-wrap {
+    margin-left: 0;
+    margin-top: var(--item-gap-mobile);
+  }
 }

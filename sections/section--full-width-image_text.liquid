@@ -11,7 +11,18 @@
   everywhere in the theme. The old local blocks' settings map onto them
   one for one (sizes in px instead of a rem scale, 1rem = 10px here).
   Row layouts used to wrap messages and buttons in two groups; with
-  content_for that is a two-column grid in the stylesheet instead.
+  content_for there are no wrappers, so the stylesheet does the grouping:
+  stacked layouts are a wrapping flex row where every message line takes
+  a full row and consecutive buttons share one; the text-left/right
+  layouts are a grid with a `1fr` text column and spare auto columns the
+  buttons flow into (theme blocks cannot be counted from the section).
+
+  2026-10-13 (client request): buttons side by side was not working, and
+  mobile had no settings of its own. Layout position and alignment now
+  exist per breakpoint (layout_preset / alignment_preset are desktop,
+  layout_preset_mobile / alignment_mobile are mobile), plus "Buttons
+  (desktop)" / "Buttons (mobile)" (side by side or stacked). The
+  stylesheet keys off `layout-desktop-*` / `layout-mobile-*` classes.
   ==================================================================
 {% endcomment %}
 {%- liquid
@@ -23,22 +34,19 @@
         assign auto_height = true
     endif
 
-    # Banner label (the stretched link's accessible name): the first
-    # message line with text, else a generic label.
+    # Theme blocks are opaque to the section: block.type is '@theme' and
+    # block.settings is empty here, so nothing about the lines or buttons
+    # (count, text) can be read. The stretched link therefore gets a
+    # generic accessible name, and the stylesheet groups buttons without
+    # knowing how many there are.
     assign banner_label = 'View promotion'
-    for block in section.blocks
-        if block.type == 'block--message-line' and block.settings.text != blank
-            assign banner_label = block.settings.text | strip_html | strip
-            break
-        endif
-    endfor
 
-    assign content_align = 'center'
-    assign messages_align = section.settings.layout_preset
-    if section.settings.layout_preset == 'center'
-        assign content_align = section.settings.alignment_preset
-        assign messages_align = section.settings.alignment_preset
-    endif
+    # Desktop and mobile each have their own layout position; the
+    # alignment selects only matter for the stacked position.
+    assign layout_desktop = section.settings.layout_preset | default: 'center'
+    assign layout_mobile = section.settings.layout_preset_mobile | default: 'center'
+    assign content_align = section.settings.alignment_preset | default: 'center'
+    assign content_align_mobile = section.settings.alignment_mobile | default: 'center'
 
     # LCP: first two sections load eagerly and preload their CSS/image
     assign is_lcp = false
@@ -54,7 +62,7 @@
 {{ 'section--full-width-image_text.css' | asset_url | stylesheet_tag: preload: is_lcp }}
 
 <div
-    class="fwit-promo layout-{{ section.settings.layout_preset }} visibility-{{ section.settings.visibility }}{% if auto_height %} image-auto-height{% endif %}"
+    class="fwit-promo layout-desktop-{{ layout_desktop }} layout-mobile-{{ layout_mobile }} visibility-{{ section.settings.visibility }} buttons-desktop-{{ section.settings.buttons_desktop | default: 'side_by_side' }} buttons-mobile-{{ section.settings.buttons_mobile | default: 'stacked' }}{% if auto_height %} image-auto-height{% endif %}"
     style="
         --section-background: {{ section.settings.background_color }};
         --section-padding-top-desktop: {{ section.settings.padding_top_desktop }}px;
@@ -67,7 +75,7 @@
         --item-gap-mobile: {{ section.settings.item_gap_mobile }}px;
         --button-gap: {{ section.settings.button_gap }}px;
         --content-align: {{ content_align }};
-        --messages-align: {{ messages_align }};
+        --content-align-mobile: {{ content_align_mobile }};
     "
 >
     {% if section.settings.banner_link != blank %}
@@ -145,7 +153,7 @@
         {
             "type": "select",
             "id": "layout_preset",
-            "label": "Layout position",
+            "label": "Layout position (desktop)",
             "options": [
                 { "label": "Stacked vertically in order", "value": "center" },
                 { "label": "Text left, CTA right", "value": "left" },
@@ -156,7 +164,7 @@
         {
             "type": "select",
             "id": "alignment_preset",
-            "label": "Layout alignment",
+            "label": "Layout alignment (desktop)",
             "options": [
                 { "label": "Left", "value": "start" },
                 { "label": "Center", "value": "center" },
@@ -164,6 +172,29 @@
             ],
             "default": "center",
             "visible_if": "{{ section.settings.layout_preset == 'center' }}"
+        },
+        {
+            "type": "select",
+            "id": "layout_preset_mobile",
+            "label": "Layout position (mobile)",
+            "options": [
+                { "label": "Stacked vertically in order", "value": "center" },
+                { "label": "Text left, CTA right", "value": "left" },
+                { "label": "Text right, CTA left", "value": "right" }
+            ],
+            "default": "center"
+        },
+        {
+            "type": "select",
+            "id": "alignment_mobile",
+            "label": "Layout alignment (mobile)",
+            "options": [
+                { "label": "Left", "value": "start" },
+                { "label": "Center", "value": "center" },
+                { "label": "Right", "value": "end" }
+            ],
+            "default": "center",
+            "visible_if": "{{ section.settings.layout_preset_mobile == 'center' }}"
         },
         {
             "type": "header",
@@ -296,18 +327,39 @@
         },
         {
             "type": "header",
-            "content": "Action Spacing"
+            "content": "Buttons"
+        },
+        {
+            "type": "select",
+            "id": "buttons_desktop",
+            "label": "Buttons (desktop)",
+            "options": [
+                { "label": "Side by side", "value": "side_by_side" },
+                { "label": "Stacked", "value": "stacked" }
+            ],
+            "default": "side_by_side"
+        },
+        {
+            "type": "select",
+            "id": "buttons_mobile",
+            "label": "Buttons (mobile)",
+            "options": [
+                { "label": "Side by side", "value": "side_by_side" },
+                { "label": "Stacked", "value": "stacked" }
+            ],
+            "default": "stacked",
+            "info": "Side by side wraps onto a second row when the buttons do not fit."
         },
         {
             "type": "range",
             "id": "button_gap",
-            "label": "Gap between buttons",
+            "label": "Gap between side-by-side buttons",
             "min": 0,
             "max": 48,
             "step": 2,
             "unit": "px",
             "default": 12,
-            "info": "Applies to the Text left / Text right layouts, where buttons share a row."
+            "info": "Stacked buttons use the gap between items instead."
         }
     ],
     "blocks": [
