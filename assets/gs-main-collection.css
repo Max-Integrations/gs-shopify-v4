@@ -76,7 +76,7 @@
 }
 
 .gs-collection__banner.overlay-text .gs-collection__banner-image::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background-color: var(--banner-overlay-bg, transparent);
@@ -151,9 +151,15 @@
   margin-top: 3rem;
 }
 
-.text-left { text-align: left; }
-.text-center { text-align: center; }
-.text-right { text-align: right; }
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
 
 /* ---- Sub-collection carousel ---- */
 .gs-subcollections {
@@ -180,7 +186,9 @@
   -ms-overflow-style: none;
 }
 
-.gs-subcollections__track::-webkit-scrollbar { display: none; }
+.gs-subcollections__track::-webkit-scrollbar {
+  display: none;
+}
 
 .gs-subcollections__item {
   flex: 0 0 45%;
@@ -238,13 +246,19 @@
   color: rgb(var(--textColor));
 }
 
-.gs-subcollections__nav[hidden] { display: none; }
-.gs-subcollections__nav:disabled { opacity: 0.3; cursor: default; }
+.gs-subcollections__nav[hidden] {
+  display: none;
+}
+.gs-subcollections__nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
 
 /* ---- Applied filter pills ---- */
 .gs-collection__count {
   padding: 1rem 0;
   color: rgb(var(--textColor));
+  margin-top: -2rem;
 }
 
 .gs-collection__applied {
@@ -433,7 +447,7 @@
 }
 
 .gs-collection--bg-image .gs-collection__results::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -486,7 +500,9 @@
 }
 
 @keyframes gs-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ---- Sidebar ---- */
@@ -534,26 +550,36 @@
     display: grid;
     grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
     grid-template-areas:
-      'sub sub'
-      'header header'
-      'toolbar toolbar'
-      'sidebar results';
+      "sub sub"
+      "header header"
+      "toolbar toolbar"
+      "sidebar results";
     gap: 0 30px;
     align-items: start;
   }
 
-  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) > .gs-subcollections { grid-area: sub; }
-  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) > .gs-collection__header { grid-area: header; }
+  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) > .gs-subcollections {
+    grid-area: sub;
+  }
+  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) > .gs-collection__header {
+    grid-area: header;
+  }
 
   /*
     Without this the toolbar auto-places into the first free cell, which
     put Sort by and Filter by in the left column stacked above the
     filters instead of in a row above the products.
   */
-  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) > .gs-toolbar { grid-area: toolbar; }
+  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) > .gs-toolbar {
+    grid-area: toolbar;
+  }
 
-  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) > .gs-collection__sidebar { grid-area: sidebar; }
-  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) > .gs-collection__results { grid-area: results; }
+  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) > .gs-collection__sidebar {
+    grid-area: sidebar;
+  }
+  .gs-collection__wrapper:not(.gs-collection__wrapper--no-sidebar) > .gs-collection__results {
+    grid-area: results;
+  }
 
   /* The count sits with the toolbar row, so the results column starts
      with products rather than repeating the count below the filters. */
@@ -563,6 +589,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gs-subcollections__track { scroll-behavior: auto; }
-  .gs-collection__spinner { animation-duration: 3s; }
+  .gs-subcollections__track {
+    scroll-behavior: auto;
+  }
+  .gs-collection__spinner {
+    animation-duration: 3s;
+  }
 }

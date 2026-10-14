@@ -55,13 +55,11 @@
   gap: 0.6rem;
 }
 
-.list-unstyled {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.list-unstyled li + li {
+/* Scoped to the footer: base.css already resets .list-unstyled, and an
+   unscoped `li + li` margin here leaked into every .list-unstyled on the
+   site (e.g. pagination, where it pushed every item after the first down
+   by 6px). */
+.gs-footer .list-unstyled li + li {
   margin-top: 0.6rem;
 }
 

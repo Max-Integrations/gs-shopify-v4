@@ -24,7 +24,7 @@
 {%- if siblings != blank -%}
   <div
     class="gs-product__swatches gs-product__swatches--{{ style }} gs-product__swatches--{{ s.shape | default: 'circle' }}"
-    style="--gs-swatch-size: {{ s.size | default: 32 }}px;"
+    style="--gs-swatch-size: {{ s.size | default: 32 }}px; --gs-swatch-size-mobile: {{ s.size_mobile | default: 32 }}px;"
     {{ block.shopify_attributes }}
   >
     {%- if s.show_label -%}
@@ -126,6 +126,13 @@
   }
 
   .gs-product__swatch.is-sold-out .gs-product__swatch-link { opacity: 0.45; }
+
+  @media (max-width: 768px) {
+    .gs-product__swatch-link {
+      width: var(--gs-swatch-size-mobile, 32px);
+      height: var(--gs-swatch-size-mobile, 32px);
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -153,7 +160,8 @@
       ],
       "default": "circle"
     },
-    { "type": "range", "id": "size", "label": "Size", "min": 20, "max": 60, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "size", "label": "Size (Desktop)", "min": 20, "max": 60, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "size_mobile", "label": "Size (Mobile)", "min": 20, "max": 60, "step": 2, "unit": "px", "default": 32 },
     { "type": "checkbox", "id": "show_label", "label": "Show the colour name", "default": true },
     { "type": "text", "id": "label", "label": "Label", "info": "The product's swatch label override metafield wins.", "default": "Color" }
   ],

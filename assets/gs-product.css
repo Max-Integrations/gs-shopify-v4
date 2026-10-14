@@ -868,3 +868,11 @@
     text-align: left;
   }
 }
+@media screen and (max-width: 768px) {
+  .klaviyo-star-rating-widget {
+    margin-top: -2rem;
+  }
+  .gs-product__price {
+    margin-top: -2rem;
+  }
+}

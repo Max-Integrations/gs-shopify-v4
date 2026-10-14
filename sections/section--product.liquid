@@ -132,8 +132,8 @@
       <div class="gs-product__media">
         <div class="gs-product__media-sticky">
           <div class="gs-product__media-inner">
-            {%- if product.media.size > 1 -%}
-              <div class="gs-product__rail">
+            <div class="gs-product__rail" style="display: block;">
+                {%- if product.media.size > 1 -%}
                 <button type="button" class="gs-product__rail-btn" data-gs-rail="up" aria-label="Previous images">
                   <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 15 L12 7 L20 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
@@ -160,8 +160,8 @@
                 <button type="button" class="gs-product__rail-btn" data-gs-rail="down" aria-label="More images">
                   <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 9 L12 17 L20 9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
+              {%- endif -%}
               </div>
-            {%- endif -%}
 
             <div class="gs-product__stage">
               {%- if badge_image != blank -%}
