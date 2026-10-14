@@ -77,13 +77,48 @@
     true
   );
 
-  if ('ResizeObserver' in window) {
-    var ro = new ResizeObserver(function () {
+  // Coalesce bursts of observer callbacks into one pass. A timeout
+  // rather than requestAnimationFrame so it still runs in a background
+  // tab (the PDP recommendations can arrive while the tab is hidden).
+  var scheduled = false;
+  function scheduleUpdate() {
+    if (scheduled) return;
+    scheduled = true;
+    setTimeout(function () {
+      scheduled = false;
       updateAll();
-    });
+    }, 0);
+  }
+
+  if ('ResizeObserver' in window) {
+    var ro = new ResizeObserver(scheduleUpdate);
     ro.observe(document.documentElement);
+    // <html> can be viewport-sized (it is on the PDP), so content that
+    // arrives later does not resize it. <body> does grow.
+    if (document.body) ro.observe(document.body);
   } else {
     window.addEventListener('resize', updateAll);
+  }
+
+  // Scrollers injected after load (Dawn's <product-recommendations> on
+  // the PDP swaps in the featured-collections carousel when scrolled
+  // near; infinite scroll adds cards) start with their arrows hidden and
+  // nothing else re-evaluates them. One observer for the whole page,
+  // childList only, so it is cheap.
+  if ('MutationObserver' in window && document.body) {
+    new MutationObserver(function (records) {
+      for (var i = 0; i < records.length; i++) {
+        var added = records[i].addedNodes;
+        for (var j = 0; j < added.length; j++) {
+          var node = added[j];
+          if (node.nodeType !== 1) continue;
+          if (node.hasAttribute('data-swatch-scroller') || node.querySelector('[data-swatch-scroller]')) {
+            scheduleUpdate();
+            return;
+          }
+        }
+      }
+    }).observe(document.body, { childList: true, subtree: true });
   }
 
   if (document.readyState === 'loading') {
