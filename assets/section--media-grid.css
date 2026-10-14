@@ -139,8 +139,10 @@
   grid-template-rows: minmax(0, 1fr) auto;
   overflow: hidden;
   box-sizing: border-box;
-  grid-column: span min(var(--col-span, 1), var(--cols-mobile, 1));
-  grid-row: span var(--row-span, 1);
+  /* Spans are desktop-only; mobile is a uniform stack (client request
+     2026-10-13). The desktop block below applies --col-span/--row-span. */
+  grid-column: span 1;
+  grid-row: span 1;
   background: var(--mg-card-bg, transparent);
   padding: var(--mg-card-pad, 0);
 }
@@ -430,6 +432,7 @@
 
   .media-grid-item {
     grid-column: span min(var(--col-span, 1), var(--cols-desktop, 4));
+    grid-row: span var(--row-span, 1);
   }
 
   .media-grid-wrapper--carousel .media-grid-item {
