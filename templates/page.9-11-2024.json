@@ -50,6 +50,8 @@
         "visibility": "always",
         "layout_preset": "center",
         "alignment_preset": "center",
+        "layout_preset_mobile": "center",
+        "alignment_mobile": "center",
         "background_color": "#ffffff",
         "background_image_desktop": "shopify://shop_images/HPC_D_-_Tall_1920x700_911.jpg",
         "background_image_mobile": "shopify://shop_images/HPC_M_828x600_911.jpg",
@@ -66,6 +68,8 @@
         "padding_bottom_mobile": 48,
         "padding_horizontal_mobile": 24,
         "item_gap_mobile": 10,
+        "buttons_desktop": "side_by_side",
+        "buttons_mobile": "stacked",
         "button_gap": 8
       }
     },
@@ -98,6 +102,8 @@
         "visibility": "always",
         "layout_preset": "center",
         "alignment_preset": "center",
+        "layout_preset_mobile": "center",
+        "alignment_mobile": "center",
         "background_color": "#ffffff",
         "background_image_desktop": "shopify://shop_images/Home_Page_Carousel_1302x370-911.jpg",
         "background_image_mobile": "shopify://shop_images/Home_Page_Carousel_Mobile_980x600-911.jpg",
@@ -114,6 +120,8 @@
         "padding_bottom_mobile": 0,
         "padding_horizontal_mobile": 0,
         "item_gap_mobile": 8,
+        "buttons_desktop": "side_by_side",
+        "buttons_mobile": "stacked",
         "button_gap": 8
       }
     },
@@ -172,7 +180,7 @@
             "size": "h1",
             "tag": "h2",
             "alignment": "inherit",
-            "color": "#FFFFFF",
+            "color": "#ffffff",
             "font_size_desktop": 0,
             "font_size_mobile": 0
           },
@@ -196,7 +204,7 @@
       "settings": {
         "section_visibility": "always",
         "bg_image_collection": false,
-        "bg_overlay_color": "#FFFFFF",
+        "bg_overlay_color": "#ffffff",
         "bg_overlay_opacity": 0,
         "desktop_content_position": "center",
         "content_alignment": "center",
@@ -315,7 +323,7 @@
           "type": "text_scroller",
           "settings": {
             "title": "HONOR THE FALLEN",
-            "block_text_color": "#FFFFFF",
+            "block_text_color": "#ffffff",
             "block_font_size": 11,
             "block_font_weight": "400",
             "data-source": "google-sheets",
@@ -490,12 +498,12 @@
         "collection_cta_spacing_top_mobile": 10,
         "collection_cta_spacing_bottom_desktop": 10,
         "collection_cta_spacing_bottom_mobile": 10,
-        "heading_color": "#FFFFFF",
+        "heading_color": "#ffffff",
         "tab_color": "",
         "tab_active_color": "",
         "cta_text_color": "#000000",
         "cta_text_color_hover": "#ffffff",
-        "cta_background_color": "#FFFFFF",
+        "cta_background_color": "#ffffff",
         "cta_background_color_hover": "#000000",
         "cta_border_color": "#000000",
         "cta_border_color_hover": "#ffffff"
@@ -611,7 +619,6 @@
         "yt_short_kbgY6h",
         "yt_short_iCeBmV"
       ],
-      "disabled": true,
       "name": "Multicolumn YT Shorts",
       "settings": {
         "mutlicolumn_yts_full_width": false,
@@ -738,6 +745,8 @@
         "visibility": "always",
         "layout_preset": "right",
         "alignment_preset": "center",
+        "layout_preset_mobile": "center",
+        "alignment_mobile": "center",
         "background_color": "#ffffff",
         "background_image_desktop": "shopify://shop_images/Untitled_design_83.png",
         "background_image_mobile": "shopify://shop_images/GS_american_grit-828x600.png",
@@ -754,6 +763,8 @@
         "padding_bottom_mobile": 0,
         "padding_horizontal_mobile": 0,
         "item_gap_mobile": 0,
+        "buttons_desktop": "side_by_side",
+        "buttons_mobile": "stacked",
         "button_gap": 8
       }
     },
@@ -827,6 +838,8 @@
         "visibility": "always",
         "layout_preset": "right",
         "alignment_preset": "center",
+        "layout_preset_mobile": "center",
+        "alignment_mobile": "center",
         "background_color": "#ffffff",
         "background_image_desktop": "shopify://shop_images/Desktop_1440px_x_300px_Four_Toast_Salute-min_4dd96a01-a139-472e-b65c-9859b06a6cad.jpg",
         "background_image_mobile": "shopify://shop_images/Mobile_700x450__Four_Toast_Salute-min.jpg",
@@ -843,6 +856,8 @@
         "padding_bottom_mobile": 0,
         "padding_horizontal_mobile": 0,
         "item_gap_mobile": 0,
+        "buttons_desktop": "side_by_side",
+        "buttons_mobile": "stacked",
         "button_gap": 8
       }
     },
