@@ -151,6 +151,7 @@
       "review": "Review",
       "reviews": "Reviews",
       "color_options": "Color options",
+      "more_colors": "+ {{ count }} more",
       "pick_a_size": "Select Size",
       "quick_add": "+ Quick Add",
       "media": {

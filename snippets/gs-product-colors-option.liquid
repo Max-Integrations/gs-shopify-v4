@@ -78,6 +78,24 @@
   if own_image or own_hex
     assign has_own = true
   endif
+
+  # Cards show at most swatch_limit swatches; the rest become a
+  # "+ n more" label. Only siblings with an image or hex render, so
+  # count those rather than swatches.size.
+  assign swatch_limit = 4
+  assign swatch_total = 0
+  if has_own
+    assign swatch_total = 1
+  endif
+  for swatch_product in swatches
+    if swatch_product.metafields.custom.collection_color_swatch_image or swatch_product.metafields.custom.collection_color_swatch_hex_code
+      assign swatch_total = swatch_total | plus: 1
+    endif
+  endfor
+  assign swatch_shown = 0
+  if has_own
+    assign swatch_shown = 1
+  endif
 -%}
 
 {%- if swatches.size > 0 or has_own -%}
@@ -125,7 +143,9 @@
             assign sib_image = swatch_product.metafields.custom.collection_color_swatch_image
             assign sib_hex = swatch_product.metafields.custom.collection_color_swatch_hex_code
           -%}
+          {%- if swatch_shown >= swatch_limit -%}{%- break -%}{%- endif -%}
           {%- if sib_image or sib_hex -%}
+            {%- assign swatch_shown = swatch_shown | plus: 1 -%}
             <li class="variant-option gs-swatch-track__item{% unless swatch_product.available %} out-of-stock{% endunless %}">
               <a
                 href="{{ swatch_product.url }}"
@@ -141,6 +161,15 @@
             </li>
           {%- endif -%}
         {%- endfor -%}
+
+        {%- if swatch_total > swatch_limit -%}
+          {%- assign swatch_more = swatch_total | minus: swatch_limit -%}
+          <li class="gs-swatch-track__more">
+            <span class="gs-swatch-track__more-label">
+              {{- 'products.product.more_colors' | t: count: swatch_more -}}
+            </span>
+          </li>
+        {%- endif -%}
       </ul>
 
       <button

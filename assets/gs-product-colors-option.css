@@ -73,6 +73,18 @@
   opacity: 0.4;
 }
 
+.gs-swatch-track__more {
+  display: flex;
+  align-items: center;
+}
+
+.gs-swatch-track__more-label {
+  white-space: nowrap;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: inherit;
+}
+
 .gs-swatch-scroller__btn {
   flex: 0 0 auto;
   display: inline-flex;
