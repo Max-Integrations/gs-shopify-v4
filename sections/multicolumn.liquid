@@ -11,6 +11,13 @@
     - block `icon`: a small inline SVG (globe, truck, person, pin,
       building, chat) used when the column has no image, as v3's
       icon_list did.
+    - Section: `heading_alignment`, a `right` option on
+      `column_alignment`, and `column_gap` / `row_gap` (desktop px;
+      mobile is half, as the theme's own grid spacing is).
+    - Per column (block): background and text colour, inner padding,
+      corner radius, border, image size (desktop / mobile) and the
+      space between image and text. Each is applied only when set, so
+      columns that never set them render as Dawn does.
   Styles for these live in assets/gs-multicolumn.css.
 {% endcomment %}
 {{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
@@ -32,6 +39,21 @@
 {%- endstyle -%}
 
 {%- liquid
+  assign column_gap = section.settings.column_gap
+  assign row_gap = section.settings.row_gap
+-%}
+{%- style -%}
+  {%- if column_gap != settings.spacing_grid_horizontal or row_gap != settings.spacing_grid_vertical %}
+    #shopify-section-{{ section.id }} .multicolumn {
+      --grid-desktop-horizontal-spacing: {{ column_gap }}px;
+      --grid-desktop-vertical-spacing: {{ row_gap }}px;
+      --grid-mobile-horizontal-spacing: {{ column_gap | divided_by: 2 }}px;
+      --grid-mobile-vertical-spacing: {{ row_gap | divided_by: 2 }}px;
+    }
+  {%- endif %}
+{%- endstyle -%}
+
+{%- liquid
   assign columns_mobile_int = section.settings.columns_mobile | plus: 0
   assign show_mobile_slider = false
   if section.settings.swipe_on_mobile and section.blocks.size > columns_mobile_int
@@ -39,7 +61,7 @@
   endif
 -%}
 
-<div class="multicolumn color-{{ section.settings.color_scheme }} gradient{% if section.settings.image_position == 'left' %} multicolumn--image-left{% endif %}{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
+<div class="multicolumn color-{{ section.settings.color_scheme }} gradient{% if section.settings.image_position == 'left' %} multicolumn--image-left{% endif %}{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}{% if section.settings.heading_alignment != 'left' %} multicolumn--heading-{{ section.settings.heading_alignment }}{% endif %}">
   <div
     class="page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     {% if settings.animations_reveal_on_scroll %}
@@ -82,16 +104,64 @@
             {%- assign empty_column = ' multicolumn-list__item--empty' -%}
           {%- endif -%}
 
+          {%- liquid
+            # Per-column style: a class per setting in use plus its value
+            # as a custom property, so unset columns get no overrides.
+            assign bs = block.settings
+            assign col_size_d = bs.image_size
+            assign col_size_m = bs.image_size_mobile
+            if col_size_m == 0
+              assign col_size_m = col_size_d
+            endif
+            assign col_classes = ''
+            assign col_style = ''
+            if bs.background_color != blank
+              assign col_classes = col_classes | append: ' mc-col--bg'
+              assign col_style = col_style | append: '--mc-bg:' | append: bs.background_color | append: ';'
+            endif
+            if bs.text_color != blank
+              assign col_classes = col_classes | append: ' mc-col--text'
+              assign col_style = col_style | append: '--mc-text:' | append: bs.text_color | append: ';'
+            endif
+            if bs.padding > 0
+              assign col_classes = col_classes | append: ' mc-col--pad'
+              assign col_style = col_style | append: '--mc-pad:' | append: bs.padding | append: 'px;'
+            endif
+            if bs.image_spacing > 0
+              assign col_classes = col_classes | append: ' mc-col--gap'
+              assign col_style = col_style | append: '--mc-gap:' | append: bs.image_spacing | append: 'px;'
+            endif
+            if bs.corner_radius > 0
+              assign col_classes = col_classes | append: ' mc-col--radius'
+              assign col_style = col_style | append: '--mc-radius:' | append: bs.corner_radius | append: 'px;'
+            endif
+            if bs.border_color != blank and bs.border_width > 0
+              assign col_classes = col_classes | append: ' mc-col--border'
+              assign col_style = col_style | append: '--mc-border:' | append: bs.border_width | append: 'px solid ' | append: bs.border_color | append: ';'
+            endif
+            if col_size_d > 0
+              assign col_classes = col_classes | append: ' mc-col--size-d'
+              assign col_style = col_style | append: '--mc-size-d:' | append: col_size_d | append: 'px;'
+            endif
+            if col_size_m > 0
+              assign col_classes = col_classes | append: ' mc-col--size-m'
+              assign col_style = col_style | append: '--mc-size-m:' | append: col_size_m | append: 'px;'
+            endif
+          -%}
+
           <li
             id="Slide-{{ section.id }}-{{ forloop.index }}"
-            class="multicolumn-list__item grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}{% if section.settings.column_alignment == 'center' %} center{% endif %}{{ empty_column }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            class="multicolumn-list__item grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}{% if section.settings.column_alignment == 'center' %} center{% elsif section.settings.column_alignment == 'right' %} right{% endif %}{{ empty_column }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {{ block.shopify_attributes }}
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
           >
-            <div class="multicolumn-card content-container{% if section.settings.card_color_scheme != section.settings.color_scheme %} multicolumn-card--scheme color-{{ section.settings.card_color_scheme }}{% endif %}">
+            <div
+              class="multicolumn-card content-container{% if section.settings.card_color_scheme != section.settings.color_scheme %} multicolumn-card--scheme color-{{ section.settings.card_color_scheme }}{% endif %}{{ col_classes }}"
+              {%- if col_style != blank %} style="{{ col_style }}"{% endif -%}
+            >
               {%- if block.settings.image != blank -%}
                 {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                   {% assign spaced_image = true %}
@@ -118,10 +188,14 @@
                       endif
                     -%}
                     {% capture sizes %}
+                      {%- if col_size_d > 0 -%}
+                        (min-width: 750px) {{ col_size_d }}px, {{ col_size_m }}px
+                      {%- else -%}
                       (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
                       (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
                       (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
                       calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                      {%- endif -%}
                     {% endcapture %}
                     {{
                       block.settings.image
@@ -268,6 +342,17 @@
       "label": "t:sections.all.heading_size.label"
     },
     {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
       "type": "header",
       "content": "t:sections.multicolumn.settings.header_image.content"
     },    
@@ -345,6 +430,28 @@
       "label": "t:sections.multicolumn.settings.columns_desktop.label"
     },
     {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Space between columns",
+      "info": "Desktop. Mobile uses half.",
+      "min": 0,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "row_gap",
+      "label": "Space between rows",
+      "info": "Desktop. Mobile uses half.",
+      "min": 0,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 8
+    },
+    {
       "type": "select",
       "id": "column_alignment",
       "options": [
@@ -355,6 +462,10 @@
         {
           "value": "center",
           "label": "t:sections.multicolumn.settings.column_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "Right"
         }
       ],
       "default": "left",
@@ -493,6 +604,95 @@
           "type": "url",
           "id": "link",
           "label": "t:sections.multicolumn.blocks.column.settings.link.label"
+        },
+        {
+          "type": "header",
+          "content": "Column style"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background color",
+          "info": "Leave empty for transparent when the section's Container is None; otherwise the container's card background shows."
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "info": "Heading, text and links in the text."
+        },
+        {
+          "type": "range",
+          "id": "padding",
+          "label": "Inner padding",
+          "info": "0 = theme default.",
+          "min": 0,
+          "max": 64,
+          "step": 4,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "corner_radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 40,
+          "step": 4,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border color"
+        },
+        {
+          "type": "range",
+          "id": "border_width",
+          "label": "Border width",
+          "min": 0,
+          "max": 8,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_size",
+          "label": "Image size (desktop)",
+          "info": "0 = the section's Image width.",
+          "min": 0,
+          "max": 240,
+          "step": 4,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "image_size_mobile",
+          "label": "Image size (mobile)",
+          "info": "0 = same as desktop.",
+          "min": 0,
+          "max": 240,
+          "step": 4,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "image_spacing",
+          "label": "Space between image and text",
+          "info": "0 = theme default.",
+          "min": 0,
+          "max": 48,
+          "step": 4,
+          "unit": "px",
+          "default": 0
         }
       ]
     }

@@ -7,6 +7,10 @@
     (Dawn's color-scheme-N class sets the custom properties; we paint
     the card with them).
   - .multicolumn-card__icon: inline SVG used when a column has no image.
+  - .multicolumn--heading-{center|right}: heading alignment.
+  - .multicolumn-list__item.right: right-aligned column content.
+  - .mc-col--*: per-column style, one class per block setting in use,
+    with the value in a --mc-* custom property on the card.
 */
 
 .multicolumn-card--scheme {
@@ -79,5 +83,157 @@
   .multicolumn--image-left.background-none .multicolumn-card__image-wrapper,
   .multicolumn--image-left.background-none .multicolumn-card__icon {
     margin: 0;
+  }
+}
+
+/* ---- Heading alignment ---- */
+.multicolumn--heading-center .multicolumn__title {
+  justify-content: center;
+  text-align: center;
+}
+
+.multicolumn--heading-right .multicolumn__title {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/* ---- Right-aligned columns ---- */
+.multicolumn-list__item.right .multicolumn-card__image-wrapper:not(.multicolumn-card__image-wrapper--full-width),
+.multicolumn-list__item.right .mc-col--size-d .multicolumn-card__image-wrapper,
+.multicolumn-list__item.right .mc-col--size-m .multicolumn-card__image-wrapper {
+  margin-left: auto;
+}
+
+.multicolumn-list__item.right .media--adapt img {
+  left: auto;
+  right: 0;
+}
+
+.multicolumn-list__item.right .multicolumn-card__icon {
+  margin-left: auto;
+  margin-right: 2.5rem;
+}
+
+.background-none .multicolumn-list__item.right .multicolumn-card__icon {
+  margin-right: 0;
+}
+
+/* With the container set to None, the card color scheme still gives
+   the cards its text colours but no background: a column with no
+   background colour of its own is transparent over the section. */
+.multicolumn.background-none .multicolumn-card.multicolumn-card--scheme {
+  background: transparent !important;
+}
+
+/* ---- Per-column style ----
+   Selectors start with .multicolumn so they outrank Dawn's card rules
+   and the .multicolumn-card--scheme !important background. */
+.multicolumn .multicolumn-card.mc-col--bg.mc-col--bg {
+  background: var(--mc-bg) !important;
+}
+
+.multicolumn .multicolumn-card.mc-col--text,
+.multicolumn .mc-col--text .multicolumn-card__info h3,
+.multicolumn .mc-col--text .multicolumn-card__info .rte,
+.multicolumn .mc-col--text .multicolumn-card__info .link,
+.multicolumn .mc-col--text .multicolumn-card__info .rte a,
+.multicolumn .mc-col--text .multicolumn-card__info .rte a:hover,
+.multicolumn .mc-col--text .multicolumn-card__icon {
+  color: var(--mc-text);
+}
+
+.multicolumn .multicolumn-card.mc-col--radius,
+.multicolumn .multicolumn-card.mc-col--radius::after {
+  border-radius: var(--mc-radius);
+}
+
+.multicolumn .multicolumn-card.mc-col--radius {
+  overflow: hidden;
+}
+
+.multicolumn .multicolumn-card.mc-col--border {
+  border: var(--mc-border);
+}
+
+/* Inner padding replaces Dawn's mix of info padding and image margins
+   with one even inset. */
+.multicolumn .multicolumn-card.mc-col--pad {
+  padding: var(--mc-pad);
+}
+
+.multicolumn .mc-col--pad .multicolumn-card__info {
+  padding: 0 !important;
+}
+
+.multicolumn .mc-col--pad .multicolumn-card__image-wrapper {
+  padding-top: 0;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.multicolumn .mc-col--pad .multicolumn-card__icon,
+.multicolumn .multicolumn-list__item:not(.center):not(.right) .mc-col--pad .multicolumn-card__icon {
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.multicolumn .multicolumn-list__item.center .mc-col--pad .multicolumn-card__icon {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.multicolumn .multicolumn-list__item.right .mc-col--pad .multicolumn-card__icon {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Space between image and text: theme default is 2.5rem, or 1.5rem
+   once inner padding is set. */
+.multicolumn .multicolumn-card.mc-col--pad .multicolumn-card__image-wrapper + .multicolumn-card__info,
+.multicolumn .multicolumn-card.mc-col--pad .multicolumn-card__icon + .multicolumn-card__info,
+.multicolumn .multicolumn-card.mc-col--gap .multicolumn-card__image-wrapper + .multicolumn-card__info,
+.multicolumn .multicolumn-card.mc-col--gap .multicolumn-card__icon + .multicolumn-card__info {
+  padding-top: var(--mc-gap, 1.5rem) !important;
+}
+
+/* Fixed image / icon size */
+.multicolumn-list__item.center .mc-col--size-d .multicolumn-card__image-wrapper,
+.multicolumn-list__item.center .mc-col--size-m .multicolumn-card__image-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 750px) {
+  .multicolumn .mc-col--size-d .multicolumn-card__image-wrapper {
+    width: var(--mc-size-d) !important;
+  }
+
+  .multicolumn .mc-col--size-d .multicolumn-card__icon {
+    width: var(--mc-size-d);
+    height: var(--mc-size-d);
+  }
+
+  /* Beside-the-text layout: the gap is horizontal. */
+  .multicolumn.multicolumn--image-left .multicolumn-card.mc-col--gap {
+    gap: var(--mc-gap);
+  }
+
+  .multicolumn.multicolumn--image-left .multicolumn-card.mc-col--pad .multicolumn-card__image-wrapper + .multicolumn-card__info,
+  .multicolumn.multicolumn--image-left .multicolumn-card.mc-col--pad .multicolumn-card__icon + .multicolumn-card__info,
+  .multicolumn.multicolumn--image-left .multicolumn-card.mc-col--gap .multicolumn-card__image-wrapper + .multicolumn-card__info,
+  .multicolumn.multicolumn--image-left .multicolumn-card.mc-col--gap .multicolumn-card__icon + .multicolumn-card__info {
+    padding-top: 0 !important;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .multicolumn .mc-col--size-m .multicolumn-card__image-wrapper {
+    width: var(--mc-size-m) !important;
+  }
+
+  .multicolumn .mc-col--size-m .multicolumn-card__icon {
+    width: var(--mc-size-m);
+    height: var(--mc-size-m);
   }
 }
