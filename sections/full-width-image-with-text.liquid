@@ -24,7 +24,8 @@
         {% endif %}
     {% endif %}
     .full-width-image { position: relative; }
-    .full-width-image img { width: 100%; }
+    .full-width-image picture { display: block; }
+    .full-width-image img { display: block; width: 100%; height: auto; }
     #full-width-iat-{{section.id}} { position: relative; z-index: 1; }
     {% if section.settings.full_width_image_overlay > 1 %}
         #full-width-iat-{{section.id}} .full-width-image:after {
@@ -111,22 +112,37 @@
     {% unless bg_image %}
     <div class="full-width-image">
         <a href="{{ section.settings.full_width_image_link }}" class="" {% if section.settings.full_width_link_new_window %}target="_blank"{% endif %}>
-            {% if section.settings.full_width_image_desktop != blank %}
-            <img
-                alt="{{ section.settings.full_width_image_desktop.alt }}"
-                src="{{ section.settings.full_width_image_desktop | image_url: width: 2000 }}"
-                class="{% if section.settings.full_width_image_mobile != nil %}small--hide{% endif %}"
-                loading="lazy"
-            >
-            {% endif %}
-            {% if section.settings.full_width_image_mobile != nil%}
-            <img 
-                alt="{{ section.settings.full_width_image_mobile.alt }}"
-                src="{{ section.settings.full_width_image_mobile | image_url: width: 1000 }}"
-                class="medium-up--hide"
-                loading="lazy"
-            >
-            {% endif %}
+            {%- comment -%}
+              v3 switched images with Debut's small--hide / medium-up--hide
+              classes, which Dawn has no CSS for, so both images rendered
+              at every width. A <picture> swaps at Dawn's 749px breakpoint
+              and the browser downloads only the image it shows.
+            {%- endcomment -%}
+            {%- assign fw_desktop = section.settings.full_width_image_desktop -%}
+            {%- assign fw_mobile = section.settings.full_width_image_mobile -%}
+            {%- if fw_desktop != blank or fw_mobile != blank -%}
+            {%- assign fw_fallback = fw_desktop | default: fw_mobile -%}
+            <picture>
+                {%- if fw_desktop != blank and fw_mobile != blank %}
+                <source
+                    media="(max-width: 749px)"
+                    srcset="{{ fw_mobile | image_url: width: 750 }} 750w, {{ fw_mobile | image_url: width: 1000 }} 1000w, {{ fw_mobile | image_url: width: 1500 }} 1500w"
+                    sizes="100vw"
+                    width="{{ fw_mobile.width }}"
+                    height="{{ fw_mobile.height }}"
+                >
+                {%- endif %}
+                <img
+                    alt="{{ fw_fallback.alt | escape }}"
+                    src="{{ fw_fallback | image_url: width: 2000 }}"
+                    srcset="{{ fw_fallback | image_url: width: 1000 }} 1000w, {{ fw_fallback | image_url: width: 1500 }} 1500w, {{ fw_fallback | image_url: width: 2000 }} 2000w, {{ fw_fallback | image_url: width: 2880 }} 2880w"
+                    sizes="100vw"
+                    width="{{ fw_fallback.width }}"
+                    height="{{ fw_fallback.height }}"
+                    loading="lazy"
+                >
+            </picture>
+            {%- endif %}
         </a>
     </div>
     {% endunless %}
