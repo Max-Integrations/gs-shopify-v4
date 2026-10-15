@@ -101,7 +101,7 @@
       "settings": {
         "overlay_content_position": "text-center",
         "overlay_text": false,
-        "heading_size": "h1",
+        "heading_size": "h4",
         "tag": "h1",
         "show_header": true,
         "header_style": "band",
