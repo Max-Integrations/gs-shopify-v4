@@ -17,6 +17,8 @@
         "visibility": "always",
         "layout_preset": "right",
         "alignment_preset": "center",
+        "layout_preset_mobile": "center",
+        "alignment_mobile": "center",
         "background_color": "#ffffff",
         "background_image_desktop": "shopify://shop_images/HP_Promo_Block_D_CTA_1440x120_Club_Exclusive_Teaser_1_Version_1_Lifestyle.jpg",
         "background_image_mobile": "shopify://shop_images/HP_Promo_Block_M_CTA_750x200_Club_Exclusive_Teaser_1_Version_1_Lifestyle.jpg",
@@ -33,6 +35,8 @@
         "padding_bottom_mobile": 48,
         "padding_horizontal_mobile": 24,
         "item_gap_mobile": 0,
+        "buttons_desktop": "side_by_side",
+        "buttons_mobile": "stacked",
         "button_gap": 8
       }
     },
@@ -76,6 +80,8 @@
         "visibility": "always",
         "layout_preset": "center",
         "alignment_preset": "center",
+        "layout_preset_mobile": "center",
+        "alignment_mobile": "center",
         "background_color": "#ffffff",
         "background_image_desktop": "shopify://shop_images/CPB_D_1440x300_Club_store_-_hero_image_v2_-min.jpg",
         "background_image_mobile": "shopify://shop_images/CPB_M_980x600_Club.jpg",
@@ -92,6 +98,8 @@
         "padding_bottom_mobile": 48,
         "padding_horizontal_mobile": 8,
         "item_gap_mobile": 10,
+        "buttons_desktop": "side_by_side",
+        "buttons_mobile": "stacked",
         "button_gap": 8
       }
     },
@@ -573,9 +581,9 @@
             "style": "quick_view",
             "product_card_quick_view_button_text": "+ Quick Add",
             "button_bg": "#000000",
-            "button_text": "#FFFFFF",
-            "button_hover_bg": "#AB192D",
-            "button_hover_text": "#FFFFFF"
+            "button_text": "#ffffff",
+            "button_hover_bg": "#ab192d",
+            "button_hover_text": "#ffffff"
           }
         },
         "product-grid": {
@@ -649,9 +657,9 @@
             "content_position": "center",
             "content_alignment": "center",
             "hover_text": "",
-            "background_color": "#000000",
+            "background_color": "rgba(0,0,0,0)",
             "background_opacity": 0,
-            "hover_overlay": "keep"
+            "hover_overlay": "remove"
           },
           "blocks": {}
         },
@@ -749,9 +757,10 @@
         "image_q67fiD",
         "image_YijeKf"
       ],
+      "disabled": true,
       "settings": {
-        "layout": "carousel",
-        "columns_desktop": 5,
+        "layout": "grid",
+        "columns_desktop": 6,
         "columns_mobile": 2,
         "tile_ratio": "square",
         "desktop_row_height": 400,
@@ -770,7 +779,7 @@
         "heading": "<em><strong>CLUB MEMBER PERKS</strong></em>",
         "heading_size": "h3",
         "heading_alignment": "text-center",
-        "heading_color": "#FFCA10",
+        "heading_color": "#ffca10",
         "text_color": "",
         "btn_bg_color": "",
         "btn_text_color": "",
@@ -779,13 +788,6 @@
         "color_scheme": "scheme-6",
         "padding_top": 20,
         "padding_bottom": 8
-      }
-    },
-    "17279042122b4f99c9": {
-      "type": "apps",
-      "disabled": true,
-      "settings": {
-        "include_margins": true
       }
     }
   },
@@ -796,7 +798,6 @@
     "images_grid_AN7YrB",
     "collection_tab_mbqaNJ",
     "main-collection",
-    "images_grid_FQBTa9",
-    "17279042122b4f99c9"
+    "images_grid_FQBTa9"
   ]
 }
