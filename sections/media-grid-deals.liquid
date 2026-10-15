@@ -11,7 +11,7 @@
   assign Cardshadow = section.settings.enable_shadow
   assign Contentonhover = section.settings.enable_hover_content
 %}
-<div class="color-{{ Colorscheme }} section-padding{% if section.settings.enable_gradient %} gradiant{% endif %}">
+<div class="media-grid-deals color-{{ Colorscheme }} section-padding{% if section.settings.enable_gradient %} gradiant{% endif %}">
     <div class="{% if section.settings.section_width == true %}fullwidth{% else %}container{% endif %}">
       {% if section.settings.heading != blank %}
         {%- capture highlightPrefix -%}
