@@ -122,7 +122,7 @@
   "onboarding": {
     "product_title": "Example product title",
     "collection_title": "Your collection's name",
-    "quickview": "Quick View",
+    "quickview": "+ Quick Add",
     "compare": "Compare"
   },
   "products": {
