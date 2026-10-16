@@ -42,7 +42,7 @@
         "announcement_6iBFBA"
       ],
       "custom_css": [
-        "@media screen and (max-width: 668px) {.h5 {font-size: 11px !important; }}"
+        "@media screen and (max-width: 668px) {.h5 {font-size: 11px !important; line-height: 12px; align-content: center; padding: 1px; }}"
       ],
       "settings": {
         "auto_rotate": true,
