@@ -177,9 +177,9 @@
         "util_stores"
       ],
       "settings": {
-        "logo": "shopify://shop_images/GS-TEST-wordmark.png",
+        "logo": "shopify://shop_images/GSlogo-320x50.png",
         "logo_width": 320,
-        "logo_width_mobile": 160,
+        "logo_width_mobile": 190,
         "menu": "main-menu",
         "sticky_header": true,
         "sticky_header_type": "on_scroll",
