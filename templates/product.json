@@ -587,7 +587,7 @@
       "type": "featured-collections",
       "custom_css": [
         ".product-quickview {margin-top: -20px;}",
-        "@media screen and (max-width: 600px) {.product-quickview {margin-top: -35px; }}"
+        "@media screen and (max-width: 600px) {.product-quickview {margin-top: -25px; }}"
       ],
       "settings": {
         "section_heading": "You May Also Like",
