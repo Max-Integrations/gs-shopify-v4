@@ -81,11 +81,27 @@
         "padding_top": 8,
         "padding_bottom": 8
       }
+    },
+    "179215548262ff1c7d": {
+      "type": "apps",
+      "blocks": {
+        "wishlist_plus_wishlist_picks_GLD9ig": {
+          "type": "shopify://apps/wishlist-plus/blocks/wishlist-picks/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "wishlist_plus_wishlist_picks_GLD9ig"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "gs_addons",
     "main",
-    "footer"
+    "footer",
+    "179215548262ff1c7d"
   ]
 }
