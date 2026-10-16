@@ -252,7 +252,7 @@
             "swym_atw_icon_thickness": 1.7,
             "swym_atw_display_btn_text": false,
             "swym_button_position": "product_title_right",
-            "swym_atw_button_vertical_offset": 8,
+            "swym_atw_button_vertical_offset": 4,
             "swym_atw_full_width": true,
             "swym_atw_button_alignment": "center",
             "swym_add_to_wishlist_color": "#ffffff",
@@ -586,7 +586,7 @@
     "recommendations": {
       "type": "featured-collections",
       "custom_css": [
-        ".product-quickview {margin-top: -20px; }",
+        ".product-quickview {margin-top: -20px;}",
         "@media screen and (max-width: 600px) {.product-quickview {margin-top: -35px; }}"
       ],
       "settings": {
