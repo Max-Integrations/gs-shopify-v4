@@ -312,6 +312,11 @@
           "storefront_layout_drawer_position": "left",
           "storefront_layout_as_section_page": "my-wishlist"
         }
+      },
+      "9046989758519804141": {
+        "type": "shopify://apps/rise-gift-cards-store-credit/blocks/rise-send-as-gift-extension/d837f9d0-9f22-491a-94b6-f32b41864892",
+        "disabled": true,
+        "settings": {}
       }
     },
     "color_schemes": {
@@ -475,7 +480,7 @@
           "secondary_button_label": "#000000",
           "shadow": "rgba(0,0,0,0)",
           "heading": "#121212",
-          "link": "#121212",
+          "link": "#AB192D",
           "button_hover": "#000000",
           "button_label_hover": "#ffffff",
           "secondary_button": "#ffffff",
