@@ -123,6 +123,7 @@
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
     "currency_code_enabled": true,
+    "enable_accessibe": false,
     "empty_cart_promo_banner_image_desktop": "shopify://shop_images/Empty_Cart_Banner_D_600x250_FW26_Promo_Basics_Bundles_General__1.jpg",
     "empty_cart_promo_banner_image_mobile": "shopify://shop_images/Empty_Cart_Banner_M_600x600_FW26_Promo_Basics_Bundles_General__1.jpg",
     "product_vendor": false,
