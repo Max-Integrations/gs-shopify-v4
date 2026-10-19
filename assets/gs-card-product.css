@@ -359,6 +359,13 @@
   width: 100%;
 }
 
+/* Centre the swatch row like the rest of the card. The track can still
+   shrink below its content, so a long row scrolls (with arrows) instead
+   of overflowing the card. */
+.product-card-swatches .gs-swatch-scroller {
+  justify-content: center;
+}
+
 /* ---- Quick add / quick view button ----
    Pinned to the bottom of the card. `margin-top: auto` takes up the
    slack in the reserved region (and any grid-cell stretch), keeping the
