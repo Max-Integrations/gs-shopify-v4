@@ -123,6 +123,7 @@
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
     "currency_code_enabled": true,
+    "enable_accessibe": false,
     "empty_cart_promo_banner_image_desktop": "shopify://shop_images/Empty_Cart_Banner_D_600x250_FW26_Promo_Basics_Bundles_General__1.jpg",
     "empty_cart_promo_banner_image_mobile": "shopify://shop_images/Empty_Cart_Banner_M_600x600_FW26_Promo_Basics_Bundles_General__1.jpg",
     "product_vendor": false,
@@ -147,6 +148,7 @@
     "swym_advanced_collections_wishlist_icon_color": "#000000",
     "swym_advanced_collections_wishlist_icon_width": 1.7,
     "swym_header_icon_enabled": true,
+    "swym_wishlist_picks_custom_css": ".swym-wishlist-picks {\n  font-family: inherit;\n  margin-block: 24px;\n}\n\n.swym-wishlist-picks[hidden] {\n  display: none;\n}\n\n/* Lets the block fill the row on themes that shrink it (Horizon). */\n.shopify-app-block:has(> .swym-wishlist-picks, > #swym-wishlist-picks) {\n  width: 100%;\n  align-self: stretch;\n}\n\n.swym-wishlist-picks-header {\n  display: flex;\n  align-items: baseline;\n  justify-content: space-between;\n  gap: 12px;\n  flex-wrap: wrap;\n  margin-block-end: 12px;\n}\n\n.swym-wishlist-picks-title {\n  font-size: 1.125em;\n  font-weight: 700;\n}\n\n.swym-wishlist-picks-view-all {\n  font-size: 0.85em;\n  font-weight: 600;\n  color: inherit;\n  opacity: 0.75;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.swym-wishlist-picks-view-all:hover {\n  text-decoration: underline;\n}\n\n.swym-wishlist-picks-chips {\n  display: flex;\n  gap: 8px;\n  flex-wrap: wrap;\n  margin-block-end: 16px;\n}\n\n.swym-wp-chip {\n  font: inherit;\n  font-size: 0.8em;\n  font-weight: 600;\n  padding: 7px 14px;\n  border-radius: 0px;\n  border: 1px solid rgba(0, 0, 0, 0.15);\n  background: transparent;\n  color: inherit;\n  cursor: pointer;\n}\n\n.swym-wp-chip--active {\n  background: CanvasText;\n  color: Canvas;\n  border-color: CanvasText;\n}\n\n.swym-wp-grid {\n  display: grid;\n    grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));\n  gap: 14px;\n  justify-content: start;\n}\n\n.swym-wp-carousel {\n  display: flex;\n  gap: 16px;\n    justify-content: flex-start;\n  overflow-x: auto;\n  scroll-snap-type: x proximity;\n  padding-block-end: 4px;\n}\n\n.swym-wp-carousel .swym-wp-item-card {\n    flex: 0 0 240px;\n  scroll-snap-align: start;\n}\n\n.swym-wp-item-card {\n  display: flex;\n  flex-direction: column;\n}\n\n.swym-wp-item-thumb {\n  position: relative;\n    aspect-ratio: 4 / 5;\n    background: transparent;\n    border-radius: 10px;\n  overflow: hidden;\n}\n\n.swym-wp-item-thumb img {\n  width: 100%;\n  height: 100%;\n    object-fit: contain;\n  display: block;\n}\n\n.swym-wp-badge {\n  position: absolute;\n  top: 8px;\n  left: 8px;\n  font-size: 0.7em;\n  font-weight: 700;\n  padding: 3px 7px;\n  border-radius: 0px;\n  background: #AB192D;\n  color: #ffffff;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);\n}\n\n/* Badge colours: edit a background to recolour one reason. */\n.swym-wp-badge--popular {\n  background: #AB192D;\n}\n\n.swym-wp-badge--low-stock {\n  background: #5E5C39;\n}\n\n.swym-wp-badge--price-drop {\n  background: #5E5C39;\n}\n\n.swym-wp-badge--back-in-stock {\n  background: #AB192D;\n}\n\n.swym-wp-badge--sfl {\n  background: #4b5563;\n}\n\n.swym-wp-item-body {\n  padding: 10px 0;\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  flex: 1;\n}\n\n.swym-wp-item-name {\n  font-size: 0.85em;\n  font-weight: 600;\n  text-align: center;\n  line-height: 1;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n    min-height: 2.1em;\n}\n\n.swym-wp-item-price {\n  font-size: 0.85em;\n  font-variant-numeric: tabular-nums;\n  color: #000;\n  text-align: center;\n}\n\n.swym-wp-item-cta {\n  margin-block-start: auto;\n  font: Roboto;\n  font-size: 0.8em;\n  font-weight: 700;\n  text-align: center;\n  padding: 12px 18px;\n  border-radius: 0px;\n  border: 1px solid currentColor;\n  background: #AB192D;\n  color: #fff;\n  cursor: pointer;\n}\n\n.swym-wp-item-cta:disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n\n.swym-wp-item-cta--error {\n  border-color: #d82c0d;\n  color: #d82c0d;\n}",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -312,6 +314,11 @@
           "storefront_layout_drawer_position": "left",
           "storefront_layout_as_section_page": "my-wishlist"
         }
+      },
+      "9046989758519804141": {
+        "type": "shopify://apps/rise-gift-cards-store-credit/blocks/rise-send-as-gift-extension/d837f9d0-9f22-491a-94b6-f32b41864892",
+        "disabled": true,
+        "settings": {}
       }
     },
     "color_schemes": {
@@ -475,7 +482,7 @@
           "secondary_button_label": "#000000",
           "shadow": "rgba(0,0,0,0)",
           "heading": "#121212",
-          "link": "#121212",
+          "link": "#ab192d",
           "button_hover": "#000000",
           "button_label_hover": "#ffffff",
           "secondary_button": "#ffffff",

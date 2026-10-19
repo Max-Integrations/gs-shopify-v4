@@ -62,6 +62,7 @@
             "style": "pattern",
             "shape": "circle",
             "size": 38,
+            "size_mobile": 32,
             "show_label": true,
             "label": "Color"
           },
@@ -251,7 +252,7 @@
             "swym_atw_icon_thickness": 1.7,
             "swym_atw_display_btn_text": false,
             "swym_button_position": "product_title_right",
-            "swym_atw_button_vertical_offset": 8,
+            "swym_atw_button_vertical_offset": 4,
             "swym_atw_full_width": true,
             "swym_atw_button_alignment": "center",
             "swym_add_to_wishlist_color": "#ffffff",
@@ -553,7 +554,7 @@
         ".gs-product__option-pill {width: 10px; height: 25px; font-size: 12px;}",
         ".gs-product__option-values {display: flex; flex-wrap: wrap; gap: 4px;}",
         ".gs-product__title {margin-bottom: -10px;}",
-        ".klaviyo-star-rating-widget {margin-top: -5px; margin-bottom: -10px;}",
+        ".klaviyo-star-rating-widget {margin-top: -8px; margin-bottom: -10px;}",
         ".gs-product__price {margin-top: -10px; margin-bottom: -10px;}"
       ],
       "settings": {
@@ -585,8 +586,8 @@
     "recommendations": {
       "type": "featured-collections",
       "custom_css": [
-        ".gs-swatch-scroller {display: inline-block;}",
-        "@media screen and (max-width: 600px) {.product-quickview {margin-top: -35px; }}"
+        ".product-quickview {margin-top: -20px;}",
+        "@media screen and (max-width: 600px) {.product-quickview {margin-top: -25px; }}"
       ],
       "settings": {
         "section_heading": "You May Also Like",

@@ -16,6 +16,8 @@
         "visibility": "always",
         "layout_preset": "center",
         "alignment_preset": "center",
+        "layout_preset_mobile": "center",
+        "alignment_mobile": "center",
         "background_color": "#000000",
         "background_image_desktop": "shopify://shop_images/ANIMATED_HPC-D---Short_CTA_1440x424_FW26_Campaign_-_Grunt_Style_Arcade.gif",
         "background_image_mobile": "shopify://shop_images/ANIMATED_HPC-M---Tall_CTA_750x994_FW26_Campaign_-_Grunt_Style_Arcade.gif",
@@ -32,6 +34,8 @@
         "padding_bottom_mobile": 0,
         "padding_horizontal_mobile": 0,
         "item_gap_mobile": 0,
+        "buttons_desktop": "side_by_side",
+        "buttons_mobile": "stacked",
         "button_gap": 12
       }
     },
@@ -118,6 +122,8 @@
         "visibility": "always",
         "layout_preset": "center",
         "alignment_preset": "start",
+        "layout_preset_mobile": "center",
+        "alignment_mobile": "center",
         "background_color": "#5d5d39",
         "background_image_desktop": "shopify://shop_images/HPC_D_-_Tall_1920x700_Image_20_Off_Fall_V1.jpg",
         "image_height_auto": true,
@@ -133,6 +139,8 @@
         "padding_bottom_mobile": 96,
         "padding_horizontal_mobile": 24,
         "item_gap_mobile": 0,
+        "buttons_desktop": "side_by_side",
+        "buttons_mobile": "stacked",
         "button_gap": 12
       }
     },
@@ -435,6 +443,8 @@
         "visibility": "always",
         "layout_preset": "center",
         "alignment_preset": "center",
+        "layout_preset_mobile": "center",
+        "alignment_mobile": "center",
         "background_color": "#000",
         "image_height_auto": false,
         "overlay_color": "#000000",
@@ -449,6 +459,8 @@
         "padding_bottom_mobile": 16,
         "padding_horizontal_mobile": 16,
         "item_gap_mobile": 0,
+        "buttons_desktop": "side_by_side",
+        "buttons_mobile": "stacked",
         "button_gap": 12
       }
     },
@@ -495,7 +507,7 @@
         "collection_type": "tabs",
         "collection_source": "manual",
         "layout_style": "carousel",
-        "container_width": "md",
+        "container_width": "sm",
         "grid_image_size": "auto",
         "max_number_products_loaded": 5,
         "number_products_per_view_desktop": "3",
@@ -923,7 +935,7 @@
         "collection_type": "tabs",
         "collection_source": "manual",
         "layout_style": "carousel",
-        "container_width": "md",
+        "container_width": "sm",
         "grid_image_size": "square",
         "max_number_products_loaded": 5,
         "number_products_per_view_desktop": "3",
