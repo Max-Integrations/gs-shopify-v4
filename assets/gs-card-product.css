@@ -59,9 +59,17 @@
   transition: box-shadow 0.2s ease;
 }
 
-.product-card-item .product-card:hover,
 .product-card-item .product-card:focus-within {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Hover effects only where there is a real hover. Touch browsers apply
+   :hover on the first tap, so the card showed its hover state (second
+   image, shadow) before following the link. */
+@media (hover: hover) and (pointer: fine) {
+  .product-card-item .product-card:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -104,8 +112,10 @@
   transition: opacity 0.3s ease;
 }
 
-.on-hover-img:hover .product-second-img {
-  opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+  .on-hover-img:hover .product-second-img {
+    opacity: 1;
+  }
 }
 
 .product-second-img .product-img-hover {
@@ -431,6 +441,14 @@
   background-color: rgb(var(--soldBadgeBackground));
   color: #ffffff;
   cursor: not-allowed;
+}
+
+@media (hover: none), (pointer: coarse) {
+  /* No hover image on touch: a tap goes straight to the product. Not
+     rendered at all, so its lazy image is never downloaded. */
+  .product-second-img {
+    display: none;
+  }
 }
 
 @media (hover: none) {
