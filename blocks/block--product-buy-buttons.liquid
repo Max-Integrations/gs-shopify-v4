@@ -15,8 +15,15 @@
   renderContents() - open() alone shows the drawer as it was BEFORE the
   add, a trap already hit in club-join-steps.
 
-  SOLD OUT: the button keeps id="BIS_trigger" so the Restock Alerts app
-  binds its "email when available" flow, as it does in v3.
+  SOLD OUT: the Back in Stock app (backinstock.useamp.com, an app embed)
+  opens its "notify me" form from any click on an element with the class
+  BIS_trigger, reading data-product-handle and data-variant-id, so the
+  form opens on the exact size selected. gs-product.js toggles the class,
+  variant id and label as the customer changes size, so it works per
+  size and not only when the first variant is sold out. (v3 used
+  id="BIS_trigger", which only binds the button present at page load.)
+  Products tagged DNR (do not restock) say Sold out and stay disabled,
+  as in v3.
   ==================================================================
 {% endcomment %}
 {%- liquid
@@ -26,6 +33,12 @@
   assign form_id = 'ProductForm-' | append: p.id
   # A filter cannot appear in a tag argument, so both ids are precomputed.
   assign installments_id = 'GsInstallments-' | append: p.id
+  assign add_label = s.add_label | default: 'Add to cart'
+  assign sold_out_label = s.sold_out_label | default: 'Sold out - email when available'
+  assign dnr = false
+  if p.tags contains 'DNR'
+    assign dnr = true
+  endif
 -%}
 {%- if p != blank -%}
   <div class="gs-product__buy" data-gs-buy {{ block.shopify_attributes }}>
@@ -65,16 +78,23 @@
         <button
           type="submit"
           name="add"
-          class="gs-product__submit button"
+          class="gs-product__submit button{% if v.available == false and dnr == false and s.sold_out_disables == false %} BIS_trigger{% endif %}"
           data-gs-submit
-          {% unless v.available %}id="BIS_trigger"{% endunless %}
-          {% if v.available == false and s.sold_out_disables %}disabled{% endif %}
+          data-product-handle="{{ p.handle }}"
+          data-variant-id="{{ v.id }}"
+          data-label-add="{{ add_label | escape }}"
+          data-label-sold-out="{% if dnr %}Sold out{% else %}{{ sold_out_label | escape }}{% endif %}"
+          {% if dnr %}data-dnr{% endif %}
+          {% if s.sold_out_disables %}data-sold-out-disables{% endif %}
+          {% if v.available == false and dnr or v.available == false and s.sold_out_disables %}disabled{% endif %}
         >
           <span data-gs-submit-text>
             {%- if v.available -%}
-              {{ s.add_label | default: 'Add to cart' }}
+              {{ add_label }}
+            {%- elsif dnr -%}
+              Sold out
             {%- else -%}
-              {{ s.sold_out_label | default: 'Sold out - email when available' }}
+              {{ sold_out_label }}
             {%- endif -%}
           </span>
         </button>

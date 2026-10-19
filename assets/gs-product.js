@@ -146,12 +146,23 @@
       });
       var submit = root.querySelector('[data-gs-submit]');
       var text = root.querySelector('[data-gs-submit-text]');
-      if (text) {
-        text.textContent = variant.available
-          ? (submit.getAttribute('data-label-add') || text.getAttribute('data-add') || text.textContent)
-          : text.textContent;
+      if (submit) {
+        // Back in Stock: the app opens its form for any .BIS_trigger
+        // click, on the variant in data-variant-id, so this follows the
+        // selected size. DNR products and the "disable when sold out"
+        // setting keep a plain disabled Sold out button instead.
+        var blocked = submit.hasAttribute('data-dnr') || submit.hasAttribute('data-sold-out-disables');
+        var notify = !variant.available && !blocked;
+        submit.setAttribute('data-variant-id', variant.id);
+        submit.classList.toggle('BIS_trigger', notify);
+        submit.disabled = !variant.available && blocked;
+        submit.setAttribute('aria-disabled', variant.available || notify ? 'false' : 'true');
+        if (text) {
+          text.textContent = variant.available
+            ? submit.getAttribute('data-label-add') || text.textContent
+            : submit.getAttribute('data-label-sold-out') || text.textContent;
+        }
       }
-      if (submit) submit.setAttribute('aria-disabled', variant.available ? 'false' : 'true');
       var sticky = root.querySelector('[data-gs-atc-submit]');
       if (sticky) {
         sticky.setAttribute('aria-disabled', variant.available ? 'false' : 'true');
@@ -234,12 +245,20 @@
       var form = evt.target;
       if (!form.classList || !form.classList.contains('gs-product__form')) return;
 
+      var submit = root.querySelector('[data-gs-submit]');
+      // A sold-out size is the Back in Stock app's button (it cancels the
+      // click itself). If a submit gets here anyway, e.g. Enter in the
+      // quantity field, do not post a doomed add to cart.
+      if (submit && submit.classList.contains('BIS_trigger')) {
+        evt.preventDefault();
+        return;
+      }
+
       var drawer = document.querySelector('cart-drawer');
       // No drawer: let the browser post normally.
       if (!drawer || typeof drawer.renderContents !== 'function') return;
 
       evt.preventDefault();
-      var submit = root.querySelector('[data-gs-submit]');
       var errorBox = root.querySelector('[data-gs-error]');
       if (errorBox) errorBox.hidden = true;
       if (submit) submit.disabled = true;
@@ -329,6 +348,13 @@
     var btn = bar.querySelector('[data-gs-atc-submit]');
     if (btn) {
       btn.addEventListener('click', function (evt) {
+        // Sold-out size with Back in Stock: open its form via the main
+        // button, which carries the class and variant id.
+        if (submit.classList.contains('BIS_trigger')) {
+          evt.preventDefault();
+          submit.click();
+          return;
+        }
         if (btn.getAttribute('aria-disabled') !== 'true' && !submit.disabled) return;
         evt.preventDefault();
         var picker = root.querySelector('.gs-product__options') || submit;
