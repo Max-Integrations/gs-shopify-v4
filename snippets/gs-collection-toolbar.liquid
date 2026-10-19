@@ -214,11 +214,12 @@
         return;
       }
 
-      // Clicking the backdrop closes the drawer. The backdrop is a
-      // pseudo-element on the panel, so a click landing on the panel
-      // itself rather than its contents means the backdrop was hit.
+      // Clicking the backdrop closes the drawer. The backdrop is
+      // body::after (gs-collection-filters.css), so a click on it lands
+      // on <body>; any click outside the open panel counts.
       var openPanel = document.querySelector('[data-side-drawer].is-open');
-      if (openPanel && evt.target === openPanel) {
+      if (openPanel && !openPanel.contains(evt.target)) {
+        evt.preventDefault();
         closeDrawer(openPanel);
         return;
       }

@@ -365,7 +365,10 @@
     padding: 1.2rem;
     box-sizing: border-box;
     overflow-y: auto;
-    background-color: rgb(var(--background));
+    /* The colour scheme's own background (the section's color-scheme
+       class sets it on an ancestor). */
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
     transform: translateX(-100%);
     visibility: hidden;
     transition: transform 0.25s ease, visibility 0s linear 0.25s;
@@ -377,21 +380,31 @@
     transition: transform 0.25s ease, visibility 0s;
   }
 
-  /* Backdrop as a pseudo-element - no extra DOM node. */
-  .gs-filters::after {
+  /* Backdrop on the page, not the drawer. It used to be a fixed
+     ::after on .gs-filters, but the drawer's transform makes it the
+     containing block for fixed children and its z-index a stacking
+     context, so the "full-screen" backdrop was clipped to the drawer
+     and painted its 50% black over the drawer's own background: every
+     colour scheme came out gray and the page beside it was not dimmed.
+     body::after sits just under the drawer (z-index 20) and catches
+     outside clicks (gs-collection-toolbar closes on them). */
+  body::after {
     content: '';
     position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: 19;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.25s ease, visibility 0s linear 0.25s;
   }
 
-  .gs-filters.is-open::after {
+  .gs-drawer-open body::after {
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
+    transition: opacity 0.25s ease, visibility 0s;
   }
 
   .gs-filters__close {
@@ -413,7 +426,7 @@
 @media (prefers-reduced-motion: reduce) {
   .gs-filters__chevron,
   .gs-filters,
-  .gs-filters::after {
+  body::after {
     transition: none;
   }
 }

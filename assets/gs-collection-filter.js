@@ -155,14 +155,22 @@
     // Carry the page's own params first - on /search the term lives in
     // the URL, not the filter form.
     var existing = new URLSearchParams(window.location.search);
+    var carried = {};
     CARRIED_PARAMS.forEach(function (key) {
       var value = existing.get(key);
-      if (value) cleaned.append(key, value);
+      if (value) {
+        cleaned.append(key, value);
+        carried[key] = true;
+      }
     });
 
     new URLSearchParams(new FormData(form)).forEach(function (value, key) {
       if (value === '') return; // Drop empty price inputs.
-      if (cleaned.has(key)) return; // Do not duplicate a carried param.
+      // Do not duplicate a carried param. Only carried keys are skipped:
+      // a filter repeats its key once per selected value
+      // (filter.p.product_type=A&filter.p.product_type=B), and checking
+      // `cleaned.has(key)` here dropped every value after the first.
+      if (carried[key]) return;
       cleaned.append(key, value);
     });
 
