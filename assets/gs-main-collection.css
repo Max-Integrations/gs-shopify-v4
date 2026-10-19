@@ -122,11 +122,19 @@
 .gs-collection__header.gs-collection__header--band .gs-collection__heading {
   font-family: "Engravers MT", var(--headingFont);
   font-weight: 400;
-  font-size: clamp(2.8rem, 4vw, 5.6rem);
+  /* The live band size is H1; the section's Heading size setting (the
+     h1-h6 class) scales it down from there. */
+  font-size: calc(clamp(2.8rem, 4vw, 5.6rem) * var(--gs-band-heading-scale, 1));
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--gs-header-band-text, #ffffff);
 }
+
+.gs-collection__header--band .gs-collection__heading.h2 { --gs-band-heading-scale: 0.8; }
+.gs-collection__header--band .gs-collection__heading.h3 { --gs-band-heading-scale: 0.65; }
+.gs-collection__header--band .gs-collection__heading.h4 { --gs-band-heading-scale: 0.5; }
+.gs-collection__header--band .gs-collection__heading.h5 { --gs-band-heading-scale: 0.42; }
+.gs-collection__header--band .gs-collection__heading.h6 { --gs-band-heading-scale: 0.36; }
 
 .gs-collection__header.gs-collection__header--band .gs-collection__description,
 .gs-collection__header.gs-collection__header--band .gs-collection__description p {
