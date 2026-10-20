@@ -46,7 +46,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "rgba(0,0,0,0)",
-            "background_opacity": 0,
+            "background_opacity": 0.3,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -106,7 +106,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "rgba(0,0,0,0)",
-            "background_opacity": 0,
+            "background_opacity": 0.3,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -166,7 +166,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "rgba(0,0,0,0)",
-            "background_opacity": 0,
+            "background_opacity": 0.3,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -226,7 +226,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "rgba(0,0,0,0)",
-            "background_opacity": 0,
+            "background_opacity": 0.3,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -286,7 +286,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0,
+            "background_opacity": 0.3,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -590,7 +590,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0,
+            "background_opacity": 0.3,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -2127,7 +2127,7 @@
         "columns_desktop": 4,
         "columns_mobile": 1,
         "tile_ratio": "fixed",
-        "desktop_row_height": 360,
+        "desktop_row_height": 295,
         "mobile_row_height": 150,
         "tile_width": "full",
         "desktop_grid_gap": 7,
