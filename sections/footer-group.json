@@ -13,10 +13,6 @@
   "sections": {
     "footer_brand": {
       "type": "gs-footer-brand",
-      "custom_css": [
-        "h4 {font-family: Engravers MT; font-weight: 300;}",
-        ".gs-footer-brand__subheading {font-family: Engravers MT; font-weight: 50;}"
-      ],
       "settings": {
         "heading": "<strong>THIS WE'LL DEFEND</strong>",
         "seo_heading": "h4",
@@ -40,7 +36,7 @@
           "type": "newsletter",
           "settings": {
             "enable_newsletter": true,
-            "heading": "",
+            "heading": "Subscribe To Our Emails",
             "placeholder_text": "Enter email"
           }
         },
@@ -74,11 +70,6 @@
         "link_list_P4cgGq",
         "link_list_F4CiEQ",
         "link_list_bCUtbq"
-      ],
-      "custom_css": [
-        ".list-unstyled {font-size: 12px; line-height: 1.25;}",
-        ".h6 {color: #ffffff; margin-bottom: 6px;}",
-        "h2 {text-decoration: underline;}"
       ],
       "settings": {
         "footer_sticky": false,
