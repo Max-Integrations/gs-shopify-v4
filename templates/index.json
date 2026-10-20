@@ -9,6 +9,36 @@
  */
 {
   "sections": {
+    "section_full_width_image_text_MqghR7": {
+      "type": "section--full-width-image_text",
+      "name": "Club & Rewards promo",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "layout_preset_mobile": "center",
+        "alignment_mobile": "center",
+        "background_color": "#000000",
+        "background_image_desktop": "shopify://shop_images/HP_Promo_Block_D_CTA_1440x120_EARLY_ACCESS_FW26_Christmas.jpg",
+        "background_image_mobile": "shopify://shop_images/HP_Promo_Block_M_CTA_750x200__EARLY_ACCESS_FW26_Christmas.jpg",
+        "image_height_auto": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "banner_link": "shopify://collections/early-access",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_horizontal_desktop": 0,
+        "item_gap_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_horizontal_mobile": 0,
+        "item_gap_mobile": 0,
+        "buttons_desktop": "side_by_side",
+        "buttons_mobile": "stacked",
+        "button_gap": 12
+      }
+    },
     "section_full_width_image_text_fzTCbL": {
       "type": "section--full-width-image_text",
       "name": "HERO",
@@ -1563,6 +1593,7 @@
     }
   },
   "order": [
+    "section_full_width_image_text_MqghR7",
     "section_full_width_image_text_fzTCbL",
     "section_sale_promo_message_4Qz89H",
     "value_props_c3pXEG",
