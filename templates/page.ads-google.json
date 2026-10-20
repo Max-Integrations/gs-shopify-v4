@@ -151,12 +151,12 @@
             "link_label": "",
             "link": "",
             "background_color": "",
-            "text_color": "",
+            "text_color": "#FFFFFF",
             "padding": 0,
             "corner_radius": 0,
             "border_color": "",
             "border_width": 0,
-            "image_size": 0,
+            "image_size": 40,
             "image_size_mobile": 0,
             "image_spacing": 0
           }
@@ -171,12 +171,12 @@
             "link_label": "",
             "link": "",
             "background_color": "",
-            "text_color": "",
+            "text_color": "#FFFFFF",
             "padding": 0,
             "corner_radius": 0,
             "border_color": "",
             "border_width": 0,
-            "image_size": 0,
+            "image_size": 52,
             "image_size_mobile": 0,
             "image_spacing": 0
           }
@@ -191,12 +191,12 @@
             "link_label": "",
             "link": "",
             "background_color": "",
-            "text_color": "",
+            "text_color": "#FFFFFF",
             "padding": 0,
             "corner_radius": 0,
             "border_color": "",
             "border_width": 0,
-            "image_size": 0,
+            "image_size": 52,
             "image_size_mobile": 0,
             "image_spacing": 0
           }
