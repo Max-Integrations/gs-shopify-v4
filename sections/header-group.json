@@ -179,7 +179,7 @@
       "settings": {
         "logo": "shopify://shop_images/GSlogo-320x50.png",
         "logo_width": 320,
-        "logo_width_mobile": 190,
+        "logo_width_mobile": 100,
         "menu": "main-menu",
         "sticky_header": true,
         "sticky_header_type": "on_scroll",
@@ -198,7 +198,8 @@
         "cart_count_background": "#ab192d",
         "cart_count_text": "#ffffff",
         "mega_background": "#ffffff",
-        "mega_text": "#121212"
+        "mega_text": "#121212",
+        "logo_mobile": "shopify://shop_images/Primary_Logo_White.png"
       }
     }
   },
