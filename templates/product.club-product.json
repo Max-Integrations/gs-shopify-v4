@@ -19,7 +19,7 @@
             "swym_atw_icon_thickness": 1.7,
             "swym_atw_display_btn_text": false,
             "swym_button_position": "product_title_right",
-            "swym_atw_button_vertical_offset": 2,
+            "swym_atw_button_vertical_offset": -9,
             "swym_atw_full_width": true,
             "swym_atw_button_alignment": "center",
             "swym_add_to_wishlist_color": "#ffffff",
@@ -572,17 +572,14 @@
     },
     "recommendations": {
       "type": "featured-collections",
-      "disabled": true,
-      "custom_css": [
-        "@media screen and (max-width: 600px) {.product-quickview {margin-top: -25px; }}"
-      ],
+      "custom_css": [],
       "settings": {
         "section_heading": "YOU MAY ALSO LIKE",
         "heading_text_align": "left",
         "collection_type": "recommendations",
         "collection_source": "manual",
         "layout_style": "carousel",
-        "container_width": "sm",
+        "container_width": "md",
         "grid_image_size": "square",
         "max_number_products_loaded": 15,
         "number_products_per_view_desktop": "4",
@@ -599,10 +596,10 @@
         "navigation_title_size_mobile": 23,
         "cta_title_size_desktop": 26,
         "cta_title_size_mobile": 23,
-        "section_spacing_top_desktop": 10,
-        "section_spacing_top_mobile": 10,
-        "section_spacing_bottom_desktop": 10,
-        "section_spacing_bottom_mobile": 10,
+        "section_spacing_top_desktop": 0,
+        "section_spacing_top_mobile": 0,
+        "section_spacing_bottom_desktop": 0,
+        "section_spacing_bottom_mobile": 0,
         "heading_spacing_top_desktop": 10,
         "heading_spacing_top_mobile": 10,
         "heading_spacing_bottom_desktop": 10,
@@ -626,72 +623,13 @@
         "cta_border_color_hover": "#ffffff"
       }
     },
-    "product_highlight_dErwzg": {
-      "type": "product-highlight",
-      "custom_css": [],
-      "settings": {
-        "reverse_desktop": true,
-        "reverse_mobile": true,
-        "product_highlight_text_content_bg_color": "#dddad6",
-        "product_highlight_text_content_heading": "CLUB GRUNT STYLE",
-        "product_highlight_text_content_heading_color": "#000000",
-        "product_highlight_text_content_heading_font_size_desktop": 32,
-        "product_highlight_text_content_heading_font_size_mobile": 24,
-        "product_highlight_text_content_paragraph": "<p>Unlock this exclusive tee, made just for Club Grunt Style members! Don’t miss your shot, join now before the month ends and claim yours. Delivered straight to your door.</p>",
-        "product_highlight_text_content_paragraph_color": "#000000",
-        "product_highlight_text_content_paragraph_font_size_desktop": 16,
-        "product_highlight_text_content_paragraph_font_size_mobile": 14,
-        "link_cta_style": "button",
-        "link_cta_1_text": "JOIN CLUB NOW",
-        "link_cta_1_link": "shopify://pages/club-grunt-style",
-        "link_cta_2_text": "SHOP THE EXCLUSIVES",
-        "link_cta_2_link": "shopify://collections/club-grunt-style",
-        "link_cta_layout": "side-by-side",
-        "product_highlight_text_content_link_cta_color": "#000000",
-        "product_highlight_text_content_cta_bg_color": "#ffca10",
-        "product_highlight_text_content_cta_border_color": "#000000",
-        "product_highlight_text_content_cta_border_width": 2,
-        "product_highlight_text_content_link_cta_text_font_size_desktop": 18,
-        "product_highlight_text_content_link_cta_text_font_size_mobile": 14,
-        "product_highlight_text_link_cta_gap_desktop": 25,
-        "product_highlight_text_link_cta_gap_mobile": 5,
-        "product_highlight_text_content_spacing_desktop": 60,
-        "product_highlight_text_content_spacing_mobile": 35,
-        "product_highlight_text_content_gap_desktop": 30,
-        "product_highlight_text_content_gap_mobile": 10,
-        "enable_product_highlight_text_content_arrows": true,
-        "product_highlight_text_content_arrows_display": "solid",
-        "product_highlight_text_content_arrows_color": "#000000",
-        "product_highlight_text_content_arrows_size_desktop": 80,
-        "product_highlight_text_content_arrows_size_mobile": 64,
-        "product_highlight_text_arrows_gap_between_desktop": 30,
-        "product_highlight_text_arrows_gap_between_mobile": 30,
-        "image": "shopify://shop_images/Split_Banner_D_980x610_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
-        "image_mobile": "shopify://shop_images/Split_Banner_M_750x750_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
-        "product_highlight_image_heading": "",
-        "product_highlight_image_heading_color": "#9a723f",
-        "product_highlight_image_heading_font_size_desktop": 38,
-        "product_highlight_image_heading_font_size_mobile": 36,
-        "product_highlight_image_spacing_desktop": 30,
-        "product_highlight_image_spacing_mobile": 15,
-        "enable_product_highlight_image_arrows": true,
-        "product_highlight_image_arrows_display": "solid",
-        "product_highlight_image_arrows_color": "#ffcc01",
-        "product_highlight_image_arrows_size_desktop": 78,
-        "product_highlight_image_arrows_size_mobile": 38,
-        "product_highlight_image_arrows_gap_between_desktop": 25,
-        "product_highlight_image_arrows_gap_between_mobile": 20,
-        "product_highlight_heading_arrows_gap_desktop": 10,
-        "product_highlight_heading_arrows_gap_mobile": 10
-      }
-    },
     "section_media_grid_iAUw4L": {
       "type": "section--media-grid",
       "blocks": {
         "block_media_tile_bdACcA": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/image_3dd1e647-7275-41da-a5eb-daced6c9d786.jpg",
+            "media_image": "shopify://shop_images/FAFO_CGS_LIMITED.jpg",
             "collection": "",
             "link": "shopify://collections/club-limited-edition",
             "span_two_columns": false,
@@ -707,7 +645,7 @@
             "block_text_bdaERQ": {
               "type": "block--text",
               "settings": {
-                "text": "<p>LIMITED EDITION</p>",
+                "text": "<p><strong>LIMITED EDITION</strong></p>",
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
@@ -770,7 +708,7 @@
             "block_text_EWC4Wb": {
               "type": "block--text",
               "settings": {
-                "text": "<p>NEW RELEASES</p>",
+                "text": "<p><strong>NEW RELEASES</strong></p>",
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
@@ -833,7 +771,7 @@
             "block_text_iyfhw6": {
               "type": "block--text",
               "settings": {
-                "text": "<p>THROWBACKS</p>",
+                "text": "<p><strong>THROWBACKS</strong></p>",
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
@@ -896,7 +834,7 @@
             "block_text_JJA4Gp": {
               "type": "block--text",
               "settings": {
-                "text": "<p>SEASONAL</p>",
+                "text": "<p><strong>SEASONAL</strong></p>",
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
@@ -927,7 +865,7 @@
             "block_text_AfKhay": {
               "type": "block--text",
               "settings": {
-                "text": "<p>CLUB SALE</p>",
+                "text": "<p><strong>CLUB SALE</strong></p>",
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
@@ -1033,8 +971,12 @@
         "card_background": "",
         "card_padding": 0,
         "enable_shadow": false,
+        "image_fit": "cover",
+        "hover_zoom": true,
         "enable_hover_content": false,
         "heading_badge": false,
+        "current_dim_opacity": 20,
+        "current_dim_hover": true,
         "heading": "<strong>SHOP CLUB EXCLUSIVES</strong>",
         "heading_size": "h3",
         "heading_alignment": "text-center",
@@ -1047,6 +989,66 @@
         "color_scheme": "scheme-1",
         "padding_top": 20,
         "padding_bottom": 0
+      }
+    },
+    "product_highlight_dErwzg": {
+      "type": "product-highlight",
+      "custom_css": [],
+      "settings": {
+        "reverse_desktop": true,
+        "reverse_mobile": true,
+        "product_highlight_text_content_bg_color": "#dddad6",
+        "product_highlight_text_content_heading": "CLUB GRUNT STYLE",
+        "product_highlight_text_content_heading_color": "#000000",
+        "product_highlight_text_content_heading_font_size_desktop": 32,
+        "product_highlight_text_content_heading_font_size_mobile": 24,
+        "product_highlight_text_content_paragraph": "<p>Unlock this exclusive tee, made just for Club Grunt Style members! Don’t miss your shot, join now before the month ends and claim yours. Delivered straight to your door.</p>",
+        "product_highlight_text_content_paragraph_color": "#000000",
+        "product_highlight_text_content_paragraph_font_size_desktop": 16,
+        "product_highlight_text_content_paragraph_font_size_mobile": 14,
+        "link_cta_style": "button",
+        "link_cta_1_text": "JOIN CLUB NOW",
+        "link_cta_1_link": "shopify://pages/club-grunt-style",
+        "link_cta_2_text": "SHOP THE EXCLUSIVES",
+        "link_cta_2_link": "shopify://collections/club-grunt-style",
+        "link_cta_layout": "side-by-side",
+        "product_highlight_text_content_link_cta_color": "#000000",
+        "product_highlight_text_content_cta_bg_color": "#ffca10",
+        "product_highlight_text_content_cta_border_color": "#000000",
+        "product_highlight_text_content_cta_border_width": 2,
+        "product_highlight_text_content_link_cta_text_font_size_desktop": 18,
+        "product_highlight_text_content_link_cta_text_font_size_mobile": 14,
+        "product_highlight_text_link_cta_gap_desktop": 25,
+        "product_highlight_text_link_cta_gap_mobile": 5,
+        "product_highlight_text_content_spacing_desktop": 60,
+        "product_highlight_text_content_spacing_mobile": 35,
+        "product_highlight_text_content_gap_desktop": 30,
+        "product_highlight_text_content_gap_mobile": 10,
+        "enable_product_highlight_text_content_arrows": true,
+        "product_highlight_text_content_arrows_display": "solid",
+        "product_highlight_text_content_arrows_color": "#000000",
+        "product_highlight_text_content_arrows_size_desktop": 80,
+        "product_highlight_text_content_arrows_size_mobile": 64,
+        "product_highlight_text_arrows_gap_between_desktop": 30,
+        "product_highlight_text_arrows_gap_between_mobile": 30,
+        "image": "shopify://shop_images/Split_Banner_D_980x610_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
+        "image_mobile": "shopify://shop_images/Split_Banner_M_750x750_IMAGE_ONLY_Club_Monthly_Tee-November.jpg",
+        "product_highlight_image_heading": "",
+        "product_highlight_image_heading_color": "#9a723f",
+        "product_highlight_image_heading_bg_color": "",
+        "product_highlight_image_heading_font_size_desktop": 38,
+        "product_highlight_image_heading_font_size_mobile": 36,
+        "product_highlight_image_spacing_desktop": 30,
+        "product_highlight_image_spacing_mobile": 15,
+        "enable_product_highlight_image_arrows": true,
+        "product_highlight_image_arrows_display": "solid",
+        "product_highlight_image_arrows_color": "#ffcc01",
+        "product_highlight_image_arrows_size_desktop": 78,
+        "product_highlight_image_arrows_size_mobile": 38,
+        "product_highlight_image_arrows_gap_between_desktop": 25,
+        "product_highlight_image_arrows_gap_between_mobile": 20,
+        "product_highlight_heading_arrows_gap_desktop": 10,
+        "product_highlight_heading_arrows_gap_mobile": 10
       }
     },
     "1713538328bea72ad4": {
@@ -1081,8 +1083,8 @@
     "main",
     "features",
     "recommendations",
-    "product_highlight_dErwzg",
     "section_media_grid_iAUw4L",
+    "product_highlight_dErwzg",
     "1713538328bea72ad4",
     "custom_liquid_9fRRfL"
   ]
