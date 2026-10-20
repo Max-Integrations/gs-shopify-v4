@@ -1007,9 +1007,6 @@
     },
     "product_highlight_gXtgGb": {
       "type": "product-highlight",
-      "custom_css": [
-        ".gs-ph__image-heading {background: #5e5c39;}"
-      ],
       "name": "Product Highlight",
       "settings": {
         "reverse_desktop": false,
@@ -1064,15 +1061,13 @@
         "product_highlight_image_arrows_gap_between_desktop": 20,
         "product_highlight_image_arrows_gap_between_mobile": 25,
         "product_highlight_heading_arrows_gap_desktop": 10,
-        "product_highlight_heading_arrows_gap_mobile": 10
+        "product_highlight_heading_arrows_gap_mobile": 10,
+        "product_highlight_image_heading_bg_color": "#5e5c39"
       }
     },
     "product_highlight_qi4Eyg": {
       "type": "product-highlight",
       "disabled": true,
-      "custom_css": [
-        ".product-highlight-image-content .product-highlight-image-heading {background-color: #474648;}"
-      ],
       "name": "Product Highlight",
       "settings": {
         "reverse_desktop": false,
@@ -1127,7 +1122,8 @@
         "product_highlight_image_arrows_gap_between_desktop": 20,
         "product_highlight_image_arrows_gap_between_mobile": 25,
         "product_highlight_heading_arrows_gap_desktop": 10,
-        "product_highlight_heading_arrows_gap_mobile": 0
+        "product_highlight_heading_arrows_gap_mobile": 0,
+        "product_highlight_image_heading_bg_color": "#474648"
       }
     },
     "multirow_98qFfM": {
@@ -1233,14 +1229,6 @@
         "testimonial_wtBPmf",
         "testimonial_aWCigM"
       ],
-      "custom_css": [
-        ".testimonial-text {font-size: 14px; font-weight: 400;}",
-        ".testimonial-title {font-weight: 700; font-size: 20px;}",
-        ".testimonial-item-inner.card-border-enabled {border-color: #000; border: 2px solid; align-content: center; text-align: center;}",
-        ".testimonial-star-rating {display: inline;}",
-        ".testimonial-item {max-height: 420px; padding-block: 0px;}",
-        ".testimonial-item-inner {padding: 10px;}"
-      ],
       "settings": {
         "section_visibility": "always",
         "enable_card_border": true,
@@ -1256,8 +1244,8 @@
         "description": "",
         "heading_alignment": "text-center",
         "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
-        "padding_top": 12,
-        "padding_bottom": 12
+        "padding_top": 72,
+        "padding_bottom": 72
       }
     },
     "multicolumn_with_content_hover_rUQ9Qn": {
