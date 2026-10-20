@@ -131,7 +131,13 @@
 .gs-header__logo-link img {
   display: block;
   width: var(--gs-logo-width-mobile, 130px);
+  max-width: 100%;
   height: auto;
+}
+
+.gs-header__logo-link picture {
+  display: block;
+  line-height: 0;
 }
 
 .gs-header__logo-text {
