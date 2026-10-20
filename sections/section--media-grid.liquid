@@ -37,6 +37,9 @@
     :has(), so the test lives in one place, blocks/block--media-tile).
     How dim, and whether hover brightens them, are section settings
     (current_dim_opacity / current_dim_hover, added 2026-10-20).
+    image_fit and hover_zoom (also 2026-10-20) are for graphic tiles
+    like the Club perks badges, whose text sat at the image edge and
+    was cropped by cover and then by the 1.05 hover zoom.
   - stories-single-image (About history): carousel, fixed 600/300px
     tiles, 60% scrim lifted on hover, circle-badge year headings,
     description as the tile's hover text.
@@ -72,7 +75,7 @@
 -%}
 
 <div
-  class="gs-media-grid color-{{ s.color_scheme }} gradient gs-mg--visibility-{{ s.section_visibility | default: 'always' }} gs-mg--{{ layout }} gs-mg--ratio-{{ ratio }} gs-mg--{{ placement }} gs-mg--width-{{ s.tile_width | default: 'full' }}{% if s.heading_badge %} gs-mg--badge{% endif %}{% unless s.current_dim_hover == false %} gs-mg--dim-hover{% endunless %}"
+  class="gs-media-grid color-{{ s.color_scheme }} gradient gs-mg--visibility-{{ s.section_visibility | default: 'always' }} gs-mg--{{ layout }} gs-mg--ratio-{{ ratio }} gs-mg--{{ placement }} gs-mg--width-{{ s.tile_width | default: 'full' }}{% if s.heading_badge %} gs-mg--badge{% endif %}{% unless s.current_dim_hover == false %} gs-mg--dim-hover{% endunless %} gs-mg--fit-{{ s.image_fit | default: 'cover' }}{% if s.hover_zoom == false %} gs-mg--no-zoom{% endif %}"
   style="
     --padding-top: {{ s.padding_top }}px;
     --padding-bottom: {{ s.padding_bottom }}px;
@@ -231,6 +234,18 @@
     { "type": "color", "id": "card_background", "label": "Card background", "info": "Empty for no card." },
     { "type": "range", "id": "card_padding", "label": "Card padding", "min": 0, "max": 30, "step": 1, "unit": "px", "default": 0 },
     { "type": "checkbox", "id": "enable_shadow", "label": "Tile shadow", "default": false },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image fit",
+      "info": "Fit shows the whole image, for graphics with text near the edges.",
+      "options": [
+        { "value": "cover", "label": "Fill the tile (crops edges)" },
+        { "value": "contain", "label": "Fit the whole image" }
+      ],
+      "default": "cover"
+    },
+    { "type": "checkbox", "id": "hover_zoom", "label": "Zoom image on hover", "default": true },
     { "type": "checkbox", "id": "enable_hover_content", "label": "Reveal content on hover", "default": false },
     { "type": "checkbox", "id": "heading_badge", "label": "Circle badge headings", "info": "Tile headings in a bordered circle, as on the About page timeline.", "default": false },
     { "type": "range", "id": "current_dim_opacity", "label": "Other tiles' opacity on their own collection page", "info": "When a tile links to the collection being viewed, the other tiles fade to this. 100% = no fading.", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 20 },

@@ -234,6 +234,30 @@
   transform: scale(1.05);
 }
 
+/* Image fit: whole image (section setting image_fit). The tile clips
+   its image, so a 1.05 zoom on a fitted image would crop the edges it
+   was fitted to show. Fitted images rest at 95% and zoom to 100%. */
+.gs-mg--fit-contain .media-grid-image .media_image,
+.gs-mg--fit-contain .media-grid-image .media_video {
+  object-fit: contain;
+}
+
+.gs-mg--fit-contain .img-zoom .media-grid-image .media_image {
+  transform: scale(0.95);
+}
+
+.gs-mg--fit-contain .img-zoom:hover .media-grid-image .media_image,
+.gs-mg--fit-contain .img-zoom:focus-within .media-grid-image .media_image {
+  transform: scale(1);
+}
+
+/* Zoom off (section setting hover_zoom). */
+.gs-mg--no-zoom .img-zoom .media-grid-image .media_image,
+.gs-mg--no-zoom .img-zoom:hover .media-grid-image .media_image,
+.gs-mg--no-zoom .img-zoom:focus-within .media-grid-image .media_image {
+  transform: none;
+}
+
 /* ---- Content over the image ---- */
 .media-content {
   position: relative;
