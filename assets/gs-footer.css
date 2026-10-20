@@ -1,9 +1,11 @@
 /*
   GS Footer
 
-  INCOMPLETE - structural rules and token wiring only.
-  v3's assets/footer.css (7.2 KB) has NOT been ported. Expect layout to
-  be roughly right and the finish to be wrong until it lands.
+  Ported to match the live (v3) footer on 2026-10-20: uppercase column
+  headings with a rule, 13px links, newsletter in a bordered box centred
+  above the columns, "Follow Us" inline with the social icons, centred
+  bottom bar on phones. The old section custom_css in footer-group.json
+  (12px links, underlined h2) was removed at the same time.
 
   The custom properties consumed here are set per-instance by the inline
   style block in sections/footer.liquid, driven by theme settings:
@@ -35,12 +37,22 @@
 
 .footer-block-heading {
   color: var(--footerTextcolor, #ffffff);
-  margin: 0 0 1rem;
+  margin: 0 0 10px;
+  padding-bottom: 5px;
+  border-bottom: 1.875px solid var(--footerTextcolor, #ffffff);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none !important;
 }
 
 .footer-menu-link,
-.footer-contact-detail-link {
+.footer-contact-detail-link,
+.footer-privacy-choices {
   color: var(--footerLinkcolor, #a6a6a6);
+  font-size: 13px;
+  line-height: 1.6;
   text-decoration: none;
 }
 
@@ -60,7 +72,7 @@
    site (e.g. pagination, where it pushed every item after the first down
    by 6px). */
 .gs-footer .list-unstyled li + li {
-  margin-top: 0.6rem;
+  margin-top: 8px;
 }
 
 /* CCPA opt-out link. The icon is required by the regulation to appear
@@ -115,19 +127,84 @@
   gap: 3rem;
 }
 
-/* ---- Newsletter ---- */
-.newsletter-field {
+/* ---- Follow Us + social icons ---- */
+.footer-social-block {
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-social-block-heading {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.social-icons-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.gs-footer .social-icons-list li + li {
+  margin-top: 0;
+}
+
+.social-icons-link {
+  width: 30px;
+  height: 30px;
+}
+
+.social-icons-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ---- Newsletter ---- */
+/* Live: a bordered box, email field on top, white Subscribe button
+   below. */
+.footer-block.newsletter {
+  width: 100%;
+  max-width: 400px;
+}
+
+.newsletter-box {
+  border: 1.875px solid var(--footerTextcolor, #ffffff);
+  padding: 3px 3px 3px 15px;
+}
+
+.newsletter-field {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
 }
 
 .newsletter-field input[type='email'] {
-  flex: 1 1 auto;
   min-width: 0;
+  height: 50px;
   color: var(--inputColor, #ffffff);
   background: transparent;
-  border: 1px solid var(--footerBackgroundLight, #353f48);
-  padding: 0.8rem 1rem;
+  border: 0;
+  padding: 0 1rem 0 0;
+  font-size: 16px;
+}
+
+.newsletter-field .button {
+  justify-self: start;
+  width: 130px;
+  min-height: 42px;
+  padding: 0;
+  background: #ffffff;
+  color: #000000;
+  border: 0;
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .newsletter-field input[type='email']::placeholder {
@@ -158,6 +235,8 @@
 }
 
 .footer-copyright-text {
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--footerLinkcolor, #a6a6a6);
   font-size: var(--smallText);
 }
@@ -233,7 +312,14 @@
 
 @media screen and (min-width: 750px) {
   .footer-middle {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2.5rem;
+  }
+
+  /* Newsletter sits centred on its own row above the three columns. */
+  .footer-middle .footer-block.newsletter {
+    grid-column: 1 / -1;
+    justify-self: center;
   }
 
   .footer-bottom {
