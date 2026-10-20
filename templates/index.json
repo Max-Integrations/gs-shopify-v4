@@ -364,7 +364,7 @@
         "tile_width": "full",
         "desktop_grid_gap": 5,
         "mobile_grid_gap": 5,
-        "section_width": true,
+        "section_width": false,
         "section_visibility": "always",
         "content_placement": "overlay",
         "card_background": "",
@@ -708,14 +708,13 @@
             }
           },
           "block_order": [
-            "block_text_D7Yr3j",
             "heading",
+            "block_text_D7Yr3j",
             "block_button_wjFyna"
           ]
         },
         "grid_DYVM8z": {
           "type": "block--media-tile",
-          "disabled": true,
           "settings": {
             "media_image": "shopify://shop_images/Split_Banner_M_750x750_SHIRTS_ONLY_FW26_Campaign_-_Blackout_Collection.jpg",
             "collection": "",
@@ -781,8 +780,8 @@
             }
           },
           "block_order": [
-            "block_text_fKarLm",
             "heading",
+            "block_text_fKarLm",
             "block_button_xcNigW"
           ]
         },
@@ -853,16 +852,16 @@
             }
           },
           "block_order": [
-            "block_text_KMpC76",
             "heading",
+            "block_text_KMpC76",
             "block_button_MxeTBh"
           ]
         }
       },
       "block_order": [
         "grid_DNCaHx",
-        "block_media_tile_tbkgQn",
         "grid_DYVM8z",
+        "block_media_tile_tbkgQn",
         "grid_PFPLjN"
       ],
       "name": "Media grid",
@@ -872,7 +871,7 @@
         "columns_mobile": 1,
         "tile_ratio": "fixed",
         "desktop_row_height": 350,
-        "mobile_row_height": 200,
+        "mobile_row_height": 250,
         "tile_width": "full",
         "desktop_grid_gap": 5,
         "mobile_grid_gap": 5,
