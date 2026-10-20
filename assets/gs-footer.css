@@ -173,9 +173,11 @@
   align-items: center;
 }
 
+/* Live renders the card marks greyscale at 30x24. */
 .list-payment-item .icon {
-  width: 38px;
+  width: 30px;
   height: 24px;
+  filter: grayscale(1);
 }
 
 .sitemap-footer {
