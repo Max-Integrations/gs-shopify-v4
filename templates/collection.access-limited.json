@@ -87,7 +87,7 @@
         "header_background": "#000000",
         "header_text_color": "#ffffff",
         "show_description": true,
-        "description_position": "below_products",
+        "description_position": "above_products",
         "collection_image": false,
         "banner_height_desktop": "200px",
         "banner_height_mobile": "100px",

@@ -174,7 +174,7 @@
             "size_desktop": 12,
             "size_mobile": 12,
             "text_color": "#000000",
-            "background_color": "#FFCA10",
+            "background_color": "#ffca10",
             "letter_spacing": 0,
             "padding_y": 0,
             "padding_x": 34
@@ -188,7 +188,7 @@
             "text": "<strong>&nbsp;CLUB GRUNT STYLE&nbsp;</strong>",
             "size_desktop": 28,
             "size_mobile": 18,
-            "text_color": "#FFFFFF",
+            "text_color": "#ffffff",
             "background_color": "",
             "letter_spacing": 0,
             "padding_y": 0,
@@ -206,7 +206,7 @@
             "background_color": "",
             "letter_spacing": 0,
             "padding_y": 0,
-            "padding_x": 60
+            "padding_x": 10
           },
           "blocks": {}
         },
@@ -228,11 +228,11 @@
             "border_radius": 0,
             "custom_scheme": true,
             "color_scheme": "scheme-6",
-            "bg": "#FFCA10",
+            "bg": "#ffca10",
             "text_color": "#000000",
             "border_color": "#000000",
             "hover_bg": "#000000",
-            "hover_text_color": "#FFFFFF"
+            "hover_text_color": "#ffffff"
           },
           "blocks": {}
         },
@@ -253,11 +253,11 @@
             "border_radius": 0,
             "custom_scheme": true,
             "color_scheme": "scheme-6",
-            "bg": "#FFCA10",
+            "bg": "#ffca10",
             "text_color": "#000000",
             "border_color": "#000000",
             "hover_bg": "#000000",
-            "hover_text_color": "#FFFFFF"
+            "hover_text_color": "#ffffff"
           },
           "blocks": {}
         }
@@ -273,7 +273,9 @@
       "settings": {
         "visibility": "always",
         "layout_preset": "center",
-        "alignment_preset": "center",
+        "alignment_preset": "end",
+        "layout_preset_mobile": "center",
+        "alignment_mobile": "center",
         "background_color": "#5D5D39",
         "background_image_desktop": "shopify://shop_images/CPB_D_1440x300_GIFT_CLUB_Holiday_LC_Shopping.jpg",
         "background_image_mobile": "shopify://shop_images/CPB_M_980x600_GIFT_CLUB_Holiday_LC_Shopping_39ff35c5-32b6-4c05-a230-f25c4344cb8a.jpg",
@@ -290,6 +292,8 @@
         "padding_bottom_mobile": 8,
         "padding_horizontal_mobile": 0,
         "item_gap_mobile": 2,
+        "buttons_desktop": "side_by_side",
+        "buttons_mobile": "stacked",
         "button_gap": 4
       }
     }
