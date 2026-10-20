@@ -69,6 +69,9 @@
 
 .testimonial-item-inner {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   padding: 30px;
   border-radius: var(--cardRadius, 0);
   background: rgb(var(--color-background));
@@ -86,25 +89,42 @@
 .testimonial-star-rating {
   display: flex;
   align-items: center;
+  justify-content: center;
   column-gap: 3px;
   margin: 0 0 20px;
   color: rgb(var(--ratingStarColor, 154 114 63));
 }
 
+/* Type sizes match live (v3): 20px title, 20px quote, bold uppercase
+   author pinned to the bottom of the card. These used to be section
+   custom_css in templates/index.json. */
 .testimonial-title {
   margin: 0;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .testimonial-text {
   margin: 0;
   padding-top: 10px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
 }
 
 .testimonial-details {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
+  margin-top: auto;
   padding-top: 20px;
+}
+
+.author-name {
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .testimonial-details.image-position-top {
@@ -237,6 +257,26 @@
     width: 50%;
   }
 
+  .testimonial-item-inner {
+    padding: 50px;
+  }
+
+  .gs-testimonials .section-title {
+    margin-bottom: 44px;
+  }
+
+  .gs-testimonials .section-heading {
+    font-size: 30px;
+  }
+
+  .testimonial-title {
+    font-size: 22px;
+  }
+
+  .author-name {
+    font-size: 18px;
+  }
+
   /* Half-width cards need a quarter of slack each side to centre the
      first and last ones. */
   .gs-tm--enlarge .gs-tm__track {
@@ -256,12 +296,8 @@
   }
 }
 
+/* Live shows three cards per view at every desktop width. */
 @media screen and (min-width: 1200px) {
-  .gs-testimonials:not(.gs-tm--enlarge) .testimonial-item {
-    flex-basis: 25%;
-    width: 25%;
-  }
-
   .gs-tm--enlarge .author-name {
     letter-spacing: 8px;
   }
