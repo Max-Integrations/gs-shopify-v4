@@ -195,7 +195,7 @@
         "show_search": true,
         "search_placeholder": "What are you looking for...",
         "search_visibility": "all",
-        "account_visibility": "all",
+        "account_visibility": "desktop",
         "account_in_mobile_menu": false,
         "cart_visibility": "all",
         "color_scheme": "scheme-4",
