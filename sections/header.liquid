@@ -486,7 +486,7 @@
     Accordion + open/close handling is in the script at the bottom.
   {%- endcomment -%}
   {%- if menu != blank -%}
-    {%- capture gs_mnav_chevron -%}<svg viewBox="0 0 12 8" width="10" height="7" aria-hidden="true" focusable="false"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
+    {%- capture gs_mnav_chevron -%}<svg viewBox="0 0 12 8" width="14" height="9" aria-hidden="true" focusable="false"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
     <div class="gs-mnav" id="GsMobileNav">
       <div class="gs-mnav__primary">
         <ul class="gs-mnav__list">
@@ -785,6 +785,16 @@
         mnavToggle.setAttribute('aria-expanded', mnavOpen ? 'false' : 'true');
         mnavRow.classList.toggle('is-open', !mnavOpen);
         if (mnavPanel) mnavPanel.hidden = mnavOpen;
+        // Live opens the first group of a top-level item along with it.
+        if (!mnavOpen && mnavPanel && mnavRow.classList.contains('gs-mnav__row--top')) {
+          var firstGroup = mnavPanel.querySelector('.gs-mnav__row--group');
+          var firstToggle = firstGroup && firstGroup.querySelector('[data-gs-mnav-toggle]');
+          if (firstToggle && firstToggle.getAttribute('aria-expanded') !== 'true') {
+            firstToggle.setAttribute('aria-expanded', 'true');
+            firstGroup.classList.add('is-open');
+            if (firstGroup.nextElementSibling) firstGroup.nextElementSibling.hidden = false;
+          }
+        }
         return;
       }
 
