@@ -146,7 +146,7 @@
         "image_74DAy7": {
           "type": "block--media-tile",
           "settings": {
-            "media_image": "shopify://shop_images/image_3dd1e647-7275-41da-a5eb-daced6c9d786.jpg",
+            "media_image": "shopify://shop_images/FAFO_CGS_LIMITED.jpg",
             "collection": "",
             "link": "shopify://collections/club-limited-edition",
             "span_two_columns": false,
@@ -162,7 +162,7 @@
             "c1": {
               "type": "block--text",
               "settings": {
-                "text": "<p>LIMITED EDITION</p>",
+                "text": "<p><strong>LIMITED EDITION</strong></p>",
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
@@ -225,7 +225,7 @@
             "c1": {
               "type": "block--text",
               "settings": {
-                "text": "<p>NEW RELEASES</p>",
+                "text": "<p><strong>NEW RELEASES</strong></p>",
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
@@ -288,7 +288,7 @@
             "c1": {
               "type": "block--text",
               "settings": {
-                "text": "<p>THROWBACKS</p>",
+                "text": "<p><strong>THROWBACKS</strong></p>",
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
@@ -351,7 +351,7 @@
             "c1": {
               "type": "block--text",
               "settings": {
-                "text": "<p>SEASONAL</p>",
+                "text": "<p><strong>SEASONAL</strong></p>",
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
@@ -382,7 +382,7 @@
             "c1": {
               "type": "block--text",
               "settings": {
-                "text": "<p>CLUB SALE</p>",
+                "text": "<p><strong>CLUB SALE</strong></p>",
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
@@ -488,8 +488,12 @@
         "card_background": "",
         "card_padding": 0,
         "enable_shadow": false,
+        "image_fit": "cover",
+        "hover_zoom": true,
         "enable_hover_content": false,
         "heading_badge": false,
+        "current_dim_opacity": 20,
+        "current_dim_hover": true,
         "heading": "",
         "heading_size": "h3",
         "heading_alignment": "text-center",
@@ -774,8 +778,12 @@
         "card_background": "#000000",
         "card_padding": 0,
         "enable_shadow": false,
+        "image_fit": "cover",
+        "hover_zoom": true,
         "enable_hover_content": false,
         "heading_badge": false,
+        "current_dim_opacity": 20,
+        "current_dim_hover": true,
         "heading": "<em><strong>CLUB MEMBER PERKS</strong></em>",
         "heading_size": "h3",
         "heading_alignment": "text-center",
