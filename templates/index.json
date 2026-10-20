@@ -360,7 +360,7 @@
         "columns_desktop": 4,
         "columns_mobile": 2,
         "tile_ratio": "fixed",
-        "desktop_row_height": 380,
+        "desktop_row_height": 275,
         "mobile_row_height": 200,
         "tile_width": "full",
         "desktop_grid_gap": 5,
