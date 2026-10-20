@@ -274,6 +274,7 @@
         "block_custom_liquid_GWteCU": {
           "type": "block--custom-liquid",
           "name": "Custom Liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "{%- assign cashback_percent = 0.20 -%}\n{%- assign cashback_per_unit = product.price | times: cashback_percent -%}\n{%- assign formatted_cashback = cashback_per_unit | money -%}\n\n<p id=\"cashback-display\"\n   data-cashback-percent=\"{{ cashback_percent}}\"\n   style=\"color: #002F6E; font-weight: bold; font-size: 12px; margin-top: 3px;\">\n  Rewards Members Can Earn Up To {{ formatted_cashback}} For Their Next Purchase! <a href='https://www.gruntstyle.com/community/membership' style=\"text-decoration: underline; color: #AB192D\">|Join Now </a>\n</p>"
           },
@@ -550,9 +551,6 @@
         "badge_usa_made"
       ],
       "custom_css": [
-        ".gs-product__option-values {min-width: 10px; height: 55px;}",
-        ".gs-product__option-pill {width: 10px; height: 25px; font-size: 12px;}",
-        ".gs-product__option-values {display: flex; flex-wrap: wrap; gap: 4px;}",
         ".gs-product__title {margin-bottom: -10px;}",
         ".klaviyo-star-rating-widget {margin-top: -8px; margin-bottom: -10px;}",
         ".gs-product__price {margin-top: -10px; margin-bottom: -10px;}"
@@ -569,6 +567,7 @@
     },
     "features": {
       "type": "section--product-features",
+      "disabled": true,
       "settings": {
         "heading": "<p>{{ product.metafields.custom.pdp_feature_slider_name.value }}</p>",
         "heading_align": "left",
@@ -585,6 +584,7 @@
     },
     "recommendations": {
       "type": "featured-collections",
+      "disabled": true,
       "custom_css": [
         ".product-quickview {margin-top: -20px;}",
         "@media screen and (max-width: 600px) {.product-quickview {margin-top: -35px; }}"
@@ -709,6 +709,7 @@
       "block_order": [
         "wishlist_plus_engage_myaccount_recently_viewed_online_cbwNRz"
       ],
+      "disabled": true,
       "custom_css": [
         ".swym-wishlistplus-themeapp-container-header {font-family: Roboto Condensed; font-weight: 700; text-transform: uppercase;}"
       ],
