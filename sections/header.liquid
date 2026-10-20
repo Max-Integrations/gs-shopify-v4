@@ -148,16 +148,32 @@
         {%- endif -%}
         <a href="{{ routes.root_url }}" class="gs-header__logo-link" aria-label="{{ shop.name | escape }}">
           {%- if s.logo != blank -%}
-            <img
-              src="{{ s.logo | image_url: width: 400 }}"
-              srcset="{{ s.logo | image_url: width: 200 }} 200w, {{ s.logo | image_url: width: 400 }} 400w"
-              sizes="{{ s.logo_width }}px"
-              alt="{{ s.logo.alt | escape | default: shop.name | escape }}"
-              width="{{ s.logo.width }}"
-              height="{{ s.logo.height }}"
-              loading="eager"
-              fetchpriority="high"
-            >
+            {%- comment -%}
+              Mobile (< 990px) swaps in the stacked crest when one is set, as the
+              live v3 header does; the wide wordmark does not fit between the
+              burger and the icon row at phone widths.
+            {%- endcomment -%}
+            <picture>
+              {%- if s.logo_mobile != blank -%}
+                <source
+                  media="(max-width: 989px)"
+                  srcset="{{ s.logo_mobile | image_url: width: 200 }} 200w, {{ s.logo_mobile | image_url: width: 400 }} 400w"
+                  sizes="{{ s.logo_width_mobile | default: 130 }}px"
+                  width="{{ s.logo_mobile.width }}"
+                  height="{{ s.logo_mobile.height }}"
+                >
+              {%- endif -%}
+              <img
+                src="{{ s.logo | image_url: width: 400 }}"
+                srcset="{{ s.logo | image_url: width: 200 }} 200w, {{ s.logo | image_url: width: 400 }} 400w"
+                sizes="(max-width: 989px) {{ s.logo_width_mobile | default: 130 }}px, {{ s.logo_width }}px"
+                alt="{{ s.logo.alt | escape | default: shop.name | escape }}"
+                width="{{ s.logo.width }}"
+                height="{{ s.logo.height }}"
+                loading="eager"
+                fetchpriority="high"
+              >
+            </picture>
           {%- else -%}
             <span class="gs-header__logo-text">{{ shop.name }}</span>
           {%- endif -%}
@@ -668,6 +684,12 @@
       "type": "image_picker",
       "id": "logo",
       "label": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_mobile",
+      "label": "Mobile logo",
+      "info": "Shown below 990px instead of the main logo. The live store uses the stacked crest (Primary_Logo_White.png) here."
     },
     {
       "type": "range",
