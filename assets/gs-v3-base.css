@@ -189,3 +189,27 @@
   padding-top: 12px;
   padding-bottom: 12px;
 }
+
+
+/* ---- Announcement bar (Dawn's section, sized like live) ----
+   Live's bar is 54px tall at every width with 11px bold copy on phones.
+   This used to be section custom_css on the announcement in
+   header-group.json (an !important on .h5). */
+.announcement-bar {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.announcement-bar__message.h5 {
+  font-weight: 700;
+}
+
+@media screen and (max-width: 668px) {
+  .announcement-bar__message.h5 {
+    font-size: 11px;
+    line-height: 12px;
+    padding: 1px;
+  }
+}
