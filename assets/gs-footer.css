@@ -166,8 +166,9 @@
 }
 
 /* ---- Newsletter ---- */
-/* Live: a bordered box, email field on top, white Subscribe button
-   below. */
+/* A bordered box with the email field and white Subscribe button on
+   one row. (Was stacked, button under the field, which made the box
+   twice as tall - changed 2026-10-20 on client request.) */
 .footer-block.newsletter {
   width: 100%;
   max-width: 400px;
@@ -180,7 +181,8 @@
 
 .newsletter-field {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
   gap: 4px;
 }
 
