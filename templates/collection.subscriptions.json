@@ -482,7 +482,7 @@
         "tile_width": "full",
         "desktop_grid_gap": 20,
         "mobile_grid_gap": 12,
-        "section_width": false,
+        "section_width": true,
         "section_visibility": "always",
         "content_placement": "below",
         "card_background": "",
