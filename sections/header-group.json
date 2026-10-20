@@ -127,7 +127,7 @@
             "behaviour": "accessibility",
             "label": "Accessibility",
             "link": "",
-            "show_on_mobile": false
+            "show_on_mobile": true
           }
         },
         "util_rewards": {
