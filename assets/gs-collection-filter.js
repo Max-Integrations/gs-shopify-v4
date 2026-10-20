@@ -38,6 +38,15 @@
      where the sidebar sits beside results that are already in view. Now
      only scrolls when the results are actually off screen.
 
+  ------------------------------------------------------------------
+  REVISION 2026-10-20 - FILTERS WAIT FOR "SHOW RESULTS"
+  ------------------------------------------------------------------
+  Client request: ticking a checkbox (or moving the price slider)
+  re-filtered the grid immediately. Filter inputs now only update the
+  form; the results change when Show results is pressed, and on mobile
+  that also closes the drawer. Sort still applies on change - it sits in
+  the toolbar, outside the drawer, with no button of its own.
+
   Load once. Binds delegated listeners at document level and does nothing
   on pages with no [data-collection-products].
   ==================================================================
@@ -45,7 +54,6 @@
 (function () {
   'use strict';
 
-  var DEBOUNCE_MS = 400;
   var loading = false;
 
   // Params owned by the page, not the filter form. These must survive a
@@ -84,6 +92,11 @@
     // Capture drawer state before the sidebar is replaced.
     var openDrawer = document.querySelector('[data-side-drawer].is-open');
     var drawerWasOpen = Boolean(openDrawer);
+    // Close straight away so the customer sees the results load.
+    if (opts.closeDrawer && openDrawer) {
+      openDrawer.classList.remove('is-open');
+      document.documentElement.classList.remove('gs-drawer-open');
+    }
 
     var fetchUrl = url + (url.indexOf('?') === -1 ? '?' : '&') + 'section_id=' + id;
 
@@ -101,7 +114,8 @@
         swap(parsed, '.gs-collection__sidebar');
 
         // Restore the drawer. Without this, one filter closed it.
-        if (drawerWasOpen) {
+        // Show results closes it on purpose (opts.closeDrawer).
+        if (drawerWasOpen && !opts.closeDrawer) {
           var drawer = document.querySelector('[data-side-drawer]');
           if (drawer) {
             drawer.classList.add('is-open');
@@ -181,15 +195,6 @@
   /* ----------------------------------------------------------------
      Filter + sort changes
      ---------------------------------------------------------------- */
-  var debounceTimer;
-
-  function scheduleFromForm(form, delay) {
-    window.clearTimeout(debounceTimer);
-    debounceTimer = window.setTimeout(function () {
-      renderFromUrl(urlFromForm(form));
-    }, delay);
-  }
-
   // The sort control lives in the toolbar, which is outside both
   // re-rendered regions, so it has to update itself: mark the chosen
   // option and close the panel (on mobile it is a bottom sheet that
@@ -218,31 +223,22 @@
     if (value) syncSortUi(value);
   }
 
+  // Only sort applies on change. Filter checkboxes and price inputs
+  // just update the form until Show results submits it.
   document.addEventListener('change', function (evt) {
     var target = evt.target;
     if (!target || !target.form || target.form.id !== 'FiltersForm') return;
+    if (target.name !== 'sort_by') return;
 
-    if (target.name === 'sort_by') syncSortUi(target.value);
-
-    var isPriceField = target.classList && target.classList.contains('gs-filters__field-input');
-    scheduleFromForm(target.form, isPriceField ? DEBOUNCE_MS : 0);
-  });
-
-  // Price number fields fire `input` while typing.
-  document.addEventListener('input', function (evt) {
-    var target = evt.target;
-    if (!target || !target.classList) return;
-    if (!target.classList.contains('gs-filters__field-input')) return;
-    if (!target.form || target.form.id !== 'FiltersForm') return;
-
-    scheduleFromForm(target.form, DEBOUNCE_MS);
+    syncSortUi(target.value);
+    renderFromUrl(urlFromForm(target.form));
   });
 
   document.addEventListener('submit', function (evt) {
     var form = evt.target;
     if (!form || form.id !== 'FiltersForm') return;
     evt.preventDefault();
-    renderFromUrl(urlFromForm(form));
+    renderFromUrl(urlFromForm(form), { closeDrawer: true });
   });
 
   /* ----------------------------------------------------------------
@@ -412,15 +408,8 @@
     syncPriceUi(block);
   });
 
-  // Committing a drag triggers the fetch.
-  document.addEventListener('change', function (evt) {
-    var target = evt.target;
-    if (!target || !target.classList) return;
-    if (!target.classList.contains('gs-filters__range-input')) return;
-
-    var form = document.getElementById('FiltersForm');
-    if (form) renderFromUrl(urlFromForm(form));
-  });
+  // Dragging the slider only updates the price fields; Show results
+  // applies it like any other filter.
 
   /* ----------------------------------------------------------------
      Back / forward
