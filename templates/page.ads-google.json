@@ -869,6 +869,7 @@
         "video_4TbrgD",
         "video_npM6JN"
       ],
+      "disabled": true,
       "custom_css": [
         ".section-padding {background: #000;}",
         ".h3 {color: #fff;}"
@@ -876,7 +877,7 @@
       "name": "t:sections.product-short-videos.presets.name",
       "settings": {
         "section_visibility": "always",
-        "desktop_height": 500,
+        "desktop_height": 300,
         "mobile_height": 500,
         "show_view_count": false,
         "heading": "<strong>GRUNT STYLE IN ACTION</strong>",
@@ -1227,8 +1228,8 @@
         "bg_overlay_color": "#000000",
         "bg_overlay_opacity": 30,
         "desktop_content_position": "center",
-        "content_alignment": "left",
-        "color_scheme": "scheme-1",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
         "full_width": true,
         "padding_top": 20,
         "padding_bottom": 20
