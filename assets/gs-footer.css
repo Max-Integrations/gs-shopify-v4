@@ -193,6 +193,42 @@
   margin-top: 0;
 }
 
+/* Accessibility link: styled like the sitemap links. accessiBe restyles
+   any .acsb-trigger once it initialises (hides it, fixes it to the
+   viewport), so the override below pins it back in place - same
+   approach as the header's button in gs-header.css. */
+.sitemap-footer .footer-accessibility,
+.sitemap-footer .footer-accessibility.acsb-ready {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.4em;
+  position: static !important;
+  inset: auto !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  z-index: auto !important;
+  color: var(--footerLinkcolor, #a6a6a6) !important;
+  font: inherit;
+  font-size: var(--smallText);
+  line-height: inherit;
+  cursor: pointer;
+}
+
+.sitemap-footer .footer-accessibility svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
 @media screen and (min-width: 750px) {
   .footer-middle {
     grid-template-columns: repeat(4, 1fr);
