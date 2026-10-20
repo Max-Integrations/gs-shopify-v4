@@ -173,9 +173,11 @@
   align-items: center;
 }
 
+/* Live renders the card marks greyscale at 30x24. */
 .list-payment-item .icon {
-  width: 38px;
+  width: 30px;
   height: 24px;
+  filter: grayscale(1);
 }
 
 .sitemap-footer {
@@ -191,6 +193,42 @@
 
 .sitemap-footer li + li {
   margin-top: 0;
+}
+
+/* Accessibility link: styled like the sitemap links. accessiBe restyles
+   any .acsb-trigger once it initialises (hides it, fixes it to the
+   viewport), so the override below pins it back in place - same
+   approach as the header's button in gs-header.css. */
+.sitemap-footer .footer-accessibility,
+.sitemap-footer .footer-accessibility.acsb-ready {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.4em;
+  position: static !important;
+  inset: auto !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  z-index: auto !important;
+  color: var(--footerLinkcolor, #a6a6a6) !important;
+  font: inherit;
+  font-size: var(--smallText);
+  line-height: inherit;
+  cursor: pointer;
+}
+
+.sitemap-footer .footer-accessibility svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
 }
 
 @media screen and (min-width: 750px) {
@@ -215,5 +253,87 @@
 
   .footer-sticky main#MainContent {
     z-index: 3;
+  }
+}
+
+/* ---- Phone layout (2026-10-20): match the live v3 footer ----
+   Live inset the content ~23px, set the column headings in uppercase
+   16px with a 1.25px rule under them, 13px links on a 1.6 line-height,
+   put "Follow Us" on the same row as the social icons, and centred the
+   copyright, payment icons and sitemap row. v4 had 20px underlined
+   title-case headings, 12px/15px links and a left-aligned bottom. */
+@media screen and (max-width: 749px) {
+  .gs-footer .footer-grid-content {
+    padding: 0 8px;
+  }
+
+  .gs-footer .footer-block-heading {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    border-bottom: 1.25px solid var(--footerTextcolor, #ffffff);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+
+  .gs-footer .footer-menu-link,
+  .gs-footer .footer-contact-detail-link,
+  .gs-footer .footer-privacy-choices {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .gs-footer .list-unstyled li + li {
+    margin-top: 4px;
+  }
+
+  .gs-footer .footer-social-block {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .gs-footer .social-icons-list {
+    gap: 10px;
+  }
+
+  .gs-footer .social-icons-list li + li {
+    margin-top: 0;
+  }
+
+  .gs-footer .social-icons-link {
+    width: 30px;
+    height: 30px;
+  }
+
+  .gs-footer .social-icons-link svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .gs-footer .footer-social-block-heading {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none !important;
+    white-space: nowrap;
+  }
+
+  .gs-footer .footer-bottom {
+    align-items: center;
+    text-align: center;
+  }
+
+  .gs-footer .footer-copyright-text {
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .gs-footer .footer-payment-icons .list-payment,
+  .gs-footer .sitemap-footer {
+    justify-content: center;
   }
 }

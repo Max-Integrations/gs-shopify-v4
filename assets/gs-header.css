@@ -364,8 +364,10 @@
   .gs-header .gs-header__logo {
     position: absolute;
     grid-area: 1 / 1 / 2 / -1;
-    justify-self: center;
-    align-self: center;
+    left: 50%;
+    top: 50%;
+    width: max-content;
+    transform: translate(-50%, -50%);
   }
 }
 
