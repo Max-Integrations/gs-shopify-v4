@@ -361,7 +361,9 @@
 .gs-product__option-values {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 4px;
+  min-width: 10px;
+  max-height: 55px;
 }
 
 /* Visually hidden but focusable: a display:none radio leaves the
@@ -383,12 +385,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 5.2rem;
-  height: 5.2rem;
+  min-width: 4rem;
+  height: 2.5rem;
   padding: 0 0.6em;
   border: 1px solid rgba(var(--color-foreground), 0.3);
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1;
 }
 
@@ -868,11 +870,9 @@
     text-align: left;
   }
 }
-@media screen and (max-width: 768px) {
-  .klaviyo-star-rating-widget {
-    margin-top: -2rem;
-  }
-  .gs-product__price {
-    margin-top: -2rem;
-  }
+.klaviyo-star-rating-widget {
+  margin-top: -1rem;
+}
+.gs-product__price {
+  margin-top: -2rem;
 }
