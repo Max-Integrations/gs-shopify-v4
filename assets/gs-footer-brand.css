@@ -23,9 +23,10 @@
 
 .gs-footer-brand__heading {
   margin: 0;
-  font-family: var(--headingFont);
+  /* Engravers MT light, as on live (was section custom_css on h4). */
+  font-family: "Engravers MT", var(--headingFont);
   font-size: var(--fb-heading-size-mobile, 28px);
-  font-weight: 700;
+  font-weight: 300;
   letter-spacing: 0.02em;
   color: rgb(var(--color-foreground));
 }
