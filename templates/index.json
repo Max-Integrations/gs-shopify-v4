@@ -201,9 +201,6 @@
         "value_pLh3cY",
         "value_eUNfAc"
       ],
-      "custom_css": [
-        "@media screen and (max-width: 768px) {.gs-value-props__list {display: inline; padding-block: 2px; }}"
-      ],
       "name": "Value props",
       "settings": {
         "bg_color": "#000000",
