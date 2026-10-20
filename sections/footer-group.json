@@ -36,7 +36,7 @@
           "type": "newsletter",
           "settings": {
             "enable_newsletter": true,
-            "heading": "Subscribe To Our Emails",
+            "heading": "",
             "placeholder_text": "Enter email"
           }
         },
@@ -83,6 +83,7 @@
         "copyright_text": "The Grunt Style Logo, designs, Grunt Fest, and Beer Guarantee are the registered trademarks or service marks of Grunt Style, LLC. You can try to copy us, but then we'll waterboard you with freedom.",
         "show_sitemap_links": true,
         "html_sitemap_url": "shopify://pages/sitemap",
+        "show_accessibility_link": true,
         "payment_enable": true,
         "enable_follow_on_shop": true,
         "footer_background_opacity": 50,
