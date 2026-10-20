@@ -84,11 +84,22 @@
    bubble. Desktop (990px+) sets its own padding below. */
 .gs-header__main-inner {
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-areas: 'burger logo icons';
+  grid-template-columns: auto auto 1fr auto;
+  grid-template-areas: 'burger utils logo icons';
   align-items: center;
   gap: 12px;
   padding-block: 10px;
+}
+
+/* Mobile-only utility icons (the accessiBe button on live) sit between
+   the burger and the logo. Hidden on desktop, where the same blocks
+   render in the right-hand icon row. */
+.gs-header__mobile-utils {
+  grid-area: utils;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: -4px;
 }
 
 .gs-header__burger {
@@ -131,7 +142,13 @@
 .gs-header__logo-link img {
   display: block;
   width: var(--gs-logo-width-mobile, 130px);
+  max-width: 100%;
   height: auto;
+}
+
+.gs-header__logo-link picture {
+  display: block;
+  line-height: 0;
 }
 
 .gs-header__logo-text {
@@ -276,7 +293,9 @@
    fixes it to the viewport). v3 overrode that in custom-theme-styles.css;
    this is the same override for our header button. */
 .gs-header__icons .gs-header__icon.acsb-trigger,
-.gs-header__icons .gs-header__icon.acsb-trigger.acsb-ready {
+.gs-header__icons .gs-header__icon.acsb-trigger.acsb-ready,
+.gs-header__mobile-utils .gs-header__icon.acsb-trigger,
+.gs-header__mobile-utils .gs-header__icon.acsb-trigger.acsb-ready {
   display: inline-flex !important;
   position: relative !important;
   inset: auto !important;
@@ -374,8 +393,8 @@
 @media screen and (max-width: 989px) {
   .gs-header--search-open .gs-header__main-inner {
     grid-template-areas:
-      'burger logo icons'
-      'search search search';
+      'burger utils logo icons'
+      'search search search search';
   }
 
   .gs-header--search-open .gs-header__search {
@@ -560,7 +579,8 @@
     padding: 14px 0;
   }
 
-  .gs-header__burger {
+  .gs-header__burger,
+  .gs-header__mobile-utils {
     display: none;
   }
 
