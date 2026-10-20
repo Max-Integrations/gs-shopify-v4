@@ -473,10 +473,97 @@
     </div>
   </div>
 
+  {%- comment -%}
+    ------------------------------------------------------------------
+    MOBILE DRAWER (2026-10-20)
+    ------------------------------------------------------------------
+    A port of v3's snippets/mobile-menu.liquid so phones get the same
+    menu as live: a full-height light panel under the header with the
+    main menu as uppercase accordions (three levels), v3's four
+    hard-coded utility links, then a grey block built from the three
+    footer menus. The desktop mega-menu nav below is untouched and is
+    hidden on phones while this is open (gs-header.css, .gs-mnav).
+    Accordion + open/close handling is in the script at the bottom.
+  {%- endcomment -%}
+  {%- if menu != blank -%}
+    {%- capture gs_mnav_chevron -%}<svg viewBox="0 0 12 8" width="10" height="7" aria-hidden="true" focusable="false"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
+    <div class="gs-mnav" id="GsMobileNav">
+      <div class="gs-mnav__primary">
+        <ul class="gs-mnav__list">
+          {%- for link in menu.links -%}
+            <li class="gs-mnav__item">
+              <div class="gs-mnav__row gs-mnav__row--top">
+                <a class="gs-mnav__link" href="{{ link.url }}">{{ link.title | escape }}</a>
+                {%- if link.links.size > 0 -%}
+                  <button type="button" class="gs-mnav__toggle" aria-expanded="false" aria-label="Expand {{ link.title | escape }}" data-gs-mnav-toggle>{{ gs_mnav_chevron }}</button>
+                {%- endif -%}
+              </div>
+              {%- if link.links.size > 0 -%}
+                <ul class="gs-mnav__sub" hidden>
+                  {%- for child in link.links -%}
+                    <li class="gs-mnav__subitem">
+                      {%- if child.links.size > 0 -%}
+                        <div class="gs-mnav__row gs-mnav__row--group">
+                          <a class="gs-mnav__group-link" href="{{ child.url }}">{{ child.title | escape }}</a>
+                          <button type="button" class="gs-mnav__toggle" aria-expanded="false" aria-label="Expand {{ child.title | escape }}" data-gs-mnav-toggle>{{ gs_mnav_chevron }}</button>
+                        </div>
+                        <ul class="gs-mnav__sub2" hidden>
+                          {%- for grandchild in child.links -%}
+                            <li><a class="gs-mnav__sublink" href="{{ grandchild.url }}">{{ grandchild.title | escape }}</a></li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- else -%}
+                        <a class="gs-mnav__sublink" href="{{ child.url }}">{{ child.title | escape }}</a>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+
+          {%- comment -%} v3 hard-coded these four after the menu (mobile-menu.liquid). {%- endcomment -%}
+          {%- assign gs_mnav_extra = 'Store Locator|/pages/grunt-style-retail-stores,Subscribe to Intel|/pages/subscribe,My Wishlists|/pages/my-wishlist,Order Custom Apparel|/pages/custom-orders' | split: ',' -%}
+          {%- for pair in gs_mnav_extra -%}
+            {%- assign parts = pair | split: '|' -%}
+            <li class="gs-mnav__item">
+              <div class="gs-mnav__row gs-mnav__row--top">
+                <a class="gs-mnav__link" href="{{ parts[1] }}">{{ parts[0] }}</a>
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      {%- comment -%} Grey block: the three footer menus as accordions, as on live. {%- endcomment -%}
+      <div class="gs-mnav__secondary">
+        <ul class="gs-mnav__list">
+          {%- assign gs_mnav_footer = 'customer-service,footer-menu-2021-policies,footer-menu-2021-about-us' | split: ',' -%}
+          {%- for handle in gs_mnav_footer -%}
+            {%- assign footer_list = linklists[handle] -%}
+            {%- if footer_list.links.size > 0 -%}
+              <li class="gs-mnav__item">
+                <div class="gs-mnav__row gs-mnav__row--small">
+                  <span class="gs-mnav__link">{{ footer_list.title | replace: 'Footer-Menu-2021', '' | replace: 'Footer Menu-2021', '' | strip | escape }}</span>
+                  <button type="button" class="gs-mnav__toggle" aria-expanded="false" aria-label="Expand {{ footer_list.title | escape }}" data-gs-mnav-toggle>{{ gs_mnav_chevron }}</button>
+                </div>
+                <ul class="gs-mnav__sub" hidden>
+                  {%- for l in footer_list.links -%}
+                    <li><a class="gs-mnav__sublink" href="{{ l.url }}">{{ l.title | escape }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  {%- endif -%}
+
   {%- if menu != blank -%}
     <nav class="gs-header__nav" aria-label="{{ 'sections.header.menu' | t }}">
       <div class="page-width">
-        <ul class="gs-header__nav-list" id="GsMobileNav">
+        <ul class="gs-header__nav-list" id="GsDesktopNav">
           {%- for link in menu.links -%}
             {%- liquid
               assign link_title_down = link.title | downcase | strip
@@ -689,11 +776,27 @@
         }
       }
 
+      // Mobile drawer accordions (see the MOBILE DRAWER note).
+      var mnavToggle = evt.target.closest('[data-gs-mnav-toggle]');
+      if (mnavToggle) {
+        var mnavRow = mnavToggle.parentElement;
+        var mnavPanel = mnavRow.nextElementSibling;
+        var mnavOpen = mnavToggle.getAttribute('aria-expanded') === 'true';
+        mnavToggle.setAttribute('aria-expanded', mnavOpen ? 'false' : 'true');
+        mnavRow.classList.toggle('is-open', !mnavOpen);
+        if (mnavPanel) mnavPanel.hidden = mnavOpen;
+        return;
+      }
+
       var toggle = evt.target.closest('[data-gs-nav-toggle]');
       if (toggle) {
         var header = toggle.closest('.gs-header');
         var open = header.classList.toggle('gs-header--nav-open');
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        // The drawer is fixed under the header (announcement bar included),
+        // so hand it the header's bottom edge and lock page scroll behind it.
+        document.documentElement.style.setProperty('--gs-mnav-top', Math.round(header.getBoundingClientRect().bottom) + 'px');
+        document.body.classList.toggle('gs-mnav-open', open);
         return;
       }
 
