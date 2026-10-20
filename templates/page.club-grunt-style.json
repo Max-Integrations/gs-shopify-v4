@@ -161,13 +161,17 @@
         "card_background": "",
         "card_padding": 0,
         "enable_shadow": false,
+        "image_fit": "cover",
+        "hover_zoom": true,
         "enable_hover_content": false,
         "heading_badge": false,
+        "current_dim_opacity": 20,
+        "current_dim_hover": true,
         "heading": "<em><strong>WELCOME TO CLUB MEMBER PERKS</strong></em>",
         "heading_size": "h1",
         "heading_alignment": "text-center",
-        "heading_color": "#FFCA10",
-        "text_color": "#FFCA10",
+        "heading_color": "#ffca10",
+        "text_color": "#ffca10",
         "btn_bg_color": "#ffffff",
         "btn_text_color": "#000000",
         "btn_hover_color": "#000000",
@@ -236,7 +240,7 @@
             "text": "<p>Experience exclusive member-only designs with Club Grunt Style Graphic Tees—crafted from a premium 60% cotton, 40% polyester blend for superior comfort and durability. Enjoy a tagless, ribbed finish for a sharp look, all designed in the USA. Easy-care and machine washable, these shirts deliver all-day wear you won’t find anywhere else.</p>",
             "size": "small",
             "alignment": "inherit",
-            "color": "#FFFFFF"
+            "color": "#ffffff"
           },
           "blocks": {}
         }
@@ -247,6 +251,9 @@
       ],
       "settings": {
         "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-4",
@@ -1152,8 +1159,12 @@
         "card_background": "",
         "card_padding": 0,
         "enable_shadow": false,
+        "image_fit": "cover",
+        "hover_zoom": true,
         "enable_hover_content": false,
         "heading_badge": false,
+        "current_dim_opacity": 20,
+        "current_dim_hover": true,
         "heading": "",
         "heading_size": "h3",
         "heading_alignment": "text-center",
@@ -1178,7 +1189,7 @@
             "size": "h1",
             "tag": "h3",
             "alignment": "center",
-            "color": "#FFCA10",
+            "color": "#ffca10",
             "font_size_desktop": 0,
             "font_size_mobile": 0
           },
@@ -1191,6 +1202,9 @@
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-4",
@@ -1210,7 +1224,16 @@
             "title": "<strong>JOIN THE CLUB</strong>",
             "text": "<p>Join before the end of the month to get next month's shirt.</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "background_color": "",
+            "text_color": "",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 0,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         },
         "icon_with_text_RtFzBt": {
@@ -1221,7 +1244,16 @@
             "title": "<strong>GET YOUR GEAR</strong>",
             "text": "<p>New exclusive tee ships monthly. Skip, pause, or cancel anytime.</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "background_color": "",
+            "text_color": "",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 0,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         },
         "icon_with_text_QWFRnX": {
@@ -1232,7 +1264,16 @@
             "title": "<strong>STACK YOUR PERKS</strong>",
             "text": "<p>Enjoy free shipping, Club-only drops, and member-only deals.</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "background_color": "",
+            "text_color": "",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 0,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         },
         "icon_with_text_VDMnEP": {
@@ -1243,7 +1284,16 @@
             "title": "<strong>INSTANT REWARDS</strong>",
             "text": "<p>Get 5% back in store credit on every order.</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "background_color": "",
+            "text_color": "",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 0,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         }
       },
@@ -1260,11 +1310,14 @@
       "settings": {
         "title": "",
         "heading_size": "h1",
+        "heading_alignment": "left",
         "image_width": "third",
         "image_ratio": "adapt",
         "button_label": "",
         "button_link": "",
         "columns_desktop": 4,
+        "column_gap": 8,
+        "row_gap": 8,
         "column_alignment": "center",
         "background_style": "none",
         "image_position": "top",
@@ -1395,11 +1448,18 @@
         "quote_hr43YF",
         "quote_djcbDV"
       ],
+      "custom_css": [
+        ".testimonial-text {font-size: 14px; font-weight: 300;}",
+        ".testimonial-title {font-weight: 700; font-size: 20px;}",
+        ".testimonial-star-rating {display: inline;}",
+        ".testimonial-item {max-height: 420px; padding-block: 0px;}",
+        ".testimonial-item-inner {padding: 10px;}"
+      ],
       "settings": {
         "section_visibility": "always",
         "enable_card_border": false,
         "enable_card_shadow": false,
-        "enlargen_slide": true,
+        "enlargen_slide": false,
         "auto_rotate": false,
         "slider_thumbnail": "only-arrow",
         "change_slides_speed": 5,
@@ -1448,6 +1508,9 @@
       ],
       "settings": {
         "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-6",
