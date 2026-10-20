@@ -101,6 +101,7 @@
     --ph-text-gap: {{ s.product_highlight_text_content_gap_desktop }}px;
     --ph-text-gap-mobile: {{ s.product_highlight_text_content_gap_mobile }}px;
     --ph-heading-color: {{ s.product_highlight_text_content_heading_color }};
+    --ph-img-heading-bg: {{ s.product_highlight_image_heading_bg_color | default: 'transparent' }};
     --ph-heading-size: {{ s.product_highlight_text_content_heading_font_size_desktop }}px;
     --ph-heading-size-mobile: {{ s.product_highlight_text_content_heading_font_size_mobile }}px;
     --ph-para-color: {{ s.product_highlight_text_content_paragraph_color }};
@@ -604,6 +605,12 @@
       "id": "product_highlight_image_heading_color",
       "label": "Image heading color",
       "default": "#000000"
+    },
+    {
+      "type": "color_background",
+      "id": "product_highlight_image_heading_bg_color",
+      "label": "Image heading background",
+      "info": "Band behind the heading over the image. Leave empty for none."
     },
     {
       "type": "range",
