@@ -253,3 +253,67 @@
     z-index: 3;
   }
 }
+
+/* ---- Phone layout (2026-10-20): match the live v3 footer ----
+   Live inset the content ~23px, set the column headings in uppercase
+   16px with a 1.25px rule under them, 13px links on a 1.6 line-height,
+   put "Follow Us" on the same row as the social icons, and centred the
+   copyright, payment icons and sitemap row. v4 had 20px underlined
+   title-case headings, 12px/15px links and a left-aligned bottom. */
+@media screen and (max-width: 749px) {
+  .gs-footer .footer-grid-content {
+    padding: 0 8px;
+  }
+
+  .gs-footer .footer-block-heading {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    border-bottom: 1.25px solid var(--footerTextcolor, #ffffff);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+
+  .gs-footer .footer-menu-link,
+  .gs-footer .footer-contact-detail-link,
+  .gs-footer .footer-privacy-choices {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .gs-footer .list-unstyled li + li {
+    margin-top: 0;
+  }
+
+  .gs-footer .footer-social-block {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .gs-footer .footer-social-block-heading {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none !important;
+    white-space: nowrap;
+  }
+
+  .gs-footer .footer-bottom {
+    align-items: center;
+    text-align: center;
+  }
+
+  .gs-footer .footer-copyright-text {
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .gs-footer .footer-payment-icons .list-payment,
+  .gs-footer .sitemap-footer {
+    justify-content: center;
+  }
+}
