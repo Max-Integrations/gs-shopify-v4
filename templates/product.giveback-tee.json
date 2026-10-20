@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -18,7 +27,8 @@
             "alignment": "left",
             "text_color": "",
             "bg": ""
-          }
+          },
+          "blocks": {}
         },
         "title": {
           "type": "block--product-title",
@@ -35,6 +45,7 @@
             "show_savings": true,
             "savings_style": "percent",
             "show_tax_line": false,
+            "inline_rating": false,
             "conditional_message": "<p>{{ product.metafields.custom.conditional_price_message.value }}</p>",
             "message_color": "#ab192d"
           },
@@ -44,7 +55,6 @@
           "type": "block--product-message",
           "settings": {
             "text": "<p>{{ product.metafields.custom.limited_custom_product_message.value }}</p>",
-            "image": "",
             "image_link": "",
             "product_tags": "",
             "exclude_tags": "",
@@ -55,13 +65,13 @@
             "alignment": "left",
             "text_color": "",
             "bg": ""
-          }
+          },
+          "blocks": {}
         },
         "richtext_2": {
           "type": "block--product-message",
           "settings": {
             "text": "<p>{{ product.metafields.custom.promo_exclusions | metafield_tag }}</p>",
-            "image": "",
             "image_link": "",
             "product_tags": "",
             "exclude_tags": "",
@@ -72,7 +82,8 @@
             "alignment": "left",
             "text_color": "#ab192d",
             "bg": ""
-          }
+          },
+          "blocks": {}
         },
         "swatches": {
           "type": "block--product-swatches",
@@ -80,6 +91,7 @@
             "style": "pattern",
             "shape": "square",
             "size": 32,
+            "size_mobile": 32,
             "show_label": true,
             "label": "Color"
           },
@@ -269,6 +281,7 @@
           "type": "block--product-buy-buttons",
           "settings": {
             "show_quantity": true,
+            "quantity_position": "stacked",
             "add_label": "Add to cart",
             "sold_out_label": "Sold out - email when available",
             "sold_out_disables": false,
@@ -291,11 +304,13 @@
             "heading": "Product Description",
             "source": "text",
             "text": "<p><strong>{{ product.metafields.custom.limited_custom_product_message.value }}</strong></p>{{ product.description }}",
+            "page": "",
             "features_heading": "",
             "video_url": "",
             "open_default": true,
             "visibility": "always"
-          }
+          },
+          "blocks": {}
         },
         "accordion_2": {
           "type": "block--product-accordion",
@@ -303,11 +318,13 @@
             "heading": "{{ product.metafields.custom.pdp_feature_slider_name.value }}",
             "source": "features",
             "text": "",
+            "page": "",
             "features_heading": "",
             "video_url": "",
             "open_default": true,
             "visibility": "mobile"
-          }
+          },
+          "blocks": {}
         },
         "accordion_3": {
           "type": "block--product-accordion",
@@ -315,11 +332,13 @@
             "heading": "Material Description",
             "source": "text",
             "text": "{{ product.metafields.custom.material_description | metafield_tag }}",
+            "page": "",
             "features_heading": "",
             "video_url": "",
             "open_default": false,
             "visibility": "always"
-          }
+          },
+          "blocks": {}
         },
         "accordion_4": {
           "type": "block--product-accordion",
@@ -327,11 +346,13 @@
             "heading": "ABOUT FOUNDATION",
             "source": "text",
             "text": "<p>At Grunt Style Foundation, we believe that Mental Health and Wellness are paramount. No veteran should ever go without. We are proud to assist in Military Transition & Sustainment, Food Insecurities and Housing.</p><p>Grunt Style Foundation is a national nonprofit organization committed to providing life changing resources and experiences in which Veterans, Service Members, and their Families thrive</p><p><a href=\"https://www.gruntstyle.com/pages/grunt-style-foundation\" target=\"_blank\" title=\"Grunt Style Foundation\"><em>Learn more about the initiatives by Grunt Style Foundation today.</em></a></p>",
+            "page": "",
             "features_heading": "",
             "video_url": "",
             "open_default": false,
             "visibility": "always"
-          }
+          },
+          "blocks": {}
         },
         "value_props": {
           "type": "block--product-value-props",
@@ -347,7 +368,8 @@
                 "text": "Profits from this tee support the organization.",
                 "link": "",
                 "hide_for_tags": ""
-              }
+              },
+              "blocks": {}
             },
             "prop_free_shipping": {
               "type": "block--product-value-prop",
@@ -356,7 +378,8 @@
                 "text": "FREE SHIPPING OVER $75",
                 "link": "shopify://pages/shipping-handling",
                 "hide_for_tags": ""
-              }
+              },
+              "blocks": {}
             },
             "prop_loyalty_rewards": {
               "type": "block--product-value-prop",
@@ -365,7 +388,8 @@
                 "text": "GRUNT STYLE REWARDS - Join & Get 5% Back",
                 "link": "https://www.gruntstyle.com/community/membership",
                 "hide_for_tags": ""
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -413,25 +437,6 @@
     },
     "products_collage_EWTtec": {
       "type": "image-with-text",
-      "settings": {
-        "section_visibility": "always",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "center",
-        "mobile_content_alignment": "center",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-1",
-        "show_chevrons": false,
-        "full_width": false,
-        "content_background": "",
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "image": "shopify://shop_images/Blank_Poster_2000x2000_Foundation__2024_Holiday_Gift_Guide_Landing_Page-min.jpg"
-      },
       "blocks": {
         "b1": {
           "type": "block--heading",
@@ -443,7 +448,8 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "b2": {
           "type": "block--text",
@@ -452,7 +458,8 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         },
         "b3": {
           "type": "block--button",
@@ -476,14 +483,51 @@
             "border_color": "",
             "hover_bg": "",
             "hover_text_color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "b1",
         "b2",
         "b3"
-      ]
+      ],
+      "settings": {
+        "section_visibility": "always",
+        "image": "shopify://shop_images/Blank_Poster_2000x2000_Foundation__2024_Holiday_Gift_Guide_Landing_Page-min.jpg",
+        "full_width": false,
+        "content_background": "",
+        "height": "small",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "show_chevrons": false,
+        "chevron_stroke_width": 2,
+        "chevron_color_text": "#ab192d",
+        "chevron_row_fill": "solid",
+        "chevron_row_size": 80,
+        "chevron_row_size_mobile": 64,
+        "chevron_row_gap": 30,
+        "chevron_row_gap_mobile": 30,
+        "chevron_row_space_above": 24,
+        "chevron_row_space_below": 0,
+        "chevron_color_image": "#ffffff",
+        "chevron_col_fill": "outline",
+        "chevron_col_size": 78,
+        "chevron_col_size_mobile": 54,
+        "chevron_col_gap": 20,
+        "chevron_col_gap_mobile": 25,
+        "chevron_col_inset": 30,
+        "chevron_col_inset_mobile": 15,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
     },
     "custom_liquid_9fRRfL": {
       "type": "custom-liquid",
