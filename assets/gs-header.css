@@ -324,21 +324,42 @@
     display: none !important;
   }
 
-  /* Phone sizing matches the live v3 header: 24px glyphs on a 29px pitch. */
-  .gs-header__icons {
-    gap: 2px;
+  /* Phone sizing matches the live v3 header: 20px glyphs in 24px boxes on
+     a 29px pitch (search / account / cart), 22px accessiBe glyph. */
+  .gs-header .gs-header__icons {
+    gap: 5px;
   }
 
-  .gs-header__icon,
-  .gs-header__mobile-utils .gs-header__icon.acsb-trigger,
-  .gs-header__mobile-utils .gs-header__icon.acsb-trigger.acsb-ready {
-    width: 32px !important;
-    height: 32px !important;
+  .gs-header .gs-header__icons .gs-header__icon {
+    width: 24px !important;
+    height: 24px !important;
   }
 
-  .gs-header__icon > svg {
-    width: 24px;
-    height: 24px;
+  .gs-header .gs-header__icons .gs-header__icon > svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .gs-header .gs-header__mobile-utils .gs-header__icon > svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* The burger + accessiBe side is narrower than the three icons on the
+     right, so centring the logo inside its own grid cell lands it a few
+     px left of the viewport centre. Lift it out of the cell and centre it
+     on the whole row instead, as live does. min-height keeps the row at
+     the logo's height now that it no longer sizes the track. */
+  .gs-header .gs-header__main-inner {
+    min-height: 63px;
+    box-sizing: border-box;
+  }
+
+  .gs-header .gs-header__logo {
+    position: absolute;
+    grid-area: 1 / 1 / 2 / -1;
+    justify-self: center;
+    align-self: center;
   }
 }
 
