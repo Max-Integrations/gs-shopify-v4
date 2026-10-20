@@ -912,6 +912,7 @@
       "blocks": {
         "collection_block_fJNP4g": {
           "type": "collection_block",
+          "disabled": true,
           "settings": {
             "custom_title": "G.W.O.T",
             "collection": "gwot",
