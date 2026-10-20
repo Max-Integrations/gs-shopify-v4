@@ -91,7 +91,10 @@
 
 .gs-fc__track {
   display: flex;
-  gap: 25px;
+  /* Spacing between slides is a margin on the slide (below), not a flex
+     gap: WebKit computes scroll-snap positions without the gap, so on
+     iOS each swipe drifted a further 25px off the product. Grid mode
+     (no snapping) keeps the gap. */
   margin: 0;
   padding: 10px 0;
   list-style: none;
@@ -111,8 +114,13 @@
 /* Grid mode wraps instead of scrolling. */
 .gs-fc__track--grid {
   flex-wrap: wrap;
+  gap: 25px;
   overflow-x: visible;
   scroll-snap-type: none;
+}
+
+.gs-fc__track--grid .gs-fc__slide + .gs-fc__slide {
+  margin-left: 0;
 }
 
 .gs-fc__slide {
@@ -120,6 +128,10 @@
   scroll-snap-align: start;
   display: flex;
   margin: 0;
+}
+
+.gs-fc__slide + .gs-fc__slide {
+  margin-left: 25px;
 }
 
 /* Equal-height cards across an uneven row. */
