@@ -90,6 +90,19 @@
 
   Still not carried over: the retail store locator dropdown, the
   contact-us side panel and the store details dropdown.
+
+  ------------------------------------------------------------------
+  ICON VISIBILITY (2026-10-20, client request)
+  ------------------------------------------------------------------
+  Every icon has a "Show on" setting: All screen sizes / Desktop only /
+  Mobile only (/ Hidden for account, cart, search). Desktop means
+  990px and up, the header's own breakpoint. Icon link blocks gained
+  `show_on`; the old `show_on_mobile` checkbox is kept for saved data
+  (ticked + "Desktop only" behaves as before, i.e. all sizes) and is
+  only shown in the editor while ticked. A hidden account icon stays in
+  the DOM with display:none because Swym's wishlist launcher is
+  injected beside .gs-header__account. `account_in_mobile_menu` adds an
+  Account / Log in link to the bottom of the mobile menu.
   ==================================================================
 {% endcomment %}
 
@@ -113,6 +126,31 @@
   assign s = section.settings
   assign menu = s.menu
   assign mega_blocks = section.blocks | where: 'type', 'nav_menu_img'
+
+  # Show on: all / desktop / mobile / none -> icon class.
+  # --desktop and --mobile are the classes gs-header.css already hides
+  # below / above 990px; --hidden hides at every size.
+  assign account_show = s.account_visibility | default: 'all'
+  assign cart_show = s.cart_visibility | default: 'all'
+  assign search_show = s.search_visibility | default: 'all'
+  assign account_vis_class = ''
+  case account_show
+    when 'desktop'
+      assign account_vis_class = ' gs-header__icon--desktop'
+    when 'mobile'
+      assign account_vis_class = ' gs-header__icon--mobile'
+    when 'none'
+      assign account_vis_class = ' gs-header__icon--hidden'
+  endcase
+  assign cart_vis_class = ''
+  case cart_show
+    when 'desktop'
+      assign cart_vis_class = ' gs-header__icon--desktop'
+    when 'mobile'
+      assign cart_vis_class = ' gs-header__icon--mobile'
+    when 'none'
+      assign cart_vis_class = ' gs-header__icon--hidden'
+  endcase
 
   # Precomputed once, outside the loop.
   assign highlight_match = ''
@@ -147,7 +185,13 @@
 {%- endcomment -%}
 {%- capture gs_utils_mobile -%}
   {%- for block in section.blocks -%}
-    {%- if block.type == 'utility_link' and block.settings.show_on_mobile -%}
+    {%- liquid
+      assign util_show = block.settings.show_on | default: 'desktop'
+      if util_show == 'desktop' and block.settings.show_on_mobile
+        assign util_show = 'all'
+      endif
+    -%}
+    {%- if block.type == 'utility_link' and util_show != 'desktop' -%}
       {%- capture icon_svg -%}
         {%- case block.settings.icon -%}
           {%- when 'accessibility' -%}
@@ -245,8 +289,8 @@
         {%- endif -%}
       </div>
 
-      {%- if s.show_search -%}
-        <div class="gs-header__search" id="GsHeaderSearchWrap-{{ section.id }}">
+      {%- if s.show_search and search_show != 'none' -%}
+        <div class="gs-header__search{% if search_show == 'mobile' %} gs-header__search--mobile-only{% endif %}" id="GsHeaderSearchWrap-{{ section.id }}">
           {%- if settings.predictive_search_enabled -%}
             <predictive-search data-loading-text="{{ 'accessibility.loading' | t }}">
           {%- endif -%}
@@ -323,8 +367,11 @@
 
             {%- when 'utility_link' -%}
               {%- liquid
-                # Desktop-only in this row: blocks marked "show on mobile" render
+                # Desktop-only in this row: on mobile the block renders
                 # beside the burger instead (gs_utils_mobile above).
+                if block.settings.show_on == 'mobile'
+                  continue
+                endif
                 assign icon_classes = 'gs-header__icon gs-header__icon--desktop'
               -%}
               {%- capture icon_svg -%}
@@ -367,7 +414,7 @@
           {%- endcase -%}
         {%- endfor -%}
 
-        {%- if s.show_search -%}
+        {%- if s.show_search and search_show != 'desktop' and search_show != 'none' -%}
           {%- comment -%}
             Mobile only: drops the search field under the top row.
           {%- endcomment -%}
@@ -394,7 +441,7 @@
             so an href-based selector does not work here.
           {%- endcomment -%}
           <a
-            class="gs-header__icon gs-header__account"
+            class="gs-header__icon gs-header__account{{ account_vis_class }}"
             href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
             aria-label="{%- if customer -%}{{ 'customer.account.title' | t }}{%- else -%}{{ 'customer.log_in' | t }}{%- endif -%}"
           >
@@ -404,7 +451,7 @@
         {%- endif -%}
 
         <a
-          class="gs-header__icon gs-header__cart"
+          class="gs-header__icon gs-header__cart{{ cart_vis_class }}"
           href="{{ routes.cart_url }}"
           aria-label="{{ 'templates.cart.cart' | t }}"
           {% if settings.cart_type == 'drawer' %}id="cart-icon-bubble"{% endif %}
@@ -530,6 +577,16 @@
               </li>
             {%- endif -%}
           {%- endfor -%}
+          {%- if s.account_in_mobile_menu and shop.customer_accounts_enabled -%}
+            <li class="gs-header__nav-item gs-header__nav-item--mobile-only gs-header__nav-item--account">
+              <a
+                class="gs-header__nav-link"
+                href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+              >
+                {%- if customer -%}{{ 'customer.account.title' | t }}{%- else -%}{{ 'customer.log_in' | t }}{%- endif -%}
+              </a>
+            </li>
+          {%- endif -%}
         </ul>
       </div>
     </nav>
@@ -847,6 +904,54 @@
       "default": "What are you looking for..."
     },
     {
+      "type": "select",
+      "id": "search_visibility",
+      "label": "Show search on",
+      "info": "Desktop shows the search field; mobile shows the search icon. Desktop is 990px and wider.",
+      "options": [
+        { "value": "all", "label": "All screen sizes" },
+        { "value": "desktop", "label": "Desktop only" },
+        { "value": "mobile", "label": "Mobile only" },
+        { "value": "none", "label": "Hidden" }
+      ],
+      "default": "all"
+    },
+    {
+      "type": "header",
+      "content": "Account and cart icons"
+    },
+    {
+      "type": "select",
+      "id": "account_visibility",
+      "label": "Show account icon on",
+      "info": "Desktop is 990px and wider.",
+      "options": [
+        { "value": "all", "label": "All screen sizes" },
+        { "value": "desktop", "label": "Desktop only" },
+        { "value": "mobile", "label": "Mobile only" },
+        { "value": "none", "label": "Hidden" }
+      ],
+      "default": "all"
+    },
+    {
+      "type": "checkbox",
+      "id": "account_in_mobile_menu",
+      "label": "Add Account / Log in link to the mobile menu",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "cart_visibility",
+      "label": "Show cart icon on",
+      "options": [
+        { "value": "all", "label": "All screen sizes" },
+        { "value": "desktop", "label": "Desktop only" },
+        { "value": "mobile", "label": "Mobile only" },
+        { "value": "none", "label": "Hidden" }
+      ],
+      "default": "all"
+    },
+    {
       "type": "header",
       "content": "Colors"
     },
@@ -1008,11 +1113,24 @@
           "label": "Link"
         },
         {
+          "type": "select",
+          "id": "show_on",
+          "label": "Show on",
+          "info": "On mobile this icon sits beside the menu button, left of the logo (as on the live site). Desktop is 990px and wider.",
+          "options": [
+            { "value": "desktop", "label": "Desktop only" },
+            { "value": "mobile", "label": "Mobile only" },
+            { "value": "all", "label": "All screen sizes" }
+          ],
+          "default": "desktop"
+        },
+        {
           "type": "checkbox",
           "id": "show_on_mobile",
-          "label": "Show on mobile",
-          "info": "On mobile this icon sits beside the menu button, left of the logo (as on the live site). Search, account and cart stay on the right.",
-          "default": false
+          "label": "Also show on mobile (old setting)",
+          "info": "Replaced by Show on. While ticked, Desktop only still shows on mobile; untick it to use Show on alone.",
+          "default": false,
+          "visible_if": "{{ block.settings.show_on_mobile }}"
         }
       ]
     },

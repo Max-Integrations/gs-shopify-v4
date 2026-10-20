@@ -281,6 +281,12 @@
   display: none;
 }
 
+/* "Show on: Hidden" (account / cart). Kept in the DOM: Swym's wishlist
+   launcher is injected beside .gs-header__account. */
+.gs-header__icons .gs-header__icon--hidden {
+  display: none !important;
+}
+
 .gs-header__icon {
   border: 0;
   background: transparent;
@@ -646,6 +652,12 @@
 
   .gs-header__icons .gs-header__icon--mobile {
     display: none;
+  }
+
+  /* "Show on: Mobile only" for search, and the mobile menu's account link. */
+  .gs-header__search--mobile-only,
+  .gs-header__nav-item--mobile-only {
+    display: none !important;
   }
 
   .gs-header__nav {
