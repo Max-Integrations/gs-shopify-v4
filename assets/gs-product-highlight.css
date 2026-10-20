@@ -115,6 +115,7 @@
 
 .gs-ph__image-heading {
   width: 100%;
+  background: var(--ph-img-heading-bg, transparent);
   color: var(--ph-img-heading-color, #000000);
   font-size: var(--ph-img-heading-size-mobile, 24px);
   font-weight: 700;
