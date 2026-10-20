@@ -46,7 +46,16 @@
     padding: 15px 30px;
   }
 
+  /* One row of three columns on phones, as on live (v3's
+     .value-props-flex); the items wrap onto two lines instead of
+     stacking into three rows. */
+  .gs-value-props__list {
+    flex-wrap: nowrap;
+    gap: 16px;
+  }
+
   .gs-value-props__item {
+    flex: 1 1 0;
     font-size: 12px;
     line-height: 16px;
   }
