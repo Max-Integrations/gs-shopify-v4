@@ -136,6 +136,7 @@
 
 .footer-social-block-heading {
   margin: 0;
+  color: var(--footerTextcolor, #ffffff);
   font-size: 20px;
   font-weight: 500;
   text-decoration: none !important;
@@ -322,10 +323,26 @@
     justify-self: center;
   }
 
+  /* Live: copyright on its own line, payment icons right-aligned on
+     the next, sitemap links on a third. */
   .footer-bottom {
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .footer-copyright-text,
+  .footer-sitemap-container {
+    flex: 1 1 100%;
+  }
+
+  .footer-payment-icons {
+    margin-left: auto;
+  }
+
+  .footer-payment-icons .list-payment {
+    justify-content: flex-end;
   }
 }
 
