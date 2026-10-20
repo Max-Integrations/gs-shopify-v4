@@ -11,6 +11,7 @@
   "sections": {
     "section_full_width_image_text_MqghR7": {
       "type": "section--full-width-image_text",
+      "disabled": true,
       "name": "Club & Rewards promo",
       "settings": {
         "visibility": "always",
@@ -49,12 +50,12 @@
         "layout_preset_mobile": "center",
         "alignment_mobile": "center",
         "background_color": "#000000",
-        "background_image_desktop": "shopify://shop_images/ANIMATED_HPC-D---Short_CTA_1440x424_FW26_Campaign_-_Grunt_Style_Arcade.gif",
-        "background_image_mobile": "shopify://shop_images/ANIMATED_HPC-M---Tall_CTA_750x994_FW26_Campaign_-_Grunt_Style_Arcade.gif",
+        "background_image_desktop": "shopify://shop_images/HPC_D_-_Short_CTA_1440x424_FW26_Christmas_Parody.jpg",
+        "background_image_mobile": "shopify://shop_images/HPC_M_-_Tall_CTA_750x994_FW26_Christmas_Parody.jpg",
         "image_height_auto": true,
         "overlay_color": "#000000",
         "overlay_opacity": 0,
-        "banner_link": "shopify://collections/grunt-style-arcade",
+        "banner_link": "shopify://collections/operation-silent-night",
         "open_in_new_tab": false,
         "padding_top_desktop": 0,
         "padding_bottom_desktop": 0,
