@@ -65,7 +65,11 @@
           data-speed="{{ block.settings.scroll_speed | default: 100 }}"
         >
           {%- if is_sheet -%}
-            <div class="text-scroller__list" data-source={{ block.settings.data_source_url | json }}>
+            {%- comment -%}
+              escape, not json: json writes every / as \/, which the
+              browser reads as //, so the sheet request 404'd.
+            {%- endcomment -%}
+            <div class="text-scroller__list" data-source="{{ block.settings.data_source_url | escape }}">
               <ul></ul>
             </div>
           {%- else -%}
@@ -89,8 +93,13 @@
         var ul = listWrapper.querySelector('ul');
         var rawUrl = listWrapper.getAttribute('data-source');
 
-        if (ul && rawUrl && rawUrl.indexOf('/') !== -1) {
-          var fetchUrl = rawUrl.substring(0, rawUrl.lastIndexOf('/')) + '/gviz/tq?tqx=out:json';
+        // Build the query URL from the sheet id (and tab, if the link has
+        // one) rather than by trimming the link's last path segment.
+        var idMatch = rawUrl && rawUrl.match(/\/spreadsheets\/d\/([\w-]+)/);
+        var gidMatch = rawUrl && rawUrl.match(/[#&?]gid=(\d+)/);
+
+        if (ul && idMatch) {
+          var fetchUrl = 'https://docs.google.com/spreadsheets/d/' + idMatch[1] + '/gviz/tq?tqx=out:json' + (gidMatch ? '&gid=' + gidMatch[1] : '');
 
           fetch(fetchUrl)
             .then(function (res) {
@@ -107,8 +116,17 @@
 
               var colCount = json.table.cols.length;
               var frag = document.createDocumentFragment();
+              var rows = json.table.rows;
 
-              json.table.rows.forEach(function (row) {
+              // Google only detects a header row when the columns below it
+              // hold numbers or dates, so an all-text sheet ("Name",
+              // "Message") returns its header as the first data row.
+              var first = rows[0] && rows[0].c && rows[0].c[0] && rows[0].c[0].v;
+              if (!json.table.parsedNumHeaders && /^(full\s*)?names?\b/i.test(String(first || '').trim())) {
+                rows = rows.slice(1);
+              }
+
+              rows.forEach(function (row) {
                 if (!row.c) return;
                 var text;
 
