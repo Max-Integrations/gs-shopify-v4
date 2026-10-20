@@ -483,3 +483,27 @@
     transform: none;
   }
 }
+
+/* Phones (2026-10-20): carousel arrows overlay the tiles instead of
+   taking 32px off each side, so a single tile spans the page width as
+   on live. */
+@media screen and (max-width: 749px) {
+  .gs-mg__scroller {
+    position: relative;
+  }
+
+  .gs-mg__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  .gs-mg__nav[data-swatch-scroll="prev"] {
+    left: 0;
+  }
+
+  .gs-mg__nav[data-swatch-scroll="next"] {
+    right: 0;
+  }
+}
