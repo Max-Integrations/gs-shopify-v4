@@ -323,6 +323,23 @@
   .gs-header__icons .gs-header__icon--desktop.acsb-trigger {
     display: none !important;
   }
+
+  /* Phone sizing matches the live v3 header: 24px glyphs on a 29px pitch. */
+  .gs-header__icons {
+    gap: 2px;
+  }
+
+  .gs-header__icon,
+  .gs-header__mobile-utils .gs-header__icon.acsb-trigger,
+  .gs-header__mobile-utils .gs-header__icon.acsb-trigger.acsb-ready {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .gs-header__icon > svg {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 @media screen and (min-width: 990px) {
