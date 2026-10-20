@@ -586,6 +586,78 @@
     "media_grid_EHBURP": {
       "type": "section--media-grid",
       "blocks": {
+        "block_media_tile_tbkgQn": {
+          "type": "block--media-tile",
+          "settings": {
+            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS8681_EatTheDeadT-Shirt-Black.jpg",
+            "collection": "",
+            "link": "shopify://collections/grunt-style-arcade",
+            "span_two_columns": false,
+            "span_two_rows": true,
+            "content_position": "bottom-center",
+            "content_alignment": "center",
+            "hover_text": "",
+            "background_color": "#000000",
+            "background_opacity": 0.1,
+            "hover_overlay": "keep"
+          },
+          "blocks": {
+            "heading": {
+              "type": "block--heading",
+              "settings": {
+                "text": "<strong>ARCADE</strong>",
+                "size": "h2",
+                "tag": "h2",
+                "alignment": "inherit",
+                "color": "",
+                "font_size_desktop": 0,
+                "font_size_mobile": 0
+              },
+              "blocks": {}
+            },
+            "block_text_D7Yr3j": {
+              "type": "block--text",
+              "name": "Text",
+              "settings": {
+                "text": "<p><em>In This Arena, There Are No Cheat Codes.</em></p>",
+                "size": "small",
+                "alignment": "inherit",
+                "color": ""
+              },
+              "blocks": {}
+            },
+            "block_button_wjFyna": {
+              "type": "block--button",
+              "settings": {
+                "label": "<strong>SHOP NOW</strong>",
+                "link": "",
+                "open_in_new_tab": false,
+                "style": "button",
+                "width": "auto",
+                "font_size": 14,
+                "padding_y": 12,
+                "padding_x": 20,
+                "margin_y": 0,
+                "margin_x": 0,
+                "border_width": 1,
+                "border_radius": 0,
+                "custom_scheme": true,
+                "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
+                "bg": "#ffffff",
+                "text_color": "#000000",
+                "border_color": "#000000",
+                "hover_bg": "#000000",
+                "hover_text_color": "#ffffff"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading",
+            "block_text_D7Yr3j",
+            "block_button_wjFyna"
+          ]
+        },
         "grid_DNCaHx": {
           "type": "block--media-tile",
           "settings": {
@@ -593,7 +665,7 @@
             "collection": "",
             "link": "shopify://collections/proud-veteran",
             "span_two_columns": false,
-            "span_two_rows": true,
+            "span_two_rows": false,
             "content_position": "bottom-center",
             "content_alignment": "center",
             "hover_text": "",
@@ -718,78 +790,6 @@
             "block_button_xcNigW"
           ]
         },
-        "block_media_tile_tbkgQn": {
-          "type": "block--media-tile",
-          "settings": {
-            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8410_OnlyViolenceFollowsHat_1.jpg",
-            "collection": "",
-            "link": "shopify://collections/handpicked-for-violence",
-            "span_two_columns": false,
-            "span_two_rows": false,
-            "content_position": "bottom-center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0.1,
-            "hover_overlay": "keep"
-          },
-          "blocks": {
-            "heading": {
-              "type": "block--heading",
-              "settings": {
-                "text": "<strong>VIOLENCE</strong>",
-                "size": "h2",
-                "tag": "h2",
-                "alignment": "inherit",
-                "color": "",
-                "font_size_desktop": 0,
-                "font_size_mobile": 0
-              },
-              "blocks": {}
-            },
-            "block_text_D7Yr3j": {
-              "type": "block--text",
-              "name": "Text",
-              "settings": {
-                "text": "<p><em>Warnings Aren't Suggestions</em></p>",
-                "size": "small",
-                "alignment": "inherit",
-                "color": ""
-              },
-              "blocks": {}
-            },
-            "block_button_wjFyna": {
-              "type": "block--button",
-              "settings": {
-                "label": "<strong>SHOP NOW</strong>",
-                "link": "",
-                "open_in_new_tab": false,
-                "style": "button",
-                "width": "auto",
-                "font_size": 14,
-                "padding_y": 12,
-                "padding_x": 20,
-                "margin_y": 0,
-                "margin_x": 0,
-                "border_width": 1,
-                "border_radius": 0,
-                "custom_scheme": true,
-                "color_scheme": "scheme-656b0217-2e47-4e0a-888e-24172c12f5d1",
-                "bg": "#ffffff",
-                "text_color": "#000000",
-                "border_color": "#000000",
-                "hover_bg": "#000000",
-                "hover_text_color": "#ffffff"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "heading",
-            "block_text_D7Yr3j",
-            "block_button_wjFyna"
-          ]
-        },
         "grid_PFPLjN": {
           "type": "block--media-tile",
           "disabled": true,
@@ -865,9 +865,9 @@
         }
       },
       "block_order": [
+        "block_media_tile_tbkgQn",
         "grid_DNCaHx",
         "grid_DYVM8z",
-        "block_media_tile_tbkgQn",
         "grid_PFPLjN"
       ],
       "name": "Media grid",
