@@ -97,7 +97,8 @@
   list-style: none;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  /* No CSS smooth scrolling on a snap track: iOS can leave it between
+     items. gs-swatch-scroller.js asks for smooth scrolls itself. */
   scrollbar-width: none;
   -ms-overflow-style: none;
   width: 100%;
