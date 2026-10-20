@@ -69,7 +69,10 @@
     
     .yts-img svg { max-width: 100px; max-height: 100px; color: #ffffffbf; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: color .25s; }
     
-    .yts-img img { width: 100%; }
+    /* height: auto keeps the thumbnail's own ratio. v3's base CSS set it
+       globally; v4 doesn't, so the height="" attribute pinned the image at
+       its full pixel height and stretched it vertically. */
+    .yts-img img { display: block; width: 100%; height: auto; }
   
     .yts-href { text-transform: uppercase; }
   
