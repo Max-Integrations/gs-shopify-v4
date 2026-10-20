@@ -1,9 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-page",
       "disabled": true,
-      "settings": {}
+      "settings": {
+        "desktop_height": "300px",
+        "mobile_height": "200px",
+        "heading_size": "h1",
+        "seo_heading": "h1",
+        "heading_alignment": "text-center",
+        "page_content": true,
+        "color_scheme": "",
+        "enable_gradient": false,
+        "banner_background_color": "#b3b3b3",
+        "text_color": "",
+        "background_color": "#b3b3b3",
+        "background_opacity": 0.6,
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
     },
     "channels": {
       "type": "section--contact-channels",
@@ -19,7 +45,8 @@
             "link": "",
             "label_online": "Chat now",
             "label_offline": "Leave us a message"
-          }
+          },
+          "blocks": {}
         },
         "email": {
           "type": "block--contact-channel",
@@ -32,7 +59,8 @@
             "link": "mailto:customerservice@gruntstyle.com",
             "label_online": "Chat now",
             "label_offline": "Leave us a message"
-          }
+          },
+          "blocks": {}
         },
         "call": {
           "type": "block--contact-channel",
@@ -45,7 +73,8 @@
             "link": "tel:8775547868",
             "label_online": "Chat now",
             "label_offline": "Leave us a message"
-          }
+          },
+          "blocks": {}
         },
         "store": {
           "type": "block--contact-channel",
@@ -58,7 +87,8 @@
             "link": "shopify://pages/grunt-style-retail-stores",
             "label_online": "Chat now",
             "label_offline": "Leave us a message"
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -80,6 +110,7 @@
     },
     "form": {
       "type": "section--contact-form",
+      "disabled": true,
       "settings": {
         "heading": "Send us a message",
         "description": "<p>We reply within one business day, Monday to Friday, 9am to 5pm CST.</p>",
@@ -98,82 +129,172 @@
         "track": {
           "type": "column",
           "settings": {
+            "icon": "none",
             "title": "Track your order",
             "text": "<p>See where your package is right now.</p>",
             "link_label": "Track order",
-            "link": "shopify://pages/tracking"
+            "link": "shopify://pages/tracking",
+            "background_color": "",
+            "text_color": "",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 0,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         },
         "returns": {
           "type": "column",
           "settings": {
+            "icon": "none",
             "title": "Returns & exchanges",
             "text": "<p>Unworn, unwashed items can be returned within 60 days. Start a return at returns.gruntstyle.com.</p>",
             "link_label": "Return policy",
-            "link": "shopify://pages/returns"
+            "link": "shopify://pages/returns",
+            "background_color": "",
+            "text_color": "",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 0,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         },
         "faq": {
           "type": "column",
           "settings": {
+            "icon": "none",
             "title": "FAQ",
             "text": "<p>Answers to the questions we get most.</p>",
             "link_label": "Read the FAQ",
-            "link": "shopify://pages/faq"
+            "link": "shopify://pages/faq",
+            "background_color": "",
+            "text_color": "",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 0,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         },
         "sizes": {
           "type": "column",
           "settings": {
+            "icon": "none",
             "title": "Size charts",
             "text": "<p>Find your fit before you order.</p>",
             "link_label": "Size charts",
-            "link": "shopify://pages/sizechart"
+            "link": "shopify://pages/sizechart",
+            "background_color": "",
+            "text_color": "",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 0,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         },
         "shipping": {
           "type": "column",
           "settings": {
+            "icon": "none",
             "title": "Shipping & handling",
             "text": "<p>Rates, timelines, APO/FPO and international.</p>",
             "link_label": "Shipping details",
-            "link": "shopify://pages/shipping-handling"
+            "link": "shopify://pages/shipping-handling",
+            "background_color": "",
+            "text_color": "",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 0,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         },
         "giftcard": {
           "type": "column",
           "settings": {
+            "icon": "none",
             "title": "Gift card balance",
             "text": "<p>Check what is left on a Grunt Style gift card.</p>",
             "link_label": "Check balance",
-            "link": "shopify://pages/check-gift-card-balance"
+            "link": "shopify://pages/check-gift-card-balance",
+            "background_color": "",
+            "text_color": "",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 0,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         },
         "govx": {
           "type": "column",
           "settings": {
+            "icon": "none",
             "title": "Military & first responder discount",
             "text": "<p>Verified through GovX. Thank you for your service.</p>",
             "link_label": "Get the discount",
-            "link": "shopify://pages/govx-discount"
+            "link": "shopify://pages/govx-discount",
+            "background_color": "",
+            "text_color": "",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 0,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         },
         "wholesale": {
           "type": "column",
           "settings": {
+            "icon": "none",
             "title": "Wholesale",
             "text": "<p>Carry Grunt Style in your store.</p>",
             "link_label": "Apply for wholesale",
-            "link": "shopify://pages/wholesale-account-registration"
+            "link": "shopify://pages/wholesale-account-registration",
+            "background_color": "",
+            "text_color": "",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 0,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         },
         "custom": {
           "type": "column",
           "settings": {
+            "icon": "none",
             "title": "Custom orders",
             "text": "<p>Your design on Grunt Style apparel.</p>",
             "link_label": "Custom orders",
-            "link": "shopify://pages/custom-orders"
+            "link": "shopify://pages/custom-orders",
+            "background_color": "",
+            "text_color": "",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 0,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         }
       },
@@ -188,16 +309,22 @@
         "wholesale",
         "custom"
       ],
+      "disabled": true,
       "settings": {
         "title": "Help yourself",
         "heading_size": "h1",
+        "heading_alignment": "left",
         "image_width": "full",
         "image_ratio": "adapt",
         "button_label": "",
         "button_link": "",
         "columns_desktop": 3,
+        "column_gap": 8,
+        "row_gap": 8,
         "column_alignment": "left",
         "background_style": "primary",
+        "image_position": "top",
+        "card_color_scheme": "",
         "color_scheme": "scheme-2",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
@@ -271,6 +398,7 @@
         "q5",
         "q6"
       ],
+      "disabled": true,
       "settings": {
         "caption": "",
         "heading": "Top questions",
@@ -300,6 +428,8 @@
             "font_size": 0,
             "padding_y": 12,
             "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
             "border_width": 1,
             "border_radius": 0,
             "custom_scheme": false,
@@ -309,14 +439,19 @@
             "border_color": "",
             "hover_bg": "",
             "hover_text_color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "btn"
       ],
+      "disabled": true,
       "settings": {
         "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-1",
@@ -338,7 +473,8 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "b_1": {
           "type": "block--button",
@@ -351,6 +487,8 @@
             "font_size": 0,
             "padding_y": 12,
             "padding_x": 28,
+            "margin_y": 0,
+            "margin_x": 0,
             "border_width": 1,
             "border_radius": 0,
             "custom_scheme": false,
@@ -360,13 +498,15 @@
             "border_color": "",
             "hover_bg": "",
             "hover_text_color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "h",
         "b_1"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/GS_CPB-retail-1440x300.png",
         "image_overlay_opacity": 50,
