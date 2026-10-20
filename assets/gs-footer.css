@@ -284,13 +284,31 @@
   }
 
   .gs-footer .list-unstyled li + li {
-    margin-top: 0;
+    margin-top: 4px;
   }
 
   .gs-footer .footer-social-block {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 20px;
+  }
+
+  .gs-footer .social-icons-list {
+    gap: 10px;
+  }
+
+  .gs-footer .social-icons-list li + li {
+    margin-top: 0;
+  }
+
+  .gs-footer .social-icons-link {
+    width: 30px;
+    height: 30px;
+  }
+
+  .gs-footer .social-icons-link svg {
+    width: 14px;
+    height: 14px;
   }
 
   .gs-footer .footer-social-block-heading {
