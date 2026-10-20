@@ -2125,7 +2125,7 @@
       "settings": {
         "layout": "grid",
         "columns_desktop": 4,
-        "columns_mobile": 1,
+        "columns_mobile": 2,
         "tile_ratio": "fixed",
         "desktop_row_height": 295,
         "mobile_row_height": 150,

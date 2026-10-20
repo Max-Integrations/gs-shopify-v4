@@ -1,7 +1,17 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main-page": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "desktop_height": "200px",
         "mobile_height": "100px",
@@ -19,11 +29,15 @@
         "bottom_space_desktop": 70,
         "top_space_mobile": 40,
         "bottom_space_mobile": 40
-      },
-      "disabled": true
+      }
     },
     "full_width_image_with_text_g4WaHL": {
       "type": "full-width-image-with-text",
+      "custom_css": [
+        "h1 {background-color: #5e5c39; letter-spacing: 2.5px; padding: 4px;}",
+        ".content {align-items: center !important; flex-direction: column; text-align: center !important; max-width: 750px;}",
+        ".full-width-image-with-text .heading {display: flex; flex-direction: column; max-width: 800px; width: 100%;}"
+      ],
       "settings": {
         "full_width_image_desktop": "shopify://shop_images/GS_CPB-retail-1440x300.png",
         "full_width_image_mobile": "shopify://shop_images/GS_CPB-retail-828x600_4109da92-f44d-4e20-99bc-d522b0691286.png",
@@ -55,52 +69,15 @@
         "full_width_terms_desktop_text_size": 22,
         "full_width_terms_mobile_text_size": 18,
         "full_width_terms_text_alignment": "left"
-      },
-      "custom_css": [
-        "h1 {background-color: #5e5c39; letter-spacing: 2.5px; padding: 4px;}",
-        ".content {align-items: center !important; flex-direction: column; text-align: center !important; max-width: 750px;}",
-        ".full-width-image-with-text .heading {display: flex; flex-direction: column; max-width: 800px; width: 100%;}"
-      ]
+      }
     },
     "media_grid_8MQyhN": {
       "type": "section--media-grid",
-      "settings": {
-        "layout": "grid",
-        "columns_desktop": 4,
-        "columns_mobile": 1,
-        "tile_ratio": "fixed",
-        "desktop_row_height": 270,
-        "mobile_row_height": 150,
-        "tile_width": "full",
-        "desktop_grid_gap": 4,
-        "mobile_grid_gap": 4,
-        "section_width": false,
-        "section_visibility": "always",
-        "content_placement": "overlay",
-        "card_background": "",
-        "card_padding": 0,
-        "enable_shadow": false,
-        "enable_hover_content": false,
-        "heading_badge": false,
-        "heading": "",
-        "heading_size": "h3",
-        "heading_alignment": "text-center",
-        "heading_color": "",
-        "text_color": "",
-        "btn_bg_color": "",
-        "btn_text_color": "",
-        "btn_hover_color": "",
-        "btn_hover_text_color": "",
-        "color_scheme": "scheme-1",
-        "padding_top": 8,
-        "padding_bottom": 8
-      },
       "blocks": {
         "grid_EayAkP": {
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/Split_Banner_D_980x610__GS8399_Lifestyle_Additional_Father_s_Day_Graphics.jpg",
-            "video": "",
             "collection": "",
             "link": "shopify://collections/men-9523346012",
             "span_two_columns": true,
@@ -123,7 +100,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -134,7 +112,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/Split_Banner_D_980x610_SS26_Activation_-_Mother_s_Day_2026.jpg",
-            "video": "",
             "collection": "",
             "link": "shopify://collections/men-9523346012",
             "span_two_columns": true,
@@ -157,7 +134,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -169,10 +147,70 @@
         "grid_EayAkP",
         "grid_xYyYMw"
       ],
-      "name": "t:sections.media-grid.name"
+      "name": "t:sections.media-grid.name",
+      "settings": {
+        "layout": "grid",
+        "columns_desktop": 4,
+        "columns_mobile": 1,
+        "tile_ratio": "fixed",
+        "desktop_row_height": 270,
+        "mobile_row_height": 150,
+        "tile_width": "full",
+        "desktop_grid_gap": 4,
+        "mobile_grid_gap": 4,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "overlay",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "image_fit": "cover",
+        "hover_zoom": true,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "current_dim_opacity": 20,
+        "current_dim_hover": true,
+        "heading": "",
+        "heading_size": "h3",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
     },
     "featured_collections_HL3bjM": {
       "type": "featured-collections",
+      "blocks": {
+        "collection_block_7JqYwg": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "GIFTS FOR HIM",
+            "collection": "gifts-for-him",
+            "cta_label": "SHOP ALL",
+            "cta_link": "shopify://collections/gifts-for-him"
+          }
+        },
+        "collection_block_rmfEj9": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "GIFTS FOR HER",
+            "collection": "gifts-for-her",
+            "cta_label": "SHOP ALL",
+            "cta_link": "shopify://collections/gifts-for-her"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_7JqYwg",
+        "collection_block_rmfEj9"
+      ],
+      "name": "Featured Collections",
       "settings": {
         "section_heading": "",
         "heading_text_align": "center",
@@ -212,87 +250,33 @@
         "collection_cta_spacing_top_mobile": 10,
         "collection_cta_spacing_bottom_desktop": 10,
         "collection_cta_spacing_bottom_mobile": 10,
+        "heading_color": "",
+        "tab_color": "",
+        "tab_active_color": "",
         "cta_text_color": "#ffffff",
         "cta_text_color_hover": "#ffffff",
         "cta_background_color": "#ab192d",
         "cta_background_color_hover": "#000000",
         "cta_border_color": "#ab192d",
         "cta_border_color_hover": "#ffffff"
-      },
-      "blocks": {
-        "collection_block_7JqYwg": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "GIFTS FOR HIM",
-            "collection": "gifts-for-him",
-            "cta_label": "SHOP ALL",
-            "cta_link": "shopify://collections/gifts-for-him"
-          }
-        },
-        "collection_block_rmfEj9": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "GIFTS FOR HER",
-            "collection": "gifts-for-her",
-            "cta_label": "SHOP ALL",
-            "cta_link": "shopify://collections/gifts-for-her"
-          }
-        }
-      },
-      "block_order": [
-        "collection_block_7JqYwg",
-        "collection_block_rmfEj9"
-      ],
-      "name": "Featured Collections"
+      }
     },
     "media_grid_FPCJPj": {
       "type": "section--media-grid",
-      "settings": {
-        "layout": "grid",
-        "columns_desktop": 4,
-        "columns_mobile": 1,
-        "tile_ratio": "fixed",
-        "desktop_row_height": 270,
-        "mobile_row_height": 150,
-        "tile_width": "full",
-        "desktop_grid_gap": 4,
-        "mobile_grid_gap": 4,
-        "section_width": true,
-        "section_visibility": "always",
-        "content_placement": "overlay",
-        "card_background": "",
-        "card_padding": 0,
-        "enable_shadow": false,
-        "enable_hover_content": false,
-        "heading_badge": false,
-        "heading": "",
-        "heading_size": "h3",
-        "heading_alignment": "text-center",
-        "heading_color": "",
-        "text_color": "",
-        "btn_bg_color": "",
-        "btn_text_color": "",
-        "btn_hover_color": "",
-        "btn_hover_text_color": "",
-        "color_scheme": "scheme-1",
-        "padding_top": 8,
-        "padding_bottom": 8
-      },
       "blocks": {
         "grid_7JaVDz": {
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/Split_Banner_D_980x610_SS26_Fathers_Day_Campaign.jpg",
-            "video": "",
             "collection": "",
             "link": "shopify://collections/25-and-under",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0,
+            "background_opacity": 0.3,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -306,7 +290,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -317,16 +302,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/Split_Banner_D_1440x920_Commander_Button_Downs_PTPA.jpg",
-            "video": "",
             "collection": "",
             "link": "shopify://collections/25-plus",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0,
+            "background_opacity": 0.3,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -340,7 +324,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -351,16 +336,15 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GiftCard_600x600_GiftCard_1_1276fb78-6057-4487-9f21-5dc2306cde81.jpg",
-            "video": "",
             "collection": "",
             "link": "shopify://products/e-gift-card",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0,
+            "background_opacity": 0.3,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -374,7 +358,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -387,29 +372,30 @@
         "grid_wkc9CR",
         "grid_BPnQYd"
       ],
-      "name": "t:sections.media-grid.name"
-    },
-    "images_grid_BzzYBp": {
-      "type": "section--media-grid",
+      "name": "t:sections.media-grid.name",
       "settings": {
-        "layout": "carousel",
-        "columns_desktop": 4,
+        "layout": "grid",
+        "columns_desktop": 3,
         "columns_mobile": 2,
-        "tile_ratio": "square",
-        "desktop_row_height": 400,
-        "mobile_row_height": 200,
+        "tile_ratio": "fixed",
+        "desktop_row_height": 270,
+        "mobile_row_height": 150,
         "tile_width": "full",
-        "desktop_grid_gap": 20,
-        "mobile_grid_gap": 12,
-        "section_width": false,
+        "desktop_grid_gap": 4,
+        "mobile_grid_gap": 4,
+        "section_width": true,
         "section_visibility": "always",
-        "content_placement": "below",
+        "content_placement": "overlay",
         "card_background": "",
         "card_padding": 0,
         "enable_shadow": false,
+        "image_fit": "cover",
+        "hover_zoom": true,
         "enable_hover_content": false,
         "heading_badge": false,
-        "heading": "<strong>EXPLORE COLLECTION THEMES</strong>",
+        "current_dim_opacity": 20,
+        "current_dim_hover": false,
+        "heading": "",
         "heading_size": "h3",
         "heading_alignment": "text-center",
         "heading_color": "",
@@ -419,15 +405,17 @@
         "btn_hover_color": "",
         "btn_hover_text_color": "",
         "color_scheme": "scheme-1",
-        "padding_top": 24,
-        "padding_bottom": 32
-      },
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "images_grid_BzzYBp": {
+      "type": "section--media-grid",
       "blocks": {
         "image_dnCF3D": {
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V12_GS787_LivedArmedT-Shirt-Black.jpg",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -447,7 +435,8 @@
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
-              }
+              },
+              "blocks": {}
             },
             "c2": {
               "type": "block--button",
@@ -471,7 +460,8 @@
                 "border_color": "",
                 "hover_bg": "",
                 "hover_text_color": ""
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -483,7 +473,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/GS-SB-750X750-RED.png",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -503,7 +492,8 @@
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
-              }
+              },
+              "blocks": {}
             },
             "c2": {
               "type": "block--button",
@@ -527,7 +517,8 @@
                 "border_color": "",
                 "hover_bg": "",
                 "hover_text_color": ""
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -539,7 +530,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V9_GS7868AmericanVintage-White.jpg",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -559,7 +549,8 @@
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
-              }
+              },
+              "blocks": {}
             },
             "c2": {
               "type": "block--button",
@@ -583,7 +574,8 @@
                 "border_color": "",
                 "hover_bg": "",
                 "hover_text_color": ""
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -595,7 +587,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/Visual_Merchandising_Block_367x597_Blue_Collar_Tees_Funny_-min.jpg",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -615,7 +606,8 @@
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
-              }
+              },
+              "blocks": {}
             },
             "c2": {
               "type": "block--button",
@@ -639,7 +631,8 @@
                 "border_color": "",
                 "hover_bg": "",
                 "hover_text_color": ""
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -651,7 +644,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V5_GS6841_Sh-tShowSupervisorTank.jpg",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -671,7 +663,8 @@
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
-              }
+              },
+              "blocks": {}
             },
             "c2": {
               "type": "block--button",
@@ -695,7 +688,8 @@
                 "border_color": "",
                 "hover_bg": "",
                 "hover_text_color": ""
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -707,7 +701,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/Blank_Poster_2000x2000_V2_GS7813_Strength_Through_Suffering_-_Future_Dusk.jpg",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -727,7 +720,8 @@
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
-              }
+              },
+              "blocks": {}
             },
             "c2": {
               "type": "block--button",
@@ -751,7 +745,8 @@
                 "border_color": "",
                 "hover_bg": "",
                 "hover_text_color": ""
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -763,7 +758,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V10_GS8139SaltyRims.jpg",
-            "video": "",
             "collection": "",
             "link": "",
             "span_two_columns": false,
@@ -783,7 +777,8 @@
                 "size": "body",
                 "alignment": "inherit",
                 "color": ""
-              }
+              },
+              "blocks": {}
             },
             "c2": {
               "type": "block--button",
@@ -807,7 +802,8 @@
                 "border_color": "",
                 "hover_bg": "",
                 "hover_text_color": ""
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -825,83 +821,117 @@
         "image_Mqm4j8",
         "image_AjG3kH"
       ],
-      "name": "t:sections.images-grid.presets.name"
+      "name": "t:sections.images-grid.presets.name",
+      "settings": {
+        "layout": "carousel",
+        "columns_desktop": 4,
+        "columns_mobile": 2,
+        "tile_ratio": "square",
+        "desktop_row_height": 400,
+        "mobile_row_height": 200,
+        "tile_width": "full",
+        "desktop_grid_gap": 20,
+        "mobile_grid_gap": 12,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "below",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "image_fit": "cover",
+        "hover_zoom": true,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "current_dim_opacity": 20,
+        "current_dim_hover": true,
+        "heading": "<strong>EXPLORE COLLECTION THEMES</strong>",
+        "heading_size": "h3",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 32
+      }
     },
     "product_short_videos_yTi3Nj": {
       "type": "product-short-videos",
-      "settings": {
-        "section_visibility": "always",
-        "desktop_height": 500,
-        "mobile_height": 500,
-        "show_view_count": false,
-        "heading": "<strong>GRUNT STYLE IN ACTION</strong>",
-        "highlight_style": "underline",
-        "bg__color": "gradient",
-        "heading_size": "h3",
-        "seo_heading": "h3",
-        "heading_alignment": "text-center",
-        "description": "",
-        "color_scheme": "scheme-1",
-        "enable_gradient": false,
-        "top_space_desktop": 30,
-        "bottom_space_desktop": 35,
-        "top_space_mobile": 30,
-        "bottom_space_mobile": 35
-      },
       "blocks": {
         "video_dhJDLD": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/tiktok_gravy316_actual_7643266594264698125.mp4"
+            "video": "shopify://files/videos/tiktok_gravy316_actual_7643266594264698125.mp4",
+            "product": "",
+            "view_count": ""
           }
         },
         "video_jfJyEk": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/BasicsMensShortSleeveshort.mp4"
+            "video": "shopify://files/videos/BasicsMensShortSleeveshort.mp4",
+            "product": "",
+            "view_count": ""
           }
         },
         "video_EFBWrn": {
           "type": "video",
           "disabled": true,
           "settings": {
-            "video": "shopify://files/videos/Harley The Brit.mp4"
+            "video": "shopify://files/videos/Harley The Brit.mp4",
+            "product": "",
+            "view_count": ""
           }
         },
         "video_dzTJNV": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/MEATSWEATS-GRILLING.mp4"
+            "video": "shopify://files/videos/MEATSWEATS-GRILLING.mp4",
+            "product": "",
+            "view_count": ""
           }
         },
         "video_WkaELn": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/2A_Collection_30 second_9x16.mp4"
+            "video": "shopify://files/videos/2A_Collection_30 second_9x16.mp4",
+            "product": "",
+            "view_count": ""
           }
         },
         "video_UPJjHD": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/tiktok_travelingginga_7642350858704833805.mp4"
+            "video": "shopify://files/videos/tiktok_travelingginga_7642350858704833805.mp4",
+            "product": "",
+            "view_count": ""
           }
         },
         "video_DFMwq9": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/AQMPVKjXoPWZ3_VgGhfeVWqaOEHrQFKKvWpkwV7dekqB35fOE5KjUrvC6svUqrCY604HQHzRHX5Hib5r3m76YYtY9xuT83DSLjh8bVI.mp4"
+            "video": "shopify://files/videos/AQMPVKjXoPWZ3_VgGhfeVWqaOEHrQFKKvWpkwV7dekqB35fOE5KjUrvC6svUqrCY604HQHzRHX5Hib5r3m76YYtY9xuT83DSLjh8bVI.mp4",
+            "product": "",
+            "view_count": ""
           }
         },
         "video_4wNLmm": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/tiktok_igurticus_7623877586401119502.mp4"
+            "video": "shopify://files/videos/tiktok_igurticus_7623877586401119502.mp4",
+            "product": "",
+            "view_count": ""
           }
         },
         "video_7EqNfj": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/2A_Collection_30 second_9x16.mp4"
+            "video": "shopify://files/videos/2A_Collection_30 second_9x16.mp4",
+            "product": "",
+            "view_count": ""
           }
         }
       },
@@ -920,47 +950,34 @@
         ".section-padding {background: #000;}",
         ".h3 {color: #fff;}"
       ],
-      "name": "t:sections.product-short-videos.presets.name"
+      "name": "t:sections.product-short-videos.presets.name",
+      "settings": {
+        "section_visibility": "always",
+        "desktop_height": 500,
+        "mobile_height": 500,
+        "show_view_count": false,
+        "heading": "<strong>GRUNT STYLE IN ACTION</strong>",
+        "highlight_style": "underline",
+        "bg__color": "gradient",
+        "heading_size": "h3",
+        "seo_heading": "h3",
+        "heading_alignment": "text-center",
+        "description": "",
+        "color_scheme": "scheme-1",
+        "enable_gradient": false,
+        "top_space_desktop": 30,
+        "bottom_space_desktop": 35,
+        "top_space_mobile": 30,
+        "bottom_space_mobile": 35
+      }
     },
     "media_grid_bYHLAG": {
       "type": "section--media-grid",
-      "settings": {
-        "layout": "grid",
-        "columns_desktop": 4,
-        "columns_mobile": 1,
-        "tile_ratio": "fixed",
-        "desktop_row_height": 270,
-        "mobile_row_height": 150,
-        "tile_width": "full",
-        "desktop_grid_gap": 4,
-        "mobile_grid_gap": 4,
-        "section_width": false,
-        "section_visibility": "always",
-        "content_placement": "overlay",
-        "card_background": "",
-        "card_padding": 0,
-        "enable_shadow": false,
-        "enable_hover_content": false,
-        "heading_badge": false,
-        "heading": "<strong>SHOP BY PRODUCT TYPE</strong>",
-        "heading_size": "h3",
-        "heading_alignment": "text-center",
-        "heading_color": "",
-        "text_color": "",
-        "btn_bg_color": "",
-        "btn_text_color": "",
-        "btn_hover_color": "",
-        "btn_hover_text_color": "",
-        "color_scheme": "scheme-4",
-        "padding_top": 8,
-        "padding_bottom": 8
-      },
       "blocks": {
         "grid_Xz9AFT": {
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V6_GS8232_BasicStackedLogoT-Shirt-Tan_d9b7117e-946b-4512-97f2-ddf52059f2f3.jpg",
-            "video": "",
             "collection": "",
             "link": "shopify://collections/basic-bundles",
             "span_two_columns": true,
@@ -983,7 +1000,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -994,7 +1012,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/Split_Banner_D_980x610__GS8399_Lifestyle_Additional_Father_s_Day_Graphics.jpg",
-            "video": "",
             "collection": "",
             "link": "shopify://collections/graphic-tees-and-tanks",
             "span_two_columns": true,
@@ -1017,7 +1034,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1028,7 +1046,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS7684_StillStandingFull-ZipHoodie-Black.jpg",
-            "video": "",
             "collection": "",
             "link": "shopify://collections/hoodies-and-sweatshirts",
             "span_two_columns": true,
@@ -1051,7 +1068,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1062,7 +1080,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V13_GS5579_Polo-Black.jpg",
-            "video": "",
             "collection": "",
             "link": "shopify://collections/button-downs-polos",
             "span_two_columns": true,
@@ -1085,7 +1102,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1096,7 +1114,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS7308_GS7310_GS7311_GS7313_WoobieCollection-FallforFreedom.jpg",
-            "video": "",
             "collection": "",
             "link": "shopify://collections/outerwear",
             "span_two_columns": true,
@@ -1119,7 +1136,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1130,7 +1148,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V9_GS7784_GruntShort5-SkyBlue.jpg",
-            "video": "",
             "collection": "",
             "link": "shopify://collections/bottoms",
             "span_two_columns": true,
@@ -1153,7 +1170,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1164,7 +1182,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/Him-Hats-BlankPoster_2000x2000_copyGS5033-GSEmbroideredAmericanFlagHat-min_197472bc-2efc-4d4e-8db9-4b8f9faae934.png",
-            "video": "",
             "collection": "",
             "link": "shopify://collections/headwear",
             "span_two_columns": true,
@@ -1187,7 +1204,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1198,7 +1216,6 @@
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8339_DeathDealerFlag_1.jpg",
-            "video": "",
             "collection": "",
             "link": "shopify://collections/accessories",
             "span_two_columns": true,
@@ -1221,7 +1238,8 @@
                 "color": "",
                 "font_size_desktop": 0,
                 "font_size_mobile": 0
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -1239,7 +1257,42 @@
         "grid_UXgqGR",
         "grid_9y6EDt"
       ],
-      "name": "t:sections.media-grid.name"
+      "name": "t:sections.media-grid.name",
+      "settings": {
+        "layout": "grid",
+        "columns_desktop": 4,
+        "columns_mobile": 1,
+        "tile_ratio": "fixed",
+        "desktop_row_height": 270,
+        "mobile_row_height": 150,
+        "tile_width": "full",
+        "desktop_grid_gap": 4,
+        "mobile_grid_gap": 4,
+        "section_width": false,
+        "section_visibility": "always",
+        "content_placement": "overlay",
+        "card_background": "",
+        "card_padding": 0,
+        "enable_shadow": false,
+        "image_fit": "cover",
+        "hover_zoom": true,
+        "enable_hover_content": false,
+        "heading_badge": false,
+        "current_dim_opacity": 20,
+        "current_dim_hover": true,
+        "heading": "<strong>SHOP BY PRODUCT TYPE</strong>",
+        "heading_size": "h3",
+        "heading_alignment": "text-center",
+        "heading_color": "",
+        "text_color": "",
+        "btn_bg_color": "",
+        "btn_text_color": "",
+        "btn_hover_color": "",
+        "btn_hover_text_color": "",
+        "color_scheme": "scheme-4",
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
     }
   },
   "order": [
