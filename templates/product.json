@@ -274,6 +274,7 @@
         "block_custom_liquid_GWteCU": {
           "type": "block--custom-liquid",
           "name": "Custom Liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "{%- assign cashback_percent = 0.20 -%}\n{%- assign cashback_per_unit = product.price | times: cashback_percent -%}\n{%- assign formatted_cashback = cashback_per_unit | money -%}\n\n<p id=\"cashback-display\"\n   data-cashback-percent=\"{{ cashback_percent}}\"\n   style=\"color: #002F6E; font-weight: bold; font-size: 12px; margin-top: 3px;\">\n  Rewards Members Can Earn Up To {{ formatted_cashback}} For Their Next Purchase! <a href='https://www.gruntstyle.com/community/membership' style=\"text-decoration: underline; color: #AB192D\">|Join Now </a>\n</p>"
           },
@@ -702,6 +703,7 @@
       "block_order": [
         "wishlist_plus_engage_myaccount_recently_viewed_online_cbwNRz"
       ],
+      "disabled": true,
       "custom_css": [
         ".swym-wishlistplus-themeapp-container-header {font-family: Roboto Condensed; font-weight: 700; text-transform: uppercase;}"
       ],
