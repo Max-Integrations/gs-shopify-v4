@@ -62,6 +62,7 @@
             "style": "pattern",
             "shape": "circle",
             "size": 32,
+            "size_mobile": 32,
             "show_label": true,
             "label": "Color"
           },
@@ -108,6 +109,7 @@
         },
         "richtext_2": {
           "type": "block--product-message",
+          "disabled": true,
           "settings": {
             "text": "<p><em><strong>{{ product.metafields.custom.limited_custom_product_message.value }}</strong></em></p>",
             "image_link": "",
@@ -125,6 +127,7 @@
         },
         "wonderment_pdp_etas_QjinAi": {
           "type": "shopify://apps/track-by-loop/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "disabled": true,
           "settings": {
             "eta_text_font_size": 16,
             "hint_text_font_size": 12,
@@ -194,6 +197,7 @@
         },
         "promo_image": {
           "type": "block--product-message",
+          "disabled": true,
           "settings": {
             "text": "",
             "image": "shopify://shop_images/Screenshot_2026-09-10_174413.png",
@@ -209,6 +213,50 @@
             "bg": ""
           },
           "blocks": {}
+        },
+        "block_product_value_props_pDkyGM": {
+          "type": "block--product-value-props",
+          "settings": {
+            "show_borders": true,
+            "hide_for_tags": "Custom Apparel, gift card"
+          },
+          "blocks": {
+            "block_product_value_prop_MqyVYB": {
+              "type": "block--product-value-prop",
+              "settings": {
+                "image": "shopify://shop_images/Military__First_Responders_Discount_Icon_2-min.png",
+                "text": "Military & First\nResponder Discounts",
+                "link": "shopify://pages/govx-discount",
+                "hide_for_tags": ""
+              },
+              "blocks": {}
+            },
+            "block_product_value_prop_bmLyh3": {
+              "type": "block--product-value-prop",
+              "settings": {
+                "image": "shopify://shop_images/Free_Shipping_Icon-min_1806a916-b9f9-4698-b293-bddfd2a13325.png",
+                "text": "FREE SHIPPING OVER $75",
+                "link": "shopify://pages/shipping-handling",
+                "hide_for_tags": ""
+              },
+              "blocks": {}
+            },
+            "block_product_value_prop_LM7Dmj": {
+              "type": "block--product-value-prop",
+              "settings": {
+                "image": "shopify://shop_images/Loyalty_Icon-min.png",
+                "text": "GRUNT STYLE REWARDS - Join & Get 5% Back",
+                "link": "https://www.gruntstyle.com/community/membership",
+                "hide_for_tags": ""
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "block_product_value_prop_MqyVYB",
+            "block_product_value_prop_bmLyh3",
+            "block_product_value_prop_LM7Dmj"
+          ]
         },
         "badge_usa_250": {
           "type": "block--product-badge",
@@ -308,6 +356,7 @@
         "accordion_3",
         "complementary",
         "promo_image",
+        "block_product_value_props_pDkyGM",
         "badge_usa_250",
         "badge_100_series",
         "badge_clubea",
@@ -319,9 +368,6 @@
         "badge_usa_made"
       ],
       "custom_css": [
-        ".gs-product__option-values {min-width: 10px; height: 55px;}",
-        ".gs-product__option-pill {width: 10px; height: 25px; font-size: 12px;}",
-        ".gs-product__option-values {display: flex; flex-wrap: wrap; gap: 4px;}",
         ".gs-product__title {margin-bottom: -10px;}",
         ".klaviyo-star-rating-widget {margin-top: -5px; margin-bottom: -10px;}",
         ".gs-product__price {margin-top: -10px; margin-bottom: -10px;}"
