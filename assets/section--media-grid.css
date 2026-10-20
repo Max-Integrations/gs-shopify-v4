@@ -337,13 +337,14 @@
 
 /* ---- Current collection ----
    When one tile is the collection being viewed, the rest step back.
-   Hover/focus brings a dimmed tile forward on desktop. */
+   Hover/focus brings a dimmed tile forward on desktop. Both are section
+   settings: --mg-dim (current_dim_opacity) and .gs-mg--dim-hover. */
 .media-grid-wrapper:has(.is-current) .media-grid-item {
   transition: opacity 0.25s;
 }
 
 .media-grid-wrapper:has(.is-current) .media-grid-item:not(.is-current) {
-  opacity: 0.2;
+  opacity: var(--mg-dim, 0.2);
 }
 
 /* ---- Child blocks, restated so they win over Dawn ---- */
@@ -459,8 +460,8 @@
     font-size: var(--gs-heading-size-d, var(--gs-heading-size-m));
   }
 
-  .media-grid-wrapper:has(.is-current) .media-grid-item:not(.is-current):hover,
-  .media-grid-wrapper:has(.is-current) .media-grid-item:not(.is-current):focus-within {
+  .gs-mg--dim-hover .media-grid-wrapper:has(.is-current) .media-grid-item:not(.is-current):hover,
+  .gs-mg--dim-hover .media-grid-wrapper:has(.is-current) .media-grid-item:not(.is-current):focus-within {
     opacity: 1;
   }
 }

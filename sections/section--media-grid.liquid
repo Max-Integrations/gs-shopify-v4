@@ -35,6 +35,8 @@
     with the "current collection stays bright, the rest dim" behaviour
     (the tile carries .is-current; the CSS dims its siblings with
     :has(), so the test lives in one place, blocks/block--media-tile).
+    How dim, and whether hover brightens them, are section settings
+    (current_dim_opacity / current_dim_hover, added 2026-10-20).
   - stories-single-image (About history): carousel, fixed 600/300px
     tiles, 60% scrim lifted on hover, circle-badge year headings,
     description as the tile's hover text.
@@ -70,7 +72,7 @@
 -%}
 
 <div
-  class="gs-media-grid color-{{ s.color_scheme }} gradient gs-mg--visibility-{{ s.section_visibility | default: 'always' }} gs-mg--{{ layout }} gs-mg--ratio-{{ ratio }} gs-mg--{{ placement }} gs-mg--width-{{ s.tile_width | default: 'full' }}{% if s.heading_badge %} gs-mg--badge{% endif %}"
+  class="gs-media-grid color-{{ s.color_scheme }} gradient gs-mg--visibility-{{ s.section_visibility | default: 'always' }} gs-mg--{{ layout }} gs-mg--ratio-{{ ratio }} gs-mg--{{ placement }} gs-mg--width-{{ s.tile_width | default: 'full' }}{% if s.heading_badge %} gs-mg--badge{% endif %}{% unless s.current_dim_hover == false %} gs-mg--dim-hover{% endunless %}"
   style="
     --padding-top: {{ s.padding_top }}px;
     --padding-bottom: {{ s.padding_bottom }}px;
@@ -83,6 +85,7 @@
     --columnGap: {{ s.mobile_grid_gap }}px;
     --columnGapDesktop: {{ s.desktop_grid_gap }}px;
     --mg-card-pad: {{ s.card_padding | default: 0 }}px;
+    --mg-dim: {{ s.current_dim_opacity | default: 20 | divided_by: 100.0 }};
     {%- unless s.card_background == blank or s.card_background == 'rgba(0,0,0,0)' %}
     --mg-card-bg: {{ s.card_background }};
     {%- endunless %}
@@ -230,6 +233,8 @@
     { "type": "checkbox", "id": "enable_shadow", "label": "Tile shadow", "default": false },
     { "type": "checkbox", "id": "enable_hover_content", "label": "Reveal content on hover", "default": false },
     { "type": "checkbox", "id": "heading_badge", "label": "Circle badge headings", "info": "Tile headings in a bordered circle, as on the About page timeline.", "default": false },
+    { "type": "range", "id": "current_dim_opacity", "label": "Other tiles' opacity on their own collection page", "info": "When a tile links to the collection being viewed, the other tiles fade to this. 100% = no fading.", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 20 },
+    { "type": "checkbox", "id": "current_dim_hover", "label": "Faded tiles go full opacity on hover", "default": true },
 
     { "type": "header", "content": "Heading" },
     { "type": "inline_richtext", "id": "heading", "label": "Heading" },
