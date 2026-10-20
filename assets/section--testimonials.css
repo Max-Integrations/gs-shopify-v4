@@ -287,3 +287,27 @@
     transition: none;
   }
 }
+
+/* Phones (2026-10-20): the prev/next buttons sit on top of the card
+   instead of beside it, as on live, so the card keeps the full width
+   (it was being squeezed to ~220px between two 40px buttons). */
+@media screen and (max-width: 749px) {
+  .gs-tm__scroller {
+    position: relative;
+  }
+
+  .gs-tm__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  .gs-tm__nav--prev {
+    left: 0;
+  }
+
+  .gs-tm__nav--next {
+    right: 0;
+  }
+}
