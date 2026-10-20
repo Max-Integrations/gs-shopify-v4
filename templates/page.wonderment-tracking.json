@@ -1,21 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "custom_liquid_RyJptb": {
       "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
       "settings": {
         "custom_liquid": "",
         "color_scheme": "scheme-1",
         "padding_top": 32,
         "padding_bottom": 32
-      },
-      "name": "t:sections.custom-liquid.presets.name"
+      }
     },
     "track_your_order_heading": {
       "type": "wonderment-custom-html",
-      "settings": {
-        "show_when": "always",
-        "width": "regular"
-      },
       "blocks": {
         "track_your_order": {
           "type": "html",
@@ -26,50 +31,35 @@
       },
       "block_order": [
         "track_your_order"
-      ]
+      ],
+      "settings": {
+        "show_when": "always",
+        "width": "regular"
+      }
     },
     "main": {
       "type": "apps",
-      "settings": {
-        "include_margins": true
-      },
       "blocks": {
         "wonderment": {
-          "type": "shopify://apps/wonderment/blocks/wonderBlock/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "type": "shopify://apps/track-by-loop/blocks/wonderBlock/89d63369-6ee7-4097-ac41-8229c6f90001",
           "settings": {}
         }
       },
       "block_order": [
         "wonderment"
-      ]
+      ],
+      "settings": {
+        "include_margins": true
+      }
     },
     "1762461744d0fa9a28": {
       "type": "apps",
       "settings": {
         "include_margins": true
-      },
-      "blocks": {},
-      "block_order": []
+      }
     },
     "faq": {
       "type": "wonderment-faq",
-      "settings": {
-        "show_answers": false,
-        "text_size": 100,
-        "alignment": "center",
-        "text_color": "#121212",
-        "background_color": "linear-gradient(184deg, rgba(255, 255, 255, 1) 7%, rgbargba(255, 255, 255, 1) 94%)",
-        "border_color": "#121212",
-        "base_width": 80,
-        "max_width": "",
-        "inner_padding": 100,
-        "outer_margin": 0,
-        "custom_css": "",
-        "mobile_custom_css": "",
-        "override_theme_font": false,
-        "heading_font": "serif",
-        "main_font": "system_ui_n4"
-      },
       "blocks": {
         "faq-getting-started": {
           "type": "section_heading",
@@ -144,27 +134,59 @@
         "shipping-cost-question",
         "return-policy-question"
       ],
-      "disabled": true
+      "disabled": true,
+      "settings": {
+        "show_answers": false,
+        "text_size": 100,
+        "alignment": "center",
+        "text_color": "#121212",
+        "background_color": "linear-gradient(184deg, rgba(255, 255, 255, 1) 7%, rgbargba(255, 255, 255, 1) 94%)",
+        "border_color": "#121212",
+        "base_width": 80,
+        "max_width": "",
+        "inner_padding": 100,
+        "outer_margin": 0,
+        "custom_css": "",
+        "mobile_custom_css": "",
+        "override_theme_font": false,
+        "heading_font": "serif",
+        "main_font": "system_ui_n4"
+      }
     },
     "custom_liquid_bpX4bX": {
       "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
       "settings": {
         "custom_liquid": "",
         "color_scheme": "scheme-1",
         "padding_top": 8,
         "padding_bottom": 16
-      },
-      "name": "t:sections.custom-liquid.presets.name"
+      }
     },
     "featured_collections_QVEFbW": {
       "type": "featured-collections",
+      "blocks": {
+        "collection_block_yL6yiX": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "",
+            "collection": "best-sellers",
+            "cta_label": "SHOP BEST SELLERS",
+            "cta_link": "shopify://collections/best-sellers"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_yL6yiX"
+      ],
+      "name": "Featured Collections",
       "settings": {
         "section_heading": "YOU MAY ALSO LIKE",
         "heading_text_align": "left",
         "collection_type": "tabs",
         "collection_source": "manual",
         "layout_style": "carousel",
-        "container_width": "sm",
+        "container_width": "md",
         "grid_image_size": "square",
         "max_number_products_loaded": 15,
         "number_products_per_view_desktop": "4",
@@ -193,32 +215,20 @@
         "collection_navigation_spacing_top_mobile": 10,
         "collection_navigation_spacing_bottom_desktop": 10,
         "collection_navigation_spacing_bottom_mobile": 10,
-        "collection_cta_spacing_top_desktop": 10,
-        "collection_cta_spacing_top_mobile": 10,
-        "collection_cta_spacing_bottom_desktop": 10,
-        "collection_cta_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 0,
+        "collection_cta_spacing_top_mobile": 0,
+        "collection_cta_spacing_bottom_desktop": 0,
+        "collection_cta_spacing_bottom_mobile": 0,
+        "heading_color": "",
+        "tab_color": "",
+        "tab_active_color": "",
         "cta_text_color": "#000000",
         "cta_text_color_hover": "#000000",
         "cta_background_color": "#ffffff",
         "cta_background_color_hover": "#ffffff",
         "cta_border_color": "#000000",
         "cta_border_color_hover": "#000000"
-      },
-      "blocks": {
-        "collection_block_yL6yiX": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "",
-            "collection": "best-sellers",
-            "cta_label": "SHOP BEST SELLERS",
-            "cta_link": "shopify://collections/best-sellers"
-          }
-        }
-      },
-      "block_order": [
-        "collection_block_yL6yiX"
-      ],
-      "name": "Featured Collections"
+      }
     }
   },
   "order": [
