@@ -412,7 +412,7 @@
         "desktop_row_height": 360,
         "mobile_row_height": 280,
         "tile_width": "full",
-        "desktop_grid_gap": 20,
+        "desktop_grid_gap": 8,
         "mobile_grid_gap": 3,
         "section_width": true,
         "section_visibility": "always",
