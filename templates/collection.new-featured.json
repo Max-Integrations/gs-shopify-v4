@@ -370,8 +370,8 @@
         "layout": "carousel",
         "columns_desktop": 5,
         "columns_mobile": 1,
-        "tile_ratio": "square",
-        "desktop_row_height": 320,
+        "tile_ratio": "fixed",
+        "desktop_row_height": 200,
         "mobile_row_height": 200,
         "tile_width": "full",
         "desktop_grid_gap": 5,
@@ -382,8 +382,12 @@
         "card_background": "",
         "card_padding": 0,
         "enable_shadow": false,
+        "image_fit": "cover",
+        "hover_zoom": true,
         "enable_hover_content": false,
         "heading_badge": false,
+        "current_dim_opacity": 20,
+        "current_dim_hover": true,
         "heading": "<strong>FEATURED COLLECTIONS</strong>",
         "heading_size": "h3",
         "heading_alignment": "text-center",
@@ -407,9 +411,9 @@
             "style": "quick_view",
             "product_card_quick_view_button_text": "+ Quick Add",
             "button_bg": "#000000",
-            "button_text": "#FFFFFF",
-            "button_hover_bg": "#AB192D",
-            "button_hover_text": "#FFFFFF"
+            "button_text": "#ffffff",
+            "button_hover_bg": "#ab192d",
+            "button_hover_text": "#ffffff"
           }
         },
         "product-grid": {
