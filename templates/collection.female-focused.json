@@ -333,7 +333,7 @@
         "desktop_row_height": 215,
         "mobile_row_height": 150,
         "tile_width": "full",
-        "desktop_grid_gap": 20,
+        "desktop_grid_gap": 40,
         "mobile_grid_gap": 20,
         "section_width": true,
         "section_visibility": "always",
@@ -341,8 +341,12 @@
         "card_background": "",
         "card_padding": 0,
         "enable_shadow": false,
+        "image_fit": "cover",
+        "hover_zoom": true,
         "enable_hover_content": false,
         "heading_badge": false,
+        "current_dim_opacity": 20,
+        "current_dim_hover": true,
         "heading": "SHOP BY PRODUCT TYPE",
         "heading_size": "h2",
         "heading_alignment": "text-center",
@@ -353,8 +357,8 @@
         "btn_hover_color": "#000000",
         "btn_hover_text_color": "#ffffff",
         "color_scheme": "scheme-4",
-        "padding_top": 32,
-        "padding_bottom": 32
+        "padding_top": 4,
+        "padding_bottom": 0
       }
     },
     "banner": {
@@ -424,9 +428,9 @@
             "style": "quick_view",
             "product_card_quick_view_button_text": "+ Quick Add",
             "button_bg": "#000000",
-            "button_text": "#FFFFFF",
-            "button_hover_bg": "#AB192D",
-            "button_hover_text": "#FFFFFF"
+            "button_text": "#ffffff",
+            "button_hover_bg": "#ab192d",
+            "button_hover_text": "#ffffff"
           }
         }
       },
