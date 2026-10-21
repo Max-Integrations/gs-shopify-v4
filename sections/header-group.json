@@ -36,14 +36,7 @@
           }
         }
       },
-      "block_order": [
-        "announcement_Fki3r7",
-        "announcement_gj83d9",
-        "announcement_6iBFBA"
-      ],
-      "custom_css": [
-        "@media screen and (max-width: 668px) {.h5 {font-size: 11px !important; line-height: 12px; align-content: center; padding: 1px; }}"
-      ],
+      "block_order": ["announcement_Fki3r7", "announcement_gj83d9", "announcement_6iBFBA"],
       "settings": {
         "auto_rotate": true,
         "change_slides_speed": 7,
@@ -199,8 +192,5 @@
       }
     }
   },
-  "order": [
-    "announcement",
-    "header"
-  ]
+  "order": ["announcement", "header"]
 }
