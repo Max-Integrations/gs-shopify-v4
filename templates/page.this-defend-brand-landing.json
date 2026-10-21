@@ -1,15 +1,29 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "full_width_image_with_text_v2_9KYG7M": {
       "type": "section--full-width-image_text",
+      "name": "Full Width Image/Text_v2",
       "settings": {
         "visibility": "always",
         "layout_preset": "center",
         "alignment_preset": "center",
+        "layout_preset_mobile": "center",
+        "alignment_mobile": "center",
         "background_color": "#ffffff",
         "background_image_desktop": "shopify://shop_images/v5_short_leftaligned.jpg",
         "background_image_mobile": "shopify://shop_images/v5_tall_leftaligned.jpg",
         "image_height_auto": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
         "banner_link": "",
         "open_in_new_tab": false,
         "padding_top_desktop": 36,
@@ -20,22 +34,13 @@
         "padding_bottom_mobile": 48,
         "padding_horizontal_mobile": 24,
         "item_gap_mobile": 0,
-        "button_gap": 8,
-        "overlay_opacity": 0
-      },
-      "name": "Full Width Image/Text_v2"
+        "buttons_desktop": "side_by_side",
+        "buttons_mobile": "stacked",
+        "button_gap": 8
+      }
     },
     "rich_text_YBRYPK": {
       "type": "rich-text",
-      "settings": {
-        "section_visibility": "always",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 8
-      },
       "blocks": {
         "heading_Cabg8z": {
           "type": "block--heading",
@@ -47,7 +52,8 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "text_wqrBX9": {
           "type": "block--text",
@@ -56,17 +62,31 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "heading_Cabg8z",
         "text_wqrBX9"
       ],
-      "name": "Rich Text - Header"
+      "name": "Rich Text - Header",
+      "settings": {
+        "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 8
+      }
     },
     "main-page": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "desktop_height": "200px",
         "mobile_height": "100px",
@@ -84,17 +104,22 @@
         "bottom_space_desktop": 40,
         "top_space_mobile": 40,
         "bottom_space_mobile": 40
-      },
-      "disabled": true
+      }
     },
     "video_banner_JKMyCU": {
       "type": "video-banner",
+      "custom_css": [
+        ".scheme-primary {background: #fff !important;}",
+        ".video-play-button {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); bottom: auto; right: auto;}",
+        "a {padding: 5px 15px; font-size: medium; font-weight: bold;}"
+      ],
+      "name": "t:sections.video_banner.name",
       "settings": {
         "section_visibility": "always",
         "video_full_width": false,
         "autoplay": false,
-        "video_height": "adapt_image",
-        "mobile_video_height": "adapt_image",
+        "video_height": "550px",
+        "mobile_video_height": "450px",
         "cover_image": "shopify://shop_images/Image20251008174032.jpg",
         "video_url": "",
         "video": "shopify://files/videos/GruntStyle_This We'll Defend_60_CTV.mp4",
@@ -125,755 +150,10 @@
         "bottom_space_desktop": 15,
         "top_space_mobile": 5,
         "bottom_space_mobile": 15
-      },
-      "custom_css": [
-        ".scheme-primary {background: #fff !important;}",
-        ".video-play-button {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); bottom: auto; right: auto;}",
-        "a {padding: 5px 15px; font-size: medium; font-weight: bold;}"
-      ],
-      "name": "t:sections.video_banner.name"
-    },
-    "rich_text_zjfq6a": {
-      "type": "rich-text",
-      "settings": {
-        "section_visibility": "always",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 8
-      },
-      "blocks": {
-        "heading_tb3UKq": {
-          "type": "block--heading",
-          "settings": {
-            "text": "FOR PATRIOTS, BY GRUNTS",
-            "size": "h3",
-            "tag": "h2",
-            "alignment": "inherit",
-            "color": "",
-            "font_size_desktop": 0,
-            "font_size_mobile": 0
-          }
-        },
-        "text_8T86yq": {
-          "type": "block--text",
-          "settings": {
-            "text": "<p>We defend the principles that built this nation</p>",
-            "size": "body",
-            "alignment": "inherit",
-            "color": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_tb3UKq",
-        "text_8T86yq"
-      ],
-      "name": "Rich Text - 1st Amendment"
-    },
-    "apps_N6maFC": {
-      "type": "apps",
-      "settings": {
-        "include_margins": true
-      },
-      "blocks": {},
-      "block_order": [],
-      "disabled": true
-    },
-    "featured_collections_wz8Bh9": {
-      "type": "featured-collections",
-      "settings": {
-        "section_heading": "",
-        "heading_text_align": "left",
-        "collection_type": "tabs",
-        "collection_source": "manual",
-        "layout_style": "carousel",
-        "container_width": "sm",
-        "grid_image_size": "square",
-        "max_number_products_loaded": 15,
-        "number_products_per_view_desktop": "4",
-        "number_products_per_view_mobile": "2",
-        "enable_product_badges": true,
-        "enable_product_title": true,
-        "enable_product_price": true,
-        "enable_product_swatches": true,
-        "enable_product_quick_view": true,
-        "color_scheme": "scheme-1",
-        "heading_size_desktop": 45,
-        "heading_size_mobile": 42,
-        "navigation_title_size_desktop": 26,
-        "navigation_title_size_mobile": 23,
-        "cta_title_size_desktop": 18,
-        "cta_title_size_mobile": 16,
-        "section_spacing_top_desktop": 10,
-        "section_spacing_top_mobile": 10,
-        "section_spacing_bottom_desktop": 10,
-        "section_spacing_bottom_mobile": 10,
-        "heading_spacing_top_desktop": 10,
-        "heading_spacing_top_mobile": 10,
-        "heading_spacing_bottom_desktop": 10,
-        "heading_spacing_bottom_mobile": 10,
-        "collection_navigation_spacing_top_desktop": 10,
-        "collection_navigation_spacing_top_mobile": 10,
-        "collection_navigation_spacing_bottom_desktop": 10,
-        "collection_navigation_spacing_bottom_mobile": 10,
-        "collection_cta_spacing_top_desktop": 10,
-        "collection_cta_spacing_top_mobile": 10,
-        "collection_cta_spacing_bottom_desktop": 10,
-        "collection_cta_spacing_bottom_mobile": 10,
-        "cta_text_color": "#000000",
-        "cta_text_color_hover": "#000000",
-        "cta_background_color": "#ffffff",
-        "cta_background_color_hover": "#ffffff",
-        "cta_border_color": "#000000",
-        "cta_border_color_hover": "#000000"
-      },
-      "blocks": {
-        "collection_block_i7d8nw": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "",
-            "collection": "freedom-first",
-            "cta_label": "SHOP PATRIOTIC",
-            "cta_link": "shopify://collections/freedom-first"
-          }
-        }
-      },
-      "block_order": [
-        "collection_block_i7d8nw"
-      ],
-      "name": "Featured Collections"
-    },
-    "collection_tab_BVU93K": {
-      "type": "featured-collections",
-      "settings": {
-        "section_heading": "FREEDOM FIRST",
-        "heading_text_align": "left",
-        "collection_type": "tabs",
-        "collection_source": "manual",
-        "layout_style": "carousel",
-        "container_width": "lg",
-        "grid_image_size": "square",
-        "max_number_products_loaded": 5,
-        "number_products_per_view_desktop": "4",
-        "number_products_per_view_mobile": "2",
-        "enable_product_badges": true,
-        "enable_product_title": true,
-        "enable_product_price": true,
-        "enable_product_swatches": true,
-        "enable_product_quick_view": true,
-        "color_scheme": "scheme-1",
-        "heading_size_desktop": 28,
-        "heading_size_mobile": 24,
-        "navigation_title_size_desktop": 26,
-        "navigation_title_size_mobile": 23,
-        "cta_title_size_desktop": 26,
-        "cta_title_size_mobile": 23,
-        "section_spacing_top_desktop": 0,
-        "section_spacing_top_mobile": 30,
-        "section_spacing_bottom_desktop": 0,
-        "section_spacing_bottom_mobile": 30,
-        "heading_spacing_top_desktop": 10,
-        "heading_spacing_top_mobile": 10,
-        "heading_spacing_bottom_desktop": 10,
-        "heading_spacing_bottom_mobile": 10,
-        "collection_navigation_spacing_top_desktop": 10,
-        "collection_navigation_spacing_top_mobile": 10,
-        "collection_navigation_spacing_bottom_desktop": 10,
-        "collection_navigation_spacing_bottom_mobile": 10,
-        "collection_cta_spacing_top_desktop": 10,
-        "collection_cta_spacing_top_mobile": 10,
-        "collection_cta_spacing_bottom_desktop": 10,
-        "collection_cta_spacing_bottom_mobile": 10,
-        "cta_text_color": "#000000",
-        "cta_text_color_hover": "#ffffff",
-        "cta_background_color": "#ffffff",
-        "cta_background_color_hover": "#000000",
-        "cta_border_color": "#000000",
-        "cta_border_color_hover": "#000000"
-      },
-      "blocks": {
-        "collection_Wb3iVX": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "PATRIOTIC STYLES",
-            "collection": "freedom-first",
-            "cta_label": "",
-            "cta_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection_Wb3iVX"
-      ],
-      "disabled": true,
-      "name": "Collection tabs - 1st Amendment"
-    },
-    "full_width_image_with_text_v2_nrFLGe": {
-      "type": "section--full-width-image_text",
-      "settings": {
-        "visibility": "always",
-        "layout_preset": "center",
-        "alignment_preset": "center",
-        "background_color": "#ffffff",
-        "background_image_desktop": "shopify://shop_images/CPB_D_1440x300_Promo_Packs_Event_Back_To_Basics.png",
-        "background_image_mobile": "shopify://shop_images/CPB_M_980x600_Promo_V2Packs_Event_Back_To_Basics.png",
-        "image_height_auto": true,
-        "banner_link": "",
-        "open_in_new_tab": false,
-        "padding_top_desktop": 36,
-        "padding_bottom_desktop": 36,
-        "padding_horizontal_desktop": 48,
-        "item_gap_desktop": 0,
-        "padding_top_mobile": 48,
-        "padding_bottom_mobile": 48,
-        "padding_horizontal_mobile": 24,
-        "item_gap_mobile": 0,
-        "button_gap": 8,
-        "overlay_color": "#000000",
-        "overlay_opacity": 50
-      },
-      "blocks": {
-        "heading": {
-          "type": "block--message-line",
-          "settings": {
-            "text": "IMAGE PLACEHOLDER",
-            "size_desktop": 48,
-            "size_mobile": 33,
-            "text_color": "#ffffff",
-            "background_color": "",
-            "letter_spacing": 0,
-            "padding_y": 0,
-            "padding_x": 0
-          }
-        }
-      },
-      "block_order": [
-        "heading"
-      ],
-      "disabled": true,
-      "name": "Full Width Image/Text_v2"
-    },
-    "rich_text_GfT8jR": {
-      "type": "rich-text",
-      "settings": {
-        "section_visibility": "always",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 8
-      },
-      "blocks": {
-        "heading_k3wKai": {
-          "type": "block--heading",
-          "settings": {
-            "text": "COME AND TAKE IT",
-            "size": "h3",
-            "tag": "h2",
-            "alignment": "inherit",
-            "color": "",
-            "font_size_desktop": 0,
-            "font_size_mobile": 0
-          }
-        },
-        "text_9DPwif": {
-          "type": "block--text",
-          "settings": {
-            "text": "<p>Freedom isn't free...and never was</p>",
-            "size": "body",
-            "alignment": "inherit",
-            "color": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_k3wKai",
-        "text_9DPwif"
-      ],
-      "name": "Rich Text - 2nd Amendment"
-    },
-    "featured_collections_pbTzUr": {
-      "type": "featured-collections",
-      "settings": {
-        "section_heading": "",
-        "heading_text_align": "left",
-        "collection_type": "tabs",
-        "collection_source": "manual",
-        "layout_style": "carousel",
-        "container_width": "sm",
-        "grid_image_size": "square",
-        "max_number_products_loaded": 15,
-        "number_products_per_view_desktop": "4",
-        "number_products_per_view_mobile": "2",
-        "enable_product_badges": true,
-        "enable_product_title": true,
-        "enable_product_price": true,
-        "enable_product_swatches": true,
-        "enable_product_quick_view": true,
-        "color_scheme": "scheme-1",
-        "heading_size_desktop": 45,
-        "heading_size_mobile": 42,
-        "navigation_title_size_desktop": 26,
-        "navigation_title_size_mobile": 23,
-        "cta_title_size_desktop": 18,
-        "cta_title_size_mobile": 16,
-        "section_spacing_top_desktop": 10,
-        "section_spacing_top_mobile": 10,
-        "section_spacing_bottom_desktop": 10,
-        "section_spacing_bottom_mobile": 10,
-        "heading_spacing_top_desktop": 10,
-        "heading_spacing_top_mobile": 10,
-        "heading_spacing_bottom_desktop": 10,
-        "heading_spacing_bottom_mobile": 10,
-        "collection_navigation_spacing_top_desktop": 10,
-        "collection_navigation_spacing_top_mobile": 10,
-        "collection_navigation_spacing_bottom_desktop": 10,
-        "collection_navigation_spacing_bottom_mobile": 10,
-        "collection_cta_spacing_top_desktop": 10,
-        "collection_cta_spacing_top_mobile": 10,
-        "collection_cta_spacing_bottom_desktop": 10,
-        "collection_cta_spacing_bottom_mobile": 10,
-        "cta_text_color": "#000000",
-        "cta_text_color_hover": "#000000",
-        "cta_background_color": "#ffffff",
-        "cta_background_color_hover": "#ffffff",
-        "cta_border_color": "#000000",
-        "cta_border_color_hover": "#000000"
-      },
-      "blocks": {
-        "collection_block_DF6cnn": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "",
-            "collection": "2nd-amendment-collection",
-            "cta_label": "SHOP 2ND AMENDMENT",
-            "cta_link": "shopify://collections/2nd-amendment-collection"
-          }
-        }
-      },
-      "block_order": [
-        "collection_block_DF6cnn"
-      ],
-      "name": "Featured Collections"
-    },
-    "collection_tab_iDQxiB": {
-      "type": "featured-collections",
-      "settings": {
-        "section_heading": "COME AND TAKE IT",
-        "heading_text_align": "left",
-        "collection_type": "tabs",
-        "collection_source": "manual",
-        "layout_style": "carousel",
-        "container_width": "lg",
-        "grid_image_size": "square",
-        "max_number_products_loaded": 5,
-        "number_products_per_view_desktop": "4",
-        "number_products_per_view_mobile": "2",
-        "enable_product_badges": true,
-        "enable_product_title": true,
-        "enable_product_price": true,
-        "enable_product_swatches": true,
-        "enable_product_quick_view": true,
-        "color_scheme": "scheme-1",
-        "heading_size_desktop": 28,
-        "heading_size_mobile": 24,
-        "navigation_title_size_desktop": 26,
-        "navigation_title_size_mobile": 23,
-        "cta_title_size_desktop": 26,
-        "cta_title_size_mobile": 23,
-        "section_spacing_top_desktop": 0,
-        "section_spacing_top_mobile": 30,
-        "section_spacing_bottom_desktop": 0,
-        "section_spacing_bottom_mobile": 30,
-        "heading_spacing_top_desktop": 10,
-        "heading_spacing_top_mobile": 10,
-        "heading_spacing_bottom_desktop": 10,
-        "heading_spacing_bottom_mobile": 10,
-        "collection_navigation_spacing_top_desktop": 10,
-        "collection_navigation_spacing_top_mobile": 10,
-        "collection_navigation_spacing_bottom_desktop": 10,
-        "collection_navigation_spacing_bottom_mobile": 10,
-        "collection_cta_spacing_top_desktop": 10,
-        "collection_cta_spacing_top_mobile": 10,
-        "collection_cta_spacing_bottom_desktop": 10,
-        "collection_cta_spacing_bottom_mobile": 10,
-        "cta_text_color": "#000000",
-        "cta_text_color_hover": "#ffffff",
-        "cta_background_color": "#ffffff",
-        "cta_background_color_hover": "#000000",
-        "cta_border_color": "#000000",
-        "cta_border_color_hover": "#000000"
-      },
-      "blocks": {
-        "collection_Lffqqr": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "2ND AMENDMENT STYLES",
-            "collection": "2nd-amendment-collection",
-            "cta_label": "",
-            "cta_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection_Lffqqr"
-      ],
-      "disabled": true,
-      "name": "Collection tabs - 2nd Amendment"
-    },
-    "rich_text_HGjWxR": {
-      "type": "rich-text",
-      "settings": {
-        "section_visibility": "always",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 8
-      },
-      "blocks": {
-        "heading_hBiihN": {
-          "type": "block--heading",
-          "settings": {
-            "text": "SERVICE IS A LIFESTYLE",
-            "size": "h3",
-            "tag": "h2",
-            "alignment": "inherit",
-            "color": "",
-            "font_size_desktop": 0,
-            "font_size_mobile": 0
-          }
-        },
-        "text_BpBadD": {
-          "type": "block--text",
-          "settings": {
-            "text": "<p>Our Gear is a battle flag worn with Pride</p>",
-            "size": "body",
-            "alignment": "inherit",
-            "color": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_hBiihN",
-        "text_BpBadD"
-      ],
-      "name": "Rich Text - Service"
-    },
-    "featured_collections_V3pgJw": {
-      "type": "featured-collections",
-      "settings": {
-        "section_heading": "",
-        "heading_text_align": "left",
-        "collection_type": "tabs",
-        "collection_source": "manual",
-        "layout_style": "carousel",
-        "container_width": "sm",
-        "grid_image_size": "square",
-        "max_number_products_loaded": 15,
-        "number_products_per_view_desktop": "4",
-        "number_products_per_view_mobile": "2",
-        "enable_product_badges": true,
-        "enable_product_title": true,
-        "enable_product_price": true,
-        "enable_product_swatches": true,
-        "enable_product_quick_view": true,
-        "color_scheme": "scheme-1",
-        "heading_size_desktop": 45,
-        "heading_size_mobile": 42,
-        "navigation_title_size_desktop": 26,
-        "navigation_title_size_mobile": 23,
-        "cta_title_size_desktop": 18,
-        "cta_title_size_mobile": 16,
-        "section_spacing_top_desktop": 10,
-        "section_spacing_top_mobile": 10,
-        "section_spacing_bottom_desktop": 10,
-        "section_spacing_bottom_mobile": 10,
-        "heading_spacing_top_desktop": 10,
-        "heading_spacing_top_mobile": 10,
-        "heading_spacing_bottom_desktop": 10,
-        "heading_spacing_bottom_mobile": 10,
-        "collection_navigation_spacing_top_desktop": 10,
-        "collection_navigation_spacing_top_mobile": 10,
-        "collection_navigation_spacing_bottom_desktop": 10,
-        "collection_navigation_spacing_bottom_mobile": 10,
-        "collection_cta_spacing_top_desktop": 10,
-        "collection_cta_spacing_top_mobile": 10,
-        "collection_cta_spacing_bottom_desktop": 10,
-        "collection_cta_spacing_bottom_mobile": 10,
-        "cta_text_color": "#000000",
-        "cta_text_color_hover": "#000000",
-        "cta_background_color": "#ffffff",
-        "cta_background_color_hover": "#ffffff",
-        "cta_border_color": "#000000",
-        "cta_border_color_hover": "#000000"
-      },
-      "blocks": {
-        "collection_block_HJqqYA": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "",
-            "collection": "military-first-responders",
-            "cta_label": "SHOP SERVICE STYLES",
-            "cta_link": "shopify://collections/military-first-responders"
-          }
-        }
-      },
-      "block_order": [
-        "collection_block_HJqqYA"
-      ],
-      "name": "Featured Collections"
-    },
-    "collection_tab_QMf6er": {
-      "type": "featured-collections",
-      "settings": {
-        "section_heading": "SERVICE IS A LIFESTYLE",
-        "heading_text_align": "left",
-        "collection_type": "tabs",
-        "collection_source": "manual",
-        "layout_style": "carousel",
-        "container_width": "lg",
-        "grid_image_size": "square",
-        "max_number_products_loaded": 5,
-        "number_products_per_view_desktop": "4",
-        "number_products_per_view_mobile": "2",
-        "enable_product_badges": true,
-        "enable_product_title": true,
-        "enable_product_price": true,
-        "enable_product_swatches": true,
-        "enable_product_quick_view": true,
-        "color_scheme": "scheme-1",
-        "heading_size_desktop": 28,
-        "heading_size_mobile": 24,
-        "navigation_title_size_desktop": 26,
-        "navigation_title_size_mobile": 23,
-        "cta_title_size_desktop": 26,
-        "cta_title_size_mobile": 23,
-        "section_spacing_top_desktop": 0,
-        "section_spacing_top_mobile": 30,
-        "section_spacing_bottom_desktop": 0,
-        "section_spacing_bottom_mobile": 30,
-        "heading_spacing_top_desktop": 10,
-        "heading_spacing_top_mobile": 10,
-        "heading_spacing_bottom_desktop": 10,
-        "heading_spacing_bottom_mobile": 10,
-        "collection_navigation_spacing_top_desktop": 10,
-        "collection_navigation_spacing_top_mobile": 10,
-        "collection_navigation_spacing_bottom_desktop": 10,
-        "collection_navigation_spacing_bottom_mobile": 10,
-        "collection_cta_spacing_top_desktop": 10,
-        "collection_cta_spacing_top_mobile": 10,
-        "collection_cta_spacing_bottom_desktop": 10,
-        "collection_cta_spacing_bottom_mobile": 10,
-        "cta_text_color": "#000000",
-        "cta_text_color_hover": "#ffffff",
-        "cta_background_color": "#ffffff",
-        "cta_background_color_hover": "#000000",
-        "cta_border_color": "#000000",
-        "cta_border_color_hover": "#000000"
-      },
-      "blocks": {
-        "collection_3gXmbJ": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "SERVICE STYLES",
-            "collection": "military-first-responders",
-            "cta_label": "",
-            "cta_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection_3gXmbJ"
-      ],
-      "disabled": true,
-      "name": "Collection tabs - Service"
-    },
-    "rich_text_UiJBdX": {
-      "type": "rich-text",
-      "settings": {
-        "section_visibility": "always",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 8
-      },
-      "blocks": {
-        "heading_CN9Qtg": {
-          "type": "block--heading",
-          "settings": {
-            "text": "GRUNT STYLE FOUNDATION",
-            "size": "h3",
-            "tag": "h2",
-            "alignment": "inherit",
-            "color": "",
-            "font_size_desktop": 0,
-            "font_size_mobile": 0
-          }
-        },
-        "text_9qHmhV": {
-          "type": "block--text",
-          "settings": {
-            "text": "<p>A portion of the proceeds from this collection will be donated to the Grunt Style Foundation.</p>",
-            "size": "body",
-            "alignment": "inherit",
-            "color": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_CN9Qtg",
-        "text_9qHmhV"
-      ],
-      "name": "Rich Text - Foundation"
-    },
-    "featured_collections_kzjEec": {
-      "type": "featured-collections",
-      "settings": {
-        "section_heading": "",
-        "heading_text_align": "left",
-        "collection_type": "tabs",
-        "collection_source": "manual",
-        "layout_style": "carousel",
-        "container_width": "sm",
-        "grid_image_size": "square",
-        "max_number_products_loaded": 15,
-        "number_products_per_view_desktop": "4",
-        "number_products_per_view_mobile": "2",
-        "enable_product_badges": true,
-        "enable_product_title": true,
-        "enable_product_price": true,
-        "enable_product_swatches": true,
-        "enable_product_quick_view": true,
-        "color_scheme": "scheme-1",
-        "heading_size_desktop": 45,
-        "heading_size_mobile": 42,
-        "navigation_title_size_desktop": 26,
-        "navigation_title_size_mobile": 23,
-        "cta_title_size_desktop": 18,
-        "cta_title_size_mobile": 16,
-        "section_spacing_top_desktop": 10,
-        "section_spacing_top_mobile": 10,
-        "section_spacing_bottom_desktop": 10,
-        "section_spacing_bottom_mobile": 10,
-        "heading_spacing_top_desktop": 10,
-        "heading_spacing_top_mobile": 10,
-        "heading_spacing_bottom_desktop": 10,
-        "heading_spacing_bottom_mobile": 10,
-        "collection_navigation_spacing_top_desktop": 10,
-        "collection_navigation_spacing_top_mobile": 10,
-        "collection_navigation_spacing_bottom_desktop": 10,
-        "collection_navigation_spacing_bottom_mobile": 10,
-        "collection_cta_spacing_top_desktop": 10,
-        "collection_cta_spacing_top_mobile": 10,
-        "collection_cta_spacing_bottom_desktop": 10,
-        "collection_cta_spacing_bottom_mobile": 10,
-        "cta_text_color": "#000000",
-        "cta_text_color_hover": "#000000",
-        "cta_background_color": "#ffffff",
-        "cta_background_color_hover": "#ffffff",
-        "cta_border_color": "#000000",
-        "cta_border_color_hover": "#000000"
-      },
-      "blocks": {
-        "collection_block_V9CFii": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "",
-            "collection": "grunt-style-foundation",
-            "cta_label": "SHOP FOUNDATION",
-            "cta_link": "shopify://collections/grunt-style-foundation"
-          }
-        }
-      },
-      "block_order": [
-        "collection_block_V9CFii"
-      ],
-      "name": "Featured Collections"
-    },
-    "collection_tab_ATUVBX": {
-      "type": "featured-collections",
-      "settings": {
-        "section_heading": "GRUNT STYLE FOUNDATION",
-        "heading_text_align": "left",
-        "collection_type": "tabs",
-        "collection_source": "manual",
-        "layout_style": "carousel",
-        "container_width": "lg",
-        "grid_image_size": "square",
-        "max_number_products_loaded": 5,
-        "number_products_per_view_desktop": "4",
-        "number_products_per_view_mobile": "2",
-        "enable_product_badges": true,
-        "enable_product_title": true,
-        "enable_product_price": true,
-        "enable_product_swatches": true,
-        "enable_product_quick_view": true,
-        "color_scheme": "scheme-1",
-        "heading_size_desktop": 28,
-        "heading_size_mobile": 24,
-        "navigation_title_size_desktop": 26,
-        "navigation_title_size_mobile": 23,
-        "cta_title_size_desktop": 26,
-        "cta_title_size_mobile": 23,
-        "section_spacing_top_desktop": 5,
-        "section_spacing_top_mobile": 30,
-        "section_spacing_bottom_desktop": 0,
-        "section_spacing_bottom_mobile": 30,
-        "heading_spacing_top_desktop": 10,
-        "heading_spacing_top_mobile": 10,
-        "heading_spacing_bottom_desktop": 10,
-        "heading_spacing_bottom_mobile": 10,
-        "collection_navigation_spacing_top_desktop": 10,
-        "collection_navigation_spacing_top_mobile": 10,
-        "collection_navigation_spacing_bottom_desktop": 10,
-        "collection_navigation_spacing_bottom_mobile": 10,
-        "collection_cta_spacing_top_desktop": 10,
-        "collection_cta_spacing_top_mobile": 10,
-        "collection_cta_spacing_bottom_desktop": 10,
-        "collection_cta_spacing_bottom_mobile": 10,
-        "cta_text_color": "#000000",
-        "cta_text_color_hover": "#ffffff",
-        "cta_background_color": "#ffffff",
-        "cta_background_color_hover": "#000000",
-        "cta_border_color": "#000000",
-        "cta_border_color_hover": "#000000"
-      },
-      "blocks": {
-        "collection_QAEMQ6": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "FOUNDATION",
-            "collection": "grunt-style-foundation",
-            "cta_label": "",
-            "cta_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection_QAEMQ6"
-      ],
-      "disabled": true,
-      "name": "Collection tabs - Foundation"
+      }
     },
     "rich_text_UYQY68": {
       "type": "rich-text",
-      "settings": {
-        "section_visibility": "always",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 72,
-        "padding_bottom": 72
-      },
       "blocks": {
         "heading_69NEbd": {
           "type": "block--heading",
@@ -885,99 +165,269 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "text_ajfKm4": {
           "type": "block--text",
           "settings": {
             "text": "<p>In 2009, with only $1,200 in his pocket, a former Army Drill Sergeant proudly started Grunt Style. As one of the most powerful and charitable post 9/11 Veteran owned companies in the United States, Grunt Style was born in Fort Benning, Georgia.</p>",
-            "size": "body",
+            "size": "large",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "heading_69NEbd",
         "text_ajfKm4"
       ],
-      "name": "t:sections.rich-text.name"
-    },
-    "custom_split_section_YfA3BB": {
-      "type": "image-with-text",
+      "name": "t:sections.rich-text.name",
       "settings": {
         "section_visibility": "always",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "center",
-        "mobile_content_alignment": "center",
-        "section_color_scheme": "scheme-1",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
+        "desktop_content_position": "center",
+        "content_alignment": "center",
         "color_scheme": "scheme-1",
-        "show_chevrons": false,
         "full_width": true,
-        "content_background": "#e0dad0",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "image": "shopify://shop_images/Animated_Email-Primary_600X600_GS7011_GS7012_HR_Nightmare_Group.gif"
-      },
+        "padding_top": 8,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_zjfq6a": {
+      "type": "rich-text",
       "blocks": {
-        "b1": {
+        "heading_tb3UKq": {
           "type": "block--heading",
           "settings": {
-            "text": "OUR STORY",
-            "size": "h2",
+            "text": "FOR PATRIOTS, BY GRUNTS",
+            "size": "h3",
             "tag": "h2",
             "alignment": "inherit",
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
-        "b2": {
+        "text_8T86yq": {
           "type": "block--text",
           "settings": {
-            "text": "<p>In 2009, with only $1,200 in his pocket, a former Army Drill Sergeant proudly started Grunt Style. As one of the most powerful and charitable post 9/11 Veteran owned companies in the United States, Grunt Style was born in Fort Benning, Georgia.</p>",
+            "text": "<p>We defend the principles that built this nation</p>",
             "size": "body",
             "alignment": "inherit",
             "color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading_tb3UKq",
+        "text_8T86yq"
+      ],
+      "name": "Rich Text - 1st Amendment",
+      "settings": {
+        "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": false,
+        "padding_top": 16,
+        "padding_bottom": 8
+      }
+    },
+    "rich_text_GfT8jR": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_k3wKai": {
+          "type": "block--heading",
+          "settings": {
+            "text": "COME AND TAKE IT",
+            "size": "h3",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          },
+          "blocks": {}
+        },
+        "text_9DPwif": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Freedom isn't free...and never was</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading_k3wKai",
+        "text_9DPwif"
+      ],
+      "name": "Rich Text - 2nd Amendment",
+      "settings": {
+        "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "rich_text_HGjWxR": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_hBiihN": {
+          "type": "block--heading",
+          "settings": {
+            "text": "SERVICE IS A LIFESTYLE",
+            "size": "h3",
+            "tag": "h2",
+            "alignment": "inherit",
+            "color": "",
+            "font_size_desktop": 0,
+            "font_size_mobile": 0
+          },
+          "blocks": {}
+        },
+        "text_BpBadD": {
+          "type": "block--text",
+          "settings": {
+            "text": "<p>Our Gear is a battle flag worn with Pride</p>",
+            "size": "body",
+            "alignment": "inherit",
+            "color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading_hBiihN",
+        "text_BpBadD"
+      ],
+      "name": "Rich Text - Service",
+      "settings": {
+        "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-5",
+        "full_width": false,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "featured_collections_wz8Bh9": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_block_i7d8nw": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "Patriotic",
+            "collection": "freedom-first",
+            "cta_label": "SHOP PATRIOTIC",
+            "cta_link": "shopify://collections/freedom-first"
           }
         },
-        "b3": {
-          "type": "block--button",
+        "collection_block_NtffK4": {
+          "type": "collection_block",
           "settings": {
-            "label": "LEARN MORE",
-            "link": "shopify://pages/about",
-            "open_in_new_tab": false,
-            "style": "outline",
-            "width": "auto",
-            "font_size": 0,
-            "padding_y": 12,
-            "padding_x": 28,
-            "margin_y": 0,
-            "margin_x": 0,
-            "border_width": 1,
-            "border_radius": 0,
-            "custom_scheme": false,
-            "color_scheme": "scheme-1",
-            "bg": "",
-            "text_color": "",
-            "border_color": "",
-            "hover_bg": "",
-            "hover_text_color": ""
+            "custom_title": "2A",
+            "collection": "2nd-amendment-collection",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        },
+        "collection_block_wMBaKh": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "SERVICE",
+            "collection": "military-first-responders",
+            "cta_label": "SHOP SERVICE STYLES",
+            "cta_link": "shopify://collections/military-first-responders"
+          }
+        },
+        "collection_block_qWTVHU": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "FOUNDATION",
+            "collection": "grunt-style-foundation",
+            "cta_label": "SHOP FOUNDATION",
+            "cta_link": "shopify://collections/grunt-style-foundation"
           }
         }
       },
       "block_order": [
-        "b1",
-        "b2",
-        "b3"
+        "collection_block_i7d8nw",
+        "collection_block_NtffK4",
+        "collection_block_wMBaKh",
+        "collection_block_qWTVHU"
       ],
-      "disabled": true,
-      "name": "Custom split section"
+      "name": "Featured Collections",
+      "settings": {
+        "section_heading": "",
+        "heading_text_align": "left",
+        "collection_type": "tabs",
+        "collection_source": "manual",
+        "layout_style": "carousel",
+        "container_width": "sm",
+        "grid_image_size": "square",
+        "max_number_products_loaded": 15,
+        "number_products_per_view_desktop": "4",
+        "number_products_per_view_mobile": "2",
+        "enable_product_badges": true,
+        "enable_product_title": true,
+        "enable_product_price": true,
+        "enable_product_swatches": true,
+        "enable_product_quick_view": true,
+        "color_scheme": "scheme-1",
+        "heading_size_desktop": 18,
+        "heading_size_mobile": 12,
+        "navigation_title_size_desktop": 18,
+        "navigation_title_size_mobile": 16,
+        "cta_title_size_desktop": 18,
+        "cta_title_size_mobile": 16,
+        "section_spacing_top_desktop": 10,
+        "section_spacing_top_mobile": 10,
+        "section_spacing_bottom_desktop": 10,
+        "section_spacing_bottom_mobile": 10,
+        "heading_spacing_top_desktop": 10,
+        "heading_spacing_top_mobile": 10,
+        "heading_spacing_bottom_desktop": 10,
+        "heading_spacing_bottom_mobile": 10,
+        "collection_navigation_spacing_top_desktop": 10,
+        "collection_navigation_spacing_top_mobile": 10,
+        "collection_navigation_spacing_bottom_desktop": 10,
+        "collection_navigation_spacing_bottom_mobile": 10,
+        "collection_cta_spacing_top_desktop": 10,
+        "collection_cta_spacing_top_mobile": 10,
+        "collection_cta_spacing_bottom_desktop": 10,
+        "collection_cta_spacing_bottom_mobile": 10,
+        "heading_color": "",
+        "tab_color": "",
+        "tab_active_color": "",
+        "cta_text_color": "#000000",
+        "cta_text_color_hover": "#000000",
+        "cta_background_color": "#ffffff",
+        "cta_background_color_hover": "#ffffff",
+        "cta_border_color": "#000000",
+        "cta_border_color_hover": "#000000"
+      }
     }
   },
   "order": [
@@ -985,21 +435,10 @@
     "rich_text_YBRYPK",
     "main-page",
     "video_banner_JKMyCU",
-    "rich_text_zjfq6a",
-    "apps_N6maFC",
-    "featured_collections_wz8Bh9",
-    "collection_tab_BVU93K",
-    "full_width_image_with_text_v2_nrFLGe",
-    "rich_text_GfT8jR",
-    "featured_collections_pbTzUr",
-    "collection_tab_iDQxiB",
-    "rich_text_HGjWxR",
-    "featured_collections_V3pgJw",
-    "collection_tab_QMf6er",
-    "rich_text_UiJBdX",
-    "featured_collections_kzjEec",
-    "collection_tab_ATUVBX",
     "rich_text_UYQY68",
-    "custom_split_section_YfA3BB"
+    "rich_text_zjfq6a",
+    "rich_text_GfT8jR",
+    "rich_text_HGjWxR",
+    "featured_collections_wz8Bh9"
   ]
 }
