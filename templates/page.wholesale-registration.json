@@ -317,6 +317,7 @@
         "b2",
         "b3"
       ],
+      "disabled": true,
       "name": "t:sections.split-banner.presets.name",
       "settings": {
         "section_visibility": "always",
@@ -375,8 +376,8 @@
         "heading": {
           "type": "block--message-line",
           "settings": {
-            "text": "THIS WE'LL DEFEND",
-            "size_desktop": 48,
+            "text": "<strong>THIS WE'LL DEFEND</strong>",
+            "size_desktop": 35,
             "size_mobile": 33,
             "text_color": "#ffffff",
             "background_color": "",
@@ -446,12 +447,12 @@
         "overlay_opacity": 50,
         "banner_link": "",
         "open_in_new_tab": true,
-        "padding_top_desktop": 36,
-        "padding_bottom_desktop": 36,
-        "padding_horizontal_desktop": 100,
-        "item_gap_desktop": 10,
-        "padding_top_mobile": 32,
-        "padding_bottom_mobile": 32,
+        "padding_top_desktop": 56,
+        "padding_bottom_desktop": 8,
+        "padding_horizontal_desktop": 68,
+        "item_gap_desktop": 4,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 12,
         "padding_horizontal_mobile": 8,
         "item_gap_mobile": 10,
         "buttons_desktop": "side_by_side",
