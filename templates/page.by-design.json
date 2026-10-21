@@ -40,7 +40,7 @@
             "media_image": "shopify://shop_images/Blank_Poster_2000x2000_V1_GS6991_1776_Flag_-_Midnight_Navy.jpg",
             "collection": "",
             "link": "shopify://collections/1776-flag-franchise",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -100,7 +100,7 @@
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V17_GS7731_2ADefined.jpg",
             "collection": "",
             "link": "",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -160,7 +160,7 @@
             "media_image": "shopify://shop_images/1200x680-GS1186.png",
             "collection": "",
             "link": "shopify://collections/rifle-flag-franchise",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -220,7 +220,7 @@
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V9_GS7868AmericanVintage-White.jpg",
             "collection": "",
             "link": "shopify://collections/1776-flag-franchise",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -274,74 +274,13 @@
             "c2"
           ]
         },
-        "grid_BziEAC": {
-          "type": "block--media-tile",
-          "disabled": true,
-          "settings": {
-            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS7266_BarFlag-MidnightNavy.jpg",
-            "collection": "",
-            "link": "",
-            "span_two_columns": true,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          },
-          "blocks": {
-            "c1": {
-              "type": "block--heading",
-              "settings": {
-                "text": "<strong>Bar Flag</strong>",
-                "size": "h3",
-                "tag": "h3",
-                "alignment": "inherit",
-                "color": "",
-                "font_size_desktop": 0,
-                "font_size_mobile": 0
-              },
-              "blocks": {}
-            },
-            "c2": {
-              "type": "block--button",
-              "settings": {
-                "label": "EXPLORE MORE",
-                "link": "shopify://collections/bar-flag",
-                "open_in_new_tab": false,
-                "style": "button",
-                "width": "auto",
-                "font_size": 0,
-                "padding_y": 12,
-                "padding_x": 28,
-                "margin_y": 0,
-                "margin_x": 0,
-                "border_width": 1,
-                "border_radius": 0,
-                "custom_scheme": false,
-                "color_scheme": "scheme-1",
-                "bg": "",
-                "text_color": "",
-                "border_color": "",
-                "hover_bg": "",
-                "hover_text_color": ""
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "c1",
-            "c2"
-          ]
-        },
         "grid_9gLjK3": {
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/Blank_Poster_2000x2000_V1_GS7166__Still_Standing_Slouchy.jpg",
             "collection": "",
             "link": "",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -395,135 +334,13 @@
             "c2"
           ]
         },
-        "grid_cxM7Qw": {
-          "type": "block--media-tile",
-          "disabled": true,
-          "settings": {
-            "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2__GS699576WethePeoplePocketTee_HeatherAqua.jpg",
-            "collection": "",
-            "link": "shopify://collections/76-we-the-people-franchise",
-            "span_two_columns": true,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          },
-          "blocks": {
-            "c1": {
-              "type": "block--heading",
-              "settings": {
-                "text": "<strong>76 We The People</strong>",
-                "size": "h3",
-                "tag": "h3",
-                "alignment": "inherit",
-                "color": "",
-                "font_size_desktop": 0,
-                "font_size_mobile": 0
-              },
-              "blocks": {}
-            },
-            "c2": {
-              "type": "block--button",
-              "settings": {
-                "label": "EXPLORE More",
-                "link": "shopify://collections/76-we-the-people-franchise",
-                "open_in_new_tab": false,
-                "style": "button",
-                "width": "auto",
-                "font_size": 0,
-                "padding_y": 12,
-                "padding_x": 28,
-                "margin_y": 0,
-                "margin_x": 0,
-                "border_width": 1,
-                "border_radius": 0,
-                "custom_scheme": false,
-                "color_scheme": "scheme-1",
-                "bg": "",
-                "text_color": "",
-                "border_color": "",
-                "hover_bg": "",
-                "hover_text_color": ""
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "c1",
-            "c2"
-          ]
-        },
-        "grid_PeQitz": {
-          "type": "block--media-tile",
-          "disabled": true,
-          "settings": {
-            "media_image": "shopify://shop_images/BlankPoster_2000X2000_GS2593-TrueColorsHoodie_fd7dff59-a927-4e75-bdc6-346fa3027cc2.jpg",
-            "collection": "",
-            "link": "shopify://collections/true-colors-franchise",
-            "span_two_columns": true,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "rgba(0,0,0,0)",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          },
-          "blocks": {
-            "c1": {
-              "type": "block--heading",
-              "settings": {
-                "text": "<strong>True Colors Collection</strong>",
-                "size": "h3",
-                "tag": "h3",
-                "alignment": "inherit",
-                "color": "",
-                "font_size_desktop": 0,
-                "font_size_mobile": 0
-              },
-              "blocks": {}
-            },
-            "c2": {
-              "type": "block--button",
-              "settings": {
-                "label": "EXPLORE MORE",
-                "link": "shopify://collections/true-colors-franchise",
-                "open_in_new_tab": false,
-                "style": "button",
-                "width": "auto",
-                "font_size": 0,
-                "padding_y": 12,
-                "padding_x": 28,
-                "margin_y": 0,
-                "margin_x": 0,
-                "border_width": 1,
-                "border_radius": 0,
-                "custom_scheme": false,
-                "color_scheme": "scheme-1",
-                "bg": "",
-                "text_color": "",
-                "border_color": "",
-                "hover_bg": "",
-                "hover_text_color": ""
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "c1",
-            "c2"
-          ]
-        },
         "grid_DjqtAU": {
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_GS6241-BetsyRifleFlagT-Shirt-DarkHeatherGray.jpg",
             "collection": "",
             "link": "shopify://collections/betsy-ross-franchise",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -643,7 +460,7 @@
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_1__GS6272BeautifulBadassFloralSlouchyT-Shirt.jpg",
             "collection": "",
             "link": "",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -703,7 +520,7 @@
             "media_image": "shopify://shop_images/Blank_Poster_2000x2000_V1_Red_Blood_Blue_Collar.jpg",
             "collection": "",
             "link": "",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -763,7 +580,7 @@
             "media_image": "shopify://shop_images/Blog_Post_1250x1250_The_Workshop_Warrior_-_Father_s_Day_Gift_Guide_-_2025.jpg",
             "collection": "",
             "link": "",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -823,7 +640,7 @@
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS7211_ShenanigansSupervisor.jpg",
             "collection": "",
             "link": "",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -943,7 +760,7 @@
             "media_image": "shopify://shop_images/Blank_Poster_2000x2000_V1_GS7813_Strength_Through_Suffering_-_Future_Dusk.jpg",
             "collection": "",
             "link": "shopify://collections/strength-through-suffering-franchise",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -1003,7 +820,7 @@
             "media_image": "shopify://shop_images/BlankPoster_2000X2000_Realtree_Reaper_1.jpg",
             "collection": "",
             "link": "shopify://collections/realtree",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -1063,7 +880,7 @@
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V3__GS6952_FAFOWildCard.jpg",
             "collection": "",
             "link": "shopify://collections/fafo-shirts",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -1117,74 +934,13 @@
             "c2"
           ]
         },
-        "grid_n8pyWb": {
-          "type": "block--media-tile",
-          "disabled": true,
-          "settings": {
-            "media_image": "shopify://shop_images/GS6972_1250x1250_c275e7fa-b8bc-43dd-9664-3848728a8690.png",
-            "collection": "",
-            "link": "",
-            "span_two_columns": true,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          },
-          "blocks": {
-            "c1": {
-              "type": "block--heading",
-              "settings": {
-                "text": "<strong>Whiskey Helps</strong>",
-                "size": "h3",
-                "tag": "h3",
-                "alignment": "inherit",
-                "color": "",
-                "font_size_desktop": 0,
-                "font_size_mobile": 0
-              },
-              "blocks": {}
-            },
-            "c2": {
-              "type": "block--button",
-              "settings": {
-                "label": "EXPLORE MORE",
-                "link": "shopify://collections/whiskey-helps-franchise",
-                "open_in_new_tab": false,
-                "style": "button",
-                "width": "auto",
-                "font_size": 0,
-                "padding_y": 12,
-                "padding_x": 28,
-                "margin_y": 0,
-                "margin_x": 0,
-                "border_width": 1,
-                "border_radius": 0,
-                "custom_scheme": false,
-                "color_scheme": "scheme-1",
-                "bg": "",
-                "text_color": "",
-                "border_color": "",
-                "hover_bg": "",
-                "hover_text_color": ""
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "c1",
-            "c2"
-          ]
-        },
         "grid_DJ8rm9": {
           "type": "block--media-tile",
           "settings": {
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V14_GS7962_SwearingHelpsSlouchyT-Shirt-Black.jpg",
             "collection": "",
             "link": "shopify://collections/swearing-helps",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -1304,7 +1060,7 @@
             "media_image": "shopify://shop_images/BlankPoster_2000X2000_3TheStorm-min.jpg",
             "collection": "",
             "link": "",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -1332,67 +1088,6 @@
               "settings": {
                 "label": "EXPLORE MORE",
                 "link": "shopify://collections/back-the-blue",
-                "open_in_new_tab": false,
-                "style": "button",
-                "width": "auto",
-                "font_size": 0,
-                "padding_y": 12,
-                "padding_x": 28,
-                "margin_y": 0,
-                "margin_x": 0,
-                "border_width": 1,
-                "border_radius": 0,
-                "custom_scheme": false,
-                "color_scheme": "scheme-1",
-                "bg": "",
-                "text_color": "",
-                "border_color": "",
-                "hover_bg": "",
-                "hover_text_color": ""
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "c1",
-            "c2"
-          ]
-        },
-        "grid_Y7yaTH": {
-          "type": "block--media-tile",
-          "disabled": true,
-          "settings": {
-            "media_image": "shopify://shop_images/Blank_Poster_2000x2000_V5_GS6974_GS6973_GS6975_Nurse_-_The_Healer_Collection_Group.jpg",
-            "collection": "",
-            "link": "",
-            "span_two_columns": true,
-            "span_two_rows": false,
-            "content_position": "center",
-            "content_alignment": "center",
-            "hover_text": "",
-            "background_color": "#000000",
-            "background_opacity": 0,
-            "hover_overlay": "keep"
-          },
-          "blocks": {
-            "c1": {
-              "type": "block--heading",
-              "settings": {
-                "text": "<strong>Healthcare Heros</strong>",
-                "size": "h3",
-                "tag": "h3",
-                "alignment": "inherit",
-                "color": "",
-                "font_size_desktop": 0,
-                "font_size_mobile": 0
-              },
-              "blocks": {}
-            },
-            "c2": {
-              "type": "block--button",
-              "settings": {
-                "label": "EXPLORE MORE",
-                "link": "shopify://collections/nurse-defined",
                 "open_in_new_tab": false,
                 "style": "button",
                 "width": "auto",
@@ -1485,7 +1180,7 @@
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GSAR0051_ArmyEagle-DarkHeatherGray.jpg",
             "collection": "",
             "link": "shopify://collections/army",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -1545,7 +1240,7 @@
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GSNV0078_ExtraSaltyHoodie_8fbca413-2cff-473c-b846-5ef0f6c4680e.jpg",
             "collection": "",
             "link": "shopify://collections/navy",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -1605,13 +1300,13 @@
             "media_image": "shopify://shop_images/BlankPoster_2000X2000_GSAF0019-USAF-BasicLogoHoodie-MidnightNavy.jpg",
             "collection": "",
             "link": "",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0,
+            "background_opacity": 0.3,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -1665,13 +1360,13 @@
             "media_image": "shopify://shop_images/Poster_2000x2000-GSCG0003-USCG-Est.1790-2.jpg",
             "collection": "",
             "link": "",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0,
+            "background_opacity": 0.3,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -1725,13 +1420,13 @@
             "media_image": "shopify://shop_images/Blank_Poster_2000x2000_V1_GSSF0020_USSF_Space_Force_-_Midnight_Navy.jpg",
             "collection": "",
             "link": "",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0,
+            "background_opacity": 0.3,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -1785,10 +1480,7 @@
         "grid_tqmehi",
         "grid_e43mRg",
         "grid_EeAAMT",
-        "grid_BziEAC",
         "grid_9gLjK3",
-        "grid_cxM7Qw",
-        "grid_PeQitz",
         "grid_DjqtAU",
         "grid_7cEap6",
         "grid_yVgcAt",
@@ -1799,11 +1491,9 @@
         "grid_dRqXRm",
         "grid_XbdcAm",
         "grid_6AWKj7",
-        "grid_n8pyWb",
         "grid_DJ8rm9",
         "grid_r6JKGT",
         "grid_MxUeJx",
-        "grid_Y7yaTH",
         "grid_LEJhEC",
         "grid_GytfBt",
         "grid_3FHgY6",
