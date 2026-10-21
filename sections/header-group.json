@@ -120,17 +120,6 @@
             "nav_label": ""
           }
         },
-        "utility_link_Dj4F6W": {
-          "type": "utility_link",
-          "settings": {
-            "icon": "accessibility",
-            "behaviour": "accessibility",
-            "label": "Accessibility",
-            "link": "",
-            "show_on": "desktop",
-            "show_on_mobile": false
-          }
-        },
         "util_rewards": {
           "type": "utility_link",
           "settings": {
@@ -175,7 +164,6 @@
         "nav_menu_img_last_chance",
         "nav_menu_img_club",
         "nav_menu_img_tcwBha",
-        "utility_link_Dj4F6W",
         "util_rewards",
         "util_help",
         "util_stores"
