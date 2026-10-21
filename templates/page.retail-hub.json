@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -35,16 +44,18 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "text_6PD9Eg": {
           "type": "block--text",
           "settings": {
-            "text": "<p>Shop our in-store experience, bringing to life the Mission, Vision, and Values with authentic and genuine experiences. Find a location near you! To see store hours, click the link for the store closest to you. Please keep in mind that holiday hours could vary.</p><p><a href=\"/pages/events\" title=\"Events\">Check out some of our upcoming events!</a></p>",
-            "size": "body",
+            "text": "<p>Shop our in-store experience, bringing to life the Mission, Vision, and Values with authentic and genuine experiences. Find a location near you! To see store hours, click the link for the store closest to you. Please keep in mind that holiday hours could vary.</p>",
+            "size": "large",
             "alignment": "inherit",
-            "color": ""
-          }
+            "color": "#FFFFFF"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -55,12 +66,15 @@
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-4",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "padding_top": 12,
+        "padding_bottom": 0
       }
     },
     "section_media_grid_Q8fXih": {
@@ -91,7 +105,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "",
-                "font_size_desktop": 0,
+                "font_size_desktop": 18,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -104,7 +118,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "#ffffff",
-                "font_size_desktop": 32,
+                "font_size_desktop": 22,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -140,7 +154,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "",
-                "font_size_desktop": 0,
+                "font_size_desktop": 18,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -153,7 +167,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "#ffffff",
-                "font_size_desktop": 32,
+                "font_size_desktop": 26,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -189,7 +203,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "",
-                "font_size_desktop": 0,
+                "font_size_desktop": 18,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -202,7 +216,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "#ffffff",
-                "font_size_desktop": 32,
+                "font_size_desktop": 26,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -238,7 +252,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "",
-                "font_size_desktop": 0,
+                "font_size_desktop": 18,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -251,7 +265,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "#ffffff",
-                "font_size_desktop": 32,
+                "font_size_desktop": 28,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -287,7 +301,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "",
-                "font_size_desktop": 0,
+                "font_size_desktop": 18,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -300,7 +314,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "#ffffff",
-                "font_size_desktop": 32,
+                "font_size_desktop": 26,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -336,7 +350,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "",
-                "font_size_desktop": 0,
+                "font_size_desktop": 18,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -349,7 +363,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "#ffffff",
-                "font_size_desktop": 32,
+                "font_size_desktop": 30,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -385,7 +399,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "",
-                "font_size_desktop": 0,
+                "font_size_desktop": 18,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -434,7 +448,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "",
-                "font_size_desktop": 0,
+                "font_size_desktop": 18,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -447,7 +461,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "#ffffff",
-                "font_size_desktop": 32,
+                "font_size_desktop": 26,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -483,7 +497,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "",
-                "font_size_desktop": 0,
+                "font_size_desktop": 18,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -532,7 +546,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "",
-                "font_size_desktop": 0,
+                "font_size_desktop": 20,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -581,7 +595,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "",
-                "font_size_desktop": 0,
+                "font_size_desktop": 18,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -630,7 +644,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "",
-                "font_size_desktop": 0,
+                "font_size_desktop": 20,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -679,7 +693,7 @@
                 "tag": "h2",
                 "alignment": "inherit",
                 "color": "",
-                "font_size_desktop": 0,
+                "font_size_desktop": 20,
                 "font_size_mobile": 0
               },
               "blocks": {}
@@ -722,10 +736,10 @@
       "name": "Media grid",
       "settings": {
         "layout": "grid",
-        "columns_desktop": 3,
+        "columns_desktop": 4,
         "columns_mobile": 1,
         "tile_ratio": "fixed",
-        "desktop_row_height": 400,
+        "desktop_row_height": 200,
         "mobile_row_height": 200,
         "tile_width": "full",
         "desktop_grid_gap": 5,
@@ -736,8 +750,12 @@
         "card_background": "",
         "card_padding": 0,
         "enable_shadow": false,
+        "image_fit": "cover",
+        "hover_zoom": true,
         "enable_hover_content": false,
         "heading_badge": false,
+        "current_dim_opacity": 20,
+        "current_dim_hover": true,
         "heading": "",
         "heading_size": "h3",
         "heading_alignment": "text-center",
