@@ -104,9 +104,9 @@
         "bg_overlay_opacity": 30,
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "full_width": true,
-        "padding_top": 24,
+        "padding_top": 8,
         "padding_bottom": 8
       }
     },
@@ -184,7 +184,7 @@
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V6_GS8232_BasicStackedLogoT-Shirt-Tan_d9b7117e-946b-4512-97f2-ddf52059f2f3.jpg",
             "collection": "",
             "link": "shopify://collections/basic-bundles",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -218,7 +218,7 @@
             "media_image": "shopify://shop_images/Split_Banner_D_980x610__GS8399_Lifestyle_Additional_Father_s_Day_Graphics.jpg",
             "collection": "",
             "link": "shopify://collections/graphic-tees-and-tanks",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -252,7 +252,7 @@
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS7684_StillStandingFull-ZipHoodie-Black.jpg",
             "collection": "",
             "link": "shopify://collections/hoodies-and-sweatshirts",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -286,7 +286,7 @@
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V13_GS5579_Polo-Black.jpg",
             "collection": "",
             "link": "shopify://collections/button-downs-polos",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -320,7 +320,7 @@
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V2_GS7308_GS7310_GS7311_GS7313_WoobieCollection-FallforFreedom.jpg",
             "collection": "",
             "link": "shopify://collections/outerwear",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -354,7 +354,7 @@
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V9_GS7784_GruntShort5-SkyBlue.jpg",
             "collection": "",
             "link": "shopify://collections/bottoms",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -388,7 +388,7 @@
             "media_image": "shopify://shop_images/Him-Hats-BlankPoster_2000x2000_copyGS5033-GSEmbroideredAmericanFlagHat-min_197472bc-2efc-4d4e-8db9-4b8f9faae934.png",
             "collection": "",
             "link": "shopify://collections/headwear",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -422,7 +422,7 @@
             "media_image": "shopify://shop_images/BlankPoster_2000x2000_V1_GS8339_DeathDealerFlag_1.jpg",
             "collection": "",
             "link": "shopify://collections/accessories",
-            "span_two_columns": true,
+            "span_two_columns": false,
             "span_two_rows": false,
             "content_position": "center",
             "content_alignment": "center",
@@ -465,7 +465,7 @@
       "settings": {
         "layout": "grid",
         "columns_desktop": 4,
-        "columns_mobile": 1,
+        "columns_mobile": 2,
         "tile_ratio": "fixed",
         "desktop_row_height": 270,
         "mobile_row_height": 150,
@@ -513,7 +513,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.4,
+            "background_opacity": 0,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -544,7 +544,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.4,
+            "background_opacity": 0,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -575,7 +575,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.4,
+            "background_opacity": 0,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -606,7 +606,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.4,
+            "background_opacity": 0,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -637,7 +637,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.4,
+            "background_opacity": 0,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -668,7 +668,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.4,
+            "background_opacity": 0,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -699,7 +699,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.4,
+            "background_opacity": 0,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -730,7 +730,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.4,
+            "background_opacity": 0,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -761,7 +761,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.4,
+            "background_opacity": 0,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -792,7 +792,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.4,
+            "background_opacity": 0,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -826,8 +826,8 @@
       ],
       "settings": {
         "layout": "carousel",
-        "columns_desktop": 5,
-        "columns_mobile": 1,
+        "columns_desktop": 6,
+        "columns_mobile": 2,
         "tile_ratio": "square",
         "desktop_row_height": 400,
         "mobile_row_height": 200,
@@ -855,7 +855,7 @@
         "btn_text_color": "",
         "btn_hover_color": "",
         "btn_hover_text_color": "",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-20e6d83c-40ab-4e96-a05a-bfce07c7427a",
         "padding_top": 8,
         "padding_bottom": 32
       }
@@ -875,7 +875,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.4,
+            "background_opacity": 0,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -932,7 +932,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.4,
+            "background_opacity": 0,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -989,7 +989,7 @@
             "content_alignment": "center",
             "hover_text": "",
             "background_color": "#000000",
-            "background_opacity": 0.4,
+            "background_opacity": 0,
             "hover_overlay": "keep"
           },
           "blocks": {
@@ -1042,7 +1042,7 @@
       ],
       "name": "Gift Guides",
       "settings": {
-        "layout": "grid",
+        "layout": "carousel",
         "columns_desktop": 3,
         "columns_mobile": 1,
         "tile_ratio": "square",
@@ -1577,9 +1577,9 @@
       ],
       "name": "Price Points",
       "settings": {
-        "layout": "grid",
+        "layout": "carousel",
         "columns_desktop": 4,
-        "columns_mobile": 1,
+        "columns_mobile": 2,
         "tile_ratio": "fixed",
         "desktop_row_height": 200,
         "mobile_row_height": 160,
