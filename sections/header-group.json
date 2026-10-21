@@ -184,7 +184,7 @@
         "search_placeholder": "What are you looking for...",
         "search_visibility": "all",
         "account_visibility": "desktop",
-        "account_in_mobile_menu": false,
+        "account_in_mobile_menu": true,
         "cart_visibility": "all",
         "color_scheme": "scheme-4",
         "header_background": "#000000",
