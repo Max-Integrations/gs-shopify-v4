@@ -504,9 +504,9 @@
           "text": "#FFFFFF",
           "button": "#000000",
           "button_label": "#ffffff",
-          "secondary_button_label": "#121212",
+          "secondary_button_label": "#FFFFFF",
           "shadow": "#121212",
-          "heading": "#121212",
+          "heading": "#FFFFFF",
           "link": "#000000",
           "button_hover": "#000000",
           "button_label_hover": "#ffffff",
@@ -519,7 +519,7 @@
           "divider": "#e5e5e5",
           "rating": "#9a723f",
           "arrow_background": "#ececec",
-          "arrow": "#121212"
+          "arrow": "#FFFFFF"
         }
       }
     }
