@@ -389,9 +389,10 @@
         },
         "subcopy": {
           "type": "block--message-line",
+          "name": "Message line 2",
           "settings": {
             "text": "Unapologetic By Design. American By Blood. Rebels By Birth.",
-            "size_desktop": 33,
+            "size_desktop": 19,
             "size_mobile": 18,
             "text_color": "#ffffff",
             "background_color": "",
@@ -432,6 +433,7 @@
         "subcopy",
         "cta"
       ],
+      "custom_css": [],
       "name": "Full Width Image/Text_v2",
       "settings": {
         "visibility": "always",
