@@ -348,30 +348,19 @@
           },
           "blocks": {}
         },
-        "text_teMkMm": {
-          "type": "block--text",
-          "settings": {
-            "text": "",
-            "size": "body",
-            "alignment": "inherit",
-            "color": ""
-          },
-          "blocks": {}
-        },
         "text_mDRUwk": {
           "type": "block--text",
           "settings": {
-            "text": "<h5>Receive a discount for your next order of violence, use <span><strong>VIOLENT20</strong></span><strong> </strong>at checkout.</h5><p><em>Valid for First Time Customers Only. May Not Be Combined With Other Discounts.</em></p>",
-            "size": "body",
+            "text": "<h3>Receive a discount for your next order of violence, use <strong>VIOLENT20 </strong>at checkout.</h3><p><em>Valid for First&nbsp;Time Customers Only. May Not Be Combined With Other Discounts.</em></p>",
+            "size": "small",
             "alignment": "inherit",
-            "color": ""
+            "color": "#FFFFFF"
           },
           "blocks": {}
         }
       },
       "block_order": [
         "heading_6TgV9C",
-        "text_teMkMm",
         "text_mDRUwk"
       ],
       "name": "t:sections.rich-text.name",
@@ -382,7 +371,7 @@
         "bg_overlay_opacity": 30,
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
         "full_width": true,
         "padding_top": 24,
         "padding_bottom": 8
@@ -450,7 +439,6 @@
         },
         "yt_short_Xpc3zP": {
           "type": "yt_short",
-          "disabled": true,
           "settings": {
             "yts_video_url": "https://youtu.be/65D4rug2bF0",
             "yts_thumbnail_image": "shopify://shop_images/Thumbnail_1920x1080_EP5_VBT_Season_8.jpg",
@@ -465,7 +453,6 @@
         },
         "yt_short_UMNkLJ": {
           "type": "yt_short",
-          "disabled": true,
           "settings": {
             "yts_video_url": "https://youtu.be/0F5vHO_NFPA",
             "yts_thumbnail_image": "shopify://shop_images/Thumbnail_1920x1080_EP4_VBT_Season_8.jpg",
@@ -480,7 +467,6 @@
         },
         "yt_short_CEE8fc": {
           "type": "yt_short",
-          "disabled": true,
           "settings": {
             "yts_video_url": "https://youtu.be/Xt3bBNWk1-c",
             "yts_thumbnail_image": "shopify://shop_images/Thumbnail_1920x1080_EP3_VBT_Season_8.jpg",
