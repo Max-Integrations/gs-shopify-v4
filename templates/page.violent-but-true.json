@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "1757097970507351fc": {
@@ -6,6 +15,10 @@
     },
     "main-page": {
       "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "DIV {background-color: #121212;}"
+      ],
       "settings": {
         "desktop_height": "200px",
         "mobile_height": "100px",
@@ -23,60 +36,53 @@
         "bottom_space_desktop": 40,
         "top_space_mobile": 40,
         "bottom_space_mobile": 40
-      },
-      "custom_css": [
-        "DIV {background-color: #121212;}"
-      ],
-      "disabled": true
+      }
     },
     "full_width_image_with_text_v2_Qq7rU9": {
       "type": "section--full-width-image_text",
+      "name": "Full Width Image/Text_v2",
       "settings": {
         "visibility": "always",
         "layout_preset": "right",
         "alignment_preset": "center",
+        "layout_preset_mobile": "center",
+        "alignment_mobile": "center",
         "background_color": "#ffffff",
         "background_image_desktop": "shopify://shop_images/GS-Content_-VBT-1920x700.png",
         "background_image_mobile": "shopify://shop_images/GS-Content_-750x940-VBT.png",
-        "image_height_auto": true,
+        "image_height_auto": false,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
         "banner_link": "",
         "open_in_new_tab": false,
-        "padding_top_desktop": 36,
-        "padding_bottom_desktop": 36,
-        "padding_horizontal_desktop": 48,
+        "padding_top_desktop": 128,
+        "padding_bottom_desktop": 128,
+        "padding_horizontal_desktop": 44,
         "item_gap_desktop": 0,
-        "padding_top_mobile": 48,
-        "padding_bottom_mobile": 48,
+        "padding_top_mobile": 116,
+        "padding_bottom_mobile": 116,
         "padding_horizontal_mobile": 24,
         "item_gap_mobile": 0,
-        "button_gap": 8,
-        "overlay_opacity": 0
-      },
-      "name": "Full Width Image/Text_v2"
+        "buttons_desktop": "side_by_side",
+        "buttons_mobile": "stacked",
+        "button_gap": 8
+      }
     },
     "rich_text_B3kFtU": {
       "type": "rich-text",
-      "settings": {
-        "section_visibility": "always",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 8,
-        "padding_bottom": 8
-      },
       "blocks": {
         "heading_FbRiRM": {
           "type": "block--heading",
           "settings": {
             "text": "<strong>WELCOME BACK YOU BLOOD THIRSTY SWEETHEARTS</strong>",
-            "size": "h1",
-            "tag": "h2",
+            "size": "h2",
+            "tag": "h1",
             "alignment": "inherit",
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "text_McUexW": {
           "type": "block--text",
@@ -85,17 +91,34 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "heading_FbRiRM",
         "text_McUexW"
       ],
-      "name": "t:sections.rich-text.name"
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
     },
     "shapes_Tfcna9": {
       "type": "shapes",
+      "custom_css": [
+        "div {background-color: #121212;}"
+      ],
+      "name": "t:sections.shapes.presets.name",
       "settings": {
         "select_shape": "shape9",
         "image_fit": "contain",
@@ -113,14 +136,25 @@
         "shape_ratio": "fixed",
         "desktop_height": 50,
         "mobile_height": 20
-      },
-      "custom_css": [
-        "div {background-color: #121212;}"
-      ],
-      "name": "t:sections.shapes.presets.name"
+      }
     },
     "featured_collections_zfdkMH": {
       "type": "featured-collections",
+      "blocks": {
+        "collection_block_E7848e": {
+          "type": "collection_block",
+          "settings": {
+            "custom_title": "",
+            "collection": "handpicked-for-violence",
+            "cta_label": "",
+            "cta_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_E7848e"
+      ],
+      "name": "Featured Collections",
       "settings": {
         "section_heading": "CRAFTED FOR THE BODYSTACKER",
         "heading_text_align": "left",
@@ -160,31 +194,20 @@
         "collection_cta_spacing_top_mobile": 10,
         "collection_cta_spacing_bottom_desktop": 10,
         "collection_cta_spacing_bottom_mobile": 10,
+        "heading_color": "",
+        "tab_color": "",
+        "tab_active_color": "",
         "cta_text_color": "#000000",
-        "cta_text_color_hover": "#FFFFFF",
-        "cta_background_color": "#FFFFFF",
+        "cta_text_color_hover": "#ffffff",
+        "cta_background_color": "#ffffff",
         "cta_background_color_hover": "#000000",
         "cta_border_color": "#000000",
-        "cta_border_color_hover": "#FFFFFF"
-      },
-      "blocks": {
-        "collection_block_E7848e": {
-          "type": "collection_block",
-          "settings": {
-            "custom_title": "",
-            "collection": "handpicked-for-violence",
-            "cta_label": "",
-            "cta_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection_block_E7848e"
-      ],
-      "name": "Featured Collections"
+        "cta_border_color_hover": "#ffffff"
+      }
     },
     "shapes_Y3hLRC": {
       "type": "shapes",
+      "name": "t:sections.shapes.presets.name",
       "settings": {
         "select_shape": "shape9",
         "image_fit": "contain",
@@ -202,16 +225,10 @@
         "shape_ratio": "fixed",
         "desktop_height": 50,
         "mobile_height": 20
-      },
-      "name": "t:sections.shapes.presets.name"
+      }
     },
     "two_column_media_highlight_MFNzwc": {
       "type": "two-column-media-highlight",
-      "settings": {
-        "enable_bg_image": true,
-        "section_bg_image": "shopify://shop_images/GS-Content_-VBT-BK-1920x700.png",
-        "section_bg_image_color": "#121212"
-      },
       "blocks": {
         "highlight_3TrRMy": {
           "type": "highlight",
@@ -220,7 +237,7 @@
             "title": "THE LATEST EPISODE OF SEASON 8",
             "title_color": "#ffffff",
             "media_highlight_alignment": "left",
-            "media_highlight_description": "<p>Violent But True is back with a story about grit, violence, and sheer stubbornness, forget Hollywood. The real blockbuster went down in Afghanistan, October 2009. The Battle of Kamdesh wasn’t supposed to be survivable. But it was. Because Romesha was there. </p><h4><strong>Violent But True Season 8 Bastards of War: Forgotten Front</strong></h4><p>The Global War on Terror made legends. But not all of them made it home or onto History Channel. They don’t write songs about these service members. So we tell their stories in the dark... where they belong.</p>",
+            "media_highlight_description": "<p>Violent But True is back with a story about grit, violence, and sheer stubbornness, forget Hollywood. The real blockbuster went down in Afghanistan, October 2009. The Battle of Kamdesh wasn’t supposed to be survivable. But it was. Because Romesha was there.&nbsp;</p><h4><strong>Violent But True Season 8 Bastards of War: Forgotten Front</strong></h4><p>The Global War on Terror made legends. But not all of them made it home or onto History Channel. They don’t write songs about these service members. So we tell their stories in the dark... where they belong.</p>",
             "media_highlight_description_color": "#ffffff",
             "media_highlight_cta_text": "PLAY THE VIOLENCE",
             "media_highlight_cta_url": "https://www.youtube.com/watch?v=rcO3YT1vAmo",
@@ -241,17 +258,18 @@
         ".highlight-block {padding: 2rem 1rem !important;}",
         "p {padding: 5px; font-size: medium;}",
         "a {font-weight: bold; font-size: medium !important;}",
-        ".cta-block {align-content: center !important;}"
+        ".cta-block {align-content: center !important;}",
+        ".page-width {padding: 0px;}"
       ],
-      "name": "Two Column w/ Media"
-    },
-    "two_column_media_highlight_3yFVck": {
-      "type": "two-column-media-highlight",
+      "name": "Two Column w/ Media",
       "settings": {
         "enable_bg_image": true,
         "section_bg_image": "shopify://shop_images/GS-Content_-VBT-BK-1920x700.png",
         "section_bg_image_color": "#121212"
-      },
+      }
+    },
+    "two_column_media_highlight_3yFVck": {
+      "type": "two-column-media-highlight",
       "blocks": {
         "highlight_PdNAq8": {
           "type": "highlight",
@@ -275,22 +293,26 @@
       "block_order": [
         "highlight_PdNAq8"
       ],
+      "disabled": true,
       "custom_css": [
         "H3 {color: #ab192d;}"
       ],
-      "disabled": true,
-      "name": "Two Column w/ Media"
+      "name": "Two Column w/ Media",
+      "settings": {
+        "enable_bg_image": true,
+        "section_bg_image": "shopify://shop_images/GS-Content_-VBT-BK-1920x700.png",
+        "section_bg_image_color": "#121212"
+      }
     },
     "apps_Nzw34g": {
       "type": "apps",
       "settings": {
         "include_margins": true
-      },
-      "blocks": {},
-      "block_order": []
+      }
     },
     "shapes_q8LkRD": {
       "type": "shapes",
+      "name": "t:sections.shapes.presets.name",
       "settings": {
         "select_shape": "shape9",
         "image_fit": "contain",
@@ -308,20 +330,10 @@
         "shape_ratio": "fixed",
         "desktop_height": 50,
         "mobile_height": 20
-      },
-      "name": "t:sections.shapes.presets.name"
+      }
     },
     "rich_text_MdTTMw": {
       "type": "rich-text",
-      "settings": {
-        "section_visibility": "always",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 24,
-        "padding_bottom": 8
-      },
       "blocks": {
         "heading_6TgV9C": {
           "type": "block--heading",
@@ -333,7 +345,8 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "text_teMkMm": {
           "type": "block--text",
@@ -342,7 +355,8 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         },
         "text_mDRUwk": {
           "type": "block--text",
@@ -351,7 +365,8 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -359,30 +374,22 @@
         "text_teMkMm",
         "text_mDRUwk"
       ],
-      "name": "t:sections.rich-text.name"
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 24,
+        "padding_bottom": 8
+      }
     },
     "multicolumn_with_yt_shorts_UPtBXY": {
       "type": "multicolumn-with-yt-shorts",
-      "settings": {
-        "mutlicolumn_yts_full_width": false,
-        "mutlicolumn_yts_top_space_desktop": 30,
-        "mutlicolumn_yts_bottom_space_desktop": 30,
-        "mutlicolumn_yts_top_space_mobile": 25,
-        "mutlicolumn_yts_bottom_space_mobile": 25,
-        "mutlicolumn_yts_content_alignment": "center",
-        "multicolumn_yts_heading": "POPULAR BLOOD BATHS OF SEASON 8",
-        "multicolumn_yts_heading_size": "h3",
-        "multicolumn_yts_heading_tag": "h3",
-        "multicolumn_yts_heading_bold": true,
-        "multicolumn_yts_heading_alignment": "center",
-        "multicolumn_yts_column_count_desktop": 3,
-        "multicolumn_yts_column_count_mobile": "1",
-        "multicolumn_yts_background_color": "#121212",
-        "multicolumn_yts_text_color": "#ffffff",
-        "multicolumn_yts_link_text_color": "#802629",
-        "multicolumn_yts_cta_background_color": "#802629",
-        "multicolumn_yts_cta_text_color": "#ffffff"
-      },
       "blocks": {
         "yt_short_XRJqda": {
           "type": "yt_short",
@@ -528,30 +535,30 @@
         "yt_short_N7gaji",
         "yt_short_PRRNFe"
       ],
-      "name": "Multicolumn YT Shorts"
-    },
-    "multicolumn_with_yt_shorts_j9xkRG": {
-      "type": "multicolumn-with-yt-shorts",
+      "name": "Multicolumn YT Shorts",
       "settings": {
-        "mutlicolumn_yts_full_width": true,
+        "mutlicolumn_yts_full_width": false,
         "mutlicolumn_yts_top_space_desktop": 30,
-        "mutlicolumn_yts_bottom_space_desktop": 20,
-        "mutlicolumn_yts_top_space_mobile": 15,
-        "mutlicolumn_yts_bottom_space_mobile": 15,
+        "mutlicolumn_yts_bottom_space_desktop": 30,
+        "mutlicolumn_yts_top_space_mobile": 25,
+        "mutlicolumn_yts_bottom_space_mobile": 25,
         "mutlicolumn_yts_content_alignment": "center",
-        "multicolumn_yts_heading": "TOP THREE BLOOD BATHS",
-        "multicolumn_yts_heading_size": "h2",
-        "multicolumn_yts_heading_tag": "h2",
+        "multicolumn_yts_heading": "POPULAR BLOOD BATHS OF SEASON 8",
+        "multicolumn_yts_heading_size": "h3",
+        "multicolumn_yts_heading_tag": "h3",
         "multicolumn_yts_heading_bold": true,
         "multicolumn_yts_heading_alignment": "center",
         "multicolumn_yts_column_count_desktop": 3,
         "multicolumn_yts_column_count_mobile": "1",
-        "multicolumn_yts_background_color": "#000000",
+        "multicolumn_yts_background_color": "#121212",
         "multicolumn_yts_text_color": "#ffffff",
         "multicolumn_yts_link_text_color": "#802629",
         "multicolumn_yts_cta_background_color": "#802629",
         "multicolumn_yts_cta_text_color": "#ffffff"
-      },
+      }
+    },
+    "multicolumn_with_yt_shorts_j9xkRG": {
+      "type": "multicolumn-with-yt-shorts",
       "blocks": {
         "yt_short_KYX3gj": {
           "type": "yt_short",
@@ -714,7 +721,27 @@
         "yt_short_kJhpGY"
       ],
       "disabled": true,
-      "name": "Multicolumn YT Shorts"
+      "name": "Multicolumn YT Shorts",
+      "settings": {
+        "mutlicolumn_yts_full_width": true,
+        "mutlicolumn_yts_top_space_desktop": 30,
+        "mutlicolumn_yts_bottom_space_desktop": 20,
+        "mutlicolumn_yts_top_space_mobile": 15,
+        "mutlicolumn_yts_bottom_space_mobile": 15,
+        "mutlicolumn_yts_content_alignment": "center",
+        "multicolumn_yts_heading": "TOP THREE BLOOD BATHS",
+        "multicolumn_yts_heading_size": "h2",
+        "multicolumn_yts_heading_tag": "h2",
+        "multicolumn_yts_heading_bold": true,
+        "multicolumn_yts_heading_alignment": "center",
+        "multicolumn_yts_column_count_desktop": 3,
+        "multicolumn_yts_column_count_mobile": "1",
+        "multicolumn_yts_background_color": "#000000",
+        "multicolumn_yts_text_color": "#ffffff",
+        "multicolumn_yts_link_text_color": "#802629",
+        "multicolumn_yts_cta_background_color": "#802629",
+        "multicolumn_yts_cta_text_color": "#ffffff"
+      }
     }
   },
   "order": [
