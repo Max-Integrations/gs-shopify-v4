@@ -176,6 +176,7 @@
     --gs-highlight-text: {{ s.highlight_text_color | default: '#ffffff' }};
     --gs-logo-width: {{ s.logo_width | default: 180 }}px;
     --gs-logo-width-mobile: {{ s.logo_width_mobile | default: 130 }}px;
+    --gs-header-inset: {{ s.desktop_side_padding | default: 0 }}px;
   "
 >
 {%- comment -%}
@@ -941,6 +942,17 @@
       "step": 10,
       "unit": "px",
       "default": 130
+    },
+    {
+      "type": "range",
+      "id": "desktop_side_padding",
+      "label": "Logo and icons inset (desktop)",
+      "info": "Space between the page edge and the logo (left) and icons (right). 50px lines them up with the menu below.",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 50
     },
     {
       "type": "header",

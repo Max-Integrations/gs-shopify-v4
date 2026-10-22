@@ -622,7 +622,9 @@
     grid-template-columns: auto minmax(280px, 520px) auto;
     grid-template-areas: 'logo search icons';
     gap: 24px;
-    padding: 14px 0;
+    /* Side inset is the header's "Logo and icons inset" setting (was 0,
+       which put the logo against the window edge below 1600px). */
+    padding: 14px var(--gs-header-inset, 0px);
   }
 
   .gs-header__burger,
@@ -644,7 +646,11 @@
     width: 100%;
   }
 
+  /* The icons track stretches with the row; keep the icons at its
+     right end rather than its left. */
   .gs-header__icons {
+    justify-self: end;
+    justify-content: flex-end;
     gap: 2px;
   }
 
