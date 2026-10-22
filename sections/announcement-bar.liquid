@@ -1,3 +1,12 @@
+{% comment %}
+  Dawn's announcement bar, plus one GS addition (2026-10-22):
+  DISMISSIBLE. Section settings show_close / dismiss_days add a close
+  button; closing hides the bar for that many days (localStorage), or
+  until the browser closes when 0 (sessionStorage). The stored value is
+  tied to an md5 of the announcement texts, so changing an announcement
+  shows the bar again for everyone. The check runs inline as the bar is
+  parsed, so a dismissed bar never flashes. Not applied in the editor.
+{% endcomment %}
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
@@ -12,6 +21,16 @@
   if section.blocks.size > 0
     assign announcement_bar = true
   endif
+
+  assign dismissible = false
+  if section.settings.show_close and section.blocks.size > 0
+    assign dismissible = true
+  endif
+  assign dismiss_sig = ''
+  for block in section.blocks
+    assign dismiss_sig = dismiss_sig | append: block.settings.text | append: '|'
+  endfor
+  assign dismiss_sig = dismiss_sig | md5
 -%}
 
 {% if social_icons %}
@@ -19,8 +38,28 @@
 {% endif %}
 
 <div
-  class="utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}"
+  class="utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}{% if dismissible %} utility-bar--dismissible{% endif %}"
+  {% if dismissible %}
+    data-gs-dismiss-sig="{{ dismiss_sig }}"
+    data-gs-dismiss-days="{{ section.settings.dismiss_days }}"
+  {% endif %}
 >
+  {%- if dismissible -%}
+    {%- unless request.design_mode -%}
+      <script>
+        (function () {
+          var sig = '{{ dismiss_sig }}';
+          var hide = false;
+          try {
+            if (sessionStorage.getItem('gs-announcement-dismissed') === sig) hide = true;
+            var saved = JSON.parse(localStorage.getItem('gs-announcement-dismissed') || 'null');
+            if (saved && saved.sig === sig && Date.now() < saved.until) hide = true;
+          } catch (e) {}
+          if (hide) document.currentScript.closest('.shopify-section').style.display = 'none';
+        })();
+      </script>
+    {%- endunless -%}
+  {%- endif -%}
   <div class="page-width utility-bar__grid{% if announcement_bar and language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--3-col{% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}">
     {%- if section.settings.show_social and social_icons -%}
       {%- render 'social-icons' -%}
@@ -160,7 +199,77 @@
       {%- endif -%}
     </div>
   </div>
+
+  {%- if dismissible -%}
+    <button type="button" class="utility-bar__close" aria-label="{{ 'accessibility.close' | t }}" data-gs-announcement-close>
+      <span class="svg-wrapper">{{- 'icon-close.svg' | inline_asset_content -}}</span>
+    </button>
+  {%- endif -%}
 </div>
+
+{%- if dismissible -%}
+  <style>
+    .utility-bar--dismissible {
+      position: relative;
+      padding-inline: 4.4rem;
+    }
+
+    /* Phones: only clear the close button, so the message keeps its width. */
+    @media screen and (max-width: 749px) {
+      .utility-bar--dismissible {
+        padding-inline: 0 4.4rem;
+      }
+    }
+
+    .utility-bar__close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 4.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      background: none;
+      border: 0;
+      color: rgb(var(--color-foreground));
+      cursor: pointer;
+    }
+
+    .utility-bar__close .svg-wrapper,
+    .utility-bar__close svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  </style>
+
+  <script>
+    (function () {
+      var bar = document.querySelector('#shopify-section-{{ section.id }} .utility-bar--dismissible');
+      var button = bar && bar.querySelector('[data-gs-announcement-close]');
+      if (!button) return;
+
+      button.addEventListener('click', function () {
+        var sig = bar.getAttribute('data-gs-dismiss-sig');
+        var days = parseInt(bar.getAttribute('data-gs-dismiss-days'), 10) || 0;
+
+        // The editor shows the bar regardless, so don't remember it there.
+        if (!window.Shopify || !Shopify.designMode) {
+          try {
+            if (days > 0) {
+              localStorage.setItem('gs-announcement-dismissed', JSON.stringify({ sig: sig, until: Date.now() + days * 864e5 }));
+            } else {
+              sessionStorage.setItem('gs-announcement-dismissed', sig);
+            }
+          } catch (e) {}
+        }
+
+        bar.closest('.shopify-section').style.display = 'none';
+      });
+    })();
+  </script>
+{%- endif -%}
 
 {% schema %}
 {
@@ -227,6 +336,28 @@
       "default": false,
       "label": "t:sections.announcement-bar.settings.enable_language_selector.label",
       "info": "t:sections.announcement-bar.settings.enable_language_selector.info"
+    },
+    {
+      "type": "header",
+      "content": "Close button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_close",
+      "default": true,
+      "label": "Let customers close the bar"
+    },
+    {
+      "type": "range",
+      "id": "dismiss_days",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "d",
+      "label": "Keep it hidden for",
+      "info": "0 = until the browser is closed. Changing an announcement's text shows the bar again.",
+      "default": 7,
+      "visible_if": "{{ section.settings.show_close }}"
     }
   ],
   "blocks": [

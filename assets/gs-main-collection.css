@@ -130,11 +130,21 @@
   color: var(--gs-header-band-text, #ffffff);
 }
 
-.gs-collection__header--band .gs-collection__heading.h2 { --gs-band-heading-scale: 0.8; }
-.gs-collection__header--band .gs-collection__heading.h3 { --gs-band-heading-scale: 0.65; }
-.gs-collection__header--band .gs-collection__heading.h4 { --gs-band-heading-scale: 0.5; }
-.gs-collection__header--band .gs-collection__heading.h5 { --gs-band-heading-scale: 0.42; }
-.gs-collection__header--band .gs-collection__heading.h6 { --gs-band-heading-scale: 0.36; }
+.gs-collection__header--band .gs-collection__heading.h2 {
+  --gs-band-heading-scale: 0.8;
+}
+.gs-collection__header--band .gs-collection__heading.h3 {
+  --gs-band-heading-scale: 0.65;
+}
+.gs-collection__header--band .gs-collection__heading.h4 {
+  --gs-band-heading-scale: 0.5;
+}
+.gs-collection__header--band .gs-collection__heading.h5 {
+  --gs-band-heading-scale: 0.42;
+}
+.gs-collection__header--band .gs-collection__heading.h6 {
+  --gs-band-heading-scale: 0.36;
+}
 
 .gs-collection__header.gs-collection__header--band .gs-collection__description,
 .gs-collection__header.gs-collection__header--band .gs-collection__description p {
@@ -366,6 +376,12 @@
   padding: 1.5rem;
   overflow: auto;
   background: var(--promo-overlay, transparent);
+  bottom: 100px;
+  width: 100%;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  line-height: 0.25;
 }
 
 .gs-promo__heading {

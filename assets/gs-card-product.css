@@ -405,7 +405,11 @@
   text-decoration: none;
   cursor: pointer;
   border: 0;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+  padding-block: 12px;
+  margin-top: -20px;
 }
 
 .product-quickview:not([disabled]):hover {
@@ -436,7 +440,7 @@
   outline-offset: 2px;
 }
 
-.product-quickview[data-quick-view-availability='false'],
+.product-quickview[data-quick-view-availability="false"],
 .product-quickview[disabled] {
   background-color: rgb(var(--soldBadgeBackground));
   color: #ffffff;
