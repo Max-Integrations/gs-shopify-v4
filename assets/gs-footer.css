@@ -23,6 +23,14 @@
   padding-bottom: 2rem;
 }
 
+/* Shopify's hCaptcha badge is fixed bottom-right (20px up, 55px tall)
+   once a protected form - the newsletter, contact - is used, and sat
+   over the last footer row (the Accessibility link). While it is on
+   the page, leave room under the footer so that row scrolls clear. */
+body:has(> #shop-hcaptcha-badge-container) .gs-footer {
+  padding-bottom: 90px;
+}
+
 .footer-grid-content {
   display: flex;
   flex-direction: column;
