@@ -1,7 +1,17 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "desktop_height": "300px",
         "mobile_height": "200px",
@@ -19,33 +29,10 @@
         "bottom_space_desktop": 70,
         "top_space_mobile": 40,
         "bottom_space_mobile": 40
-      },
-      "disabled": true
+      }
     },
     "full_width_image_with_text_v2_7B9chj": {
       "type": "section--full-width-image_text",
-      "settings": {
-        "visibility": "always",
-        "layout_preset": "center",
-        "alignment_preset": "center",
-        "background_color": "#ffffff",
-        "background_image_desktop": "shopify://shop_images/GS-Content_-11-1920x700_WS.png",
-        "background_image_mobile": "shopify://shop_images/GS-Content_-10-750x940_WS.png",
-        "image_height_auto": true,
-        "banner_link": "",
-        "open_in_new_tab": false,
-        "padding_top_desktop": 36,
-        "padding_bottom_desktop": 36,
-        "padding_horizontal_desktop": 100,
-        "item_gap_desktop": 10,
-        "padding_top_mobile": 48,
-        "padding_bottom_mobile": 48,
-        "padding_horizontal_mobile": 8,
-        "item_gap_mobile": 10,
-        "button_gap": 8,
-        "overlay_color": "#000000",
-        "overlay_opacity": 50
-      },
       "blocks": {
         "heading": {
           "type": "block--message-line",
@@ -58,7 +45,8 @@
             "letter_spacing": 0,
             "padding_y": 0,
             "padding_x": 0
-          }
+          },
+          "blocks": {}
         },
         "subcopy": {
           "type": "block--message-line",
@@ -71,7 +59,8 @@
             "letter_spacing": 0,
             "padding_y": 0,
             "padding_x": 0
-          }
+          },
+          "blocks": {}
         },
         "cta": {
           "type": "block--button",
@@ -95,7 +84,8 @@
             "border_color": "",
             "hover_bg": "",
             "hover_text_color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -103,55 +93,96 @@
         "subcopy",
         "cta"
       ],
-      "name": "Full Width Image/Text_v2"
+      "name": "Full Width Image/Text_v2",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "center",
+        "alignment_preset": "center",
+        "layout_preset_mobile": "center",
+        "alignment_mobile": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/GS-Content_-11-1920x700_WS.png",
+        "background_image_mobile": "shopify://shop_images/GS-Content_-10-750x940_WS.png",
+        "image_height_auto": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 50,
+        "banner_link": "",
+        "open_in_new_tab": false,
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_horizontal_desktop": 100,
+        "item_gap_desktop": 10,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48,
+        "padding_horizontal_mobile": 8,
+        "item_gap_mobile": 10,
+        "buttons_desktop": "side_by_side",
+        "buttons_mobile": "stacked",
+        "button_gap": 8
+      }
     },
     "multi_column_with_rich_text_MfbxRY": {
       "type": "multicolumn",
-      "settings": {
-        "title": "HOW IT WORKS?",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 20,
-        "padding_bottom": 8
-      },
       "blocks": {
         "icon_with_text_cGidQB": {
           "type": "column",
           "settings": {
+            "icon": "none",
             "image": "shopify://shop_images/Icon_2000x2000_Loyalty-min_896e35f1-6884-457b-883c-1abf283eba94.png",
             "title": "Register Your Gear",
             "text": "<p>Fill out the 60-second form below & upload your receipt.</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "background_color": "",
+            "text_color": "#FFFFFF",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 68,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         },
         "icon_with_text_mGhgpc": {
           "type": "column",
+          "disabled": true,
           "settings": {
+            "icon": "none",
             "image": "shopify://shop_images/GS-Content_-14-icon-perks.png",
             "title": "Beer Guarantee Activated",
             "text": "<p>Check your inbox for your Beer Guarantee confirmation, you're covered for life. Rips, tears, war stories? We got you covered.</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "background_color": "",
+            "text_color": "",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 0,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         },
         "icon_with_text_LRW8cU": {
           "type": "column",
           "settings": {
+            "icon": "none",
             "image": "shopify://shop_images/GS-Content_-12-icon-perks.png",
             "title": "What's Next?",
             "text": "<p>Your gear is registered. Your guarantee is locked. Your gift is on the way.</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "background_color": "",
+            "text_color": "#FFFFFF",
+            "padding": 0,
+            "corner_radius": 0,
+            "border_color": "",
+            "border_width": 0,
+            "image_size": 68,
+            "image_size_mobile": 0,
+            "image_spacing": 0
           }
         }
       },
@@ -160,19 +191,31 @@
         "icon_with_text_mGhgpc",
         "icon_with_text_LRW8cU"
       ],
-      "name": "Multicolumn Rich Text"
+      "name": "Multicolumn Rich Text",
+      "settings": {
+        "title": "HOW IT WORKS?",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_gap": 8,
+        "row_gap": 8,
+        "column_alignment": "center",
+        "background_style": "none",
+        "image_position": "top",
+        "card_color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 20,
+        "padding_bottom": 8
+      }
     },
     "rich_text_nEz7iV": {
       "type": "rich-text",
-      "settings": {
-        "section_visibility": "always",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 8,
-        "padding_bottom": 8
-      },
       "blocks": {
         "heading_XkL3RA": {
           "type": "block--heading",
@@ -184,7 +227,8 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "text_JddqiK": {
           "type": "block--text",
@@ -193,7 +237,8 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -201,29 +246,22 @@
         "text_JddqiK"
       ],
       "disabled": true,
-      "name": "t:sections.rich-text.name"
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "section_visibility": "always",
+        "bg_image_collection": false,
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 30,
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
     },
     "split_banner_reGixa": {
       "type": "image-with-text",
-      "settings": {
-        "section_visibility": "always",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "center",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-1",
-        "show_chevrons": false,
-        "full_width": false,
-        "content_background": "",
-        "padding_top": 20,
-        "padding_bottom": 20,
-        "image": "shopify://shop_images/GS-Content_-13-980x600_WS.png"
-      },
       "blocks": {
         "b1": {
           "type": "block--heading",
@@ -235,7 +273,8 @@
             "color": "",
             "font_size_desktop": 0,
             "font_size_mobile": 0
-          }
+          },
+          "blocks": {}
         },
         "b2": {
           "type": "block--text",
@@ -244,7 +283,8 @@
             "size": "body",
             "alignment": "inherit",
             "color": ""
-          }
+          },
+          "blocks": {}
         },
         "b3": {
           "type": "block--button",
@@ -268,7 +308,8 @@
             "border_color": "",
             "hover_bg": "",
             "hover_text_color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -276,72 +317,90 @@
         "b2",
         "b3"
       ],
-      "name": "t:sections.split-banner.presets.name"
+      "disabled": true,
+      "name": "t:sections.split-banner.presets.name",
+      "settings": {
+        "section_visibility": "always",
+        "image": "shopify://shop_images/GS-Content_-13-980x600_WS.png",
+        "full_width": false,
+        "content_background": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "show_chevrons": false,
+        "chevron_stroke_width": 2,
+        "chevron_color_text": "#ab192d",
+        "chevron_row_fill": "solid",
+        "chevron_row_size": 80,
+        "chevron_row_size_mobile": 64,
+        "chevron_row_gap": 30,
+        "chevron_row_gap_mobile": 30,
+        "chevron_row_space_above": 24,
+        "chevron_row_space_below": 0,
+        "chevron_color_image": "#ffffff",
+        "chevron_col_fill": "outline",
+        "chevron_col_size": 78,
+        "chevron_col_size_mobile": 54,
+        "chevron_col_gap": 20,
+        "chevron_col_gap_mobile": 25,
+        "chevron_col_inset": 30,
+        "chevron_col_inset_mobile": 15,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
     },
     "anchor_tag_cwBFFM": {
       "type": "anchor-tag",
+      "name": "Anchor Tag",
       "settings": {
         "anchor_tag": "BG_Receipt_Upload"
-      },
-      "name": "Anchor Tag"
+      }
     },
     "beer_guarantee_receipt_upload_mEi6F6": {
       "type": "beer-guarantee-receipt-upload",
-      "settings": {},
       "custom_css": [
         "div {padding: 5px;}"
-      ]
+      ],
+      "settings": {}
     },
     "full_width_image_with_text_v2_4m4xDq": {
       "type": "section--full-width-image_text",
-      "settings": {
-        "visibility": "always",
-        "layout_preset": "left",
-        "alignment_preset": "center",
-        "background_color": "#ffffff",
-        "background_image_desktop": "shopify://shop_images/GS-Content_-16-1440x350_2.png",
-        "background_image_mobile": "shopify://shop_images/GS-Content_-WS-750x940.png",
-        "image_height_auto": true,
-        "banner_link": "",
-        "open_in_new_tab": true,
-        "padding_top_desktop": 36,
-        "padding_bottom_desktop": 36,
-        "padding_horizontal_desktop": 100,
-        "item_gap_desktop": 10,
-        "padding_top_mobile": 32,
-        "padding_bottom_mobile": 32,
-        "padding_horizontal_mobile": 8,
-        "item_gap_mobile": 10,
-        "button_gap": 8,
-        "overlay_color": "#000000",
-        "overlay_opacity": 50
-      },
       "blocks": {
         "heading": {
           "type": "block--message-line",
           "settings": {
-            "text": "THIS WE'LL DEFEND",
-            "size_desktop": 48,
+            "text": "<strong>THIS WE'LL DEFEND</strong>",
+            "size_desktop": 35,
             "size_mobile": 33,
             "text_color": "#ffffff",
             "background_color": "",
             "letter_spacing": 0,
             "padding_y": 0,
             "padding_x": 0
-          }
+          },
+          "blocks": {}
         },
         "subcopy": {
           "type": "block--message-line",
+          "name": "Message line 2",
           "settings": {
             "text": "Unapologetic By Design. American By Blood. Rebels By Birth.",
-            "size_desktop": 33,
+            "size_desktop": 19,
             "size_mobile": 18,
             "text_color": "#ffffff",
             "background_color": "",
             "letter_spacing": 0,
             "padding_y": 0,
             "padding_x": 0
-          }
+          },
+          "blocks": {}
         },
         "cta": {
           "type": "block--button",
@@ -365,7 +424,8 @@
             "border_color": "",
             "hover_bg": "",
             "hover_text_color": ""
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -373,7 +433,34 @@
         "subcopy",
         "cta"
       ],
-      "name": "Full Width Image/Text_v2"
+      "custom_css": [],
+      "name": "Full Width Image/Text_v2",
+      "settings": {
+        "visibility": "always",
+        "layout_preset": "left",
+        "alignment_preset": "center",
+        "layout_preset_mobile": "center",
+        "alignment_mobile": "center",
+        "background_color": "#ffffff",
+        "background_image_desktop": "shopify://shop_images/GS-Content_-16-1440x350_2.png",
+        "background_image_mobile": "shopify://shop_images/GS-Content_-WS-750x940.png",
+        "image_height_auto": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 50,
+        "banner_link": "",
+        "open_in_new_tab": true,
+        "padding_top_desktop": 56,
+        "padding_bottom_desktop": 8,
+        "padding_horizontal_desktop": 68,
+        "item_gap_desktop": 4,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 12,
+        "padding_horizontal_mobile": 8,
+        "item_gap_mobile": 10,
+        "buttons_desktop": "side_by_side",
+        "buttons_mobile": "stacked",
+        "button_gap": 8
+      }
     }
   },
   "order": [
