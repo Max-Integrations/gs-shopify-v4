@@ -436,106 +436,259 @@
           {%- endif -%}
         </div>
       {%- else -%}
+        {%- comment -%}
+          ----------------------------------------------------------------
+          PROMOTIONS REPLACE PRODUCTS (2026-10-22)
+          ----------------------------------------------------------------
+          Every page shows exactly products_per_page tiles (N), promos
+          included; a 2-column promo counts as 2. Promos used to be added
+          on top, so a page with one promo had N + 1 tiles.
+
+          paginate can't offset, so the products a promo pushes off page n
+          are carried to page n + 1:
+          - c = promo cells on this page, D = promo cells on earlier pages
+            (= products pushed forward so far).
+          - This page shows global products a = (n-1)N - D + 1 onwards,
+            N - c of them. The first D sit at the end of the PREVIOUS
+            Shopify page, so they render here as skeleton cells
+            (data-gs-index = global position) that gs-collection-filter.js
+            fills from that page.
+          - Then this Shopify page's own first N - D - c products.
+          - Its remaining products render as <template data-gs-index>, for
+            the next page to pick up (already in the DOM for load more /
+            infinite scroll, fetched for page numbers).
+          The page count is ours (visual_pages), not paginate's: carrying
+          can need one more page than Shopify has, and an out-of-range
+          ?page renders an empty grid, which the carried cells fill.
+        {%- endcomment -%}
         {%- paginate collection.products by s.products_per_page -%}
-          <div class="gs-collection__grid">
-            {%- for product in collection.products -%}
+          {%- liquid
+            assign page_size = s.products_per_page
+            assign cur = paginate.current_page
+            assign total = paginate.items
+
+            assign cells_here = 0
+            assign carried_in = 0
+            for promo in promotion_blocks
+              assign promo_cells = promo.settings.content_width_desktop | plus: 0
+              if promo.settings.custom_content_page == cur
+                assign cells_here = cells_here | plus: promo_cells
+              elsif promo.settings.custom_content_page < cur
+                assign carried_in = carried_in | plus: promo_cells
+              endif
+            endfor
+
+            assign slots = page_size | minus: cells_here | at_least: 0
+            assign page_base = cur | minus: 1 | times: page_size
+            assign first_index = page_base | minus: carried_in | plus: 1
+            assign remaining = total | minus: first_index | plus: 1 | at_least: 0
+            assign carry = carried_in | at_most: slots | at_most: remaining
+            assign own = page_size | minus: carried_in | minus: cells_here | at_least: 0 | at_most: collection.products.size
+
+            assign visual_pages = 1
+            assign capacity = 0
+            assign max_pages = paginate.pages | plus: 8
+            for p in (1..max_pages)
+              assign page_cells = 0
+              for promo in promotion_blocks
+                if promo.settings.custom_content_page == p
+                  assign page_cells = page_cells | plus: promo.settings.content_width_desktop
+                endif
+              endfor
+              assign capacity = capacity | plus: page_size | minus: page_cells
+              assign visual_pages = p
+              if capacity >= total
+                break
+              endif
+            endfor
+
+            # Page URLs: a Shopify part URL keeps the filter and sort params;
+            # swap its page param. Without one (a single Shopify page), fall
+            # back to the path; gs-collection-filter.js adds the params.
+            assign url_base = ''
+            for part in paginate.parts
+              if part.is_link
+                assign url_base = part.url
+                break
+              endif
+            endfor
+            if url_base == blank and paginate.next
+              assign url_base = paginate.next.url
+            endif
+            assign url_path = url_base | split: '?' | first | default: request.path
+            assign url_query = ''
+            if url_base contains '?'
+              assign url_query = url_base | split: '?' | last
+            endif
+            assign page_url_prefix = url_path | append: '?'
+            assign query_parts = url_query | split: '&'
+            for q in query_parts
+              assign q_key = q | split: '=' | first
+              if q_key != 'page' and q != blank
+                assign page_url_prefix = page_url_prefix | append: q | append: '&'
+              endif
+            endfor
+            assign page_url_prefix = page_url_prefix | append: 'page='
+
+            case s.grid_image_size
+              when 'landscape'
+                assign carry_ratio = 'var(--img-landscape)'
+              when 'portrait'
+                assign carry_ratio = 'var(--img-portrait)'
+              else
+                assign carry_ratio = 'var(--img-square)'
+            endcase
+          -%}
+
+          {%- comment -%} This page's promos, rendered once, placed by slot. {%- endcomment -%}
+          {%- assign promo_split = '<!--gs-promo-split-->' -%}
+          {%- assign promo_markup = '' -%}
+          {%- assign promo_slots = '' -%}
+          {%- for promo_here in promotion_blocks -%}
+            {%- if promo_here.settings.custom_content_page == cur -%}
+              {%- capture one_promo -%}
               {%- liquid
-                assign position = forloop.index
-                assign promo_here = blank
-                for promo in promotion_blocks
-                  if position == promo.settings.custom_content_position and paginate.current_page == promo.settings.custom_content_page
-                    assign promo_here = promo
-                    break
-                  endif
-                endfor
+                # A cleared colour picker stores rgba(0,0,0,0), which made
+                # the text invisible on the live template. Fall back to
+                # white, the original default.
+                assign promo_heading_color = promo_here.settings.heading_color
+                if promo_heading_color == blank or promo_heading_color.alpha == 0
+                  assign promo_heading_color = '#ffffff'
+                endif
+                assign promo_desc_color = promo_here.settings.desc_color
+                if promo_desc_color == blank or promo_desc_color.alpha == 0
+                  assign promo_desc_color = '#ffffff'
+                endif
+                assign promo_overlay_color = promo_here.settings.background_color
+                if promo_overlay_color == blank or promo_overlay_color.alpha == 0
+                  assign promo_overlay_color = '#000000'
+                endif
               -%}
+              <div
+                class="gs-collection__cell gs-promo gs-promo--w{{ promo_here.settings.content_width_desktop }} gs-promo--mw{{ promo_here.settings.content_width_mobile }}"
+                style="
+                  --promo-overlay: {{ promo_overlay_color | color_modify: 'alpha', promo_here.settings.background_opacity }};
+                  --promo-heading-color: {{ promo_heading_color }};
+                  --promo-heading-weight: {{ promo_here.settings.heading_font_weight }};
+                  --promo-heading-size: {{ promo_here.settings.heading_font_size_desktop }}px;
+                  --promo-heading-size-mobile: {{ promo_here.settings.heading_font_size_mobile }}px;
+                  --promo-heading-font: {{ promo_here.settings.heading_font_family.family }}, {{ promo_here.settings.heading_font_family.fallback_families }};
+                  --promo-desc-color: {{ promo_desc_color }};
+                  --promo-desc-weight: {{ promo_here.settings.desc_font_weight }};
+                  --promo-desc-size: {{ promo_here.settings.desc_font_size_desktop }}px;
+                  --promo-desc-size-mobile: {{ promo_here.settings.desc_font_size_mobile }}px;
+                  --promo-desc-font: {{ promo_here.settings.desc_font_family.family }}, {{ promo_here.settings.desc_font_family.fallback_families }};
+                "
+                {{ promo_here.shopify_attributes }}
+              >
+                {%- if promo_here.settings.link != blank -%}
+                  <a href="{{ promo_here.settings.link }}" class="gs-promo__card">
+                {%- else -%}
+                  <div class="gs-promo__card">
+                {%- endif -%}
 
-              {%- if promo_here != blank -%}
-                {%- liquid
-                  # A cleared colour picker stores rgba(0,0,0,0), which made
-                  # the text invisible on the live template. Fall back to
-                  # white, the original default.
-                  assign promo_heading_color = promo_here.settings.heading_color
-                  if promo_heading_color == blank or promo_heading_color.alpha == 0
-                    assign promo_heading_color = '#ffffff'
-                  endif
-                  assign promo_desc_color = promo_here.settings.desc_color
-                  if promo_desc_color == blank or promo_desc_color.alpha == 0
-                    assign promo_desc_color = '#ffffff'
-                  endif
-                  assign promo_overlay_color = promo_here.settings.background_color
-                  if promo_overlay_color == blank or promo_overlay_color.alpha == 0
-                    assign promo_overlay_color = '#000000'
-                  endif
-                -%}
-                <div
-                  class="gs-collection__cell gs-promo gs-promo--w{{ promo_here.settings.content_width_desktop }} gs-promo--mw{{ promo_here.settings.content_width_mobile }}"
-                  style="
-                    --promo-overlay: {{ promo_overlay_color | color_modify: 'alpha', promo_here.settings.background_opacity }};
-                    --promo-heading-color: {{ promo_heading_color }};
-                    --promo-heading-weight: {{ promo_here.settings.heading_font_weight }};
-                    --promo-heading-size: {{ promo_here.settings.heading_font_size_desktop }}px;
-                    --promo-heading-size-mobile: {{ promo_here.settings.heading_font_size_mobile }}px;
-                    --promo-heading-font: {{ promo_here.settings.heading_font_family.family }}, {{ promo_here.settings.heading_font_family.fallback_families }};
-                    --promo-desc-color: {{ promo_desc_color }};
-                    --promo-desc-weight: {{ promo_here.settings.desc_font_weight }};
-                    --promo-desc-size: {{ promo_here.settings.desc_font_size_desktop }}px;
-                    --promo-desc-size-mobile: {{ promo_here.settings.desc_font_size_mobile }}px;
-                    --promo-desc-font: {{ promo_here.settings.desc_font_family.family }}, {{ promo_here.settings.desc_font_family.fallback_families }};
-                  "
-                  {{ promo_here.shopify_attributes }}
-                >
-                  {%- if promo_here.settings.link != blank -%}
-                    <a href="{{ promo_here.settings.link }}" class="gs-promo__card">
+                <div class="gs-promo__media">
+                  {%- if promo_here.settings.custom_image != blank -%}
+                    {%- assign pimg = promo_here.settings.custom_image -%}
+                    <img
+                      src="{{ pimg | image_url: width: 750 }}"
+                      srcset="{{ pimg | image_url: width: 500 }} 500w, {{ pimg | image_url: width: 750 }} 750w, {{ pimg | image_url: width: 1100 }} 1100w"
+                      sizes="(min-width: 990px) 25vw, 50vw"
+                      alt="{{ pimg.alt | escape }}"
+                      width="{{ pimg.width }}"
+                      height="{{ pimg.height }}"
+                      loading="lazy"
+                    >
                   {%- else -%}
-                    <div class="gs-promo__card">
+                    {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
                   {%- endif -%}
+                </div>
 
-                  <div class="gs-promo__media">
-                    {%- if promo_here.settings.custom_image != blank -%}
-                      {%- assign pimg = promo_here.settings.custom_image -%}
-                      <img
-                        src="{{ pimg | image_url: width: 750 }}"
-                        srcset="{{ pimg | image_url: width: 500 }} 500w, {{ pimg | image_url: width: 750 }} 750w, {{ pimg | image_url: width: 1100 }} 1100w"
-                        sizes="(min-width: 990px) 25vw, 50vw"
-                        alt="{{ pimg.alt | escape }}"
-                        width="{{ pimg.width }}"
-                        height="{{ pimg.height }}"
-                        loading="lazy"
-                      >
-                    {%- else -%}
-                      {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- if promo_here.settings.heading != blank or promo_here.settings.description != blank -%}
+                  <div class="gs-promo__content {{ promo_here.settings.heading_alignment }}">
+                    {%- if promo_here.settings.heading != blank -%}
+                      <h2 class="gs-promo__heading">{{ promo_here.settings.heading }}</h2>
+                    {%- endif -%}
+                    {%- if promo_here.settings.description != blank -%}
+                      <p class="gs-promo__desc rte">{{ promo_here.settings.description }}</p>
                     {%- endif -%}
                   </div>
+                {%- endif -%}
 
-                  {%- if promo_here.settings.heading != blank or promo_here.settings.description != blank -%}
-                    <div class="gs-promo__content {{ promo_here.settings.heading_alignment }}">
-                      {%- if promo_here.settings.heading != blank -%}
-                        <h2 class="gs-promo__heading">{{ promo_here.settings.heading }}</h2>
-                      {%- endif -%}
-                      {%- if promo_here.settings.description != blank -%}
-                        <p class="gs-promo__desc rte">{{ promo_here.settings.description }}</p>
-                      {%- endif -%}
-                    </div>
-                  {%- endif -%}
-
-                  {%- if promo_here.settings.link != blank -%}</a>{%- else -%}</div>{%- endif -%}
-                </div>
-              {%- endif -%}
-
-              <div class="gs-collection__cell">
-                {%- render 'gs-card-product',
-                  cardProduct: product,
-                  cycleIndex: forloop.index,
-                  gridImageSize: s.grid_image_size,
-                  showCount: true,
-                  quickViewtrue: show_quickview,
-                  enableQuickAdd: enable_quick_add,
-                  quickAddLabel: quick_add_label,
-                  savePercentoff: save_percent,
-                  showSwatches: show_swatches
-                -%}
+                {%- if promo_here.settings.link != blank -%}</a>{%- else -%}</div>{%- endif -%}
               </div>
+              {%- endcapture -%}
+              {%- assign promo_markup = promo_markup | append: one_promo | append: promo_split -%}
+              {%- assign promo_slots = promo_slots | append: promo_here.settings.custom_content_position | append: ',' -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- assign promo_markup_list = promo_markup | split: promo_split -%}
+          {%- assign promo_slot_list = promo_slots | split: ',' -%}
+          {%- assign last_slot = carry | plus: own -%}
+
+          <div class="gs-collection__grid" data-gs-page="{{ cur }}" data-gs-page-size="{{ page_size }}">
+            {%- for i in (1..carry) -%}
+              {%- for slot in promo_slot_list -%}
+                {%- assign slot_num = slot | plus: 0 -%}
+                {%- if slot_num == i -%}{{ promo_markup_list[forloop.index0] }}{%- endif -%}
+              {%- endfor -%}
+              <div
+                class="gs-collection__cell gs-collection__cell--carry"
+                data-gs-index="{{ first_index | plus: i | minus: 1 }}"
+                style="--carryRatio: {{ carry_ratio }};"
+                aria-hidden="true"
+              >
+                <div class="gs-carry">
+                  <div class="gs-carry__media"></div>
+                  <div class="gs-carry__line"></div>
+                  <div class="gs-carry__line gs-carry__line--short"></div>
+                </div>
+              </div>
+            {%- endfor -%}
+
+            {%- for product in collection.products limit: own -%}
+              {%- assign slot_here = carry | plus: forloop.index -%}
+              {%- for slot in promo_slot_list -%}
+                {%- assign slot_num = slot | plus: 0 -%}
+                {%- if slot_num == slot_here -%}{{ promo_markup_list[forloop.index0] }}{%- endif -%}
+              {%- endfor -%}
+              <div class="gs-collection__cell">
+              {%- render 'gs-card-product',
+                cardProduct: product,
+                cycleIndex: slot_here,
+                gridImageSize: s.grid_image_size,
+                showCount: true,
+                quickViewtrue: show_quickview,
+                enableQuickAdd: enable_quick_add,
+                quickAddLabel: quick_add_label,
+                savePercentoff: save_percent,
+                showSwatches: show_swatches
+              -%}
+              </div>
+            {%- endfor -%}
+
+            {%- comment -%} Promos placed past the last product still show, at the end. {%- endcomment -%}
+            {%- for slot in promo_slot_list -%}
+              {%- assign slot_num = slot | plus: 0 -%}
+              {%- if slot_num > last_slot or slot_num < 1 -%}{{ promo_markup_list[forloop.index0] }}{%- endif -%}
+            {%- endfor -%}
+
+            {%- for product in collection.products offset: own -%}
+              <template data-gs-index="{{ page_base | plus: own | plus: forloop.index }}">
+                <div class="gs-collection__cell">
+              {%- render 'gs-card-product',
+                cardProduct: product,
+                cycleIndex: forloop.index,
+                gridImageSize: s.grid_image_size,
+                showCount: true,
+                quickViewtrue: show_quickview,
+                enableQuickAdd: enable_quick_add,
+                quickAddLabel: quick_add_label,
+                savePercentoff: save_percent,
+                showSwatches: show_swatches
+              -%}
+                </div>
+              </template>
             {%- endfor -%}
           </div>
 
@@ -551,20 +704,94 @@
             {%- endif -%}
           {%- endfor -%}
 
-          {%- if s.load_type == 'infinite' and paginate.next -%}
+          {%- assign next_page = cur | plus: 1 -%}
+          {%- if s.load_type == 'infinite' and cur < visual_pages -%}
             <div class="gs-collection__more" data-scroll>
-              <a href="{{ paginate.next.url }}" aria-label="{{ 'general.accessibility.load_more' | t }}"></a>
+              <a href="{{ page_url_prefix }}{{ next_page }}" data-gs-page="{{ next_page }}" aria-label="{{ 'general.accessibility.load_more' | t }}"></a>
               <div class="gs-collection__spinner hidden" role="status" aria-live="polite"></div>
             </div>
-          {%- elsif s.load_type == 'load_more' and paginate.next -%}
+          {%- elsif s.load_type == 'load_more' and cur < visual_pages -%}
             <div class="gs-collection__more" data-load-more>
-              <a class="button" href="{{ paginate.next.url }}" data-products-load>
+              <a class="button" href="{{ page_url_prefix }}{{ next_page }}" data-gs-page="{{ next_page }}" data-products-load>
                 {{ 'sections.collection_template.load_more' | t }}
               </a>
               <div class="gs-collection__spinner hidden" role="status" aria-live="polite"></div>
             </div>
-          {%- elsif s.load_type == 'page_number' and paginate.pages > 1 -%}
-            {%- render 'pagination', paginate: paginate -%}
+          {%- elsif s.load_type == 'page_number' and visual_pages > 1 -%}
+            {%- comment -%}
+              Same markup and classes as snippets/pagination.liquid, but
+              over visual_pages rather than paginate.parts.
+            {%- endcomment -%}
+            {{ 'component-pagination.css' | asset_url | stylesheet_tag }}
+            {%- assign prev_page = cur | minus: 1 -%}
+            <div class="pagination-wrapper" data-page="{{ cur }}">
+              <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+                <ul class="pagination__list list-unstyled" role="list">
+                  {%- if cur > 1 -%}
+                    <li>
+                      <a
+                        href="{{ page_url_prefix }}{{ prev_page }}"
+                        data-gs-page="{{ prev_page }}"
+                        class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce"
+                        aria-label="{{ 'general.pagination.previous' | t }}"
+                      >
+                        <span class="svg-wrapper">
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </span>
+                      </a>
+                    </li>
+                  {%- endif -%}
+
+                  {%- assign window_lo = cur | minus: 1 -%}
+                  {%- assign window_hi = cur | plus: 1 -%}
+                  {%- assign gap_lo = cur | minus: 2 -%}
+                  {%- assign gap_hi = cur | plus: 2 -%}
+                  {%- for p in (1..visual_pages) -%}
+                    {%- if p == 1 or p == visual_pages or p >= window_lo and p <= window_hi -%}
+                      <li>
+                        {%- if p == cur -%}
+                          <a
+                            role="link"
+                            aria-disabled="true"
+                            class="pagination__item pagination__item--current light"
+                            aria-current="page"
+                            aria-label="{{ 'general.pagination.page' | t: number: p }}"
+                          >
+                            {{- p -}}
+                          </a>
+                        {%- else -%}
+                          <a
+                            href="{{ page_url_prefix }}{{ p }}"
+                            data-gs-page="{{ p }}"
+                            class="pagination__item link"
+                            aria-label="{{ 'general.pagination.page' | t: number: p }}"
+                          >
+                            {{- p -}}
+                          </a>
+                        {%- endif -%}
+                      </li>
+                    {%- elsif p == gap_lo or p == gap_hi -%}
+                      <li><span class="pagination__item">&hellip;</span></li>
+                    {%- endif -%}
+                  {%- endfor -%}
+
+                  {%- if cur < visual_pages -%}
+                    <li>
+                      <a
+                        href="{{ page_url_prefix }}{{ next_page }}"
+                        data-gs-page="{{ next_page }}"
+                        class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce"
+                        aria-label="{{ 'general.pagination.next' | t }}"
+                      >
+                        <span class="svg-wrapper">
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </span>
+                      </a>
+                    </li>
+                  {%- endif -%}
+                </ul>
+              </nav>
+            </div>
           {%- endif -%}
         {%- endpaginate -%}
       {%- endif -%}
@@ -686,7 +913,7 @@
       ]
     },
     { "type": "header", "content": "Product grid" },
-    { "type": "range", "id": "products_per_page", "label": "Products per page", "min": 8, "max": 28, "step": 1, "default": 16 },
+    { "type": "range", "id": "products_per_page", "label": "Tiles per page (products + promotions)", "info": "Promotions replace products, so every page has exactly this many tiles. 2-column promotions count as 2.", "min": 8, "max": 28, "step": 1, "default": 16 },
     {
       "type": "select",
       "id": "grid_image_size",

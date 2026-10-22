@@ -338,6 +338,40 @@
   color: var(--cardPriceColor, rgb(var(--cardDetailsTextColor)));
 }
 
+/* ---- Carried products (2026-10-22) ----
+   Placeholders for products a promo pushed off the previous page;
+   gs-collection-filter.js swaps in the real cards. Sized like a card
+   (image at the grid's ratio, then title and price lines) so the fill
+   doesn't shift the grid. */
+.gs-carry {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gs-carry__media,
+.gs-carry__line {
+  background: rgba(var(--color-foreground, 0, 0, 0), 0.06);
+  animation: gs-carry-pulse 1.4s ease-in-out infinite;
+}
+
+.gs-carry__media {
+  padding-bottom: var(--carryRatio, 100%);
+}
+
+.gs-carry__line {
+  height: 14px;
+  width: 80%;
+}
+
+.gs-carry__line--short {
+  width: 40%;
+}
+
+@keyframes gs-carry-pulse {
+  50% { opacity: 0.5; }
+}
+
 /* ---- Promotion tiles ---- */
 .gs-promo {
   position: relative;
@@ -618,5 +652,9 @@
   }
   .gs-collection__spinner {
     animation-duration: 3s;
+  }
+  .gs-carry__media,
+  .gs-carry__line {
+    animation: none;
   }
 }

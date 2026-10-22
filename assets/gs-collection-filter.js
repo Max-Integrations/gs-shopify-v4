@@ -47,6 +47,20 @@
   that also closes the drawer. Sort still applies on change - it sits in
   the toolbar, outside the drawer, with no button of its own.
 
+  ------------------------------------------------------------------
+  REVISION 2026-10-22 - PROMOTIONS REPLACE PRODUCTS
+  ------------------------------------------------------------------
+  main-collection now shows exactly products_per_page tiles per page,
+  promos included, so products a promo pushes off one page are carried
+  to the next (see the PROMOTIONS REPLACE PRODUCTS note there). The
+  server marks them as skeleton cells, .gs-collection__cell--carry
+  [data-gs-index], and renders each page's overflow as
+  <template data-gs-index>. fillCarried() swaps each skeleton for the
+  matching template: from the DOM when load more / infinite scroll
+  already appended it, otherwise by fetching the previous page. Page
+  links carry data-gs-page; fixPageLinks() points them at the current
+  URL so filters and sort survive (the Liquid fallback can't see them).
+
   Load once. Binds delegated listeners at document level and does nothing
   on pages with no [data-collection-products].
   ==================================================================
@@ -130,6 +144,8 @@
         // Back/forward and applied-filter pills change sort_by without
         // touching the radios.
         syncSortFromUrl(url);
+        fixPageLinks();
+        fillCarried();
 
         if (opts.scrollToTop !== false) scrollToResultsIfNeeded();
 
@@ -306,6 +322,8 @@
         }
 
         window.history.replaceState({ gsFilter: true }, '', url);
+        fillCarried();
+        fixPageLinks();
 
         if (typeof window.gsSwatchScrollerRefresh === 'function') {
           window.gsSwatchScrollerRefresh();
@@ -418,10 +436,106 @@
     renderFromUrl(window.location.href, { replaceState: true, scrollToTop: false });
   });
 
+  /* ----------------------------------------------------------------
+     Carried products and page links
+     ---------------------------------------------------------------- */
+  function refreshCards() {
+    if (typeof window.gsSwatchScrollerRefresh === 'function') {
+      window.gsSwatchScrollerRefresh();
+    }
+    if (typeof window.gsBadgeRotatorRefresh === 'function') {
+      window.gsBadgeRotatorRefresh();
+    }
+  }
+
+  function pageUrl(page, extra) {
+    var params = new URLSearchParams(window.location.search);
+    params.set('page', page);
+    if (extra) {
+      Object.keys(extra).forEach(function (key) {
+        params.set(key, extra[key]);
+      });
+    }
+    return window.location.pathname + '?' + params.toString();
+  }
+
+  function fixPageLinks() {
+    document.querySelectorAll('[data-collection-products] a[data-gs-page]').forEach(function (link) {
+      link.setAttribute('href', pageUrl(link.getAttribute('data-gs-page')));
+    });
+  }
+
+  function swapIn(cell, template) {
+    cell.replaceWith(document.importNode(template.content, true));
+    // A template in this document is consumed, so a later append can't
+    // show the product twice.
+    if (template.ownerDocument === document) template.remove();
+  }
+
+  function fillCarried() {
+    var cells = document.querySelectorAll('.gs-collection__cell--carry[data-gs-index]');
+    if (!cells.length) return;
+
+    var grid = document.querySelector('.gs-collection__grid[data-gs-page-size]');
+    var size = grid ? parseInt(grid.getAttribute('data-gs-page-size'), 10) : 0;
+    var id = sectionId();
+    var missing = {};
+    var filledHere = false;
+
+    cells.forEach(function (cell) {
+      var index = cell.getAttribute('data-gs-index');
+      var template = document.querySelector('template[data-gs-index="' + index + '"]');
+      if (template) {
+        swapIn(cell, template);
+        filledHere = true;
+        return;
+      }
+      if (!size || !id) {
+        cell.remove();
+        return;
+      }
+      // Global index -> the Shopify page (paginate by size) holding it.
+      var page = Math.ceil(parseInt(index, 10) / size);
+      (missing[page] = missing[page] || []).push(cell);
+    });
+
+    if (filledHere) refreshCards();
+
+    Object.keys(missing).forEach(function (page) {
+      fetch(pageUrl(page, { section_id: id }))
+        .then(function (res) {
+          if (!res.ok) throw new Error('Carried products failed: ' + res.status);
+          return res.text();
+        })
+        .then(function (markup) {
+          var parsed = new DOMParser().parseFromString(markup, 'text/html');
+          missing[page].forEach(function (cell) {
+            if (!cell.isConnected) return; // A filter swapped the grid meanwhile.
+            var template = parsed.querySelector('template[data-gs-index="' + cell.getAttribute('data-gs-index') + '"]');
+            if (template) {
+              swapIn(cell, template);
+            } else {
+              cell.remove();
+            }
+          });
+          refreshCards();
+        })
+        .catch(function (err) {
+          // Never leave grey boxes behind.
+          console.error('[gs-collection-filter] ' + err.message);
+          missing[page].forEach(function (cell) {
+            if (cell.isConnected) cell.remove();
+          });
+        });
+    });
+  }
+
   /* ---------------------------------------------------------------- */
   function init() {
     if (!document.querySelector('[data-collection-products]')) return;
     syncPriceUi();
+    fixPageLinks();
+    fillCarried();
     watchInfinite();
   }
 
