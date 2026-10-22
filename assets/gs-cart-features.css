@@ -4,8 +4,9 @@
   Sale message under the drawer heading, countdown timer, and the
   empty-cart promo (copy + banner with overlay and CTA). Carried over
   from v3's cart-drawer-content and its inline styles; colours and
-  spacing come from Theme settings > Grunt Style features as custom
-  properties set on each element.
+  spacing come from Theme settings > Grunt Style features (and, for the
+  empty cart, Theme settings > Empty Cart Promo Banner & Content) as
+  custom properties set on each element.
 */
 
 /* ---- Sale message ---- */
@@ -50,9 +51,63 @@
 }
 
 /* ---- Empty cart ---- */
+/* Layout (2026-10-22). Defaults reproduce the original: content
+   centred, banner below it. */
+.drawer__inner-empty .cart-drawer__warnings {
+  text-align: var(--gs-cart-empty-align, center);
+}
+
+.gs-empty--content-top .cart-drawer__warnings {
+  justify-content: flex-start;
+  padding-top: 5rem;
+}
+
+.gs-empty--content-bottom .cart-drawer__warnings {
+  justify-content: flex-end;
+}
+
+.gs-empty--content-top {
+  align-self: start;
+}
+
+.gs-empty--content-bottom {
+  align-self: end;
+}
+
+/* Above the content: the banner moves first, its gap below it, and
+   clears the drawer's close button. */
+.gs-empty--banner-above .gs-cart-empty__promo {
+  order: -1;
+  margin: 5rem 0 var(--gs-cart-empty-gap, 25px);
+}
+
+.gs-empty--banner-above.gs-empty--content-top .cart-drawer__warnings {
+  padding-top: 0;
+}
+
+/* Bottom of the drawer: the empty block fills the drawer and the
+   banner sits at its foot. */
+.gs-empty--banner-bottom {
+  align-self: stretch;
+  height: auto;
+  min-height: 100%;
+}
+
+.gs-empty--banner-bottom .gs-cart-empty__promo {
+  margin-top: auto;
+  margin-bottom: 1.5rem;
+}
+
 .gs-cart-empty__copy {
-  margin-bottom: var(--gs-cart-empty-gap, 25px);
+  margin-bottom: 25px;
   color: var(--gs-cart-empty-copy-color, #000000);
+}
+
+/* Copy heading size, only when set (0 = theme default). */
+.gs-empty--heading-size .gs-cart-empty__copy h1,
+.gs-empty--heading-size .gs-cart-empty__copy h2,
+.gs-empty--heading-size .gs-cart-empty__copy h3 {
+  font-size: var(--gs-cart-empty-heading);
 }
 
 .gs-cart-empty__copy h1,
@@ -72,6 +127,14 @@
   position: relative;
   margin: var(--gs-cart-empty-gap, 25px) 0 0;
   overflow: hidden;
+  border-radius: var(--gs-cart-promo-radius, 0);
+}
+
+/* Fixed banner height: the image fills it, cropped around its focal
+   point (set inline from the image's focal point). */
+.gs-cart-empty__promo.gs-cart-empty__promo--fixed img {
+  height: var(--gs-cart-promo-height);
+  object-fit: cover;
 }
 
 .gs-cart-empty__promo-link {
@@ -91,8 +154,8 @@
   inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: var(--gs-cart-promo-align-mobile, center);
+  justify-content: var(--gs-cart-promo-y-mobile, center);
+  align-items: var(--gs-cart-promo-x-mobile, center);
   gap: var(--gs-cart-promo-cta-gap, 25px);
   padding: var(--gs-cart-promo-pad-mobile, 5px);
   background-color: var(--gs-cart-promo-overlay, rgba(0, 0, 0, 0.3));
@@ -110,7 +173,7 @@
 
 .gs-cart-empty__overlay-copy h1,
 .gs-cart-empty__overlay-copy h2 {
-  font-size: 2.4rem;
+  font-size: var(--gs-cart-promo-heading-mobile, 2.4rem);
   line-height: 1.1;
   text-transform: uppercase;
 }
@@ -120,17 +183,36 @@
   padding: var(--gs-cart-promo-cta-pad, 10px 20px);
   background-color: var(--gs-cart-promo-cta-bg, #ab192d);
   color: var(--gs-cart-promo-cta-text, #ffffff);
+  border-radius: var(--gs-cart-promo-cta-radius, 0);
   font-family: var(--headingFont);
+  font-size: var(--gs-cart-promo-cta-size, inherit);
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   text-decoration: none;
 }
 
+@media screen and (max-width: 749px) {
+  .gs-cart-empty__promo.gs-cart-empty__promo--fixed img {
+    height: auto;
+  }
+
+  .gs-cart-empty__promo.gs-cart-empty__promo--fixed-mobile img {
+    height: var(--gs-cart-promo-height-mobile);
+    object-fit: cover;
+  }
+}
+
 @media screen and (min-width: 750px) {
   .gs-cart-empty__overlay {
-    align-items: var(--gs-cart-promo-align, center);
+    justify-content: var(--gs-cart-promo-y, center);
+    align-items: var(--gs-cart-promo-x, center);
     padding: var(--gs-cart-promo-pad, 25px);
     text-align: var(--gs-cart-promo-align, center);
+  }
+
+  .gs-cart-empty__overlay-copy h1,
+  .gs-cart-empty__overlay-copy h2 {
+    font-size: var(--gs-cart-promo-heading, 2.4rem);
   }
 }

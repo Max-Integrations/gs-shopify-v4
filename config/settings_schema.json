@@ -1585,11 +1585,19 @@
         "id": "cart_countdown_timer_text_color",
         "label": "Text color",
         "default": "#000000"
+      }
+    ]
+  },
+  {
+    "name": "Empty Cart Promo Banner & Content",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Shown in the cart drawer when the cart is empty: copy, then a promo banner with an optional overlay and button. With no banner image, Cart > empty-cart collection shows instead."
       },
       {
         "type": "header",
-        "content": "Empty cart",
-        "info": "Copy and a promo banner shown in the drawer when the cart is empty. With no banner image the Cart settings' empty-cart collection card shows instead."
+        "content": "Content"
       },
       {
         "type": "richtext",
@@ -1605,13 +1613,44 @@
       },
       {
         "type": "range",
-        "id": "empty_cart_spacing_between_content_copy_promo_banner",
-        "label": "Space between copy and banner",
+        "id": "empty_cart_copy_heading_size",
+        "label": "Copy heading size",
         "min": 0,
-        "max": 100,
-        "step": 5,
+        "max": 48,
+        "step": 1,
         "unit": "px",
-        "default": 25
+        "default": 0,
+        "info": "0 = theme default."
+      },
+      {
+        "type": "text_alignment",
+        "id": "empty_cart_content_alignment",
+        "label": "Content alignment",
+        "default": "center"
+      },
+      {
+        "type": "select",
+        "id": "empty_cart_content_position",
+        "label": "Content position in the drawer",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "center",
+            "label": "Middle"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "header",
+        "content": "Banner"
       },
       {
         "type": "image_picker",
@@ -1622,6 +1661,89 @@
         "type": "image_picker",
         "id": "empty_cart_promo_banner_image_mobile",
         "label": "Banner image (mobile)"
+      },
+      {
+        "type": "select",
+        "id": "empty_cart_banner_position",
+        "label": "Banner position",
+        "options": [
+          {
+            "value": "below",
+            "label": "Below the content"
+          },
+          {
+            "value": "above",
+            "label": "Above the content"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom of the drawer"
+          }
+        ],
+        "default": "below"
+      },
+      {
+        "type": "range",
+        "id": "empty_cart_spacing_between_content_copy_promo_banner",
+        "label": "Space between copy and banner",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "px",
+        "default": 25
+      },
+      {
+        "type": "range",
+        "id": "empty_cart_banner_height_desktop",
+        "label": "Banner height (desktop)",
+        "min": 0,
+        "max": 500,
+        "step": 10,
+        "unit": "px",
+        "default": 0,
+        "info": "0 = the image's own shape. Otherwise the image fills the height, cropped around its focal point."
+      },
+      {
+        "type": "range",
+        "id": "empty_cart_banner_height_mobile",
+        "label": "Banner height (mobile)",
+        "min": 0,
+        "max": 500,
+        "step": 10,
+        "unit": "px",
+        "default": 0,
+        "info": "0 = the image's own shape."
+      },
+      {
+        "type": "range",
+        "id": "empty_cart_banner_radius",
+        "label": "Banner corner radius",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "default": 0
+      },
+      {
+        "type": "url",
+        "id": "empty_cart_promo_banner_cta_link",
+        "label": "Link"
+      },
+      {
+        "type": "checkbox",
+        "id": "empty_cart_promo_banner_cta_link_new_window",
+        "label": "Open the link in a new tab",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "empty_cart_full_image_link",
+        "label": "Whole banner is the link",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Banner overlay"
       },
       {
         "type": "checkbox",
@@ -1659,6 +1781,78 @@
       },
       {
         "type": "range",
+        "id": "empty_cart_overlay_heading_size_desktop",
+        "label": "Overlay heading size (desktop)",
+        "min": 12,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "default": 24
+      },
+      {
+        "type": "range",
+        "id": "empty_cart_overlay_heading_size_mobile",
+        "label": "Overlay heading size (mobile)",
+        "min": 12,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "default": 24
+      },
+      {
+        "type": "text_alignment",
+        "id": "empty_cart_promo_banner_overlay_content_alignment_desktop",
+        "label": "Overlay alignment (desktop)",
+        "default": "center"
+      },
+      {
+        "type": "text_alignment",
+        "id": "empty_cart_promo_banner_overlay_content_alignment_mobile",
+        "label": "Overlay alignment (mobile)",
+        "default": "center"
+      },
+      {
+        "type": "select",
+        "id": "empty_cart_overlay_position_desktop",
+        "label": "Overlay position (desktop)",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "center",
+            "label": "Middle"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "select",
+        "id": "empty_cart_overlay_position_mobile",
+        "label": "Overlay position (mobile)",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "center",
+            "label": "Middle"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "range",
         "id": "empty_cart_promo_banner_overlay_content_padding_desktop",
         "label": "Overlay padding (desktop)",
         "min": 0,
@@ -1678,33 +1872,8 @@
         "default": 5
       },
       {
-        "type": "text_alignment",
-        "id": "empty_cart_promo_banner_overlay_content_alignment_desktop",
-        "label": "Overlay alignment (desktop)",
-        "default": "center"
-      },
-      {
-        "type": "text_alignment",
-        "id": "empty_cart_promo_banner_overlay_content_alignment_mobile",
-        "label": "Overlay alignment (mobile)",
-        "default": "center"
-      },
-      {
-        "type": "url",
-        "id": "empty_cart_promo_banner_cta_link",
-        "label": "Link"
-      },
-      {
-        "type": "checkbox",
-        "id": "empty_cart_promo_banner_cta_link_new_window",
-        "label": "Open the link in a new tab",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "empty_cart_full_image_link",
-        "label": "Whole banner is the link",
-        "default": true
+        "type": "header",
+        "content": "Banner button"
       },
       {
         "type": "checkbox",
@@ -1717,6 +1886,28 @@
         "id": "empty_cart_banner_cta_text",
         "label": "CTA text",
         "default": "SHOP NOW"
+      },
+      {
+        "type": "range",
+        "id": "empty_cart_banner_cta_font_size",
+        "label": "Button text size",
+        "min": 10,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      },
+      {
+        "type": "color",
+        "id": "empty_cart_banner_cta_text_color",
+        "label": "CTA text color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "empty_cart_banner_cta_bg_color",
+        "label": "CTA background",
+        "default": "#AB192D"
       },
       {
         "type": "range",
@@ -1739,16 +1930,14 @@
         "default": 20
       },
       {
-        "type": "color",
-        "id": "empty_cart_banner_cta_text_color",
-        "label": "CTA text color",
-        "default": "#FFFFFF"
-      },
-      {
-        "type": "color",
-        "id": "empty_cart_banner_cta_bg_color",
-        "label": "CTA background",
-        "default": "#AB192D"
+        "type": "range",
+        "id": "empty_cart_banner_cta_radius",
+        "label": "Button corner radius",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "default": 0
       },
       {
         "type": "range",

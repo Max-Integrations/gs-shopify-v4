@@ -37,6 +37,18 @@
   assign gs_empty_promo_link = settings.empty_cart_promo_banner_cta_link
   assign gs_empty_overlay_color = settings.empty_cart_promo_banner_image_overlay_color | default: '#000000'
   assign gs_empty_overlay_alpha = settings.empty_cart_promo_banner_image_overlay_opacity | default: 30 | divided_by: 100.0
+
+  # Empty Cart Promo Banner & Content (2026-10-22): layout settings.
+  # text_alignment stores left/center/right, which flexbox's
+  # align-items doesn't accept - so left/right overlay alignment never
+  # moved anything. Map them to flex values.
+  assign gs_overlay_x = settings.empty_cart_promo_banner_overlay_content_alignment_desktop | default: 'center' | replace: 'left', 'flex-start' | replace: 'right', 'flex-end'
+  assign gs_overlay_x_mobile = settings.empty_cart_promo_banner_overlay_content_alignment_mobile | default: 'center' | replace: 'left', 'flex-start' | replace: 'right', 'flex-end'
+  assign gs_overlay_y = settings.empty_cart_overlay_position_desktop | default: 'center' | replace: 'top', 'flex-start' | replace: 'bottom', 'flex-end'
+  assign gs_overlay_y_mobile = settings.empty_cart_overlay_position_mobile | default: 'center' | replace: 'top', 'flex-start' | replace: 'bottom', 'flex-end'
+  assign gs_empty_align = settings.empty_cart_content_alignment | default: 'center'
+  assign gs_empty_position = settings.empty_cart_content_position | default: 'center'
+  assign gs_empty_banner_position = settings.empty_cart_banner_position | default: 'below'
 -%}
 
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
@@ -59,11 +71,18 @@
       tabindex="-1"
     >
       {%- if cart == empty -%}
-        <div class="drawer__inner-empty">
+        <div
+          class="drawer__inner-empty gs-empty--content-{{ gs_empty_position }} gs-empty--banner-{{ gs_empty_banner_position }}{% if settings.empty_cart_copy_heading_size > 0 %} gs-empty--heading-size{% endif %}"
+          style="
+            --gs-cart-empty-align: {{ gs_empty_align }};
+            --gs-cart-empty-gap: {{ settings.empty_cart_spacing_between_content_copy_promo_banner | default: 25 }}px;
+            {% if settings.empty_cart_copy_heading_size > 0 %}--gs-cart-empty-heading: {{ settings.empty_cart_copy_heading_size }}px;{% endif %}
+          "
+        >
           <div class="cart-drawer__warnings center{% if settings.cart_drawer_collection != blank or gs_empty_promo %} cart-drawer__warnings--has-collection{% endif %}">
             <div class="cart-drawer__empty-content">
               {%- if settings.empty_cart_content_copy != blank -%}
-                <div class="gs-cart-empty__copy rte" style="--gs-cart-empty-copy-color: {{ settings.empty_cart_content_copy_color | default: '#000000' }}; --gs-cart-empty-gap: {{ settings.empty_cart_spacing_between_content_copy_promo_banner | default: 25 }}px;">
+                <div class="gs-cart-empty__copy rte" style="--gs-cart-empty-copy-color: {{ settings.empty_cart_content_copy_color | default: '#000000' }};">
                   {{ settings.empty_cart_content_copy }}
                 </div>
               {%- else -%}
@@ -106,6 +125,7 @@
                 {%- endif -%}
                 {%- assign gs_promo_img = settings.empty_cart_promo_banner_image_desktop | default: settings.empty_cart_promo_banner_image_mobile -%}
                 <img
+                  {% if gs_promo_img.presentation.focal_point %}style="object-position: {{ gs_promo_img.presentation.focal_point }};"{% endif %}
                   src="{{ gs_promo_img | image_url: width: 650 }}"
                   srcset="{{ gs_promo_img | image_url: width: 400 }} 400w, {{ gs_promo_img | image_url: width: 500 }} 500w, {{ gs_promo_img | image_url: width: 650 }} 650w"
                   sizes="(min-width: 750px) 400px, 100vw"
@@ -132,7 +152,7 @@
             {%- endcapture -%}
 
             <div
-              class="gs-cart-empty__promo"
+              class="gs-cart-empty__promo{% if settings.empty_cart_banner_height_desktop > 0 %} gs-cart-empty__promo--fixed{% endif %}{% if settings.empty_cart_banner_height_mobile > 0 %} gs-cart-empty__promo--fixed-mobile{% endif %}"
               style="
                 --gs-cart-promo-overlay: {{ gs_empty_overlay_color | color_modify: 'alpha', gs_empty_overlay_alpha }};
                 --gs-cart-promo-text: {{ settings.empty_cart_promo_banner_overlay_content_color | default: '#ffffff' }};
@@ -140,6 +160,17 @@
                 --gs-cart-promo-pad-mobile: {{ settings.empty_cart_promo_banner_overlay_content_padding_mobile | default: 5 }}px;
                 --gs-cart-promo-align: {{ settings.empty_cart_promo_banner_overlay_content_alignment_desktop | default: 'center' }};
                 --gs-cart-promo-align-mobile: {{ settings.empty_cart_promo_banner_overlay_content_alignment_mobile | default: 'center' }};
+                --gs-cart-promo-x: {{ gs_overlay_x }};
+                --gs-cart-promo-x-mobile: {{ gs_overlay_x_mobile }};
+                --gs-cart-promo-y: {{ gs_overlay_y }};
+                --gs-cart-promo-y-mobile: {{ gs_overlay_y_mobile }};
+                --gs-cart-promo-heading: {{ settings.empty_cart_overlay_heading_size_desktop | default: 24 }}px;
+                --gs-cart-promo-heading-mobile: {{ settings.empty_cart_overlay_heading_size_mobile | default: 24 }}px;
+                --gs-cart-promo-radius: {{ settings.empty_cart_banner_radius | default: 0 }}px;
+                --gs-cart-promo-cta-size: {{ settings.empty_cart_banner_cta_font_size | default: 16 }}px;
+                --gs-cart-promo-cta-radius: {{ settings.empty_cart_banner_cta_radius | default: 0 }}px;
+                {% if settings.empty_cart_banner_height_desktop > 0 %}--gs-cart-promo-height: {{ settings.empty_cart_banner_height_desktop }}px;{% endif %}
+                {% if settings.empty_cart_banner_height_mobile > 0 %}--gs-cart-promo-height-mobile: {{ settings.empty_cart_banner_height_mobile }}px;{% endif %}
                 --gs-cart-promo-cta-pad: {{ settings.empty_cart_banner_cta_padding_top_bottom | default: 10 }}px {{ settings.empty_cart_banner_cta_padding_left_right | default: 20 }}px;
                 --gs-cart-promo-cta-text: {{ settings.empty_cart_banner_cta_text_color | default: '#ffffff' }};
                 --gs-cart-promo-cta-bg: {{ settings.empty_cart_banner_cta_bg_color | default: '#ab192d' }};
